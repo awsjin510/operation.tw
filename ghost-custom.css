@@ -1,0 +1,561 @@
+/* ============================================================
+   operation.tw — 霓虹燈主題 Ghost Custom CSS
+   使用方式：Ghost 後台 → Settings → Design → Custom CSS
+   貼上此檔案全部內容後按 Save
+   ============================================================ */
+
+/* ── 1. Google Fonts 載入 ── */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+
+/* ── 2. 全域變數（修改這裡就能換色） ── */
+:root {
+  --neon-cyan:   #00f5ff;
+  --neon-pink:   #ff0080;
+  --neon-purple: #bf00ff;
+  --neon-yellow: #ffff00;
+  --neon-green:  #00ff88;
+
+  --bg:       #050510;
+  --bg-card:  #0a0a1a;
+  --bg-card2: #0d0d22;
+
+  --text:     #e0e0ff;
+  --text-dim: #6060a0;
+  --text-mid: #9090cc;
+
+  --border:       rgba(0, 245, 255, 0.12);
+  --border-hover: rgba(0, 245, 255, 0.35);
+
+  --font-heading: 'Orbitron', monospace;
+  --font-mono:    'Share Tech Mono', monospace;
+  --font-body:    'Noto Sans TC', sans-serif;
+}
+
+/* ── 3. 全站基底 ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: var(--font-body) !important;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* 網格背景 */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 掃描線 */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── 4. 導覽列 (Header / Nav) ── */
+.gh-head,
+header.site-header,
+.site-header {
+  background: rgba(5, 5, 16, 0.9) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid var(--border) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 100 !important;
+}
+
+/* 網站標題 */
+.gh-head-logo,
+.site-title,
+.gh-head a.gh-head-logo {
+  font-family: var(--font-heading) !important;
+  font-weight: 900 !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.15em !important;
+  color: var(--neon-cyan) !important;
+  text-shadow: 0 0 10px var(--neon-cyan), 0 0 30px rgba(0, 245, 255, 0.3) !important;
+  text-decoration: none !important;
+}
+
+/* 導覽連結 */
+.gh-head-menu a,
+.site-nav a,
+nav a {
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem !important;
+  color: var(--text-dim) !important;
+  text-decoration: none !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  transition: color 0.3s, text-shadow 0.3s !important;
+}
+
+.gh-head-menu a:hover,
+.site-nav a:hover,
+nav a:hover {
+  color: var(--neon-pink) !important;
+  text-shadow: 0 0 8px var(--neon-pink) !important;
+}
+
+/* ── 5. 首頁 Hero ── */
+.gh-hero,
+.site-intro,
+.hero-section {
+  background: var(--bg) !important;
+  padding: 100px 40px 80px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Hero 標題 */
+.gh-hero h1,
+.site-intro h1 {
+  font-family: var(--font-heading) !important;
+  font-weight: 900 !important;
+  font-size: clamp(2.5rem, 6vw, 5.5rem) !important;
+  color: var(--neon-cyan) !important;
+  text-shadow: 0 0 20px var(--neon-cyan), 0 0 60px rgba(0, 245, 255, 0.3) !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.1 !important;
+  margin-bottom: 16px !important;
+}
+
+/* Hero 說明文字 */
+.gh-hero p,
+.site-intro p {
+  font-size: 1rem !important;
+  color: var(--text-dim) !important;
+  font-family: var(--font-mono) !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* ── 6. 文章卡片 ── */
+.gh-card,
+.post-card,
+article.post {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  transition: all 0.4s !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* 卡片頂部光線掃過效果 */
+.gh-card::before,
+.post-card::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0; left: 0 !important;
+  width: 100%; height: 2px !important;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent) !important;
+  transform: translateX(-100%) !important;
+  transition: transform 0.6s !important;
+}
+
+.gh-card:hover::before,
+.post-card:hover::before {
+  transform: translateX(100%) !important;
+}
+
+.gh-card:hover,
+.post-card:hover {
+  border-color: var(--border-hover) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 245, 255, 0.05) !important;
+}
+
+/* 卡片標題 */
+.gh-card-title,
+.post-card-title,
+h2.post-title,
+.post-card h2 {
+  font-family: var(--font-body) !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  color: var(--text) !important;
+  line-height: 1.6 !important;
+  transition: color 0.3s !important;
+}
+
+.gh-card:hover .gh-card-title,
+.post-card:hover .post-card-title,
+.post-card:hover h2 {
+  color: var(--neon-cyan) !important;
+}
+
+/* 卡片摘要 */
+.gh-card-excerpt,
+.post-card-excerpt {
+  color: var(--text-dim) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.7 !important;
+}
+
+/* 文章分類標籤 */
+.gh-card .gh-card-tag,
+.post-card-primary-tag,
+.tag-pill {
+  font-family: var(--font-mono) !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  padding: 3px 10px !important;
+  border: 1px solid var(--neon-cyan) !important;
+  color: var(--neon-cyan) !important;
+  background: transparent !important;
+}
+
+/* 文章日期 */
+.gh-card-meta,
+.post-card-meta,
+time {
+  font-family: var(--font-mono) !important;
+  font-size: 0.65rem !important;
+  color: var(--text-dim) !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* ── 7. 文章內頁 ── */
+/* 文章標題 */
+.gh-article-title,
+h1.article-title,
+.post-full-title {
+  font-family: var(--font-heading) !important;
+  font-weight: 900 !important;
+  font-size: clamp(2rem, 5vw, 3.5rem) !important;
+  color: #fff !important;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.2) !important;
+  line-height: 1.2 !important;
+  margin-bottom: 24px !important;
+}
+
+/* 文章內文 */
+.gh-content,
+.post-full-content,
+.article-content {
+  color: var(--text) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.9 !important;
+  max-width: 720px !important;
+  margin: 0 auto !important;
+}
+
+/* 標題層級 */
+.gh-content h2,
+.post-full-content h2 {
+  font-family: var(--font-heading) !important;
+  font-size: 1.5rem !important;
+  color: var(--neon-cyan) !important;
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.3) !important;
+  margin: 48px 0 20px !important;
+  padding-bottom: 10px !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.gh-content h3,
+.post-full-content h3 {
+  font-family: var(--font-heading) !important;
+  font-size: 1.1rem !important;
+  color: var(--neon-pink) !important;
+  margin: 36px 0 16px !important;
+}
+
+/* 引言區塊 */
+.gh-content blockquote,
+.post-full-content blockquote {
+  border-left: 3px solid var(--neon-pink) !important;
+  background: rgba(255, 0, 128, 0.05) !important;
+  padding: 16px 24px !important;
+  margin: 32px 0 !important;
+  color: var(--text-mid) !important;
+  font-style: normal !important;
+}
+
+/* 程式碼區塊 */
+.gh-content pre,
+.post-full-content pre {
+  background: var(--bg-card2) !important;
+  border: 1px solid var(--border) !important;
+  border-left: 3px solid var(--neon-cyan) !important;
+  padding: 20px 24px !important;
+  overflow-x: auto !important;
+  margin: 28px 0 !important;
+}
+
+.gh-content code,
+.post-full-content code {
+  font-family: var(--font-mono) !important;
+  font-size: 0.88rem !important;
+  color: var(--neon-green) !important;
+}
+
+/* 行內程式碼 */
+.gh-content p code,
+.post-full-content p code {
+  background: rgba(0, 255, 136, 0.08) !important;
+  padding: 2px 7px !important;
+  border: 1px solid rgba(0, 255, 136, 0.2) !important;
+}
+
+/* 連結 */
+.gh-content a,
+.post-full-content a {
+  color: var(--neon-cyan) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  transition: color 0.2s, text-shadow 0.2s !important;
+}
+
+.gh-content a:hover,
+.post-full-content a:hover {
+  color: var(--neon-pink) !important;
+  text-shadow: 0 0 8px var(--neon-pink) !important;
+}
+
+/* 分隔線 */
+.gh-content hr,
+.post-full-content hr {
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent) !important;
+  margin: 48px 0 !important;
+}
+
+/* 圖片 */
+.gh-content img,
+.post-full-content img {
+  border: 1px solid var(--border) !important;
+  display: block !important;
+  max-width: 100% !important;
+}
+
+/* ── 8. 按鈕 ── */
+.gh-btn,
+.btn,
+button.subscribe-btn,
+.subscribe-form .subscribe-btn {
+  font-family: var(--font-mono) !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  padding: 12px 28px !important;
+  background: transparent !important;
+  border: 1px solid var(--neon-cyan) !important;
+  color: var(--neon-cyan) !important;
+  cursor: pointer !important;
+  transition: all 0.3s !important;
+}
+
+.gh-btn:hover,
+.btn:hover,
+.subscribe-btn:hover {
+  background: var(--neon-cyan) !important;
+  color: var(--bg) !important;
+  box-shadow: 0 0 25px rgba(0, 245, 255, 0.4) !important;
+}
+
+/* ── 9. 訂閱表單 ── */
+.gh-subscribe,
+.subscribe-section,
+.newsletter-section {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  padding: 48px !important;
+  text-align: center !important;
+  position: relative !important;
+}
+
+.gh-subscribe::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -1px; left: 20%; right: 20% !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent) !important;
+}
+
+.gh-subscribe h2,
+.subscribe-section h2 {
+  font-family: var(--font-heading) !important;
+  font-size: 1.4rem !important;
+  color: #fff !important;
+  margin-bottom: 12px !important;
+}
+
+.gh-subscribe p,
+.subscribe-section p {
+  color: var(--text-dim) !important;
+  margin-bottom: 28px !important;
+}
+
+/* 訂閱輸入框 */
+.subscribe-email,
+input[type="email"] {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.88rem !important;
+  padding: 12px 18px !important;
+  outline: none !important;
+}
+
+input[type="email"]:focus {
+  border-color: var(--neon-cyan) !important;
+  box-shadow: 0 0 0 2px rgba(0, 245, 255, 0.08) !important;
+}
+
+input[type="email"]::placeholder {
+  color: var(--text-dim) !important;
+}
+
+/* ── 10. 分頁 ── */
+.pagination {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  padding: 48px 0 !important;
+}
+
+.pagination a {
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem !important;
+  color: var(--text-dim) !important;
+  letter-spacing: 0.1em !important;
+  text-decoration: none !important;
+  padding: 8px 20px !important;
+  border: 1px solid var(--border) !important;
+  transition: all 0.3s !important;
+}
+
+.pagination a:hover {
+  border-color: var(--neon-cyan) !important;
+  color: var(--neon-cyan) !important;
+}
+
+.pagination .page-number {
+  font-family: var(--font-mono) !important;
+  font-size: 0.72rem !important;
+  color: var(--text-dim) !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* ── 11. 作者資訊 ── */
+.author-card,
+.author-profile {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  padding: 32px !important;
+}
+
+.author-card h4,
+.author-name {
+  font-family: var(--font-heading) !important;
+  color: var(--neon-cyan) !important;
+  text-shadow: 0 0 8px rgba(0, 245, 255, 0.3) !important;
+}
+
+.author-bio {
+  color: var(--text-dim) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.7 !important;
+}
+
+/* ── 12. 頁尾 ── */
+.gh-foot,
+footer.site-footer,
+.site-footer {
+  background: var(--bg) !important;
+  border-top: 1px solid var(--border) !important;
+  padding: 36px 40px !important;
+  color: var(--text-dim) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.05em !important;
+}
+
+.gh-foot a,
+.site-footer a {
+  color: var(--text-dim) !important;
+  text-decoration: none !important;
+  transition: color 0.3s !important;
+}
+
+.gh-foot a:hover,
+.site-footer a:hover {
+  color: var(--neon-pink) !important;
+}
+
+/* ── 13. 標籤頁 ── */
+.tag-header h1,
+.tag-name {
+  font-family: var(--font-heading) !important;
+  color: var(--neon-cyan) !important;
+  text-shadow: 0 0 15px var(--neon-cyan) !important;
+}
+
+/* ── 14. 選取文字 ── */
+::selection {
+  background: rgba(0, 245, 255, 0.2) !important;
+  color: #fff !important;
+}
+
+/* ── 15. 捲軸 ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-card);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 245, 255, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 245, 255, 0.4);
+}
+
+/* ── 16. 響應式 ── */
+@media (max-width: 768px) {
+  .gh-head-logo,
+  .site-title {
+    font-size: 0.85rem !important;
+  }
+
+  .gh-article-title,
+  h1.article-title {
+    font-size: 1.8rem !important;
+  }
+
+  .gh-subscribe {
+    padding: 32px 24px !important;
+  }
+}
