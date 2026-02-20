@@ -4,686 +4,607 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>操作一下 | operation.tw</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<meta name="description" content="雲端、資安、AI、閱讀、成長 — 簡單的事情專注做">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --neon-cyan: #00f5ff;
-    --neon-pink: #ff0080;
-    --neon-purple: #bf00ff;
-    --neon-yellow: #ffff00;
-    --neon-green: #00ff88;
-    --bg-dark: #050510;
-    --bg-card: #0a0a1a;
-    --bg-card2: #0d0d20;
-    --text-main: #e0e0ff;
-    --text-dim: #7070a0;
-    --grid-color: rgba(0, 245, 255, 0.04);
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg-dark);
-    color: var(--text-main);
-    font-family: 'Noto Sans TC', sans-serif;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(var(--grid-color) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.12) 2px, rgba(0,0,0,0.12) 4px);
-    pointer-events: none;
-    z-index: 1;
-  }
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 60px;
-    background: rgba(5, 5, 16, 0.9);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 245, 255, 0.15);
-  }
-  .nav-logo {
-    font-family: 'Orbitron', monospace;
-    font-weight: 900;
-    font-size: 1.1rem;
-    letter-spacing: 0.15em;
-    color: var(--neon-cyan);
-    text-decoration: none;
-    text-shadow: 0 0 10px var(--neon-cyan), 0 0 30px rgba(0,245,255,0.3);
-  }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.8rem;
-    color: var(--text-dim);
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    transition: color 0.3s, text-shadow 0.3s;
-    text-transform: uppercase;
-  }
-  .nav-links a:hover { color: var(--neon-pink); text-shadow: 0 0 8px var(--neon-pink); }
+:root{
+  --cyan:#00f5ff;--pink:#ff0080;--purple:#bf00ff;
+  --yellow:#ffff00;--green:#00ff88;
+  --bg:#050510;--bg2:#0a0a1a;--bg3:#0d0d22;--bg4:#111128;
+  --border:rgba(0,245,255,0.1);--border2:rgba(0,245,255,0.3);
+  --text:#e0e0ff;--dim:#6060a0;--mid:#9090cc;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans-serif;line-height:1.8;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,245,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.06) 3px,rgba(0,0,0,.06) 4px);pointer-events:none;z-index:0;}
 
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 120px 60px 80px;
-    z-index: 2;
-    overflow: hidden;
-  }
-  .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.22;
-    pointer-events: none;
-    animation: orb-float 8s ease-in-out infinite;
-  }
-  .orb-1 { width: 500px; height: 500px; background: var(--neon-cyan); top: -100px; right: -100px; }
-  .orb-2 { width: 350px; height: 350px; background: var(--neon-pink); bottom: 50px; right: 200px; animation-delay: 2s; }
-  .orb-3 { width: 250px; height: 250px; background: var(--neon-purple); top: 200px; left: -80px; animation-delay: 4s; }
-  @keyframes orb-float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-30px) scale(1.05); }
-  }
-  .hero-tag {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--neon-green);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    animation: fade-up 0.6s ease forwards 0.2s;
-    opacity: 0;
-  }
-  .hero-tag::before { content: '▶ '; }
-  .hero-title {
-    font-family: 'Orbitron', monospace;
-    font-weight: 900;
-    font-size: clamp(3.5rem, 10vw, 8rem);
-    line-height: 1;
-    margin-bottom: 10px;
-    animation: fade-up 0.6s ease forwards 0.4s;
-    opacity: 0;
-  }
-  .line1 { display: block; color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
-  .line2 { display: block; color: var(--neon-cyan); text-shadow: 0 0 20px var(--neon-cyan), 0 0 60px rgba(0,245,255,0.4); }
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.nav-logo{font-family:'Orbitron',monospace;font-weight:900;font-size:.85rem;letter-spacing:.15em;color:var(--cyan);text-shadow:0 0 10px var(--cyan);text-decoration:none;cursor:pointer;flex-shrink:0;}
+.nav-links{display:flex;align-items:center;gap:24px;}
+.nav-links button{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--dim);background:none;border:none;cursor:pointer;letter-spacing:.1em;text-transform:uppercase;transition:color .25s;}
+.nav-links button:hover{color:var(--cyan);}
+.nav-search{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:5px 12px;}
+.nav-search input{background:transparent;border:none;outline:none;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:.72rem;width:130px;}
+.nav-search input::placeholder{color:var(--dim);}
+.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:4px;background:none;border:none;}
+.hamburger span{width:20px;height:1px;background:var(--cyan);display:block;}
 
-  .glitch { position: relative; animation: glitch-skew 4s infinite linear alternate-reverse; }
-  .glitch::before, .glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-  }
-  .glitch::before {
-    color: var(--neon-pink);
-    animation: glitch-anim-1 4s infinite linear alternate-reverse;
-    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-  }
-  .glitch::after {
-    color: var(--neon-cyan);
-    animation: glitch-anim-2 4s infinite linear alternate-reverse;
-    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
-  }
-  @keyframes glitch-anim-1 {
-    0%,79%{transform:translateX(0)} 80%{transform:translateX(-4px)} 82%{transform:translateX(4px)} 84%{transform:translateX(0)}
-  }
-  @keyframes glitch-anim-2 {
-    0%,69%{transform:translateX(0)} 70%{transform:translateX(4px)} 72%{transform:translateX(-4px)} 74%{transform:translateX(0)}
-  }
-  @keyframes glitch-skew {
-    0%,84%{transform:skew(0)} 86%{transform:skew(-1deg)} 88%{transform:skew(0)}
-  }
+/* MOBILE MENU */
+.mob-menu{display:none;position:fixed;top:60px;left:0;right:0;bottom:0;background:rgba(5,5,16,.98);z-index:99;padding:28px 24px;flex-direction:column;gap:0;}
+.mob-menu.open{display:flex;}
+.mob-menu button{font-family:'Share Tech Mono',monospace;font-size:.88rem;color:var(--mid);background:none;border:none;border-bottom:1px solid var(--border);cursor:pointer;letter-spacing:.1em;text-align:left;padding:16px 0;text-transform:uppercase;}
+.mob-search{display:flex;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:10px 14px;margin-bottom:20px;}
+.mob-search input{background:transparent;border:none;outline:none;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:.82rem;flex:1;}
 
-  .hero-subtitle {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.95rem;
-    color: var(--text-dim);
-    margin-bottom: 36px;
-    letter-spacing: 0.05em;
-    animation: fade-up 0.6s ease forwards 0.6s;
-    opacity: 0;
-  }
-  .hero-quote {
-    max-width: 520px;
-    font-size: 1.15rem;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--text-main);
-    border-left: 3px solid var(--neon-pink);
-    padding-left: 24px;
-    margin-bottom: 40px;
-    animation: fade-up 0.6s ease forwards 0.8s;
-    opacity: 0;
-    text-shadow: 0 0 30px rgba(255,0,128,0.1);
-  }
-  .hero-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 44px;
-    animation: fade-up 0.6s ease forwards 1s;
-    opacity: 0;
-  }
-  .tag-pill {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.72rem;
-    padding: 6px 16px;
-    border: 1px solid;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: all 0.3s;
-    cursor: default;
-  }
-  .tag-pill:nth-child(1){border-color:var(--neon-cyan);color:var(--neon-cyan)}
-  .tag-pill:nth-child(2){border-color:var(--neon-pink);color:var(--neon-pink)}
-  .tag-pill:nth-child(3){border-color:var(--neon-purple);color:var(--neon-purple)}
-  .tag-pill:nth-child(4){border-color:var(--neon-yellow);color:var(--neon-yellow)}
-  .tag-pill:nth-child(5){border-color:var(--neon-green);color:var(--neon-green)}
-  .tag-pill:hover { background: rgba(255,255,255,0.05); box-shadow: 0 0 15px currentColor; }
+/* VIEWS */
+.view{display:none;position:relative;z-index:1;}
+.view.active{display:block;}
 
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 36px;
-    background: transparent;
-    border: 1px solid var(--neon-cyan);
-    color: var(--neon-cyan);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.3s;
-    animation: fade-up 0.6s ease forwards 1.2s;
-    opacity: 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-cta::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--neon-cyan);
-    transform: translateX(-100%);
-    transition: transform 0.3s;
-    z-index: -1;
-  }
-  .hero-cta:hover { color: var(--bg-dark); box-shadow: 0 0 30px rgba(0,245,255,0.5); }
-  .hero-cta:hover::before { transform: translateX(0); }
+/* HERO */
+.hero{padding:96px 24px 72px;text-align:center;position:relative;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+.orb1{width:400px;height:400px;background:rgba(0,245,255,.05);top:-120px;left:-100px;}
+.orb2{width:300px;height:300px;background:rgba(255,0,128,.04);bottom:-80px;right:-80px;}
+.hero-tag{font-family:'Share Tech Mono',monospace;font-size:.68rem;color:var(--pink);letter-spacing:.25em;text-transform:uppercase;margin-bottom:20px;}
+.hero-brand{font-family:'Orbitron',monospace;font-weight:900;font-size:clamp(3.5rem,11vw,8rem);line-height:1;margin-bottom:12px;}
+.hero-brand .t1{color:#fff;position:relative;}
+.hero-brand .t1::before,.hero-brand .t1::after{content:attr(data-text);position:absolute;top:0;left:0;}
+.hero-brand .t1::before{color:var(--pink);clip-path:polygon(0 0,100% 0,100% 35%,0 35%);animation:glA 4s infinite;opacity:0;}
+.hero-brand .t1::after{color:var(--cyan);clip-path:polygon(0 65%,100% 65%,100% 100%,0 100%);animation:glB 4s infinite;opacity:0;}
+@keyframes glA{0%,90%,100%{opacity:0;transform:none}91%{opacity:.7;transform:translate(-2px,1px)}93%{opacity:0}}
+@keyframes glB{0%,94%,100%{opacity:0;transform:none}95%{opacity:.7;transform:translate(2px,-1px)}97%{opacity:0}}
+.hero-brand .t2{color:var(--cyan);text-shadow:0 0 20px var(--cyan),0 0 60px rgba(0,245,255,.25);}
+.hero-sub{font-family:'Share Tech Mono',monospace;font-size:.76rem;color:var(--dim);letter-spacing:.1em;margin-bottom:24px;}
+.hero-quote{font-size:.98rem;color:var(--mid);max-width:480px;margin:0 auto 36px;line-height:2;}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;padding:12px 28px;border:1px solid var(--cyan);color:var(--cyan);font-family:'Share Tech Mono',monospace;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .3s;background:transparent;}
+.hero-cta:hover{background:var(--cyan);color:var(--bg);box-shadow:0 0 25px rgba(0,245,255,.4);}
 
-  .scroll-indicator {
-    position: absolute;
-    bottom: 36px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: var(--text-dim);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    animation: bounce 2s ease-in-out infinite;
-  }
-  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--neon-cyan)); }
-  @keyframes bounce {
-    0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)}
-  }
-  @keyframes fade-up {
-    from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)}
-  }
+/* SECTION */
+.section{max-width:1100px;margin:0 auto;padding:60px 24px;}
+.sec-hd{display:flex;align-items:flex-end;gap:16px;margin-bottom:32px;}
+.sec-hd-text h2{font-family:'Orbitron',monospace;font-size:1rem;font-weight:700;color:#fff;margin-bottom:2px;}
+.sec-hd-text .sec-sub{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.12em;}
+.sec-line{flex:1;height:1px;background:linear-gradient(to right,var(--border2),transparent);}
 
-  section {
-    position: relative;
-    z-index: 2;
-    padding: 100px 60px;
-  }
-  .section-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--neon-pink);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-  .section-label::before { content: '// '; }
-  .section-title {
-    font-family: 'Orbitron', monospace;
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 700;
-    margin-bottom: 56px;
-    color: #fff;
-  }
+/* FILTER */
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.fb{font-family:'Share Tech Mono',monospace;font-size:.63rem;padding:5px 14px;border:1px solid var(--border);color:var(--dim);cursor:pointer;letter-spacing:.08em;text-transform:uppercase;transition:all .2s;background:transparent;}
+.fb:hover{border-color:var(--border2);color:var(--mid);}
+.fb.on{border-color:var(--cyan);color:var(--cyan);background:rgba(0,245,255,.07);}
 
-  /* POSTS */
-  #posts { background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(10,10,26,0.5) 100%); }
-  .posts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-  }
-  .post-card {
-    background: var(--bg-card);
-    border: 1px solid rgba(0, 245, 255, 0.1);
-    padding: 32px;
-    transition: all 0.4s;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  .post-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.5s;
-  }
-  .post-card:hover::before { transform: translateX(100%); }
-  .post-card:hover {
-    border-color: rgba(0,245,255,0.4);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(0,245,255,0.05);
-  }
-  .post-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-  .post-category {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.65rem;
-    padding: 3px 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .cat-cloud{border:1px solid var(--neon-cyan);color:var(--neon-cyan)}
-  .cat-ai{border:1px solid var(--neon-purple);color:var(--neon-purple)}
-  .cat-security{border:1px solid var(--neon-pink);color:var(--neon-pink)}
-  .cat-reading{border:1px solid var(--neon-yellow);color:var(--neon-yellow)}
-  .cat-growth{border:1px solid var(--neon-green);color:var(--neon-green)}
-  .post-date { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; color: var(--text-dim); }
-  .post-title { font-size: 1.1rem; font-weight: 700; line-height: 1.6; margin-bottom: 12px; color: var(--text-main); transition: color 0.3s; }
-  .post-card:hover .post-title { color: var(--neon-cyan); }
-  .post-excerpt { font-size: 0.87rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 20px; }
-  .post-link {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--neon-cyan);
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: gap 0.3s;
-  }
-  .post-card:hover .post-link { gap: 14px; }
+/* POST GRID */
+.post-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
+.pc{background:var(--bg2);border:1px solid var(--border);cursor:pointer;transition:all .32s;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);transform:translateX(-100%);transition:transform .55s;}
+.pc:hover::before{transform:translateX(100%);}
+.pc:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.5);}
+.pc-img{height:160px;background:var(--bg3);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.pc-img img{width:100%;height:100%;object-fit:cover;}
+.pc-img-ph{font-size:2.4rem;opacity:.15;}
+.pc-badge{position:absolute;top:10px;left:10px;font-family:'Share Tech Mono',monospace;font-size:.57rem;padding:3px 8px;border:1px solid;letter-spacing:.1em;text-transform:uppercase;background:rgba(5,5,16,.75);}
+.pc-body{padding:18px;}
+.pc-title{font-size:.93rem;font-weight:700;color:var(--text);line-height:1.6;margin-bottom:8px;transition:color .2s;}
+.pc:hover .pc-title{color:var(--cyan);}
+.pc-exc{font-size:.8rem;color:var(--dim);line-height:1.75;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.pc-foot{display:flex;align-items:center;justify-content:space-between;font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);}
+.pc-rt{color:var(--cyan);}
 
-  /* TOPICS */
-  #topics { background: var(--bg-card2); }
-  .topics-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-  }
-  .topic-card {
-    border: 1px solid rgba(255,255,255,0.06);
-    padding: 28px 20px;
-    text-align: center;
-    transition: all 0.3s;
-    cursor: default;
-  }
-  .topic-card:nth-child(1){--tc:var(--neon-cyan)}
-  .topic-card:nth-child(2){--tc:var(--neon-pink)}
-  .topic-card:nth-child(3){--tc:var(--neon-purple)}
-  .topic-card:nth-child(4){--tc:var(--neon-yellow)}
-  .topic-card:nth-child(5){--tc:var(--neon-green)}
-  .topic-card:hover {
-    border-color: var(--tc);
-    transform: translateY(-6px);
-    box-shadow: 0 0 30px rgba(0,0,0,0.5), 0 0 20px rgba(0,245,255,0.08);
-  }
-  .topic-icon { font-size: 2.4rem; margin-bottom: 14px; display: block; }
-  .topic-name {
-    font-family: 'Orbitron', monospace;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--tc);
-    letter-spacing: 0.1em;
-    text-shadow: 0 0 10px var(--tc);
-  }
-  .topic-desc { font-size: 0.78rem; color: var(--text-dim); margin-top: 8px; line-height: 1.5; }
+/* EMPTY */
+.empty-state{text-align:center;padding:60px 20px;color:var(--dim);}
+.empty-state .ei{font-size:3rem;margin-bottom:12px;}
+.empty-state p{font-family:'Share Tech Mono',monospace;font-size:.78rem;color:var(--mid);}
 
-  /* ABOUT */
-  #about {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-  .about-visual { display: flex; justify-content: center; align-items: center; }
-  .avatar-ring {
-    width: 280px; height: 280px;
-    border-radius: 50%;
-    border: 2px solid transparent;
-    background:
-      linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box,
-      linear-gradient(135deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple)) border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: ring-pulse 4s ease-in-out infinite;
-  }
-  @keyframes ring-pulse {
-    0%,100%{box-shadow:0 0 30px rgba(0,245,255,0.3),0 0 60px rgba(255,0,128,0.1)}
-    50%{box-shadow:0 0 30px rgba(255,0,128,0.3),0 0 60px rgba(0,245,255,0.1)}
-  }
-  .avatar-inner {
-    width: 240px; height: 240px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(0,245,255,0.08), rgba(255,0,128,0.08));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Orbitron', monospace;
-    font-size: 4.5rem;
-    font-weight: 900;
-    color: var(--neon-cyan);
-    text-shadow: 0 0 20px var(--neon-cyan);
-  }
-  .about-text .section-title { margin-bottom: 24px; }
-  .about-bio { font-size: 1rem; line-height: 1.9; color: var(--text-dim); margin-bottom: 32px; }
-  .about-bio strong { color: var(--text-main); font-weight: 700; }
-  .stats-row { display: flex; gap: 40px; margin-top: 32px; }
-  .stat-num {
-    font-family: 'Orbitron', monospace;
-    font-size: 2rem;
-    font-weight: 900;
-    color: var(--neon-cyan);
-    text-shadow: 0 0 15px var(--neon-cyan);
-    line-height: 1;
-  }
-  .stat-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-    margin-top: 4px;
-  }
+/* TOPICS */
+.topic-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.tc{background:var(--bg2);border:1px solid var(--border);border-top-width:2px;padding:22px 14px;text-align:center;cursor:pointer;transition:all .28s;}
+.tc:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.4);}
+.tc-icon{font-size:1.7rem;margin-bottom:8px;}
+.tc-name{font-family:'Orbitron',monospace;font-size:.7rem;font-weight:700;margin-bottom:5px;}
+.tc-desc{font-size:.73rem;color:var(--dim);line-height:1.6;}
+.tc-cnt{font-family:'Share Tech Mono',monospace;font-size:.58rem;margin-top:8px;padding:2px 8px;border:1px solid;display:inline-block;}
 
-  /* NEWSLETTER */
-  #newsletter { text-align: center; padding: 100px 60px; }
-  .newsletter-box {
-    max-width: 560px;
-    margin: 0 auto;
-    border: 1px solid rgba(0,245,255,0.2);
-    padding: 60px 48px;
-    position: relative;
-    background: var(--bg-card);
-  }
-  .newsletter-box::before {
-    content: '';
-    position: absolute;
-    top: -1px; left: 20%; right: 20%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
-  }
-  .newsletter-title {
-    font-family: 'Orbitron', monospace;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 12px;
-  }
-  .newsletter-desc { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 32px; line-height: 1.7; }
-  .newsletter-form { display: flex; }
-  .newsletter-input {
-    flex: 1;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(0,245,255,0.2);
-    border-right: none;
-    padding: 14px 20px;
-    color: var(--text-main);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.85rem;
-    outline: none;
-    transition: border-color 0.3s;
-  }
-  .newsletter-input:focus { border-color: var(--neon-cyan); }
-  .newsletter-input::placeholder { color: var(--text-dim); }
-  .newsletter-btn {
-    padding: 14px 28px;
-    background: var(--neon-cyan);
-    border: 1px solid var(--neon-cyan);
-    color: var(--bg-dark);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-  .newsletter-btn:hover { background: transparent; color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0,245,255,0.3); }
+/* ABOUT */
+.about-wrap{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:start;}
+.avatar{width:108px;height:108px;border-radius:50%;border:2px solid var(--cyan);box-shadow:0 0 20px rgba(0,245,255,.25);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:900;color:var(--cyan);flex-shrink:0;position:relative;}
+.avatar::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(0,245,255,.15);animation:spin 8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.about-bio{font-size:.9rem;color:var(--mid);line-height:1.9;margin-bottom:20px;white-space:pre-line;}
+.about-stats{display:flex;gap:28px;flex-wrap:wrap;}
+.stat-n{font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:900;color:var(--cyan);text-shadow:0 0 10px var(--cyan);}
+.stat-l{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);margin-top:2px;}
 
-  footer {
-    position: relative;
-    z-index: 2;
-    padding: 40px 60px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer-logo {
-    font-family: 'Orbitron', monospace;
-    font-weight: 900;
-    font-size: 1rem;
-    color: var(--neon-cyan);
-    text-shadow: 0 0 10px var(--neon-cyan);
-  }
-  .footer-copy { font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; color: var(--text-dim); }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  .footer-links a:hover { color: var(--neon-pink); }
+/* NEWSLETTER */
+.nl{background:var(--bg2);border:1px solid var(--border);padding:52px 40px;text-align:center;position:relative;overflow:hidden;}
+.nl::before{content:'';position:absolute;top:-1px;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);}
+.nl h2{font-family:'Orbitron',monospace;font-size:1.35rem;font-weight:900;color:#fff;margin-bottom:10px;}
+.nl p{color:var(--dim);margin-bottom:24px;font-size:.88rem;}
+.nl-form{display:flex;max-width:420px;margin:0 auto;}
+.nl-in{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border);border-right:none;padding:11px 14px;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:.76rem;outline:none;}
+.nl-in:focus{border-color:var(--cyan);}
+.nl-btn{padding:11px 22px;background:var(--cyan);color:var(--bg);font-family:'Share Tech Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;white-space:nowrap;transition:all .25s;}
+.nl-btn:hover{background:rgba(0,245,255,.15);color:var(--cyan);border:1px solid var(--cyan);}
 
-  @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-    .hero, section { padding: 80px 24px; }
-    #about { grid-template-columns: 1fr; gap: 40px; }
-    .topics-grid { grid-template-columns: repeat(2, 1fr); }
-    footer { flex-direction: column; gap: 16px; text-align: center; }
-  }
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.08em;position:relative;z-index:1;}
+
+/* ═══ ARTICLE VIEW ═══ */
+.art-wrap{max-width:740px;margin:0 auto;padding:48px 24px 80px;}
+.art-back{display:inline-flex;align-items:center;gap:8px;font-family:'Share Tech Mono',monospace;font-size:.7rem;color:var(--dim);cursor:pointer;letter-spacing:.08em;margin-bottom:36px;transition:color .2s;background:none;border:none;}
+.art-back:hover{color:var(--cyan);}
+.art-cat-badge{font-family:'Share Tech Mono',monospace;font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;padding:3px 10px;border:1px solid;display:inline-block;margin-bottom:14px;}
+.art-title{font-family:'Orbitron',monospace;font-weight:900;font-size:clamp(1.6rem,4vw,2.5rem);color:#fff;line-height:1.25;margin-bottom:18px;}
+.art-meta{display:flex;align-items:center;gap:18px;font-family:'Share Tech Mono',monospace;font-size:.63rem;color:var(--dim);margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.art-cover{width:100%;max-height:400px;object-fit:cover;border:1px solid var(--border);margin-bottom:32px;display:block;}
+
+/* Article body */
+.art-body{font-size:1rem;line-height:1.95;color:var(--text);}
+.art-body p{margin-bottom:1.4em;}
+.art-body h2{font-family:'Orbitron',monospace;font-size:1.2rem;color:var(--cyan);text-shadow:0 0 8px rgba(0,245,255,.25);margin:2.5em 0 .9em;padding-bottom:9px;border-bottom:1px solid var(--border);}
+.art-body h3{font-family:'Orbitron',monospace;font-size:.95rem;color:var(--pink);margin:2em 0 .7em;}
+.art-body a{color:var(--cyan);text-underline-offset:3px;transition:color .2s;}
+.art-body a:hover{color:var(--pink);text-shadow:0 0 6px var(--pink);}
+.art-body img{max-width:100%;border:1px solid var(--border);margin:1.4em 0;display:block;}
+.art-body blockquote{border-left:3px solid var(--pink);background:rgba(255,0,128,.04);padding:14px 18px;margin:1.4em 0;color:var(--mid);}
+.art-body pre{background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--cyan);padding:16px 18px;overflow-x:auto;margin:1.4em 0;font-family:'Share Tech Mono',monospace;font-size:.82rem;color:var(--green);}
+.art-body code{font-family:'Share Tech Mono',monospace;font-size:.86em;color:var(--green);background:rgba(0,255,136,.06);padding:1px 5px;border:1px solid rgba(0,255,136,.12);}
+.art-body pre code{background:none;border:none;padding:0;font-size:.85rem;}
+.art-body ul,.art-body ol{padding-left:1.6em;margin-bottom:1.4em;}
+.art-body li{margin-bottom:.4em;}
+.art-body hr{border:none;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);margin:2.5em 0;opacity:.35;}
+.art-body strong{color:#fff;font-weight:700;}
+.art-body em{color:var(--mid);}
+.art-body table{width:100%;border-collapse:collapse;margin:1.4em 0;font-size:.88rem;}
+.art-body th{background:var(--bg3);color:var(--cyan);font-family:'Share Tech Mono',monospace;padding:9px 14px;border:1px solid var(--border);text-align:left;font-size:.72rem;letter-spacing:.08em;}
+.art-body td{padding:9px 14px;border:1px solid var(--border);color:var(--mid);}
+
+/* Share */
+.share-bar{display:flex;align-items:center;gap:10px;margin-top:40px;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;}
+.share-label{font-family:'Share Tech Mono',monospace;font-size:.63rem;color:var(--dim);letter-spacing:.1em;}
+.share-btn{font-family:'Share Tech Mono',monospace;font-size:.62rem;padding:5px 13px;border:1px solid var(--border);color:var(--mid);cursor:pointer;transition:all .2s;background:transparent;letter-spacing:.06em;}
+.share-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+
+/* Related */
+.related{margin-top:52px;padding-top:32px;border-top:1px solid var(--border);}
+.related-lbl{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px;}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.rel-card{background:var(--bg2);border:1px solid var(--border);padding:14px;cursor:pointer;transition:all .22s;}
+.rel-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.rel-cat{font-family:'Share Tech Mono',monospace;font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
+.rel-title{font-size:.82rem;font-weight:600;color:var(--text);line-height:1.5;}
+
+/* ═══ SEARCH VIEW ═══ */
+.search-wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px;}
+.search-title{font-family:'Orbitron',monospace;font-size:1rem;color:#fff;margin-bottom:22px;}
+.search-box{display:flex;margin-bottom:24px;}
+.search-box input{flex:1;background:var(--bg2);border:1px solid var(--border);border-right:none;padding:11px 16px;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:.85rem;outline:none;}
+.search-box input:focus{border-color:var(--cyan);}
+.search-box button{padding:11px 18px;background:var(--cyan);color:var(--bg);border:none;font-family:'Share Tech Mono',monospace;font-size:.7rem;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;}
+.search-info{font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--dim);margin-bottom:18px;letter-spacing:.06em;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .topic-grid{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:768px){
+  .nav-links,.nav-search{display:none;}
+  .hamburger{display:flex;}
+  .hero{padding:60px 20px 48px;}
+  .topic-grid{grid-template-columns:repeat(2,1fr);}
+  .about-wrap{grid-template-columns:1fr;gap:22px;text-align:center;}
+  .avatar{margin:0 auto;}
+  .about-stats{justify-content:center;}
+  .nl{padding:32px 18px;}
+  .nl-form{flex-direction:column;}
+  .nl-in{border-right:1px solid var(--border);border-bottom:none;}
+  .post-grid{grid-template-columns:1fr;}
+  .art-wrap{padding:32px 18px 60px;}
+}
+@media(max-width:480px){
+  .topic-grid{grid-template-columns:1fr 1fr;}
+  .hero-brand{font-size:clamp(2.8rem,14vw,5rem);}
+}
+
+::selection{background:rgba(0,245,255,.2);color:#fff;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg2);}
+::-webkit-scrollbar-thumb{background:rgba(0,245,255,.2);}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">OPERATION.TW</a>
-  <ul class="nav-links">
-    <li><a href="#posts">文章</a></li>
-    <li><a href="#topics">主題</a></li>
-    <li><a href="#about">關於我</a></li>
-    <li><a href="#newsletter">訂閱</a></li>
-  </ul>
+<div class="nav-inner">
+  <span class="nav-logo" onclick="goHome()">操作一下</span>
+  <div class="nav-links">
+    <button onclick="goHome();gotoSection('posts')">文章</button>
+    <button onclick="goHome();gotoSection('topics')">主題</button>
+    <button onclick="goHome();gotoSection('about')">關於我</button>
+    <button onclick="goHome();gotoSection('newsletter')">訂閱</button>
+  </div>
+  <div class="nav-search">
+    <span style="color:var(--dim);font-size:.8rem;">🔍</span>
+    <input type="text" placeholder="搜尋..." id="nav-q" onkeydown="if(event.key==='Enter')runSearch(this.value)">
+  </div>
+  <button class="hamburger" onclick="toggleMob()" id="ham"><span></span><span></span><span></span></button>
+</div>
 </nav>
 
-<section class="hero">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-  <p class="hero-tag">個人品牌 · 自媒體創作者</p>
-  <h1 class="hero-title">
-    <span class="line1 glitch" data-text="操作">操作</span>
-    <span class="line2">一下</span>
-  </h1>
-  <p class="hero-subtitle">operation.tw &nbsp;//&nbsp; 雲端 · 資安 · AI · 閱讀 · 成長</p>
-  <blockquote class="hero-quote">
-    簡單的事情專注做，<br>有一天世界會為了你而感動
-  </blockquote>
-  <div class="hero-tags">
-    <span class="tag-pill">雲端</span>
-    <span class="tag-pill">資安</span>
-    <span class="tag-pill">AI</span>
-    <span class="tag-pill">閱讀</span>
-    <span class="tag-pill">成長</span>
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mob-menu">
+  <div class="mob-search">
+    <input type="text" placeholder="搜尋文章..." id="mob-q" onkeydown="if(event.key==='Enter'){runSearch(this.value);toggleMob();}">
   </div>
-  <a href="#posts" class="hero-cta">開始閱讀 →</a>
-  <div class="scroll-indicator">
-    <span>SCROLL</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
+  <button onclick="goHome();gotoSection('posts');toggleMob()">文章</button>
+  <button onclick="goHome();gotoSection('topics');toggleMob()">主題</button>
+  <button onclick="goHome();gotoSection('about');toggleMob()">關於我</button>
+  <button onclick="goHome();gotoSection('newsletter');toggleMob()">訂閱</button>
+</div>
 
-<section id="posts">
-  <p class="section-label">最新文章</p>
-  <h2 class="section-title">Latest Posts</h2>
-  <div class="posts-grid">
-    <article class="post-card">
-      <div class="post-meta"><span class="post-category cat-ai">AI</span><span class="post-date">2025.02.15</span></div>
-      <h3 class="post-title">從 GPT 到 Claude：2025 年 AI 工具選擇指南</h3>
-      <p class="post-excerpt">深入比較主流 AI 助理的使用場景，找到最適合你工作流程的那一個。</p>
-      <a href="#" class="post-link">閱讀全文 →</a>
-    </article>
-    <article class="post-card">
-      <div class="post-meta"><span class="post-category cat-cloud">雲端</span><span class="post-date">2025.02.08</span></div>
-      <h3 class="post-title">AWS vs Azure vs GCP：選擇雲端平台的三個關鍵問題</h3>
-      <p class="post-excerpt">不用背所有服務名稱，只要問對問題，你就知道哪個雲更適合你的需求。</p>
-      <a href="#" class="post-link">閱讀全文 →</a>
-    </article>
-    <article class="post-card">
-      <div class="post-meta"><span class="post-category cat-security">資安</span><span class="post-date">2025.01.29</span></div>
-      <h3 class="post-title">零信任架構入門：為什麼「相信但驗證」已經過時了</h3>
-      <p class="post-excerpt">現代資安思維的轉變，以及企業如何在混合工作時代保護數位邊界。</p>
-      <a href="#" class="post-link">閱讀全文 →</a>
-    </article>
-    <article class="post-card">
-      <div class="post-meta"><span class="post-category cat-reading">閱讀</span><span class="post-date">2025.01.20</span></div>
-      <h3 class="post-title">《原子習慣》三年後：那些我真正用上的方法</h3>
-      <p class="post-excerpt">不只是書摘，而是實際改變我日常行為的那幾個核心概念，以及它們是如何運作的。</p>
-      <a href="#" class="post-link">閱讀全文 →</a>
-    </article>
-    <article class="post-card">
-      <div class="post-meta"><span class="post-category cat-growth">成長</span><span class="post-date">2025.01.12</span></div>
-      <h3 class="post-title">輸出才是真正的學習：為什麼我開始寫部落格</h3>
-      <p class="post-excerpt">知識的半衰期越來越短，而「寫下來」是我找到最有效的方式，讓思考變得清晰。</p>
-      <a href="#" class="post-link">閱讀全文 →</a>
-    </article>
-    <article class="post-card">
-      <div class="post-meta"><span class="post-category cat-ai">AI</span><span class="post-date">2025.01.05</span></div>
-      <h3 class="post-title">用 AI 建立第二大腦：我的知識管理工作流程</h3>
-      <p class="post-excerpt">結合 Obsidian、AI 摘要、以及定期回顧，打造一個真正屬於你的個人知識系統。</p>
-      <a href="#" class="post-link">閱讀全文 →</a>
-    </article>
-  </div>
-</section>
+<!-- ═══ HOME ═══ -->
+<div class="view active" id="v-home">
 
-<section id="topics">
-  <p class="section-label">探索主題</p>
-  <h2 class="section-title">Topics</h2>
-  <div class="topics-grid">
-    <div class="topic-card"><span class="topic-icon">☁️</span><div class="topic-name">雲端</div><div class="topic-desc">AWS · Azure · GCP<br>架構設計 · DevOps</div></div>
-    <div class="topic-card"><span class="topic-icon">🔐</span><div class="topic-name">資安</div><div class="topic-desc">零信任 · 滲透測試<br>資安意識 · 防禦策略</div></div>
-    <div class="topic-card"><span class="topic-icon">🤖</span><div class="topic-name">AI</div><div class="topic-desc">LLM · Prompt 工程<br>AI 工具 · 應用實踐</div></div>
-    <div class="topic-card"><span class="topic-icon">📚</span><div class="topic-name">閱讀</div><div class="topic-desc">書評 · 讀書筆記<br>知識整合 · 書單推薦</div></div>
-    <div class="topic-card"><span class="topic-icon">🌱</span><div class="topic-name">成長</div><div class="topic-desc">習慣養成 · 思維框架<br>職涯發展 · 學習方法</div></div>
+<div class="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-tag" id="h-tag">個人品牌 · 自媒體創作者</div>
+  <div class="hero-brand">
+    <span class="t1" data-text="操作" id="h-t1">操作</span><span class="t2" id="h-t2">一下</span>
   </div>
-</section>
+  <div class="hero-sub" id="h-sub">operation.tw // 雲端 · 資安 · AI · 閱讀 · 成長</div>
+  <div class="hero-quote" id="h-quote">簡單的事情專注做，<br>有一天世界會為了你而感動</div>
+  <button class="hero-cta" id="h-cta" onclick="gotoSection('posts')">開始閱讀 →</button>
+</div>
 
-<section id="about">
-  <div class="about-visual">
-    <div class="avatar-ring">
-      <div class="avatar-inner">OP</div>
+<div class="section" id="posts">
+  <div class="sec-hd">
+    <div class="sec-hd-text"><h2>最新文章</h2><div class="sec-sub">// latest posts</div></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="filter-bar">
+    <button class="fb on" data-cat="" onclick="applyFilter(this,'')">全部</button>
+    <button class="fb" data-cat="AI" onclick="applyFilter(this,'AI')">AI</button>
+    <button class="fb" data-cat="雲端" onclick="applyFilter(this,'雲端')">雲端</button>
+    <button class="fb" data-cat="資安" onclick="applyFilter(this,'資安')">資安</button>
+    <button class="fb" data-cat="閱讀" onclick="applyFilter(this,'閱讀')">閱讀</button>
+    <button class="fb" data-cat="成長" onclick="applyFilter(this,'成長')">成長</button>
+  </div>
+  <div class="post-grid" id="grid-main"></div>
+</div>
+
+<div class="section" id="topics" style="background:rgba(255,255,255,.012);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="sec-hd">
+    <div class="sec-hd-text"><h2>核心主題</h2><div class="sec-sub">// core topics</div></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="topic-grid">
+    <div class="tc" style="border-top-color:var(--cyan);" onclick="applyFilterGlobal('雲端')">
+      <div class="tc-icon">☁️</div>
+      <div class="tc-name" style="color:var(--cyan);">雲端</div>
+      <div class="tc-desc">AWS、Azure、GCP 架構實戰</div>
+      <div class="tc-cnt" style="border-color:var(--cyan);color:var(--cyan);" id="tc-雲端">0 篇</div>
+    </div>
+    <div class="tc" style="border-top-color:var(--pink);" onclick="applyFilterGlobal('資安')">
+      <div class="tc-icon">🔐</div>
+      <div class="tc-name" style="color:var(--pink);">資安</div>
+      <div class="tc-desc">零信任、滲透測試、資安觀念</div>
+      <div class="tc-cnt" style="border-color:var(--pink);color:var(--pink);" id="tc-資安">0 篇</div>
+    </div>
+    <div class="tc" style="border-top-color:var(--purple);" onclick="applyFilterGlobal('AI')">
+      <div class="tc-icon">🤖</div>
+      <div class="tc-name" style="color:var(--purple);">AI</div>
+      <div class="tc-desc">LLM 工具、Prompt、工作流程</div>
+      <div class="tc-cnt" style="border-color:var(--purple);color:var(--purple);" id="tc-AI">0 篇</div>
+    </div>
+    <div class="tc" style="border-top-color:var(--yellow);" onclick="applyFilterGlobal('閱讀')">
+      <div class="tc-icon">📚</div>
+      <div class="tc-name" style="color:var(--yellow);">閱讀</div>
+      <div class="tc-desc">書評、心得、知識管理</div>
+      <div class="tc-cnt" style="border-color:var(--yellow);color:var(--yellow);" id="tc-閱讀">0 篇</div>
+    </div>
+    <div class="tc" style="border-top-color:var(--green);" onclick="applyFilterGlobal('成長')">
+      <div class="tc-icon">🌱</div>
+      <div class="tc-name" style="color:var(--green);">成長</div>
+      <div class="tc-desc">個人成長、習慣、自媒體經營</div>
+      <div class="tc-cnt" style="border-color:var(--green);color:var(--green);" id="tc-成長">0 篇</div>
     </div>
   </div>
-  <div class="about-text">
-    <p class="section-label">關於我</p>
-    <h2 class="section-title">About</h2>
-    <p class="about-bio">
-      我是 <strong>操作一下</strong>，一個深耕在<strong>雲端、資安與 AI</strong> 領域的自媒體創作者。<br><br>
-      我相信科技不應該只是工程師的語言，而是每個人都值得理解的工具。<br><br>
-      這裡是我整理思考、記錄學習、分享洞見的地方。<strong>不賣課程，不追流量</strong>，只想把真正有用的東西說清楚。
-    </p>
-    <div class="stats-row">
-      <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">篇文章</div></div>
-      <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">核心主題</div></div>
-      <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">持續更新</div></div>
+</div>
+
+<div class="section" id="about">
+  <div class="sec-hd">
+    <div class="sec-hd-text"><h2>關於我</h2><div class="sec-sub">// about</div></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="about-wrap">
+    <div class="avatar" id="av">OP</div>
+    <div>
+      <div class="about-bio" id="a-bio">我是操作一下，深耕雲端、資安與 AI 的自媒體創作者。
+
+我相信科技不應只是工程師的語言，每個人都值得理解這些工具。
+
+不賣課程，不追流量，只想把有用的東西說清楚。</div>
+      <div class="about-stats">
+        <div><div class="stat-n" id="s1n">50+</div><div class="stat-l" id="s1l">篇文章</div></div>
+        <div><div class="stat-n" id="s2n">5</div><div class="stat-l" id="s2l">核心主題</div></div>
+        <div><div class="stat-n" id="s3n">∞</div><div class="stat-l" id="s3l">持續更新</div></div>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
-<section id="newsletter">
-  <div class="newsletter-box">
-    <h2 class="newsletter-title">訂閱電子報</h2>
-    <p class="newsletter-desc">每週精選一篇深度文章，直接送到你的信箱。<br>不發廣告，只給值得讀的內容。</p>
-    <div class="newsletter-form">
-      <input type="email" class="newsletter-input" placeholder="your@email.com">
-      <button class="newsletter-btn">訂閱</button>
+<div class="section" id="newsletter">
+  <div class="nl">
+    <h2 id="nl-t">訂閱電子報</h2>
+    <p id="nl-d">每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。</p>
+    <div class="nl-form">
+      <input class="nl-in" type="email" placeholder="your@email.com" id="nl-email">
+      <button class="nl-btn" onclick="nlSubmit()">訂閱</button>
     </div>
   </div>
-</section>
+</div>
 
-<footer>
-  <div class="footer-logo">OPERATION.TW</div>
-  <div class="footer-copy">© 2025 操作一下 · 簡單的事情專注做</div>
-  <div class="footer-links">
-    <a href="#">Twitter</a>
-    <a href="#">LinkedIn</a>
-    <a href="#">RSS</a>
+</div><!-- /home -->
+
+<!-- ═══ ARTICLE ═══ -->
+<div class="view" id="v-article">
+<div class="art-wrap">
+  <button class="art-back" onclick="goHome()">← 返回文章列表</button>
+  <div class="art-cat-badge" id="a-badge"></div>
+  <h1 class="art-title" id="a-title"></h1>
+  <div class="art-meta">
+    <span>📅 <span id="a-date"></span></span>
+    <span>⏱ <span id="a-rt"></span> 分鐘閱讀</span>
+    <span id="a-cat-tag"></span>
   </div>
-</footer>
+  <img class="art-cover" id="a-cover" style="display:none;" alt="封面圖">
+  <div class="art-body" id="a-body"></div>
+  <div class="share-bar">
+    <span class="share-label">分享：</span>
+    <button class="share-btn" onclick="share('twitter')">Twitter / X</button>
+    <button class="share-btn" onclick="share('linkedin')">LinkedIn</button>
+    <button class="share-btn" onclick="copyURL(this)">複製連結</button>
+  </div>
+  <div class="related" id="related">
+    <div class="related-lbl">// 相關文章</div>
+    <div class="related-grid" id="rel-grid"></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══ SEARCH ═══ -->
+<div class="view" id="v-search">
+<div class="search-wrap">
+  <div class="search-title">搜尋文章</div>
+  <div class="search-box">
+    <input type="text" id="sq" placeholder="輸入關鍵字..." onkeydown="if(event.key==='Enter')runSearch(this.value)">
+    <button onclick="runSearch(document.getElementById('sq').value)">搜尋</button>
+  </div>
+  <div class="search-info" id="s-info"></div>
+  <div class="post-grid" id="grid-search"></div>
+</div>
+</div>
+
+<footer id="footer-text">© 2025 操作一下 · 簡單的事情專注做</footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.08 });
+const SKEY='operation_tw_cms';
+const CAT_COLOR={AI:'#bf00ff',雲端:'#00f5ff',資安:'#ff0080',閱讀:'#ffff00',成長:'#00ff88'};
+const CAT_ICON={AI:'🤖',雲端:'☁️',資安:'🔐',閱讀:'📚',成長:'🌱'};
+const DEFAULTS={
+  posts:[
+    {id:1,title:'從 GPT 到 Claude：2025 年 AI 工具選擇指南',category:'AI',date:'2025-02-15',status:'published',
+     excerpt:'深入比較主流 AI 助理的使用場景，找到最適合你工作流程的那一個。',
+     image:'',
+     body:`<p>2025 年，AI 助理已經不再是新奇玩具，而是真實影響工作效率的核心工具。但每個工具都有自己的強項，選錯了不只是浪費錢，更是浪費時間。</p>
+<h2>GPT-4o 的強項</h2>
+<p>OpenAI 的 GPT-4o 在多模態處理上表現出色，特別是圖片理解和語音輸入。對於需要頻繁切換文字和視覺內容的工作者來說，這是明顯優勢。</p>
+<h2>Claude 的強項</h2>
+<p>Anthropic 的 Claude 在長文處理和邏輯推理上有優勢，特別適合處理大量文件、程式碼審查和複雜分析任務。上下文視窗更大，適合深度工作。</p>
+<h2>我的建議</h2>
+<p>沒有「最好」的 AI 工具，只有最適合你工作流程的那一個。建議兩者都試用，找到自己的組合策略。可以參考 <a href="https://openai.com" target="_blank">OpenAI 官網</a> 和 <a href="https://anthropic.com" target="_blank">Anthropic 官網</a> 了解最新功能。</p>`},
+    {id:2,title:'AWS vs Azure vs GCP：選擇雲端平台的三個關鍵問題',category:'雲端',date:'2025-02-08',status:'published',
+     excerpt:'不用背所有服務名稱，只要問對問題，你就知道哪個雲更適合你的需求。',
+     image:'',
+     body:`<p>雲端平台的選擇困擾著很多人，但其實只需要問自己三個問題，答案就會很清楚。</p>
+<h2>問題一：你的團隊用什麼技術棧？</h2>
+<p>如果主要使用微軟技術（.NET、Active Directory），Azure 的整合優勢明顯。如果是 Google Workspace 重度用戶，GCP 的協作工具整合更順暢。</p>
+<h2>問題二：你的主要市場在哪裡？</h2>
+<p>AWS 在全球覆蓋率最高，數據中心最多，適合需要全球部署的服務。三家都有亞太區域節點。</p>
+<h2>問題三：你的預算模式？</h2>
+<p>AWS 服務最多但計費複雜；GCP 提供持續使用折扣；Azure 對企業授權用戶有優惠。建議使用各家的 <strong>免費試用額度</strong> 先跑真實工作負載。</p>`},
+    {id:3,title:'零信任架構入門：為什麼「相信但驗證」已經過時了',category:'資安',date:'2025-01-29',status:'published',
+     excerpt:'現代資安思維的轉變，以及企業如何在混合工作時代保護數位邊界。',
+     image:'',
+     body:`<p>零信任（Zero Trust）的核心概念是「永不信任，始終驗證」。與傳統網路邊界安全不同，零信任假設威脅可能來自任何地方。</p>
+<h2>為什麼現在需要零信任？</h2>
+<p>混合工作模式讓員工從各種地點、設備存取公司資源。傳統的 VPN + 防火牆模型已無法應對分散式工作環境。</p>
+<h2>三個核心原則</h2>
+<ul>
+<li><strong>持續驗證</strong>：不論位置，每次存取都要驗證</li>
+<li><strong>最小權限</strong>：只給完成任務所需的最低存取權限</li>
+<li><strong>假設已遭入侵</strong>：設計系統時假設邊界已被突破</li>
+</ul>
+<h2>如何開始？</h2>
+<p>從多因素驗證（MFA）開始，這是最低成本、最高回報的第一步。再逐步建立身份識別平台和微分段網路架構。</p>`},
+  ],
+  hp:{tag:'個人品牌 · 自媒體創作者',t1:'操作',t2:'一下',sub:'operation.tw // 雲端 · 資安 · AI · 閱讀 · 成長',quote:'簡單的事情專注做，\n有一天世界會為了你而感動',cta:'開始閱讀 →',nlt:'訂閱電子報',nld:'每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。'},
+  about:{initials:'OP',bio:'我是操作一下，深耕雲端、資安與 AI 的自媒體創作者。\n\n我相信科技不應只是工程師的語言，每個人都值得理解這些工具。\n\n不賣課程，不追流量，只想把有用的東西說清楚。',s1n:'50+',s1l:'篇文章',s2n:'5',s2l:'核心主題',s3n:'∞',s3l:'持續更新'},
+  footer:'© 2025 操作一下 · 簡單的事情專注做'
+};
 
-  document.querySelectorAll('.post-card, .topic-card, .about-visual, .about-text').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
+function loadD(){
+  try{const r=localStorage.getItem(SKEY);return r?JSON.parse(r):JSON.parse(JSON.stringify(DEFAULTS));}
+  catch{return JSON.parse(JSON.stringify(DEFAULTS));}
+}
+let D=loadD();
 
-  document.querySelectorAll('.posts-grid .post-card').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.08}s`;
+/* ── RENDER HOME ── */
+function renderHome(){
+  D=loadD();
+  const h=D.hp||{};
+  setText('h-tag',h.tag);setText('h-t1',h.t1);setText('h-t2',h.t2);
+  setText('h-sub',h.sub);
+  setHTML('h-quote',(h.quote||'').replace(/\n/g,'<br>'));
+  setText('h-cta',h.cta);
+  const q=document.getElementById('h-t1');if(q)q.setAttribute('data-text',h.t1||'操作');
+  const a=D.about||{};
+  setText('av',a.initials);setText('a-bio',a.bio);
+  setText('s1n',a.s1n);setText('s1l',a.s1l);
+  setText('s2n',a.s2n);setText('s2l',a.s2l);
+  setText('s3n',a.s3n);setText('s3l',a.s3l);
+  setText('nl-t',h.nlt);setText('nl-d',h.nld);
+  setText('footer-text',D.footer||'');
+  updateTopicCounts();
+  renderGrid('grid-main',publishedPosts());
+}
+
+function setText(id,v){const e=document.getElementById(id);if(e&&v!=null)e.textContent=v;}
+function setHTML(id,v){const e=document.getElementById(id);if(e&&v!=null)e.innerHTML=v;}
+
+function publishedPosts(cat){
+  return (D.posts||[]).filter(p=>p.status==='published'&&(!cat||p.category===cat))
+    .sort((a,b)=>new Date(b.date)-new Date(a.date));
+}
+
+function updateTopicCounts(){
+  ['雲端','資安','AI','閱讀','成長'].forEach(c=>{
+    const el=document.getElementById('tc-'+c);
+    if(el)el.textContent=publishedPosts(c).length+' 篇';
   });
-  document.querySelectorAll('.topics-grid .topic-card').forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.06}s`;
-  });
+}
+
+/* ── GRID ── */
+function renderGrid(containerId,posts){
+  const g=document.getElementById(containerId);if(!g)return;
+  if(!posts.length){g.innerHTML='<div class="empty-state"><div class="ei">📭</div><p>目前沒有文章</p></div>';return;}
+  g.innerHTML=posts.map(cardHTML).join('');
+}
+
+function cardHTML(p){
+  const c=CAT_COLOR[p.category]||'#aaa';
+  const icon=CAT_ICON[p.category]||'📄';
+  const rt=readTime(p.body);
+  const img=p.image?`<img src="${esc(p.image)}" alt="${esc(p.title)}" style="width:100%;height:100%;object-fit:cover;">`
+    :`<span class="pc-img-ph">${icon}</span>`;
+  return `<div class="pc" onclick="openPost(${p.id})">
+    <div class="pc-img">${img}<span class="pc-badge" style="border-color:${c};color:${c};">${esc(p.category)}</span></div>
+    <div class="pc-body">
+      <div class="pc-title">${esc(p.title)}</div>
+      <div class="pc-exc">${esc(p.excerpt||'')}</div>
+      <div class="pc-foot"><span>📅 ${esc(p.date)}</span><span class="pc-rt">⏱ ${rt} 分鐘</span></div>
+    </div>
+  </div>`;
+}
+
+function readTime(html){return Math.max(1,Math.round(((html||'').replace(/<[^>]+>/g,'').length)/300));}
+
+/* ── FILTER ── */
+function applyFilter(btn,cat){
+  document.querySelectorAll('#posts .fb').forEach(b=>b.classList.toggle('on',b===btn));
+  renderGrid('grid-main',publishedPosts(cat));
+}
+function applyFilterGlobal(cat){
+  goHome();
+  setTimeout(()=>{
+    const btn=document.querySelector(`#posts .fb[data-cat="${cat}"]`);
+    if(btn)applyFilter(btn,cat);
+    gotoSection('posts');
+  },80);
+}
+
+/* ── OPEN POST ── */
+function openPost(id){
+  const p=(D.posts||[]).find(x=>x.id===id);if(!p)return;
+  const c=CAT_COLOR[p.category]||'#aaa';
+  const badge=document.getElementById('a-badge');
+  badge.textContent=p.category;badge.style.borderColor=c;badge.style.color=c;
+  setText('a-title',p.title);
+  setText('a-date',p.date);
+  setText('a-rt',readTime(p.body));
+  setText('a-cat-tag','🏷 '+p.category);
+  // cover image
+  const cover=document.getElementById('a-cover');
+  if(p.image){cover.src=p.image;cover.style.display='block';}
+  else{cover.style.display='none';}
+  // body
+  document.getElementById('a-body').innerHTML=p.body||'<p style="color:var(--dim)">（尚無內容）</p>';
+  // related
+  const rel=publishedPosts(p.category).filter(x=>x.id!==id).slice(0,3);
+  const rg=document.getElementById('rel-grid');
+  const rs=document.getElementById('related');
+  if(rel.length){
+    rg.innerHTML=rel.map(r=>{
+      const rc=CAT_COLOR[r.category]||'#aaa';
+      return `<div class="rel-card" onclick="openPost(${r.id})">
+        <div class="rel-cat" style="color:${rc};">${esc(r.category)}</div>
+        <div class="rel-title">${esc(r.title)}</div>
+      </div>`;
+    }).join('');
+    rs.style.display='block';
+  }else rs.style.display='none';
+  showView('article');
+  window.scrollTo(0,0);
+}
+
+/* ── VIEWS ── */
+function showView(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('v-'+name).classList.add('active');
+}
+function goHome(){showView('home');renderHome();}
+function gotoSection(id){setTimeout(()=>{const e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth'});},120);}
+
+/* ── SEARCH ── */
+function runSearch(q){
+  q=(q||'').trim();if(!q)return;
+  document.getElementById('sq').value=q;
+  document.getElementById('nav-q').value=q;
+  const r=publishedPosts().filter(p=>
+    [p.title,p.excerpt||'',(p.body||'').replace(/<[^>]+>/g,'')].join(' ').toLowerCase().includes(q.toLowerCase())
+  );
+  setText('s-info',`找到 ${r.length} 篇，關鍵字：「${q}」`);
+  renderGrid('grid-search',r);
+  showView('search');
+  window.scrollTo(0,0);
+}
+
+/* ── SHARE ── */
+function share(platform){
+  const url=encodeURIComponent(location.href);
+  const title=encodeURIComponent(document.getElementById('a-title').textContent);
+  const urls={twitter:`https://twitter.com/intent/tweet?text=${title}&url=${url}`,linkedin:`https://www.linkedin.com/sharing/share-offsite/?url=${url}`};
+  window.open(urls[platform],'_blank');
+}
+function copyURL(btn){
+  navigator.clipboard.writeText(location.href).then(()=>{btn.textContent='已複製 ✓';setTimeout(()=>btn.textContent='複製連結',2000);});
+}
+
+/* ── NEWSLETTER ── */
+function nlSubmit(){
+  const inp=document.getElementById('nl-email');
+  if(!inp.value.includes('@')){inp.style.borderColor='var(--pink)';return;}
+  inp.style.borderColor='';
+  const btn=inp.nextElementSibling;
+  btn.textContent='訂閱成功 ✓';btn.style.background='var(--green)';inp.value='';
+  setTimeout(()=>{btn.textContent='訂閱';btn.style.background='';},3000);
+}
+
+/* ── MOBILE MENU ── */
+function toggleMob(){document.getElementById('mob-menu').classList.toggle('open');}
+
+/* ── UTILS ── */
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* ── STORAGE SYNC ── */
+window.addEventListener('storage',e=>{if(e.key===SKEY){D=loadD();if(document.getElementById('v-home').classList.contains('active'))renderHome();}});
+
+/* ── INIT ── */
+renderHome();
 </script>
 </body>
 </html>
