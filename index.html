@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>操作一下 | operation.tw</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --neon-cyan: #00f5ff;
+    --neon-pink: #ff0080;
+    --neon-purple: #bf00ff;
+    --neon-yellow: #ffff00;
+    --neon-green: #00ff88;
+    --bg-dark: #050510;
+    --bg-card: #0a0a1a;
+    --bg-card2: #0d0d20;
+    --text-main: #e0e0ff;
+    --text-dim: #7070a0;
+    --grid-color: rgba(0, 245, 255, 0.04);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Noto Sans TC', sans-serif;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.12) 2px, rgba(0,0,0,0.12) 4px);
+    pointer-events: none;
+    z-index: 1;
+  }
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background: rgba(5, 5, 16, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 245, 255, 0.15);
+  }
+  .nav-logo {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    color: var(--neon-cyan);
+    text-decoration: none;
+    text-shadow: 0 0 10px var(--neon-cyan), 0 0 30px rgba(0,245,255,0.3);
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: color 0.3s, text-shadow 0.3s;
+    text-transform: uppercase;
+  }
+  .nav-links a:hover { color: var(--neon-pink); text-shadow: 0 0 8px var(--neon-pink); }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 120px 60px 80px;
+    z-index: 2;
+    overflow: hidden;
+  }
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.22;
+    pointer-events: none;
+    animation: orb-float 8s ease-in-out infinite;
+  }
+  .orb-1 { width: 500px; height: 500px; background: var(--neon-cyan); top: -100px; right: -100px; }
+  .orb-2 { width: 350px; height: 350px; background: var(--neon-pink); bottom: 50px; right: 200px; animation-delay: 2s; }
+  .orb-3 { width: 250px; height: 250px; background: var(--neon-purple); top: 200px; left: -80px; animation-delay: 4s; }
+  @keyframes orb-float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+  }
+  .hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--neon-green);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fade-up 0.6s ease forwards 0.2s;
+    opacity: 0;
+  }
+  .hero-tag::before { content: '▶ '; }
+  .hero-title {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    line-height: 1;
+    margin-bottom: 10px;
+    animation: fade-up 0.6s ease forwards 0.4s;
+    opacity: 0;
+  }
+  .line1 { display: block; color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+  .line2 { display: block; color: var(--neon-cyan); text-shadow: 0 0 20px var(--neon-cyan), 0 0 60px rgba(0,245,255,0.4); }
+
+  .glitch { position: relative; animation: glitch-skew 4s infinite linear alternate-reverse; }
+  .glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
+  .glitch::before {
+    color: var(--neon-pink);
+    animation: glitch-anim-1 4s infinite linear alternate-reverse;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  }
+  .glitch::after {
+    color: var(--neon-cyan);
+    animation: glitch-anim-2 4s infinite linear alternate-reverse;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  }
+  @keyframes glitch-anim-1 {
+    0%,79%{transform:translateX(0)} 80%{transform:translateX(-4px)} 82%{transform:translateX(4px)} 84%{transform:translateX(0)}
+  }
+  @keyframes glitch-anim-2 {
+    0%,69%{transform:translateX(0)} 70%{transform:translateX(4px)} 72%{transform:translateX(-4px)} 74%{transform:translateX(0)}
+  }
+  @keyframes glitch-skew {
+    0%,84%{transform:skew(0)} 86%{transform:skew(-1deg)} 88%{transform:skew(0)}
+  }
+
+  .hero-subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    margin-bottom: 36px;
+    letter-spacing: 0.05em;
+    animation: fade-up 0.6s ease forwards 0.6s;
+    opacity: 0;
+  }
+  .hero-quote {
+    max-width: 520px;
+    font-size: 1.15rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--text-main);
+    border-left: 3px solid var(--neon-pink);
+    padding-left: 24px;
+    margin-bottom: 40px;
+    animation: fade-up 0.6s ease forwards 0.8s;
+    opacity: 0;
+    text-shadow: 0 0 30px rgba(255,0,128,0.1);
+  }
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 44px;
+    animation: fade-up 0.6s ease forwards 1s;
+    opacity: 0;
+  }
+  .tag-pill {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    padding: 6px 16px;
+    border: 1px solid;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    cursor: default;
+  }
+  .tag-pill:nth-child(1){border-color:var(--neon-cyan);color:var(--neon-cyan)}
+  .tag-pill:nth-child(2){border-color:var(--neon-pink);color:var(--neon-pink)}
+  .tag-pill:nth-child(3){border-color:var(--neon-purple);color:var(--neon-purple)}
+  .tag-pill:nth-child(4){border-color:var(--neon-yellow);color:var(--neon-yellow)}
+  .tag-pill:nth-child(5){border-color:var(--neon-green);color:var(--neon-green)}
+  .tag-pill:hover { background: rgba(255,255,255,0.05); box-shadow: 0 0 15px currentColor; }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 36px;
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    animation: fade-up 0.6s ease forwards 1.2s;
+    opacity: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--neon-cyan);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: -1;
+  }
+  .hero-cta:hover { color: var(--bg-dark); box-shadow: 0 0 30px rgba(0,245,255,0.5); }
+  .hero-cta:hover::before { transform: translateX(0); }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-dim);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--neon-cyan)); }
+  @keyframes bounce {
+    0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)}
+  }
+  @keyframes fade-up {
+    from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)}
+  }
+
+  section {
+    position: relative;
+    z-index: 2;
+    padding: 100px 60px;
+  }
+  .section-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--neon-pink);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-label::before { content: '// '; }
+  .section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 56px;
+    color: #fff;
+  }
+
+  /* POSTS */
+  #posts { background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(10,10,26,0.5) 100%); }
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .post-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(0, 245, 255, 0.1);
+    padding: 32px;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .post-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+  }
+  .post-card:hover::before { transform: translateX(100%); }
+  .post-card:hover {
+    border-color: rgba(0,245,255,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(0,245,255,0.05);
+  }
+  .post-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .post-category {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    padding: 3px 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .cat-cloud{border:1px solid var(--neon-cyan);color:var(--neon-cyan)}
+  .cat-ai{border:1px solid var(--neon-purple);color:var(--neon-purple)}
+  .cat-security{border:1px solid var(--neon-pink);color:var(--neon-pink)}
+  .cat-reading{border:1px solid var(--neon-yellow);color:var(--neon-yellow)}
+  .cat-growth{border:1px solid var(--neon-green);color:var(--neon-green)}
+  .post-date { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; color: var(--text-dim); }
+  .post-title { font-size: 1.1rem; font-weight: 700; line-height: 1.6; margin-bottom: 12px; color: var(--text-main); transition: color 0.3s; }
+  .post-card:hover .post-title { color: var(--neon-cyan); }
+  .post-excerpt { font-size: 0.87rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 20px; }
+  .post-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--neon-cyan);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.3s;
+  }
+  .post-card:hover .post-link { gap: 14px; }
+
+  /* TOPICS */
+  #topics { background: var(--bg-card2); }
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .topic-card {
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 28px 20px;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: default;
+  }
+  .topic-card:nth-child(1){--tc:var(--neon-cyan)}
+  .topic-card:nth-child(2){--tc:var(--neon-pink)}
+  .topic-card:nth-child(3){--tc:var(--neon-purple)}
+  .topic-card:nth-child(4){--tc:var(--neon-yellow)}
+  .topic-card:nth-child(5){--tc:var(--neon-green)}
+  .topic-card:hover {
+    border-color: var(--tc);
+    transform: translateY(-6px);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5), 0 0 20px rgba(0,245,255,0.08);
+  }
+  .topic-icon { font-size: 2.4rem; margin-bottom: 14px; display: block; }
+  .topic-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--tc);
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 10px var(--tc);
+  }
+  .topic-desc { font-size: 0.78rem; color: var(--text-dim); margin-top: 8px; line-height: 1.5; }
+
+  /* ABOUT */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-visual { display: flex; justify-content: center; align-items: center; }
+  .avatar-ring {
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    background:
+      linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box,
+      linear-gradient(135deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple)) border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: ring-pulse 4s ease-in-out infinite;
+  }
+  @keyframes ring-pulse {
+    0%,100%{box-shadow:0 0 30px rgba(0,245,255,0.3),0 0 60px rgba(255,0,128,0.1)}
+    50%{box-shadow:0 0 30px rgba(255,0,128,0.3),0 0 60px rgba(0,245,255,0.1)}
+  }
+  .avatar-inner {
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0,245,255,0.08), rgba(255,0,128,0.08));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', monospace;
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 20px var(--neon-cyan);
+  }
+  .about-text .section-title { margin-bottom: 24px; }
+  .about-bio { font-size: 1rem; line-height: 1.9; color: var(--text-dim); margin-bottom: 32px; }
+  .about-bio strong { color: var(--text-main); font-weight: 700; }
+  .stats-row { display: flex; gap: 40px; margin-top: 32px; }
+  .stat-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 15px var(--neon-cyan);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  /* NEWSLETTER */
+  #newsletter { text-align: center; padding: 100px 60px; }
+  .newsletter-box {
+    max-width: 560px;
+    margin: 0 auto;
+    border: 1px solid rgba(0,245,255,0.2);
+    padding: 60px 48px;
+    position: relative;
+    background: var(--bg-card);
+  }
+  .newsletter-box::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 20%; right: 20%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  }
+  .newsletter-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .newsletter-desc { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 32px; line-height: 1.7; }
+  .newsletter-form { display: flex; }
+  .newsletter-input {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(0,245,255,0.2);
+    border-right: none;
+    padding: 14px 20px;
+    color: var(--text-main);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .newsletter-input:focus { border-color: var(--neon-cyan); }
+  .newsletter-input::placeholder { color: var(--text-dim); }
+  .newsletter-btn {
+    padding: 14px 28px;
+    background: var(--neon-cyan);
+    border: 1px solid var(--neon-cyan);
+    color: var(--bg-dark);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .newsletter-btn:hover { background: transparent; color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0,245,255,0.3); }
+
+  footer {
+    position: relative;
+    z-index: 2;
+    padding: 40px 60px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan);
+  }
+  .footer-copy { font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; color: var(--text-dim); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--neon-pink); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero, section { padding: 80px 24px; }
+    #about { grid-template-columns: 1fr; gap: 40px; }
+    .topics-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">OPERATION.TW</a>
+  <ul class="nav-links">
+    <li><a href="#posts">文章</a></li>
+    <li><a href="#topics">主題</a></li>
+    <li><a href="#about">關於我</a></li>
+    <li><a href="#newsletter">訂閱</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <p class="hero-tag">個人品牌 · 自媒體創作者</p>
+  <h1 class="hero-title">
+    <span class="line1 glitch" data-text="操作">操作</span>
+    <span class="line2">一下</span>
+  </h1>
+  <p class="hero-subtitle">operation.tw &nbsp;//&nbsp; 雲端 · 資安 · AI · 閱讀 · 成長</p>
+  <blockquote class="hero-quote">
+    簡單的事情專注做，<br>有一天世界會為了你而感動
+  </blockquote>
+  <div class="hero-tags">
+    <span class="tag-pill">雲端</span>
+    <span class="tag-pill">資安</span>
+    <span class="tag-pill">AI</span>
+    <span class="tag-pill">閱讀</span>
+    <span class="tag-pill">成長</span>
+  </div>
+  <a href="#posts" class="hero-cta">開始閱讀 →</a>
+  <div class="scroll-indicator">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<section id="posts">
+  <p class="section-label">最新文章</p>
+  <h2 class="section-title">Latest Posts</h2>
+  <div class="posts-grid">
+    <article class="post-card">
+      <div class="post-meta"><span class="post-category cat-ai">AI</span><span class="post-date">2025.02.15</span></div>
+      <h3 class="post-title">從 GPT 到 Claude：2025 年 AI 工具選擇指南</h3>
+      <p class="post-excerpt">深入比較主流 AI 助理的使用場景，找到最適合你工作流程的那一個。</p>
+      <a href="#" class="post-link">閱讀全文 →</a>
+    </article>
+    <article class="post-card">
+      <div class="post-meta"><span class="post-category cat-cloud">雲端</span><span class="post-date">2025.02.08</span></div>
+      <h3 class="post-title">AWS vs Azure vs GCP：選擇雲端平台的三個關鍵問題</h3>
+      <p class="post-excerpt">不用背所有服務名稱，只要問對問題，你就知道哪個雲更適合你的需求。</p>
+      <a href="#" class="post-link">閱讀全文 →</a>
+    </article>
+    <article class="post-card">
+      <div class="post-meta"><span class="post-category cat-security">資安</span><span class="post-date">2025.01.29</span></div>
+      <h3 class="post-title">零信任架構入門：為什麼「相信但驗證」已經過時了</h3>
+      <p class="post-excerpt">現代資安思維的轉變，以及企業如何在混合工作時代保護數位邊界。</p>
+      <a href="#" class="post-link">閱讀全文 →</a>
+    </article>
+    <article class="post-card">
+      <div class="post-meta"><span class="post-category cat-reading">閱讀</span><span class="post-date">2025.01.20</span></div>
+      <h3 class="post-title">《原子習慣》三年後：那些我真正用上的方法</h3>
+      <p class="post-excerpt">不只是書摘，而是實際改變我日常行為的那幾個核心概念，以及它們是如何運作的。</p>
+      <a href="#" class="post-link">閱讀全文 →</a>
+    </article>
+    <article class="post-card">
+      <div class="post-meta"><span class="post-category cat-growth">成長</span><span class="post-date">2025.01.12</span></div>
+      <h3 class="post-title">輸出才是真正的學習：為什麼我開始寫部落格</h3>
+      <p class="post-excerpt">知識的半衰期越來越短，而「寫下來」是我找到最有效的方式，讓思考變得清晰。</p>
+      <a href="#" class="post-link">閱讀全文 →</a>
+    </article>
+    <article class="post-card">
+      <div class="post-meta"><span class="post-category cat-ai">AI</span><span class="post-date">2025.01.05</span></div>
+      <h3 class="post-title">用 AI 建立第二大腦：我的知識管理工作流程</h3>
+      <p class="post-excerpt">結合 Obsidian、AI 摘要、以及定期回顧，打造一個真正屬於你的個人知識系統。</p>
+      <a href="#" class="post-link">閱讀全文 →</a>
+    </article>
+  </div>
+</section>
+
+<section id="topics">
+  <p class="section-label">探索主題</p>
+  <h2 class="section-title">Topics</h2>
+  <div class="topics-grid">
+    <div class="topic-card"><span class="topic-icon">☁️</span><div class="topic-name">雲端</div><div class="topic-desc">AWS · Azure · GCP<br>架構設計 · DevOps</div></div>
+    <div class="topic-card"><span class="topic-icon">🔐</span><div class="topic-name">資安</div><div class="topic-desc">零信任 · 滲透測試<br>資安意識 · 防禦策略</div></div>
+    <div class="topic-card"><span class="topic-icon">🤖</span><div class="topic-name">AI</div><div class="topic-desc">LLM · Prompt 工程<br>AI 工具 · 應用實踐</div></div>
+    <div class="topic-card"><span class="topic-icon">📚</span><div class="topic-name">閱讀</div><div class="topic-desc">書評 · 讀書筆記<br>知識整合 · 書單推薦</div></div>
+    <div class="topic-card"><span class="topic-icon">🌱</span><div class="topic-name">成長</div><div class="topic-desc">習慣養成 · 思維框架<br>職涯發展 · 學習方法</div></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-visual">
+    <div class="avatar-ring">
+      <div class="avatar-inner">OP</div>
+    </div>
+  </div>
+  <div class="about-text">
+    <p class="section-label">關於我</p>
+    <h2 class="section-title">About</h2>
+    <p class="about-bio">
+      我是 <strong>操作一下</strong>，一個深耕在<strong>雲端、資安與 AI</strong> 領域的自媒體創作者。<br><br>
+      我相信科技不應該只是工程師的語言，而是每個人都值得理解的工具。<br><br>
+      這裡是我整理思考、記錄學習、分享洞見的地方。<strong>不賣課程，不追流量</strong>，只想把真正有用的東西說清楚。
+    </p>
+    <div class="stats-row">
+      <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">篇文章</div></div>
+      <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">核心主題</div></div>
+      <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">持續更新</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="newsletter">
+  <div class="newsletter-box">
+    <h2 class="newsletter-title">訂閱電子報</h2>
+    <p class="newsletter-desc">每週精選一篇深度文章，直接送到你的信箱。<br>不發廣告，只給值得讀的內容。</p>
+    <div class="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="your@email.com">
+      <button class="newsletter-btn">訂閱</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">OPERATION.TW</div>
+  <div class="footer-copy">© 2025 操作一下 · 簡單的事情專注做</div>
+  <div class="footer-links">
+    <a href="#">Twitter</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">RSS</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.post-card, .topic-card, .about-visual, .about-text').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  document.querySelectorAll('.posts-grid .post-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.08}s`;
+  });
+  document.querySelectorAll('.topics-grid .topic-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.06}s`;
+  });
+</script>
+</body>
+</html>
