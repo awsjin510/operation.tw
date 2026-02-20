@@ -6,634 +6,876 @@
 <title>後台管理 | operation.tw</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-:root {
-  --cyan:#00f5ff; --pink:#ff0080; --purple:#bf00ff;
-  --yellow:#ffff00; --green:#00ff88;
-  --bg:#050510; --bg2:#080818; --bg3:#0d0d22; --bg4:#111128;
-  --border:rgba(0,245,255,0.1); --border2:rgba(0,245,255,0.3);
-  --text:#e0e0ff; --dim:#5858a0; --mid:#9090cc;
-  --sw:230px;
+:root{
+  --cyan:#00f5ff;--pink:#ff0080;--purple:#bf00ff;--yellow:#ffff00;--green:#00ff88;
+  --bg:#050510;--bg2:#0a0a1a;--bg3:#0d0d22;--bg4:#111128;
+  --border:rgba(0,245,255,.1);--border2:rgba(0,245,255,.3);
+  --text:#e0e0ff;--dim:#6060a0;--mid:#9090cc;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html,body{height:100%;overflow:hidden;}
-body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans-serif;display:flex;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans-serif;line-height:1.7;min-height:100vh;display:flex;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,245,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,.02) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
 
-/* scanline */
-body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.07) 3px,rgba(0,0,0,0.07) 4px);pointer-events:none;z-index:9999;}
-
-/* ── SIDEBAR ── */
-.sb{width:var(--sw);flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;height:100vh;overflow-y:auto;}
-.sb::-webkit-scrollbar{width:3px;}
-.sb::-webkit-scrollbar-thumb{background:rgba(0,245,255,0.15);}
-.sb-logo{padding:24px 20px 18px;border-bottom:1px solid var(--border);}
-.sb-logo .l1{font-family:'Orbitron',monospace;font-weight:900;font-size:0.82rem;letter-spacing:.15em;color:var(--cyan);text-shadow:0 0 10px var(--cyan);}
-.sb-logo .l2{font-family:'Share Tech Mono',monospace;font-size:0.6rem;color:var(--dim);letter-spacing:.08em;margin-top:4px;}
+/* SIDEBAR */
+.sidebar{width:220px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);min-height:100vh;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;z-index:10;}
+.sb-logo{padding:22px 18px 16px;border-bottom:1px solid var(--border);}
+.sb-logo-text{font-family:'Orbitron',monospace;font-weight:900;font-size:.78rem;letter-spacing:.15em;color:var(--cyan);text-shadow:0 0 8px var(--cyan);}
+.sb-logo-sub{font-family:'Share Tech Mono',monospace;font-size:.58rem;color:var(--dim);margin-top:3px;letter-spacing:.1em;}
 .sb-nav{padding:12px 0;flex:1;}
-.grp{font-family:'Share Tech Mono',monospace;font-size:0.56rem;color:var(--dim);letter-spacing:.25em;text-transform:uppercase;padding:14px 20px 5px;}
-.ni{display:flex;align-items:center;gap:10px;padding:9px 20px;cursor:pointer;font-size:0.85rem;color:var(--mid);border-left:2px solid transparent;transition:all .2s;}
-.ni:hover{background:rgba(0,245,255,0.04);color:var(--text);}
-.ni.on{background:rgba(0,245,255,0.08);color:var(--cyan);border-left-color:var(--cyan);}
-.ni .ic{width:16px;text-align:center;font-size:.9rem;flex-shrink:0;}
-.ni .bdg{margin-left:auto;font-family:'Share Tech Mono',monospace;font-size:.58rem;background:rgba(0,245,255,0.12);color:var(--cyan);padding:2px 6px;border-radius:8px;}
-.sb-foot{padding:14px 20px;border-top:1px solid var(--border);}
-.prev-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:9px;background:transparent;border:1px solid var(--cyan);color:var(--cyan);font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .3s;}
-.prev-btn:hover{background:var(--cyan);color:var(--bg);box-shadow:0 0 20px rgba(0,245,255,0.4);}
+.sb-section{font-family:'Share Tech Mono',monospace;font-size:.55rem;color:var(--dim);letter-spacing:.2em;text-transform:uppercase;padding:12px 18px 6px;}
+.sb-item{display:flex;align-items:center;gap:10px;padding:10px 18px;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--mid);letter-spacing:.06em;transition:all .2s;border:none;background:none;width:100%;text-align:left;}
+.sb-item:hover{background:rgba(0,245,255,.05);color:var(--text);}
+.sb-item.active{background:rgba(0,245,255,.08);color:var(--cyan);border-right:2px solid var(--cyan);}
+.sb-item .si{font-size:1rem;width:18px;text-align:center;}
+.sb-bottom{padding:14px 18px;border-top:1px solid var(--border);}
+.sb-preview-btn{display:block;width:100%;padding:9px;text-align:center;font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--cyan);border:1px solid var(--cyan);background:transparent;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;transition:all .25s;text-decoration:none;}
+.sb-preview-btn:hover{background:var(--cyan);color:var(--bg);}
 
-/* ── MAIN ── */
-.mn{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;}
-.tb{padding:14px 32px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:rgba(5,5,16,.92);backdrop-filter:blur(8px);flex-shrink:0;}
-.tb-l h1{font-family:'Orbitron',monospace;font-size:.95rem;font-weight:700;color:#fff;}
-.tb-l .bc{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);margin-top:2px;}
-.tb-r{display:flex;align-items:center;gap:10px;}
-.saved{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--green);display:flex;align-items:center;gap:5px;opacity:0;transition:opacity .4s;}
-.saved.on{opacity:1;}
-.saved-dot{width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);}
+/* MAIN */
+.main{flex:1;padding:32px 36px;max-width:100%;overflow-x:hidden;position:relative;z-index:1;}
+.panel{display:none;}
+.panel.active{display:block;}
+.panel-title{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:6px;}
+.panel-sub{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.1em;margin-bottom:28px;}
+.divider{height:1px;background:linear-gradient(to right,var(--border2),transparent);margin:28px 0;}
 
-.btn{padding:7px 18px;font-family:'Share Tech Mono',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .25s;border:none;}
-.btn-p{background:var(--cyan);color:var(--bg);border:1px solid var(--cyan);}
-.btn-p:hover{background:transparent;color:var(--cyan);box-shadow:0 0 12px rgba(0,245,255,.4);}
-.btn-s{background:transparent;color:var(--mid);border:1px solid var(--border);}
-.btn-s:hover{border-color:var(--border2);color:var(--text);}
-.btn-d{background:transparent;color:var(--pink);border:1px solid rgba(255,0,128,.25);}
-.btn-d:hover{background:rgba(255,0,128,.08);}
+/* CARDS */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;}
+.stat-card{background:var(--bg2);border:1px solid var(--border);padding:18px;position:relative;overflow:hidden;}
+.stat-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--cyan),transparent);opacity:.3;}
+.stat-card .sn{font-family:'Orbitron',monospace;font-size:1.8rem;font-weight:900;color:var(--cyan);}
+.stat-card .sl{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);margin-top:4px;letter-spacing:.08em;text-transform:uppercase;}
 
-.ct{flex:1;overflow-y:auto;padding:28px 32px;}
-.ct::-webkit-scrollbar{width:4px;}
-.ct::-webkit-scrollbar-thumb{background:rgba(0,245,255,.15);}
+/* FORM */
+.form-group{margin-bottom:20px;}
+.form-label{font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--mid);letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:8px;}
+.form-label .tip{font-size:.58rem;color:var(--dim);text-transform:none;letter-spacing:0;}
+input[type=text],input[type=date],input[type=url],textarea,select{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:.88rem;padding:10px 14px;outline:none;transition:border-color .2s;}
+input[type=text]:focus,input[type=date]:focus,input[type=url]:focus,textarea:focus,select:focus{border-color:var(--cyan);}
+select{cursor:pointer;}
+select option{background:var(--bg3);color:var(--text);}
+textarea{resize:vertical;min-height:90px;line-height:1.7;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
 
-/* ── PANELS ── */
-.pnl{display:none;}
-.pnl.on{display:block;}
+/* RICH EDITOR */
+.editor-toolbar{background:var(--bg3);border:1px solid var(--border);border-bottom:none;padding:8px 12px;display:flex;flex-wrap:wrap;gap:4px;align-items:center;}
+.tb-btn{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--mid);cursor:pointer;padding:4px 9px;font-size:.75rem;font-family:'Share Tech Mono',monospace;transition:all .18s;line-height:1.4;}
+.tb-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+.tb-btn.active{background:rgba(0,245,255,.12);border-color:var(--cyan);color:var(--cyan);}
+.tb-sep{width:1px;height:20px;background:var(--border);margin:0 4px;flex-shrink:0;}
+.tb-select{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--mid);font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:4px 6px;cursor:pointer;outline:none;}
+.tb-select option{background:var(--bg3);}
+.editor-area{border:1px solid var(--border);min-height:320px;padding:18px;outline:none;font-size:.95rem;line-height:1.9;color:var(--text);background:rgba(255,255,255,.02);}
+.editor-area:focus{border-color:var(--cyan);}
+.editor-area h2{font-family:'Orbitron',monospace;color:var(--cyan);font-size:1.15rem;margin:1.5em 0 .6em;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.editor-area h3{font-family:'Orbitron',monospace;color:var(--pink);font-size:.95rem;margin:1.2em 0 .5em;}
+.editor-area a{color:var(--cyan);text-underline-offset:3px;}
+.editor-area img{max-width:100%;border:1px solid var(--border);margin:12px 0;display:block;}
+.editor-area blockquote{border-left:3px solid var(--pink);background:rgba(255,0,128,.04);padding:12px 16px;margin:1em 0;color:var(--mid);}
+.editor-area pre{background:var(--bg3);border-left:3px solid var(--cyan);padding:14px;font-family:'Share Tech Mono',monospace;font-size:.82rem;color:var(--green);margin:1em 0;overflow-x:auto;}
+.editor-area ul,.editor-area ol{padding-left:1.5em;margin:.8em 0;}
+.editor-area p{margin:.5em 0;}
+.editor-hint{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);margin-top:7px;letter-spacing:.05em;}
 
-/* ── SECTION HD ── */
-.shd{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
-.shd h2{font-family:'Orbitron',monospace;font-size:1rem;font-weight:700;color:#fff;}
-.shd .sub{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);margin-top:3px;}
+/* IMAGE UPLOAD */
+.img-drop{border:2px dashed var(--border);padding:24px;text-align:center;cursor:pointer;transition:all .2s;position:relative;}
+.img-drop:hover,.img-drop.drag{border-color:var(--cyan);background:rgba(0,245,255,.03);}
+.img-drop input{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.img-drop-txt{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--dim);}
+.img-drop-txt span{color:var(--cyan);}
+.img-preview-wrap{margin-top:12px;display:none;}
+.img-preview{max-height:140px;border:1px solid var(--border);display:block;}
+.img-url-or{display:flex;align-items:center;gap:10px;margin:10px 0;font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--dim);}
+.img-url-or::before,.img-url-or::after{content:'';flex:1;height:1px;background:var(--border);}
 
-/* ── CARD ── */
-.card{background:var(--bg3);border:1px solid var(--border);padding:24px;margin-bottom:18px;transition:border-color .3s;}
-.card:hover{border-color:var(--border2);}
-.ctitle{font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--pink);letter-spacing:.2em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
-.ctitle::before{content:'';display:inline-block;width:10px;height:1px;background:var(--pink);}
+/* POST LIST */
+.post-list{display:flex;flex-direction:column;gap:0;}
+.post-row{display:flex;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid var(--border);transition:background .18s;}
+.post-row:hover{background:rgba(255,255,255,.02);}
+.pr-cat{font-family:'Share Tech Mono',monospace;font-size:.6rem;padding:2px 8px;border:1px solid;letter-spacing:.08em;flex-shrink:0;}
+.pr-title{flex:1;font-size:.88rem;color:var(--text);font-weight:500;}
+.pr-date{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);flex-shrink:0;}
+.pr-status{font-family:'Share Tech Mono',monospace;font-size:.58rem;padding:2px 8px;flex-shrink:0;}
+.pr-status.pub{background:rgba(0,255,136,.1);border:1px solid rgba(0,255,136,.3);color:var(--green);}
+.pr-status.dft{background:rgba(255,255,0,.08);border:1px solid rgba(255,255,0,.2);color:var(--yellow);}
+.pr-actions{display:flex;gap:6px;flex-shrink:0;}
+.pr-btn{font-family:'Share Tech Mono',monospace;font-size:.6rem;padding:4px 10px;border:1px solid var(--border);color:var(--dim);cursor:pointer;background:transparent;transition:all .18s;letter-spacing:.05em;}
+.pr-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+.pr-btn.del:hover{border-color:var(--pink);color:var(--pink);}
 
-/* ── FORM ── */
-.fr{margin-bottom:16px;}
-.fl{display:block;font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px;}
-.fi,.fta,.fse{width:100%;background:var(--bg4);border:1px solid var(--border);padding:10px 13px;color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:.88rem;outline:none;transition:border-color .25s;}
-.fi:focus,.fta:focus,.fse:focus{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(0,245,255,.07);}
-.fta{resize:vertical;min-height:100px;line-height:1.7;}
-.fse option{background:var(--bg4);}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+/* BUTTONS */
+.btn-row{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;}
+.btn{font-family:'Share Tech Mono',monospace;font-size:.72rem;padding:10px 22px;border:1px solid;cursor:pointer;letter-spacing:.1em;text-transform:uppercase;transition:all .25s;}
+.btn-primary{border-color:var(--cyan);color:var(--cyan);background:rgba(0,245,255,.08);}
+.btn-primary:hover{background:var(--cyan);color:var(--bg);}
+.btn-danger{border-color:var(--pink);color:var(--pink);background:transparent;}
+.btn-danger:hover{background:var(--pink);color:var(--bg);}
+.btn-ghost{border-color:var(--border);color:var(--dim);background:transparent;}
+.btn-ghost:hover{border-color:var(--mid);color:var(--mid);}
 
-/* ── STATS ── */
-.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
-.sc{background:var(--bg3);border:1px solid var(--border);padding:20px;transition:all .3s;}
-.sc:hover{border-color:var(--border2);transform:translateY(-2px);}
-.sc .sl{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;}
-.sc .sn{font-family:'Orbitron',monospace;font-size:1.8rem;font-weight:900;line-height:1;}
-.sc .ss{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);margin-top:5px;}
-.c1{color:var(--cyan);text-shadow:0 0 10px var(--cyan);}
-.c2{color:var(--pink);text-shadow:0 0 10px var(--pink);}
-.c3{color:var(--green);text-shadow:0 0 10px var(--green);}
-.c4{color:var(--purple);text-shadow:0 0 10px var(--purple);}
+/* TOAST */
+.toast{position:fixed;bottom:28px;right:28px;background:var(--bg3);border:1px solid var(--green);color:var(--green);font-family:'Share Tech Mono',monospace;font-size:.72rem;padding:12px 20px;letter-spacing:.08em;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;}
+.toast.show{opacity:1;}
+.toast.error{border-color:var(--pink);color:var(--pink);}
 
-/* ── POST ROW ── */
-.prow{background:var(--bg3);border:1px solid var(--border);padding:15px 18px;display:flex;align-items:center;gap:12px;margin-bottom:10px;transition:all .25s;}
-.prow:hover{border-color:var(--border2);}
-.pdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
-.ptxt{flex:1;font-size:.88rem;font-weight:500;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.pbdg{font-family:'Share Tech Mono',monospace;font-size:.6rem;padding:2px 8px;border:1px solid;letter-spacing:.08em;text-transform:uppercase;flex-shrink:0;}
-.pdt{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--dim);flex-shrink:0;}
-.pact{display:flex;gap:6px;flex-shrink:0;}
-.ibt{background:transparent;border:1px solid var(--border);color:var(--mid);padding:4px 10px;cursor:pointer;font-size:.7rem;font-family:'Share Tech Mono',monospace;transition:all .2s;}
-.ibt:hover{border-color:var(--cyan);color:var(--cyan);}
-.ibt.dl:hover{border-color:var(--pink);color:var(--pink);}
+/* MODAL */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;align-items:center;justify-content:center;}
+.modal-bg.open{display:flex;}
+.modal{background:var(--bg2);border:1px solid var(--border);padding:32px;max-width:440px;width:90%;}
+.modal h3{font-family:'Orbitron',monospace;font-size:.95rem;color:#fff;margin-bottom:12px;}
+.modal p{color:var(--mid);font-size:.88rem;margin-bottom:24px;line-height:1.7;}
+.modal-btns{display:flex;gap:10px;}
 
-/* ── NAV LINK ITEM ── */
-.lnk{background:var(--bg4);border:1px solid var(--border);padding:11px 14px;display:flex;align-items:center;gap:10px;margin-bottom:8px;transition:border-color .2s;}
-.lnk:hover{border-color:var(--border2);}
-.lnk .lfi{background:var(--bg3);border:1px solid var(--border);padding:7px 11px;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:.78rem;outline:none;transition:border-color .2s;}
-.lnk .lfi:focus{border-color:var(--cyan);}
-.lnk .lfl{width:120px;}
-.lnk .lfu{flex:1;}
+/* LINK MODAL */
+.lm{max-width:400px;}
+.lm input{margin-bottom:12px;}
 
-/* ── EMPTY ── */
-.empty{text-align:center;padding:48px 20px;color:var(--dim);}
-.empty .ei{font-size:2.5rem;margin-bottom:12px;}
-.empty .et{font-family:'Orbitron',monospace;font-size:.85rem;color:var(--mid);margin-bottom:6px;}
-.empty .es{font-size:.8rem;}
+/* TABS (html/visual) */
+.editor-tabs{display:flex;gap:0;margin-bottom:0;}
+.etab{font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:7px 16px;border:1px solid var(--border);border-bottom:none;color:var(--dim);cursor:pointer;background:transparent;letter-spacing:.08em;transition:all .2s;}
+.etab.on{background:rgba(255,255,255,.04);color:var(--cyan);border-color:var(--cyan);}
+.html-area{border:1px solid var(--border);min-height:320px;padding:16px;font-family:'Share Tech Mono',monospace;font-size:.8rem;color:var(--green);background:rgba(0,255,136,.02);resize:vertical;display:none;width:100%;outline:none;}
+.html-area:focus{border-color:var(--cyan);}
 
-/* ── TOAST ── */
-.toast{position:fixed;bottom:28px;right:28px;background:var(--bg3);border:1px solid var(--green);color:var(--green);font-family:'Share Tech Mono',monospace;font-size:.75rem;padding:11px 18px;z-index:8000;transform:translateY(60px);opacity:0;transition:all .3s;letter-spacing:.06em;}
-.toast.on{transform:translateY(0);opacity:1;}
-.toast.err{border-color:var(--pink);color:var(--pink);}
+/* QUICK ACTIONS */
+.qa-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;}
+.qa{background:var(--bg2);border:1px solid var(--border);padding:16px;cursor:pointer;text-align:center;transition:all .22s;}
+.qa:hover{border-color:var(--border2);transform:translateY(-2px);}
+.qa-icon{font-size:1.4rem;margin-bottom:6px;}
+.qa-label{font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--mid);letter-spacing:.06em;}
 
-/* ── MODAL ── */
-.mo{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:3000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
-.mo.on{display:flex;}
-.mb{background:var(--bg2);border:1px solid var(--border2);padding:32px;width:min(480px,90vw);position:relative;}
-.mt{font-family:'Orbitron',monospace;font-size:.95rem;font-weight:700;color:#fff;margin-bottom:20px;}
-.mc{position:absolute;top:18px;right:20px;background:none;border:none;color:var(--dim);font-size:1.1rem;cursor:pointer;font-family:'Share Tech Mono',monospace;}
-.mc:hover{color:var(--pink);}
-.ma{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;}
-
-/* ── COLOR SWATCH ── */
-.csw{width:36px;height:36px;border:1px solid var(--border);cursor:pointer;position:relative;flex-shrink:0;transition:transform .2s;}
-.csw:hover{transform:scale(1.1);}
-.csw input[type="color"]{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer;border:none;padding:0;}
-
-/* ── TAG CHIPS ── */
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px;}
-.chip{display:flex;align-items:center;gap:5px;background:rgba(0,245,255,.07);border:1px solid rgba(0,245,255,.2);color:var(--cyan);font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:3px 9px;}
-.chip .cx{cursor:pointer;color:var(--dim);transition:color .2s;}
-.chip .cx:hover{color:var(--pink);}
-
-/* ── THEME PREVIEW ── */
-.tp{background:var(--bg4);border:1px solid var(--border);padding:16px;margin-top:16px;}
-.tpl{font-family:'Share Tech Mono',monospace;font-size:.58rem;color:var(--dim);letter-spacing:.2em;margin-bottom:10px;}
-.tpbar{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid;}
-.tph{padding:18px 14px;}
-
-/* ── PALETTE ── */
-.pg{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px;}
-.pi .ps{height:36px;border:1px solid rgba(255,255,255,.1);cursor:pointer;position:relative;transition:transform .2s;}
-.pi .ps:hover{transform:scaleY(1.08);}
-.pi .ps input[type="color"]{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer;border:none;padding:0;}
-.pi .plb{font-family:'Share Tech Mono',monospace;font-size:.58rem;color:var(--dim);text-align:center;margin-top:5px;}
-
-/* ── TOGGLE ── */
-.trow{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);}
-.trow:last-child{border-bottom:none;}
-.tinfo .tl{font-size:.88rem;}
-.tinfo .td{font-size:.76rem;color:var(--dim);margin-top:1px;}
-.tg{position:relative;width:42px;height:22px;flex-shrink:0;}
-.tg input{opacity:0;width:0;height:0;}
-.tgs{position:absolute;inset:0;background:rgba(255,255,255,.08);border:1px solid var(--border);border-radius:11px;cursor:pointer;transition:all .3s;}
-.tgs::before{content:'';position:absolute;width:14px;height:14px;left:3px;top:3px;background:var(--dim);border-radius:50%;transition:all .3s;}
-.tg input:checked+.tgs{background:rgba(0,245,255,.12);border-color:var(--cyan);}
-.tg input:checked+.tgs::before{transform:translateX(20px);background:var(--cyan);box-shadow:0 0 7px var(--cyan);}
+@media(max-width:768px){
+  .sidebar{display:none;}
+  .main{padding:20px 16px;}
+  .stat-row{grid-template-columns:1fr 1fr;}
+  .form-row,.form-row3{grid-template-columns:1fr;}
+  .qa-grid{grid-template-columns:1fr 1fr;}
+}
+::selection{background:rgba(0,245,255,.2);color:#fff;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg2);}
+::-webkit-scrollbar-thumb{background:rgba(0,245,255,.2);}
 </style>
 </head>
 <body>
 
 <!-- SIDEBAR -->
-<aside class="sb">
+<aside class="sidebar">
   <div class="sb-logo">
-    <div class="l1">OPERATION.TW</div>
-    <div class="l2">// 後台管理系統</div>
+    <div class="sb-logo-text">操作一下</div>
+    <div class="sb-logo-sub">// ADMIN PANEL</div>
   </div>
   <nav class="sb-nav">
-    <div class="grp">概覽</div>
-    <div class="ni on" data-p="dash"><span class="ic">📊</span>儀表板</div>
-    <div class="grp">內容管理</div>
-    <div class="ni" data-p="posts"><span class="ic">📝</span>文章管理<span class="bdg" id="pbdg">0</span></div>
-    <div class="ni" data-p="editor"><span class="ic">✏️</span>新增文章</div>
-    <div class="grp">頁面設定</div>
-    <div class="ni" data-p="hp"><span class="ic">🏠</span>首頁內容</div>
-    <div class="ni" data-p="nav"><span class="ic">🔗</span>導覽 / 頁尾</div>
-    <div class="grp">外觀</div>
-    <div class="ni" data-p="theme"><span class="ic">🎨</span>主題色彩</div>
+    <div class="sb-section">內容</div>
+    <button class="sb-item active" onclick="nav('dashboard')" id="nav-dashboard"><span class="si">📊</span>儀表板</button>
+    <button class="sb-item" onclick="nav('posts')" id="nav-posts"><span class="si">📝</span>文章管理</button>
+    <button class="sb-item" onclick="nav('editor')" id="nav-editor"><span class="si">✏️</span>新增文章</button>
+    <div class="sb-section">頁面</div>
+    <button class="sb-item" onclick="nav('homepage')" id="nav-homepage"><span class="si">🏠</span>首頁設定</button>
+    <button class="sb-item" onclick="nav('about')" id="nav-about"><span class="si">👤</span>關於我</button>
+    <div class="sb-section">系統</div>
+    <button class="sb-item" onclick="nav('data')" id="nav-data"><span class="si">💾</span>資料管理</button>
   </nav>
-  <div class="sb-foot">
-    <button class="prev-btn" onclick="toast('網站預覽：請在瀏覽器開啟 index.html')">👁 預覽網站</button>
+  <div class="sb-bottom">
+    <a class="sb-preview-btn" href="index.html" target="_blank">↗ 預覽網站</a>
   </div>
 </aside>
 
 <!-- MAIN -->
-<main class="mn">
-  <div class="tb">
-    <div class="tb-l">
-      <h1 id="ptitle">儀表板</h1>
-      <div class="bc" id="pbc">operation.tw // overview</div>
+<main class="main">
+
+<!-- DASHBOARD -->
+<div class="panel active" id="p-dashboard">
+  <div class="panel-title">儀表板</div>
+  <div class="panel-sub">// DASHBOARD — 歡迎回來</div>
+  <div class="stat-row">
+    <div class="stat-card"><div class="sn" id="ds-total">0</div><div class="sl">總文章數</div></div>
+    <div class="stat-card"><div class="sn" id="ds-pub">0</div><div class="sl">已發布</div></div>
+    <div class="stat-card"><div class="sn" id="ds-draft">0</div><div class="sl">草稿</div></div>
+    <div class="stat-card"><div class="sn" id="ds-cats">5</div><div class="sl">分類數</div></div>
+  </div>
+  <div class="divider"></div>
+  <div style="margin-bottom:16px;font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;">快速操作</div>
+  <div class="qa-grid">
+    <div class="qa" onclick="nav('editor')"><div class="qa-icon">✏️</div><div class="qa-label">新增文章</div></div>
+    <div class="qa" onclick="nav('posts')"><div class="qa-icon">📋</div><div class="qa-label">管理文章</div></div>
+    <div class="qa" onclick="nav('homepage')"><div class="qa-icon">🏠</div><div class="qa-label">編輯首頁</div></div>
+  </div>
+  <div class="divider"></div>
+  <div style="margin-bottom:14px;font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;">最近文章</div>
+  <div id="ds-recent"></div>
+</div>
+
+<!-- POSTS -->
+<div class="panel" id="p-posts">
+  <div class="panel-title">文章管理</div>
+  <div class="panel-sub">// POSTS — 點擊「編輯」修改文章內容</div>
+  <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;">
+    <input type="text" id="search-posts" placeholder="搜尋文章標題..." style="flex:1;min-width:180px;" oninput="renderPostList()">
+    <select id="filter-cat" style="width:120px;" onchange="renderPostList()">
+      <option value="">全部分類</option>
+      <option>AI</option><option>雲端</option><option>資安</option><option>閱讀</option><option>成長</option>
+    </select>
+    <select id="filter-status" style="width:100px;" onchange="renderPostList()">
+      <option value="">全部狀態</option>
+      <option value="published">已發布</option>
+      <option value="draft">草稿</option>
+    </select>
+  </div>
+  <div class="post-list" id="post-list"></div>
+</div>
+
+<!-- EDITOR -->
+<div class="panel" id="p-editor">
+  <div class="panel-title" id="ed-title-label">新增文章</div>
+  <div class="panel-sub">// EDITOR — 支援插入連結與圖片</div>
+
+  <input type="hidden" id="ed-id" value="">
+
+  <div class="form-group">
+    <div class="form-label">文章標題 *</div>
+    <input type="text" id="ed-ttl" placeholder="輸入文章標題...">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <div class="form-label">分類</div>
+      <select id="ed-cat">
+        <option>AI</option><option>雲端</option><option>資安</option><option>閱讀</option><option>成長</option>
+      </select>
     </div>
-    <div class="tb-r">
-      <div class="saved" id="saved"><div class="saved-dot"></div>已儲存</div>
-      <button class="btn btn-p" onclick="saveCurrent()">儲存變更</button>
+    <div class="form-group">
+      <div class="form-label">日期</div>
+      <input type="date" id="ed-date">
     </div>
   </div>
 
-  <div class="ct">
+  <div class="form-group">
+    <div class="form-label">狀態</div>
+    <select id="ed-status">
+      <option value="published">已發布</option>
+      <option value="draft">草稿</option>
+    </select>
+  </div>
 
-    <!-- ═══ DASHBOARD ═══ -->
-    <div class="pnl on" id="pnl-dash">
-      <div class="sg">
-        <div class="sc"><div class="sl">文章總數</div><div class="sn c1" id="d-pc">0</div><div class="ss">已發布文章</div></div>
-        <div class="sc"><div class="sl">主題分類</div><div class="sn c2">5</div><div class="ss">雲端·資安·AI·閱讀·成長</div></div>
-        <div class="sc"><div class="sl">導覽連結</div><div class="sn c3" id="d-nc">4</div><div class="ss">頁面連結數</div></div>
-        <div class="sc"><div class="sl">上次儲存</div><div class="sn c4" style="font-size:1rem;" id="d-ls">—</div><div class="ss">設定最後更新</div></div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
-        <div class="card">
-          <div class="ctitle">最新文章</div>
-          <div id="d-recent"></div>
-        </div>
-        <div class="card">
-          <div class="ctitle">快速操作</div>
-          <div style="display:flex;flex-direction:column;gap:9px;">
-            <button class="btn btn-p" onclick="go('editor');clearEd()" style="width:100%;text-align:left;padding:11px 14px;">✏️ &nbsp;新增文章</button>
-            <button class="btn btn-s" onclick="go('hp')" style="width:100%;text-align:left;padding:11px 14px;">🏠 &nbsp;編輯首頁標語</button>
-            <button class="btn btn-s" onclick="go('nav')" style="width:100%;text-align:left;padding:11px 14px;">🔗 &nbsp;管理導覽連結</button>
-            <button class="btn btn-s" onclick="go('theme')" style="width:100%;text-align:left;padding:11px 14px;">🎨 &nbsp;調整主題色彩</button>
-          </div>
-        </div>
-      </div>
+  <div class="form-group">
+    <div class="form-label">摘要 <span class="tip">顯示在文章列表卡片上</span></div>
+    <textarea id="ed-exc" rows="3" placeholder="簡短描述這篇文章的重點..."></textarea>
+  </div>
+
+  <!-- COVER IMAGE -->
+  <div class="form-group">
+    <div class="form-label">封面圖片 <span class="tip">顯示在文章卡片和內頁頂部</span></div>
+    <div class="img-drop" id="cover-drop" ondragover="dragOver(event,'cover-drop')" ondragleave="dragLeave('cover-drop')" ondrop="dropFile(event,'cover')">
+      <input type="file" accept="image/*" onchange="handleImgFile(event,'cover')">
+      <div class="img-drop-txt">🖼 <span>點擊選擇</span>或拖曳圖片到此處</div>
     </div>
-
-    <!-- ═══ POST LIST ═══ -->
-    <div class="pnl" id="pnl-posts">
-      <div class="shd">
-        <div><h2>文章管理</h2><div class="sub">// posts management</div></div>
-        <button class="btn btn-p" onclick="go('editor');clearEd()">+ 新增文章</button>
-      </div>
-      <div class="card" style="padding:0;overflow:hidden;">
-        <div style="padding:13px 18px;border-bottom:1px solid var(--border);display:flex;gap:9px;">
-          <input class="fi" style="flex:1;padding:7px 12px;" placeholder="搜尋文章標題..." id="psearch" oninput="renderPosts()">
-          <select class="fse" style="width:120px;padding:7px 11px;" id="pcat" onchange="renderPosts()">
-            <option value="">全部分類</option>
-            <option>AI</option><option>雲端</option><option>資安</option><option>閱讀</option><option>成長</option>
-          </select>
-        </div>
-        <div style="padding:14px 18px;" id="plist"></div>
-      </div>
+    <div class="img-url-or">或輸入圖片網址</div>
+    <input type="url" id="ed-cover-url" placeholder="https://example.com/image.jpg" oninput="updateCoverPreview(this.value)">
+    <div class="img-preview-wrap" id="cover-preview-wrap">
+      <img class="img-preview" id="cover-preview" src="" alt="封面預覽">
+      <button class="btn btn-ghost" style="margin-top:8px;font-size:.6rem;padding:5px 12px;" onclick="clearCover()">✕ 移除封面</button>
     </div>
+  </div>
 
-    <!-- ═══ EDITOR ═══ -->
-    <div class="pnl" id="pnl-editor">
-      <div class="shd">
-        <div><h2 id="edtitle">新增文章</h2><div class="sub">// post editor</div></div>
-        <div style="display:flex;gap:9px;">
-          <button class="btn btn-s" onclick="go('posts')">← 返回列表</button>
-          <button class="btn btn-p" onclick="savePost()">儲存文章</button>
-        </div>
-      </div>
-      <input type="hidden" id="eid">
-      <div class="card">
-        <div class="ctitle">基本資訊</div>
-        <div class="fr"><label class="fl">文章標題 *</label><input class="fi" id="etitle" placeholder="輸入文章標題..."></div>
-        <div class="g3">
-          <div class="fr"><label class="fl">分類</label>
-            <select class="fse" id="ecat"><option>AI</option><option>雲端</option><option>資安</option><option>閱讀</option><option>成長</option></select>
-          </div>
-          <div class="fr"><label class="fl">發布日期</label><input class="fi" type="date" id="edate"></div>
-          <div class="fr"><label class="fl">狀態</label>
-            <select class="fse" id="estat"><option value="published">已發布</option><option value="draft">草稿</option></select>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="ctitle">文章內容</div>
-        <div class="fr"><label class="fl">摘要（顯示於列表頁）</label><textarea class="fta" id="eexcerpt" placeholder="撰寫文章摘要..." style="min-height:75px;"></textarea></div>
-        <div class="fr"><label class="fl">正文內容</label><textarea class="fta" id="ebody" placeholder="撰寫文章內容..." style="min-height:240px;"></textarea></div>
-      </div>
+  <!-- RICH EDITOR -->
+  <div class="form-group">
+    <div class="form-label">文章內容</div>
+    <div class="editor-tabs">
+      <button class="etab on" onclick="switchEditorTab('visual',this)">可視化編輯</button>
+      <button class="etab" onclick="switchEditorTab('html',this)">HTML 原始碼</button>
     </div>
-
-    <!-- ═══ HOMEPAGE ═══ -->
-    <div class="pnl" id="pnl-hp">
-      <div class="shd"><div><h2>首頁內容</h2><div class="sub">// homepage settings</div></div></div>
-      <div class="card">
-        <div class="ctitle">Hero 區塊</div>
-        <div class="fr"><label class="fl">品牌名稱（大標題）</label><input class="fi" id="hpbrand" placeholder="操作一下"></div>
-        <div class="fr"><label class="fl">副標題</label><input class="fi" id="hpsub" placeholder="operation.tw // 雲端 · 資安 · AI..."></div>
-        <div class="fr"><label class="fl">標語 / 引言</label><textarea class="fta" id="hpquote" style="min-height:75px;"></textarea></div>
-        <div class="g2">
-          <div class="fr"><label class="fl">身份標籤</label><input class="fi" id="hptag" placeholder="個人品牌 · 自媒體創作者"></div>
-          <div class="fr"><label class="fl">CTA 按鈕文字</label><input class="fi" id="hpcta" placeholder="開始閱讀 →"></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="ctitle">主題標籤（Enter 新增，最多 6 個）</div>
-        <input class="fi" id="tagip" placeholder="輸入標籤後按 Enter..." onkeydown="addTag(event)">
-        <div class="chips" id="tagchips"></div>
-      </div>
-      <div class="card">
-        <div class="ctitle">電子報區塊</div>
-        <div class="g2">
-          <div class="fr"><label class="fl">標題</label><input class="fi" id="hpnlt" placeholder="訂閱電子報"></div>
-          <div class="fr"><label class="fl">說明文字</label><input class="fi" id="hpnld" placeholder="每週精選一篇..."></div>
-        </div>
-      </div>
+    <div class="editor-toolbar" id="etoolbar">
+      <!-- 文字格式 -->
+      <select class="tb-select" onchange="formatBlock(this.value);this.value=''">
+        <option value="">段落格式</option>
+        <option value="h2">H2 標題</option>
+        <option value="h3">H3 小標</option>
+        <option value="p">段落</option>
+        <option value="blockquote">引言</option>
+        <option value="pre">程式碼</option>
+      </select>
+      <div class="tb-sep"></div>
+      <button class="tb-btn" onclick="fmt('bold')" title="粗體"><b>B</b></button>
+      <button class="tb-btn" onclick="fmt('italic')" title="斜體"><i>I</i></button>
+      <button class="tb-btn" onclick="fmt('underline')" title="底線"><u>U</u></button>
+      <button class="tb-btn" onclick="fmt('strikeThrough')" title="刪除線"><s>S</s></button>
+      <div class="tb-sep"></div>
+      <!-- 連結 -->
+      <button class="tb-btn" onclick="openLinkModal()" title="插入連結">🔗 連結</button>
+      <button class="tb-btn" onclick="removeLink()" title="移除連結">✂ 移除連結</button>
+      <div class="tb-sep"></div>
+      <!-- 圖片 -->
+      <button class="tb-btn" onclick="openImgModal()" title="插入圖片">🖼 圖片</button>
+      <div class="tb-sep"></div>
+      <!-- 清單 -->
+      <button class="tb-btn" onclick="fmt('insertUnorderedList')" title="無序清單">• 清單</button>
+      <button class="tb-btn" onclick="fmt('insertOrderedList')" title="有序清單">1. 清單</button>
+      <div class="tb-sep"></div>
+      <!-- 對齊 -->
+      <button class="tb-btn" onclick="fmt('justifyLeft')" title="靠左">⬅</button>
+      <button class="tb-btn" onclick="fmt('justifyCenter')" title="置中">↔</button>
+      <button class="tb-btn" onclick="fmt('justifyRight')" title="靠右">➡</button>
+      <div class="tb-sep"></div>
+      <!-- 其他 -->
+      <button class="tb-btn" onclick="insertHR()" title="分隔線">— 分隔線</button>
+      <button class="tb-btn" onclick="fmt('removeFormat')" title="清除格式">✕ 清格式</button>
     </div>
+    <div class="editor-area" id="ed-body" contenteditable="true" spellcheck="false"></div>
+    <textarea class="html-area" id="ed-html" spellcheck="false" oninput="syncHTMLToVisual()"></textarea>
+    <div class="editor-hint">提示：直接在上方編輯文字，選取文字後可套用格式。Ctrl+Z 可復原。</div>
+  </div>
 
-    <!-- ═══ NAV ═══ -->
-    <div class="pnl" id="pnl-nav">
-      <div class="shd"><div><h2>導覽列 / 頁尾</h2><div class="sub">// navigation & footer</div></div></div>
-      <div class="card">
-        <div class="ctitle">導覽列連結</div>
-        <div id="navlinks"></div>
-        <button class="btn btn-s" onclick="addNavLink()" style="margin-top:10px;font-size:.7rem;">+ 新增連結</button>
-      </div>
-      <div class="card">
-        <div class="ctitle">頁尾設定</div>
-        <div class="fr"><label class="fl">版權文字</label><input class="fi" id="ftcopy" placeholder="© 2025 操作一下..."></div>
-        <div class="fr"><label class="fl">社群連結</label>
-          <div id="sociallinks" style="display:flex;flex-direction:column;gap:7px;"></div>
-          <button class="btn btn-s" onclick="addSocial()" style="margin-top:9px;font-size:.7rem;">+ 新增社群</button>
-        </div>
-      </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" onclick="savePost()">💾 儲存文章</button>
+    <button class="btn btn-ghost" onclick="previewPost()">👁 預覽</button>
+    <button class="btn btn-ghost" onclick="newPost()">+ 新文章</button>
+    <button class="btn btn-danger" id="del-btn" style="display:none;" onclick="deleteCurrentPost()">🗑 刪除</button>
+  </div>
+</div>
+
+<!-- HOMEPAGE -->
+<div class="panel" id="p-homepage">
+  <div class="panel-title">首頁設定</div>
+  <div class="panel-sub">// HOMEPAGE — 編輯首頁顯示內容</div>
+  <div class="form-row">
+    <div class="form-group"><div class="form-label">標題第一段</div><input type="text" id="hp-t1" placeholder="操作"></div>
+    <div class="form-group"><div class="form-label">標題第二段（霓虹色）</div><input type="text" id="hp-t2" placeholder="一下"></div>
+  </div>
+  <div class="form-group"><div class="form-label">身份標籤</div><input type="text" id="hp-tag" placeholder="個人品牌 · 自媒體創作者"></div>
+  <div class="form-group"><div class="form-label">副標</div><input type="text" id="hp-sub" placeholder="operation.tw // 雲端 · 資安 · AI · 閱讀 · 成長"></div>
+  <div class="form-group"><div class="form-label">引言 <span class="tip">（換行用 \n）</span></div><textarea id="hp-quote" rows="3" placeholder="簡單的事情專注做，\n有一天世界會為了你而感動"></textarea></div>
+  <div class="form-group"><div class="form-label">CTA 按鈕文字</div><input type="text" id="hp-cta" placeholder="開始閱讀 →"></div>
+  <div class="divider"></div>
+  <div style="font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;">電子報區塊</div>
+  <div class="form-group"><div class="form-label">標題</div><input type="text" id="hp-nlt" placeholder="訂閱電子報"></div>
+  <div class="form-group"><div class="form-label">描述</div><textarea id="hp-nld" rows="2" placeholder="每週精選一篇深度文章..."></textarea></div>
+  <div class="divider"></div>
+  <div style="font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;">頁尾</div>
+  <div class="form-group"><div class="form-label">頁尾版權文字</div><input type="text" id="hp-footer" placeholder="© 2025 操作一下"></div>
+  <div class="btn-row"><button class="btn btn-primary" onclick="saveHomepage()">💾 儲存首頁設定</button></div>
+</div>
+
+<!-- ABOUT -->
+<div class="panel" id="p-about">
+  <div class="panel-title">關於我</div>
+  <div class="panel-sub">// ABOUT — 編輯個人介紹區塊</div>
+  <div class="form-group"><div class="form-label">頭像縮寫（顯示在圓圈中）</div><input type="text" id="ab-init" placeholder="OP" maxlength="4"></div>
+  <div class="form-group"><div class="form-label">個人簡介 <span class="tip">（按 Enter 換行）</span></div><textarea id="ab-bio" rows="6" placeholder="我是..."></textarea></div>
+  <div class="form-row3">
+    <div class="form-group"><div class="form-label">數字 1</div><input type="text" id="ab-s1n" placeholder="50+"></div>
+    <div class="form-group"><div class="form-label">說明 1</div><input type="text" id="ab-s1l" placeholder="篇文章"></div>
+  </div>
+  <div class="form-row3">
+    <div class="form-group"><div class="form-label">數字 2</div><input type="text" id="ab-s2n" placeholder="5"></div>
+    <div class="form-group"><div class="form-label">說明 2</div><input type="text" id="ab-s2l" placeholder="核心主題"></div>
+  </div>
+  <div class="form-row3">
+    <div class="form-group"><div class="form-label">數字 3</div><input type="text" id="ab-s3n" placeholder="∞"></div>
+    <div class="form-group"><div class="form-label">說明 3</div><input type="text" id="ab-s3l" placeholder="持續更新"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" onclick="saveAbout()">💾 儲存關於我</button></div>
+</div>
+
+<!-- DATA -->
+<div class="panel" id="p-data">
+  <div class="panel-title">資料管理</div>
+  <div class="panel-sub">// DATA — 備份與還原所有資料</div>
+  <div style="background:var(--bg2);border:1px solid var(--border);padding:20px;margin-bottom:16px;">
+    <div style="font-family:'Share Tech Mono',monospace;font-size:.7rem;color:var(--mid);margin-bottom:14px;">📤 匯出備份</div>
+    <p style="font-size:.85rem;color:var(--dim);margin-bottom:14px;">將所有文章和設定下載為 JSON 備份檔案。</p>
+    <button class="btn btn-primary" onclick="exportData()">⬇ 下載備份 JSON</button>
+  </div>
+  <div style="background:var(--bg2);border:1px solid var(--border);padding:20px;margin-bottom:16px;">
+    <div style="font-family:'Share Tech Mono',monospace;font-size:.7rem;color:var(--mid);margin-bottom:14px;">📥 匯入還原</div>
+    <p style="font-size:.85rem;color:var(--dim);margin-bottom:14px;">從備份 JSON 檔案還原資料（會覆蓋現有資料）。</p>
+    <div class="img-drop" style="padding:16px;">
+      <input type="file" accept=".json" onchange="importData(event)">
+      <div class="img-drop-txt">點擊選擇 JSON 備份檔案</div>
     </div>
+  </div>
+  <div style="background:rgba(255,0,128,.04);border:1px solid rgba(255,0,128,.2);padding:20px;">
+    <div style="font-family:'Share Tech Mono',monospace;font-size:.7rem;color:var(--pink);margin-bottom:14px;">⚠️ 危險操作</div>
+    <p style="font-size:.85rem;color:var(--dim);margin-bottom:14px;">清除所有資料，恢復到預設範例內容。此操作無法復原。</p>
+    <button class="btn btn-danger" onclick="resetData()">重設為預設值</button>
+  </div>
+</div>
 
-    <!-- ═══ THEME ═══ -->
-    <div class="pnl" id="pnl-theme">
-      <div class="shd"><div><h2>主題色彩</h2><div class="sub">// color & theme settings</div></div></div>
-      <div class="card">
-        <div class="ctitle">霓虹色盤</div>
-        <div class="pg">
-          <div class="pi"><div class="ps" id="sw-cyan" style="background:#00f5ff;"><input type="color" value="#00f5ff" oninput="updCol('cyan',this.value)"></div><div class="plb">CYAN</div></div>
-          <div class="pi"><div class="ps" id="sw-pink" style="background:#ff0080;"><input type="color" value="#ff0080" oninput="updCol('pink',this.value)"></div><div class="plb">PINK</div></div>
-          <div class="pi"><div class="ps" id="sw-purple" style="background:#bf00ff;"><input type="color" value="#bf00ff" oninput="updCol('purple',this.value)"></div><div class="plb">PURPLE</div></div>
-          <div class="pi"><div class="ps" id="sw-yellow" style="background:#ffff00;"><input type="color" value="#ffff00" oninput="updCol('yellow',this.value)"></div><div class="plb">YELLOW</div></div>
-          <div class="pi"><div class="ps" id="sw-green" style="background:#00ff88;"><input type="color" value="#00ff88" oninput="updCol('green',this.value)"></div><div class="plb">GREEN</div></div>
-        </div>
-        <div class="tp">
-          <div class="tpl">// 即時預覽</div>
-          <div class="tpbar" id="tpbar">
-            <span style="font-family:'Orbitron',monospace;font-size:.68rem;" id="tp-logo">OPERATION.TW</span>
-            <div style="display:flex;gap:14px;">
-              <span style="font-family:'Share Tech Mono',monospace;font-size:.62rem;color:#5858a0;">文章</span>
-              <span style="font-family:'Share Tech Mono',monospace;font-size:.62rem;color:#5858a0;">關於我</span>
-            </div>
-          </div>
-          <div class="tph">
-            <div style="font-family:'Orbitron',monospace;font-weight:900;font-size:1.4rem;color:#fff;">操作</div>
-            <div style="font-family:'Orbitron',monospace;font-weight:900;font-size:1.4rem;" id="tp-line2">一下</div>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="ctitle">特效開關</div>
-        <div class="trow"><div class="tinfo"><div class="tl">掃描線效果</div><div class="td">CRT 螢幕風格的掃描線</div></div><label class="tg"><input type="checkbox" id="fx-sc" checked><span class="tgs"></span></label></div>
-        <div class="trow"><div class="tinfo"><div class="tl">網格背景</div><div class="td">背景的透視網格</div></div><label class="tg"><input type="checkbox" id="fx-gr" checked><span class="tgs"></span></label></div>
-        <div class="trow"><div class="tinfo"><div class="tl">霓虹光暈</div><div class="td">文字與元素的發光效果</div></div><label class="tg"><input type="checkbox" id="fx-gl" checked><span class="tgs"></span></label></div>
-        <div class="trow"><div class="tinfo"><div class="tl">Glitch 動效</div><div class="td">標題的故障藝術效果</div></div><label class="tg"><input type="checkbox" id="fx-gt" checked><span class="tgs"></span></label></div>
-        <div class="trow"><div class="tinfo"><div class="tl">浮動光球</div><div class="td">背景的柔和光暈球體</div></div><label class="tg"><input type="checkbox" id="fx-ob" checked><span class="tgs"></span></label></div>
-      </div>
-    </div>
-
-  </div><!-- /ct -->
 </main>
 
-<!-- TOAST -->
-<div class="toast" id="toastEl"></div>
-
-<!-- MODAL -->
-<div class="mo" id="modal">
-  <div class="mb">
-    <h3 class="mt">確認刪除</h3>
-    <button class="mc" onclick="closeModal()">✕</button>
-    <p style="color:var(--mid);font-size:.88rem;line-height:1.7;" id="mMsg"></p>
-    <div class="ma">
-      <button class="btn btn-s" onclick="closeModal()">取消</button>
-      <button class="btn btn-d" id="mOk">確定刪除</button>
+<!-- LINK MODAL -->
+<div class="modal-bg" id="link-modal">
+  <div class="modal lm">
+    <h3>🔗 插入連結</h3>
+    <div class="form-group"><div class="form-label">連結文字</div><input type="text" id="lm-text" placeholder="顯示文字"></div>
+    <div class="form-group"><div class="form-label">連結網址</div><input type="url" id="lm-url" placeholder="https://..."></div>
+    <div class="form-group">
+      <label style="display:flex;align-items:center;gap:8px;font-family:'Share Tech Mono',monospace;font-size:.68rem;color:var(--mid);cursor:pointer;">
+        <input type="checkbox" id="lm-new" checked> 在新分頁開啟
+      </label>
+    </div>
+    <div class="modal-btns">
+      <button class="btn btn-primary" onclick="insertLink()">插入連結</button>
+      <button class="btn btn-ghost" onclick="closeModal('link-modal')">取消</button>
     </div>
   </div>
 </div>
 
+<!-- IMAGE MODAL -->
+<div class="modal-bg" id="img-modal">
+  <div class="modal" style="max-width:480px;">
+    <h3>🖼 插入圖片</h3>
+    <div class="form-group">
+      <div class="form-label">上傳圖片</div>
+      <div class="img-drop" id="modal-img-drop" ondragover="dragOver(event,'modal-img-drop')" ondragleave="dragLeave('modal-img-drop')" ondrop="dropFile(event,'modal-img')">
+        <input type="file" accept="image/*" onchange="handleImgFile(event,'modal-img')">
+        <div class="img-drop-txt">🖼 <span>點擊選擇</span>或拖曳圖片</div>
+      </div>
+      <div class="img-url-or">或輸入圖片網址</div>
+      <input type="url" id="mi-url" placeholder="https://example.com/image.jpg">
+    </div>
+    <div class="form-group">
+      <div class="form-label">替代文字（alt）</div>
+      <input type="text" id="mi-alt" placeholder="圖片說明">
+    </div>
+    <div class="img-preview-wrap" id="mi-preview-wrap">
+      <img class="img-preview" id="mi-preview" src="" alt="">
+    </div>
+    <div class="modal-btns" style="margin-top:20px;">
+      <button class="btn btn-primary" onclick="insertImg()">插入圖片</button>
+      <button class="btn btn-ghost" onclick="closeModal('img-modal')">取消</button>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE CONFIRM -->
+<div class="modal-bg" id="del-modal">
+  <div class="modal">
+    <h3>刪除文章</h3>
+    <p>確定要刪除這篇文章嗎？此操作無法復原。</p>
+    <div class="modal-btns">
+      <button class="btn btn-danger" onclick="confirmDelete()">確定刪除</button>
+      <button class="btn btn-ghost" onclick="closeModal('del-modal')">取消</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
-// ══ DATA ══
-const D = {
+const SKEY='operation_tw_cms';
+const CAT_COLOR={AI:'#bf00ff',雲端:'#00f5ff',資安:'#ff0080',閱讀:'#ffff00',成長:'#00ff88'};
+
+const DEFAULTS={
   posts:[
-    {id:1,title:'從 GPT 到 Claude：2025 年 AI 工具選擇指南',category:'AI',date:'2025-02-15',status:'published',excerpt:'深入比較主流 AI 助理的使用場景，找到最適合你工作流程的那一個。',body:''},
-    {id:2,title:'AWS vs Azure vs GCP：選擇雲端平台的三個關鍵問題',category:'雲端',date:'2025-02-08',status:'published',excerpt:'不用背所有服務名稱，只要問對問題，你就知道哪個雲更適合你的需求。',body:''},
-    {id:3,title:'零信任架構入門：為什麼「相信但驗證」已經過時了',category:'資安',date:'2025-01-29',status:'published',excerpt:'現代資安思維的轉變，以及企業如何在混合工作時代保護數位邊界。',body:''},
+    {id:1,title:'從 GPT 到 Claude：2025 年 AI 工具選擇指南',category:'AI',date:'2025-02-15',status:'published',
+     excerpt:'深入比較主流 AI 助理的使用場景，找到最適合你工作流程的那一個。',image:'',
+     body:`<p>2025 年，AI 助理已經不再是新奇玩具，而是真實影響工作效率的核心工具。但每個工具都有自己的強項，選錯了不只是浪費錢，更是浪費時間。</p><h2>GPT-4o 的強項</h2><p>OpenAI 的 GPT-4o 在多模態處理上表現出色，特別是圖片理解和語音輸入。</p><h2>Claude 的強項</h2><p>Anthropic 的 Claude 在長文處理和邏輯推理上有優勢，特別適合處理大量文件、程式碼審查和複雜分析任務。</p><h2>我的建議</h2><p>沒有「最好」的 AI 工具，只有最適合你工作流程的那一個。可以參考 <a href="https://openai.com" target="_blank">OpenAI 官網</a> 了解最新功能。</p>`},
+    {id:2,title:'AWS vs Azure vs GCP：選擇雲端平台的三個關鍵問題',category:'雲端',date:'2025-02-08',status:'published',
+     excerpt:'不用背所有服務名稱，只要問對問題，你就知道哪個雲更適合你的需求。',image:'',
+     body:`<p>雲端平台的選擇困擾著很多人，但其實只需要問自己三個問題。</p><h2>問題一：你的團隊用什麼技術棧？</h2><p>如果主要使用微軟技術，Azure 的整合優勢明顯。</p><h2>問題二：你的主要市場在哪裡？</h2><p>AWS 在全球覆蓋率最高，適合全球部署。</p><h2>問題三：你的預算模式？</h2><p>GCP 提供持續使用折扣；Azure 對企業授權用戶有優惠。</p>`},
+    {id:3,title:'零信任架構入門：為什麼「相信但驗證」已經過時了',category:'資安',date:'2025-01-29',status:'published',
+     excerpt:'現代資安思維的轉變，以及企業如何在混合工作時代保護數位邊界。',image:'',
+     body:`<p>零信任的核心是「永不信任，始終驗證」。</p><h2>為什麼需要零信任？</h2><p>混合工作模式讓傳統 VPN 已無法應對分散式工作環境。</p><h2>如何開始？</h2><ul><li><strong>多因素驗證</strong>：最低成本、最高回報的第一步</li><li><strong>最小權限</strong>：只給完成任務所需的最低存取權限</li></ul>`},
   ],
-  hp:{brand:'操作一下',sub:'operation.tw // 雲端 · 資安 · AI · 閱讀 · 成長',quote:'簡單的事情專注做，\n有一天世界會為了你而感動',tag:'個人品牌 · 自媒體創作者',cta:'開始閱讀 →',tags:['雲端','資安','AI','閱讀','成長'],nlt:'訂閱電子報',nld:'每週精選一篇深度文章，直接送到你的信箱。'},
-  nav:{links:[{l:'文章',u:'#posts'},{l:'主題',u:'#topics'},{l:'關於我',u:'#about'},{l:'訂閱',u:'#newsletter'}],copy:'© 2025 操作一下 · 簡單的事情專注做',social:[{l:'Twitter',u:'#'},{l:'LinkedIn',u:'#'},{l:'RSS',u:'#'}]},
-  theme:{cyan:'#00f5ff',pink:'#ff0080',purple:'#bf00ff',yellow:'#ffff00',green:'#00ff88'},
-  lastSave:null
+  hp:{tag:'個人品牌 · 自媒體創作者',t1:'操作',t2:'一下',sub:'operation.tw // 雲端 · 資安 · AI · 閱讀 · 成長',quote:'簡單的事情專注做，\n有一天世界會為了你而感動',cta:'開始閱讀 →',nlt:'訂閱電子報',nld:'每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。'},
+  about:{initials:'OP',bio:'我是操作一下，深耕雲端、資安與 AI 的自媒體創作者。\n\n我相信科技不應只是工程師的語言，每個人都值得理解這些工具。\n\n不賣課程，不追流量，只想把有用的東西說清楚。',s1n:'50+',s1l:'篇文章',s2n:'5',s2l:'核心主題',s3n:'∞',s3l:'持續更新'},
+  footer:'© 2025 操作一下 · 簡單的事情專注做'
 };
 
-const CC={AI:{c:'#bf00ff'},雲端:{c:'#00f5ff'},資安:{c:'#ff0080'},閱讀:{c:'#ffff00'},成長:{c:'#00ff88'}};
+function loadD(){try{const r=localStorage.getItem(SKEY);return r?JSON.parse(r):JSON.parse(JSON.stringify(DEFAULTS));}catch{return JSON.parse(JSON.stringify(DEFAULTS));}}
+function saveD(d){localStorage.setItem(SKEY,JSON.stringify(d));}
+let D=loadD();
 
-// ══ ROUTING ══
-let cur='dash';
-const titles={dash:['儀表板','overview'],posts:['文章管理','posts management'],editor:['文章編輯器','post editor'],hp:['首頁內容','homepage settings'],nav:['導覽列 / 頁尾','navigation settings'],theme:['主題色彩','theme settings']};
-
-function go(p){
-  document.querySelectorAll('.pnl').forEach(e=>e.classList.remove('on'));
-  document.querySelectorAll('.ni').forEach(e=>e.classList.remove('on'));
-  document.getElementById('pnl-'+p).classList.add('on');
-  document.querySelector(`[data-p="${p}"]`)?.classList.add('on');
-  cur=p;
-  const [t,b]=titles[p]||[p,''];
-  document.getElementById('ptitle').textContent=t;
-  document.getElementById('pbc').textContent=`operation.tw // ${b}`;
-  if(p==='dash')updDash();
-  if(p==='posts')renderPosts();
-  if(p==='hp')fillHp();
-  if(p==='nav'){fillNav();fillSocial();}
-  if(p==='theme')updPreview();
+// ── NAV ──
+function nav(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('p-'+id).classList.add('active');
+  const nb=document.getElementById('nav-'+id);if(nb)nb.classList.add('active');
+  if(id==='dashboard')renderDash();
+  if(id==='posts')renderPostList();
+  if(id==='editor'&&!document.getElementById('ed-id').value)newPost();
+  if(id==='homepage')loadHomepage();
+  if(id==='about')loadAbout();
 }
 
-document.querySelectorAll('.ni').forEach(n=>n.addEventListener('click',()=>{
-  if(n.dataset.p==='editor')clearEd();
-  go(n.dataset.p);
-}));
-
-// ══ SAVE ══
-function saveCurrent(){
-  if(cur==='editor'){savePost();return;}
-  if(cur==='hp')saveHp();
-  else if(cur==='nav')saveNav();
-  else if(cur==='theme')saveTheme();
-  else{D.lastSave=new Date().toISOString();showSaved();toast('已儲存 ✓');}
-  updDash();
-}
-
-function showSaved(){
-  const e=document.getElementById('saved');
-  e.classList.add('on');
-  clearTimeout(e._t);
-  e._t=setTimeout(()=>e.classList.remove('on'),2500);
-}
-
-// ══ DASHBOARD ══
-function updDash(){
-  document.getElementById('d-pc').textContent=D.posts.length;
-  document.getElementById('pbdg').textContent=D.posts.length;
-  document.getElementById('d-nc').textContent=D.nav.links.length;
-  if(D.lastSave){
-    const d=new Date(D.lastSave);
-    document.getElementById('d-ls').textContent=`${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}`;
-  }
-  const rc=document.getElementById('d-recent');
-  const posts=[...D.posts].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,4);
-  if(!posts.length){rc.innerHTML='<div class="empty"><div class="ei">📭</div><div class="et">尚無文章</div><div class="es">點選新增文章開始撰寫</div></div>';return;}
-  rc.innerHTML='<div style="display:flex;flex-direction:column;gap:0;">'+posts.map(p=>{
-    const c=(CC[p.category]||{c:'#aaa'}).c;
-    return `<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);">
-      <div style="width:6px;height:6px;border-radius:50%;background:${c};box-shadow:0 0 5px ${c};flex-shrink:0;"></div>
-      <div style="flex:1;font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${h(p.title)}</div>
-      <div style="font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);">${p.date}</div>
-    </div>`;
-  }).join('')+'</div>';
-}
-
-// ══ POSTS ══
-function renderPosts(){
-  const s=document.getElementById('psearch')?.value?.toLowerCase()||'';
-  const cf=document.getElementById('pcat')?.value||'';
-  let ps=[...D.posts];
-  if(s)ps=ps.filter(p=>p.title.toLowerCase().includes(s));
-  if(cf)ps=ps.filter(p=>p.category===cf);
-  ps.sort((a,b)=>new Date(b.date)-new Date(a.date));
-  const cont=document.getElementById('plist');
-  if(!ps.length){cont.innerHTML='<div class="empty"><div class="ei">📭</div><div class="et">沒有符合條件的文章</div></div>';return;}
-  cont.innerHTML=ps.map(p=>{
-    const c=(CC[p.category]||{c:'#aaa'}).c;
-    const stC=p.status==='published'?'#00ff88':'#ffff00';
-    const stT=p.status==='published'?'已發布':'草稿';
-    return `<div class="prow">
-      <div class="pdot" style="background:${c};box-shadow:0 0 5px ${c};"></div>
-      <div class="ptxt">${h(p.title)}</div>
-      <span class="pbdg" style="border-color:${c};color:${c};">${p.category}</span>
-      <span class="pdt">${p.date}</span>
-      <span style="font-family:'Share Tech Mono',monospace;font-size:.6rem;padding:2px 8px;color:${stC};border:1px solid ${stC}40;background:${stC}15;">${stT}</span>
-      <div class="pact">
-        <button class="ibt" onclick="editPost(${p.id})">編輯</button>
-        <button class="ibt dl" onclick="delConfirm(${p.id})">刪除</button>
+// ── DASHBOARD ──
+function renderDash(){
+  D=loadD();
+  const pub=D.posts.filter(p=>p.status==='published').length;
+  const dft=D.posts.filter(p=>p.status==='draft').length;
+  setText('ds-total',D.posts.length);setText('ds-pub',pub);setText('ds-draft',dft);
+  const recent=[...D.posts].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,5);
+  const el=document.getElementById('ds-recent');
+  el.innerHTML=recent.map(p=>{
+    const c=CAT_COLOR[p.category]||'#aaa';
+    return `<div class="post-row">
+      <span class="pr-cat" style="border-color:${c};color:${c};">${p.category}</span>
+      <span class="pr-title">${esc(p.title)}</span>
+      <span class="pr-date">${p.date}</span>
+      <span class="pr-status ${p.status==='published'?'pub':'dft'}">${p.status==='published'?'已發布':'草稿'}</span>
+      <div class="pr-actions">
+        <button class="pr-btn" onclick="editPost(${p.id})">編輯</button>
       </div>
     </div>`;
   }).join('');
 }
 
-function clearEd(){
-  document.getElementById('eid').value='';
-  document.getElementById('edtitle').textContent='新增文章';
-  ['etitle','eexcerpt','ebody'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('ecat').value='AI';
-  document.getElementById('edate').value=new Date().toISOString().split('T')[0];
-  document.getElementById('estat').value='published';
+// ── POST LIST ──
+function renderPostList(){
+  D=loadD();
+  const q=(document.getElementById('search-posts').value||'').toLowerCase();
+  const cat=document.getElementById('filter-cat').value;
+  const status=document.getElementById('filter-status').value;
+  const filtered=D.posts.filter(p=>
+    (!q||p.title.toLowerCase().includes(q))&&
+    (!cat||p.category===cat)&&
+    (!status||p.status===status)
+  ).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const el=document.getElementById('post-list');
+  if(!filtered.length){el.innerHTML='<div style="padding:28px;text-align:center;font-family:\'Share Tech Mono\',monospace;font-size:.72rem;color:var(--dim);">沒有符合條件的文章</div>';return;}
+  el.innerHTML=filtered.map(p=>{
+    const c=CAT_COLOR[p.category]||'#aaa';
+    return `<div class="post-row">
+      <span class="pr-cat" style="border-color:${c};color:${c};">${p.category}</span>
+      <span class="pr-title">${esc(p.title)}</span>
+      <span class="pr-date">${p.date}</span>
+      <span class="pr-status ${p.status==='published'?'pub':'dft'}">${p.status==='published'?'已發布':'草稿'}</span>
+      <div class="pr-actions">
+        <button class="pr-btn" onclick="editPost(${p.id})">編輯</button>
+        <button class="pr-btn del" onclick="askDelete(${p.id})">刪除</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── EDITOR ──
+function newPost(){
+  document.getElementById('ed-id').value='';
+  document.getElementById('ed-ttl').value='';
+  document.getElementById('ed-cat').value='AI';
+  document.getElementById('ed-date').value=new Date().toISOString().slice(0,10);
+  document.getElementById('ed-status').value='draft';
+  document.getElementById('ed-exc').value='';
+  document.getElementById('ed-cover-url').value='';
+  document.getElementById('ed-body').innerHTML='';
+  document.getElementById('ed-html').value='';
+  document.getElementById('cover-preview-wrap').style.display='none';
+  document.getElementById('ed-title-label').textContent='新增文章';
+  document.getElementById('del-btn').style.display='none';
+  nav('editor');
 }
 
 function editPost(id){
-  const p=D.posts.find(p=>p.id===id);
-  if(!p)return;
-  document.getElementById('eid').value=id;
-  document.getElementById('edtitle').textContent='編輯文章';
-  document.getElementById('etitle').value=p.title;
-  document.getElementById('ecat').value=p.category;
-  document.getElementById('edate').value=p.date;
-  document.getElementById('estat').value=p.status;
-  document.getElementById('eexcerpt').value=p.excerpt||'';
-  document.getElementById('ebody').value=p.body||'';
-  go('editor');
+  D=loadD();
+  const p=D.posts.find(x=>x.id===id);if(!p)return;
+  document.getElementById('ed-id').value=id;
+  document.getElementById('ed-ttl').value=p.title;
+  document.getElementById('ed-cat').value=p.category;
+  document.getElementById('ed-date').value=p.date;
+  document.getElementById('ed-status').value=p.status;
+  document.getElementById('ed-exc').value=p.excerpt||'';
+  document.getElementById('ed-cover-url').value=p.image||'';
+  document.getElementById('ed-body').innerHTML=p.body||'';
+  document.getElementById('ed-html').value=p.body||'';
+  if(p.image){
+    document.getElementById('cover-preview').src=p.image;
+    document.getElementById('cover-preview-wrap').style.display='block';
+  }else document.getElementById('cover-preview-wrap').style.display='none';
+  document.getElementById('ed-title-label').textContent='編輯文章';
+  document.getElementById('del-btn').style.display='inline-flex';
+  nav('editor');
 }
 
 function savePost(){
-  const title=v('etitle');
-  if(!title){toast('請填寫文章標題',true);return;}
-  const eid=v('eid');
-  const data={title,category:document.getElementById('ecat').value,date:v('edate'),status:document.getElementById('estat').value,excerpt:v('eexcerpt'),body:v('ebody')};
-  if(eid){
-    const i=D.posts.findIndex(p=>p.id==eid);
-    if(i>=0)D.posts[i]={...D.posts[i],...data};
-    toast('文章已更新 ✓');
-  } else {
-    const nid=Date.now();
-    D.posts.push({id:nid,...data});
-    document.getElementById('eid').value=nid;
-    document.getElementById('edtitle').textContent='編輯文章';
-    toast('文章已新增 ✓');
+  D=loadD();
+  const id=document.getElementById('ed-id').value;
+  const title=document.getElementById('ed-ttl').value.trim();
+  if(!title){toast('請輸入文章標題！','error');return;}
+  // sync visual to html
+  const body=getCurrentBody();
+  const post={
+    title,
+    category:document.getElementById('ed-cat').value,
+    date:document.getElementById('ed-date').value,
+    status:document.getElementById('ed-status').value,
+    excerpt:document.getElementById('ed-exc').value.trim(),
+    image:document.getElementById('ed-cover-url').value.trim(),
+    body
+  };
+  if(id){
+    const idx=D.posts.findIndex(x=>x.id==id);
+    if(idx>=0){D.posts[idx]={...D.posts[idx],...post};}
+  }else{
+    const newId=Date.now();
+    D.posts.push({id:newId,...post});
+    document.getElementById('ed-id').value=newId;
+    document.getElementById('del-btn').style.display='inline-flex';
+    document.getElementById('ed-title-label').textContent='編輯文章';
   }
-  D.lastSave=new Date().toISOString();
-  showSaved();updDash();
+  saveD(D);
+  toast('文章已儲存 ✓');
 }
 
-function delConfirm(id){
-  const p=D.posts.find(p=>p.id===id);
-  document.getElementById('mMsg').textContent=`確定要刪除「${p?.title}」嗎？此操作無法復原。`;
-  document.getElementById('mOk').onclick=()=>{D.posts=D.posts.filter(p=>p.id!==id);renderPosts();updDash();toast('文章已刪除');closeModal();};
-  document.getElementById('modal').classList.add('on');
-}
-function closeModal(){document.getElementById('modal').classList.remove('on');}
-
-// ══ HOMEPAGE ══
-function fillHp(){
-  const p=D.hp;
-  sv('hpbrand',p.brand);sv('hpsub',p.sub);sv('hpquote',p.quote);sv('hptag',p.tag);sv('hpcta',p.cta);sv('hpnlt',p.nlt);sv('hpnld',p.nld);
-  renderChips();
-}
-function saveHp(){
-  D.hp={...D.hp,brand:v('hpbrand'),sub:v('hpsub'),quote:v('hpquote'),tag:v('hptag'),cta:v('hpcta'),nlt:v('hpnlt'),nld:v('hpnld')};
-  D.lastSave=new Date().toISOString();showSaved();toast('首頁設定已儲存 ✓');updDash();
-}
-function addTag(e){
-  if(e.key!=='Enter')return;
-  const inp=document.getElementById('tagip');
-  const t=inp.value.trim();
-  if(!t||D.hp.tags.includes(t)||D.hp.tags.length>=6)return;
-  D.hp.tags.push(t);inp.value='';renderChips();
-}
-function removeTag(t){D.hp.tags=D.hp.tags.filter(x=>x!==t);renderChips();}
-function renderChips(){
-  document.getElementById('tagchips').innerHTML=D.hp.tags.map(t=>`<div class="chip">${h(t)}<span class="cx" onclick="removeTag('${h(t)}')">✕</span></div>`).join('');
+function getCurrentBody(){
+  const activeTab=document.querySelector('.etab.on');
+  if(activeTab&&activeTab.textContent.includes('HTML')){
+    return document.getElementById('ed-html').value;
+  }
+  return document.getElementById('ed-body').innerHTML;
 }
 
-// ══ NAV ══
-function fillNav(){
-  sv('ftcopy',D.nav.copy);
-  const c=document.getElementById('navlinks');
-  c.innerHTML=D.nav.links.map((l,i)=>`
-    <div class="lnk">
-      <span style="color:var(--dim);cursor:grab;">⠿</span>
-      <input class="lfi lfl" value="${h(l.l)}" placeholder="連結名稱" oninput="D.nav.links[${i}].l=this.value">
-      <input class="lfi lfu" value="${h(l.u)}" placeholder="#section 或 https://..." oninput="D.nav.links[${i}].u=this.value">
-      <button class="ibt dl" onclick="rmNav(${i})">✕</button>
-    </div>`).join('');
-}
-function fillSocial(){
-  document.getElementById('sociallinks').innerHTML=D.nav.social.map((s,i)=>`
-    <div style="display:flex;gap:7px;align-items:center;">
-      <input class="fi" style="width:100px;padding:7px 10px;font-family:'Share Tech Mono',monospace;font-size:.76rem;" value="${h(s.l)}" placeholder="名稱" oninput="D.nav.social[${i}].l=this.value">
-      <input class="fi" style="flex:1;padding:7px 10px;" value="${h(s.u)}" placeholder="網址" oninput="D.nav.social[${i}].u=this.value">
-      <button class="ibt dl" onclick="rmSocial(${i})">✕</button>
-    </div>`).join('');
-}
-function addNavLink(){D.nav.links.push({l:'新連結',u:'#'});fillNav();}
-function rmNav(i){D.nav.links.splice(i,1);fillNav();}
-function addSocial(){D.nav.social.push({l:'新連結',u:'#'});fillSocial();}
-function rmSocial(i){D.nav.social.splice(i,1);fillSocial();}
-function saveNav(){
-  D.nav.copy=v('ftcopy');
-  D.lastSave=new Date().toISOString();showSaved();toast('導覽設定已儲存 ✓');updDash();
+function previewPost(){
+  savePost();
+  window.open('index.html','_blank');
 }
 
-// ══ THEME ══
-function updCol(k,val){
-  D.theme[k]=val;
-  document.getElementById('sw-'+k).style.background=val;
-  updPreview();
-}
-function updPreview(){
-  const t=D.theme;
-  const bar=document.getElementById('tpbar');
-  if(!bar)return;
-  bar.style.background='#050510';
-  bar.style.borderColor=t.cyan;
-  document.getElementById('tp-logo').style.color=t.cyan;
-  document.getElementById('tp-logo').style.textShadow=`0 0 10px ${t.cyan}`;
-  document.getElementById('tp-line2').style.color=t.cyan;
-  document.getElementById('tp-line2').style.textShadow=`0 0 15px ${t.cyan}`;
-}
-function saveTheme(){
-  D.lastSave=new Date().toISOString();showSaved();toast('主題設定已儲存 ✓');updDash();
+let deleteTargetId=null;
+function askDelete(id){deleteTargetId=id;openModal('del-modal');}
+function deleteCurrentPost(){deleteTargetId=parseInt(document.getElementById('ed-id').value);openModal('del-modal');}
+function confirmDelete(){
+  if(!deleteTargetId)return;
+  D=loadD();
+  D.posts=D.posts.filter(x=>x.id!==deleteTargetId);
+  saveD(D);
+  closeModal('del-modal');
+  toast('文章已刪除');
+  deleteTargetId=null;
+  newPost();
+  renderPostList();
 }
 
-// ══ UTILS ══
-function v(id){return document.getElementById(id)?.value?.trim()||'';}
-function sv(id,val){const e=document.getElementById(id);if(e)e.value=val||'';}
-function h(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function toast(msg,err=false){
-  const t=document.getElementById('toastEl');
-  t.textContent=(err?'⚠ ':'✓ ')+msg;
-  t.className='toast on'+(err?' err':'');
-  clearTimeout(t._t);
-  t._t=setTimeout(()=>t.classList.remove('on'),2800);
+// ── EDITOR TABS ──
+function switchEditorTab(mode,btn){
+  document.querySelectorAll('.etab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  const visual=document.getElementById('ed-body');
+  const html=document.getElementById('ed-html');
+  const toolbar=document.getElementById('etoolbar');
+  if(mode==='visual'){
+    html.style.display='none';
+    visual.style.display='block';
+    toolbar.style.display='flex';
+    visual.innerHTML=html.value;
+  }else{
+    visual.style.display='none';
+    html.style.display='block';
+    toolbar.style.display='none';
+    html.value=visual.innerHTML;
+  }
+}
+function syncHTMLToVisual(){
+  document.getElementById('ed-body').innerHTML=document.getElementById('ed-html').value;
 }
 
-// ══ INIT ══
-updDash();
+// ── RICH TEXT COMMANDS ──
+function fmt(cmd){document.getElementById('ed-body').focus();document.execCommand(cmd,false,null);}
+function formatBlock(tag){
+  if(!tag)return;
+  document.getElementById('ed-body').focus();
+  document.execCommand('formatBlock',false,tag);
+}
+function insertHR(){
+  document.getElementById('ed-body').focus();
+  document.execCommand('insertHTML',false,'<hr>');
+}
+
+// ── LINK MODAL ──
+let savedRange=null;
+function saveRange(){
+  const sel=window.getSelection();
+  if(sel.rangeCount>0)savedRange=sel.getRangeAt(0).cloneRange();
+}
+function restoreRange(){
+  if(savedRange){
+    const sel=window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(savedRange);
+  }
+}
+function openLinkModal(){
+  const sel=window.getSelection();
+  const txt=sel.toString();
+  saveRange();
+  document.getElementById('lm-text').value=txt||'';
+  document.getElementById('lm-url').value='https://';
+  openModal('link-modal');
+  setTimeout(()=>document.getElementById('lm-url').focus(),100);
+}
+function insertLink(){
+  const url=document.getElementById('lm-url').value.trim();
+  const text=document.getElementById('lm-text').value.trim();
+  const newTab=document.getElementById('lm-new').checked;
+  if(!url||url==='https://'){toast('請輸入連結網址','error');return;}
+  closeModal('link-modal');
+  document.getElementById('ed-body').focus();
+  restoreRange();
+  const target=newTab?' target="_blank" rel="noopener"':'';
+  if(text){
+    document.execCommand('insertHTML',false,`<a href="${url}"${target}>${text}</a>`);
+  }else{
+    document.execCommand('createLink',false,url);
+    if(newTab){
+      const sel=window.getSelection();
+      if(sel.anchorNode&&sel.anchorNode.parentElement&&sel.anchorNode.parentElement.tagName==='A'){
+        sel.anchorNode.parentElement.setAttribute('target','_blank');
+        sel.anchorNode.parentElement.setAttribute('rel','noopener');
+      }
+    }
+  }
+}
+function removeLink(){
+  document.getElementById('ed-body').focus();
+  document.execCommand('unlink',false,null);
+}
+
+// ── IMAGE MODAL ──
+let pendingImgSrc='';
+function openImgModal(){
+  saveRange();
+  pendingImgSrc='';
+  document.getElementById('mi-url').value='';
+  document.getElementById('mi-alt').value='';
+  document.getElementById('mi-preview').src='';
+  document.getElementById('mi-preview-wrap').style.display='none';
+  openModal('img-modal');
+}
+function insertImg(){
+  const url=document.getElementById('mi-url').value.trim()||pendingImgSrc;
+  const alt=document.getElementById('mi-alt').value.trim();
+  if(!url){toast('請選擇或輸入圖片網址','error');return;}
+  closeModal('img-modal');
+  document.getElementById('ed-body').focus();
+  restoreRange();
+  document.execCommand('insertHTML',false,`<img src="${url}" alt="${alt}" style="max-width:100%;margin:12px 0;display:block;">`);
+}
+
+// ── IMAGE UPLOAD ──
+function handleImgFile(event,target){
+  const file=event.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const src=e.target.result;
+    if(target==='cover'){
+      document.getElementById('ed-cover-url').value=src;
+      document.getElementById('cover-preview').src=src;
+      document.getElementById('cover-preview-wrap').style.display='block';
+    }else if(target==='modal-img'){
+      pendingImgSrc=src;
+      document.getElementById('mi-url').value='';
+      document.getElementById('mi-preview').src=src;
+      document.getElementById('mi-preview-wrap').style.display='block';
+    }
+  };
+  reader.readAsDataURL(file);
+}
+function updateCoverPreview(url){
+  if(url){document.getElementById('cover-preview').src=url;document.getElementById('cover-preview-wrap').style.display='block';}
+  else document.getElementById('cover-preview-wrap').style.display='none';
+}
+function clearCover(){
+  document.getElementById('ed-cover-url').value='';
+  document.getElementById('cover-preview-wrap').style.display='none';
+}
+document.getElementById('mi-url').addEventListener('input',function(){
+  if(this.value){document.getElementById('mi-preview').src=this.value;document.getElementById('mi-preview-wrap').style.display='block';pendingImgSrc='';}
+});
+
+// ── DRAG & DROP ──
+function dragOver(e,id){e.preventDefault();document.getElementById(id).classList.add('drag');}
+function dragLeave(id){document.getElementById(id).classList.remove('drag');}
+function dropFile(e,target){
+  e.preventDefault();
+  const id=target==='cover'?'cover-drop':'modal-img-drop';
+  dragLeave(id);
+  const file=e.dataTransfer.files[0];
+  if(!file||!file.type.startsWith('image/'))return;
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    const src=ev.target.result;
+    if(target==='cover'){
+      document.getElementById('ed-cover-url').value=src;
+      document.getElementById('cover-preview').src=src;
+      document.getElementById('cover-preview-wrap').style.display='block';
+    }else{
+      pendingImgSrc=src;
+      document.getElementById('mi-preview').src=src;
+      document.getElementById('mi-preview-wrap').style.display='block';
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── HOMEPAGE ──
+function loadHomepage(){
+  D=loadD();const h=D.hp||{};
+  setVal('hp-t1',h.t1);setVal('hp-t2',h.t2);setVal('hp-tag',h.tag);
+  setVal('hp-sub',h.sub);setVal('hp-quote',h.quote);setVal('hp-cta',h.cta);
+  setVal('hp-nlt',h.nlt);setVal('hp-nld',h.nld);setVal('hp-footer',D.footer);
+}
+function saveHomepage(){
+  D=loadD();
+  D.hp={...D.hp,t1:getVal('hp-t1'),t2:getVal('hp-t2'),tag:getVal('hp-tag'),sub:getVal('hp-sub'),quote:getVal('hp-quote'),cta:getVal('hp-cta'),nlt:getVal('hp-nlt'),nld:getVal('hp-nld')};
+  D.footer=getVal('hp-footer');
+  saveD(D);toast('首頁設定已儲存 ✓');
+}
+
+// ── ABOUT ──
+function loadAbout(){
+  D=loadD();const a=D.about||{};
+  setVal('ab-init',a.initials);setVal('ab-bio',a.bio);
+  setVal('ab-s1n',a.s1n);setVal('ab-s1l',a.s1l);
+  setVal('ab-s2n',a.s2n);setVal('ab-s2l',a.s2l);
+  setVal('ab-s3n',a.s3n);setVal('ab-s3l',a.s3l);
+}
+function saveAbout(){
+  D=loadD();
+  D.about={initials:getVal('ab-init'),bio:getVal('ab-bio'),s1n:getVal('ab-s1n'),s1l:getVal('ab-s1l'),s2n:getVal('ab-s2n'),s2l:getVal('ab-s2l'),s3n:getVal('ab-s3n'),s3l:getVal('ab-s3l')};
+  saveD(D);toast('關於我已儲存 ✓');
+}
+
+// ── DATA ──
+function exportData(){
+  D=loadD();
+  const blob=new Blob([JSON.stringify(D,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='operation-tw-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();
+}
+function importData(event){
+  const file=event.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{try{const d=JSON.parse(e.target.result);saveD(d);D=d;toast('資料已匯入 ✓');renderDash();}catch{toast('檔案格式錯誤','error');}};
+  reader.readAsText(file);
+}
+function resetData(){
+  if(!confirm('確定要重設所有資料嗎？此操作無法復原。'))return;
+  saveD(JSON.parse(JSON.stringify(DEFAULTS)));D=loadD();toast('已重設為預設值');renderDash();
+}
+
+// ── MODAL ──
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');}));
+
+// ── TOAST ──
+let toastTimer;
+function toast(msg,type=''){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast show'+(type?' '+type:'');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ── UTILS ──
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function setText(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
+function setVal(id,v){const e=document.getElementById(id);if(e&&v!=null)e.value=v;}
+function getVal(id){const e=document.getElementById(id);return e?e.value:'';}
+
+// ── INIT ──
+renderDash();
 </script>
 </body>
 </html>
