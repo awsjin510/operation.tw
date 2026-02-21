@@ -109,9 +109,13 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 
 /* ABOUT */
 .about-wrap{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:start;}
-.avatar{width:108px;height:108px;border-radius:50%;border:2px solid var(--cyan);box-shadow:0 0 20px rgba(0,245,255,.25);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:900;color:var(--cyan);flex-shrink:0;position:relative;}
-.avatar::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(0,245,255,.15);animation:spin 8s linear infinite;}
+.avatar{width:150px;height:150px;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;}
+.avatar-photo{width:112px;height:112px;border-radius:50%;object-fit:cover;object-position:center top;display:block;border:2px solid var(--cyan);box-shadow:0 0 0 4px rgba(0,245,255,.08),0 0 22px rgba(0,245,255,.55),0 0 55px rgba(0,245,255,.12);}
+.avatar::before{content:'';position:absolute;inset:12px;border-radius:50%;border:1.5px dashed rgba(0,245,255,.6);animation:spin 4s linear infinite;}
+.avatar::after{content:'';position:absolute;inset:0;border-radius:50%;border:1.5px solid transparent;border-top-color:rgba(255,0,128,.75);border-right-color:rgba(255,0,128,.75);animation:spin-rev 7s linear infinite;}
+.avatar-ring{position:absolute;inset:-12px;border-radius:50%;border:1px solid transparent;border-bottom-color:rgba(191,0,255,.5);border-left-color:rgba(191,0,255,.5);animation:spin 13s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
+@keyframes spin-rev{to{transform:rotate(-360deg);}}
 .about-bio{font-size:.9rem;color:var(--mid);line-height:1.9;margin-bottom:20px;white-space:pre-line;}
 .about-stats{display:flex;gap:28px;flex-wrap:wrap;}
 .stat-n{font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:900;color:var(--cyan);text-shadow:0 0 10px var(--cyan);}
@@ -324,7 +328,10 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
     <div class="sec-line"></div>
   </div>
   <div class="about-wrap">
-    <div class="avatar" id="av">OP</div>
+    <div class="avatar">
+      <img class="avatar-photo" src="profile.jpg" alt="Jin" id="av-img">
+      <div class="avatar-ring"></div>
+    </div>
     <div>
       <div class="about-bio" id="a-bio">我是操作一下，深耕雲端、資安與 AI 的自媒體創作者。
 
@@ -456,7 +463,7 @@ function renderHome(){
   setText('h-cta',h.cta);
   const q=document.getElementById('h-t1');if(q)q.setAttribute('data-text',h.t1||'操作');
   const a=D.about||{};
-  setText('av',a.initials);setText('a-bio',a.bio);
+  setText('a-bio',a.bio);
   setText('s1n',a.s1n);setText('s1l',a.s1l);
   setText('s2n',a.s2n);setText('s2l',a.s2l);
   setText('s3n',a.s3n);setText('s3l',a.s3l);
