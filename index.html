@@ -222,6 +222,7 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
   <span class="nav-logo" onclick="goHome()">操作一下</span>
   <div class="nav-links">
     <button onclick="goHome();gotoSection('posts')">文章</button>
+    <a href="podcast.html" style="font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--dim);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .25s;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--dim)'">Podcast</a>
     <button onclick="goHome();gotoSection('topics')">主題</button>
     <button onclick="goHome();gotoSection('about')">關於我</button>
     <button onclick="goHome();gotoSection('newsletter')">訂閱</button>
@@ -240,6 +241,7 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
     <input type="text" placeholder="搜尋文章..." id="mob-q" onkeydown="if(event.key==='Enter'){runSearch(this.value);toggleMob();}">
   </div>
   <button onclick="goHome();gotoSection('posts');toggleMob()">文章</button>
+  <a href="podcast.html" onclick="toggleMob()" style="font-family:'Share Tech Mono',monospace;font-size:.88rem;color:var(--mid);text-decoration:none;border-bottom:1px solid var(--border);padding:16px 0;text-transform:uppercase;display:block;">Podcast</a>
   <button onclick="goHome();gotoSection('topics');toggleMob()">主題</button>
   <button onclick="goHome();gotoSection('about');toggleMob()">關於我</button>
   <button onclick="goHome();gotoSection('newsletter');toggleMob()">訂閱</button>
