@@ -212,6 +212,9 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
   .hero-brand{font-size:clamp(2.8rem,14vw,5rem);}
 }
 
+/* POST VIEW BADGE */
+.pc-view-cnt{color:var(--dim);}
+
 ::selection{background:rgba(0,245,255,.2);color:#fff;}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:var(--bg2);}
@@ -343,6 +346,8 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
         <div><div class="stat-n" id="s1n">50+</div><div class="stat-l" id="s1l">篇文章</div></div>
         <div><div class="stat-n" id="s2n">5</div><div class="stat-l" id="s2l">核心主題</div></div>
         <div><div class="stat-n" id="s3n">∞</div><div class="stat-l" id="s3l">持續更新</div></div>
+        <div><div class="stat-n" style="color:var(--pink);text-shadow:0 0 10px var(--pink);" id="stat-total">—</div><div class="stat-l">累積瀏覽</div></div>
+        <div><div class="stat-n" style="color:var(--green);text-shadow:0 0 10px var(--green);" id="stat-today">—</div><div class="stat-l">今日瀏覽</div></div>
       </div>
     </div>
   </div>
@@ -370,6 +375,7 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
   <div class="art-meta">
     <span>📅 <span id="a-date"></span></span>
     <span>⏱ <span id="a-rt"></span> 分鐘閱讀</span>
+    <span>👁 <span id="a-views">0</span> 次瀏覽</span>
     <span id="a-cat-tag"></span>
   </div>
   <img class="art-cover" id="a-cover" style="display:none;" alt="封面圖">
@@ -426,24 +432,31 @@ let D={posts:[],hp:DEFAULTS.hp,about:DEFAULTS.about,footer:DEFAULTS.footer};
 
 // ── DB INIT ──
 async function initDB(){
+  const today=new Date().toISOString().slice(0,10);
   try{
-    const [pr,sr]=await Promise.all([
+    const [pr,sr,svr]=await Promise.all([
       sb.from('posts').select('*').eq('status','published').order('date',{ascending:false}),
-      sb.from('settings').select('*')
+      sb.from('settings').select('*'),
+      sb.from('site_stats').select('*').in('id',['total',today])
     ]);
     if(pr.error)throw pr.error;
     const sm={};
     (sr.data||[]).forEach(s=>{sm[s.key]=s.value;});
+    const sv={total:0,today:0};
+    (svr.data||[]).forEach(s=>{if(s.id==='total')sv.total=s.count;else sv.today=s.count;});
     D={
       posts:pr.data||[],
       hp:sm.hp||DEFAULTS.hp,
       about:sm.about||DEFAULTS.about,
-      footer:(sm.footer&&sm.footer.text)||DEFAULTS.footer
+      footer:(sm.footer&&sm.footer.text)||DEFAULTS.footer,
+      siteViews:sv
     };
   }catch(err){
     console.error('Supabase error:',err);
     D=JSON.parse(JSON.stringify(DEFAULTS));
+    D.siteViews={total:0,today:0};
   }
+  sb.rpc('increment_site_views').catch(()=>{});
   renderHome();
 }
 
@@ -462,6 +475,9 @@ function renderHome(){
   setText('s3n',a.s3n);setText('s3l',a.s3l);
   setText('nl-t',h.nlt);setText('nl-d',h.nld);
   setText('footer-text',D.footer||'');
+  const sv=D.siteViews||{total:0,today:0};
+  setText('stat-total',fmtViews(sv.total));
+  setText('stat-today',fmtViews(sv.today));
   updateTopicCounts();
   renderGrid('grid-main',publishedPosts());
 }
@@ -497,7 +513,7 @@ function cardHTML(p){
     +'<div class="pc-img">'+img+'<span class="pc-badge" style="border-color:'+c+';color:'+c+';">'+esc(p.category)+'</span></div>'
     +'<div class="pc-body"><div class="pc-title">'+esc(p.title)+'</div>'
     +'<div class="pc-exc">'+esc(p.excerpt||'')+'</div>'
-    +'<div class="pc-foot"><span>📅 '+esc(p.date)+'</span><span class="pc-rt">⏱ '+rt+' 分鐘</span></div>'
+    +'<div class="pc-foot"><span>📅 '+esc(p.date)+'</span><span class="pc-view-cnt">👁 '+(p.views||0)+'</span><span class="pc-rt">⏱ '+rt+' 分鐘</span></div>'
     +'</div></div>';
 }
 
@@ -523,7 +539,10 @@ function openPost(id){
   const c=CAT_COLOR[p.category]||'#aaa';
   const badge=document.getElementById('a-badge');
   badge.textContent=p.category;badge.style.borderColor=c;badge.style.color=c;
+  p.views=(p.views||0)+1;
   setText('a-title',p.title);setText('a-date',p.date);setText('a-rt',readTime(p.body));setText('a-cat-tag','🏷 '+p.category);
+  setText('a-views',p.views);
+  sb.rpc('increment_post_views',{post_id:p.id}).catch(()=>{});
   const cover=document.getElementById('a-cover');
   if(p.image){cover.src=p.image;cover.style.display='block';}else{cover.style.display='none';}
   document.getElementById('a-body').innerHTML=p.body||'<p style="color:var(--dim)">（尚無內容）</p>';
@@ -580,6 +599,7 @@ function toggleMob(){document.getElementById('mob-menu').classList.toggle('open'
 
 /* ── UTILS ── */
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function fmtViews(n){n=+n||0;if(n>=10000)return Math.floor(n/1000)+'k+';if(n>=1000)return (n/1000).toFixed(1)+'k';return String(n);}
 
 /* ── INIT ── */
 initDB();
