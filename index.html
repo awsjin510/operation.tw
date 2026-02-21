@@ -217,6 +217,7 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
 ::-webkit-scrollbar-track{background:var(--bg2);}
 ::-webkit-scrollbar-thumb{background:rgba(0,245,255,.2);}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -402,60 +403,52 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
 <footer id="footer-text">© 2025 操作一下 · 簡單的事情專注做</footer>
 
 <script>
-const SKEY='operation_tw_cms';
+// ── SUPABASE ──
+const SUPABASE_URL='https://pvqvnmntqhsfzarbxayf.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2cXZubW50cWhzZnphcmJ4YXlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2NjQ0MjUsImV4cCI6MjA4NzI0MDQyNX0.sKn8yzJos9F8ghKrp3icx6zR2RO39898DenWlLodpqA';
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
 const CAT_COLOR={AI:'#bf00ff',雲端:'#00f5ff',資安:'#ff0080',閱讀:'#ffff00',成長:'#00ff88'};
 const CAT_ICON={AI:'🤖',雲端:'☁️',資安:'🔐',閱讀:'📚',成長:'🌱'};
+
 const DEFAULTS={
   posts:[
-    {id:1,title:'從 GPT 到 Claude：2025 年 AI 工具選擇指南',category:'AI',date:'2025-02-15',status:'published',
-     excerpt:'深入比較主流 AI 助理的使用場景，找到最適合你工作流程的那一個。',
-     image:'',
-     body:`<p>2025 年，AI 助理已經不再是新奇玩具，而是真實影響工作效率的核心工具。但每個工具都有自己的強項，選錯了不只是浪費錢，更是浪費時間。</p>
-<h2>GPT-4o 的強項</h2>
-<p>OpenAI 的 GPT-4o 在多模態處理上表現出色，特別是圖片理解和語音輸入。對於需要頻繁切換文字和視覺內容的工作者來說，這是明顯優勢。</p>
-<h2>Claude 的強項</h2>
-<p>Anthropic 的 Claude 在長文處理和邏輯推理上有優勢，特別適合處理大量文件、程式碼審查和複雜分析任務。上下文視窗更大，適合深度工作。</p>
-<h2>我的建議</h2>
-<p>沒有「最好」的 AI 工具，只有最適合你工作流程的那一個。建議兩者都試用，找到自己的組合策略。可以參考 <a href="https://openai.com" target="_blank">OpenAI 官網</a> 和 <a href="https://anthropic.com" target="_blank">Anthropic 官網</a> 了解最新功能。</p>`},
-    {id:2,title:'AWS vs Azure vs GCP：選擇雲端平台的三個關鍵問題',category:'雲端',date:'2025-02-08',status:'published',
-     excerpt:'不用背所有服務名稱，只要問對問題，你就知道哪個雲更適合你的需求。',
-     image:'',
-     body:`<p>雲端平台的選擇困擾著很多人，但其實只需要問自己三個問題，答案就會很清楚。</p>
-<h2>問題一：你的團隊用什麼技術棧？</h2>
-<p>如果主要使用微軟技術（.NET、Active Directory），Azure 的整合優勢明顯。如果是 Google Workspace 重度用戶，GCP 的協作工具整合更順暢。</p>
-<h2>問題二：你的主要市場在哪裡？</h2>
-<p>AWS 在全球覆蓋率最高，數據中心最多，適合需要全球部署的服務。三家都有亞太區域節點。</p>
-<h2>問題三：你的預算模式？</h2>
-<p>AWS 服務最多但計費複雜；GCP 提供持續使用折扣；Azure 對企業授權用戶有優惠。建議使用各家的 <strong>免費試用額度</strong> 先跑真實工作負載。</p>`},
-    {id:3,title:'零信任架構入門：為什麼「相信但驗證」已經過時了',category:'資安',date:'2025-01-29',status:'published',
-     excerpt:'現代資安思維的轉變，以及企業如何在混合工作時代保護數位邊界。',
-     image:'',
-     body:`<p>零信任（Zero Trust）的核心概念是「永不信任，始終驗證」。與傳統網路邊界安全不同，零信任假設威脅可能來自任何地方。</p>
-<h2>為什麼現在需要零信任？</h2>
-<p>混合工作模式讓員工從各種地點、設備存取公司資源。傳統的 VPN + 防火牆模型已無法應對分散式工作環境。</p>
-<h2>三個核心原則</h2>
-<ul>
-<li><strong>持續驗證</strong>：不論位置，每次存取都要驗證</li>
-<li><strong>最小權限</strong>：只給完成任務所需的最低存取權限</li>
-<li><strong>假設已遭入侵</strong>：設計系統時假設邊界已被突破</li>
-</ul>
-<h2>如何開始？</h2>
-<p>從多因素驗證（MFA）開始，這是最低成本、最高回報的第一步。再逐步建立身份識別平台和微分段網路架構。</p>`},
+    {id:1,title:'從 GPT 到 Claude：2025 年 AI 工具選擇指南',category:'AI',date:'2025-02-15',status:'published',excerpt:'深入比較主流 AI 助理的使用場景，找到最適合你工作流程的那一個。',image:'',body:'<p>2025 年，AI 助理已經不再是新奇玩具，而是真實影響工作效率的核心工具。</p>'},
+    {id:2,title:'AWS vs Azure vs GCP：選擇雲端平台的三個關鍵問題',category:'雲端',date:'2025-02-08',status:'published',excerpt:'不用背所有服務名稱，只要問對問題，你就知道哪個雲更適合你的需求。',image:'',body:'<p>雲端平台的選擇困擾著很多人，但其實只需要問自己三個問題。</p>'},
+    {id:3,title:'零信任架構入門：為什麼「相信但驗證」已經過時了',category:'資安',date:'2025-01-29',status:'published',excerpt:'現代資安思維的轉變，以及企業如何在混合工作時代保護數位邊界。',image:'',body:'<p>零信任的核心是「永不信任，始終驗證」。</p>'},
   ],
   hp:{tag:'個人品牌 · 自媒體創作者',t1:'操作',t2:'一下',sub:'operation.tw // 雲端 · 資安 · AI · 閱讀 · 成長',quote:'簡單的事情專注做，\n有一天世界會為了你而感動',cta:'開始閱讀 →',nlt:'訂閱電子報',nld:'每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。'},
   about:{initials:'OP',bio:'我是操作一下，深耕雲端、資安與 AI 的自媒體創作者。\n\n我相信科技不應只是工程師的語言，每個人都值得理解這些工具。\n\n不賣課程，不追流量，只想把有用的東西說清楚。',s1n:'50+',s1l:'篇文章',s2n:'5',s2l:'核心主題',s3n:'∞',s3l:'持續更新'},
   footer:'© 2025 操作一下 · 簡單的事情專注做'
 };
 
-function loadD(){
-  try{const r=localStorage.getItem(SKEY);return r?JSON.parse(r):JSON.parse(JSON.stringify(DEFAULTS));}
-  catch{return JSON.parse(JSON.stringify(DEFAULTS));}
+let D={posts:[],hp:DEFAULTS.hp,about:DEFAULTS.about,footer:DEFAULTS.footer};
+
+// ── DB INIT ──
+async function initDB(){
+  try{
+    const [pr,sr]=await Promise.all([
+      sb.from('posts').select('*').eq('status','published').order('date',{ascending:false}),
+      sb.from('settings').select('*')
+    ]);
+    if(pr.error)throw pr.error;
+    const sm={};
+    (sr.data||[]).forEach(s=>{sm[s.key]=s.value;});
+    D={
+      posts:pr.data||[],
+      hp:sm.hp||DEFAULTS.hp,
+      about:sm.about||DEFAULTS.about,
+      footer:(sm.footer&&sm.footer.text)||DEFAULTS.footer
+    };
+  }catch(err){
+    console.error('Supabase error:',err);
+    D=JSON.parse(JSON.stringify(DEFAULTS));
+  }
+  renderHome();
 }
-let D=loadD();
 
 /* ── RENDER HOME ── */
 function renderHome(){
-  D=loadD();
   const h=D.hp||{};
   setText('h-tag',h.tag);setText('h-t1',h.t1);setText('h-t2',h.t2);
   setText('h-sub',h.sub);
@@ -463,7 +456,7 @@ function renderHome(){
   setText('h-cta',h.cta);
   const q=document.getElementById('h-t1');if(q)q.setAttribute('data-text',h.t1||'操作');
   const a=D.about||{};
-  setText('a-bio',a.bio);
+  setHTML('a-bio',(a.bio||'').replace(/\n/g,'<br>'));
   setText('s1n',a.s1n);setText('s1l',a.s1l);
   setText('s2n',a.s2n);setText('s2l',a.s2l);
   setText('s3n',a.s3n);setText('s3l',a.s3l);
@@ -477,8 +470,7 @@ function setText(id,v){const e=document.getElementById(id);if(e&&v!=null)e.textC
 function setHTML(id,v){const e=document.getElementById(id);if(e&&v!=null)e.innerHTML=v;}
 
 function publishedPosts(cat){
-  return (D.posts||[]).filter(p=>p.status==='published'&&(!cat||p.category===cat))
-    .sort((a,b)=>new Date(b.date)-new Date(a.date));
+  return (D.posts||[]).filter(p=>!cat||p.category===cat).sort((a,b)=>new Date(b.date)-new Date(a.date));
 }
 
 function updateTopicCounts(){
@@ -499,16 +491,14 @@ function cardHTML(p){
   const c=CAT_COLOR[p.category]||'#aaa';
   const icon=CAT_ICON[p.category]||'📄';
   const rt=readTime(p.body);
-  const img=p.image?`<img src="${esc(p.image)}" alt="${esc(p.title)}" style="width:100%;height:100%;object-fit:cover;">`
-    :`<span class="pc-img-ph">${icon}</span>`;
-  return `<div class="pc" onclick="openPost(${p.id})">
-    <div class="pc-img">${img}<span class="pc-badge" style="border-color:${c};color:${c};">${esc(p.category)}</span></div>
-    <div class="pc-body">
-      <div class="pc-title">${esc(p.title)}</div>
-      <div class="pc-exc">${esc(p.excerpt||'')}</div>
-      <div class="pc-foot"><span>📅 ${esc(p.date)}</span><span class="pc-rt">⏱ ${rt} 分鐘</span></div>
-    </div>
-  </div>`;
+  const img=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" style="width:100%;height:100%;object-fit:cover;">'
+    :'<span class="pc-img-ph">'+icon+'</span>';
+  return '<div class="pc" onclick="openPost('+p.id+')">'
+    +'<div class="pc-img">'+img+'<span class="pc-badge" style="border-color:'+c+';color:'+c+';">'+esc(p.category)+'</span></div>'
+    +'<div class="pc-body"><div class="pc-title">'+esc(p.title)+'</div>'
+    +'<div class="pc-exc">'+esc(p.excerpt||'')+'</div>'
+    +'<div class="pc-foot"><span>📅 '+esc(p.date)+'</span><span class="pc-rt">⏱ '+rt+' 分鐘</span></div>'
+    +'</div></div>';
 }
 
 function readTime(html){return Math.max(1,Math.round(((html||'').replace(/<[^>]+>/g,'').length)/300));}
@@ -521,7 +511,7 @@ function applyFilter(btn,cat){
 function applyFilterGlobal(cat){
   goHome();
   setTimeout(()=>{
-    const btn=document.querySelector(`#posts .fb[data-cat="${cat}"]`);
+    const btn=document.querySelector('#posts .fb[data-cat="'+cat+'"]');
     if(btn)applyFilter(btn,cat);
     gotoSection('posts');
   },80);
@@ -529,65 +519,46 @@ function applyFilterGlobal(cat){
 
 /* ── OPEN POST ── */
 function openPost(id){
-  const p=(D.posts||[]).find(x=>x.id===id);if(!p)return;
+  const p=(D.posts||[]).find(x=>x.id==id);if(!p)return;
   const c=CAT_COLOR[p.category]||'#aaa';
   const badge=document.getElementById('a-badge');
   badge.textContent=p.category;badge.style.borderColor=c;badge.style.color=c;
-  setText('a-title',p.title);
-  setText('a-date',p.date);
-  setText('a-rt',readTime(p.body));
-  setText('a-cat-tag','🏷 '+p.category);
-  // cover image
+  setText('a-title',p.title);setText('a-date',p.date);setText('a-rt',readTime(p.body));setText('a-cat-tag','🏷 '+p.category);
   const cover=document.getElementById('a-cover');
-  if(p.image){cover.src=p.image;cover.style.display='block';}
-  else{cover.style.display='none';}
-  // body
+  if(p.image){cover.src=p.image;cover.style.display='block';}else{cover.style.display='none';}
   document.getElementById('a-body').innerHTML=p.body||'<p style="color:var(--dim)">（尚無內容）</p>';
-  // related
-  const rel=publishedPosts(p.category).filter(x=>x.id!==id).slice(0,3);
-  const rg=document.getElementById('rel-grid');
-  const rs=document.getElementById('related');
+  const rel=publishedPosts(p.category).filter(x=>x.id!=id).slice(0,3);
+  const rg=document.getElementById('rel-grid'),rs=document.getElementById('related');
   if(rel.length){
     rg.innerHTML=rel.map(r=>{
       const rc=CAT_COLOR[r.category]||'#aaa';
-      return `<div class="rel-card" onclick="openPost(${r.id})">
-        <div class="rel-cat" style="color:${rc};">${esc(r.category)}</div>
-        <div class="rel-title">${esc(r.title)}</div>
-      </div>`;
+      return '<div class="rel-card" onclick="openPost('+r.id+')">'
+        +'<div class="rel-cat" style="color:'+rc+';">'+esc(r.category)+'</div>'
+        +'<div class="rel-title">'+esc(r.title)+'</div></div>';
     }).join('');
     rs.style.display='block';
   }else rs.style.display='none';
-  showView('article');
-  window.scrollTo(0,0);
+  showView('article');window.scrollTo(0,0);
 }
 
 /* ── VIEWS ── */
-function showView(name){
-  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-  document.getElementById('v-'+name).classList.add('active');
-}
+function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('v-'+name).classList.add('active');}
 function goHome(){showView('home');renderHome();}
 function gotoSection(id){setTimeout(()=>{const e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth'});},120);}
 
 /* ── SEARCH ── */
 function runSearch(q){
   q=(q||'').trim();if(!q)return;
-  document.getElementById('sq').value=q;
-  document.getElementById('nav-q').value=q;
-  const r=publishedPosts().filter(p=>
-    [p.title,p.excerpt||'',(p.body||'').replace(/<[^>]+>/g,'')].join(' ').toLowerCase().includes(q.toLowerCase())
-  );
-  setText('s-info',`找到 ${r.length} 篇，關鍵字：「${q}」`);
-  renderGrid('grid-search',r);
-  showView('search');
-  window.scrollTo(0,0);
+  document.getElementById('sq').value=q;document.getElementById('nav-q').value=q;
+  const r=publishedPosts().filter(p=>[p.title,p.excerpt||'',(p.body||'').replace(/<[^>]+>/g,'')].join(' ').toLowerCase().includes(q.toLowerCase()));
+  setText('s-info','找到 '+r.length+' 篇，關鍵字：「'+q+'」');
+  renderGrid('grid-search',r);showView('search');window.scrollTo(0,0);
 }
 
 /* ── SHARE ── */
 function share(platform){
-  const url=encodeURIComponent(location.href);
-  const title=encodeURIComponent(document.getElementById('a-title').textContent);
-  const urls={twitter:`https://twitter.com/intent/tweet?text=${title}&url=${url}`,linkedin:`https://www.linkedin.com/sharing/share-offsite/?url=${url}`};
+  const url=encodeURIComponent(location.href),title=encodeURIComponent(document.getElementById('a-title').textContent);
+  const urls={twitter:'https://twitter.com/intent/tweet?text='+title+'&url='+url,linkedin:'https://www.linkedin.com/sharing/share-offsite/?url='+url};
   window.open(urls[platform],'_blank');
 }
 function copyURL(btn){
@@ -610,11 +581,8 @@ function toggleMob(){document.getElementById('mob-menu').classList.toggle('open'
 /* ── UTILS ── */
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
-/* ── STORAGE SYNC ── */
-window.addEventListener('storage',e=>{if(e.key===SKEY){D=loadD();if(document.getElementById('v-home').classList.contains('active'))renderHome();}});
-
 /* ── INIT ── */
-renderHome();
+initDB();
 </script>
 </body>
 </html>
