@@ -178,8 +178,9 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
     <div class="sb-section">系統</div>
     <button class="sb-item" onclick="nav('data')" id="nav-data"><span class="si">💾</span>資料管理</button>
   </nav>
-  <div class="sb-bottom">
+  <div class="sb-bottom" style="display:flex;flex-direction:column;gap:8px;">
     <a class="sb-preview-btn" href="index.html" target="_blank">↗ 預覽網站</a>
+    <button class="sb-preview-btn" style="border-color:rgba(255,0,128,.4);color:var(--pink);" onclick="doLogout()">⏻ 登出</button>
   </div>
 </aside>
 
@@ -464,6 +465,24 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 
 <div class="toast" id="toast"></div>
 
+<!-- LOGIN OVERLAY -->
+<div id="login-overlay" style="display:flex;position:fixed;inset:0;background:var(--bg);z-index:1000;align-items:center;justify-content:center;">
+  <div style="width:100%;max-width:380px;padding:0 24px;">
+    <div style="font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:4px;">後台登入</div>
+    <div style="font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.15em;margin-bottom:32px;">// OPERATION.TW ADMIN</div>
+    <div class="form-group">
+      <div class="form-label">Email</div>
+      <input type="email" id="login-email" placeholder="your@email.com" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="form-group">
+      <div class="form-label">密碼</div>
+      <input type="password" id="login-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div id="login-err" style="font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--pink);margin-bottom:14px;display:none;"></div>
+    <button class="btn btn-primary" style="width:100%;" onclick="doLogin()" id="login-btn">登入後台</button>
+  </div>
+</div>
+
 <script>
 // ── SUPABASE ──
 const SUPABASE_URL='https://pvqvnmntqhsfzarbxayf.supabase.co';
@@ -491,8 +510,44 @@ const DEFAULTS={
 
 let D={posts:[],hp:DEFAULTS.hp,about:DEFAULTS.about,footer:DEFAULTS.footer};
 
-// ── DB INIT ──
-async function initDB(){
+// ── AUTH ──
+async function checkAuth(){
+  const {data:{session}}=await sb.auth.getSession();
+  if(session){
+    document.getElementById('login-overlay').style.display='none';
+    await loadData();
+  }else{
+    document.getElementById('login-overlay').style.display='flex';
+  }
+}
+
+async function doLogin(){
+  const email=document.getElementById('login-email').value.trim();
+  const pw=document.getElementById('login-pw').value;
+  const errEl=document.getElementById('login-err');
+  const btn=document.getElementById('login-btn');
+  errEl.style.display='none';
+  btn.textContent='驗證中...';btn.disabled=true;
+  const {error}=await sb.auth.signInWithPassword({email,password:pw});
+  btn.textContent='登入後台';btn.disabled=false;
+  if(error){
+    errEl.textContent='登入失敗：'+error.message;
+    errEl.style.display='block';
+  }else{
+    document.getElementById('login-overlay').style.display='none';
+    await loadData();
+  }
+}
+
+async function doLogout(){
+  await sb.auth.signOut();
+  document.getElementById('login-overlay').style.display='flex';
+  document.getElementById('login-email').value='';
+  document.getElementById('login-pw').value='';
+}
+
+// ── DB LOAD ──
+async function loadData(){
   try{
     const [pr,sr]=await Promise.all([
       sb.from('posts').select('*').order('date',{ascending:false}),
@@ -513,6 +568,11 @@ async function initDB(){
     toast('資料庫連線失敗，請確認 Supabase 設定','error');
   }
   renderDash();
+}
+
+// ── DB INIT ──
+async function initDB(){
+  await checkAuth();
 }
 
 async function seedDefaults(){
