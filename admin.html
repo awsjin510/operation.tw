@@ -157,6 +157,7 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 ::-webkit-scrollbar-track{background:var(--bg2);}
 ::-webkit-scrollbar-thumb{background:rgba(0,245,255,.2);}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -177,8 +178,9 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
     <div class="sb-section">系統</div>
     <button class="sb-item" onclick="nav('data')" id="nav-data"><span class="si">💾</span>資料管理</button>
   </nav>
-  <div class="sb-bottom">
+  <div class="sb-bottom" style="display:flex;flex-direction:column;gap:8px;">
     <a class="sb-preview-btn" href="index.html" target="_blank">↗ 預覽網站</a>
+    <button class="sb-preview-btn" style="border-color:rgba(255,0,128,.4);color:var(--pink);" onclick="doLogout()">⏻ 登出</button>
   </div>
 </aside>
 
@@ -463,30 +465,126 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 
 <div class="toast" id="toast"></div>
 
+<!-- LOGIN OVERLAY -->
+<div id="login-overlay" style="display:flex;position:fixed;inset:0;background:var(--bg);z-index:1000;align-items:center;justify-content:center;">
+  <div style="width:100%;max-width:380px;padding:0 24px;">
+    <div style="font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:4px;">後台登入</div>
+    <div style="font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.15em;margin-bottom:32px;">// OPERATION.TW ADMIN</div>
+    <div class="form-group">
+      <div class="form-label">Email</div>
+      <input type="email" id="login-email" placeholder="your@email.com" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="form-group">
+      <div class="form-label">密碼</div>
+      <input type="password" id="login-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div id="login-err" style="font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--pink);margin-bottom:14px;display:none;"></div>
+    <button class="btn btn-primary" style="width:100%;" onclick="doLogin()" id="login-btn">登入後台</button>
+  </div>
+</div>
+
 <script>
-const SKEY='operation_tw_cms';
+// ── SUPABASE ──
+const SUPABASE_URL='https://pvqvnmntqhsfzarbxayf.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2cXZubW50cWhzZnphcmJ4YXlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2NjQ0MjUsImV4cCI6MjA4NzI0MDQyNX0.sKn8yzJos9F8ghKrp3icx6zR2RO39898DenWlLodpqA';
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
 const CAT_COLOR={AI:'#bf00ff',雲端:'#00f5ff',資安:'#ff0080',閱讀:'#ffff00',成長:'#00ff88'};
 
 const DEFAULTS={
   posts:[
-    {id:1,title:'從 GPT 到 Claude：2025 年 AI 工具選擇指南',category:'AI',date:'2025-02-15',status:'published',
+    {title:'從 GPT 到 Claude：2025 年 AI 工具選擇指南',category:'AI',date:'2025-02-15',status:'published',
      excerpt:'深入比較主流 AI 助理的使用場景，找到最適合你工作流程的那一個。',image:'',
-     body:`<p>2025 年，AI 助理已經不再是新奇玩具，而是真實影響工作效率的核心工具。但每個工具都有自己的強項，選錯了不只是浪費錢，更是浪費時間。</p><h2>GPT-4o 的強項</h2><p>OpenAI 的 GPT-4o 在多模態處理上表現出色，特別是圖片理解和語音輸入。</p><h2>Claude 的強項</h2><p>Anthropic 的 Claude 在長文處理和邏輯推理上有優勢，特別適合處理大量文件、程式碼審查和複雜分析任務。</p><h2>我的建議</h2><p>沒有「最好」的 AI 工具，只有最適合你工作流程的那一個。可以參考 <a href="https://openai.com" target="_blank">OpenAI 官網</a> 了解最新功能。</p>`},
-    {id:2,title:'AWS vs Azure vs GCP：選擇雲端平台的三個關鍵問題',category:'雲端',date:'2025-02-08',status:'published',
+     body:'<p>2025 年，AI 助理已經不再是新奇玩具，而是真實影響工作效率的核心工具。</p><h2>GPT-4o 的強項</h2><p>OpenAI 的 GPT-4o 在多模態處理上表現出色，特別是圖片理解和語音輸入。</p><h2>Claude 的強項</h2><p>Anthropic 的 Claude 在長文處理和邏輯推理上有優勢，特別適合處理大量文件、程式碼審查和複雜分析任務。</p><h2>我的建議</h2><p>沒有「最好」的 AI 工具，只有最適合你工作流程的那一個。可以參考 <a href="https://openai.com" target="_blank">OpenAI 官網</a> 了解最新功能。</p>'},
+    {title:'AWS vs Azure vs GCP：選擇雲端平台的三個關鍵問題',category:'雲端',date:'2025-02-08',status:'published',
      excerpt:'不用背所有服務名稱，只要問對問題，你就知道哪個雲更適合你的需求。',image:'',
-     body:`<p>雲端平台的選擇困擾著很多人，但其實只需要問自己三個問題。</p><h2>問題一：你的團隊用什麼技術棧？</h2><p>如果主要使用微軟技術，Azure 的整合優勢明顯。</p><h2>問題二：你的主要市場在哪裡？</h2><p>AWS 在全球覆蓋率最高，適合全球部署。</p><h2>問題三：你的預算模式？</h2><p>GCP 提供持續使用折扣；Azure 對企業授權用戶有優惠。</p>`},
-    {id:3,title:'零信任架構入門：為什麼「相信但驗證」已經過時了',category:'資安',date:'2025-01-29',status:'published',
+     body:'<p>雲端平台的選擇困擾著很多人，但其實只需要問自己三個問題。</p><h2>問題一：你的團隊用什麼技術棧？</h2><p>如果主要使用微軟技術，Azure 的整合優勢明顯。</p><h2>問題二：你的主要市場在哪裡？</h2><p>AWS 在全球覆蓋率最高，適合全球部署。</p><h2>問題三：你的預算模式？</h2><p>GCP 提供持續使用折扣；Azure 對企業授權用戶有優惠。</p>'},
+    {title:'零信任架構入門：為什麼「相信但驗證」已經過時了',category:'資安',date:'2025-01-29',status:'published',
      excerpt:'現代資安思維的轉變，以及企業如何在混合工作時代保護數位邊界。',image:'',
-     body:`<p>零信任的核心是「永不信任，始終驗證」。</p><h2>為什麼需要零信任？</h2><p>混合工作模式讓傳統 VPN 已無法應對分散式工作環境。</p><h2>如何開始？</h2><ul><li><strong>多因素驗證</strong>：最低成本、最高回報的第一步</li><li><strong>最小權限</strong>：只給完成任務所需的最低存取權限</li></ul>`},
+     body:'<p>零信任的核心是「永不信任，始終驗證」。</p><h2>為什麼需要零信任？</h2><p>混合工作模式讓傳統 VPN 已無法應對分散式工作環境。</p><h2>如何開始？</h2><ul><li><strong>多因素驗證</strong>：最低成本、最高回報的第一步</li><li><strong>最小權限</strong>：只給完成任務所需的最低存取權限</li></ul>'},
   ],
   hp:{tag:'個人品牌 · 自媒體創作者',t1:'操作',t2:'一下',sub:'operation.tw // 雲端 · 資安 · AI · 閱讀 · 成長',quote:'簡單的事情專注做，\n有一天世界會為了你而感動',cta:'開始閱讀 →',nlt:'訂閱電子報',nld:'每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。'},
   about:{initials:'OP',bio:'我是操作一下，深耕雲端、資安與 AI 的自媒體創作者。\n\n我相信科技不應只是工程師的語言，每個人都值得理解這些工具。\n\n不賣課程，不追流量，只想把有用的東西說清楚。',s1n:'50+',s1l:'篇文章',s2n:'5',s2l:'核心主題',s3n:'∞',s3l:'持續更新'},
   footer:'© 2025 操作一下 · 簡單的事情專注做'
 };
 
-function loadD(){try{const r=localStorage.getItem(SKEY);return r?JSON.parse(r):JSON.parse(JSON.stringify(DEFAULTS));}catch{return JSON.parse(JSON.stringify(DEFAULTS));}}
-function saveD(d){localStorage.setItem(SKEY,JSON.stringify(d));}
-let D=loadD();
+let D={posts:[],hp:DEFAULTS.hp,about:DEFAULTS.about,footer:DEFAULTS.footer};
+
+// ── AUTH ──
+async function checkAuth(){
+  const {data:{session}}=await sb.auth.getSession();
+  if(session){
+    document.getElementById('login-overlay').style.display='none';
+    await loadData();
+  }else{
+    document.getElementById('login-overlay').style.display='flex';
+  }
+}
+
+async function doLogin(){
+  const email=document.getElementById('login-email').value.trim();
+  const pw=document.getElementById('login-pw').value;
+  const errEl=document.getElementById('login-err');
+  const btn=document.getElementById('login-btn');
+  errEl.style.display='none';
+  btn.textContent='驗證中...';btn.disabled=true;
+  const {error}=await sb.auth.signInWithPassword({email,password:pw});
+  btn.textContent='登入後台';btn.disabled=false;
+  if(error){
+    errEl.textContent='登入失敗：'+error.message;
+    errEl.style.display='block';
+  }else{
+    document.getElementById('login-overlay').style.display='none';
+    await loadData();
+  }
+}
+
+async function doLogout(){
+  await sb.auth.signOut();
+  document.getElementById('login-overlay').style.display='flex';
+  document.getElementById('login-email').value='';
+  document.getElementById('login-pw').value='';
+}
+
+// ── DB LOAD ──
+async function loadData(){
+  try{
+    const [pr,sr]=await Promise.all([
+      sb.from('posts').select('*').order('date',{ascending:false}),
+      sb.from('settings').select('*')
+    ]);
+    if(pr.error)throw pr.error;
+    const sm={};
+    (sr.data||[]).forEach(s=>{sm[s.key]=s.value;});
+    D={
+      posts:pr.data||[],
+      hp:sm.hp||DEFAULTS.hp,
+      about:sm.about||DEFAULTS.about,
+      footer:(sm.footer&&sm.footer.text)||DEFAULTS.footer
+    };
+    if(!pr.data.length&&!Object.keys(sm).length){await seedDefaults();return;}
+  }catch(err){
+    console.error('Supabase error:',err);
+    toast('資料庫連線失敗，請確認 Supabase 設定','error');
+  }
+  renderDash();
+}
+
+// ── DB INIT ──
+async function initDB(){
+  await checkAuth();
+}
+
+async function seedDefaults(){
+  const rows=DEFAULTS.posts.map(({id,...r})=>r);
+  await sb.from('posts').insert(rows);
+  await Promise.all([
+    sb.from('settings').upsert({key:'hp',value:DEFAULTS.hp}),
+    sb.from('settings').upsert({key:'about',value:DEFAULTS.about}),
+    sb.from('settings').upsert({key:'footer',value:{text:DEFAULTS.footer}})
+  ]);
+  await initDB();
+}
 
 // ── NAV ──
 function nav(id){
@@ -503,7 +601,6 @@ function nav(id){
 
 // ── DASHBOARD ──
 function renderDash(){
-  D=loadD();
   const pub=D.posts.filter(p=>p.status==='published').length;
   const dft=D.posts.filter(p=>p.status==='draft').length;
   setText('ds-total',D.posts.length);setText('ds-pub',pub);setText('ds-draft',dft);
@@ -511,43 +608,21 @@ function renderDash(){
   const el=document.getElementById('ds-recent');
   el.innerHTML=recent.map(p=>{
     const c=CAT_COLOR[p.category]||'#aaa';
-    return `<div class="post-row">
-      <span class="pr-cat" style="border-color:${c};color:${c};">${p.category}</span>
-      <span class="pr-title">${esc(p.title)}</span>
-      <span class="pr-date">${p.date}</span>
-      <span class="pr-status ${p.status==='published'?'pub':'dft'}">${p.status==='published'?'已發布':'草稿'}</span>
-      <div class="pr-actions">
-        <button class="pr-btn" onclick="editPost(${p.id})">編輯</button>
-      </div>
-    </div>`;
+    return '<div class="post-row"><span class="pr-cat" style="border-color:'+c+';color:'+c+';">'+p.category+'</span><span class="pr-title">'+esc(p.title)+'</span><span class="pr-date">'+p.date+'</span><span class="pr-status '+(p.status==='published'?'pub':'dft')+'">'+(p.status==='published'?'已發布':'草稿')+'</span><div class="pr-actions"><button class="pr-btn" onclick="editPost('+p.id+')">編輯</button></div></div>';
   }).join('');
 }
 
 // ── POST LIST ──
 function renderPostList(){
-  D=loadD();
   const q=(document.getElementById('search-posts').value||'').toLowerCase();
   const cat=document.getElementById('filter-cat').value;
   const status=document.getElementById('filter-status').value;
-  const filtered=D.posts.filter(p=>
-    (!q||p.title.toLowerCase().includes(q))&&
-    (!cat||p.category===cat)&&
-    (!status||p.status===status)
-  ).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const filtered=D.posts.filter(p=>(!q||p.title.toLowerCase().includes(q))&&(!cat||p.category===cat)&&(!status||p.status===status)).sort((a,b)=>new Date(b.date)-new Date(a.date));
   const el=document.getElementById('post-list');
   if(!filtered.length){el.innerHTML='<div style="padding:28px;text-align:center;font-family:\'Share Tech Mono\',monospace;font-size:.72rem;color:var(--dim);">沒有符合條件的文章</div>';return;}
   el.innerHTML=filtered.map(p=>{
     const c=CAT_COLOR[p.category]||'#aaa';
-    return `<div class="post-row">
-      <span class="pr-cat" style="border-color:${c};color:${c};">${p.category}</span>
-      <span class="pr-title">${esc(p.title)}</span>
-      <span class="pr-date">${p.date}</span>
-      <span class="pr-status ${p.status==='published'?'pub':'dft'}">${p.status==='published'?'已發布':'草稿'}</span>
-      <div class="pr-actions">
-        <button class="pr-btn" onclick="editPost(${p.id})">編輯</button>
-        <button class="pr-btn del" onclick="askDelete(${p.id})">刪除</button>
-      </div>
-    </div>`;
+    return '<div class="post-row"><span class="pr-cat" style="border-color:'+c+';color:'+c+';">'+p.category+'</span><span class="pr-title">'+esc(p.title)+'</span><span class="pr-date">'+p.date+'</span><span class="pr-status '+(p.status==='published'?'pub':'dft')+'">'+(p.status==='published'?'已發布':'草稿')+'</span><div class="pr-actions"><button class="pr-btn" onclick="editPost('+p.id+')">編輯</button><button class="pr-btn del" onclick="askDelete('+p.id+')">刪除</button></div></div>';
   }).join('');
 }
 
@@ -569,8 +644,7 @@ function newPost(){
 }
 
 function editPost(id){
-  D=loadD();
-  const p=D.posts.find(x=>x.id===id);if(!p)return;
+  const p=D.posts.find(x=>x.id==id);if(!p)return;
   document.getElementById('ed-id').value=id;
   document.getElementById('ed-ttl').value=p.title;
   document.getElementById('ed-cat').value=p.category;
@@ -580,279 +654,186 @@ function editPost(id){
   document.getElementById('ed-cover-url').value=p.image||'';
   document.getElementById('ed-body').innerHTML=p.body||'';
   document.getElementById('ed-html').value=p.body||'';
-  if(p.image){
-    document.getElementById('cover-preview').src=p.image;
-    document.getElementById('cover-preview-wrap').style.display='block';
-  }else document.getElementById('cover-preview-wrap').style.display='none';
+  if(p.image){document.getElementById('cover-preview').src=p.image;document.getElementById('cover-preview-wrap').style.display='block';}
+  else document.getElementById('cover-preview-wrap').style.display='none';
   document.getElementById('ed-title-label').textContent='編輯文章';
   document.getElementById('del-btn').style.display='inline-flex';
   nav('editor');
 }
 
-function savePost(){
-  D=loadD();
+async function savePost(){
   const id=document.getElementById('ed-id').value;
   const title=document.getElementById('ed-ttl').value.trim();
   if(!title){toast('請輸入文章標題！','error');return;}
-  // sync visual to html
   const body=getCurrentBody();
-  const post={
-    title,
-    category:document.getElementById('ed-cat').value,
-    date:document.getElementById('ed-date').value,
-    status:document.getElementById('ed-status').value,
-    excerpt:document.getElementById('ed-exc').value.trim(),
-    image:document.getElementById('ed-cover-url').value.trim(),
-    body
-  };
+  const post={title,category:document.getElementById('ed-cat').value,date:document.getElementById('ed-date').value,status:document.getElementById('ed-status').value,excerpt:document.getElementById('ed-exc').value.trim(),image:document.getElementById('ed-cover-url').value.trim(),body};
   if(id){
+    const {error}=await sb.from('posts').update(post).eq('id',id);
+    if(error){toast('儲存失敗：'+error.message,'error');return;}
     const idx=D.posts.findIndex(x=>x.id==id);
-    if(idx>=0){D.posts[idx]={...D.posts[idx],...post};}
+    if(idx>=0)D.posts[idx]={...D.posts[idx],...post};
   }else{
-    const newId=Date.now();
-    D.posts.push({id:newId,...post});
-    document.getElementById('ed-id').value=newId;
+    const {data,error}=await sb.from('posts').insert(post).select().single();
+    if(error){toast('儲存失敗：'+error.message,'error');return;}
+    D.posts.unshift(data);
+    document.getElementById('ed-id').value=data.id;
     document.getElementById('del-btn').style.display='inline-flex';
     document.getElementById('ed-title-label').textContent='編輯文章';
   }
-  saveD(D);
   toast('文章已儲存 ✓');
 }
 
 function getCurrentBody(){
   const activeTab=document.querySelector('.etab.on');
-  if(activeTab&&activeTab.textContent.includes('HTML')){
-    return document.getElementById('ed-html').value;
-  }
+  if(activeTab&&activeTab.textContent.includes('HTML'))return document.getElementById('ed-html').value;
   return document.getElementById('ed-body').innerHTML;
 }
 
-function previewPost(){
-  savePost();
-  window.open('index.html','_blank');
-}
+function previewPost(){savePost();window.open('index.html','_blank');}
 
 let deleteTargetId=null;
 function askDelete(id){deleteTargetId=id;openModal('del-modal');}
 function deleteCurrentPost(){deleteTargetId=parseInt(document.getElementById('ed-id').value);openModal('del-modal');}
-function confirmDelete(){
+async function confirmDelete(){
   if(!deleteTargetId)return;
-  D=loadD();
+  const {error}=await sb.from('posts').delete().eq('id',deleteTargetId);
+  if(error){toast('刪除失敗：'+error.message,'error');return;}
   D.posts=D.posts.filter(x=>x.id!==deleteTargetId);
-  saveD(D);
-  closeModal('del-modal');
-  toast('文章已刪除');
-  deleteTargetId=null;
-  newPost();
-  renderPostList();
+  closeModal('del-modal');toast('文章已刪除');deleteTargetId=null;newPost();renderPostList();
 }
 
 // ── EDITOR TABS ──
 function switchEditorTab(mode,btn){
-  document.querySelectorAll('.etab').forEach(t=>t.classList.remove('on'));
-  btn.classList.add('on');
-  const visual=document.getElementById('ed-body');
-  const html=document.getElementById('ed-html');
-  const toolbar=document.getElementById('etoolbar');
-  if(mode==='visual'){
-    html.style.display='none';
-    visual.style.display='block';
-    toolbar.style.display='flex';
-    visual.innerHTML=html.value;
-  }else{
-    visual.style.display='none';
-    html.style.display='block';
-    toolbar.style.display='none';
-    html.value=visual.innerHTML;
-  }
+  document.querySelectorAll('.etab').forEach(t=>t.classList.remove('on'));btn.classList.add('on');
+  const visual=document.getElementById('ed-body'),html=document.getElementById('ed-html'),toolbar=document.getElementById('etoolbar');
+  if(mode==='visual'){html.style.display='none';visual.style.display='block';toolbar.style.display='flex';visual.innerHTML=html.value;}
+  else{visual.style.display='none';html.style.display='block';toolbar.style.display='none';html.value=visual.innerHTML;}
 }
-function syncHTMLToVisual(){
-  document.getElementById('ed-body').innerHTML=document.getElementById('ed-html').value;
-}
+function syncHTMLToVisual(){document.getElementById('ed-body').innerHTML=document.getElementById('ed-html').value;}
 
-// ── RICH TEXT COMMANDS ──
+// ── RICH TEXT ──
 function fmt(cmd){document.getElementById('ed-body').focus();document.execCommand(cmd,false,null);}
-function formatBlock(tag){
-  if(!tag)return;
-  document.getElementById('ed-body').focus();
-  document.execCommand('formatBlock',false,tag);
-}
-function insertHR(){
-  document.getElementById('ed-body').focus();
-  document.execCommand('insertHTML',false,'<hr>');
-}
+function formatBlock(tag){if(!tag)return;document.getElementById('ed-body').focus();document.execCommand('formatBlock',false,tag);}
+function insertHR(){document.getElementById('ed-body').focus();document.execCommand('insertHTML',false,'<hr>');}
 
 // ── LINK MODAL ──
 let savedRange=null;
-function saveRange(){
-  const sel=window.getSelection();
-  if(sel.rangeCount>0)savedRange=sel.getRangeAt(0).cloneRange();
-}
-function restoreRange(){
-  if(savedRange){
-    const sel=window.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(savedRange);
-  }
-}
+function saveRange(){const sel=window.getSelection();if(sel.rangeCount>0)savedRange=sel.getRangeAt(0).cloneRange();}
+function restoreRange(){if(savedRange){const sel=window.getSelection();sel.removeAllRanges();sel.addRange(savedRange);}}
 function openLinkModal(){
-  const sel=window.getSelection();
-  const txt=sel.toString();
-  saveRange();
-  document.getElementById('lm-text').value=txt||'';
-  document.getElementById('lm-url').value='https://';
-  openModal('link-modal');
-  setTimeout(()=>document.getElementById('lm-url').focus(),100);
+  const txt=window.getSelection().toString();saveRange();
+  document.getElementById('lm-text').value=txt||'';document.getElementById('lm-url').value='https://';
+  openModal('link-modal');setTimeout(()=>document.getElementById('lm-url').focus(),100);
 }
 function insertLink(){
-  const url=document.getElementById('lm-url').value.trim();
-  const text=document.getElementById('lm-text').value.trim();
-  const newTab=document.getElementById('lm-new').checked;
+  const url=document.getElementById('lm-url').value.trim(),text=document.getElementById('lm-text').value.trim(),newTab=document.getElementById('lm-new').checked;
   if(!url||url==='https://'){toast('請輸入連結網址','error');return;}
-  closeModal('link-modal');
-  document.getElementById('ed-body').focus();
-  restoreRange();
+  closeModal('link-modal');document.getElementById('ed-body').focus();restoreRange();
   const target=newTab?' target="_blank" rel="noopener"':'';
-  if(text){
-    document.execCommand('insertHTML',false,`<a href="${url}"${target}>${text}</a>`);
-  }else{
+  if(text){document.execCommand('insertHTML',false,'<a href="'+url+'"'+target+'>'+text+'</a>');}
+  else{
     document.execCommand('createLink',false,url);
-    if(newTab){
-      const sel=window.getSelection();
-      if(sel.anchorNode&&sel.anchorNode.parentElement&&sel.anchorNode.parentElement.tagName==='A'){
-        sel.anchorNode.parentElement.setAttribute('target','_blank');
-        sel.anchorNode.parentElement.setAttribute('rel','noopener');
-      }
-    }
+    if(newTab){const sel=window.getSelection();if(sel.anchorNode&&sel.anchorNode.parentElement&&sel.anchorNode.parentElement.tagName==='A'){sel.anchorNode.parentElement.setAttribute('target','_blank');sel.anchorNode.parentElement.setAttribute('rel','noopener');}}
   }
 }
-function removeLink(){
-  document.getElementById('ed-body').focus();
-  document.execCommand('unlink',false,null);
-}
+function removeLink(){document.getElementById('ed-body').focus();document.execCommand('unlink',false,null);}
 
 // ── IMAGE MODAL ──
 let pendingImgSrc='';
 function openImgModal(){
-  saveRange();
-  pendingImgSrc='';
-  document.getElementById('mi-url').value='';
-  document.getElementById('mi-alt').value='';
-  document.getElementById('mi-preview').src='';
-  document.getElementById('mi-preview-wrap').style.display='none';
-  openModal('img-modal');
+  saveRange();pendingImgSrc='';document.getElementById('mi-url').value='';document.getElementById('mi-alt').value='';
+  document.getElementById('mi-preview').src='';document.getElementById('mi-preview-wrap').style.display='none';openModal('img-modal');
 }
 function insertImg(){
-  const url=document.getElementById('mi-url').value.trim()||pendingImgSrc;
-  const alt=document.getElementById('mi-alt').value.trim();
+  const url=document.getElementById('mi-url').value.trim()||pendingImgSrc,alt=document.getElementById('mi-alt').value.trim();
   if(!url){toast('請選擇或輸入圖片網址','error');return;}
-  closeModal('img-modal');
-  document.getElementById('ed-body').focus();
-  restoreRange();
-  document.execCommand('insertHTML',false,`<img src="${url}" alt="${alt}" style="max-width:100%;margin:12px 0;display:block;">`);
+  closeModal('img-modal');document.getElementById('ed-body').focus();restoreRange();
+  document.execCommand('insertHTML',false,'<img src="'+url+'" alt="'+alt+'" style="max-width:100%;margin:12px 0;display:block;">');
 }
 
 // ── IMAGE UPLOAD ──
 function handleImgFile(event,target){
-  const file=event.target.files[0];
-  if(!file)return;
+  const file=event.target.files[0];if(!file)return;
   const reader=new FileReader();
   reader.onload=e=>{
     const src=e.target.result;
-    if(target==='cover'){
-      document.getElementById('ed-cover-url').value=src;
-      document.getElementById('cover-preview').src=src;
-      document.getElementById('cover-preview-wrap').style.display='block';
-    }else if(target==='modal-img'){
-      pendingImgSrc=src;
-      document.getElementById('mi-url').value='';
-      document.getElementById('mi-preview').src=src;
-      document.getElementById('mi-preview-wrap').style.display='block';
-    }
-  };
-  reader.readAsDataURL(file);
+    if(target==='cover'){document.getElementById('ed-cover-url').value=src;document.getElementById('cover-preview').src=src;document.getElementById('cover-preview-wrap').style.display='block';}
+    else if(target==='modal-img'){pendingImgSrc=src;document.getElementById('mi-url').value='';document.getElementById('mi-preview').src=src;document.getElementById('mi-preview-wrap').style.display='block';}
+  };reader.readAsDataURL(file);
 }
-function updateCoverPreview(url){
-  if(url){document.getElementById('cover-preview').src=url;document.getElementById('cover-preview-wrap').style.display='block';}
-  else document.getElementById('cover-preview-wrap').style.display='none';
-}
-function clearCover(){
-  document.getElementById('ed-cover-url').value='';
-  document.getElementById('cover-preview-wrap').style.display='none';
-}
-document.getElementById('mi-url').addEventListener('input',function(){
-  if(this.value){document.getElementById('mi-preview').src=this.value;document.getElementById('mi-preview-wrap').style.display='block';pendingImgSrc='';}
-});
+function updateCoverPreview(url){if(url){document.getElementById('cover-preview').src=url;document.getElementById('cover-preview-wrap').style.display='block';}else document.getElementById('cover-preview-wrap').style.display='none';}
+function clearCover(){document.getElementById('ed-cover-url').value='';document.getElementById('cover-preview-wrap').style.display='none';}
+document.getElementById('mi-url').addEventListener('input',function(){if(this.value){document.getElementById('mi-preview').src=this.value;document.getElementById('mi-preview-wrap').style.display='block';pendingImgSrc='';}});
 
 // ── DRAG & DROP ──
 function dragOver(e,id){e.preventDefault();document.getElementById(id).classList.add('drag');}
 function dragLeave(id){document.getElementById(id).classList.remove('drag');}
 function dropFile(e,target){
-  e.preventDefault();
-  const id=target==='cover'?'cover-drop':'modal-img-drop';
-  dragLeave(id);
-  const file=e.dataTransfer.files[0];
-  if(!file||!file.type.startsWith('image/'))return;
+  e.preventDefault();const id=target==='cover'?'cover-drop':'modal-img-drop';dragLeave(id);
+  const file=e.dataTransfer.files[0];if(!file||!file.type.startsWith('image/'))return;
   const reader=new FileReader();
   reader.onload=ev=>{
     const src=ev.target.result;
-    if(target==='cover'){
-      document.getElementById('ed-cover-url').value=src;
-      document.getElementById('cover-preview').src=src;
-      document.getElementById('cover-preview-wrap').style.display='block';
-    }else{
-      pendingImgSrc=src;
-      document.getElementById('mi-preview').src=src;
-      document.getElementById('mi-preview-wrap').style.display='block';
-    }
-  };
-  reader.readAsDataURL(file);
+    if(target==='cover'){document.getElementById('ed-cover-url').value=src;document.getElementById('cover-preview').src=src;document.getElementById('cover-preview-wrap').style.display='block';}
+    else{pendingImgSrc=src;document.getElementById('mi-preview').src=src;document.getElementById('mi-preview-wrap').style.display='block';}
+  };reader.readAsDataURL(file);
 }
 
 // ── HOMEPAGE ──
 function loadHomepage(){
-  D=loadD();const h=D.hp||{};
-  setVal('hp-t1',h.t1);setVal('hp-t2',h.t2);setVal('hp-tag',h.tag);
-  setVal('hp-sub',h.sub);setVal('hp-quote',h.quote);setVal('hp-cta',h.cta);
-  setVal('hp-nlt',h.nlt);setVal('hp-nld',h.nld);setVal('hp-footer',D.footer);
+  const h=D.hp||{};
+  setVal('hp-t1',h.t1);setVal('hp-t2',h.t2);setVal('hp-tag',h.tag);setVal('hp-sub',h.sub);setVal('hp-quote',h.quote);setVal('hp-cta',h.cta);setVal('hp-nlt',h.nlt);setVal('hp-nld',h.nld);setVal('hp-footer',D.footer);
 }
-function saveHomepage(){
-  D=loadD();
-  D.hp={...D.hp,t1:getVal('hp-t1'),t2:getVal('hp-t2'),tag:getVal('hp-tag'),sub:getVal('hp-sub'),quote:getVal('hp-quote'),cta:getVal('hp-cta'),nlt:getVal('hp-nlt'),nld:getVal('hp-nld')};
-  D.footer=getVal('hp-footer');
-  saveD(D);toast('首頁設定已儲存 ✓');
+async function saveHomepage(){
+  const hp={t1:getVal('hp-t1'),t2:getVal('hp-t2'),tag:getVal('hp-tag'),sub:getVal('hp-sub'),quote:getVal('hp-quote'),cta:getVal('hp-cta'),nlt:getVal('hp-nlt'),nld:getVal('hp-nld')};
+  const footerText=getVal('hp-footer');
+  const [r1,r2]=await Promise.all([sb.from('settings').upsert({key:'hp',value:hp}),sb.from('settings').upsert({key:'footer',value:{text:footerText}})]);
+  if(r1.error||r2.error){toast('儲存失敗','error');return;}
+  D.hp=hp;D.footer=footerText;toast('首頁設定已儲存 ✓');
 }
 
 // ── ABOUT ──
 function loadAbout(){
-  D=loadD();const a=D.about||{};
-  setVal('ab-init',a.initials);setVal('ab-bio',a.bio);
-  setVal('ab-s1n',a.s1n);setVal('ab-s1l',a.s1l);
-  setVal('ab-s2n',a.s2n);setVal('ab-s2l',a.s2l);
-  setVal('ab-s3n',a.s3n);setVal('ab-s3l',a.s3l);
+  const a=D.about||{};
+  setVal('ab-init',a.initials);setVal('ab-bio',a.bio);setVal('ab-s1n',a.s1n);setVal('ab-s1l',a.s1l);setVal('ab-s2n',a.s2n);setVal('ab-s2l',a.s2l);setVal('ab-s3n',a.s3n);setVal('ab-s3l',a.s3l);
 }
-function saveAbout(){
-  D=loadD();
-  D.about={initials:getVal('ab-init'),bio:getVal('ab-bio'),s1n:getVal('ab-s1n'),s1l:getVal('ab-s1l'),s2n:getVal('ab-s2n'),s2l:getVal('ab-s2l'),s3n:getVal('ab-s3n'),s3l:getVal('ab-s3l')};
-  saveD(D);toast('關於我已儲存 ✓');
+async function saveAbout(){
+  const about={initials:getVal('ab-init'),bio:getVal('ab-bio'),s1n:getVal('ab-s1n'),s1l:getVal('ab-s1l'),s2n:getVal('ab-s2n'),s2l:getVal('ab-s2l'),s3n:getVal('ab-s3n'),s3l:getVal('ab-s3l')};
+  const {error}=await sb.from('settings').upsert({key:'about',value:about});
+  if(error){toast('儲存失敗：'+error.message,'error');return;}
+  D.about=about;toast('關於我已儲存 ✓');
 }
 
 // ── DATA ──
 function exportData(){
-  D=loadD();
   const blob=new Blob([JSON.stringify(D,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
-  a.download='operation-tw-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='operation-tw-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();
 }
-function importData(event){
+async function importData(event){
   const file=event.target.files[0];if(!file)return;
   const reader=new FileReader();
-  reader.onload=e=>{try{const d=JSON.parse(e.target.result);saveD(d);D=d;toast('資料已匯入 ✓');renderDash();}catch{toast('檔案格式錯誤','error');}};
-  reader.readAsText(file);
+  reader.onload=async e=>{
+    try{
+      const d=JSON.parse(e.target.result);
+      await sb.from('posts').delete().gt('id',0);
+      if(d.posts&&d.posts.length){const rows=d.posts.map(({id,created_at,...r})=>r);const {error}=await sb.from('posts').insert(rows);if(error)throw error;}
+      const ups=[];
+      if(d.hp)ups.push(sb.from('settings').upsert({key:'hp',value:d.hp}));
+      if(d.about)ups.push(sb.from('settings').upsert({key:'about',value:d.about}));
+      if(d.footer)ups.push(sb.from('settings').upsert({key:'footer',value:{text:d.footer}}));
+      await Promise.all(ups);await initDB();toast('資料已匯入 ✓');
+    }catch(err){toast('匯入失敗：'+err.message,'error');}
+  };reader.readAsText(file);
 }
-function resetData(){
+async function resetData(){
   if(!confirm('確定要重設所有資料嗎？此操作無法復原。'))return;
-  saveD(JSON.parse(JSON.stringify(DEFAULTS)));D=loadD();toast('已重設為預設值');renderDash();
+  await sb.from('posts').delete().gt('id',0);
+  const rows=DEFAULTS.posts.map(({id,...r})=>r);
+  await sb.from('posts').insert(rows);
+  await sb.from('settings').upsert({key:'hp',value:DEFAULTS.hp});
+  await sb.from('settings').upsert({key:'about',value:DEFAULTS.about});
+  await sb.from('settings').upsert({key:'footer',value:{text:DEFAULTS.footer}});
+  await initDB();toast('已重設為預設值');
 }
 
 // ── MODAL ──
@@ -875,7 +856,7 @@ function setVal(id,v){const e=document.getElementById(id);if(e&&v!=null)e.value=
 function getVal(id){const e=document.getElementById(id);return e?e.value:'';}
 
 // ── INIT ──
-renderDash();
+initDB();
 </script>
 </body>
 </html>
