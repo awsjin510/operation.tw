@@ -51,7 +51,7 @@ security invoker
 set search_path = public
 as $$
   select coalesce(auth.jwt() ->> 'email', '') in (
-    'admin@operation.tw'   -- ← 請替換為你的管理員 Email
+    'awsjin510@gmail.com'  -- 管理員 Email
   );
 $$;
 
