@@ -680,19 +680,32 @@ async function savePost(){
   const body=getCurrentBody();
   let slug=document.getElementById('ed-slug').value.trim();
   const post={title,slug,category:document.getElementById('ed-cat').value,date:document.getElementById('ed-date').value,status:document.getElementById('ed-status').value,excerpt:document.getElementById('ed-exc').value.trim(),image:document.getElementById('ed-cover-url').value.trim(),body};
-  if(id){
-    const {error}=await sb.from('posts').update(post).eq('id',id);
-    if(error){toast('儲存失敗：'+error.message,'error');return;}
-    const idx=D.posts.findIndex(x=>x.id==id);
-    if(idx>=0)D.posts[idx]={...D.posts[idx],...post};
-  }else{
-    const {data,error}=await sb.from('posts').insert(post).select().single();
-    if(error){toast('儲存失敗：'+error.message,'error');return;}
-    D.posts.unshift(data);
-    document.getElementById('ed-id').value=data.id;
-    document.getElementById('del-btn').style.display='inline-flex';
-    document.getElementById('ed-title-label').textContent='編輯文章';
+
+  async function trySave(obj){
+    if(id){
+      const {error}=await sb.from('posts').update(obj).eq('id',id);
+      if(error)return{error};
+      const idx=D.posts.findIndex(x=>x.id==id);
+      if(idx>=0)D.posts[idx]={...D.posts[idx],...obj};
+      return{};
+    }else{
+      const {data,error}=await sb.from('posts').insert(obj).select().single();
+      if(error)return{error};
+      D.posts.unshift(data);
+      document.getElementById('ed-id').value=data.id;
+      document.getElementById('del-btn').style.display='inline-flex';
+      document.getElementById('ed-title-label').textContent='編輯文章';
+      return{};
+    }
   }
+
+  let res=await trySave(post);
+  if(res.error&&res.error.message&&res.error.message.includes('slug')){
+    const {slug:_,...postNoSlug}=post;
+    res=await trySave(postNoSlug);
+    if(!res.error){toast('已儲存，但請在 Supabase 新增 slug 欄位以啟用分頁網址','error');return;}
+  }
+  if(res.error){toast('儲存失敗：'+res.error.message,'error');return;}
   toast('文章已儲存 ✓');
 }
 
