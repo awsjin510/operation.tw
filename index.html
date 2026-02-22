@@ -456,14 +456,15 @@ async function initDB(){
   }
   renderHome();
   // 非阻塞載入瀏覽統計，不影響主要內容
-  sb.from('site_stats').select('*').in('id',['total',today]).then(({data})=>{
+  sb.from('site_stats').select('*').in('id',['total',today]).then(({data,error})=>{
+    if(error){console.warn('site_stats query error:',error);return;}
     if(data&&data.length){
       data.forEach(s=>{if(s.id==='total')D.siteViews.total=s.count;else D.siteViews.today=s.count;});
       setText('stat-total',fmtViews(D.siteViews.total));
       setText('stat-today',fmtViews(D.siteViews.today));
     }
-  },()=>{});
-  sb.rpc('increment_site_views').then(()=>{},()=>{});
+  },e=>console.warn('site_stats fetch failed:',e));
+  sb.rpc('increment_site_views').then(({error})=>{if(error)console.warn('increment_site_views error:',error);},e=>console.warn('increment_site_views failed:',e));
 }
 
 /* ── RENDER HOME ── */
