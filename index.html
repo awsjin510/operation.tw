@@ -466,7 +466,7 @@ async function initDB(){
       setText('stat-today',fmtViews(D.siteViews.today));
     }
   }).catch(()=>{});
-  sb.rpc('increment_site_views').catch(()=>{});
+  sb.rpc('increment_site_views').then(()=>{}).catch(()=>{});
 }
 
 /* ── RENDER HOME ── */
