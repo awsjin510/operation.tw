@@ -439,6 +439,7 @@ async function initDB(){
       sb.from('settings').select('*')
     ]);
     if(pr.error)throw pr.error;
+    if(sr.error)console.warn('Settings query error:',sr.error);
     const sm={};
     (sr.data||[]).forEach(s=>{sm[s.key]=s.value;});
     D={
