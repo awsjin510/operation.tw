@@ -237,7 +237,16 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 
   <div class="form-group">
     <div class="form-label">文章標題 *</div>
-    <input type="text" id="ed-ttl" placeholder="輸入文章標題...">
+    <input type="text" id="ed-ttl" placeholder="輸入文章標題..." oninput="autoSlug()">
+  </div>
+
+  <div class="form-group">
+    <div class="form-label">分頁網址（Slug） <span class="tip">用於文章連結，僅限英文、數字與連字符</span></div>
+    <div style="display:flex;gap:8px;align-items:stretch;">
+      <input type="text" id="ed-slug" placeholder="my-article-slug" style="flex:1;" oninput="sanitizeSlugInput(this)">
+      <button class="btn btn-ghost" style="padding:0 14px;font-size:.62rem;white-space:nowrap;flex-shrink:0;" onclick="genSlug()">自動產生</button>
+    </div>
+    <div class="editor-hint">例：ai-tools-guide-2025　留空則儲存時自動以 ID 補填</div>
   </div>
 
   <div class="form-row">
@@ -630,6 +639,8 @@ function renderPostList(){
 function newPost(){
   document.getElementById('ed-id').value='';
   document.getElementById('ed-ttl').value='';
+  document.getElementById('ed-slug').value='';
+  _slugManual=false;
   document.getElementById('ed-cat').value='AI';
   document.getElementById('ed-date').value=new Date().toISOString().slice(0,10);
   document.getElementById('ed-status').value='draft';
@@ -647,6 +658,7 @@ function editPost(id){
   const p=D.posts.find(x=>x.id==id);if(!p)return;
   document.getElementById('ed-id').value=id;
   document.getElementById('ed-ttl').value=p.title;
+  document.getElementById('ed-slug').value=p.slug||'';
   document.getElementById('ed-cat').value=p.category;
   document.getElementById('ed-date').value=p.date;
   document.getElementById('ed-status').value=p.status;
@@ -666,7 +678,8 @@ async function savePost(){
   const title=document.getElementById('ed-ttl').value.trim();
   if(!title){toast('請輸入文章標題！','error');return;}
   const body=getCurrentBody();
-  const post={title,category:document.getElementById('ed-cat').value,date:document.getElementById('ed-date').value,status:document.getElementById('ed-status').value,excerpt:document.getElementById('ed-exc').value.trim(),image:document.getElementById('ed-cover-url').value.trim(),body};
+  let slug=document.getElementById('ed-slug').value.trim();
+  const post={title,slug,category:document.getElementById('ed-cat').value,date:document.getElementById('ed-date').value,status:document.getElementById('ed-status').value,excerpt:document.getElementById('ed-exc').value.trim(),image:document.getElementById('ed-cover-url').value.trim(),body};
   if(id){
     const {error}=await sb.from('posts').update(post).eq('id',id);
     if(error){toast('儲存失敗：'+error.message,'error');return;}
@@ -700,6 +713,30 @@ async function confirmDelete(){
   if(error){toast('刪除失敗：'+error.message,'error');return;}
   D.posts=D.posts.filter(x=>x.id!==deleteTargetId);
   closeModal('del-modal');toast('文章已刪除');deleteTargetId=null;newPost();renderPostList();
+}
+
+// ── SLUG ──
+function titleToSlug(title){
+  return title.toLowerCase()
+    .replace(/[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff]/g,'-') // CJK → -
+    .replace(/[^a-z0-9\-]/g,'-')
+    .replace(/-+/g,'-')
+    .replace(/^-|-$/g,'');
+}
+let _slugManual=false;
+function autoSlug(){
+  if(_slugManual)return;
+  const title=document.getElementById('ed-ttl').value;
+  document.getElementById('ed-slug').value=titleToSlug(title);
+}
+function genSlug(){
+  const title=document.getElementById('ed-ttl').value;
+  document.getElementById('ed-slug').value=titleToSlug(title);
+  _slugManual=false;
+}
+function sanitizeSlugInput(el){
+  _slugManual=!!el.value;
+  el.value=el.value.toLowerCase().replace(/[^a-z0-9\-]/g,'-').replace(/-+/g,'-');
 }
 
 // ── EDITOR TABS ──
