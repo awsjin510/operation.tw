@@ -27,6 +27,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .nav-links{display:flex;align-items:center;gap:24px;}
 .nav-links button{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--dim);background:none;border:none;cursor:pointer;letter-spacing:.1em;text-transform:uppercase;transition:color .25s;}
 .nav-links button:hover{color:var(--cyan);}
+.nav-podcast{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--dim);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .25s;}
+.nav-podcast:hover{color:var(--cyan);}
 .nav-search{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:5px 12px;}
 .nav-search input{background:transparent;border:none;outline:none;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:.72rem;width:130px;}
 .nav-search input::placeholder{color:var(--dim);}
@@ -230,7 +232,7 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
   <span class="nav-logo" onclick="goHome()" style="display:flex;align-items:center;gap:8px;"><img src="logo.jpg" alt="操作一下" style="height:36px;width:36px;object-fit:cover;border-radius:2px;">操作一下</span>
   <div class="nav-links">
     <button onclick="goHome();gotoSection('posts')">文章</button>
-    <a href="podcast.html" style="font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--dim);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .25s;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--dim)'">Podcast</a>
+    <a href="podcast.html" class="nav-podcast">Podcast</a>
     <button onclick="goHome();gotoSection('topics')">主題</button>
     <button onclick="goHome();gotoSection('about')">關於我</button>
     <button onclick="goHome();gotoSection('newsletter')">訂閱</button>
