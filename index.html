@@ -440,11 +440,8 @@ async function initDB(){
     ]);
     if(pr.error)throw pr.error;
     if(sr.error)console.warn('Settings query error:',sr.error);
-    console.log('Settings raw response:',JSON.stringify(sr.data));
     const sm={};
     (sr.data||[]).forEach(s=>{sm[s.key]=s.value;});
-    console.log('Settings parsed keys:',Object.keys(sm));
-    console.log('About from DB:',sm.about?'found':'missing');
     D={
       posts:pr.data||[],
       hp:sm.hp||DEFAULTS.hp,
