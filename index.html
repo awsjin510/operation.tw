@@ -457,6 +457,7 @@ async function initDB(){
     D.siteViews={total:0,today:0};
   }
   renderHome();
+  handleRoute();
   // 先遞增瀏覽數，再查詢統計（確保資料已寫入）
   sb.rpc('increment_site_views').then(({error:incErr})=>{
     if(incErr)console.warn('increment_site_views error:',incErr);
@@ -572,11 +573,25 @@ function openPost(id){
     rs.style.display='block';
   }else rs.style.display='none';
   showView('article');window.scrollTo(0,0);
+  const slug=p.slug||p.id;
+  if(location.hash!=='#/post/'+slug) history.pushState(null,'','#/post/'+slug);
 }
 
 /* ── VIEWS ── */
 function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('v-'+name).classList.add('active');}
-function goHome(){showView('home');renderHome();}
+function goHome(){showView('home');renderHome();if(location.hash)history.pushState(null,'','#/');}
+
+/* ── ROUTE ── */
+function handleRoute(){
+  const h=location.hash;
+  if(h.startsWith('#/post/')){
+    const key=decodeURIComponent(h.slice(7));
+    const p=(D.posts||[]).find(x=>(x.slug&&x.slug===key)||String(x.id)===key);
+    if(p){openPost(p.id);return;}
+  }
+  goHome();
+}
+window.addEventListener('hashchange',handleRoute);
 function gotoSection(id){setTimeout(()=>{const e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth'});},120);}
 
 /* ── SEARCH ── */
