@@ -550,29 +550,35 @@ function applyFilterGlobal(cat){
 
 /* ── OPEN POST ── */
 function openPost(id){
-  const p=(D.posts||[]).find(x=>x.id==id);if(!p)return;
-  const c=CAT_COLOR[p.category]||'#aaa';
-  const badge=document.getElementById('a-badge');
-  badge.textContent=p.category;badge.style.borderColor=c;badge.style.color=c;
-  p.views=(p.views||0)+1;
-  setText('a-title',p.title);setText('a-date',p.date);setText('a-rt',readTime(p.body));setText('a-cat-tag','🏷 '+p.category);
-  setText('a-views',p.views);
-  sb.rpc('increment_post_views',{post_id:p.id}).catch(()=>{});
-  const cover=document.getElementById('a-cover');
-  if(p.image){cover.src=p.image;cover.style.display='block';}else{cover.style.display='none';}
-  document.getElementById('a-body').innerHTML=p.body||'<p style="color:var(--dim)">（尚無內容）</p>';
-  const rel=publishedPosts(p.category).filter(x=>x.id!=id).slice(0,3);
-  const rg=document.getElementById('rel-grid'),rs=document.getElementById('related');
-  if(rel.length){
-    rg.innerHTML=rel.map(r=>{
-      const rc=CAT_COLOR[r.category]||'#aaa';
-      return '<div class="rel-card" onclick="openPost(\''+r.id+'\')">'
-        +'<div class="rel-cat" style="color:'+rc+';">'+esc(r.category)+'</div>'
-        +'<div class="rel-title">'+esc(r.title)+'</div></div>';
-    }).join('');
-    rs.style.display='block';
-  }else rs.style.display='none';
-  showView('article');window.scrollTo(0,0);
+  console.log('openPost called, id=',id,'type=',typeof id);
+  try{
+    const p=(D.posts||[]).find(x=>x.id==id);
+    console.log('post found:',!!p,p?p.title:'N/A','D.posts length:',D.posts.length);
+    if(!p)return;
+    const c=CAT_COLOR[p.category]||'#aaa';
+    const badge=document.getElementById('a-badge');
+    badge.textContent=p.category;badge.style.borderColor=c;badge.style.color=c;
+    p.views=(p.views||0)+1;
+    setText('a-title',p.title);setText('a-date',p.date);setText('a-rt',readTime(p.body));setText('a-cat-tag','🏷 '+p.category);
+    setText('a-views',p.views);
+    sb.rpc('increment_post_views',{post_id:p.id}).catch(()=>{});
+    const cover=document.getElementById('a-cover');
+    if(p.image){cover.src=p.image;cover.style.display='block';}else{cover.style.display='none';}
+    document.getElementById('a-body').innerHTML=p.body||'<p style="color:var(--dim)">（尚無內容）</p>';
+    const rel=publishedPosts(p.category).filter(x=>x.id!=id).slice(0,3);
+    const rg=document.getElementById('rel-grid'),rs=document.getElementById('related');
+    if(rel.length){
+      rg.innerHTML=rel.map(r=>{
+        const rc=CAT_COLOR[r.category]||'#aaa';
+        return '<div class="rel-card" onclick="openPost(\''+r.id+'\')">'
+          +'<div class="rel-cat" style="color:'+rc+';">'+esc(r.category)+'</div>'
+          +'<div class="rel-title">'+esc(r.title)+'</div></div>';
+      }).join('');
+      rs.style.display='block';
+    }else rs.style.display='none';
+    showView('article');window.scrollTo(0,0);
+    console.log('openPost completed, article view shown');
+  }catch(err){console.error('openPost error:',err);}
 }
 
 /* ── VIEWS ── */
