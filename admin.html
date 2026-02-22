@@ -394,6 +394,15 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
   <div class="panel-title">資料管理</div>
   <div class="panel-sub">// DATA — 備份與還原所有資料</div>
   <div style="background:var(--bg2);border:1px solid var(--border);padding:20px;margin-bottom:16px;">
+    <div style="font-family:'Share Tech Mono',monospace;font-size:.7rem;color:var(--mid);margin-bottom:14px;">🗺 產生 Sitemap</div>
+    <p style="font-size:.85rem;color:var(--dim);margin-bottom:14px;">根據所有已發布文章產生完整的 sitemap.xml，下載後上傳至網站根目錄以取代靜態版本。</p>
+    <button class="btn btn-primary" id="sitemap-btn" onclick="generateSitemap()">⬇ 產生並下載 sitemap.xml</button>
+    <div id="sitemap-result" style="display:none;margin-top:14px;">
+      <div style="font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--mid);margin-bottom:6px;">// 已產生內容（可複製確認）</div>
+      <textarea id="sitemap-output" readonly style="width:100%;height:140px;background:var(--bg3);border:1px solid var(--border);color:var(--dim);font-family:'Share Tech Mono',monospace;font-size:.65rem;padding:10px;resize:vertical;"></textarea>
+    </div>
+  </div>
+  <div style="background:var(--bg2);border:1px solid var(--border);padding:20px;margin-bottom:16px;">
     <div style="font-family:'Share Tech Mono',monospace;font-size:.7rem;color:var(--mid);margin-bottom:14px;">📤 匯出備份</div>
     <p style="font-size:.85rem;color:var(--dim);margin-bottom:14px;">將所有文章和設定下載為 JSON 備份檔案。</p>
     <button class="btn btn-primary" onclick="exportData()">⬇ 下載備份 JSON</button>
@@ -852,6 +861,33 @@ async function saveAbout(){
   const {error}=await sb.from('settings').upsert({key:'about',value:about});
   if(error){toast('儲存失敗：'+error.message,'error');return;}
   D.about=about;toast('關於我已儲存 ✓');
+}
+
+// ── SITEMAP ──
+async function generateSitemap(){
+  const btn=document.getElementById('sitemap-btn');
+  btn.textContent='產生中...';btn.disabled=true;
+  try{
+    const{data,error}=await sb.from('posts').select('slug,id,date').eq('status','published').order('date',{ascending:false});
+    if(error)throw error;
+    const base='https://operation.tw';
+    const now=new Date().toISOString().slice(0,10);
+    let xml='<?xml version="1.0" encoding="UTF-8"?>\n';
+    xml+='<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+    xml+=`  <url>\n    <loc>${base}/</loc>\n    <lastmod>${now}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
+    xml+=`  <url>\n    <loc>${base}/podcast.html</loc>\n    <lastmod>${now}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+    for(const p of (data||[])){
+      const slug=encodeURIComponent(p.slug||p.id);
+      xml+=`  <url>\n    <loc>${base}/#/post/${slug}</loc>\n    <lastmod>${p.date||now}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
+    }
+    xml+='</urlset>';
+    document.getElementById('sitemap-output').value=xml;
+    document.getElementById('sitemap-result').style.display='block';
+    const blob=new Blob([xml],{type:'application/xml'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='sitemap.xml';a.click();
+    toast('Sitemap 已產生並下載 ✓');
+  }catch(err){toast('產生失敗：'+err.message,'error');}
+  finally{btn.textContent='⬇ 產生並下載 sitemap.xml';btn.disabled=false;}
 }
 
 // ── DATA ──
