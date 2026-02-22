@@ -593,24 +593,24 @@ function openPost(id){
   showView('article');window.scrollTo(0,0);
   const slug=p.slug||p.id;
   setPostMeta(p);
-  if(location.hash!=='#/post/'+slug) history.pushState(null,'','#/post/'+slug);
+  if(location.pathname!=='/post/'+encodeURIComponent(slug)) history.pushState(null,'','/post/'+encodeURIComponent(slug));
 }
 
 /* ── VIEWS ── */
 function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('v-'+name).classList.add('active');}
-function goHome(){showView('home');renderHome();resetMeta();if(location.hash)history.pushState(null,'','#/');}
+function goHome(){showView('home');renderHome();resetMeta();if(location.pathname!=='/')history.pushState(null,'','/');}
 
 /* ── ROUTE ── */
 function handleRoute(){
-  const h=location.hash;
-  if(h.startsWith('#/post/')){
-    const key=decodeURIComponent(h.slice(7));
+  const path=location.pathname;
+  if(path.startsWith('/post/')){
+    const key=decodeURIComponent(path.slice(6));
     const p=(D.posts||[]).find(x=>(x.slug&&x.slug===key)||String(x.id)===key);
     if(p){openPost(p.id);return;}
   }
   goHome();
 }
-window.addEventListener('hashchange',handleRoute);
+window.addEventListener('popstate',handleRoute);
 function gotoSection(id){setTimeout(()=>{const e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth'});},120);}
 
 /* ── SEARCH ── */
@@ -635,7 +635,7 @@ function copyURL(btn){
 /* ── SEO / SCHEMA ── */
 function setPostMeta(p){
   const slug=p.slug||p.id;
-  const url='https://operation.tw/#/post/'+encodeURIComponent(slug);
+  const url='https://operation.tw/post/'+encodeURIComponent(slug);
   document.title=(p.title||'文章')+' | 操作一下';
   const metaDesc=document.querySelector('meta[name="description"]');
   if(metaDesc)metaDesc.content=p.excerpt||p.title||'';
