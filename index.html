@@ -434,30 +434,36 @@ let D={posts:[],hp:DEFAULTS.hp,about:DEFAULTS.about,footer:DEFAULTS.footer};
 async function initDB(){
   const today=new Date().toISOString().slice(0,10);
   try{
-    const [pr,sr,svr]=await Promise.all([
+    const [pr,sr]=await Promise.all([
       sb.from('posts').select('*').eq('status','published').order('date',{ascending:false}),
-      sb.from('settings').select('*'),
-      sb.from('site_stats').select('*').in('id',['total',today])
+      sb.from('settings').select('*')
     ]);
     if(pr.error)throw pr.error;
+    if(sr.error)console.warn('Settings query error:',sr.error);
     const sm={};
     (sr.data||[]).forEach(s=>{sm[s.key]=s.value;});
-    const sv={total:0,today:0};
-    (svr.data||[]).forEach(s=>{if(s.id==='total')sv.total=s.count;else sv.today=s.count;});
     D={
       posts:pr.data||[],
       hp:sm.hp||DEFAULTS.hp,
       about:sm.about||DEFAULTS.about,
       footer:(sm.footer&&sm.footer.text)||DEFAULTS.footer,
-      siteViews:sv
+      siteViews:{total:0,today:0}
     };
   }catch(err){
     console.error('Supabase error:',err);
     D=JSON.parse(JSON.stringify(DEFAULTS));
     D.siteViews={total:0,today:0};
   }
-  sb.rpc('increment_site_views').catch(()=>{});
   renderHome();
+  // 非阻塞載入瀏覽統計，不影響主要內容
+  sb.from('site_stats').select('*').in('id',['total',today]).then(({data})=>{
+    if(data&&data.length){
+      data.forEach(s=>{if(s.id==='total')D.siteViews.total=s.count;else D.siteViews.today=s.count;});
+      setText('stat-total',fmtViews(D.siteViews.total));
+      setText('stat-today',fmtViews(D.siteViews.today));
+    }
+  }).catch(()=>{});
+  sb.rpc('increment_site_views').catch(()=>{});
 }
 
 /* ── RENDER HOME ── */
@@ -509,7 +515,7 @@ function cardHTML(p){
   const rt=readTime(p.body);
   const img=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" style="width:100%;height:100%;object-fit:cover;">'
     :'<span class="pc-img-ph">'+icon+'</span>';
-  return '<div class="pc" onclick="openPost('+p.id+')">'
+  return '<div class="pc" onclick="openPost(\''+p.id+'\')">'
     +'<div class="pc-img">'+img+'<span class="pc-badge" style="border-color:'+c+';color:'+c+';">'+esc(p.category)+'</span></div>'
     +'<div class="pc-body"><div class="pc-title">'+esc(p.title)+'</div>'
     +'<div class="pc-exc">'+esc(p.excerpt||'')+'</div>'
@@ -551,7 +557,7 @@ function openPost(id){
   if(rel.length){
     rg.innerHTML=rel.map(r=>{
       const rc=CAT_COLOR[r.category]||'#aaa';
-      return '<div class="rel-card" onclick="openPost('+r.id+')">'
+      return '<div class="rel-card" onclick="openPost(\''+r.id+'\')">'
         +'<div class="rel-cat" style="color:'+rc+';">'+esc(r.category)+'</div>'
         +'<div class="rel-title">'+esc(r.title)+'</div></div>';
     }).join('');
