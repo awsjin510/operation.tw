@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src https://pvqvnmntqhsfzarbxayf.supabase.co;">
 <title>操作一下 | operation.tw</title>
 <meta name="description" content="雲端、資安、AI、閱讀、成長 — 簡單的事情專注做">
 <meta name="google-site-verification" content="9ShlnwY0Iih64Jujj5Xy7eyWDLOO58-NMcPKJELY6eA" />
@@ -264,7 +265,8 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
 ::-webkit-scrollbar-track{background:var(--bg2);}
 ::-webkit-scrollbar-thumb{background:rgba(0,245,255,.2);}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js" integrity="sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/dompurify@3.2.4/dist/purify.min.js"></script>
 </head>
 <body>
 <div class="bg-glow"></div>
@@ -544,7 +546,7 @@ function renderHome(){
 }
 
 function setText(id,v){const e=document.getElementById(id);if(e&&v!=null)e.textContent=v;}
-function setHTML(id,v){const e=document.getElementById(id);if(e&&v!=null)e.innerHTML=v;}
+function setHTML(id,v){const e=document.getElementById(id);if(e&&v!=null)e.innerHTML=DOMPurify.sanitize(v);}
 
 function publishedPosts(cat){
   return (D.posts||[]).filter(p=>!cat||p.category===cat).sort((a,b)=>new Date(b.date)-new Date(a.date));
@@ -608,7 +610,7 @@ function openPost(id){
   sb.rpc('increment_post_views',{post_id:p.id}).then(()=>{},()=>{});
   const cover=document.getElementById('a-cover');
   if(p.image){cover.src=p.image;cover.style.display='block';}else{cover.style.display='none';}
-  document.getElementById('a-body').innerHTML=p.body||'<p style="color:var(--dim)">（尚無內容）</p>';
+  document.getElementById('a-body').innerHTML=safeHTML(p.body)||'<p style="color:var(--dim)">（尚無內容）</p>';
   const rel=publishedPosts(p.category).filter(x=>x.id!=id).slice(0,3);
   const rg=document.getElementById('rel-grid'),rs=document.getElementById('related');
   if(rel.length){
@@ -758,7 +760,8 @@ function initCountUp(){
 }
 
 /* ── UTILS ── */
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function safeHTML(s){return DOMPurify.sanitize(s||'',{ALLOWED_TAGS:['p','br','h2','h3','h4','a','strong','b','em','i','u','s','ul','ol','li','blockquote','pre','code','img','hr','table','thead','tbody','tr','th','td','span','div','figure','figcaption'],ALLOWED_ATTR:['href','src','alt','target','rel','class','style','id'],FORBID_ATTR:['onerror','onload','onclick','onmouseover','onfocus'],ALLOW_DATA_ATTR:false});}
 function fmtViews(n){n=+n||0;if(n>=10000)return Math.floor(n/1000)+'k+';if(n>=1000)return (n/1000).toFixed(1)+'k';return String(n);}
 
 /* ── INIT ── */

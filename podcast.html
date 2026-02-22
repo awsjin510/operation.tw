@@ -309,20 +309,25 @@ function render(){
   const list=document.getElementById('ep-list');
   list.innerHTML=slice.map((ep,i)=>{
     const n=filtered.indexOf(ep)+1;
-    const safe_title=ep.title.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    const safe_desc=ep.desc.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    const safe_title=esc(ep.title);
+    const safe_desc=esc(ep.desc);
+    const safe_art=esc(ep.art);
+    const safe_apple=esc(ep.apple);
+    const safe_spot=esc(ep.spot);
+    const safe_date=esc(fmtDate(ep.date));
     return `<div class="ep-card">
       <div class="ep-num">${n}</div>
-      <img class="ep-thumb" src="${ep.art}" alt="" loading="lazy" onerror="this.style.display='none'">
+      <img class="ep-thumb" src="${safe_art}" alt="" loading="lazy" onerror="this.style.display='none'">
       <div class="ep-info">
-        <div class="ep-meta"><span>${fmtDate(ep.date)}</span><span class="ep-dur">${fmtDur(ep.dur)}</span></div>
+        <div class="ep-meta"><span>${safe_date}</span><span class="ep-dur">${fmtDur(ep.dur)}</span></div>
         <div class="ep-title">${safe_title}</div>
         <div class="ep-desc">${safe_desc}</div>
       </div>
       <div class="ep-actions">
         <button class="ep-btn play" onclick="playEp(${filtered.indexOf(ep)})">▶ 播放</button>
-        <a class="ep-btn apple" href="${ep.apple}" target="_blank" rel="noopener">🍎 Apple</a>
-        <a class="ep-btn spotify" href="${ep.spot}" target="_blank" rel="noopener">🎵 Spotify</a>
+        <a class="ep-btn apple" href="${safe_apple}" target="_blank" rel="noopener">🍎 Apple</a>
+        <a class="ep-btn spotify" href="${safe_spot}" target="_blank" rel="noopener">🎵 Spotify</a>
       </div>
     </div>`;
   }).join('');
