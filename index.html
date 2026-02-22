@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>操作一下 | operation.tw</title>
 <meta name="description" content="雲端、資安、AI、閱讀、成長 — 簡單的事情專注做">
+<link rel="canonical" href="https://operation.tw/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"操作一下","alternateName":"operation.tw","url":"https://operation.tw","description":"雲端、資安、AI、閱讀、成長 — 簡單的事情專注做","inLanguage":"zh-TW","author":{"@type":"Person","name":"操作一下","url":"https://operation.tw"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://operation.tw/#/search/{search_term_string}"},"query-input":"required name=search_term_string"}}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -574,12 +578,13 @@ function openPost(id){
   }else rs.style.display='none';
   showView('article');window.scrollTo(0,0);
   const slug=p.slug||p.id;
+  setPostMeta(p);
   if(location.hash!=='#/post/'+slug) history.pushState(null,'','#/post/'+slug);
 }
 
 /* ── VIEWS ── */
 function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('v-'+name).classList.add('active');}
-function goHome(){showView('home');renderHome();if(location.hash)history.pushState(null,'','#/');}
+function goHome(){showView('home');renderHome();resetMeta();if(location.hash)history.pushState(null,'','#/');}
 
 /* ── ROUTE ── */
 function handleRoute(){
@@ -611,6 +616,38 @@ function share(platform){
 }
 function copyURL(btn){
   navigator.clipboard.writeText(location.href).then(()=>{btn.textContent='已複製 ✓';setTimeout(()=>btn.textContent='複製連結',2000);});
+}
+
+/* ── SEO / SCHEMA ── */
+function setPostMeta(p){
+  const slug=p.slug||p.id;
+  const url='https://operation.tw/#/post/'+encodeURIComponent(slug);
+  document.title=(p.title||'文章')+' | 操作一下';
+  const metaDesc=document.querySelector('meta[name="description"]');
+  if(metaDesc)metaDesc.content=p.excerpt||p.title||'';
+  const canonical=document.querySelector('link[rel="canonical"]');
+  if(canonical)canonical.href=url;
+  const schema={
+    '@context':'https://schema.org','@type':'BlogPosting',
+    'headline':p.title||'','description':p.excerpt||'',
+    'datePublished':p.date||'','dateModified':p.date||'',
+    'author':{'@type':'Person','name':'操作一下','url':'https://operation.tw'},
+    'publisher':{'@type':'Organization','name':'操作一下','url':'https://operation.tw'},
+    'url':url,'mainEntityOfPage':{'@type':'WebPage','@id':url},
+    'articleSection':p.category||'','keywords':p.category||''
+  };
+  if(p.image)schema.image=p.image;
+  let el=document.getElementById('ld-article');
+  if(!el){el=document.createElement('script');el.type='application/ld+json';el.id='ld-article';document.head.appendChild(el);}
+  el.textContent=JSON.stringify(schema);
+}
+function resetMeta(){
+  document.title='操作一下 | operation.tw';
+  const metaDesc=document.querySelector('meta[name="description"]');
+  if(metaDesc)metaDesc.content='雲端、資安、AI、閱讀、成長 — 簡單的事情專注做';
+  const canonical=document.querySelector('link[rel="canonical"]');
+  if(canonical)canonical.href='https://operation.tw/';
+  const el=document.getElementById('ld-article');if(el)el.remove();
 }
 
 /* ── NEWSLETTER ── */
