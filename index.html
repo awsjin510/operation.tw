@@ -465,8 +465,8 @@ async function initDB(){
       setText('stat-total',fmtViews(D.siteViews.total));
       setText('stat-today',fmtViews(D.siteViews.today));
     }
-  }).catch(()=>{});
-  sb.rpc('increment_site_views').then(()=>{}).catch(()=>{});
+  },()=>{});
+  sb.rpc('increment_site_views').then(()=>{},()=>{});
 }
 
 /* ── RENDER HOME ── */
