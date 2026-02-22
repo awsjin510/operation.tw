@@ -7,6 +7,19 @@
 <meta name="description" content="雲端、資安、AI、閱讀、成長 — 簡單的事情專注做">
 <meta name="google-site-verification" content="9ShlnwY0Iih64Jujj5Xy7eyWDLOO58-NMcPKJELY6eA" />
 <link rel="canonical" href="https://operation.tw/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="操作一下">
+<meta property="og:title" content="操作一下 | operation.tw">
+<meta property="og:description" content="雲端、資安、AI、閱讀、成長 — 簡單的事情專注做">
+<meta property="og:url" content="https://operation.tw/">
+<meta property="og:image" content="https://operation.tw/default.png">
+<meta property="og:locale" content="zh_TW">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="操作一下 | operation.tw">
+<meta name="twitter:description" content="雲端、資安、AI、閱讀、成長 — 簡單的事情專注做">
+<meta name="twitter:image" content="https://operation.tw/default.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"操作一下","alternateName":"operation.tw","url":"https://operation.tw","description":"雲端、資安、AI、閱讀、成長 — 簡單的事情專注做","inLanguage":"zh-TW","author":{"@type":"Person","name":"操作一下","url":"https://operation.tw"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://operation.tw/#/search/{search_term_string}"},"query-input":"required name=search_term_string"}}
 </script>
@@ -22,7 +35,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans-serif;line-height:1.8;min-height:100vh;}
-body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,245,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,245,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
 body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.06) 3px,rgba(0,0,0,.06) 4px);pointer-events:none;z-index:0;}
 
 /* NAV */
@@ -52,10 +65,13 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .view.active{display:block;}
 
 /* HERO */
-.hero{padding:96px 24px 72px;text-align:center;position:relative;overflow:hidden;}
+.hero{padding:96px 24px 72px;text-align:center;position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;}
 .orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
-.orb1{width:400px;height:400px;background:rgba(0,245,255,.05);top:-120px;left:-100px;}
-.orb2{width:300px;height:300px;background:rgba(255,0,128,.04);bottom:-80px;right:-80px;}
+.orb1{width:600px;height:600px;background:rgba(0,245,255,.09);top:-150px;left:-150px;animation:orb-float 12s ease-in-out infinite;}
+.orb2{width:450px;height:450px;background:rgba(255,0,128,.07);bottom:-120px;right:-120px;animation:orb-float2 9s ease-in-out infinite;}
+.orb3{width:320px;height:320px;background:rgba(191,0,255,.06);top:45%;left:55%;animation:orb-float 15s ease-in-out infinite reverse;}
+@keyframes orb-float{0%,100%{transform:translate(0,0);}33%{transform:translate(30px,-20px);}66%{transform:translate(-20px,15px);}}
+@keyframes orb-float2{0%,100%{transform:translate(0,0);}33%{transform:translate(-25px,20px);}66%{transform:translate(20px,-15px);}}
 .hero-tag{font-family:'Share Tech Mono',monospace;font-size:.68rem;color:var(--pink);letter-spacing:.25em;text-transform:uppercase;margin-bottom:20px;}
 .hero-brand{font-family:'Orbitron',monospace;font-weight:900;font-size:clamp(3.5rem,11vw,8rem);line-height:1;margin-bottom:12px;}
 .hero-brand .t1{color:#fff;position:relative;}
@@ -109,7 +125,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .topic-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
 .tc{background:var(--bg2);border:1px solid var(--border);border-top-width:2px;padding:22px 14px;text-align:center;cursor:pointer;transition:all .28s;}
 .tc:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.4);}
-.tc-icon{font-size:1.7rem;margin-bottom:8px;}
+.tc-icon{font-size:1.7rem;margin-bottom:8px;display:inline-block;transition:transform .2s;}
 .tc-name{font-family:'Orbitron',monospace;font-size:.7rem;font-weight:700;margin-bottom:5px;}
 .tc-desc{font-size:.73rem;color:var(--dim);line-height:1.6;}
 .tc-cnt{font-family:'Share Tech Mono',monospace;font-size:.58rem;margin-top:8px;padding:2px 8px;border:1px solid;display:inline-block;}
@@ -222,6 +238,27 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
 /* POST VIEW BADGE */
 .pc-view-cnt{color:var(--dim);}
 
+/* BG CORNER GLOW */
+.bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse 55% 45% at 0% 100%,rgba(191,0,255,.09) 0%,transparent 70%),radial-gradient(ellipse 45% 55% at 100% 0%,rgba(0,245,255,.08) 0%,transparent 70%);}
+
+/* TERMINAL CURSOR */
+.cursor{display:inline-block;color:var(--cyan);margin-left:2px;animation:cur-blink 1s step-start infinite;}
+@keyframes cur-blink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+/* FEATURED CARD */
+.pc.featured{grid-column:1/-1;display:grid;grid-template-columns:45% 1fr;}
+.pc.featured .pc-img{height:100%;min-height:280px;}
+.pc.featured .pc-body{padding:32px;display:flex;flex-direction:column;justify-content:center;}
+.pc.featured .pc-title{font-size:1.22rem;line-height:1.5;margin-bottom:16px;}
+.pc.featured .pc-exc{-webkit-line-clamp:5;margin-bottom:20px;}
+.pc.featured::after{content:'FEATURED';position:absolute;top:12px;right:14px;font-family:'Share Tech Mono',monospace;font-size:.55rem;color:var(--yellow);border:1px solid var(--yellow);padding:2px 8px;letter-spacing:.1em;background:rgba(5,5,16,.85);}
+
+/* TOPIC ICON PULSE */
+.tc:hover .tc-icon{animation:icon-pulse .5s ease;}
+@keyframes icon-pulse{0%{transform:scale(1);}40%{transform:scale(1.4);}100%{transform:scale(1);}}
+
+@media(max-width:768px){.pc.featured{grid-template-columns:1fr;}.pc.featured .pc-img{min-height:200px;}}
+
 ::selection{background:rgba(0,245,255,.2);color:#fff;}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:var(--bg2);}
@@ -230,6 +267,7 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
+<div class="bg-glow"></div>
 
 <!-- NAV -->
 <nav>
@@ -268,19 +306,20 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
 <div class="hero">
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
   <div class="hero-tag" id="h-tag">個人品牌 · 自媒體創作者</div>
   <div style="margin-bottom:24px;text-align:center;"><img src="logo.jpg" alt="操作一下" style="width:min(280px,70vw);height:auto;display:inline-block;filter:drop-shadow(0 0 20px rgba(0,245,255,0.4));"></div>
   <div class="hero-brand">
     <span class="t1" data-text="操作" id="h-t1">操作</span><span class="t2" id="h-t2">一下</span>
   </div>
-  <div class="hero-sub" id="h-sub">operation.tw // 雲端 · 資安 · AI · 閱讀 · 成長</div>
+  <div class="hero-sub" id="h-sub"></div>
   <div class="hero-quote" id="h-quote">簡單的事情專注做，<br>有一天世界會為了你而感動</div>
   <button class="hero-cta" id="h-cta" onclick="gotoSection('posts')">開始閱讀 →</button>
 </div>
 
 <div class="section" id="posts">
   <div class="sec-hd">
-    <div class="sec-hd-text"><h2>最新文章</h2><div class="sec-sub">// latest posts</div></div>
+    <div class="sec-hd-text"><h2>最新文章</h2><div class="sec-sub">// latest posts<span class="cursor">▋</span></div></div>
     <div class="sec-line"></div>
   </div>
   <div class="filter-bar">
@@ -296,35 +335,35 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
 
 <div class="section" id="topics" style="background:rgba(255,255,255,.012);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
   <div class="sec-hd">
-    <div class="sec-hd-text"><h2>核心主題</h2><div class="sec-sub">// core topics</div></div>
+    <div class="sec-hd-text"><h2>核心主題</h2><div class="sec-sub">// core topics<span class="cursor">▋</span></div></div>
     <div class="sec-line"></div>
   </div>
   <div class="topic-grid">
-    <div class="tc" style="border-top-color:var(--cyan);" onclick="applyFilterGlobal('雲端')">
+    <div class="tc" style="border-top-color:var(--cyan);background:linear-gradient(180deg,rgba(0,245,255,.07) 0%,var(--bg2) 60%);" onclick="applyFilterGlobal('雲端')">
       <div class="tc-icon">☁️</div>
       <div class="tc-name" style="color:var(--cyan);">雲端</div>
       <div class="tc-desc">AWS、Azure、GCP 架構實戰</div>
       <div class="tc-cnt" style="border-color:var(--cyan);color:var(--cyan);" id="tc-雲端">0 篇</div>
     </div>
-    <div class="tc" style="border-top-color:var(--pink);" onclick="applyFilterGlobal('資安')">
+    <div class="tc" style="border-top-color:var(--pink);background:linear-gradient(180deg,rgba(255,0,128,.07) 0%,var(--bg2) 60%);" onclick="applyFilterGlobal('資安')">
       <div class="tc-icon">🔐</div>
       <div class="tc-name" style="color:var(--pink);">資安</div>
       <div class="tc-desc">零信任、滲透測試、資安觀念</div>
       <div class="tc-cnt" style="border-color:var(--pink);color:var(--pink);" id="tc-資安">0 篇</div>
     </div>
-    <div class="tc" style="border-top-color:var(--purple);" onclick="applyFilterGlobal('AI')">
+    <div class="tc" style="border-top-color:var(--purple);background:linear-gradient(180deg,rgba(191,0,255,.07) 0%,var(--bg2) 60%);" onclick="applyFilterGlobal('AI')">
       <div class="tc-icon">🤖</div>
       <div class="tc-name" style="color:var(--purple);">AI</div>
       <div class="tc-desc">LLM 工具、Prompt、工作流程</div>
       <div class="tc-cnt" style="border-color:var(--purple);color:var(--purple);" id="tc-AI">0 篇</div>
     </div>
-    <div class="tc" style="border-top-color:var(--yellow);" onclick="applyFilterGlobal('閱讀')">
+    <div class="tc" style="border-top-color:var(--yellow);background:linear-gradient(180deg,rgba(255,255,0,.05) 0%,var(--bg2) 60%);" onclick="applyFilterGlobal('閱讀')">
       <div class="tc-icon">📚</div>
       <div class="tc-name" style="color:var(--yellow);">閱讀</div>
       <div class="tc-desc">書評、心得、知識管理</div>
       <div class="tc-cnt" style="border-color:var(--yellow);color:var(--yellow);" id="tc-閱讀">0 篇</div>
     </div>
-    <div class="tc" style="border-top-color:var(--green);" onclick="applyFilterGlobal('成長')">
+    <div class="tc" style="border-top-color:var(--green);background:linear-gradient(180deg,rgba(0,255,136,.06) 0%,var(--bg2) 60%);" onclick="applyFilterGlobal('成長')">
       <div class="tc-icon">🌱</div>
       <div class="tc-name" style="color:var(--green);">成長</div>
       <div class="tc-desc">個人成長、習慣、自媒體經營</div>
@@ -335,7 +374,7 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
 
 <div class="section" id="about">
   <div class="sec-hd">
-    <div class="sec-hd-text"><h2>關於我</h2><div class="sec-sub">// about</div></div>
+    <div class="sec-hd-text"><h2>關於我</h2><div class="sec-sub">// about<span class="cursor">▋</span></div></div>
     <div class="sec-line"></div>
   </div>
   <div class="about-wrap">
@@ -481,10 +520,11 @@ async function initDB(){
 }
 
 /* ── RENDER HOME ── */
+let _twDone=false;
 function renderHome(){
   const h=D.hp||{};
   setText('h-tag',h.tag);setText('h-t1',h.t1);setText('h-t2',h.t2);
-  setText('h-sub',h.sub);
+  if(!_twDone){typewrite('h-sub',h.sub||'');}else{setText('h-sub',h.sub);}
   setHTML('h-quote',(h.quote||'').replace(/\n/g,'<br>'));
   setText('h-cta',h.cta);
   const q=document.getElementById('h-t1');if(q)q.setAttribute('data-text',h.t1||'操作');
@@ -500,6 +540,7 @@ function renderHome(){
   setText('stat-today',fmtViews(sv.today));
   updateTopicCounts();
   renderGrid('grid-main',publishedPosts());
+  initCountUp();
 }
 
 function setText(id,v){const e=document.getElementById(id);if(e&&v!=null)e.textContent=v;}
@@ -520,16 +561,18 @@ function updateTopicCounts(){
 function renderGrid(containerId,posts){
   const g=document.getElementById(containerId);if(!g)return;
   if(!posts.length){g.innerHTML='<div class="empty-state"><div class="ei">📭</div><p>目前沒有文章</p></div>';return;}
-  g.innerHTML=posts.map(cardHTML).join('');
+  const isMaster=containerId==='grid-main';
+  g.innerHTML=posts.map((p,i)=>cardHTML(p,isMaster&&i===0)).join('');
 }
 
-function cardHTML(p){
+function cardHTML(p,featured){
   const c=CAT_COLOR[p.category]||'#aaa';
   const icon=CAT_ICON[p.category]||'📄';
   const rt=readTime(p.body);
   const img=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" style="width:100%;height:100%;object-fit:cover;">'
     :'<span class="pc-img-ph">'+icon+'</span>';
-  return '<div class="pc" onclick="openPost(\''+p.id+'\')">'
+  const cls=featured?'pc featured':'pc';
+  return '<div class="'+cls+'" onclick="openPost(\''+p.id+'\')" style="border-left:3px solid '+c+';">'
     +'<div class="pc-img">'+img+'<span class="pc-badge" style="border-color:'+c+';color:'+c+';">'+esc(p.category)+'</span></div>'
     +'<div class="pc-body"><div class="pc-title">'+esc(p.title)+'</div>'
     +'<div class="pc-exc">'+esc(p.excerpt||'')+'</div>'
@@ -580,24 +623,24 @@ function openPost(id){
   showView('article');window.scrollTo(0,0);
   const slug=p.slug||p.id;
   setPostMeta(p);
-  if(location.hash!=='#/post/'+slug) history.pushState(null,'','#/post/'+slug);
+  if(location.pathname!=='/post/'+encodeURIComponent(slug)) history.pushState(null,'','/post/'+encodeURIComponent(slug));
 }
 
 /* ── VIEWS ── */
 function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('v-'+name).classList.add('active');}
-function goHome(){showView('home');renderHome();resetMeta();if(location.hash)history.pushState(null,'','#/');}
+function goHome(){showView('home');renderHome();resetMeta();if(location.pathname!=='/')history.pushState(null,'','/');}
 
 /* ── ROUTE ── */
 function handleRoute(){
-  const h=location.hash;
-  if(h.startsWith('#/post/')){
-    const key=decodeURIComponent(h.slice(7));
+  const path=location.pathname;
+  if(path.startsWith('/post/')){
+    const key=decodeURIComponent(path.slice(6));
     const p=(D.posts||[]).find(x=>(x.slug&&x.slug===key)||String(x.id)===key);
     if(p){openPost(p.id);return;}
   }
   goHome();
 }
-window.addEventListener('hashchange',handleRoute);
+window.addEventListener('popstate',handleRoute);
 function gotoSection(id){setTimeout(()=>{const e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth'});},120);}
 
 /* ── SEARCH ── */
@@ -622,7 +665,7 @@ function copyURL(btn){
 /* ── SEO / SCHEMA ── */
 function setPostMeta(p){
   const slug=p.slug||p.id;
-  const url='https://operation.tw/#/post/'+encodeURIComponent(slug);
+  const url='https://operation.tw/post/'+encodeURIComponent(slug);
   document.title=(p.title||'文章')+' | 操作一下';
   const metaDesc=document.querySelector('meta[name="description"]');
   if(metaDesc)metaDesc.content=p.excerpt||p.title||'';
@@ -641,6 +684,13 @@ function setPostMeta(p){
   let el=document.getElementById('ld-article');
   if(!el){el=document.createElement('script');el.type='application/ld+json';el.id='ld-article';document.head.appendChild(el);}
   el.textContent=JSON.stringify(schema);
+  /* OG / Twitter Card */
+  const img=p.image||'https://operation.tw/default.png';
+  const desc=p.excerpt||p.title||'';
+  const ogMap={'og:type':'article','og:title':p.title||'','og:description':desc,'og:url':url,'og:image':img};
+  Object.entries(ogMap).forEach(([k,v])=>{let m=document.querySelector('meta[property="'+k+'"]');if(m)m.content=v;});
+  const twMap={'twitter:card':'summary_large_image','twitter:title':p.title||'','twitter:description':desc,'twitter:image':img};
+  Object.entries(twMap).forEach(([k,v])=>{let m=document.querySelector('meta[name="'+k+'"]');if(m)m.content=v;});
 }
 function resetMeta(){
   document.title='操作一下 | operation.tw';
@@ -649,6 +699,12 @@ function resetMeta(){
   const canonical=document.querySelector('link[rel="canonical"]');
   if(canonical)canonical.href='https://operation.tw/';
   const el=document.getElementById('ld-article');if(el)el.remove();
+  /* Reset OG / Twitter Card */
+  const t='操作一下 | operation.tw',d='雲端、資安、AI、閱讀、成長 — 簡單的事情專注做',img='https://operation.tw/default.png';
+  const ogDef={'og:type':'website','og:title':t,'og:description':d,'og:url':'https://operation.tw/','og:image':img};
+  Object.entries(ogDef).forEach(([k,v])=>{let m=document.querySelector('meta[property="'+k+'"]');if(m)m.content=v;});
+  const twDef={'twitter:card':'summary_large_image','twitter:title':t,'twitter:description':d,'twitter:image':img};
+  Object.entries(twDef).forEach(([k,v])=>{let m=document.querySelector('meta[name="'+k+'"]');if(m)m.content=v;});
 }
 
 /* ── NEWSLETTER ── */
@@ -663,6 +719,43 @@ function nlSubmit(){
 
 /* ── MOBILE MENU ── */
 function toggleMob(){document.getElementById('mob-menu').classList.toggle('open');}
+
+/* ── TYPEWRITER ── */
+function typewrite(id,text){
+  const el=document.getElementById(id);if(!el)return;
+  el.textContent='';let i=0;
+  function tick(){if(i<text.length){el.textContent+=text[i++];setTimeout(tick,28);}else{_twDone=true;}}
+  tick();
+}
+
+/* ── COUNT UP ── */
+function countUp(id,target){
+  const el=document.getElementById(id);if(!el)return;
+  const num=parseInt(target);if(isNaN(num)){el.textContent=target;return;}
+  const hasPlus=String(target).includes('+');
+  const dur=1200;const t0=performance.now();
+  function frame(now){
+    const p=Math.min((now-t0)/dur,1);
+    const eased=1-Math.pow(1-p,3);
+    el.textContent=Math.floor(eased*num)+(p>=1&&hasPlus?'+':'');
+    if(p<1)requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+let _cuInit=false;
+function initCountUp(){
+  if(_cuInit)return;_cuInit=true;
+  const about=document.getElementById('about');if(!about)return;
+  const io=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      const a=D.about||{};
+      countUp('s1n',a.s1n);countUp('s2n',a.s2n);countUp('s3n',a.s3n);
+      io.disconnect();
+    }
+  },{threshold:0.3});
+  io.observe(about);
+}
 
 /* ── UTILS ── */
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
