@@ -29,15 +29,15 @@ const rssParser = new Parser({ timeout: 15000 });
 const NEWS_SOURCES = [
   {
     category: 'AI',
-    url: 'https://news.google.com/rss/search?q=人工智慧+AI+大型語言模型&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
+    url: 'https://news.google.com/rss/search?q=%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7+AI+%E5%A4%A7%E5%9E%8B%E8%AA%9E%E8%A8%80%E6%A8%A1%E5%9E%8B&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
   },
   {
     category: '雲端',
-    url: 'https://news.google.com/rss/search?q=雲端運算+AWS+Azure+GCP&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
+    url: 'https://news.google.com/rss/search?q=%E9%9B%B2%E7%AB%AF%E9%81%8B%E7%AE%97+AWS+Azure+GCP&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
   },
   {
     category: '資安',
-    url: 'https://news.google.com/rss/search?q=資訊安全+網路攻擊+cybersecurity&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
+    url: 'https://news.google.com/rss/search?q=%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8+%E7%B6%B2%E8%B7%AF%E6%94%BB%E6%93%8A+cybersecurity&hl=zh-TW&gl=TW&ceid=TW:zh-Hant',
   },
 ];
 
