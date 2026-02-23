@@ -1,0 +1,16 @@
+{
+  "name": "operation-tw-scripts",
+  "version": "1.0.0",
+  "description": "Scheduled auto-posting scripts for operation.tw",
+  "main": "auto-post.js",
+  "scripts": {
+    "start": "node auto-post.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "rss-parser": "^3.13.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

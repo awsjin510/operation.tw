@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src https://pvqvnmntqhsfzarbxayf.supabase.co;">
 <title>後台管理 | operation.tw</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
@@ -157,7 +158,8 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 ::-webkit-scrollbar-track{background:var(--bg2);}
 ::-webkit-scrollbar-thumb{background:rgba(0,245,255,.2);}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js" integrity="sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/dompurify@3.2.4/dist/purify.min.js"></script>
 </head>
 <body>
 
@@ -549,7 +551,7 @@ async function doLogin(){
   const {error}=await sb.auth.signInWithPassword({email,password:pw});
   btn.textContent='登入後台';btn.disabled=false;
   if(error){
-    errEl.textContent='登入失敗：'+error.message;
+    errEl.textContent='登入失敗：帳號或密碼錯誤';
     errEl.style.display='block';
   }else{
     document.getElementById('login-overlay').style.display='none';
@@ -626,7 +628,7 @@ function renderDash(){
   const el=document.getElementById('ds-recent');
   el.innerHTML=recent.map(p=>{
     const c=CAT_COLOR[p.category]||'#aaa';
-    return '<div class="post-row"><span class="pr-cat" style="border-color:'+c+';color:'+c+';">'+p.category+'</span><span class="pr-title">'+esc(p.title)+'</span><span class="pr-date">'+p.date+'</span><span class="pr-status '+(p.status==='published'?'pub':'dft')+'">'+(p.status==='published'?'已發布':'草稿')+'</span><div class="pr-actions"><button class="pr-btn" onclick="editPost('+p.id+')">編輯</button></div></div>';
+    return '<div class="post-row"><span class="pr-cat" style="border-color:'+c+';color:'+c+';">'+esc(p.category)+'</span><span class="pr-title">'+esc(p.title)+'</span><span class="pr-date">'+esc(p.date)+'</span><span class="pr-status '+(p.status==='published'?'pub':'dft')+'">'+(p.status==='published'?'已發布':'草稿')+'</span><div class="pr-actions"><button class="pr-btn" onclick="editPost('+p.id+')">編輯</button></div></div>';
   }).join('');
 }
 
@@ -640,7 +642,7 @@ function renderPostList(){
   if(!filtered.length){el.innerHTML='<div style="padding:28px;text-align:center;font-family:\'Share Tech Mono\',monospace;font-size:.72rem;color:var(--dim);">沒有符合條件的文章</div>';return;}
   el.innerHTML=filtered.map(p=>{
     const c=CAT_COLOR[p.category]||'#aaa';
-    return '<div class="post-row"><span class="pr-cat" style="border-color:'+c+';color:'+c+';">'+p.category+'</span><span class="pr-title">'+esc(p.title)+'</span><span class="pr-date">'+p.date+'</span><span class="pr-status '+(p.status==='published'?'pub':'dft')+'">'+(p.status==='published'?'已發布':'草稿')+'</span><div class="pr-actions"><button class="pr-btn" onclick="editPost('+p.id+')">編輯</button><button class="pr-btn del" onclick="askDelete('+p.id+')">刪除</button></div></div>';
+    return '<div class="post-row"><span class="pr-cat" style="border-color:'+c+';color:'+c+';">'+esc(p.category)+'</span><span class="pr-title">'+esc(p.title)+'</span><span class="pr-date">'+esc(p.date)+'</span><span class="pr-status '+(p.status==='published'?'pub':'dft')+'">'+(p.status==='published'?'已發布':'草稿')+'</span><div class="pr-actions"><button class="pr-btn" onclick="editPost('+p.id+')">編輯</button><button class="pr-btn del" onclick="askDelete('+p.id+')">刪除</button></div></div>';
   }).join('');
 }
 
@@ -673,7 +675,7 @@ function editPost(id){
   document.getElementById('ed-status').value=p.status;
   document.getElementById('ed-exc').value=p.excerpt||'';
   document.getElementById('ed-cover-url').value=p.image||'';
-  document.getElementById('ed-body').innerHTML=p.body||'';
+  document.getElementById('ed-body').innerHTML=safeHTML(p.body);
   document.getElementById('ed-html').value=p.body||'';
   if(p.image){document.getElementById('cover-preview').src=p.image;document.getElementById('cover-preview-wrap').style.display='block';}
   else document.getElementById('cover-preview-wrap').style.display='none';
@@ -765,10 +767,10 @@ function sanitizeSlugInput(el){
 function switchEditorTab(mode,btn){
   document.querySelectorAll('.etab').forEach(t=>t.classList.remove('on'));btn.classList.add('on');
   const visual=document.getElementById('ed-body'),html=document.getElementById('ed-html'),toolbar=document.getElementById('etoolbar');
-  if(mode==='visual'){html.style.display='none';visual.style.display='block';toolbar.style.display='flex';visual.innerHTML=html.value;}
+  if(mode==='visual'){html.style.display='none';visual.style.display='block';toolbar.style.display='flex';visual.innerHTML=safeHTML(html.value);}
   else{visual.style.display='none';html.style.display='block';toolbar.style.display='none';html.value=visual.innerHTML;}
 }
-function syncHTMLToVisual(){document.getElementById('ed-body').innerHTML=document.getElementById('ed-html').value;}
+function syncHTMLToVisual(){document.getElementById('ed-body').innerHTML=safeHTML(document.getElementById('ed-html').value);}
 
 // ── RICH TEXT ──
 function fmt(cmd){document.getElementById('ed-body').focus();document.execCommand(cmd,false,null);}
@@ -787,9 +789,11 @@ function openLinkModal(){
 function insertLink(){
   const url=document.getElementById('lm-url').value.trim(),text=document.getElementById('lm-text').value.trim(),newTab=document.getElementById('lm-new').checked;
   if(!url||url==='https://'){toast('請輸入連結網址','error');return;}
+  if(!isValidURL(url)){toast('連結網址必須以 http:// 或 https:// 開頭','error');return;}
   closeModal('link-modal');document.getElementById('ed-body').focus();restoreRange();
   const target=newTab?' target="_blank" rel="noopener"':'';
-  if(text){document.execCommand('insertHTML',false,'<a href="'+url+'"'+target+'>'+text+'</a>');}
+  const safeUrl=esc(url),safeText=esc(text);
+  if(safeText){document.execCommand('insertHTML',false,'<a href="'+safeUrl+'"'+target+'>'+safeText+'</a>');}
   else{
     document.execCommand('createLink',false,url);
     if(newTab){const sel=window.getSelection();if(sel.anchorNode&&sel.anchorNode.parentElement&&sel.anchorNode.parentElement.tagName==='A'){sel.anchorNode.parentElement.setAttribute('target','_blank');sel.anchorNode.parentElement.setAttribute('rel','noopener');}}
@@ -806,8 +810,10 @@ function openImgModal(){
 function insertImg(){
   const url=document.getElementById('mi-url').value.trim()||pendingImgSrc,alt=document.getElementById('mi-alt').value.trim();
   if(!url){toast('請選擇或輸入圖片網址','error');return;}
+  if(!url.startsWith('data:')&&!isValidURL(url)){toast('圖片網址必須以 http:// 或 https:// 開頭','error');return;}
   closeModal('img-modal');document.getElementById('ed-body').focus();restoreRange();
-  document.execCommand('insertHTML',false,'<img src="'+url+'" alt="'+alt+'" style="max-width:100%;margin:12px 0;display:block;">');
+  const safeUrl=esc(url),safeAlt=esc(alt);
+  document.execCommand('insertHTML',false,'<img src="'+safeUrl+'" alt="'+safeAlt+'" style="max-width:100%;margin:12px 0;display:block;">');
 }
 
 // ── IMAGE UPLOAD ──
@@ -897,10 +903,13 @@ function exportData(){
 }
 async function importData(event){
   const file=event.target.files[0];if(!file)return;
+  if(!confirm('匯入將會覆蓋所有現有資料，確定要繼續嗎？'))return;
   const reader=new FileReader();
   reader.onload=async e=>{
     try{
       const d=JSON.parse(e.target.result);
+      if(!d||typeof d!=='object'){throw new Error('無效的 JSON 格式');}
+      if(d.posts&&!Array.isArray(d.posts)){throw new Error('posts 欄位格式錯誤');}
       await sb.from('posts').delete().gt('id',0);
       if(d.posts&&d.posts.length){const rows=d.posts.map(({id,created_at,...r})=>r);const {error}=await sb.from('posts').insert(rows);if(error)throw error;}
       const ups=[];
@@ -936,7 +945,9 @@ function toast(msg,type=''){
 }
 
 // ── UTILS ──
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function safeHTML(s){return DOMPurify.sanitize(s||'',{ALLOWED_TAGS:['p','br','h2','h3','h4','a','strong','b','em','i','u','s','ul','ol','li','blockquote','pre','code','img','hr','table','thead','tbody','tr','th','td','span','div','figure','figcaption'],ALLOWED_ATTR:['href','src','alt','target','rel','class','style','id'],FORBID_ATTR:['onerror','onload','onclick','onmouseover','onfocus'],ALLOW_DATA_ATTR:false});}
+function isValidURL(url){try{const u=new URL(url);return['http:','https:'].includes(u.protocol);}catch(e){return false;}}
 function setText(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
 function setVal(id,v){const e=document.getElementById(id);if(e&&v!=null)e.value=v;}
 function getVal(id){const e=document.getElementById(id);return e?e.value:'';}
