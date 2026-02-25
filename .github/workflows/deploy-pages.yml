@@ -31,6 +31,7 @@ jobs:
           cp index.html admin.html podcast.html 404.html _site/
           cp robots.txt sitemap.xml ghost-custom.css _site/
           cp logo.jpg profile.jpg _site/
+          cp CNAME _site/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
