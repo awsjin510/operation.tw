@@ -457,6 +457,12 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
 <footer id="footer-text">© 2025 操作一下 · 簡單的事情專注做</footer>
 
 <script>
+// ── GITHUB PAGES SPA ROUTING: restore URL from 404 redirect ──
+(function(){
+  var q=window.location.search;
+  if(q&&q[1]==='/'){history.replaceState(null,null,q.slice(1)||'/');}
+})();
+
 // ── SUPABASE ──
 const SUPABASE_URL='https://pvqvnmntqhsfzarbxayf.supabase.co';
 const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2cXZubW50cWhzZnphcmJ4YXlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2NjQ0MjUsImV4cCI6MjA4NzI0MDQyNX0.sKn8yzJos9F8ghKrp3icx6zR2RO39898DenWlLodpqA';
