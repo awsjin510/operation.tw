@@ -12,18 +12,25 @@
 - **閱讀**：書摘、閱讀筆記、知識整理
 - **成長**：個人學習方法、職涯思維
 
-## 網站結構
+## 網站頁面
 
-- 首頁與文章列表：https://operation.tw/
-- Podcast 節目頁：https://operation.tw/podcast.html
+- [首頁與文章列表](https://operation.tw/): 所有文章的入口，依主題分類瀏覽
+- [Podcast 節目頁](https://operation.tw/podcast.html): 操作一下 Podcast 節目收聽頁面
 
-## 作者
+## 作者資訊
 
 - 名稱：Jin（操作一下）
 - 網站：https://operation.tw
+- 電子郵件：keepfighting510@gmail.com
 - Instagram：https://www.instagram.com/operation.tw/
 - Threads：https://www.threads.net/@operation.tw
 - YouTube：https://www.youtube.com/@操作一下
+
+## 常見問題
+
+- **這個網站是什麼？** 操作一下是一個中文科技自媒體，涵蓋雲端、資安、AI 等主題的深度文章。
+- **如何聯絡作者？** 可透過 keepfighting510@gmail.com 或 Instagram @operation.tw 聯絡。
+- **有 Podcast 嗎？** 是的，可在 https://operation.tw/podcast.html 收聽。
 
 ## 授權與使用
 
