@@ -22,7 +22,7 @@
 <meta name="twitter:description" content="雲端、資安、AI、閱讀、成長 — 簡單的事情專注做">
 <meta name="twitter:image" content="https://operation.tw/default.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"操作一下","alternateName":"operation.tw","url":"https://operation.tw","description":"雲端、資安、AI、閱讀、成長 — 簡單的事情專注做","inLanguage":"zh-TW","author":{"@type":"Person","name":"操作一下","url":"https://operation.tw"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://operation.tw/#/search/{search_term_string}"},"query-input":"required name=search_term_string"}}
+{"@context":"https://schema.org","@type":"WebSite","name":"操作一下","alternateName":"operation.tw","url":"https://operation.tw","description":"雲端、資安、AI、閱讀、成長 — 簡單的事情專注做","inLanguage":"zh-TW","author":{"@type":"Person","name":"Jin","alternateName":"操作一下","url":"https://operation.tw","email":"keepfighting510@gmail.com","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://operation.tw/#/search/{search_term_string}"},"query-input":"required name=search_term_string"}}
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
@@ -158,6 +158,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.08em;position:relative;z-index:1;}
+.footer-social{display:flex;justify-content:center;gap:20px;margin-bottom:12px;}
+.footer-social a{color:var(--dim);text-decoration:none;letter-spacing:.08em;transition:color .2s;}
+.footer-social a:hover{color:var(--cyan);}
 
 /* ═══ ARTICLE VIEW ═══ */
 .art-wrap{max-width:740px;margin:0 auto;padding:48px 24px 80px;}
@@ -454,7 +457,15 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
 </div>
 </div>
 
-<footer id="footer-text">© 2025 操作一下 · 簡單的事情專注做</footer>
+<footer>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">IG</a>
+    <a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a>
+    <a href="https://www.youtube.com/@操作一下" target="_blank" rel="noopener">YouTube</a>
+    <a href="mailto:keepfighting510@gmail.com">Email</a>
+  </div>
+  <div id="footer-text">© 2025 操作一下 · 簡單的事情專注做</div>
+</footer>
 
 <script>
 // ── GITHUB PAGES SPA ROUTING: restore URL from 404 redirect ──
@@ -683,7 +694,7 @@ function setPostMeta(p){
     '@context':'https://schema.org','@type':'BlogPosting',
     'headline':p.title||'','description':p.excerpt||'',
     'datePublished':p.date||'','dateModified':p.date||'',
-    'author':{'@type':'Person','name':'操作一下','url':'https://operation.tw'},
+    'author':{'@type':'Person','name':'Jin','alternateName':'操作一下','url':'https://operation.tw','email':'keepfighting510@gmail.com','sameAs':['https://www.instagram.com/operation.tw/','https://www.threads.net/@operation.tw','https://www.youtube.com/@操作一下']},
     'publisher':{'@type':'Organization','name':'操作一下','url':'https://operation.tw'},
     'url':url,'mainEntityOfPage':{'@type':'WebPage','@id':url},
     'articleSection':p.category||'','keywords':p.category||''
