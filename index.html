@@ -169,6 +169,12 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .contact-label{font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;}
 .contact-item a{color:var(--cyan);text-decoration:none;font-size:.9rem;transition:color .2s;}
 .contact-item a:hover{color:#fff;text-shadow:0 0 8px var(--cyan);}
+.contact-form{grid-column:1/-1;display:flex;flex-direction:column;gap:10px;margin-top:8px;}
+.contact-form input,.contact-form textarea{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:11px 14px;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:.76rem;outline:none;width:100%;}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--cyan);}
+.contact-form textarea{resize:vertical;min-height:60px;}
+.contact-form button{align-self:flex-end;padding:10px 24px;background:var(--cyan);color:var(--bg);font-family:'Share Tech Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;transition:all .25s;}
+.contact-form button:hover{background:rgba(0,245,255,.15);color:var(--cyan);box-shadow:0 0 15px rgba(0,245,255,.2);}
 
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.08em;position:relative;z-index:1;}
@@ -457,6 +463,12 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
       <span class="contact-label">YouTube</span>
       <a href="https://www.youtube.com/@操作一下" target="_blank" rel="noopener" itemprop="url">@操作一下</a>
     </div>
+    <form class="contact-form" onsubmit="submitContact(event)">
+      <input type="text" name="name" placeholder="你的名稱" required>
+      <input type="email" name="email" placeholder="你的 Email" required>
+      <textarea name="message" placeholder="想說的話..." rows="3" required></textarea>
+      <button type="submit">送出訊息 →</button>
+    </form>
   </div>
 </div>
 
@@ -509,7 +521,7 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
     <a href="https://www.youtube.com/@操作一下" target="_blank" rel="noopener">YouTube</a>
     <a href="mailto:keepfighting510@gmail.com">Email</a>
   </div>
-  <div id="footer-text">© 2025 操作一下 · 簡單的事情專注做</div>
+  <div id="footer-text">© 2025-2026 操作一下 · 簡單的事情專注做</div>
 </footer>
 
 <script>
@@ -537,7 +549,7 @@ const DEFAULTS={
   ],
   hp:{tag:'個人品牌 · 自媒體創作者',t1:'操作',t2:'一下',sub:'operation.tw // 雲端 · 資安 · AI · 閱讀 · 成長',quote:'簡單的事情專注做，\n有一天世界會為了你而感動',cta:'開始閱讀 →',nlt:'訂閱電子報',nld:'每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。'},
   about:{initials:'OP',bio:'我是操作一下，深耕雲端、資安與 AI 的自媒體創作者。\n\n我相信科技不應只是工程師的語言，每個人都值得理解這些工具。\n\n不賣課程，不追流量，只想把有用的東西說清楚。',s1n:'50+',s1l:'篇文章',s2n:'5',s2l:'核心主題',s3n:'∞',s3l:'持續更新'},
-  footer:'© 2025 操作一下 · 簡單的事情專注做'
+  footer:'© 2025-2026 操作一下 · 簡單的事情專注做'
 };
 
 let D={posts:[],hp:DEFAULTS.hp,about:DEFAULTS.about,footer:DEFAULTS.footer};
@@ -801,6 +813,20 @@ function nlSubmit(){
   const btn=inp.nextElementSibling;
   btn.textContent='訂閱成功 ✓';btn.style.background='var(--green)';inp.value='';
   setTimeout(()=>{btn.textContent='訂閱';btn.style.background='';},3000);
+}
+
+/* ── CONTACT FORM ── */
+function submitContact(e){
+  e.preventDefault();
+  var f=e.target;
+  var n=f.elements.name.value,em=f.elements.email.value,msg=f.elements.message.value;
+  var subj=encodeURIComponent('來自 operation.tw 的訊息 — '+n);
+  var body=encodeURIComponent('寄件人：'+n+'\nEmail：'+em+'\n\n'+msg);
+  window.open('mailto:keepfighting510@gmail.com?subject='+subj+'&body='+body,'_blank');
+  f.reset();
+  var btn=f.querySelector('button');
+  btn.textContent='已送出 ✓';btn.style.background='var(--green)';
+  setTimeout(function(){btn.textContent='送出訊息 →';btn.style.background='';},3000);
 }
 
 /* ── MOBILE MENU ── */
