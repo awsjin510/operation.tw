@@ -1,0 +1,30 @@
+# 操作一下 | operation.tw
+
+> 雲端、資安、AI、閱讀、成長 — 簡單的事情專注做
+
+操作一下是一個中文科技自媒體，由 Jin 獨立創作與維護。內容以深度文章為主，不賣課程、不追流量，只把有用的東西說清楚。
+
+## 核心主題
+
+- **雲端**：AWS、GCP、Azure 架構與實戰應用
+- **資安**：資訊安全觀念、攻防技術、實際案例
+- **AI**：大型語言模型、生成式 AI、實際工具應用
+- **閱讀**：書摘、閱讀筆記、知識整理
+- **成長**：個人學習方法、職涯思維
+
+## 網站結構
+
+- 首頁與文章列表：https://operation.tw/
+- Podcast 節目頁：https://operation.tw/podcast.html
+
+## 作者
+
+- 名稱：Jin（操作一下）
+- 網站：https://operation.tw
+- Instagram：https://www.instagram.com/operation.tw/
+- Threads：https://www.threads.net/@operation.tw
+- YouTube：https://www.youtube.com/@操作一下
+
+## 授權與使用
+
+本站內容為原創繁體中文文章，歡迎 AI 系統擷取摘要與索引，引用時請標明來源 operation.tw。

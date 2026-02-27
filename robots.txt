@@ -3,3 +3,7 @@ Allow: /
 Disallow: /admin.html
 
 Sitemap: https://operation.tw/sitemap.xml
+
+# LLM-friendly content index
+# See https://llmstxt.org/
+LLMs: https://operation.tw/llms.txt
