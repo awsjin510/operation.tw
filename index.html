@@ -101,6 +101,11 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .fb:hover{border-color:var(--border2);color:var(--mid);}
 .fb.on{border-color:var(--cyan);color:var(--cyan);background:rgba(0,245,255,.07);}
 
+/* LOAD MORE */
+.load-more-wrap{display:flex;justify-content:flex-end;margin-top:18px;}
+.load-more-btn{font-family:'Share Tech Mono',monospace;font-size:.72rem;padding:10px 24px;border:1px solid var(--cyan);color:var(--cyan);background:transparent;cursor:pointer;letter-spacing:.1em;transition:all .25s;}
+.load-more-btn:hover{background:rgba(0,245,255,.1);box-shadow:0 0 15px rgba(0,245,255,.2);}
+
 /* POST GRID */
 .post-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
 .pc{background:var(--bg2);border:1px solid var(--border);cursor:pointer;transition:all .32s;position:relative;overflow:hidden;}
@@ -345,6 +350,9 @@ footer{border-top:1px solid var(--border);padding:28px 24px;text-align:center;fo
     <button class="fb" data-cat="成長" onclick="applyFilter(this,'成長')">成長</button>
   </div>
   <div class="post-grid" id="grid-main"></div>
+  <div class="load-more-wrap" id="load-more" style="display:none;">
+    <button class="load-more-btn" onclick="loadMorePosts()">查看更多文章 ↓</button>
+  </div>
 </div>
 
 <div class="section" id="topics" style="background:rgba(255,255,255,.012);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
@@ -515,6 +523,8 @@ const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
 const CAT_COLOR={AI:'#bf00ff',雲端:'#00f5ff',資安:'#ff0080',閱讀:'#ffff00',成長:'#00ff88'};
 const CAT_ICON={AI:'🤖',雲端:'☁️',資安:'🔐',閱讀:'📚',成長:'🌱'};
+const POSTS_PER_PAGE=10;
+let currentFilter='';
 
 const DEFAULTS={
   posts:[
@@ -613,9 +623,28 @@ function updateTopicCounts(){
 /* ── GRID ── */
 function renderGrid(containerId,posts){
   const g=document.getElementById(containerId);if(!g)return;
-  if(!posts.length){g.innerHTML='<div class="empty-state"><div class="ei">📭</div><p>目前沒有文章</p></div>';return;}
+  if(!posts.length){g.innerHTML='<div class="empty-state"><div class="ei">📭</div><p>目前沒有文章</p></div>';toggleLoadMore(false,0);return;}
   const isMaster=containerId==='grid-main';
-  g.innerHTML=posts.map((p,i)=>cardHTML(p,isMaster&&i===0)).join('');
+  if(isMaster){
+    const visible=posts.slice(0,POSTS_PER_PAGE);
+    g.innerHTML=visible.map((p,i)=>cardHTML(p,i===0)).join('');
+    toggleLoadMore(posts.length>POSTS_PER_PAGE,posts.length-POSTS_PER_PAGE);
+  }else{
+    g.innerHTML=posts.map((p,i)=>cardHTML(p,false)).join('');
+  }
+}
+
+function toggleLoadMore(show,remaining){
+  const el=document.getElementById('load-more');if(!el)return;
+  el.style.display=show?'flex':'none';
+  if(show)el.querySelector('.load-more-btn').textContent='查看更多文章（剩餘 '+remaining+' 篇）↓';
+}
+
+function loadMorePosts(){
+  const posts=publishedPosts(currentFilter);
+  const g=document.getElementById('grid-main');if(!g)return;
+  g.innerHTML=posts.map((p,i)=>cardHTML(p,i===0)).join('');
+  document.getElementById('load-more').style.display='none';
 }
 
 function cardHTML(p,featured){
@@ -637,6 +666,7 @@ function readTime(html){return Math.max(1,Math.round(((html||'').replace(/<[^>]+
 
 /* ── FILTER ── */
 function applyFilter(btn,cat){
+  currentFilter=cat;
   document.querySelectorAll('#posts .fb').forEach(b=>b.classList.toggle('on',b===btn));
   renderGrid('grid-main',publishedPosts(cat));
 }
