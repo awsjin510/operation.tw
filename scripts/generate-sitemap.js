@@ -126,19 +126,29 @@ async function main() {
   if (!fs.existsSync(imgDir)) fs.mkdirSync(imgDir, { recursive: true });
 
   let imgSaved = 0;
-  const postsForJson = posts.map(p => {
+  const postsForJson = [];
+  for (const p of posts) {
     if (p.image && p.image.startsWith('data:')) {
       const m = p.image.match(/^data:image\/(\w+);base64,(.+)$/s);
       if (m) {
-        let ext = m[1]; if (ext === 'jpeg') ext = 'jpg';
-        const filename = `post-${p.id}.${ext}`;
-        fs.writeFileSync(path.join(imgDir, filename), Buffer.from(m[2], 'base64'));
+        const filename = `post-${p.id}.jpg`;
+        const rawPath = path.join(imgDir, `post-${p.id}.raw`);
+        const outPath = path.join(imgDir, filename);
+        fs.writeFileSync(rawPath, Buffer.from(m[2], 'base64'));
+        try {
+          const sharp = require('sharp');
+          await sharp(rawPath).resize({ width: 1200, withoutEnlargement: true }).jpeg({ quality: 82 }).toFile(outPath);
+          fs.unlinkSync(rawPath);
+        } catch (e) {
+          fs.renameSync(rawPath, outPath);
+        }
         imgSaved++;
-        return { ...p, image: `/images/posts/${filename}` };
+        postsForJson.push({ ...p, image: `/images/posts/${filename}` });
+        continue;
       }
     }
-    return { ...p };
-  });
+    postsForJson.push({ ...p });
+  }
   fs.writeFileSync(
     path.join(rootDir, 'posts.json'),
     JSON.stringify({ generated: new Date().toISOString(), posts: postsForJson }, null, 0)
