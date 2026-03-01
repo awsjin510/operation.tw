@@ -570,7 +570,7 @@ async function doLogout(){
 async function loadData(){
   try{
     const [pr,sr]=await Promise.all([
-      sb.from('posts').select('*').order('date',{ascending:false}),
+      sb.from('posts').select('id,title,category,date,status,excerpt,image,views').order('date',{ascending:false}),
       sb.from('settings').select('*')
     ]);
     if(pr.error)throw pr.error;
@@ -665,7 +665,7 @@ function newPost(){
   nav('editor');
 }
 
-function editPost(id){
+async function editPost(id){
   const p=D.posts.find(x=>x.id==id);if(!p)return;
   document.getElementById('ed-id').value=id;
   document.getElementById('ed-ttl').value=p.title;
@@ -675,6 +675,14 @@ function editPost(id){
   document.getElementById('ed-status').value=p.status;
   document.getElementById('ed-exc').value=p.excerpt||'';
   document.getElementById('ed-cover-url').value=p.image||'';
+  // Lazy-load body if not cached
+  if(!p.body){
+    document.getElementById('ed-body').innerHTML='<p style="color:var(--dim)">載入內文中…</p>';
+    try{
+      const {data,error}=await sb.from('posts').select('body').eq('id',id).single();
+      if(!error&&data)p.body=data.body;
+    }catch(e){console.warn('Failed to load post body:',e);}
+  }
   document.getElementById('ed-body').innerHTML=safeHTML(p.body);
   document.getElementById('ed-html').value=p.body||'';
   if(p.image){document.getElementById('cover-preview').src=p.image;document.getElementById('cover-preview-wrap').style.display='block';}
@@ -946,7 +954,7 @@ function toast(msg,type=''){
 
 // ── UTILS ──
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
-function safeHTML(s){return DOMPurify.sanitize(s||'',{ALLOWED_TAGS:['p','br','h2','h3','h4','a','strong','b','em','i','u','s','ul','ol','li','blockquote','pre','code','img','hr','table','thead','tbody','tr','th','td','span','div','figure','figcaption'],ALLOWED_ATTR:['href','src','alt','target','rel','class','style','id'],FORBID_ATTR:['onerror','onload','onclick','onmouseover','onfocus'],ALLOW_DATA_ATTR:false});}
+function safeHTML(s){return DOMPurify.sanitize(s||'',{ALLOWED_TAGS:['p','br','h2','h3','h4','a','strong','b','em','i','u','s','ul','ol','li','blockquote','pre','code','img','hr','table','thead','tbody','tr','th','td','span','div','figure','figcaption'],ALLOWED_ATTR:['href','src','alt','target','rel','class','style'],FORBID_ATTR:['onerror','onload','onclick','onmouseover','onfocus'],ALLOW_DATA_ATTR:false});}
 function isValidURL(url){try{const u=new URL(url);return['http:','https:'].includes(u.protocol);}catch(e){return false;}}
 function setText(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
 function setVal(id,v){const e=document.getElementById(id);if(e&&v!=null)e.value=v;}
