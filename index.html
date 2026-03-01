@@ -595,7 +595,7 @@ function setCache(posts,settings){
 }
 
 // ── DB INIT ──
-const LIST_FIELDS='id,title,category,date,status,excerpt,image,slug,views';
+const LIST_FIELDS='id,title,category,date,status,excerpt,image,views';
 
 async function initDB(){
   const today=new Date().toISOString().slice(0,10);
