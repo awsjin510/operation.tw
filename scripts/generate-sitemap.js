@@ -121,16 +121,29 @@ async function main() {
   console.log(`  ✓ feed.xml 已生成（${Math.min(posts.length, 20)} 篇文章）`);
 
   // 靜態文章列表：前端優先從此 CDN 檔案載入，跳過 Supabase 冷啟動
-  // 移除 base64 圖片資料以縮小檔案（40MB → 數 KB）
-  const postsForJson = posts.map(p => ({
-    ...p,
-    image: (p.image && !p.image.startsWith('data:')) ? p.image : ''
-  }));
+  // base64 圖片轉存為實際檔案，posts.json 僅保留路徑
+  const imgDir = path.join(rootDir, 'images', 'posts');
+  if (!fs.existsSync(imgDir)) fs.mkdirSync(imgDir, { recursive: true });
+
+  let imgSaved = 0;
+  const postsForJson = posts.map(p => {
+    if (p.image && p.image.startsWith('data:')) {
+      const m = p.image.match(/^data:image\/(\w+);base64,(.+)$/s);
+      if (m) {
+        let ext = m[1]; if (ext === 'jpeg') ext = 'jpg';
+        const filename = `post-${p.id}.${ext}`;
+        fs.writeFileSync(path.join(imgDir, filename), Buffer.from(m[2], 'base64'));
+        imgSaved++;
+        return { ...p, image: `/images/posts/${filename}` };
+      }
+    }
+    return { ...p };
+  });
   fs.writeFileSync(
     path.join(rootDir, 'posts.json'),
     JSON.stringify({ generated: new Date().toISOString(), posts: postsForJson }, null, 0)
   );
-  console.log(`  ✓ posts.json 已生成（${posts.length} 篇文章）`);
+  console.log(`  ✓ posts.json 已生成（${posts.length} 篇文章，${imgSaved} 張圖片轉存）`);
 
   console.log('\n✅ 完成！\n');
 }
