@@ -595,35 +595,54 @@ function setCache(posts,settings){
 }
 
 // ── DB INIT ──
-const LIST_FIELDS='id,title,category,date,status,excerpt,image,views';
-
 async function initDB(){
   const today=new Date().toISOString().slice(0,10);
-  // 1) Try cache first for instant render
+  let postsRendered=false;
+
+  // 1) localStorage cache → 瞬間顯示（repeat visit）
   const cached=getCache();
   if(cached){
     applyData(cached.posts,cached.settings);
+    renderHome();handleRoute();
+    postsRendered=true;
+  }
+
+  // 2) /posts.json (GitHub Pages CDN) → 幾乎無冷啟動延遲
+  if(!postsRendered){
+    try{
+      const res=await fetch('/posts.json');
+      if(res.ok){
+        const json=await res.json();
+        if(json.posts&&json.posts.length){
+          applyData(json.posts,null);
+          renderHome();handleRoute();
+          postsRendered=true;
+        }
+      }
+    }catch(e){console.warn('posts.json fetch failed:',e);}
+  }
+
+  // 3) 背景從 Supabase 拉設定（settings），文章已由靜態 JSON 提供
+  sb.from('settings').select('*').then(({data,error})=>{
+    if(error){console.warn('Settings query error:',error);return;}
+    const sm={};(data||[]).forEach(s=>{sm[s.key]=s.value;});
+    applyData(D.posts,sm);
+    setCache(D.posts,sm);
     renderHome();
-    handleRoute();
+  });
+
+  // 4) 若靜態 JSON 也沒有（首次部署前）→ 直接從 Supabase 撈
+  if(!postsRendered){
+    try{
+      const {data,error}=await sb.from('posts').select('id,title,category,date,status,excerpt,image,views').eq('status','published').order('date',{ascending:false});
+      if(error)throw error;
+      applyData(data||[],null);
+    }catch(err){
+      console.error('Supabase posts error:',err);
+      D=JSON.parse(JSON.stringify(DEFAULTS));D.siteViews={total:0,today:0};
+    }
+    renderHome();handleRoute();
   }
-  // 2) Fetch fresh data (only listing fields, no body)
-  try{
-    const [pr,sr]=await Promise.all([
-      sb.from('posts').select(LIST_FIELDS).eq('status','published').order('date',{ascending:false}),
-      sb.from('settings').select('*')
-    ]);
-    if(pr.error)throw pr.error;
-    if(sr.error)console.warn('Settings query error:',sr.error);
-    const sm={};
-    (sr.data||[]).forEach(s=>{sm[s.key]=s.value;});
-    applyData(pr.data||[],sm);
-    setCache(pr.data||[],sm);
-  }catch(err){
-    console.error('Supabase error:',err);
-    if(!cached){D=JSON.parse(JSON.stringify(DEFAULTS));D.siteViews={total:0,today:0};}
-  }
-  renderHome();
-  handleRoute();
   // 先遞增瀏覽數，再查詢統計（確保資料已寫入）
   sb.rpc('increment_site_views').then(({error:incErr})=>{
     if(incErr)console.warn('increment_site_views error:',incErr);
