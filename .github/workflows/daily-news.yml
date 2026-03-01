@@ -51,6 +51,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to sitemap/feed"
           else
-            git commit -m "chore: update sitemap.xml and feed.xml [skip ci]"
+            git commit -m "chore: update sitemap.xml and feed.xml"
             git push
           fi
