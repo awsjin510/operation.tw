@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>操作一下</title>
+  <link>https://operation.tw</link>
+  <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
+  <language>zh-TW</language>
+  <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+</channel>
+</rss>

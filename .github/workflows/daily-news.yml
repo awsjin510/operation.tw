@@ -5,6 +5,9 @@ on:
     - cron: '0 1 * * *'   # 每天 09:00 台灣時間 (CST/UTC+8 = 01:00 UTC)
   workflow_dispatch:        # 允許手動觸發，方便測試
 
+permissions:
+  contents: write           # 需要寫入權限以 commit sitemap/feed
+
 jobs:
   auto-post:
     runs-on: ubuntu-latest
@@ -32,3 +35,22 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node auto-post.js
         working-directory: scripts
+
+      - name: Generate sitemap and RSS feed
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: node generate-sitemap.js
+        working-directory: scripts
+
+      - name: Commit and push sitemap/feed updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml feed.xml
+          if git diff --cached --quiet; then
+            echo "No changes to sitemap/feed"
+          else
+            git commit -m "chore: update sitemap.xml and feed.xml [skip ci]"
+            git push
+          fi
