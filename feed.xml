@@ -5,13 +5,13 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 01 Mar 2026 04:19:39 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 01 Mar 2026 04:30:52 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>告別 Excel 人肉比價！CloudCost 助你一眼看穿跨雲價差，精準掌握預算！</title>
-    <link>https://operation.tw/post/excel-cloudcost</link>
-    <guid isPermaLink="true">https://operation.tw/post/excel-cloudcost</guid>
-    <description>這週完成的另外一個Side Project｜CloudCost 一鍵跨雲比價，找出最划算的雲端方案！</description>
+    <title>部落數據主權新革命：RSEE如何保護原住民AI語料權益</title>
+    <link>https://operation.tw/post/19</link>
+    <guid isPermaLink="true">https://operation.tw/post/19</guid>
+    <description>AI訓練數據成為新型殖民工具？台灣原住民部落透過RSEE機制奪回語料授權主控權。本文深入探討這場數據主權保衛戰，以及如何應用於台灣科技業的倫理實踐，打造負責任的AI生態。</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
@@ -32,10 +32,18 @@
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>部落數據主權新革命：RSEE如何保護原住民AI語料權益</title>
-    <link>https://operation.tw/post/19</link>
-    <guid isPermaLink="true">https://operation.tw/post/19</guid>
-    <description>AI訓練數據成為新型殖民工具？台灣原住民部落透過RSEE機制奪回語料授權主控權。本文深入探討這場數據主權保衛戰，以及如何應用於台灣科技業的倫理實踐，打造負責任的AI生態。</description>
+    <title>告別 Excel 人肉比價！CloudCost 助你一眼看穿跨雲價差，精準掌握預算！</title>
+    <link>https://operation.tw/post/18</link>
+    <guid isPermaLink="true">https://operation.tw/post/18</guid>
+    <description>這週完成的另外一個Side Project｜CloudCost 一鍵跨雲比價，找出最划算的雲端方案！</description>
+    <category>AI</category>
+    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI 核戰決策悖論：從兵推模型看人工智慧的理性邊界</title>
+    <link>https://operation.tw/post/22</link>
+    <guid isPermaLink="true">https://operation.tw/post/22</guid>
+    <description>最新兵推研究揭露驚人發現：AI 在模擬核戰衝突中比人類更傾向採取激進決策。這不僅挑戰我們對 AI 理性決策的假設，更引發全球政策制定者對 AI 軍事應用的深度反思。台灣如何因應 AI 戰略風險？</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
@@ -73,40 +81,40 @@
   </item>
   <item>
     <title>EP93_資深獵頭 Glen | ⌈存在即合理⌋：別急著否定，看清職場亂象背後的隱藏機會</title>
-    <link>https://operation.tw/post/ep93-glen</link>
-    <guid isPermaLink="true">https://operation.tw/post/ep93-glen</guid>
+    <link>https://operation.tw/post/6</link>
+    <guid isPermaLink="true">https://operation.tw/post/6</guid>
     <description>資深資安獵頭 Glen 分享 五大專業指標：領域專精、溝通頻率、需求理解、市場判斷力、消息掌握度，幫你一眼識破「不對頻」獵頭！</description>
     <category>成長</category>
     <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>AI時代的AWS證照推力與職涯蛻變心法！</title>
-    <link>https://operation.tw/post/ai-aws</link>
-    <guid isPermaLink="true">https://operation.tw/post/ai-aws</guid>
+    <link>https://operation.tw/post/7</link>
+    <guid isPermaLink="true">https://operation.tw/post/7</guid>
     <description>證照推力與職涯蛻變心法！</description>
     <category>成長</category>
     <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>告別單一 AI 助理！TG 群組打造專業分工 AI 團隊</title>
-    <link>https://operation.tw/post/ai-tg-ai</link>
-    <guid isPermaLink="true">https://operation.tw/post/ai-tg-ai</guid>
+    <link>https://operation.tw/post/4</link>
+    <guid isPermaLink="true">https://operation.tw/post/4</guid>
     <description>OpenClaw 透過 Telegram 群組功能，為不同專業領域建立專屬 Agent，不僅能針對任務性質選擇適合的 AI 模型，更能避免跨領域問題造成的上下文混淆。</description>
     <category>AI</category>
     <pubDate>Sat, 21 Feb 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>懶人必看！NotebookLM如何讓AWS證照準備效率暴增</title>
-    <link>https://operation.tw/post/notebooklm-aws</link>
-    <guid isPermaLink="true">https://operation.tw/post/notebooklm-aws</guid>
+    <link>https://operation.tw/post/5</link>
+    <guid isPermaLink="true">https://operation.tw/post/5</guid>
     <description>運用 AI 工具 NotebookLM 加速準備 AWS Certified Machine Learning Engineer – Associate (MLA-C01) 證照</description>
     <category>AI</category>
     <pubDate>Thu, 19 Feb 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>每次聽課，我都在想：如果今天是我在講，會多講哪些故事？</title>
-    <link>https://operation.tw/post/preview</link>
-    <guid isPermaLink="true">https://operation.tw/post/preview</guid>
+    <link>https://operation.tw/post/8</link>
+    <guid isPermaLink="true">https://operation.tw/post/8</guid>
     <description>無論主題是什麼，
 最後能讓人留下來、聽進去的，
 往往不是你的簡報多美，而是你「說故事的能力」。</description>
@@ -115,16 +123,16 @@
   </item>
   <item>
     <title>EP92_資深獵頭 Glen | 別對下一份工作有「錯誤期待」！揭秘企業選才的隱形標準</title>
-    <link>https://operation.tw/post/ep92-glen</link>
-    <guid isPermaLink="true">https://operation.tw/post/ep92-glen</guid>
+    <link>https://operation.tw/post/9</link>
+    <guid isPermaLink="true">https://operation.tw/post/9</guid>
     <description>從獵頭視角拆解企業選才背後的真實思維，帶你看懂履歷之外，什麼才是決定錄取與否的關鍵。</description>
     <category>成長</category>
     <pubDate>Sun, 01 Feb 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>把雲端學習變成一場任務挑戰：我的 AWS Cloud Quest 實戰體驗</title>
-    <link>https://operation.tw/post/aws-cloud-quest</link>
-    <guid isPermaLink="true">https://operation.tw/post/aws-cloud-quest</guid>
+    <link>https://operation.tw/post/10</link>
+    <guid isPermaLink="true">https://operation.tw/post/10</guid>
     <description>Lab的過程中可以照著圖片步驟執行，而最後的DIY環節則必須自己思考去完成。
 不只是複習基礎，更是用遊戲重新校正自己對雲端架構與最佳實務的理解，也很適合想準備 Cloud Practitioner 證照或剛入門雲端的朋友，相信做完一輪會更有概念!!</description>
     <category>雲端</category>
