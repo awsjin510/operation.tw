@@ -33,6 +33,7 @@ jobs:
           cp robots.txt sitemap.xml feed.xml posts.json llms.txt ghost-custom.css _site/
           cp logo.jpg profile.jpg default.png _site/
           cp CNAME _site/
+          if [ -d images ]; then cp -r images _site/; fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
