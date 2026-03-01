@@ -21,7 +21,7 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
 
 // ── 查詢所有已發布文章 ─────────────────────────────────────────
 async function fetchPublishedPosts() {
-  const url = `${SUPABASE_URL}/rest/v1/posts?select=id,title,slug,category,date,excerpt&status=eq.published&order=date.desc`;
+  const url = `${SUPABASE_URL}/rest/v1/posts?select=id,title,category,date,status,excerpt,image,views&status=eq.published&order=date.desc`;
   const res = await fetch(url, {
     headers: {
       apikey: SUPABASE_SERVICE_KEY,
@@ -105,7 +105,7 @@ function escXml(s) {
 
 // ── 主流程 ──────────────────────────────────────────────────────
 async function main() {
-  console.log('📄 生成 sitemap.xml 和 feed.xml...\n');
+  console.log('📄 生成 sitemap.xml、feed.xml 和 posts.json...\n');
 
   const posts = await fetchPublishedPosts();
   console.log(`  ✓ 取得 ${posts.length} 篇已發布文章`);
@@ -119,6 +119,13 @@ async function main() {
   const feed = generateFeed(posts);
   fs.writeFileSync(path.join(rootDir, 'feed.xml'), feed);
   console.log(`  ✓ feed.xml 已生成（${Math.min(posts.length, 20)} 篇文章）`);
+
+  // 靜態文章列表：前端優先從此 CDN 檔案載入，跳過 Supabase 冷啟動
+  fs.writeFileSync(
+    path.join(rootDir, 'posts.json'),
+    JSON.stringify({ generated: new Date().toISOString(), posts }, null, 0)
+  );
+  console.log(`  ✓ posts.json 已生成（${posts.length} 篇文章）`);
 
   console.log('\n✅ 完成！\n');
 }
