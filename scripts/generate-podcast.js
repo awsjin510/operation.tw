@@ -14,6 +14,12 @@ const RSSParser = require('rss-parser');
 const RSS_URL = 'https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml';
 const SPOTIFY_SHOW = 'https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl';
 
+/** Build a Spotify search URL that opens Spotify searching for the episode title. */
+function spotifySearchUrl(title) {
+  if (!title) return SPOTIFY_SHOW;
+  return 'https://open.spotify.com/search/' + encodeURIComponent(title);
+}
+
 /**
  * Parse itunes:duration to integer minutes.
  * Accepts: "HH:MM:SS", "MM:SS", or plain seconds as string/number.
@@ -81,7 +87,7 @@ async function main() {
       url: (item.enclosure && item.enclosure.url) || '',
       art,
       apple: item.link || '',
-      spot: SPOTIFY_SHOW,
+      spot: spotifySearchUrl(item.title),
     };
   });
 

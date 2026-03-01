@@ -57,12 +57,12 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .ep-sort option{background:var(--bg3);}
 .ep-count{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.08em;}
 .ep-list{display:flex;flex-direction:column;}
-.ep-card{display:grid;grid-template-columns:40px 60px 1fr auto;border-bottom:1px solid var(--border);transition:background .18s;position:relative;}
+.ep-card{display:grid;grid-template-columns:40px 80px 1fr auto;border-bottom:1px solid var(--border);transition:background .18s;position:relative;}
 .ep-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--cyan);transform:scaleY(0);transition:transform .3s;transform-origin:bottom;}
 .ep-card:hover::before{transform:scaleY(1);}
 .ep-card:hover{background:rgba(0,245,255,.03);}
 .ep-num{padding:18px 8px 18px 14px;font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);display:flex;align-items:flex-start;padding-top:22px;}
-.ep-thumb{width:56px;height:56px;margin:13px 10px;flex-shrink:0;border:1px solid var(--border);object-fit:cover;}
+.ep-thumb{width:56px;height:56px;margin:13px 12px;flex-shrink:0;border:1px solid var(--border);object-fit:cover;}
 .ep-info{padding:13px 10px 13px 0;min-width:0;}
 .ep-meta{font-family:'Share Tech Mono',monospace;font-size:.57rem;color:var(--dim);letter-spacing:.07em;margin-bottom:4px;display:flex;align-items:center;gap:10px;}
 .ep-dur{color:var(--cyan);}
