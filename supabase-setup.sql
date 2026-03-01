@@ -169,3 +169,9 @@ end;
 $$;
 
 grant execute on function increment_site_views() to anon;
+
+-- ============================================================
+-- 7. 效能索引
+-- ============================================================
+create index if not exists idx_posts_status_date on public.posts(status, date desc);
+create index if not exists idx_posts_category on public.posts(category);
