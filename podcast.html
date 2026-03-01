@@ -5,6 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Podcast | 操作一下 operation.tw</title>
 <meta name="description" content="操作一下 Podcast — 聊雲端、資安、AI、職涯、閱讀、成長。Apple Podcast & Spotify 同步收聽。">
+<link rel="canonical" href="https://operation.tw/podcast.html">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="操作一下">
+<meta property="og:title" content="Podcast | 操作一下 operation.tw">
+<meta property="og:description" content="操作一下 Podcast — 聊雲端、資安、AI、職涯、閱讀、成長。Apple Podcast & Spotify 同步收聽。">
+<meta property="og:url" content="https://operation.tw/podcast.html">
+<meta property="og:image" content="https://operation.tw/default.png">
+<meta property="og:locale" content="zh_TW">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Podcast | 操作一下 operation.tw">
+<meta name="twitter:description" content="操作一下 Podcast — 聊雲端、資安、AI、職涯、閱讀、成長。Apple Podcast & Spotify 同步收聽。">
+<meta name="twitter:image" content="https://operation.tw/default.png">
+<!-- Structured Data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"PodcastSeries","name":"操作一下","description":"聊雲端、資安、AI、職涯、閱讀、成長","url":"https://operation.tw/podcast.html","webFeed":"https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml"}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--cyan:#00f5ff;--pink:#ff0080;--purple:#bf00ff;--yellow:#ffff00;--green:#00ff88;--bg:#050510;--bg2:#0a0a1a;--bg3:#0d0d22;--border:rgba(0,245,255,.1);--border2:rgba(0,245,255,.3);--text:#e0e0ff;--dim:#6060a0;--mid:#9090cc;}
@@ -155,7 +173,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 
 <div class="ep-wrap">
   <div class="ep-controls">
-    <input class="ep-search" type="text" id="ep-q" placeholder="搜尋單集標題或描述..." oninput="filterEps()">
+    <input class="ep-search" type="text" id="ep-q" placeholder="搜尋單集標題或描述..." aria-label="搜尋 Podcast 單集" oninput="filterEps()">
     <select class="ep-sort" id="ep-sort" onchange="filterEps()">
       <option value="new">最新優先</option>
       <option value="old">最舊優先</option>
@@ -224,7 +242,7 @@ function render(){
     const safe_date=esc(fmtDate(ep.date));
     return `<div class="ep-card">
       <div class="ep-num">${n}</div>
-      <img class="ep-thumb" src="${safe_art}" alt="" loading="lazy" onerror="this.style.display='none'">
+      <img class="ep-thumb" src="${safe_art}" alt="${safe_title}" loading="lazy" onerror="this.style.display='none'">
       <div class="ep-info">
         <div class="ep-meta"><span>${safe_date}</span><span class="ep-dur">${fmtDur(ep.dur)}</span></div>
         <div class="ep-title">${safe_title}</div>
