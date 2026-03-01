@@ -25,6 +25,13 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY || !ANTHROPIC_API_KEY) {
 const anthropic = new Anthropic({ apiKey: ANTHROPIC_API_KEY });
 const rssParser = new Parser({ timeout: 15000 });
 
+/** fetch with AbortController timeout (default 30s) */
+function fetchWithTimeout(url, opts = {}, ms = 30000) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), ms);
+  return fetch(url, { ...opts, signal: ctrl.signal }).finally(() => clearTimeout(timer));
+}
+
 // ── 新聞來源（Google News RSS，免費無需 API Key）─────────────────
 const NEWS_SOURCES = [
   {
@@ -49,7 +56,7 @@ async function fetchRecentPosts(days = 14) {
 
   try {
     const url = `${SUPABASE_URL}/rest/v1/posts?select=title,category,date&date=gte.${sinceStr}&order=date.desc&limit=30`;
-    const res = await fetch(url, {
+    const res = await fetchWithTimeout(url, {
       headers: {
         apikey: SUPABASE_SERVICE_KEY,
         Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
@@ -175,7 +182,18 @@ ${dedupContext}
   const jsonMatch = raw.match(/\{[\s\S]*\}/);
   if (!jsonMatch) throw new Error(`Claude 回應格式錯誤：${raw.slice(0, 300)}`);
 
-  return JSON.parse(jsonMatch[0]);
+  let parsed;
+  try {
+    parsed = JSON.parse(jsonMatch[0]);
+  } catch (e) {
+    throw new Error(`JSON 解析失敗：${e.message}\n原始內容：${jsonMatch[0].slice(0, 300)}`);
+  }
+
+  const required = ['title', 'category', 'body', 'excerpt'];
+  const missing = required.filter(f => !parsed[f]);
+  if (missing.length) throw new Error(`Claude 回應缺少欄位：${missing.join(', ')}`);
+
+  return parsed;
 }
 
 // ── 寫入 Supabase ────────────────────────────────────────────────
@@ -192,7 +210,7 @@ async function publishPost(article) {
     body: article.body,
   };
 
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/posts`, {
+  const res = await fetchWithTimeout(`${SUPABASE_URL}/rest/v1/posts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

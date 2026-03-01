@@ -321,7 +321,7 @@ footer address a:hover{color:var(--cyan);}
   </div>
   <div class="nav-search">
     <span style="color:var(--dim);font-size:.8rem;">🔍</span>
-    <input type="text" placeholder="搜尋..." id="nav-q" onkeydown="if(event.key==='Enter')runSearch(this.value)">
+    <input type="text" placeholder="搜尋..." id="nav-q" aria-label="搜尋文章" onkeydown="if(event.key==='Enter')runSearch(this.value)">
   </div>
   <button class="hamburger" onclick="toggleMob()" id="ham"><span></span><span></span><span></span></button>
 </div>
@@ -779,17 +779,23 @@ async function openPost(id){
   sb.rpc('increment_post_views',{post_id:p.id}).then(()=>{},()=>{});
   const cover=document.getElementById('a-cover');
   if(p.image){cover.src=p.image;cover.style.display='block';}else{cover.style.display='none';}
-  // Lazy-load body: fetch only when needed
+  // Load body: prefer cached (from posts.json), fallback to Supabase with timeout
   const bodyEl=document.getElementById('a-body');
   if(!p.body){
     bodyEl.innerHTML='<div style="text-align:center;padding:40px;color:var(--dim);">載入中…</div>';
     try{
-      const {data,error}=await sb.from('posts').select('body').eq('id',p.id).single();
+      const ctrl=new AbortController();
+      const timer=setTimeout(()=>ctrl.abort(),10000);
+      const {data,error}=await sb.from('posts').select('body').eq('id',p.id).single().abortSignal(ctrl.signal);
+      clearTimeout(timer);
       if(!error&&data)p.body=data.body;
-    }catch(e){console.warn('Failed to load post body:',e);}
+    }catch(e){
+      console.warn('Failed to load post body:',e);
+      bodyEl.innerHTML='<p style="color:var(--pink)">內容載入失敗，請稍後再試。</p>';
+    }
   }
   setText('a-rt',readTime(p.body));
-  bodyEl.innerHTML=safeHTML(p.body)||'<p style="color:var(--dim)">（尚無內容）</p>';
+  if(p.body)bodyEl.innerHTML=safeHTML(p.body)||'<p style="color:var(--dim)">（尚無內容）</p>';
   const rel=publishedPosts(p.category).filter(x=>x.id!=id).slice(0,3);
   const rg=document.getElementById('rel-grid'),rs=document.getElementById('related');
   if(rel.length){
@@ -954,7 +960,7 @@ function initCountUp(){
 
 /* ── UTILS ── */
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
-function safeHTML(s){return DOMPurify.sanitize(s||'',{ALLOWED_TAGS:['p','br','h2','h3','h4','a','strong','b','em','i','u','s','ul','ol','li','blockquote','pre','code','img','hr','table','thead','tbody','tr','th','td','span','div','figure','figcaption'],ALLOWED_ATTR:['href','src','alt','target','rel','class','style','id'],FORBID_ATTR:['onerror','onload','onclick','onmouseover','onfocus'],ALLOW_DATA_ATTR:false});}
+function safeHTML(s){return DOMPurify.sanitize(s||'',{ALLOWED_TAGS:['p','br','h2','h3','h4','a','strong','b','em','i','u','s','ul','ol','li','blockquote','pre','code','img','hr','table','thead','tbody','tr','th','td','span','div','figure','figcaption'],ALLOWED_ATTR:['href','src','alt','target','rel','class'],FORBID_ATTR:['onerror','onload','onclick','onmouseover','onfocus'],ALLOW_DATA_ATTR:false});}
 function fmtViews(n){n=+n||0;if(n>=10000)return Math.floor(n/1000)+'k+';if(n>=1000)return (n/1000).toFixed(1)+'k';return String(n);}
 
 /* ── INIT ── */
