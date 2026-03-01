@@ -12,19 +12,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/19</loc>
+    <loc>https://operation.tw/post/23</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/21</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/20</loc>
+    <loc>https://operation.tw/post/22</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -36,7 +30,19 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/22</loc>
+    <loc>https://operation.tw/post/19</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://operation.tw/post/20</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://operation.tw/post/21</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
