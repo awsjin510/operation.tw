@@ -121,9 +121,14 @@ async function main() {
   console.log(`  ✓ feed.xml 已生成（${Math.min(posts.length, 20)} 篇文章）`);
 
   // 靜態文章列表：前端優先從此 CDN 檔案載入，跳過 Supabase 冷啟動
+  // 移除 base64 圖片資料以縮小檔案（40MB → 數 KB）
+  const postsForJson = posts.map(p => ({
+    ...p,
+    image: (p.image && !p.image.startsWith('data:')) ? p.image : ''
+  }));
   fs.writeFileSync(
     path.join(rootDir, 'posts.json'),
-    JSON.stringify({ generated: new Date().toISOString(), posts }, null, 0)
+    JSON.stringify({ generated: new Date().toISOString(), posts: postsForJson }, null, 0)
   );
   console.log(`  ✓ posts.json 已生成（${posts.length} 篇文章）`);
 
