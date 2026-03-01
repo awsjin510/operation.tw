@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write           # 需要寫入權限以 commit sitemap/feed
+  issues: write             # 需要建立 issue 以通知 CI 失敗
 
 jobs:
   auto-post:
