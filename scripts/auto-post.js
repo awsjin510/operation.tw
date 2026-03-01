@@ -41,16 +41,55 @@ const NEWS_SOURCES = [
   },
 ];
 
+// ── 查詢近期已發布文章（用於去重）──────────────────────────────
+async function fetchRecentPosts(days = 14) {
+  const since = new Date();
+  since.setDate(since.getDate() - days);
+  const sinceStr = since.toISOString().split('T')[0];
+
+  try {
+    const url = `${SUPABASE_URL}/rest/v1/posts?select=title,category,date&date=gte.${sinceStr}&order=date.desc&limit=30`;
+    const res = await fetch(url, {
+      headers: {
+        apikey: SUPABASE_SERVICE_KEY,
+        Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
+      },
+    });
+
+    if (!res.ok) {
+      console.warn(`  ⚠ 無法取得近期文章，將跳過去重：${res.status}`);
+      return [];
+    }
+
+    const posts = await res.json();
+    console.log(`  ✓ 取得近 ${days} 天的 ${posts.length} 篇已發布文章`);
+    return posts;
+  } catch (err) {
+    console.warn(`  ⚠ 查詢近期文章失敗：${err.message}`);
+    return [];
+  }
+}
+
 // ── 抓取單一類別的新聞 ──────────────────────────────────────────
 async function fetchNews(source) {
   try {
     const feed = await rssParser.parseURL(source.url);
-    const articles = feed.items.slice(0, 3).map((item) => ({
-      title: item.title || '',
-      link: item.link || '',
-      pubDate: item.pubDate || '',
-      snippet: (item.contentSnippet || item.content || '').slice(0, 300),
-    }));
+    const now = Date.now();
+    const FRESHNESS_MS = 48 * 60 * 60 * 1000; // 48 小時新鮮度窗口
+
+    const articles = feed.items
+      .slice(0, 10) // 擴大候選池（原本只取 3 則）
+      .filter((item) => {
+        if (!item.pubDate) return true; // 沒有日期的保留
+        return now - new Date(item.pubDate).getTime() < FRESHNESS_MS;
+      })
+      .slice(0, 5) // 過濾後取前 5 則，控制 prompt 大小
+      .map((item) => ({
+        title: item.title || '',
+        link: item.link || '',
+        pubDate: item.pubDate || '',
+        snippet: (item.contentSnippet || item.content || '').slice(0, 300),
+      }));
     console.log(`  ✓ [${source.category}] 取得 ${articles.length} 則新聞`);
     return { category: source.category, articles };
   } catch (err) {
@@ -60,7 +99,7 @@ async function fetchNews(source) {
 }
 
 // ── 用 Claude 生成繁體中文部落格文章 ────────────────────────────
-async function generatePost(newsData) {
+async function generatePost(newsData, recentPosts = []) {
   const newsContext = newsData
     .filter((n) => n.articles.length > 0)
     .map((n) => {
@@ -72,6 +111,24 @@ async function generatePost(newsData) {
     .join('\n\n');
 
   if (!newsContext) throw new Error('所有類別的新聞均抓取失敗，無法生成文章');
+
+  // 建立去重上下文：列出近期已發布的文章標題
+  let dedupContext = '';
+  if (recentPosts.length > 0) {
+    const recentTitles = recentPosts
+      .map((p) => `- [${p.category}] ${p.title} (${p.date})`)
+      .join('\n');
+    dedupContext = `\n\n⚠️ 以下是近期已發布的文章，請務必選擇不同的主題和角度，不要與這些文章重複或相似：\n${recentTitles}`;
+
+    // 計算最少使用的類別，提供軟性輪替提示
+    const categoryCounts = { AI: 0, 雲端: 0, 資安: 0 };
+    recentPosts.forEach((p) => {
+      if (categoryCounts[p.category] !== undefined) categoryCounts[p.category]++;
+    });
+    const leastUsed = Object.entries(categoryCounts)
+      .sort((a, b) => a[1] - b[1])[0][0];
+    dedupContext += `\n\n💡 近期「${leastUsed}」類別的文章較少，優先考慮此類別（但若該類別新聞確實不夠有話題性，可選其他類別）。`;
+  }
 
   const today = new Date().toLocaleDateString('zh-TW', {
     year: 'numeric',
@@ -88,8 +145,14 @@ async function generatePost(newsData) {
         content: `你是一位專業的科技部落格作者，專注於 AI、雲端運算、資訊安全領域。今天（${today}）的最新科技新聞如下：
 
 ${newsContext}
+${dedupContext}
 
-請從以上新聞中，選出最具話題性、對台灣讀者最有參考價值的一則，撰寫一篇專業繁體中文部落格文章。
+請從以上新聞中，選出一則符合以下條件的新聞來撰寫文章：
+1. 與已發布文章的主題、概念、角度都不重複、不相似
+2. 時效性強，最好是近一兩天內的新聞
+3. 對台灣讀者具有參考價值
+
+撰寫一篇專業繁體中文部落格文章。
 
 **請以純 JSON 格式回傳（不要包含其他文字或 Markdown 代碼區塊）：**
 {
@@ -154,13 +217,16 @@ async function main() {
   const now = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
   console.log(`\n📰 每日新聞自動發文 — ${now}\n`);
 
-  // 步驟 1：並行抓取三類新聞
-  console.log('步驟 1：抓取新聞...');
-  const newsData = await Promise.all(NEWS_SOURCES.map(fetchNews));
+  // 步驟 1：並行抓取三類新聞 + 近期已發布文章
+  console.log('步驟 1：抓取新聞與近期文章...');
+  const [newsData, recentPosts] = await Promise.all([
+    Promise.all(NEWS_SOURCES.map(fetchNews)),
+    fetchRecentPosts(14),
+  ]);
 
-  // 步驟 2：用 Claude 生成文章
+  // 步驟 2：用 Claude 生成文章（傳入近期文章供去重）
   console.log('\n步驟 2：AI 生成文章...');
-  const article = await generatePost(newsData);
+  const article = await generatePost(newsData, recentPosts);
   console.log(`  ✓ 文章標題：[${article.category}] ${article.title}`);
 
   // 步驟 3：發布到 Supabase
