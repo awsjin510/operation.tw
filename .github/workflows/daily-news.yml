@@ -43,14 +43,19 @@ jobs:
         run: node generate-sitemap.js
         working-directory: scripts
 
+      - name: Generate podcast episodes JSON
+        run: node generate-podcast.js
+        working-directory: scripts
+        continue-on-error: true
+
       - name: Commit and push sitemap/feed/posts updates
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add sitemap.xml feed.xml posts.json images/
+          git add sitemap.xml feed.xml posts.json images/ episodes.json
           if git diff --cached --quiet; then
-            echo "No changes to sitemap/feed/posts"
+            echo "No changes to sitemap/feed/posts/episodes"
           else
-            git commit -m "chore: update sitemap.xml, feed.xml and posts.json"
+            git commit -m "chore: update sitemap.xml, feed.xml, posts.json and episodes.json"
             git push
           fi
