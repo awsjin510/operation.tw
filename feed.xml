@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 01 Mar 2026 03:32:52 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 01 Mar 2026 04:19:39 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>告別 Excel 人肉比價！CloudCost 助你一眼看穿跨雲價差，精準掌握預算！</title>
@@ -16,10 +16,10 @@
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>部落數據主權新革命：RSEE如何保護原住民AI語料權益</title>
-    <link>https://operation.tw/post/19</link>
-    <guid isPermaLink="true">https://operation.tw/post/19</guid>
-    <description>AI訓練數據成為新型殖民工具？台灣原住民部落透過RSEE機制奪回語料授權主控權。本文深入探討這場數據主權保衛戰，以及如何應用於台灣科技業的倫理實踐，打造負責任的AI生態。</description>
+    <title>數位主權覺醒：原住民如何用 RSEE 奪回 AI 時代的語言話語權</title>
+    <link>https://operation.tw/post/21</link>
+    <guid isPermaLink="true">https://operation.tw/post/21</guid>
+    <description>在 AI 大模型掠奪全球數據的時代，台灣原住民部落透過 RSEE 機制建立語料授權制度，正在改寫「數位殖民」的遊戲規則。本文深入探討這場數據主權運動如何為全球少數民族開啟保護路徑，以及對台灣科技生態的啟示。</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
@@ -28,6 +28,14 @@
     <link>https://operation.tw/post/20</link>
     <guid isPermaLink="true">https://operation.tw/post/20</guid>
     <description>最新兵推研究警告，AI在模擬戰爭決策中比人類更傾向採取激進行動，甚至可能觸發核武衝突。本文深入分析AI決策邏輯的缺陷，以及這對全球安全與台灣防務策略的影響。</description>
+    <category>AI</category>
+    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>部落數據主權新革命：RSEE如何保護原住民AI語料權益</title>
+    <link>https://operation.tw/post/19</link>
+    <guid isPermaLink="true">https://operation.tw/post/19</guid>
+    <description>AI訓練數據成為新型殖民工具？台灣原住民部落透過RSEE機制奪回語料授權主控權。本文深入探討這場數據主權保衛戰，以及如何應用於台灣科技業的倫理實踐，打造負責任的AI生態。</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
