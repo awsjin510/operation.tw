@@ -125,7 +125,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .pc:hover::before{transform:translateX(100%);}
 .pc:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.5);}
 .pc-img{height:160px;background:var(--bg3);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.pc-img img{width:100%;height:100%;object-fit:cover;}
+.pc-img img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;}
 .pc-img-ph{font-size:2.4rem;opacity:.15;}
 .pc-badge{position:absolute;top:10px;left:10px;font-family:'Share Tech Mono',monospace;font-size:.57rem;padding:3px 8px;border:1px solid;letter-spacing:.1em;text-transform:uppercase;background:rgba(5,5,16,.75);}
 .pc-body{padding:18px;}
@@ -739,7 +739,7 @@ function cardHTML(p,featured){
   const c=CAT_COLOR[p.category]||'#aaa';
   const icon=CAT_ICON[p.category]||'📄';
   const rt=readTime(p.body);
-  const img=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" loading="lazy" style="width:100%;height:100%;object-fit:cover;">'
+  const img=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" loading="lazy">'
     :'<span class="pc-img-ph">'+icon+'</span>';
   const cls=featured?'pc featured':'pc';
   return '<div class="'+cls+'" onclick="openPost(\''+p.id+'\')" style="border-left:3px solid '+c+';">'
