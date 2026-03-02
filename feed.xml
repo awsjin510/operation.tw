@@ -5,21 +5,29 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 01 Mar 2026 05:33:15 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 02 Mar 2026 05:19:43 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>AI 核武決策研究震撼：企業該如何應對高風險場景中的AI黑箱？</title>
-    <link>https://operation.tw/post/23</link>
-    <guid isPermaLink="true">https://operation.tw/post/23</guid>
-    <description>美國最新兵推研究揭示AI在核戰決策中的激進傾向，引發全球科技與國防界警惕。本文不討論核戰本身，而是深入探討：企業在關鍵決策場景中如何監管AI行為、確保可解釋性，以及台灣科技業面臨的合規挑戰與機會。</description>
-    <category>AI</category>
-    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
+    <title>Neoclouds 崛起：AI 時代雲端新勢力如何挑戰巨頭壟斷</title>
+    <link>https://operation.tw/post/24</link>
+    <guid isPermaLink="true">https://operation.tw/post/24</guid>
+    <description>隨著 AI 應用爆發，傳統雲端巨頭面臨新興競爭者挑戰。Neoclouds 作為 AI 時代的新興雲端勢力，以專業化、成本優化與靈活架構吸引企業關注。本文深入分析其市場機會與對台灣科技生態的啟示。</description>
+    <category>雲端</category>
+    <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>AI 核戰決策悖論：從兵推模型看人工智慧的理性邊界</title>
     <link>https://operation.tw/post/22</link>
     <guid isPermaLink="true">https://operation.tw/post/22</guid>
     <description>最新兵推研究揭露驚人發現：AI 在模擬核戰衝突中比人類更傾向採取激進決策。這不僅挑戰我們對 AI 理性決策的假設，更引發全球政策制定者對 AI 軍事應用的深度反思。台灣如何因應 AI 戰略風險？</description>
+    <category>AI</category>
+    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI 核武決策研究震撼：企業該如何應對高風險場景中的AI黑箱？</title>
+    <link>https://operation.tw/post/23</link>
+    <guid isPermaLink="true">https://operation.tw/post/23</guid>
+    <description>美國最新兵推研究揭示AI在核戰決策中的激進傾向，引發全球科技與國防界警惕。本文不討論核戰本身，而是深入探討：企業在關鍵決策場景中如何監管AI行為、確保可解釋性，以及台灣科技業面臨的合規挑戰與機會。</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
@@ -88,18 +96,18 @@
     <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>EP93_資深獵頭 Glen | ⌈存在即合理⌋：別急著否定，看清職場亂象背後的隱藏機會</title>
-    <link>https://operation.tw/post/6</link>
-    <guid isPermaLink="true">https://operation.tw/post/6</guid>
-    <description>資深資安獵頭 Glen 分享 五大專業指標：領域專精、溝通頻率、需求理解、市場判斷力、消息掌握度，幫你一眼識破「不對頻」獵頭！</description>
-    <category>成長</category>
-    <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
     <title>AI時代的AWS證照推力與職涯蛻變心法！</title>
     <link>https://operation.tw/post/7</link>
     <guid isPermaLink="true">https://operation.tw/post/7</guid>
     <description>證照推力與職涯蛻變心法！</description>
+    <category>成長</category>
+    <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>EP93_資深獵頭 Glen | ⌈存在即合理⌋：別急著否定，看清職場亂象背後的隱藏機會</title>
+    <link>https://operation.tw/post/6</link>
+    <guid isPermaLink="true">https://operation.tw/post/6</guid>
+    <description>資深資安獵頭 Glen 分享 五大專業指標：領域專精、溝通頻率、需求理解、市場判斷力、消息掌握度，幫你一眼識破「不對頻」獵頭！</description>
     <category>成長</category>
     <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
   </item>
