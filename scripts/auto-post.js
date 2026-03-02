@@ -84,20 +84,26 @@ async function fetchNews(source) {
     const now = Date.now();
     const FRESHNESS_MS = 48 * 60 * 60 * 1000; // 48 小時新鮮度窗口
 
-    const articles = feed.items
-      .slice(0, 10) // 擴大候選池（原本只取 3 則）
-      .filter((item) => {
-        if (!item.pubDate) return true; // 沒有日期的保留
-        return now - new Date(item.pubDate).getTime() < FRESHNESS_MS;
-      })
-      .slice(0, 5) // 過濾後取前 5 則，控制 prompt 大小
-      .map((item) => ({
-        title: item.title || '',
-        link: item.link || '',
-        pubDate: item.pubDate || '',
-        snippet: (item.contentSnippet || item.content || '').slice(0, 300),
-      }));
-    console.log(`  ✓ [${source.category}] 取得 ${articles.length} 則新聞`);
+    const candidates = feed.items.slice(0, 10);
+    const fresh = candidates.filter((item) => {
+      if (!item.pubDate) return true;
+      return now - new Date(item.pubDate).getTime() < FRESHNESS_MS;
+    });
+
+    // fallback：若新鮮度過濾後為空（常見於 GitHub Actions Azure IP 拿到舊快取），
+    // 改取最新的 3 則，確保腳本不會因無新聞而失敗
+    const selected = fresh.length > 0 ? fresh.slice(0, 5) : candidates.slice(0, 3);
+    if (fresh.length === 0 && candidates.length > 0) {
+      console.warn(`  ⚠ [${source.category}] 無 48h 新鮮文章，改用最新 ${selected.length} 則（可能為舊快取）`);
+    }
+
+    const articles = selected.map((item) => ({
+      title: item.title || '',
+      link: item.link || '',
+      pubDate: item.pubDate || '',
+      snippet: (item.contentSnippet || item.content || '').slice(0, 300),
+    }));
+    console.log(`  ✓ [${source.category}] 取得 ${articles.length} 則新聞（原始 ${candidates.length} 則，新鮮 ${fresh.length} 則）`);
     return { category: source.category, articles };
   } catch (err) {
     console.warn(`  ✗ [${source.category}] 抓取失敗：${err.message}`);
