@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 03 Mar 2026 05:18:43 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 04 Mar 2026 05:12:54 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Fortinet 2026資安威脅預測：台灣企業面臨的三大生存挑戰</title>
+    <link>https://operation.tw/post/26</link>
+    <guid isPermaLink="true">https://operation.tw/post/26</guid>
+    <description>Fortinet最新發布2026全球資安威脅預測報告，指出AI驅動的攻擊、供應鏈風險與零信任架構缺口成為新常態。台灣作為全球半導體與科技樞紐，正面臨前所未有的資安威脅。本文深度解析威脅趨勢，並提出企業應對策略。</description>
+    <category>資安</category>
+    <pubDate>Wed, 04 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>DeepSeek整合華為晶片：中國AI突圍戰如何改寫全球競爭格局？</title>
     <link>https://operation.tw/post/25</link>
@@ -24,10 +32,10 @@
     <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI 核戰決策悖論：從兵推模型看人工智慧的理性邊界</title>
-    <link>https://operation.tw/post/22</link>
-    <guid isPermaLink="true">https://operation.tw/post/22</guid>
-    <description>最新兵推研究揭露驚人發現：AI 在模擬核戰衝突中比人類更傾向採取激進決策。這不僅挑戰我們對 AI 理性決策的假設，更引發全球政策制定者對 AI 軍事應用的深度反思。台灣如何因應 AI 戰略風險？</description>
+    <title>告別 Excel 人肉比價！CloudCost 助你一眼看穿跨雲價差，精準掌握預算！</title>
+    <link>https://operation.tw/post/18</link>
+    <guid isPermaLink="true">https://operation.tw/post/18</guid>
+    <description>這週完成的另外一個Side Project｜CloudCost 一鍵跨雲比價，找出最划算的雲端方案！</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
@@ -40,10 +48,10 @@
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>告別 Excel 人肉比價！CloudCost 助你一眼看穿跨雲價差，精準掌握預算！</title>
-    <link>https://operation.tw/post/18</link>
-    <guid isPermaLink="true">https://operation.tw/post/18</guid>
-    <description>這週完成的另外一個Side Project｜CloudCost 一鍵跨雲比價，找出最划算的雲端方案！</description>
+    <title>AI 核戰決策悖論：從兵推模型看人工智慧的理性邊界</title>
+    <link>https://operation.tw/post/22</link>
+    <guid isPermaLink="true">https://operation.tw/post/22</guid>
+    <description>最新兵推研究揭露驚人發現：AI 在模擬核戰衝突中比人類更傾向採取激進決策。這不僅挑戰我們對 AI 理性決策的假設，更引發全球政策制定者對 AI 軍事應用的深度反思。台灣如何因應 AI 戰略風險？</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
@@ -96,18 +104,18 @@
     <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI時代的AWS證照推力與職涯蛻變心法！</title>
-    <link>https://operation.tw/post/7</link>
-    <guid isPermaLink="true">https://operation.tw/post/7</guid>
-    <description>證照推力與職涯蛻變心法！</description>
-    <category>成長</category>
-    <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
     <title>EP93_資深獵頭 Glen | ⌈存在即合理⌋：別急著否定，看清職場亂象背後的隱藏機會</title>
     <link>https://operation.tw/post/6</link>
     <guid isPermaLink="true">https://operation.tw/post/6</guid>
     <description>資深資安獵頭 Glen 分享 五大專業指標：領域專精、溝通頻率、需求理解、市場判斷力、消息掌握度，幫你一眼識破「不對頻」獵頭！</description>
+    <category>成長</category>
+    <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI時代的AWS證照推力與職涯蛻變心法！</title>
+    <link>https://operation.tw/post/7</link>
+    <guid isPermaLink="true">https://operation.tw/post/7</guid>
+    <description>證照推力與職涯蛻變心法！</description>
     <category>成長</category>
     <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
   </item>
