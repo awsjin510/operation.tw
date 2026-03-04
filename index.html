@@ -610,7 +610,7 @@ async function initDB(){
   // 2) /posts.json (GitHub Pages CDN) → 幾乎無冷啟動延遲
   if(!postsRendered){
     try{
-      const res=await fetch('/posts.json');
+      const res=await fetch('/posts.json?_='+Date.now());
       if(res.ok){
         const json=await res.json();
         if(json.posts&&json.posts.length){
