@@ -10,6 +10,9 @@
 
 const Anthropic = require('@anthropic-ai/sdk');
 const Parser = require('rss-parser');
+const sharp = require('sharp');
+const path = require('path');
+const fs = require('fs').promises;
 
 // ── 環境變數檢查 ────────────────────────────────────────────────
 const SUPABASE_URL = process.env.SUPABASE_URL;
@@ -236,6 +239,93 @@ async function publishPost(article) {
   return data[0];
 }
 
+// ── 封面圖生成 ────────────────────────────────────────────────────
+const CAT_COLORS = {
+  'AI':   '#ff0080',
+  '雲端': '#00f5ff',
+  '資安': '#00ff88',
+  '閱讀': '#f7c948',
+  '成長': '#a78bfa',
+};
+const CAT_LABELS = {
+  'AI':   'AI',
+  '雲端': 'CLOUD',
+  '資安': 'SECURITY',
+  '閱讀': 'READING',
+  '成長': 'GROWTH',
+};
+
+function generateSVG(category) {
+  const color = CAT_COLORS[category] || '#00f5ff';
+  const label = CAT_LABELS[category] || category;
+  const badgeW = label.length * 17 + 48;
+  const today = new Date().toISOString().split('T')[0];
+
+  return `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="${color}" stroke-width="0.5" opacity="0.12"/>
+    </pattern>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="40" result="blur"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="#050510"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="980" cy="120" r="260" fill="${color}" filter="url(#softglow)" opacity="0.18"/>
+  <circle cx="200" cy="520" r="160" fill="${color}" filter="url(#softglow)" opacity="0.08"/>
+  <rect x="0" y="0" width="6" height="630" fill="${color}" filter="url(#glow)"/>
+  <rect x="0" y="0" width="1200" height="3" fill="${color}" opacity="0.4"/>
+  <rect x="0" y="627" width="1200" height="3" fill="${color}" opacity="0.2"/>
+  <rect x="60" y="80" width="${badgeW}" height="46" rx="3"
+        fill="transparent" stroke="${color}" stroke-width="2" filter="url(#glow)"/>
+  <text x="80" y="111" font-family="monospace,Courier New" font-size="22"
+        fill="${color}" font-weight="bold" letter-spacing="4">${label}</text>
+  <text x="60" y="340" font-family="monospace,Courier New" font-size="220"
+        fill="${color}" opacity="0.04" font-weight="bold">${label.charAt(0)}</text>
+  <line x1="60" y1="150" x2="440" y2="150" stroke="${color}" stroke-width="1" opacity="0.2"/>
+  <text x="60" y="560" font-family="monospace,Courier New" font-size="28"
+        fill="#ffffff" opacity="0.6" letter-spacing="2">operation.tw</text>
+  <text x="60" y="595" font-family="monospace,Courier New" font-size="16"
+        fill="${color}" opacity="0.5">// ${today}</text>
+  <line x1="1100" y1="590" x2="1170" y2="590" stroke="${color}" stroke-width="1.5" opacity="0.5"/>
+  <line x1="1170" y1="590" x2="1170" y2="520" stroke="${color}" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="1170" cy="520" r="3" fill="${color}" opacity="0.7"/>
+</svg>`;
+}
+
+async function generateCoverImage(postId, category) {
+  const svg = generateSVG(category);
+  const outDir = path.join(__dirname, '..', 'images', 'posts');
+  await fs.mkdir(outDir, { recursive: true });
+  const outPath = path.join(outDir, `post-${postId}.jpg`);
+  await sharp(Buffer.from(svg))
+    .resize({ width: 1200, withoutEnlargement: true })
+    .jpeg({ quality: 82 })
+    .toFile(outPath);
+  return `/images/posts/post-${postId}.jpg`;
+}
+
+async function updatePostImage(postId, imagePath) {
+  const res = await fetchWithTimeout(`${SUPABASE_URL}/rest/v1/posts?id=eq.${postId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: SUPABASE_SERVICE_KEY,
+      Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
+    },
+    body: JSON.stringify({ image: imagePath }),
+  });
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`Supabase 更新圖片失敗 (HTTP ${res.status}): ${errText}`);
+  }
+}
+
 // ── 主流程 ────────────────────────────────────────────────────────
 async function main() {
   const now = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
@@ -256,7 +346,18 @@ async function main() {
   // 步驟 3：發布到 Supabase
   console.log('\n步驟 3：發布到 Supabase...');
   const published = await publishPost(article);
-  console.log(`  ✓ 文章已發布！ID: ${published?.id}`);
+  const postId = published?.id;
+  console.log(`  ✓ 文章已發布！ID: ${postId}`);
+
+  // 步驟 4：生成封面圖
+  console.log('\n步驟 4：生成封面圖...');
+  const imagePath = await generateCoverImage(postId, article.category);
+  console.log(`  ✓ 封面圖已生成：${imagePath}`);
+
+  // 步驟 5：更新 Supabase image 欄位
+  console.log('\n步驟 5：更新 Supabase 封面圖欄位...');
+  await updatePostImage(postId, imagePath);
+  console.log(`  ✓ image 欄位已更新`);
 
   console.log('\n✅ 完成！\n');
 }
