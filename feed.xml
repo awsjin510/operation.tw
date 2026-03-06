@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 05 Mar 2026 05:16:22 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 06 Mar 2026 05:13:59 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>維基百科設AI紅線：翻譯品質把關如何改寫內容民主化？</title>
+    <link>https://operation.tw/post/28</link>
+    <guid isPermaLink="true">https://operation.tw/post/28</guid>
+    <description>維基百科祭出「錯5次停權」的嚴厲措施對抗劣質AI翻譯，背後反映的是開放協作平台與AI時代的衝突。這場看似內部治理的戰役，實則深刻影響全球知識平等權和AI可信度的未來走向。</description>
+    <category>AI</category>
+    <pubDate>Fri, 06 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>學測考AI，教育數位轉型的新里程碑還是資源浪費？</title>
     <link>https://operation.tw/post/27</link>
@@ -160,15 +168,6 @@
     <description>從獵頭視角拆解企業選才背後的真實思維，帶你看懂履歷之外，什麼才是決定錄取與否的關鍵。</description>
     <category>成長</category>
     <pubDate>Sun, 01 Feb 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>把雲端學習變成一場任務挑戰：我的 AWS Cloud Quest 實戰體驗</title>
-    <link>https://operation.tw/post/10</link>
-    <guid isPermaLink="true">https://operation.tw/post/10</guid>
-    <description>Lab的過程中可以照著圖片步驟執行，而最後的DIY環節則必須自己思考去完成。
-不只是複習基礎，更是用遊戲重新校正自己對雲端架構與最佳實務的理解，也很適合想準備 Cloud Practitioner 證照或剛入門雲端的朋友，相信做完一輪會更有概念!!</description>
-    <category>雲端</category>
-    <pubDate>Sat, 31 Jan 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
