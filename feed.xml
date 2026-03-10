@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Mon, 09 Mar 2026 05:37:07 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 10 Mar 2026 05:14:10 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI攻擊全面化2026：企業防禦該從何開始？</title>
+    <link>https://operation.tw/post/32</link>
+    <guid isPermaLink="true">https://operation.tw/post/32</guid>
+    <description>2026年AI攻擊已不再是未來威脅，而是當下現實。從自動化惡意軟體到深偽詐騙，攻擊者運用AI技術大幅降低成本、提升精準度。台灣企業該如何提前佈局防禦戰略，成為存亡關鍵。</description>
+    <category>資安</category>
+    <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI去匿名化攻擊：花130元起底你的隱私末日</title>
     <link>https://operation.tw/post/31</link>
@@ -144,14 +152,6 @@
     <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI時代的AWS證照推力與職涯蛻變心法！</title>
-    <link>https://operation.tw/post/7</link>
-    <guid isPermaLink="true">https://operation.tw/post/7</guid>
-    <description>證照推力與職涯蛻變心法！</description>
-    <category>成長</category>
-    <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
     <title>EP93_資深獵頭 Glen | ⌈存在即合理⌋：別急著否定，看清職場亂象背後的隱藏機會</title>
     <link>https://operation.tw/post/6</link>
     <guid isPermaLink="true">https://operation.tw/post/6</guid>
@@ -160,12 +160,12 @@
     <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>告別單一 AI 助理！TG 群組打造專業分工 AI 團隊</title>
-    <link>https://operation.tw/post/4</link>
-    <guid isPermaLink="true">https://operation.tw/post/4</guid>
-    <description>OpenClaw 透過 Telegram 群組功能，為不同專業領域建立專屬 Agent，不僅能針對任務性質選擇適合的 AI 模型，更能避免跨領域問題造成的上下文混淆。</description>
-    <category>AI</category>
-    <pubDate>Sat, 21 Feb 2026 00:00:00 GMT</pubDate>
+    <title>AI時代的AWS證照推力與職涯蛻變心法！</title>
+    <link>https://operation.tw/post/7</link>
+    <guid isPermaLink="true">https://operation.tw/post/7</guid>
+    <description>證照推力與職涯蛻變心法！</description>
+    <category>成長</category>
+    <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
