@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 10 Mar 2026 05:14:10 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 11 Mar 2026 05:16:00 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>高通Arduino Ventuno Q破萬元大關：邊緣AI時代的民主化轉折點</title>
+    <link>https://operation.tw/post/33</link>
+    <guid isPermaLink="true">https://operation.tw/post/33</guid>
+    <description>高通推出不到萬元的Arduino Ventuno Q單板電腦，讓離線大模型部署成為可能。這款產品如何打破AI運算的成本天花板？對台灣硬體製造和邊緣運算產業又帶來什麼機遇與挑戰？</description>
+    <category>AI</category>
+    <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI攻擊全面化2026：企業防禦該從何開始？</title>
     <link>https://operation.tw/post/32</link>
@@ -80,10 +88,10 @@
     <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>部落數據主權新革命：RSEE如何保護原住民AI語料權益</title>
-    <link>https://operation.tw/post/19</link>
-    <guid isPermaLink="true">https://operation.tw/post/19</guid>
-    <description>AI訓練數據成為新型殖民工具？台灣原住民部落透過RSEE機制奪回語料授權主控權。本文深入探討這場數據主權保衛戰，以及如何應用於台灣科技業的倫理實踐，打造負責任的AI生態。</description>
+    <title>AI決策比人類更激進？兵推研究揭露核戰風險的黑暗真相</title>
+    <link>https://operation.tw/post/20</link>
+    <guid isPermaLink="true">https://operation.tw/post/20</guid>
+    <description>最新兵推研究警告，AI在模擬戰爭決策中比人類更傾向採取激進行動，甚至可能觸發核武衝突。本文深入分析AI決策邏輯的缺陷，以及這對全球安全與台灣防務策略的影響。</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
@@ -104,18 +112,18 @@
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI 核武決策研究震撼：企業該如何應對高風險場景中的AI黑箱？</title>
-    <link>https://operation.tw/post/23</link>
-    <guid isPermaLink="true">https://operation.tw/post/23</guid>
-    <description>美國最新兵推研究揭示AI在核戰決策中的激進傾向，引發全球科技與國防界警惕。本文不討論核戰本身，而是深入探討：企業在關鍵決策場景中如何監管AI行為、確保可解釋性，以及台灣科技業面臨的合規挑戰與機會。</description>
+    <title>部落數據主權新革命：RSEE如何保護原住民AI語料權益</title>
+    <link>https://operation.tw/post/19</link>
+    <guid isPermaLink="true">https://operation.tw/post/19</guid>
+    <description>AI訓練數據成為新型殖民工具？台灣原住民部落透過RSEE機制奪回語料授權主控權。本文深入探討這場數據主權保衛戰，以及如何應用於台灣科技業的倫理實踐，打造負責任的AI生態。</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI決策比人類更激進？兵推研究揭露核戰風險的黑暗真相</title>
-    <link>https://operation.tw/post/20</link>
-    <guid isPermaLink="true">https://operation.tw/post/20</guid>
-    <description>最新兵推研究警告，AI在模擬戰爭決策中比人類更傾向採取激進行動，甚至可能觸發核武衝突。本文深入分析AI決策邏輯的缺陷，以及這對全球安全與台灣防務策略的影響。</description>
+    <title>AI 核武決策研究震撼：企業該如何應對高風險場景中的AI黑箱？</title>
+    <link>https://operation.tw/post/23</link>
+    <guid isPermaLink="true">https://operation.tw/post/23</guid>
+    <description>美國最新兵推研究揭示AI在核戰決策中的激進傾向，引發全球科技與國防界警惕。本文不討論核戰本身，而是深入探討：企業在關鍵決策場景中如何監管AI行為、確保可解釋性，以及台灣科技業面臨的合規挑戰與機會。</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
@@ -150,14 +158,6 @@
     <description>美國國家標準與技術研究院（NIST）最新發布AI專屬網路安全框架，針對生成式AI帶來的新型資安風險提出系統性解決方案。這項國際標準對於正積極導入AI的台灣企業而言，既是挑戰也是機會，將重塑資訊安全策略的未來方向。</description>
     <category>資安</category>
     <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>EP93_資深獵頭 Glen | ⌈存在即合理⌋：別急著否定，看清職場亂象背後的隱藏機會</title>
-    <link>https://operation.tw/post/6</link>
-    <guid isPermaLink="true">https://operation.tw/post/6</guid>
-    <description>資深資安獵頭 Glen 分享 五大專業指標：領域專精、溝通頻率、需求理解、市場判斷力、消息掌握度，幫你一眼識破「不對頻」獵頭！</description>
-    <category>成長</category>
-    <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>AI時代的AWS證照推力與職涯蛻變心法！</title>
