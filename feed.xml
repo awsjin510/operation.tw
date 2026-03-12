@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 11 Mar 2026 05:16:00 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 12 Mar 2026 05:20:07 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>從Nemotron 3 Super看AI代理競賽：台灣企業應如何搶佔智能自動化機遇</title>
+    <link>https://operation.tw/post/34</link>
+    <guid isPermaLink="true">https://operation.tw/post/34</guid>
+    <description>輝達推出Nemotron 3 Super模型，標誌AI代理競賽進入新階段。本文深入分析這款模型的技術亮點、與競爭者的差異，以及對台灣軟體、製造、服務業的實際應用價值與機遇。</description>
+    <category>AI</category>
+    <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>高通Arduino Ventuno Q破萬元大關：邊緣AI時代的民主化轉折點</title>
     <link>https://operation.tw/post/33</link>
@@ -158,14 +166,6 @@
     <description>美國國家標準與技術研究院（NIST）最新發布AI專屬網路安全框架，針對生成式AI帶來的新型資安風險提出系統性解決方案。這項國際標準對於正積極導入AI的台灣企業而言，既是挑戰也是機會，將重塑資訊安全策略的未來方向。</description>
     <category>資安</category>
     <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI時代的AWS證照推力與職涯蛻變心法！</title>
-    <link>https://operation.tw/post/7</link>
-    <guid isPermaLink="true">https://operation.tw/post/7</guid>
-    <description>證照推力與職涯蛻變心法！</description>
-    <category>成長</category>
-    <pubDate>Sun, 22 Feb 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
