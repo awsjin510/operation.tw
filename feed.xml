@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 12 Mar 2026 05:20:07 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 13 Mar 2026 05:17:48 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AWS 20周年里程碑：從工程痛點到雲端帝國的啟示</title>
+    <link>https://operation.tw/post/35</link>
+    <guid isPermaLink="true">https://operation.tw/post/35</guid>
+    <description>AWS邁入20周年，從Amazon內部工程問題的解決方案，演變成千億美元產業基石。本文探討AWS如何定義現代雲端運算，及其對台灣企業轉型的啟示，特別是在AI時代的新機遇。</description>
+    <category>雲端</category>
+    <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>從Nemotron 3 Super看AI代理競賽：台灣企業應如何搶佔智能自動化機遇</title>
     <link>https://operation.tw/post/34</link>
@@ -96,10 +104,10 @@
     <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI決策比人類更激進？兵推研究揭露核戰風險的黑暗真相</title>
-    <link>https://operation.tw/post/20</link>
-    <guid isPermaLink="true">https://operation.tw/post/20</guid>
-    <description>最新兵推研究警告，AI在模擬戰爭決策中比人類更傾向採取激進行動，甚至可能觸發核武衝突。本文深入分析AI決策邏輯的缺陷，以及這對全球安全與台灣防務策略的影響。</description>
+    <title>AI 核武決策研究震撼：企業該如何應對高風險場景中的AI黑箱？</title>
+    <link>https://operation.tw/post/23</link>
+    <guid isPermaLink="true">https://operation.tw/post/23</guid>
+    <description>美國最新兵推研究揭示AI在核戰決策中的激進傾向，引發全球科技與國防界警惕。本文不討論核戰本身，而是深入探討：企業在關鍵決策場景中如何監管AI行為、確保可解釋性，以及台灣科技業面臨的合規挑戰與機會。</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
@@ -128,10 +136,10 @@
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI 核武決策研究震撼：企業該如何應對高風險場景中的AI黑箱？</title>
-    <link>https://operation.tw/post/23</link>
-    <guid isPermaLink="true">https://operation.tw/post/23</guid>
-    <description>美國最新兵推研究揭示AI在核戰決策中的激進傾向，引發全球科技與國防界警惕。本文不討論核戰本身，而是深入探討：企業在關鍵決策場景中如何監管AI行為、確保可解釋性，以及台灣科技業面臨的合規挑戰與機會。</description>
+    <title>AI決策比人類更激進？兵推研究揭露核戰風險的黑暗真相</title>
+    <link>https://operation.tw/post/20</link>
+    <guid isPermaLink="true">https://operation.tw/post/20</guid>
+    <description>最新兵推研究警告，AI在模擬戰爭決策中比人類更傾向採取激進行動，甚至可能觸發核武衝突。本文深入分析AI決策邏輯的缺陷，以及這對全球安全與台灣防務策略的影響。</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
@@ -158,14 +166,6 @@
     <description>美股因AI威脅既有商業模式而拋售軟體股，中國則資金湧入新模型公司。這場AI股市分化反映了兩大經濟體的不同策略，對台灣IC設計、雲端與軟體業者帶來深遠影響。本文分析背後邏輯與台灣應有的因應之道。</description>
     <category>AI</category>
     <pubDate>Tue, 24 Feb 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>NIST推出AI資安框架：台灣企業必須立即行動</title>
-    <link>https://operation.tw/post/11</link>
-    <guid isPermaLink="true">https://operation.tw/post/11</guid>
-    <description>美國國家標準與技術研究院（NIST）最新發布AI專屬網路安全框架，針對生成式AI帶來的新型資安風險提出系統性解決方案。這項國際標準對於正積極導入AI的台灣企業而言，既是挑戰也是機會，將重塑資訊安全策略的未來方向。</description>
-    <category>資安</category>
-    <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
