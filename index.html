@@ -622,12 +622,20 @@ async function initDB(){
     }catch(e){console.warn('posts.json fetch failed:',e);}
   }
 
-  // 3) 背景從 Supabase 拉設定（settings），文章已由靜態 JSON 提供
-  sb.from('settings').select('*').then(({data,error})=>{
-    if(error){console.warn('Settings query error:',error);return;}
-    const sm={};(data||[]).forEach(s=>{sm[s.key]=s.value;});
-    applyData(D.posts,sm);
-    setCache(D.posts,sm);
+  // 3) 背景從 Supabase 同步最新文章 + 設定（確保手動新增/修改立即可見）
+  Promise.all([
+    sb.from('posts').select('id,title,category,date,status,excerpt,image,views').eq('status','published').order('date',{ascending:false}),
+    sb.from('settings').select('*')
+  ]).then(([{data:freshPosts,error:pe},{data:settings,error:se}])=>{
+    if(se)console.warn('Settings query error:',se);
+    const sm={};(settings||[]).forEach(s=>{sm[s.key]=s.value;});
+    let merged=D.posts||[];
+    if(!pe&&freshPosts){
+      const bodyMap=new Map((D.posts||[]).filter(p=>p.body).map(p=>[p.id,p.body]));
+      merged=freshPosts.map(p=>({...p,body:bodyMap.get(p.id)}));
+    }
+    applyData(merged,sm);
+    setCache(merged,sm);
     renderHome();
   });
 
@@ -779,20 +787,23 @@ async function openPost(id){
   sb.rpc('increment_post_views',{post_id:p.id}).then(()=>{},()=>{});
   const cover=document.getElementById('a-cover');
   if(p.image){cover.src=p.image;cover.style.display='block';}else{cover.style.display='none';}
-  // Load body: prefer cached (from posts.json), fallback to Supabase with timeout
+  // Load body: 先顯示快取，一律去 Supabase 拉最新版（確保手動更新立即可見）
   const bodyEl=document.getElementById('a-body');
-  if(!p.body){
+  if(p.body){
+    setText('a-rt',readTime(p.body));
+    bodyEl.innerHTML=safeHTML(p.body)||'<p style="color:var(--dim)">（尚無內容）</p>';
+  }else{
     bodyEl.innerHTML='<div style="text-align:center;padding:40px;color:var(--dim);">載入中…</div>';
-    try{
-      const ctrl=new AbortController();
-      const timer=setTimeout(()=>ctrl.abort(),10000);
-      const {data,error}=await sb.from('posts').select('body').eq('id',p.id).single().abortSignal(ctrl.signal);
-      clearTimeout(timer);
-      if(!error&&data)p.body=data.body;
-    }catch(e){
-      console.warn('Failed to load post body:',e);
-      bodyEl.innerHTML='<p style="color:var(--pink)">內容載入失敗，請稍後再試。</p>';
-    }
+  }
+  try{
+    const ctrl=new AbortController();
+    const timer=setTimeout(()=>ctrl.abort(),10000);
+    const {data,error}=await sb.from('posts').select('body').eq('id',p.id).single().abortSignal(ctrl.signal);
+    clearTimeout(timer);
+    if(!error&&data&&data.body)p.body=data.body;
+  }catch(e){
+    console.warn('Failed to load post body:',e);
+    if(!p.body)bodyEl.innerHTML='<p style="color:var(--pink)">內容載入失敗，請稍後再試。</p>';
   }
   setText('a-rt',readTime(p.body));
   if(p.body)bodyEl.innerHTML=safeHTML(p.body)||'<p style="color:var(--dim)">（尚無內容）</p>';
