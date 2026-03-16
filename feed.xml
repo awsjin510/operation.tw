@@ -5,14 +5,38 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 14 Mar 2026 05:15:21 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 16 Mar 2026 06:10:56 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Google Cloud 2026網路安全預測：台灣企業該如何應對新型威脅？</title>
+    <link>https://operation.tw/post/40</link>
+    <guid isPermaLink="true">https://operation.tw/post/40</guid>
+    <description>Google Cloud發布《2026網路安全預測》報告，揭示AI驅動攻擊、供應鏈威脅等新趨勢。本文解析報告核心發現，並探討台灣企業在數位轉型浪潮中應如何建立前瞻性防禦策略，搶先部署應對措施。</description>
+    <category>資安</category>
+    <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>歐洲AI新創逆襲：英法20億美元融資如何撼動美國AI霸權？</title>
+    <link>https://operation.tw/post/39</link>
+    <guid isPermaLink="true">https://operation.tw/post/39</guid>
+    <description>歐洲AI新創正以20億美元融資規模發起對美國的挑戰。英國和法國如何透過政策支持與人才集聚，打造獨立的AI生態系？這波歐洲AI浪潮對台灣科技產業帶來什麼啟示與機會？</description>
+    <category>AI</category>
+    <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI問診準確率不到35%：醫療AI的現實困境與台灣突圍之路</title>
     <link>https://operation.tw/post/36</link>
     <guid isPermaLink="true">https://operation.tw/post/36</guid>
     <description>最新研究顯示AI在健康諮詢中的準確率不足35%，遠低於臨床安全標準。這項發現揭示了當前生成式AI在醫療領域的根本限制。台灣醫療產業如何在AI浪潮中找到安全可靠的應用方向，成為攸關產業未來的關鍵課題。</description>
     <category>AI</category>
+    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>《超有料！職場第一實用的 AI 簡報術》閱讀心得</title>
+    <link>https://operation.tw/post/38</link>
+    <guid isPermaLink="true">https://operation.tw/post/38</guid>
+    <description></description>
+    <category>成長</category>
     <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -46,6 +70,14 @@
     <description>2026年AI攻擊已不再是未來威脅，而是當下現實。從自動化惡意軟體到深偽詐騙，攻擊者運用AI技術大幅降低成本、提升精準度。台灣企業該如何提前佈局防禦戰略，成為存亡關鍵。</description>
     <category>資安</category>
     <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>升主管沒人教你的那些事：從「做得好」到「帶得好」的關鍵轉變</title>
+    <link>https://operation.tw/post/37</link>
+    <guid isPermaLink="true">https://operation.tw/post/37</guid>
+    <description></description>
+    <category>成長</category>
+    <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>AI去匿名化攻擊：花130元起底你的隱私末日</title>
@@ -112,10 +144,10 @@
     <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI決策比人類更激進？兵推研究揭露核戰風險的黑暗真相</title>
-    <link>https://operation.tw/post/20</link>
-    <guid isPermaLink="true">https://operation.tw/post/20</guid>
-    <description>最新兵推研究警告，AI在模擬戰爭決策中比人類更傾向採取激進行動，甚至可能觸發核武衝突。本文深入分析AI決策邏輯的缺陷，以及這對全球安全與台灣防務策略的影響。</description>
+    <title>部落數據主權新革命：RSEE如何保護原住民AI語料權益</title>
+    <link>https://operation.tw/post/19</link>
+    <guid isPermaLink="true">https://operation.tw/post/19</guid>
+    <description>AI訓練數據成為新型殖民工具？台灣原住民部落透過RSEE機制奪回語料授權主控權。本文深入探討這場數據主權保衛戰，以及如何應用於台灣科技業的倫理實踐，打造負責任的AI生態。</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
@@ -134,38 +166,6 @@
     <description>最新兵推研究揭露驚人發現：AI 在模擬核戰衝突中比人類更傾向採取激進決策。這不僅挑戰我們對 AI 理性決策的假設，更引發全球政策制定者對 AI 軍事應用的深度反思。台灣如何因應 AI 戰略風險？</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>部落數據主權新革命：RSEE如何保護原住民AI語料權益</title>
-    <link>https://operation.tw/post/19</link>
-    <guid isPermaLink="true">https://operation.tw/post/19</guid>
-    <description>AI訓練數據成為新型殖民工具？台灣原住民部落透過RSEE機制奪回語料授權主控權。本文深入探討這場數據主權保衛戰，以及如何應用於台灣科技業的倫理實踐，打造負責任的AI生態。</description>
-    <category>AI</category>
-    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI 核武決策研究震撼：企業該如何應對高風險場景中的AI黑箱？</title>
-    <link>https://operation.tw/post/23</link>
-    <guid isPermaLink="true">https://operation.tw/post/23</guid>
-    <description>美國最新兵推研究揭示AI在核戰決策中的激進傾向，引發全球科技與國防界警惕。本文不討論核戰本身，而是深入探討：企業在關鍵決策場景中如何監管AI行為、確保可解釋性，以及台灣科技業面臨的合規挑戰與機會。</description>
-    <category>AI</category>
-    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>NIST發布AI網安框架：台灣企業如何因應AI資安風險</title>
-    <link>https://operation.tw/post/16</link>
-    <guid isPermaLink="true">https://operation.tw/post/16</guid>
-    <description>美國國家標準暨技術研究院（NIST）公布網路安全框架（CSF）的AI專屬延伸版本，為全球組織提供應對AI相關資安風險的指引。這對正積極導入AI的台灣企業而言，是一份重要的參考指南，有助於建立更完善的AI安全治理體系。</description>
-    <category>資安</category>
-    <pubDate>Fri, 27 Feb 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>台灣供應鏈搭上AI雲端列車：甲骨文商機引爆的啟示</title>
-    <link>https://operation.tw/post/14</link>
-    <guid isPermaLink="true">https://operation.tw/post/14</guid>
-    <description>甲骨文靠AI雲端服務大幅獲利，台灣供應鏈成為最大贏家。本文分析這波商機背後的技術趨勢、台灣企業的競爭優勢，以及如何抓住AI雲端時代的轉機。</description>
-    <category>雲端</category>
-    <pubDate>Wed, 25 Feb 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
