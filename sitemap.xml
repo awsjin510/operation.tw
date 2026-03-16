@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://operation.tw/</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-03-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,7 +12,25 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://operation.tw/post/40</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://operation.tw/post/39</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://operation.tw/post/36</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://operation.tw/post/38</loc>
     <lastmod>2026-03-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -38,6 +56,12 @@
   <url>
     <loc>https://operation.tw/post/32</loc>
     <lastmod>2026-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://operation.tw/post/37</loc>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -90,7 +114,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/20</loc>
+    <loc>https://operation.tw/post/19</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -108,13 +132,13 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/19</loc>
+    <loc>https://operation.tw/post/23</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/23</loc>
+    <loc>https://operation.tw/post/20</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
