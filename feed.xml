@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Mon, 16 Mar 2026 06:10:56 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 17 Mar 2026 05:40:00 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Neoclouds崛起：AI時代雲端新勢力如何挑戰AWS、Azure霸權？</title>
+    <link>https://operation.tw/post/41</link>
+    <guid isPermaLink="true">https://operation.tw/post/41</guid>
+    <description>在AWS邁向20週年、雲端市場競爭加劇之際，Neoclouds作為AI時代的新興雲端勢力浮上檯面。本文分析這股新勢力的競爭優勢、技術特色，以及對台灣企業雲端策略選擇的啟示。</description>
+    <category>雲端</category>
+    <pubDate>Tue, 17 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Google Cloud 2026網路安全預測：台灣企業該如何應對新型威脅？</title>
     <link>https://operation.tw/post/40</link>
@@ -24,19 +32,19 @@
     <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI問診準確率不到35%：醫療AI的現實困境與台灣突圍之路</title>
-    <link>https://operation.tw/post/36</link>
-    <guid isPermaLink="true">https://operation.tw/post/36</guid>
-    <description>最新研究顯示AI在健康諮詢中的準確率不足35%，遠低於臨床安全標準。這項發現揭示了當前生成式AI在醫療領域的根本限制。台灣醫療產業如何在AI浪潮中找到安全可靠的應用方向，成為攸關產業未來的關鍵課題。</description>
-    <category>AI</category>
-    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
     <title>《超有料！職場第一實用的 AI 簡報術》閱讀心得</title>
     <link>https://operation.tw/post/38</link>
     <guid isPermaLink="true">https://operation.tw/post/38</guid>
     <description></description>
     <category>成長</category>
+    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI問診準確率不到35%：醫療AI的現實困境與台灣突圍之路</title>
+    <link>https://operation.tw/post/36</link>
+    <guid isPermaLink="true">https://operation.tw/post/36</guid>
+    <description>最新研究顯示AI在健康諮詢中的準確率不足35%，遠低於臨床安全標準。這項發現揭示了當前生成式AI在醫療領域的根本限制。台灣醫療產業如何在AI浪潮中找到安全可靠的應用方向，成為攸關產業未來的關鍵課題。</description>
+    <category>AI</category>
     <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -144,10 +152,10 @@
     <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>部落數據主權新革命：RSEE如何保護原住民AI語料權益</title>
-    <link>https://operation.tw/post/19</link>
-    <guid isPermaLink="true">https://operation.tw/post/19</guid>
-    <description>AI訓練數據成為新型殖民工具？台灣原住民部落透過RSEE機制奪回語料授權主控權。本文深入探討這場數據主權保衛戰，以及如何應用於台灣科技業的倫理實踐，打造負責任的AI生態。</description>
+    <title>AI決策比人類更激進？兵推研究揭露核戰風險的黑暗真相</title>
+    <link>https://operation.tw/post/20</link>
+    <guid isPermaLink="true">https://operation.tw/post/20</guid>
+    <description>最新兵推研究警告，AI在模擬戰爭決策中比人類更傾向採取激進行動，甚至可能觸發核武衝突。本文深入分析AI決策邏輯的缺陷，以及這對全球安全與台灣防務策略的影響。</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
@@ -156,14 +164,6 @@
     <link>https://operation.tw/post/18</link>
     <guid isPermaLink="true">https://operation.tw/post/18</guid>
     <description>這週完成的另外一個Side Project｜CloudCost 一鍵跨雲比價，找出最划算的雲端方案！</description>
-    <category>AI</category>
-    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI 核戰決策悖論：從兵推模型看人工智慧的理性邊界</title>
-    <link>https://operation.tw/post/22</link>
-    <guid isPermaLink="true">https://operation.tw/post/22</guid>
-    <description>最新兵推研究揭露驚人發現：AI 在模擬核戰衝突中比人類更傾向採取激進決策。這不僅挑戰我們對 AI 理性決策的假設，更引發全球政策制定者對 AI 軍事應用的深度反思。台灣如何因應 AI 戰略風險？</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
