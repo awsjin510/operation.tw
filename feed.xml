@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 17 Mar 2026 05:40:00 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 18 Mar 2026 05:46:14 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>機器人多模態感知困局：NVIDIA Jetson Thor如何突破邊緣AI瓶頸</title>
+    <link>https://operation.tw/post/42</link>
+    <guid isPermaLink="true">https://operation.tw/post/42</guid>
+    <description>NVIDIA Jetson Thor面臨的多模態挑戰揭示了邊緣AI的真實困境。本文分析視覺、音頻、觸覺融合的技術難點，以及台灣機器人產業如何利用新晶片突圍，搶佔智慧製造與服務機器人市場的機會。</description>
+    <category>AI</category>
+    <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Neoclouds崛起：AI時代雲端新勢力如何挑戰AWS、Azure霸權？</title>
     <link>https://operation.tw/post/41</link>
@@ -32,19 +40,19 @@
     <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>《超有料！職場第一實用的 AI 簡報術》閱讀心得</title>
-    <link>https://operation.tw/post/38</link>
-    <guid isPermaLink="true">https://operation.tw/post/38</guid>
-    <description></description>
-    <category>成長</category>
-    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
     <title>AI問診準確率不到35%：醫療AI的現實困境與台灣突圍之路</title>
     <link>https://operation.tw/post/36</link>
     <guid isPermaLink="true">https://operation.tw/post/36</guid>
     <description>最新研究顯示AI在健康諮詢中的準確率不足35%，遠低於臨床安全標準。這項發現揭示了當前生成式AI在醫療領域的根本限制。台灣醫療產業如何在AI浪潮中找到安全可靠的應用方向，成為攸關產業未來的關鍵課題。</description>
     <category>AI</category>
+    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>《超有料！職場第一實用的 AI 簡報術》閱讀心得</title>
+    <link>https://operation.tw/post/38</link>
+    <guid isPermaLink="true">https://operation.tw/post/38</guid>
+    <description></description>
+    <category>成長</category>
     <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -80,19 +88,19 @@
     <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>升主管沒人教你的那些事：從「做得好」到「帶得好」的關鍵轉變</title>
-    <link>https://operation.tw/post/37</link>
-    <guid isPermaLink="true">https://operation.tw/post/37</guid>
-    <description></description>
-    <category>成長</category>
-    <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
     <title>AI去匿名化攻擊：花130元起底你的隱私末日</title>
     <link>https://operation.tw/post/31</link>
     <guid isPermaLink="true">https://operation.tw/post/31</guid>
     <description>最新研究揭露AI去匿名化技術精準度高達90%，僅需130元成本就能識別匿名數據背後的真實身份。這項威脅對個人隱私和企業數據安全構成前所未有的挑戰，台灣企業必須立即檢視數據保護策略。</description>
     <category>資安</category>
+    <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>升主管沒人教你的那些事：從「做得好」到「帶得好」的關鍵轉變</title>
+    <link>https://operation.tw/post/37</link>
+    <guid isPermaLink="true">https://operation.tw/post/37</guid>
+    <description></description>
+    <category>成長</category>
     <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -152,18 +160,10 @@
     <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI決策比人類更激進？兵推研究揭露核戰風險的黑暗真相</title>
-    <link>https://operation.tw/post/20</link>
-    <guid isPermaLink="true">https://operation.tw/post/20</guid>
-    <description>最新兵推研究警告，AI在模擬戰爭決策中比人類更傾向採取激進行動，甚至可能觸發核武衝突。本文深入分析AI決策邏輯的缺陷，以及這對全球安全與台灣防務策略的影響。</description>
-    <category>AI</category>
-    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>告別 Excel 人肉比價！CloudCost 助你一眼看穿跨雲價差，精準掌握預算！</title>
-    <link>https://operation.tw/post/18</link>
-    <guid isPermaLink="true">https://operation.tw/post/18</guid>
-    <description>這週完成的另外一個Side Project｜CloudCost 一鍵跨雲比價，找出最划算的雲端方案！</description>
+    <title>部落數據主權新革命：RSEE如何保護原住民AI語料權益</title>
+    <link>https://operation.tw/post/19</link>
+    <guid isPermaLink="true">https://operation.tw/post/19</guid>
+    <description>AI訓練數據成為新型殖民工具？台灣原住民部落透過RSEE機制奪回語料授權主控權。本文深入探討這場數據主權保衛戰，以及如何應用於台灣科技業的倫理實踐，打造負責任的AI生態。</description>
     <category>AI</category>
     <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
   </item>
