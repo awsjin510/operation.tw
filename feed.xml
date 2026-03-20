@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 19 Mar 2026 05:40:34 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 20 Mar 2026 05:20:31 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>無伺服器GPU時代來臨：Databricks×NVIDIA如何重塑AI訓練經濟學</title>
+    <link>https://operation.tw/post/44</link>
+    <guid isPermaLink="true">https://operation.tw/post/44</guid>
+    <description>Databricks與NVIDIA的無伺服器GPU整合方案，正在打破傳統AI訓練的成本與複雜性壁壘。這場雲端運算的新革命，不僅衝擊AWS、Azure的市場格局，更為台灣中小企業的AI轉型提供全新機遇。</description>
+    <category>雲端</category>
+    <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>水務新創破局：驗證型AI如何終結LLM的信任危機</title>
     <link>https://operation.tw/post/43</link>
@@ -48,19 +56,19 @@
     <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI問診準確率不到35%：醫療AI的現實困境與台灣突圍之路</title>
-    <link>https://operation.tw/post/36</link>
-    <guid isPermaLink="true">https://operation.tw/post/36</guid>
-    <description>最新研究顯示AI在健康諮詢中的準確率不足35%，遠低於臨床安全標準。這項發現揭示了當前生成式AI在醫療領域的根本限制。台灣醫療產業如何在AI浪潮中找到安全可靠的應用方向，成為攸關產業未來的關鍵課題。</description>
-    <category>AI</category>
-    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
     <title>《超有料！職場第一實用的 AI 簡報術》閱讀心得</title>
     <link>https://operation.tw/post/38</link>
     <guid isPermaLink="true">https://operation.tw/post/38</guid>
     <description></description>
     <category>成長</category>
+    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI問診準確率不到35%：醫療AI的現實困境與台灣突圍之路</title>
+    <link>https://operation.tw/post/36</link>
+    <guid isPermaLink="true">https://operation.tw/post/36</guid>
+    <description>最新研究顯示AI在健康諮詢中的準確率不足35%，遠低於臨床安全標準。這項發現揭示了當前生成式AI在醫療領域的根本限制。台灣醫療產業如何在AI浪潮中找到安全可靠的應用方向，成為攸關產業未來的關鍵課題。</description>
+    <category>AI</category>
     <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -96,19 +104,19 @@
     <pubDate>Tue, 10 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>升主管沒人教你的那些事：從「做得好」到「帶得好」的關鍵轉變</title>
-    <link>https://operation.tw/post/37</link>
-    <guid isPermaLink="true">https://operation.tw/post/37</guid>
-    <description></description>
-    <category>成長</category>
-    <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
     <title>AI去匿名化攻擊：花130元起底你的隱私末日</title>
     <link>https://operation.tw/post/31</link>
     <guid isPermaLink="true">https://operation.tw/post/31</guid>
     <description>最新研究揭露AI去匿名化技術精準度高達90%，僅需130元成本就能識別匿名數據背後的真實身份。這項威脅對個人隱私和企業數據安全構成前所未有的挑戰，台灣企業必須立即檢視數據保護策略。</description>
     <category>資安</category>
+    <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>升主管沒人教你的那些事：從「做得好」到「帶得好」的關鍵轉變</title>
+    <link>https://operation.tw/post/37</link>
+    <guid isPermaLink="true">https://operation.tw/post/37</guid>
+    <description></description>
+    <category>成長</category>
     <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -158,14 +166,6 @@
     <description>DeepSeek即將發表搭載華為晶片的最新AI模型，標誌著中國AI產業在美國晶片禁令下的重大突破。本文分析其技術意義、地緣政治影響，以及台灣AI生態該如何應對新的競爭態勢。</description>
     <category>AI</category>
     <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Neoclouds 崛起：AI 時代雲端新勢力如何挑戰巨頭壟斷</title>
-    <link>https://operation.tw/post/24</link>
-    <guid isPermaLink="true">https://operation.tw/post/24</guid>
-    <description>隨著 AI 應用爆發，傳統雲端巨頭面臨新興競爭者挑戰。Neoclouds 作為 AI 時代的新興雲端勢力，以專業化、成本優化與靈活架構吸引企業關注。本文深入分析其市場機會與對台灣科技生態的啟示。</description>
-    <category>雲端</category>
-    <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
