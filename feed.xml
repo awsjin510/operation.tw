@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 22 Mar 2026 05:35:03 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 23 Mar 2026 05:57:52 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI創造力危機：商業化審查如何困住大型模型的想像力？</title>
+    <link>https://operation.tw/post/47</link>
+    <guid isPermaLink="true">https://operation.tw/post/47</guid>
+    <description>最新研究揭示AI大型模型面臨的隱形困境：為了滿足商業化需求和安全限制，模型的創意輸出被大幅削弱。這不只影響內容創作，更對台灣AI產業的差異化競爭造成威脅。企業該如何在合規與創新間找到平衡？</description>
+    <category>AI</category>
+    <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Meta AI審核革命：自動化如何改變內容治理未來</title>
     <link>https://operation.tw/post/46</link>
@@ -158,14 +166,6 @@
     <description>維基百科祭出「錯5次停權」的嚴厲措施對抗劣質AI翻譯，背後反映的是開放協作平台與AI時代的衝突。這場看似內部治理的戰役，實則深刻影響全球知識平等權和AI可信度的未來走向。</description>
     <category>AI</category>
     <pubDate>Fri, 06 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>學測考AI，教育數位轉型的新里程碑還是資源浪費？</title>
-    <link>https://operation.tw/post/27</link>
-    <guid isPermaLink="true">https://operation.tw/post/27</guid>
-    <description>數發部投入購買100片GPU、將大語言模型納入學測考試，標誌著台灣教育AI化的野心。但這場豪賭背後，隱藏著課程設計、教師培訓、評測公平性等多重挑戰。我們該如何看待這次轉變？</description>
-    <category>AI</category>
-    <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
