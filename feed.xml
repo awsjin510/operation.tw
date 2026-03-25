@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 24 Mar 2026 03:35:52 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 25 Mar 2026 03:38:34 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>LLM政治說服力超乎想像：台灣民主防線如何應對AI操縱威脅？</title>
+    <link>https://operation.tw/post/49</link>
+    <guid isPermaLink="true">https://operation.tw/post/49</guid>
+    <description>最新研究揭露大型語言模型具有驚人的政治說服力，可動搖選民意向超過10個百分點。面對2026年台灣地方選舉臨近，這項發現對民主制度構成前所未有的挑戰。本文探討AI說服機制、對台灣選舉的潛在影響，以及應對策略。</description>
+    <category>AI</category>
+    <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Google資安認證掀台灣搶才潮：零基礎如何踏入資安職涯？</title>
     <link>https://operation.tw/post/48</link>
@@ -88,19 +96,19 @@
     <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>《超有料！職場第一實用的 AI 簡報術》閱讀心得</title>
-    <link>https://operation.tw/post/38</link>
-    <guid isPermaLink="true">https://operation.tw/post/38</guid>
-    <description></description>
-    <category>成長</category>
-    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
     <title>AI問診準確率不到35%：醫療AI的現實困境與台灣突圍之路</title>
     <link>https://operation.tw/post/36</link>
     <guid isPermaLink="true">https://operation.tw/post/36</guid>
     <description>最新研究顯示AI在健康諮詢中的準確率不足35%，遠低於臨床安全標準。這項發現揭示了當前生成式AI在醫療領域的根本限制。台灣醫療產業如何在AI浪潮中找到安全可靠的應用方向，成為攸關產業未來的關鍵課題。</description>
     <category>AI</category>
+    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>《超有料！職場第一實用的 AI 簡報術》閱讀心得</title>
+    <link>https://operation.tw/post/38</link>
+    <guid isPermaLink="true">https://operation.tw/post/38</guid>
+    <description></description>
+    <category>成長</category>
     <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -158,14 +166,6 @@
     <description>甲骨文憑藉 AI 雲端服務大賺，台灣供應鏈成為最大贏家。本文深入分析甲骨文如何從傳統資料庫巨頭轉型為 AI 雲端強權，以及台灣晶片、代工業者如何從中獲利，為台灣科技產業指出新方向。</description>
     <category>雲端</category>
     <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>馬來西亞AI運算中心啟動：NVIDIA技術如何驅動東南亞雲端新格局</title>
-    <link>https://operation.tw/post/29</link>
-    <guid isPermaLink="true">https://operation.tw/post/29</guid>
-    <description>VCI Global旗下V Gallant在馬來西亞建立首個NVIDIA技術AI圖形處理器運算中心，並推出Intelli-X企業大型語言模型平台。這一發展標誌著東南亞雲端基礎設施的升級，對台灣企業的跨境AI應用和區域競爭格局帶來深遠影響。</description>
-    <category>雲端</category>
-    <pubDate>Sat, 07 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
