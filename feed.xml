@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 25 Mar 2026 03:38:34 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 26 Mar 2026 03:48:35 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>IBM揭露LLM道德危機：模型在模仿而非思考，企業該如何應對？</title>
+    <link>https://operation.tw/post/50</link>
+    <guid isPermaLink="true">https://operation.tw/post/50</guid>
+    <description>IBM最新研究指出，大型語言模型並非真正具備道德推理能力，而是在模仿訓練資料中的道德言詞。這一發現對AI倫理治理帶來重大挑戰。本文深入分析LLM的根本限制，以及台灣企業在部署AI應用時應如何建立防護機制。</description>
+    <category>AI</category>
+    <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>LLM政治說服力超乎想像：台灣民主防線如何應對AI操縱威脅？</title>
     <link>https://operation.tw/post/49</link>
@@ -158,14 +166,6 @@
     <description></description>
     <category>成長</category>
     <pubDate>Mon, 09 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>甲骨文 AI 雲端稱霸背後：台灣供應鏈如何搭上千億商機？</title>
-    <link>https://operation.tw/post/30</link>
-    <guid isPermaLink="true">https://operation.tw/post/30</guid>
-    <description>甲骨文憑藉 AI 雲端服務大賺，台灣供應鏈成為最大贏家。本文深入分析甲骨文如何從傳統資料庫巨頭轉型為 AI 雲端強權，以及台灣晶片、代工業者如何從中獲利，為台灣科技產業指出新方向。</description>
-    <category>雲端</category>
-    <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
