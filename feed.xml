@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 29 Mar 2026 03:55:16 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 30 Mar 2026 04:08:44 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>推論時代來臨：AI發展範式轉移如何改變台灣科技產業佈局</title>
+    <link>https://operation.tw/post/54</link>
+    <guid isPermaLink="true">https://operation.tw/post/54</guid>
+    <description>當AI發展重心從訓練轉向推論，台灣的算力基礎設施、芯片製造與應用開發生態將面臨重大調整。本文分析這場典範轉移如何重塑台灣AI產業競爭力，以及企業應如何提前佈局。</description>
+    <category>AI</category>
+    <pubDate>Mon, 30 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AWS迎接20週年：從內部工具到雲端帝國，台灣企業該如何應對生態演變</title>
     <link>https://operation.tw/post/53</link>
@@ -128,19 +136,19 @@
     <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI問診準確率不到35%：醫療AI的現實困境與台灣突圍之路</title>
-    <link>https://operation.tw/post/36</link>
-    <guid isPermaLink="true">https://operation.tw/post/36</guid>
-    <description>最新研究顯示AI在健康諮詢中的準確率不足35%，遠低於臨床安全標準。這項發現揭示了當前生成式AI在醫療領域的根本限制。台灣醫療產業如何在AI浪潮中找到安全可靠的應用方向，成為攸關產業未來的關鍵課題。</description>
-    <category>AI</category>
-    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
     <title>《超有料！職場第一實用的 AI 簡報術》閱讀心得</title>
     <link>https://operation.tw/post/38</link>
     <guid isPermaLink="true">https://operation.tw/post/38</guid>
     <description></description>
     <category>成長</category>
+    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI問診準確率不到35%：醫療AI的現實困境與台灣突圍之路</title>
+    <link>https://operation.tw/post/36</link>
+    <guid isPermaLink="true">https://operation.tw/post/36</guid>
+    <description>最新研究顯示AI在健康諮詢中的準確率不足35%，遠低於臨床安全標準。這項發現揭示了當前生成式AI在醫療領域的根本限制。台灣醫療產業如何在AI浪潮中找到安全可靠的應用方向，成為攸關產業未來的關鍵課題。</description>
+    <category>AI</category>
     <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -158,14 +166,6 @@
     <description>輝達推出Nemotron 3 Super模型，標誌AI代理競賽進入新階段。本文深入分析這款模型的技術亮點、與競爭者的差異，以及對台灣軟體、製造、服務業的實際應用價值與機遇。</description>
     <category>AI</category>
     <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>高通Arduino Ventuno Q破萬元大關：邊緣AI時代的民主化轉折點</title>
-    <link>https://operation.tw/post/33</link>
-    <guid isPermaLink="true">https://operation.tw/post/33</guid>
-    <description>高通推出不到萬元的Arduino Ventuno Q單板電腦，讓離線大模型部署成為可能。這款產品如何打破AI運算的成本天花板？對台灣硬體製造和邊緣運算產業又帶來什麼機遇與挑戰？</description>
-    <category>AI</category>
-    <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
