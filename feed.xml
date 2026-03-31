@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Mon, 30 Mar 2026 04:08:44 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 31 Mar 2026 03:50:37 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI攻擊武器化：2026企業如何從檢測升級到預測性防禦</title>
+    <link>https://operation.tw/post/55</link>
+    <guid isPermaLink="true">https://operation.tw/post/55</guid>
+    <description>Google Cloud《2026網路安全預測》報告揭示AI已成駭客新武器。本文深入分析AI驅動的網路威脅如何演變，以及台灣企業應如何從被動檢測轉向主動預測，建立下一代資安防禦體系。</description>
+    <category>資安</category>
+    <pubDate>Tue, 31 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>推論時代來臨：AI發展範式轉移如何改變台灣科技產業佈局</title>
     <link>https://operation.tw/post/54</link>
@@ -136,19 +144,19 @@
     <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>《超有料！職場第一實用的 AI 簡報術》閱讀心得</title>
-    <link>https://operation.tw/post/38</link>
-    <guid isPermaLink="true">https://operation.tw/post/38</guid>
-    <description></description>
-    <category>成長</category>
-    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
     <title>AI問診準確率不到35%：醫療AI的現實困境與台灣突圍之路</title>
     <link>https://operation.tw/post/36</link>
     <guid isPermaLink="true">https://operation.tw/post/36</guid>
     <description>最新研究顯示AI在健康諮詢中的準確率不足35%，遠低於臨床安全標準。這項發現揭示了當前生成式AI在醫療領域的根本限制。台灣醫療產業如何在AI浪潮中找到安全可靠的應用方向，成為攸關產業未來的關鍵課題。</description>
     <category>AI</category>
+    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>《超有料！職場第一實用的 AI 簡報術》閱讀心得</title>
+    <link>https://operation.tw/post/38</link>
+    <guid isPermaLink="true">https://operation.tw/post/38</guid>
+    <description></description>
+    <category>成長</category>
     <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -158,14 +166,6 @@
     <description>AWS邁入20周年，從Amazon內部工程問題的解決方案，演變成千億美元產業基石。本文探討AWS如何定義現代雲端運算，及其對台灣企業轉型的啟示，特別是在AI時代的新機遇。</description>
     <category>雲端</category>
     <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>從Nemotron 3 Super看AI代理競賽：台灣企業應如何搶佔智能自動化機遇</title>
-    <link>https://operation.tw/post/34</link>
-    <guid isPermaLink="true">https://operation.tw/post/34</guid>
-    <description>輝達推出Nemotron 3 Super模型，標誌AI代理競賽進入新階段。本文深入分析這款模型的技術亮點、與競爭者的差異，以及對台灣軟體、製造、服務業的實際應用價值與機遇。</description>
-    <category>AI</category>
-    <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
