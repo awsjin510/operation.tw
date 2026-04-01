@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 31 Mar 2026 03:50:37 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 01 Apr 2026 04:12:38 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Neoclouds崛起挑戰AWS：AI時代雲端新勢力如何重塑競爭格局</title>
+    <link>https://operation.tw/post/56</link>
+    <guid isPermaLink="true">https://operation.tw/post/56</guid>
+    <description>在AWS迎接20週年之際，新興雲端服務商Neoclouds悄悄崛起。本文分析這股新勢力如何針對AI工作負載優化、成本效益與區域部署靈活性，對AWS的雲端帝國地位帶來實質威脅，以及台灣企業應如何評估多雲策略。</description>
+    <category>雲端</category>
+    <pubDate>Wed, 01 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI攻擊武器化：2026企業如何從檢測升級到預測性防禦</title>
     <link>https://operation.tw/post/55</link>
@@ -158,14 +166,6 @@
     <description></description>
     <category>成長</category>
     <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AWS 20周年里程碑：從工程痛點到雲端帝國的啟示</title>
-    <link>https://operation.tw/post/35</link>
-    <guid isPermaLink="true">https://operation.tw/post/35</guid>
-    <description>AWS邁入20周年，從Amazon內部工程問題的解決方案，演變成千億美元產業基石。本文探討AWS如何定義現代雲端運算，及其對台灣企業轉型的啟示，特別是在AI時代的新機遇。</description>
-    <category>雲端</category>
-    <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
