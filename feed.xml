@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 01 Apr 2026 04:12:38 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 02 Apr 2026 03:44:00 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI下棋無敵卻玩不了遊戲：應變能力缺陷如何影響企業自動化？</title>
+    <link>https://operation.tw/post/57</link>
+    <guid isPermaLink="true">https://operation.tw/post/57</guid>
+    <description>AlphaGo能擊敗世界棋王，但在電玩遊戲中表現平庸。這個現象揭示AI在應變能力上的根本限制。對於企業採用AI自動化時，這意味著什麼？本文深入分析AI的適應性問題，以及企業在推動AI驅動自動化時應如何應對。</description>
+    <category>AI</category>
+    <pubDate>Thu, 02 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Neoclouds崛起挑戰AWS：AI時代雲端新勢力如何重塑競爭格局</title>
     <link>https://operation.tw/post/56</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/36</guid>
     <description>最新研究顯示AI在健康諮詢中的準確率不足35%，遠低於臨床安全標準。這項發現揭示了當前生成式AI在醫療領域的根本限制。台灣醫療產業如何在AI浪潮中找到安全可靠的應用方向，成為攸關產業未來的關鍵課題。</description>
     <category>AI</category>
-    <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>《超有料！職場第一實用的 AI 簡報術》閱讀心得</title>
-    <link>https://operation.tw/post/38</link>
-    <guid isPermaLink="true">https://operation.tw/post/38</guid>
-    <description></description>
-    <category>成長</category>
     <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
