@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 03 Apr 2026 03:46:15 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 04 Apr 2026 03:34:27 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>提示工程新架構如何改變LLM應用效率</title>
+    <link>https://operation.tw/post/59</link>
+    <guid isPermaLink="true">https://operation.tw/post/59</guid>
+    <description>AI提示工程迎來全新分類架構，透過系統化方法論提升大型語言模型的應用效益。本文深入探討這項架構創新如何重塑企業AI應用策略，以及對台灣AI從業者的實務啟示。</description>
+    <category>AI</category>
+    <pubDate>Sat, 04 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>文言文成LLM新破口：古籍越獄如何威脅企業AI安全？</title>
     <link>https://operation.tw/post/58</link>
@@ -158,14 +166,6 @@
     <description>Google Cloud發布《2026網路安全預測》報告，揭示AI驅動攻擊、供應鏈威脅等新趨勢。本文解析報告核心發現，並探討台灣企業在數位轉型浪潮中應如何建立前瞻性防禦策略，搶先部署應對措施。</description>
     <category>資安</category>
     <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>歐洲AI新創逆襲：英法20億美元融資如何撼動美國AI霸權？</title>
-    <link>https://operation.tw/post/39</link>
-    <guid isPermaLink="true">https://operation.tw/post/39</guid>
-    <description>歐洲AI新創正以20億美元融資規模發起對美國的挑戰。英國和法國如何透過政策支持與人才集聚，打造獨立的AI生態系？這波歐洲AI浪潮對台灣科技產業帶來什麼啟示與機會？</description>
-    <category>AI</category>
-    <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
