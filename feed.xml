@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 04 Apr 2026 03:34:27 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 05 Apr 2026 03:54:28 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI Agent商用化倒計時：企業自動化的下一場革命在哪裡？</title>
+    <link>https://operation.tw/post/60</link>
+    <guid isPermaLink="true">https://operation.tw/post/60</guid>
+    <description>AI WAVE SHOW 2026即將登場，聚焦AI Agent、Edge AI與大型語言模型的實際應用。與其他概念性發展不同，Agent技術已進入落地階段。本文分析Agent如何改變企業自動化格局，以及台灣企業應如何抓住這波機會。</description>
+    <category>AI</category>
+    <pubDate>Sun, 05 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>提示工程新架構如何改變LLM應用效率</title>
     <link>https://operation.tw/post/59</link>
@@ -158,14 +166,6 @@
     <description>在AWS邁向20週年、雲端市場競爭加劇之際，Neoclouds作為AI時代的新興雲端勢力浮上檯面。本文分析這股新勢力的競爭優勢、技術特色，以及對台灣企業雲端策略選擇的啟示。</description>
     <category>雲端</category>
     <pubDate>Tue, 17 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Google Cloud 2026網路安全預測：台灣企業該如何應對新型威脅？</title>
-    <link>https://operation.tw/post/40</link>
-    <guid isPermaLink="true">https://operation.tw/post/40</guid>
-    <description>Google Cloud發布《2026網路安全預測》報告，揭示AI驅動攻擊、供應鏈威脅等新趨勢。本文解析報告核心發現，並探討台灣企業在數位轉型浪潮中應如何建立前瞻性防禦策略，搶先部署應對措施。</description>
-    <category>資安</category>
-    <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
