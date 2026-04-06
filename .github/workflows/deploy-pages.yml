@@ -38,6 +38,7 @@ jobs:
           cp robots.txt sitemap.xml feed.xml posts.json llms.txt ghost-custom.css _site/
           if [ -f episodes.json ]; then cp episodes.json _site/; fi
           cp logo.jpg profile.jpg default.png _site/
+          if [ -f logo.png ]; then cp logo.png _site/; fi
           cp CNAME _site/
           if [ -d images ]; then cp -r images _site/; fi
 
