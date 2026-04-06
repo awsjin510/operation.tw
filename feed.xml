@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 05 Apr 2026 03:54:28 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 06 Apr 2026 03:58:32 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>雲端運算版圖大洗牌：2026年龍頭排位變化如何影響台灣企業選型？</title>
+    <link>https://operation.tw/post/61</link>
+    <guid isPermaLink="true">https://operation.tw/post/61</guid>
+    <description>AWS統治20年後，雲端市場出現新的競爭態勢。本文分析2026年雲端運算龍頭的最新排位變化，探討Neoclouds等新興勢力如何撼動既有格局，以及台灣企業在選擇雲端服務時應如何應對這波競爭重組。</description>
+    <category>雲端</category>
+    <pubDate>Mon, 06 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI Agent商用化倒計時：企業自動化的下一場革命在哪裡？</title>
     <link>https://operation.tw/post/60</link>
@@ -158,14 +166,6 @@
     <description>NVIDIA Jetson Thor面臨的多模態挑戰揭示了邊緣AI的真實困境。本文分析視覺、音頻、觸覺融合的技術難點，以及台灣機器人產業如何利用新晶片突圍，搶佔智慧製造與服務機器人市場的機會。</description>
     <category>AI</category>
     <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Neoclouds崛起：AI時代雲端新勢力如何挑戰AWS、Azure霸權？</title>
-    <link>https://operation.tw/post/41</link>
-    <guid isPermaLink="true">https://operation.tw/post/41</guid>
-    <description>在AWS邁向20週年、雲端市場競爭加劇之際，Neoclouds作為AI時代的新興雲端勢力浮上檯面。本文分析這股新勢力的競爭優勢、技術特色，以及對台灣企業雲端策略選擇的啟示。</description>
-    <category>雲端</category>
-    <pubDate>Tue, 17 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
