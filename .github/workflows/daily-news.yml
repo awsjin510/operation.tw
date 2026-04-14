@@ -40,9 +40,6 @@ jobs:
         working-directory: scripts
 
       - name: Generate sitemap and RSS feed
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: node generate-sitemap.js
         working-directory: scripts
 

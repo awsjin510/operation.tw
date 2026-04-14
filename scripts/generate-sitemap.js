@@ -1,49 +1,25 @@
 /**
  * generate-sitemap.js
- * 從 Supabase 查詢所有已發布文章，生成 sitemap.xml 和 feed.xml
- *
- * 環境變數：
- *   SUPABASE_URL        - Supabase 專案 URL
- *   SUPABASE_SERVICE_KEY - Supabase service_role key
+ * 從本地 posts.json 讀取文章列表，生成 sitemap.xml 和 feed.xml
+ * （posts.json 由 auto-post.js 每日自動維護，不需再查 Supabase）
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const SITE_URL = 'https://operation.tw';
 
-if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
-  console.error('❌ 缺少環境變數：SUPABASE_URL、SUPABASE_SERVICE_KEY');
-  process.exit(1);
+// ── 從本地 posts.json 讀取已發布文章 ───────────────────────────────
+function fetchPublishedPosts() {
+  const postsJsonPath = path.join(__dirname, '..', 'posts.json');
+  const raw = fs.readFileSync(postsJsonPath, 'utf8');
+  const data = JSON.parse(raw);
+  const posts = (data.posts || []).filter(p => !p.status || p.status === 'published');
+  console.log(`  ✓ 從 posts.json 載入 ${posts.length} 篇已發布文章`);
+  return posts;
 }
 
-/** fetch with AbortController timeout (default 30s) */
-function fetchWithTimeout(url, opts = {}, ms = 30000) {
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), ms);
-  return fetch(url, { ...opts, signal: ctrl.signal }).finally(() => clearTimeout(timer));
-}
-
-// ── 查詢所有已發布文章 ─────────────────────────────────────────
-async function fetchPublishedPosts() {
-  const url = `${SUPABASE_URL}/rest/v1/posts?select=id,title,category,date,status,excerpt,image,views&status=eq.published&order=date.desc`;
-  const res = await fetchWithTimeout(url, {
-    headers: {
-      apikey: SUPABASE_SERVICE_KEY,
-      Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-    },
-  });
-
-  if (!res.ok) {
-    throw new Error(`Supabase 查詢失敗 (HTTP ${res.status}): ${await res.text()}`);
-  }
-
-  return res.json();
-}
-
-// ── 生成 sitemap.xml ────────────────────────────────────────────
+// ── 生成 sitemap.xml ────────────────────────────────────────────────
 function generateSitemap(posts) {
   const today = new Date().toISOString().split('T')[0];
 
@@ -68,7 +44,7 @@ function generateSitemap(posts) {
   return xml;
 }
 
-// ── 生成 feed.xml（RSS 2.0）─────────────────────────────────────
+// ── 生成 feed.xml（RSS 2.0）─────────────────────────────────────────
 function generateFeed(posts) {
   const now = new Date().toUTCString();
   const recentPosts = posts.slice(0, 20);
@@ -110,13 +86,11 @@ function escXml(s) {
     .replace(/'/g, '&apos;');
 }
 
-// ── 主流程 ──────────────────────────────────────────────────────
+// ── 主流程 ──────────────────────────────────────────────────────────
 async function main() {
-  console.log('📄 生成 sitemap.xml、feed.xml 和 posts.json...\n');
+  console.log('📄 生成 sitemap.xml 和 feed.xml...\n');
 
-  const posts = await fetchPublishedPosts();
-  console.log(`  ✓ 取得 ${posts.length} 篇已發布文章`);
-
+  const posts = fetchPublishedPosts();
   const rootDir = path.resolve(__dirname, '..');
 
   const sitemap = generateSitemap(posts);
@@ -126,41 +100,6 @@ async function main() {
   const feed = generateFeed(posts);
   fs.writeFileSync(path.join(rootDir, 'feed.xml'), feed);
   console.log(`  ✓ feed.xml 已生成（${Math.min(posts.length, 20)} 篇文章）`);
-
-  // 靜態文章列表：前端優先從此 CDN 檔案載入，跳過 Supabase 冷啟動
-  // base64 圖片轉存為實際檔案，posts.json 僅保留路徑
-  const imgDir = path.join(rootDir, 'images', 'posts');
-  if (!fs.existsSync(imgDir)) fs.mkdirSync(imgDir, { recursive: true });
-
-  let imgSaved = 0;
-  const postsForJson = [];
-  for (const p of posts) {
-    if (p.image && p.image.startsWith('data:')) {
-      const m = p.image.match(/^data:image\/(\w+);base64,(.+)$/s);
-      if (m) {
-        const filename = `post-${p.id}.jpg`;
-        const rawPath = path.join(imgDir, `post-${p.id}.raw`);
-        const outPath = path.join(imgDir, filename);
-        fs.writeFileSync(rawPath, Buffer.from(m[2], 'base64'));
-        try {
-          const sharp = require('sharp');
-          await sharp(rawPath).resize({ width: 1200, withoutEnlargement: true }).jpeg({ quality: 82 }).toFile(outPath);
-          fs.unlinkSync(rawPath);
-        } catch (e) {
-          fs.renameSync(rawPath, outPath);
-        }
-        imgSaved++;
-        postsForJson.push({ ...p, image: `/images/posts/${filename}` });
-        continue;
-      }
-    }
-    postsForJson.push({ ...p });
-  }
-  fs.writeFileSync(
-    path.join(rootDir, 'posts.json'),
-    JSON.stringify({ generated: new Date().toISOString(), posts: postsForJson }, null, 0)
-  );
-  console.log(`  ✓ posts.json 已生成（${posts.length} 篇文章，${imgSaved} 張圖片轉存）`);
 
   console.log('\n✅ 完成！\n');
 }

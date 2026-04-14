@@ -359,6 +359,25 @@ async function main() {
   await updatePostImage(postId, imagePath);
   console.log(`  ✓ image 欄位已更新`);
 
+  // 步驟 6：更新本地 posts.json（讓 generate-sitemap 不必再查 Supabase）
+  console.log('\n步驟 6：更新 posts.json...');
+  const postsJsonPath = path.join(__dirname, '..', 'posts.json');
+  let postsData = { posts: [] };
+  try {
+    postsData = JSON.parse(await fs.readFile(postsJsonPath, 'utf8'));
+  } catch (e) {
+    console.warn(`  ⚠ 無法讀取 posts.json，將建立新檔：${e.message}`);
+  }
+  const today = new Date().toISOString().split('T')[0];
+  postsData.posts = [
+    { id: postId, title: article.title, category: article.category, date: today,
+      status: 'published', excerpt: article.excerpt, image: imagePath, views: 0 },
+    ...(postsData.posts || []),
+  ];
+  postsData.generated = new Date().toISOString();
+  await fs.writeFile(postsJsonPath, JSON.stringify(postsData, null, 0));
+  console.log(`  ✓ posts.json 已更新（${postsData.posts.length} 篇文章）`);
+
   console.log('\n✅ 完成！\n');
 }
 
