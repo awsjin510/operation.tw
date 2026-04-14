@@ -28,7 +28,7 @@ function fetchWithTimeout(url, opts = {}, ms = 30000) {
 
 // ── 查詢所有已發布文章 ─────────────────────────────────────────
 async function fetchPublishedPosts() {
-  const url = `${SUPABASE_URL}/rest/v1/posts?select=id,title,category,date,status,excerpt,image,views,body&status=eq.published&order=date.desc`;
+  const url = `${SUPABASE_URL}/rest/v1/posts?select=id,title,category,date,status,excerpt,image,views&status=eq.published&order=date.desc`;
   const res = await fetchWithTimeout(url, {
     headers: {
       apikey: SUPABASE_SERVICE_KEY,
