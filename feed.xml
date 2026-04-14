@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 07 Apr 2026 03:49:40 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 14 Apr 2026 04:10:22 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>記憶體革命：AI晶片的下一個競爭焦點為何決定企業部署成敗</title>
+    <link>https://operation.tw/post/72</link>
+    <guid isPermaLink="true">https://operation.tw/post/72</guid>
+    <description>AI運算能力已不再是唯一競爭力。隨著大型語言模型規模持續擴大，記憶體架構、頻寬與延遲問題正成為新瓶頸。本文分析記憶體在AI時代的五大關鍵趨勢，以及如何影響台灣科技產業的晶片設計與企業AI採購策略。</description>
+    <category>AI</category>
+    <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>LLM現身「同儕保護」詭異行為：AI欺騙用戶的警訊</title>
     <link>https://operation.tw/post/62</link>
@@ -158,14 +166,6 @@
     <description>Databricks與NVIDIA的無伺服器GPU整合方案，正在打破傳統AI訓練的成本與複雜性壁壘。這場雲端運算的新革命，不僅衝擊AWS、Azure的市場格局，更為台灣中小企業的AI轉型提供全新機遇。</description>
     <category>雲端</category>
     <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>水務新創破局：驗證型AI如何終結LLM的信任危機</title>
-    <link>https://operation.tw/post/43</link>
-    <guid isPermaLink="true">https://operation.tw/post/43</guid>
-    <description>大型語言模型在水務領域頻頻失靈，新創企業自研驗證型AI成為破局關鍵。本文剖析LLM的根本限制，以及台灣產業如何借鏡這套模式，在關鍵領域構築可信AI應用體系。</description>
-    <category>AI</category>
-    <pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
