@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 14 Apr 2026 04:10:22 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 15 Apr 2026 04:08:55 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI引用虛構疾病的警訊：學術誠信與AI可信度危機</title>
+    <link>https://operation.tw/post/73</link>
+    <guid isPermaLink="true">https://operation.tw/post/73</guid>
+    <description>研究員用虛構疾病測試AI與學術界，結果震驚：AI不僅直接引用假消息，還被納入真實論文。這場實驗揭露AI時代最隱蔽的威脅——信息汙染如何侵蝕學術根基，對台灣學界與企業應用帶來深遠影響。</description>
+    <category>AI</category>
+    <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>記憶體革命：AI晶片的下一個競爭焦點為何決定企業部署成敗</title>
     <link>https://operation.tw/post/72</link>
@@ -158,14 +166,6 @@
     <description>埃及推出國家級大型語言模型Karnak，標誌著非西方國家開始挑戰西方AI技術主導地位。這一動作不僅象徵著AI技術的去中心化趨勢，更為台灣與亞太地區企業帶來重新評估AI供應鏈與技術獨立性的契機。</description>
     <category>AI</category>
     <pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>無伺服器GPU時代來臨：Databricks×NVIDIA如何重塑AI訓練經濟學</title>
-    <link>https://operation.tw/post/44</link>
-    <guid isPermaLink="true">https://operation.tw/post/44</guid>
-    <description>Databricks與NVIDIA的無伺服器GPU整合方案，正在打破傳統AI訓練的成本與複雜性壁壘。這場雲端運算的新革命，不僅衝擊AWS、Azure的市場格局，更為台灣中小企業的AI轉型提供全新機遇。</description>
-    <category>雲端</category>
-    <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
