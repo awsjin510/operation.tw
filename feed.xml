@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 15 Apr 2026 04:08:55 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 16 Apr 2026 04:15:13 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Neoclouds崛起：AI時代雲端新勢力如何挑戰AWS、Azure霸權？</title>
+    <link>https://operation.tw/post/74</link>
+    <guid isPermaLink="true">https://operation.tw/post/74</guid>
+    <description>隨著AI應用爆發，傳統雲端巨頭面臨新挑戰。Neoclouds作為AI時代的新興雲端勢力，以專為生成式AI優化的基礎設施、更靈活的成本結構與本地化服務，正在重塑雲端市場格局。台灣企業應如何評估遷移策略？</description>
+    <category>雲端</category>
+    <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI引用虛構疾病的警訊：學術誠信與AI可信度危機</title>
     <link>https://operation.tw/post/73</link>
@@ -158,14 +166,6 @@
     <description>Meta宣布大幅裁減外包審查員，全面轉向AI審核系統，涵蓋98%語言。這場內容治理的自動化轉型不僅重塑Meta的營運模式，更預示了全球科技平台面臨的信任與效率平衡難題。台灣企業與政策制定者該如何應對？</description>
     <category>AI</category>
     <pubDate>Sun, 22 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>埃及Karnak大型語言模型問世：非西方AI陣營崛起對全球格局的影響</title>
-    <link>https://operation.tw/post/45</link>
-    <guid isPermaLink="true">https://operation.tw/post/45</guid>
-    <description>埃及推出國家級大型語言模型Karnak，標誌著非西方國家開始挑戰西方AI技術主導地位。這一動作不僅象徵著AI技術的去中心化趨勢，更為台灣與亞太地區企業帶來重新評估AI供應鏈與技術獨立性的契機。</description>
-    <category>AI</category>
-    <pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
