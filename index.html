@@ -784,7 +784,13 @@ async function openPost(id){
   p.views=(p.views||0)+1;
   setText('a-title',p.title);setText('a-date',p.date);setText('a-cat-tag','🏷 '+p.category);
   setText('a-views',p.views);
-  sb.rpc('increment_post_views',{post_id:p.id}).then(()=>{},()=>{});
+  sb.rpc('increment_post_views',{post_id:p.id}).then(
+    async()=>{
+      const{data:vd}=await sb.from('posts').select('views').eq('id',p.id).single();
+      if(vd?.views!=null){p.views=vd.views;setText('a-views',p.views);}
+    },
+    e=>console.warn('[views] increment_post_views failed:',e?.message||e)
+  );
   const cover=document.getElementById('a-cover');
   if(p.image){cover.src=p.image;cover.style.display='block';}else{cover.style.display='none';}
   // Load body: 先顯示快取，一律去 Supabase 拉最新版（確保手動更新立即可見）
