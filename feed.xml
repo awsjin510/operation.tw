@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 17 Apr 2026 04:12:36 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 18 Apr 2026 03:48:32 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>心理諮詢AI的倫理紅線：為何通用AI模型不適合心理健康領域</title>
+    <link>https://operation.tw/post/76</link>
+    <guid isPermaLink="true">https://operation.tw/post/76</guid>
+    <description>人工智慧工具協會最新示警揭露一個重要問題：通用AI模型在心理諮詢應用中存在重大風險。本文深入分析為何專屬平台設計對心理健康AI應用至關重要，以及台灣心理衛生產業應如何應對這波AI浪潮。</description>
+    <category>AI</category>
+    <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI攻擊全面化時代：2026企業如何從被動防禦升級到主動偵測？</title>
     <link>https://operation.tw/post/75</link>
@@ -158,14 +166,6 @@
     <description>Google Cybersecurity Certificate開放第一梯次報名，為台灣資安人才荒提供新突破口。本文分析認證價值、學習路徑，以及如何幫助企業在AI威脅時代快速補齊資安防線，掌握2026年資安人才紅利。</description>
     <category>資安</category>
     <pubDate>Tue, 24 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI創造力危機：商業化審查如何困住大型模型的想像力？</title>
-    <link>https://operation.tw/post/47</link>
-    <guid isPermaLink="true">https://operation.tw/post/47</guid>
-    <description>最新研究揭示AI大型模型面臨的隱形困境：為了滿足商業化需求和安全限制，模型的創意輸出被大幅削弱。這不只影響內容創作，更對台灣AI產業的差異化競爭造成威脅。企業該如何在合規與創新間找到平衡？</description>
-    <category>AI</category>
-    <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
