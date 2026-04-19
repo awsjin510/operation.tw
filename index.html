@@ -869,9 +869,8 @@ async function openPost(id){
   const c=CAT_COLOR[p.category]||'#aaa';
   const badge=document.getElementById('a-badge');
   badge.textContent=p.category;badge.style.borderColor=c;badge.style.color=c;
-  p.views=(p.views||0)+1;
   setText('a-title',p.title);setText('a-date',p.date);setText('a-cat-tag','🏷 '+p.category);
-  setText('a-views',p.views);
+  setText('a-views',p.views||0);
   sb.rpc('increment_post_views',{post_id:p.id}).then(
     async()=>{
       const{data:vd}=await sb.from('posts').select('views').eq('id',p.id).single();
