@@ -761,7 +761,32 @@ function renderHome(){
   setText('stat-today',fmtViews(sv.today));
   updateTopicCounts();
   renderGrid('grid-main',publishedPosts());
+  updateDynamicStats();
   initCountUp();
+}
+
+let _podcastLoaded=false;
+function updateDynamicStats(){
+  // 文章：從已載入資料即時計算
+  const n=publishedPosts().length;
+  if(n>0){
+    if(D.about){D.about.s1n=String(n);D.about.s1l='篇文章';}
+    setText('s1n',n);setText('s1l','篇文章');
+  }
+  // Podcast：從 episodes.json 讀取一次
+  if(!_podcastLoaded){
+    _podcastLoaded=true;
+    fetch('/episodes.json')
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(data){
+        const ep=(data&&data.episodes)?data.episodes.length:0;
+        if(ep>0){
+          if(D.about){D.about.s2n=String(ep);D.about.s2l='Podcast';}
+          setText('s2n',ep);setText('s2l','Podcast');
+        }
+      })
+      .catch(function(){});
+  }
 }
 
 function setText(id,v){const e=document.getElementById(id);if(e&&v!=null)e.textContent=v;}
