@@ -837,7 +837,7 @@ function cardHTML(p,featured){
   const img=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" loading="lazy">'
     :'<span class="pc-img-ph">'+icon+'</span>';
   const cls=featured?'pc featured':'pc';
-  return '<div class="'+cls+'" onclick="openPost(\''+p.id+'\')" style="border-left:3px solid '+c+';">'
+  return '<div class="'+cls+'" data-post-id="'+p.id+'" onclick="openPost(\''+p.id+'\')" style="border-left:3px solid '+c+';">'
     +'<div class="pc-img">'+img+'<span class="pc-badge" style="border-color:'+c+';color:'+c+';">'+esc(p.category)+'</span></div>'
     +'<div class="pc-body"><div class="pc-title">'+esc(p.title)+'</div>'
     +'<div class="pc-exc">'+esc(p.excerpt||'')+'</div>'
@@ -874,7 +874,11 @@ async function openPost(id){
   sb.rpc('increment_post_views',{post_id:p.id}).then(
     async()=>{
       const{data:vd}=await sb.from('posts').select('views').eq('id',p.id).single();
-      if(vd?.views!=null){p.views=vd.views;setText('a-views',p.views);}
+      if(vd?.views!=null){
+        p.views=vd.views;setText('a-views',p.views);
+        const cardEl=document.querySelector('[data-post-id="'+p.id+'"] .pc-view-cnt');
+        if(cardEl)cardEl.textContent='👁 '+p.views;
+      }
     },
     e=>console.warn('[views] increment_post_views failed:',e?.message||e)
   );
