@@ -384,10 +384,6 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
     <div class="form-group"><div class="form-label">數字 2</div><input type="text" id="ab-s2n" placeholder="5"></div>
     <div class="form-group"><div class="form-label">說明 2</div><input type="text" id="ab-s2l" placeholder="核心主題"></div>
   </div>
-  <div class="form-row3">
-    <div class="form-group"><div class="form-label">數字 3</div><input type="text" id="ab-s3n" placeholder="DAILY"></div>
-    <div class="form-group"><div class="form-label">說明 3</div><input type="text" id="ab-s3l" placeholder="09:00 發布"></div>
-  </div>
   <div class="btn-row"><button class="btn btn-primary" onclick="saveAbout()">💾 儲存關於我</button></div>
 </div>
 
@@ -524,7 +520,7 @@ const DEFAULTS={
      body:'<p>零信任的核心是「永不信任，始終驗證」。</p><h2>為什麼需要零信任？</h2><p>混合工作模式讓傳統 VPN 已無法應對分散式工作環境。</p><h2>如何開始？</h2><ul><li><strong>多因素驗證</strong>：最低成本、最高回報的第一步</li><li><strong>最小權限</strong>：只給完成任務所需的最低存取權限</li></ul>'},
   ],
   hp:{tag:'個人品牌 · 自媒體創作者',t1:'操作',t2:'一下',sub:'operation.tw // 雲端 · 資安 · AI · 閱讀 · 成長',quote:'簡單的事情專注做，\n有一天世界會為了你而感動',cta:'開始閱讀 →',nlt:'訂閱電子報',nld:'每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。'},
-  about:{initials:'OP',bio:'我是操作一下，深耕雲端、資安與 AI 的自媒體創作者。\n\n我相信科技不應只是工程師的語言，每個人都值得理解這些工具。\n\n不賣課程，不追流量，只想把有用的東西說清楚。',s1n:'50+',s1l:'篇文章',s2n:'5',s2l:'核心主題',s3n:'DAILY',s3l:'09:00 發布'},
+  about:{initials:'OP',bio:'我是操作一下，深耕雲端、資安與 AI 的自媒體創作者。\n\n我相信科技不應只是工程師的語言，每個人都值得理解這些工具。\n\n不賣課程，不追流量，只想把有用的東西說清楚。',s1n:'50+',s1l:'篇文章',s2n:'5',s2l:'核心主題'},
   footer:'© 2025 操作一下 · 簡單的事情專注做'
 };
 
@@ -868,10 +864,10 @@ async function saveHomepage(){
 // ── ABOUT ──
 function loadAbout(){
   const a=D.about||{};
-  setVal('ab-init',a.initials);setVal('ab-bio',a.bio);setVal('ab-s1n',a.s1n);setVal('ab-s1l',a.s1l);setVal('ab-s2n',a.s2n);setVal('ab-s2l',a.s2l);setVal('ab-s3n',a.s3n);setVal('ab-s3l',a.s3l);
+  setVal('ab-init',a.initials);setVal('ab-bio',a.bio);setVal('ab-s1n',a.s1n);setVal('ab-s1l',a.s1l);setVal('ab-s2n',a.s2n);setVal('ab-s2l',a.s2l);
 }
 async function saveAbout(){
-  const about={initials:getVal('ab-init'),bio:getVal('ab-bio'),s1n:getVal('ab-s1n'),s1l:getVal('ab-s1l'),s2n:getVal('ab-s2n'),s2l:getVal('ab-s2l'),s3n:getVal('ab-s3n'),s3l:getVal('ab-s3l')};
+  const about={initials:getVal('ab-init'),bio:getVal('ab-bio'),s1n:getVal('ab-s1n'),s1l:getVal('ab-s1l'),s2n:getVal('ab-s2n'),s2l:getVal('ab-s2l')};
   const {error}=await sb.from('settings').upsert({key:'about',value:about});
   if(error){toast('儲存失敗：'+error.message,'error');return;}
   D.about=about;toast('關於我已儲存 ✓');
