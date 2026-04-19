@@ -140,10 +140,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .skeleton-card .sk-body{padding:18px;}
 .skeleton-card .sk-line{height:14px;border-radius:4px;background:linear-gradient(90deg,var(--bg3) 25%,rgba(255,255,255,.04) 50%,var(--bg3) 75%);background-size:800px 14px;animation:shimmer 1.5s infinite linear;margin-bottom:10px;}
 .skeleton-card .sk-line.w70{width:70%;}.skeleton-card .sk-line.w90{width:90%;}.skeleton-card .sk-line.w50{width:50%;height:12px;}
-.pc{background:var(--bg2);border:1px solid var(--border);cursor:pointer;transition:all .32s;position:relative;overflow:hidden;}
+.pc{background:var(--bg2);border:1px solid var(--border);cursor:pointer;transition:transform .32s cubic-bezier(.25,.46,.45,.94),box-shadow .32s,border-color .32s;position:relative;overflow:hidden;will-change:transform;}
 .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);transform:translateX(-100%);transition:transform .55s;}
 .pc:hover::before{transform:translateX(100%);}
-.pc:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.5);}
+.pc:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 24px 48px rgba(0,0,0,.65),0 0 28px rgba(0,245,255,.07);}
 .pc-img{height:176px;background:var(--bg3);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .pc-img img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;}
 .pc-img-ph{font-size:2.4rem;opacity:.15;}
@@ -183,6 +183,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .about-bio{font-size:.9rem;color:var(--mid);line-height:1.9;margin-bottom:20px;white-space:pre-line;}
 .about-stats{display:flex;gap:28px;flex-wrap:wrap;}
 .stat-n{font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:900;color:var(--cyan);text-shadow:0 0 10px var(--cyan);}
+.stat-daily{font-size:.82rem;letter-spacing:.2em;text-shadow:0 0 8px var(--cyan);}
 .stat-l{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);margin-top:2px;}
 
 /* NEWSLETTER */
@@ -321,6 +322,19 @@ footer address a:hover{color:var(--cyan);}
 
 @media(max-width:768px){.pc.featured{grid-template-columns:1fr;}.pc.featured .pc-img{min-height:200px;}}
 
+/* Phase 4: Scroll fade-in */
+.sec-fade{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease;}
+.sec-fade.visible{opacity:1;transform:none;}
+
+/* Phase 4: Page transition */
+@keyframes viewIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+.view.active{animation:viewIn .22s ease forwards;}
+
+/* Improved empty state */
+.empty-state{text-align:center;padding:72px 20px;color:var(--dim);border:1px dashed var(--border);background:rgba(0,245,255,.01);}
+.empty-state .ei{font-size:2.4rem;margin-bottom:16px;display:block;}
+.empty-state p{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--mid);letter-spacing:.1em;}
+
 ::selection{background:rgba(0,245,255,.2);color:#fff;}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:var(--bg2);}
@@ -381,7 +395,7 @@ footer address a:hover{color:var(--cyan);}
   <button class="hero-cta" id="h-cta" onclick="gotoSection('posts')">開始閱讀 →</button>
 </div>
 
-<div class="section" id="posts">
+<div class="section sec-fade" id="posts">
   <div class="sec-hd">
     <div class="sec-hd-text"><h2>最新文章</h2><div class="sec-sub">// latest posts<span class="cursor">▋</span></div></div>
     <div class="sec-line"></div>
@@ -400,7 +414,7 @@ footer address a:hover{color:var(--cyan);}
   </div>
 </div>
 
-<div class="section" id="topics" style="background:rgba(255,255,255,.012);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<div class="section sec-fade" id="topics" style="background:rgba(255,255,255,.012);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
   <div class="sec-hd">
     <div class="sec-hd-text"><h2>核心主題</h2><div class="sec-sub">// core topics<span class="cursor">▋</span></div></div>
     <div class="sec-line"></div>
@@ -439,7 +453,7 @@ footer address a:hover{color:var(--cyan);}
   </div>
 </div>
 
-<div class="section" id="about">
+<div class="section sec-fade" id="about">
   <div class="sec-hd">
     <div class="sec-hd-text"><h2>關於我</h2><div class="sec-sub">// about<span class="cursor">▋</span></div></div>
     <div class="sec-line"></div>
@@ -458,15 +472,15 @@ footer address a:hover{color:var(--cyan);}
       <div class="about-stats">
         <div><div class="stat-n" id="s1n">50+</div><div class="stat-l" id="s1l">篇文章</div></div>
         <div><div class="stat-n" id="s2n">5</div><div class="stat-l" id="s2l">核心主題</div></div>
-        <div><div class="stat-n" id="s3n">∞</div><div class="stat-l" id="s3l">持續更新</div></div>
-        <div><div class="stat-n" style="color:var(--pink);text-shadow:0 0 10px var(--pink);" id="stat-total">—</div><div class="stat-l">累積瀏覽</div></div>
-        <div><div class="stat-n" style="color:var(--green);text-shadow:0 0 10px var(--green);" id="stat-today">—</div><div class="stat-l">今日瀏覽</div></div>
+        <div><div class="stat-n stat-daily" id="s3n">DAILY</div><div class="stat-l" id="s3l">09:00 發布</div></div>
+        <div><div class="stat-n" id="stat-total">—</div><div class="stat-l">累積瀏覽</div></div>
+        <div><div class="stat-n" id="stat-today">—</div><div class="stat-l">今日瀏覽</div></div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="section" id="newsletter">
+<div class="section sec-fade" id="newsletter">
   <div class="nl">
     <h2 id="nl-t">訂閱電子報</h2>
     <p id="nl-d">每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。</p>
@@ -477,7 +491,7 @@ footer address a:hover{color:var(--cyan);}
   </div>
 </div>
 
-<div class="section" id="contact" itemscope itemtype="https://schema.org/ContactPage">
+<div class="section sec-fade" id="contact" itemscope itemtype="https://schema.org/ContactPage">
   <div class="sec-hd">
     <div class="sec-hd-text"><h2 itemprop="name">聯絡方式</h2><div class="sec-sub">// contact<span class="cursor">▋</span></div></div>
     <div class="sec-line"></div>
@@ -602,7 +616,7 @@ const DEFAULTS={
     {id:3,title:'零信任架構入門：為什麼「相信但驗證」已經過時了',category:'資安',date:'2025-01-29',status:'published',excerpt:'現代資安思維的轉變，以及企業如何在混合工作時代保護數位邊界。',image:'',body:'<p>零信任的核心是「永不信任，始終驗證」。</p>'},
   ],
   hp:{tag:'個人品牌 · 自媒體創作者',t1:'操作',t2:'一下',sub:'operation.tw // 雲端 · 資安 · AI · 閱讀 · 成長',quote:'簡單的事情專注做，\n有一天世界會為了你而感動',cta:'開始閱讀 →',nlt:'訂閱電子報',nld:'每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。'},
-  about:{initials:'OP',bio:'我是操作一下，深耕雲端、資安與 AI 的自媒體創作者。\n\n我相信科技不應只是工程師的語言，每個人都值得理解這些工具。\n\n不賣課程，不追流量，只想把有用的東西說清楚。',s1n:'50+',s1l:'篇文章',s2n:'5',s2l:'核心主題',s3n:'∞',s3l:'持續更新'},
+  about:{initials:'OP',bio:'我是操作一下，深耕雲端、資安與 AI 的自媒體創作者。\n\n我相信科技不應只是工程師的語言，每個人都值得理解這些工具。\n\n不賣課程，不追流量，只想把有用的東西說清楚。',s1n:'50+',s1l:'篇文章',s2n:'5',s2l:'核心主題',s3n:'DAILY',s3l:'09:00 發布'},
   footer:'© 2025-2026 操作一下 · 簡單的事情專注做'
 };
 
@@ -1005,8 +1019,38 @@ function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').
 function safeHTML(s){return DOMPurify.sanitize(s||'',{ALLOWED_TAGS:['p','br','h2','h3','h4','a','strong','b','em','i','u','s','ul','ol','li','blockquote','pre','code','img','hr','table','thead','tbody','tr','th','td','span','div','figure','figcaption'],ALLOWED_ATTR:['href','src','alt','target','rel','class'],FORBID_ATTR:['onerror','onload','onclick','onmouseover','onfocus'],ALLOW_DATA_ATTR:false});}
 function fmtViews(n){n=+n||0;if(n>=10000)return Math.floor(n/1000)+'k+';if(n>=1000)return (n/1000).toFixed(1)+'k';return String(n);}
 
+/* ── Phase 3: 3D Tilt micro-interaction ── */
+function initTilt(){
+  document.addEventListener('mouseover',function(e){
+    const card=e.target.closest('.pc:not(.featured)');
+    if(!card||card._tilt)return;
+    card._tilt=true;
+    card.addEventListener('mousemove',function(ev){
+      const r=card.getBoundingClientRect();
+      const dx=(ev.clientX-r.left-r.width/2)/(r.width/2);
+      const dy=(ev.clientY-r.top-r.height/2)/(r.height/2);
+      card.style.transform='translateY(-4px) perspective(900px) rotateX('+((-dy)*3)+'deg) rotateY('+(dx*3)+'deg)';
+    });
+    card.addEventListener('mouseleave',function(){
+      card.style.transform='';
+    });
+  });
+}
+
+/* ── Phase 4: Scroll fade-in ── */
+function initScrollFade(){
+  const io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+    });
+  },{threshold:0.06});
+  document.querySelectorAll('.sec-fade').forEach(function(el){io.observe(el);});
+}
+
 /* ── INIT ── */
 initDB();
+initTilt();
+initScrollFade();
 </script>
 </body>
 </html>

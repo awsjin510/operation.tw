@@ -255,51 +255,148 @@ const CAT_LABELS = {
   '成長': 'GROWTH',
 };
 
-function generateSVG(category) {
+// 5 cover image templates — selected by postId % 5
+const SVG_TEMPLATES = [
+  // 0: Typography (大字排版)
+  (c, l, d) => {
+    const bw = l.length * 17 + 50;
+    return `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg"><defs>
+<pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0L0 0 0 40" fill="none" stroke="${c}" stroke-width="0.5" opacity="0.12"/></pattern>
+<filter id="gw" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="sg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="50"/></filter>
+</defs>
+<rect width="1200" height="630" fill="#050510"/>
+<rect width="1200" height="630" fill="url(#g)"/>
+<circle cx="960" cy="140" r="280" fill="${c}" filter="url(#sg)" opacity="0.14"/>
+<circle cx="180" cy="500" r="150" fill="${c}" filter="url(#sg)" opacity="0.07"/>
+<rect x="0" y="0" width="5" height="630" fill="${c}" filter="url(#gw)"/>
+<rect x="0" y="0" width="1200" height="2" fill="${c}" opacity="0.35"/>
+<rect x="0" y="628" width="1200" height="2" fill="${c}" opacity="0.18"/>
+<rect x="58" y="76" width="${bw}" height="44" rx="3" fill="transparent" stroke="${c}" stroke-width="2" filter="url(#gw)"/>
+<text x="78" y="107" font-family="monospace" font-size="22" fill="${c}" font-weight="bold" letter-spacing="4">${l}</text>
+<text x="60" y="360" font-family="monospace" font-size="220" fill="${c}" opacity="0.04" font-weight="bold">${l[0]}</text>
+<line x1="60" y1="148" x2="460" y2="148" stroke="${c}" stroke-width="1" opacity="0.2"/>
+<line x1="900" y1="200" x2="1140" y2="440" stroke="${c}" stroke-width="1" opacity="0.1"/>
+<text x="60" y="563" font-family="monospace" font-size="28" fill="#ffffff" opacity="0.55" letter-spacing="2">operation.tw</text>
+<text x="60" y="598" font-family="monospace" font-size="16" fill="${c}" opacity="0.5">// ${d}</text>
+<line x1="1120" y1="590" x2="1180" y2="590" stroke="${c}" stroke-width="1.5" opacity="0.5"/>
+<line x1="1180" y1="590" x2="1180" y2="530" stroke="${c}" stroke-width="1.5" opacity="0.5"/>
+<circle cx="1180" cy="530" r="3" fill="${c}" opacity="0.7"/>
+</svg>`;
+  },
+
+  // 1: Terminal (代碼終端)
+  (c, l, d) => `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+<defs><filter id="sg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="50"/></filter></defs>
+<rect width="1200" height="630" fill="#050510"/>
+<circle cx="600" cy="315" r="350" fill="${c}" filter="url(#sg)" opacity="0.07"/>
+<rect x="80" y="80" width="780" height="440" rx="8" fill="#0a0a1a" stroke="${c}" stroke-width="1.5" stroke-opacity="0.3"/>
+<rect x="80" y="80" width="780" height="38" rx="8" fill="#0d0d22"/>
+<rect x="80" y="106" width="780" height="12" fill="#0d0d22"/>
+<circle cx="112" cy="99" r="7" fill="#ff5f56" opacity="0.8"/>
+<circle cx="135" cy="99" r="7" fill="#ffbd2e" opacity="0.8"/>
+<circle cx="158" cy="99" r="7" fill="#27c93f" opacity="0.8"/>
+<text x="470" y="105" font-family="monospace" font-size="13" fill="#404070" text-anchor="middle">─ ${l.toLowerCase()} ─</text>
+<text x="112" y="162" font-family="monospace" font-size="15" fill="#6060a0">$ </text>
+<text x="136" y="162" font-family="monospace" font-size="15" fill="${c}">cat ${l.toLowerCase()}.md</text>
+<text x="112" y="194" font-family="monospace" font-size="14" fill="#6060a0"># ${l} — operation.tw</text>
+<rect x="112" y="210" width="520" height="10" rx="2" fill="#ffffff" opacity="0.04"/>
+<rect x="112" y="229" width="400" height="10" rx="2" fill="#ffffff" opacity="0.04"/>
+<rect x="112" y="248" width="560" height="10" rx="2" fill="#ffffff" opacity="0.04"/>
+<rect x="112" y="267" width="320" height="10" rx="2" fill="#ffffff" opacity="0.04"/>
+<rect x="112" y="286" width="480" height="10" rx="2" fill="#ffffff" opacity="0.03"/>
+<rect x="112" y="305" width="240" height="10" rx="2" fill="#ffffff" opacity="0.03"/>
+<text x="112" y="352" font-family="monospace" font-size="13" fill="${c}" opacity="0.6">// ${d} · operation.tw</text>
+<rect x="112" y="367" width="10" height="18" fill="${c}" opacity="0.85"/>
+<text x="1060" y="345" font-family="monospace" font-size="110" fill="${c}" opacity="0.05" font-weight="bold">${l[0]}</text>
+<text x="60" y="578" font-family="monospace" font-size="22" fill="#ffffff" opacity="0.5" letter-spacing="2">operation.tw</text>
+<text x="1140" y="578" font-family="monospace" font-size="14" fill="${c}" opacity="0.45" text-anchor="end">${d}</text>
+</svg>`,
+
+  // 2: Geometric Brackets (幾何角落)
+  (c, l, d) => `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern id="dots" width="80" height="80" patternUnits="userSpaceOnUse"><circle cx="40" cy="40" r="1.5" fill="${c}" opacity="0.1"/></pattern>
+<filter id="sg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="60"/></filter>
+</defs>
+<rect width="1200" height="630" fill="#050510"/>
+<rect width="1200" height="630" fill="url(#dots)"/>
+<circle cx="380" cy="280" r="300" fill="${c}" filter="url(#sg)" opacity="0.1"/>
+<path d="M55 55 L55 115 M55 55 L115 55" stroke="${c}" stroke-width="3" fill="none"/>
+<path d="M1145 55 L1145 115 M1145 55 L1085 55" stroke="${c}" stroke-width="3" fill="none"/>
+<path d="M55 575 L55 515 M55 575 L115 575" stroke="${c}" stroke-width="3" fill="none"/>
+<path d="M1145 575 L1145 515 M1145 575 L1085 575" stroke="${c}" stroke-width="3" fill="none"/>
+<polygon points="600,155 710,215 710,315 600,375 490,315 490,215" fill="none" stroke="${c}" stroke-width="1.5" opacity="0.15"/>
+<polygon points="600,180 688,228 688,292 600,342 512,292 512,228" fill="none" stroke="${c}" stroke-width="0.8" opacity="0.07"/>
+<line x1="582" y1="265" x2="618" y2="265" stroke="${c}" stroke-width="1.5" opacity="0.5"/>
+<line x1="600" y1="247" x2="600" y2="283" stroke="${c}" stroke-width="1.5" opacity="0.5"/>
+<circle cx="600" cy="265" r="5" fill="none" stroke="${c}" stroke-width="1.5" opacity="0.6"/>
+<text x="600" y="450" font-family="monospace" font-size="76" fill="${c}" opacity="0.07" font-weight="bold" text-anchor="middle">${l}</text>
+<rect x="${600 - l.length * 9 - 30}" y="460" width="${l.length * 18 + 60}" height="38" rx="2" fill="transparent" stroke="${c}" stroke-width="1.5" opacity="0.55"/>
+<text x="600" y="486" font-family="monospace" font-size="18" fill="${c}" font-weight="bold" letter-spacing="5" text-anchor="middle">${l}</text>
+<text x="600" y="545" font-family="monospace" font-size="24" fill="#ffffff" opacity="0.45" letter-spacing="2" text-anchor="middle">operation.tw</text>
+<text x="600" y="572" font-family="monospace" font-size="14" fill="${c}" opacity="0.35" text-anchor="middle">${d}</text>
+</svg>`,
+
+  // 3: Quote / Minimal (極簡引言)
+  (c, l, d) => `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+<defs><filter id="sg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="70"/></filter></defs>
+<rect width="1200" height="630" fill="#050510"/>
+<circle cx="200" cy="200" r="350" fill="${c}" filter="url(#sg)" opacity="0.08"/>
+<circle cx="1000" cy="450" r="250" fill="${c}" filter="url(#sg)" opacity="0.06"/>
+<text x="85" y="310" font-family="Georgia,serif" font-size="340" fill="${c}" opacity="0.06">"</text>
+<line x1="80" y1="375" x2="600" y2="375" stroke="${c}" stroke-width="2" opacity="0.15"/>
+<line x1="80" y1="385" x2="380" y2="385" stroke="${c}" stroke-width="1" opacity="0.08"/>
+<text x="80" y="458" font-family="monospace" font-size="52" fill="${c}" opacity="0.9" font-weight="bold" letter-spacing="6">${l}</text>
+<text x="80" y="502" font-family="monospace" font-size="16" fill="${c}" opacity="0.4" letter-spacing="3">OPERATION.TW / ${d}</text>
+<line x1="80" y1="516" x2="480" y2="516" stroke="${c}" stroke-width="1" opacity="0.12"/>
+<text x="1140" y="380" font-family="monospace" font-size="160" fill="${c}" opacity="0.04" text-anchor="end">${l[0]}</text>
+</svg>`,
+
+  // 4: Circuit Nodes (電路節點)
+  (c, l, d) => `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0L0 0 0 40" fill="none" stroke="${c}" stroke-width="0.4" opacity="0.08"/></pattern>
+<filter id="sg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="50"/></filter>
+<filter id="gw" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1200" height="630" fill="#050510"/>
+<rect width="1200" height="630" fill="url(#g)"/>
+<circle cx="700" cy="250" r="300" fill="${c}" filter="url(#sg)" opacity="0.08"/>
+<line x1="180" y1="180" x2="420" y2="180" stroke="${c}" stroke-width="1.5" opacity="0.3"/>
+<line x1="420" y1="180" x2="420" y2="320" stroke="${c}" stroke-width="1.5" opacity="0.3"/>
+<line x1="420" y1="320" x2="680" y2="320" stroke="${c}" stroke-width="1.5" opacity="0.3"/>
+<line x1="680" y1="320" x2="680" y2="180" stroke="${c}" stroke-width="1.5" opacity="0.3"/>
+<line x1="680" y1="180" x2="900" y2="180" stroke="${c}" stroke-width="1.5" opacity="0.3"/>
+<line x1="900" y1="180" x2="900" y2="420" stroke="${c}" stroke-width="1.5" opacity="0.2"/>
+<line x1="180" y1="420" x2="680" y2="420" stroke="${c}" stroke-width="1.5" opacity="0.2"/>
+<circle cx="180" cy="180" r="6" fill="${c}" opacity="0.6" filter="url(#gw)"/>
+<circle cx="420" cy="180" r="4" fill="${c}" opacity="0.5"/>
+<circle cx="420" cy="320" r="4" fill="${c}" opacity="0.5"/>
+<circle cx="680" cy="320" r="4" fill="${c}" opacity="0.5"/>
+<circle cx="680" cy="180" r="4" fill="${c}" opacity="0.5"/>
+<circle cx="900" cy="180" r="4" fill="${c}" opacity="0.4"/>
+<circle cx="900" cy="420" r="4" fill="${c}" opacity="0.4"/>
+<circle cx="180" cy="420" r="4" fill="${c}" opacity="0.4"/>
+<rect x="528" y="218" width="24" height="24" fill="none" stroke="${c}" stroke-width="2" opacity="0.5"/>
+<rect x="530" y="220" width="20" height="20" fill="${c}" opacity="0.04"/>
+<text x="80" y="518" font-family="monospace" font-size="44" fill="${c}" opacity="0.9" font-weight="bold" letter-spacing="5">${l}</text>
+<text x="80" y="558" font-family="monospace" font-size="16" fill="#ffffff" opacity="0.45" letter-spacing="2">operation.tw</text>
+<text x="80" y="580" font-family="monospace" font-size="14" fill="${c}" opacity="0.4">${d}</text>
+<text x="1100" y="460" font-family="monospace" font-size="130" fill="${c}" opacity="0.04" font-weight="bold" text-anchor="end">${l[0]}</text>
+</svg>`,
+];
+
+function generateSVG(category, postId) {
   const color = CAT_COLORS[category] || '#00f5ff';
   const label = CAT_LABELS[category] || category;
-  const badgeW = label.length * 17 + 48;
   const today = new Date().toISOString().split('T')[0];
-
-  return `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="${color}" stroke-width="0.5" opacity="0.12"/>
-    </pattern>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="softglow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="40" result="blur"/>
-    </filter>
-  </defs>
-  <rect width="1200" height="630" fill="#050510"/>
-  <rect width="1200" height="630" fill="url(#grid)"/>
-  <circle cx="980" cy="120" r="260" fill="${color}" filter="url(#softglow)" opacity="0.18"/>
-  <circle cx="200" cy="520" r="160" fill="${color}" filter="url(#softglow)" opacity="0.08"/>
-  <rect x="0" y="0" width="6" height="630" fill="${color}" filter="url(#glow)"/>
-  <rect x="0" y="0" width="1200" height="3" fill="${color}" opacity="0.4"/>
-  <rect x="0" y="627" width="1200" height="3" fill="${color}" opacity="0.2"/>
-  <rect x="60" y="80" width="${badgeW}" height="46" rx="3"
-        fill="transparent" stroke="${color}" stroke-width="2" filter="url(#glow)"/>
-  <text x="80" y="111" font-family="monospace,Courier New" font-size="22"
-        fill="${color}" font-weight="bold" letter-spacing="4">${label}</text>
-  <text x="60" y="340" font-family="monospace,Courier New" font-size="220"
-        fill="${color}" opacity="0.04" font-weight="bold">${label.charAt(0)}</text>
-  <line x1="60" y1="150" x2="440" y2="150" stroke="${color}" stroke-width="1" opacity="0.2"/>
-  <text x="60" y="560" font-family="monospace,Courier New" font-size="28"
-        fill="#ffffff" opacity="0.6" letter-spacing="2">operation.tw</text>
-  <text x="60" y="595" font-family="monospace,Courier New" font-size="16"
-        fill="${color}" opacity="0.5">// ${today}</text>
-  <line x1="1100" y1="590" x2="1170" y2="590" stroke="${color}" stroke-width="1.5" opacity="0.5"/>
-  <line x1="1170" y1="590" x2="1170" y2="520" stroke="${color}" stroke-width="1.5" opacity="0.5"/>
-  <circle cx="1170" cy="520" r="3" fill="${color}" opacity="0.7"/>
-</svg>`;
+  const idx = (postId || 0) % 5;
+  return SVG_TEMPLATES[idx](color, label, today);
 }
 
 async function generateCoverImage(postId, category) {
-  const svg = generateSVG(category);
+  const svg = generateSVG(category, postId);
   const outDir = path.join(__dirname, '..', 'images', 'posts');
   await fs.mkdir(outDir, { recursive: true });
   const outPath = path.join(outDir, `post-${postId}.jpg`);
