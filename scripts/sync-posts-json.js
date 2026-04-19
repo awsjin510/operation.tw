@@ -15,23 +15,50 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
   process.exit(1);
 }
 
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+async function fetchPosts(attempt) {
+  const url = `${SUPABASE_URL}/rest/v1/posts?select=id,title,category,date,status,excerpt,image,views&status=eq.published&order=date.desc`;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 25000);
+  try {
+    const res = await fetch(url, {
+      signal: ctrl.signal,
+      headers: {
+        apikey: SUPABASE_SERVICE_KEY,
+        Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
+        // 給 Supabase 足夠的 statement timeout 空間
+        'x-use-statement-timeout': '20000',
+      },
+    });
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`HTTP ${res.status}: ${text}`);
+    }
+    return await res.json();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function main() {
   console.log('🔄 同步 posts.json（含最新 views）...\n');
 
-  const url = `${SUPABASE_URL}/rest/v1/posts?select=id,title,category,date,status,excerpt,image,views&status=eq.published&order=date.desc`;
-  const res = await fetch(url, {
-    headers: {
-      apikey: SUPABASE_SERVICE_KEY,
-      Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-    },
-  });
-
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`Supabase 查詢失敗 (${res.status}): ${text}`);
+  let posts;
+  for (let i = 1; i <= 4; i++) {
+    try {
+      posts = await fetchPosts(i);
+      console.log(`  ✓ Supabase 回應（第 ${i} 次嘗試），取得 ${posts.length} 篇文章`);
+      break;
+    } catch (err) {
+      console.warn(`  ⚠ 第 ${i} 次嘗試失敗：${err.message}`);
+      if (i === 4) throw err;
+      const wait = i * 5000;
+      console.log(`  ⏳ 等待 ${wait / 1000}s 後重試（Supabase 可能正在喚醒）...`);
+      await sleep(wait);
+    }
   }
 
-  const posts = await res.json();
   const postsJsonPath = path.join(__dirname, '..', 'posts.json');
 
   // 保留既有的 body 欄位（auto-post 會帶 body，這裡不覆蓋）
