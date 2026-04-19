@@ -34,11 +34,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
+  /* ── Phase 1: Color Tokens ── */
   --cyan:#00f5ff;--pink:#ff0080;--purple:#bf00ff;
   --yellow:#ffff00;--green:#00ff88;
-  --bg:#050510;--bg2:#0a0a1a;--bg3:#0d0d22;--bg4:#111128;
+  /* Category accents */
+  --cat-ai:#bf00ff;--cat-cloud:#00f5ff;--cat-sec:#ff0080;--cat-read:#ffff00;--cat-grow:#00ff88;
+  /* Neutral scale */
+  --n0:#050510;--n1:#0a0a1a;--n2:#0d0d22;--n3:#111128;
+  --n4:#181830;--n5:#252545;--n6:#404070;--n7:#6060a0;--n8:#9090cc;--n9:#c0c0e0;--n10:#e0e0ff;
+  /* Semantic */
+  --bg:var(--n0);--bg2:var(--n1);--bg3:var(--n2);--bg4:var(--n3);
   --border:rgba(0,245,255,0.1);--border2:rgba(0,245,255,0.3);
-  --text:#e0e0ff;--dim:#6060a0;--mid:#9090cc;
+  --text:var(--n10);--dim:var(--n7);--mid:var(--n8);
+  /* ── Phase 1: Type Scale ── */
+  --t-2xs:.72rem;--t-xs:.8125rem;--t-sm:.875rem;--t-base:1rem;
+  --t-lg:1.125rem;--t-xl:1.5rem;--t-2xl:2rem;--t-3xl:3rem;
+  /* ── Phase 1: Spacing Grid (8px) ── */
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;
+  --sp-6:24px;--sp-7:32px;--sp-8:40px;--sp-9:48px;--sp-10:64px;--sp-11:80px;--sp-12:96px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -51,10 +64,14 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
 .nav-logo{font-family:'Orbitron',monospace;font-weight:900;font-size:.85rem;letter-spacing:.15em;color:var(--cyan);text-shadow:0 0 10px var(--cyan);text-decoration:none;cursor:pointer;flex-shrink:0;}
 .nav-links{display:flex;align-items:center;gap:24px;}
-.nav-links button{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--dim);background:none;border:none;cursor:pointer;letter-spacing:.1em;text-transform:uppercase;transition:color .25s;}
+.nav-links button{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--dim);background:none;border:none;cursor:pointer;letter-spacing:.1em;text-transform:uppercase;transition:color .25s;position:relative;padding-bottom:3px;}
+.nav-links button::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--cyan);transform:scaleX(0);transform-origin:left center;transition:transform .28s ease;}
 .nav-links button:hover{color:var(--cyan);}
-.nav-podcast{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--dim);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .25s;}
+.nav-links button:hover::after{transform:scaleX(1);}
+.nav-podcast{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--dim);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .25s;position:relative;padding-bottom:3px;}
+.nav-podcast::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--cyan);transform:scaleX(0);transform-origin:left center;transition:transform .28s ease;}
 .nav-podcast:hover{color:var(--cyan);}
+.nav-podcast:hover::after{transform:scaleX(1);}
 .nav-search{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:5px 12px;}
 .nav-search input{background:transparent;border:none;outline:none;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:.72rem;width:130px;}
 .nav-search input::placeholder{color:var(--dim);}
@@ -73,7 +90,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .view.active{display:block;}
 
 /* HERO */
-.hero{padding:96px 24px 72px;text-align:center;position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+.hero{padding:64px 24px 48px;text-align:center;position:relative;overflow:hidden;min-height:72vh;display:flex;flex-direction:column;justify-content:center;align-items:center;}
 .orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
 .orb1{width:600px;height:600px;background:rgba(0,245,255,.09);top:-150px;left:-150px;animation:orb-float 12s ease-in-out infinite;}
 .orb2{width:450px;height:450px;background:rgba(255,0,128,.07);bottom:-120px;right:-120px;animation:orb-float2 9s ease-in-out infinite;}
@@ -81,7 +98,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 @keyframes orb-float{0%,100%{transform:translate(0,0);}33%{transform:translate(30px,-20px);}66%{transform:translate(-20px,15px);}}
 @keyframes orb-float2{0%,100%{transform:translate(0,0);}33%{transform:translate(-25px,20px);}66%{transform:translate(20px,-15px);}}
 .hero-tag{font-family:'Share Tech Mono',monospace;font-size:.68rem;color:var(--pink);letter-spacing:.25em;text-transform:uppercase;margin-bottom:20px;}
-.hero-brand{font-family:'Orbitron',monospace;font-weight:900;font-size:clamp(3.5rem,11vw,8rem);line-height:1;margin-bottom:12px;}
+.hero-brand{font-family:'Orbitron',monospace;font-weight:900;font-size:clamp(2.2rem,6.5vw,4.5rem);line-height:1;margin-bottom:16px;}
+.hero-value-prop{display:inline-flex;align-items:center;gap:8px;font-family:'Share Tech Mono',monospace;font-size:.73rem;color:var(--mid);letter-spacing:.16em;margin-bottom:16px;padding:7px 18px;border:1px solid var(--border);background:rgba(0,245,255,.03);}
+.hero-value-prop em{font-style:normal;color:var(--cyan);}
+.hero-value-prop .sep{color:var(--n6);}
 .hero-brand .t1{color:#fff;position:relative;}
 .hero-brand .t1::before,.hero-brand .t1::after{content:attr(data-text);position:absolute;top:0;left:0;}
 .hero-brand .t1::before{color:var(--pink);clip-path:polygon(0 0,100% 0,100% 35%,0 35%);animation:glA 4s infinite;opacity:0;}
@@ -124,14 +144,16 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);transform:translateX(-100%);transition:transform .55s;}
 .pc:hover::before{transform:translateX(100%);}
 .pc:hover{border-color:var(--border2);transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.5);}
-.pc-img{height:160px;background:var(--bg3);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.pc-img{height:176px;background:var(--bg3);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .pc-img img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;}
 .pc-img-ph{font-size:2.4rem;opacity:.15;}
 .pc-badge{position:absolute;top:10px;left:10px;font-family:'Share Tech Mono',monospace;font-size:.57rem;padding:3px 8px;border:1px solid;letter-spacing:.1em;text-transform:uppercase;background:rgba(5,5,16,.75);}
 .pc-body{padding:18px;}
 .pc-title{font-size:.93rem;font-weight:700;color:var(--text);line-height:1.6;margin-bottom:8px;transition:color .2s;}
 .pc:hover .pc-title{color:var(--cyan);}
-.pc-exc{font-size:.8rem;color:var(--dim);line-height:1.75;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.pc-exc{font-size:.8rem;color:var(--dim);line-height:1.75;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.pc-read-more{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--cyan);letter-spacing:.1em;margin-bottom:10px;opacity:0;transform:translateX(-6px);transition:opacity .25s,transform .25s;}
+.pc:hover .pc-read-more{opacity:1;transform:translateX(0);}
 .pc-foot{display:flex;align-items:center;justify-content:space-between;font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);}
 .pc-rt{color:var(--cyan);}
 
@@ -258,7 +280,7 @@ footer address a:hover{color:var(--cyan);}
 @media(max-width:768px){
   .nav-links,.nav-search{display:none;}
   .hamburger{display:flex;}
-  .hero{padding:60px 20px 48px;}
+  .hero{padding:48px 20px 40px;min-height:60vh;}
   .topic-grid{grid-template-columns:repeat(2,1fr);}
   .about-wrap{grid-template-columns:1fr;gap:22px;text-align:center;}
   .avatar{margin:0 auto;}
@@ -271,7 +293,8 @@ footer address a:hover{color:var(--cyan);}
 }
 @media(max-width:480px){
   .topic-grid{grid-template-columns:1fr 1fr;}
-  .hero-brand{font-size:clamp(2.8rem,14vw,5rem);}
+  .hero-brand{font-size:clamp(1.9rem,11vw,3rem);}
+  .hero-value-prop{font-size:.63rem;padding:5px 12px;letter-spacing:.1em;}
 }
 
 /* POST VIEW BADGE */
@@ -348,10 +371,11 @@ footer address a:hover{color:var(--cyan);}
   <div class="orb orb2"></div>
   <div class="orb orb3"></div>
   <div class="hero-tag" id="h-tag">個人品牌 · 自媒體創作者</div>
-  <div style="margin-bottom:24px;text-align:center;"><img src="logo.png" alt="操作一下" style="width:min(320px,75vw);height:auto;display:inline-block;filter:drop-shadow(0 0 30px rgba(0,245,255,0.5));"></div>
+  <div style="margin-bottom:16px;text-align:center;"><img src="logo.png" alt="操作一下" style="width:min(160px,38vw);height:auto;display:inline-block;filter:drop-shadow(0 0 22px rgba(0,245,255,0.45));"></div>
   <div class="hero-brand">
     <span class="t1" data-text="操作" id="h-t1">操作</span><span class="t2" id="h-t2">一下</span>
   </div>
+  <div class="hero-value-prop">每日深度觀點<span class="sep"> · </span><em>雲端</em><span class="sep"> / </span><em>AI</em><span class="sep"> / </span><em>資安</em></div>
   <div class="hero-sub" id="h-sub"></div>
   <div class="hero-quote" id="h-quote">簡單的事情專注做，<br>有一天世界會為了你而感動</div>
   <button class="hero-cta" id="h-cta" onclick="gotoSection('posts')">開始閱讀 →</button>
@@ -754,6 +778,7 @@ function cardHTML(p,featured){
     +'<div class="pc-img">'+img+'<span class="pc-badge" style="border-color:'+c+';color:'+c+';">'+esc(p.category)+'</span></div>'
     +'<div class="pc-body"><div class="pc-title">'+esc(p.title)+'</div>'
     +'<div class="pc-exc">'+esc(p.excerpt||'')+'</div>'
+    +'<div class="pc-read-more">閱讀更多 →</div>'
     +'<div class="pc-foot"><span>📅 '+esc(p.date)+'</span><span class="pc-view-cnt">👁 '+(p.views||0)+'</span><span class="pc-rt">⏱ '+rt+' 分鐘</span></div>'
     +'</div></div>';
 }
