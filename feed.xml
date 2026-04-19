@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 18 Apr 2026 03:48:32 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 19 Apr 2026 04:15:03 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>輝達芯片荒現轉機：AI雲端新時代如何重塑運算生態</title>
+    <link>https://operation.tw/post/77</link>
+    <guid isPermaLink="true">https://operation.tw/post/77</guid>
+    <description>輝達地位被重新評估，AI芯片供應鏈的變化正深刻影響雲端運算格局。從GPU稀缺到供應穩定，企業如何在這波轉變中找到最適合的雲端策略？本文分析輝達現象背後的產業趨勢。</description>
+    <category>雲端</category>
+    <pubDate>Sun, 19 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>心理諮詢AI的倫理紅線：為何通用AI模型不適合心理健康領域</title>
     <link>https://operation.tw/post/76</link>
@@ -158,14 +166,6 @@
     <description>最新研究揭露大型語言模型具有驚人的政治說服力，可動搖選民意向超過10個百分點。面對2026年台灣地方選舉臨近，這項發現對民主制度構成前所未有的挑戰。本文探討AI說服機制、對台灣選舉的潛在影響，以及應對策略。</description>
     <category>AI</category>
     <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Google資安認證掀台灣搶才潮：零基礎如何踏入資安職涯？</title>
-    <link>https://operation.tw/post/48</link>
-    <guid isPermaLink="true">https://operation.tw/post/48</guid>
-    <description>Google Cybersecurity Certificate開放第一梯次報名，為台灣資安人才荒提供新突破口。本文分析認證價值、學習路徑，以及如何幫助企業在AI威脅時代快速補齊資安防線，掌握2026年資安人才紅利。</description>
-    <category>資安</category>
-    <pubDate>Tue, 24 Mar 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
