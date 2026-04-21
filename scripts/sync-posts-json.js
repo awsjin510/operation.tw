@@ -60,27 +60,12 @@ async function main() {
   }
 
   const postsJsonPath = path.join(__dirname, '..', 'posts.json');
-
-  // 保留既有的 body 欄位（auto-post 會帶 body，這裡不覆蓋）
-  let existingBodies = {};
-  try {
-    const existing = JSON.parse(await fs.readFile(postsJsonPath, 'utf8'));
-    existingBodies = Object.fromEntries(
-      (existing.posts || []).filter(p => p.body).map(p => [p.id, p.body])
-    );
-  } catch (_) {}
-
-  const merged = posts.map(p => ({
-    ...p,
-    ...(existingBodies[p.id] ? { body: existingBodies[p.id] } : {}),
-  }));
-
   await fs.writeFile(
     postsJsonPath,
-    JSON.stringify({ generated: new Date().toISOString(), posts: merged }, null, 0)
+    JSON.stringify({ generated: new Date().toISOString(), posts }, null, 0)
   );
 
-  console.log(`✅ posts.json 已更新（${merged.length} 篇文章，views 已同步）`);
+  console.log(`✅ posts.json 已更新（${posts.length} 篇文章，views 已同步）`);
 }
 
 main().catch(err => {
