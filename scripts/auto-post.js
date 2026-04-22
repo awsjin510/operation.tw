@@ -465,7 +465,11 @@ async function main() {
   );
   if (!allPostsRes.ok) throw new Error(`posts fetch failed: ${allPostsRes.status}`);
   const allPosts = await allPostsRes.json();
-  const postsData = { generated: new Date().toISOString(), posts: allPosts };
+  const leanPosts = allPosts.map(p => ({
+    ...p,
+    image: (p.image && p.image.startsWith('/')) ? p.image : '',
+  }));
+  const postsData = { generated: new Date().toISOString(), posts: leanPosts };
   await fs.writeFile(postsJsonPath, JSON.stringify(postsData, null, 0));
   console.log(`  ✓ posts.json 已更新（${postsData.posts.length} 篇文章，含最新 views）`);
 

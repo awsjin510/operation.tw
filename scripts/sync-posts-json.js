@@ -60,12 +60,19 @@ async function main() {
   }
 
   const postsJsonPath = path.join(__dirname, '..', 'posts.json');
+
+  // 過濾掉 data URL（舊文章可能把 base64 圖片直接存到 image 欄位，會造成 MB 級膨脹）
+  const lean = posts.map(p => ({
+    ...p,
+    image: (p.image && p.image.startsWith('/')) ? p.image : '',
+  }));
+
   await fs.writeFile(
     postsJsonPath,
-    JSON.stringify({ generated: new Date().toISOString(), posts }, null, 0)
+    JSON.stringify({ generated: new Date().toISOString(), posts: lean }, null, 0)
   );
 
-  console.log(`✅ posts.json 已更新（${posts.length} 篇文章，views 已同步）`);
+  console.log(`✅ posts.json 已更新（${lean.length} 篇文章，views 已同步）`);
 }
 
 main().catch(err => {
