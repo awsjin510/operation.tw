@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant-TW">
 <head>
   <meta charset="utf-8">
-  <title>操作一下</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>找不到頁面 | 操作一下</title>
+  <meta name="robots" content="noindex">
+  <style>
+    body{margin:0;background:#050510;color:#e0e0ff;font-family:'Noto Sans TC',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:24px;}
+    h1{color:#00f5ff;font-size:3rem;margin-bottom:8px;}
+    p{color:#9090cc;margin-bottom:24px;}
+    a{color:#00f5ff;text-decoration:none;border-bottom:1px solid rgba(0,245,255,.3);padding-bottom:2px;}
+    a:hover{border-bottom-color:#00f5ff;}
+    .links{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:8px;}
+  </style>
   <script>
-    // GitHub Pages SPA redirect hack
-    // When GitHub Pages returns 404, redirect to /?/original/path
-    // so index.html can restore the URL and route correctly
+    // SPA routing hack：將 404 路徑轉交 index.html 處理
     var l = window.location;
     l.replace(
       l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
@@ -14,5 +22,14 @@
     );
   </script>
 </head>
-<body></body>
+<body>
+  <h1>404</h1>
+  <p>找不到此頁面，可能已移除或網址有誤。</p>
+  <div class="links">
+    <a href="/">← 回首頁</a>
+    <a href="/podcast.html">🎙 Podcast</a>
+    <a href="/#topics">📂 主題分類</a>
+    <a href="/#contact">✉️ 聯絡我</a>
+  </div>
+</body>
 </html>
