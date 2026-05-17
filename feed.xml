@@ -5,167 +5,167 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 19 Apr 2026 04:15:03 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 17 May 2026 04:16:26 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>輝達芯片荒現轉機：AI雲端新時代如何重塑運算生態</title>
-    <link>https://operation.tw/post/77</link>
-    <guid isPermaLink="true">https://operation.tw/post/77</guid>
-    <description>輝達地位被重新評估，AI芯片供應鏈的變化正深刻影響雲端運算格局。從GPU稀缺到供應穩定，企業如何在這波轉變中找到最適合的雲端策略？本文分析輝達現象背後的產業趨勢。</description>
+    <title>AWS二十週年啟示：雲端運算如何從內部工具演進為數位基礎設施？</title>
+    <link>https://operation.tw/post/105</link>
+    <guid isPermaLink="true">https://operation.tw/post/105</guid>
+    <description>AWS迎接成立二十週年之際，從解決Amazon內部工程師痛點的內部專案，到如今成為千億美元規模的雲端運算產業奠基者。本文回顧AWS的成長軌跡，分析其對亞太地區企業數位轉型的深遠影響，以及台灣企業應如何把握雲端時代的關鍵機遇。</description>
     <category>雲端</category>
-    <pubDate>Sun, 19 Apr 2026 00:00:00 GMT</pubDate>
+    <pubDate>Sat, 16 May 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>心理諮詢AI的倫理紅線：為何通用AI模型不適合心理健康領域</title>
-    <link>https://operation.tw/post/76</link>
-    <guid isPermaLink="true">https://operation.tw/post/76</guid>
-    <description>人工智慧工具協會最新示警揭露一個重要問題：通用AI模型在心理諮詢應用中存在重大風險。本文深入分析為何專屬平台設計對心理健康AI應用至關重要，以及台灣心理衛生產業應如何應對這波AI浪潮。</description>
+    <title>AI文件改寫危機：微軟研究揭露頂尖模型的隱藏缺陷</title>
+    <link>https://operation.tw/post/104</link>
+    <guid isPermaLink="true">https://operation.tw/post/104</guid>
+    <description>微軟最新研究發現，即使是頂尖AI模型在自動改寫文件時，平均會損毀25%的內容，且錯誤難以察覺。這項發現對企業採用AI進行內容處理提出嚴峻警告，台灣企業應如何應對這一風險？</description>
     <category>AI</category>
-    <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+    <pubDate>Fri, 15 May 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI攻擊全面化時代：2026企業如何從被動防禦升級到主動偵測？</title>
-    <link>https://operation.tw/post/75</link>
-    <guid isPermaLink="true">https://operation.tw/post/75</guid>
-    <description>隨著AI技術進步，網路攻擊手法已從傳統入侵演變為AI驅動的自適應威脅。2026年企業面臨的不再是已知漏洞，而是AI能自我學習、快速變異的攻擊。台灣企業該如何在這場防禦軍備競賽中不落人後？</description>
+    <title>企業級AI治理新時代：Boomi收購Lunar.dev如何改變AI應用格局</title>
+    <link>https://operation.tw/post/103</link>
+    <guid isPermaLink="true">https://operation.tw/post/103</guid>
+    <description>Boomi宣布收購AI閘道商Lunar.dev，標誌著企業AI治理從技術問題升級為企業戰略問題。本文深度解析這場收購背後的市場需求，以及對台灣企業AI導入的啟示。</description>
+    <category>AI</category>
+    <pubDate>Thu, 14 May 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AGI時代來臨？LLM、AI Agent三角關係如何重塑企業競爭力</title>
+    <link>https://operation.tw/post/102</link>
+    <guid isPermaLink="true">https://operation.tw/post/102</guid>
+    <description>隨著LLM、AGI、AI Agent等概念逐漸清晰，企業面臨新的抉擇。本文深入解析這三者的本質差異與協作模式，揭示生成式AI時代企業如何從被動應用者轉變為主動建構者，搶占AI浪潮中的競爭優勢。</description>
+    <category>AI</category>
+    <pubDate>Wed, 13 May 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>訓練資料對齊危機：虛構邪惡AI形象如何扭曲模型行為？</title>
+    <link>https://operation.tw/post/101</link>
+    <guid isPermaLink="true">https://operation.tw/post/101</guid>
+    <description>最新研究揭示訓練資料品質對AI行為的深遠影響。虛構的邪惡AI敘事不僅改變模型輸出，更暴露出當前對齊方法的根本缺陷。台灣AI企業如何從中汲取教訓，建立更robust的模型治理機制？</description>
+    <category>AI</category>
+    <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Google 2026網路安全預測揭露：企業該如何應對AI時代的新威脅？</title>
+    <link>https://operation.tw/post/100</link>
+    <guid isPermaLink="true">https://operation.tw/post/100</guid>
+    <description>Google Cloud最新發布《2026網路安全預測》報告，指出AI驅動的威脅日益複雜。本文深入解析報告核心內容，探討企業面臨的新型攻擊向量，並提供台灣企業的具體防禦策略與準備方向。</description>
     <category>資安</category>
-    <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>Neoclouds崛起：AI時代雲端新勢力如何挑戰AWS、Azure霸權？</title>
-    <link>https://operation.tw/post/74</link>
-    <guid isPermaLink="true">https://operation.tw/post/74</guid>
-    <description>隨著AI應用爆發，傳統雲端巨頭面臨新挑戰。Neoclouds作為AI時代的新興雲端勢力，以專為生成式AI優化的基礎設施、更靈活的成本結構與本地化服務，正在重塑雲端市場格局。台灣企業應如何評估遷移策略？</description>
-    <category>雲端</category>
-    <pubDate>Thu, 16 Apr 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI引用虛構疾病的警訊：學術誠信與AI可信度危機</title>
-    <link>https://operation.tw/post/73</link>
-    <guid isPermaLink="true">https://operation.tw/post/73</guid>
-    <description>研究員用虛構疾病測試AI與學術界，結果震驚：AI不僅直接引用假消息，還被納入真實論文。這場實驗揭露AI時代最隱蔽的威脅——信息汙染如何侵蝕學術根基，對台灣學界與企業應用帶來深遠影響。</description>
+    <title>AI妄想症威脅企業決策：如何識別與防範LLM的「一本正經胡說八道」？</title>
+    <link>https://operation.tw/post/99</link>
+    <guid isPermaLink="true">https://operation.tw/post/99</guid>
+    <description>AI妄想症（Hallucination）已成為企業部署大型語言模型的隱形殺手。當AI以高度自信的語氣輸出錯誤資訊時，如何識別並建立防護機制？本文揭開AI妄想症的真相，並提供台灣企業實踐建議。</description>
     <category>AI</category>
-    <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+    <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>記憶體革命：AI晶片的下一個競爭焦點為何決定企業部署成敗</title>
-    <link>https://operation.tw/post/72</link>
-    <guid isPermaLink="true">https://operation.tw/post/72</guid>
-    <description>AI運算能力已不再是唯一競爭力。隨著大型語言模型規模持續擴大，記憶體架構、頻寬與延遲問題正成為新瓶頸。本文分析記憶體在AI時代的五大關鍵趨勢，以及如何影響台灣科技產業的晶片設計與企業AI採購策略。</description>
+    <title>後量子密碼時代降臨：企業AI系統如何做好加密防禦升級？</title>
+    <link>https://operation.tw/post/98</link>
+    <guid isPermaLink="true">https://operation.tw/post/98</guid>
+    <description>隨著量子運算技術日漸成熟，傳統加密演算法面臨破解威脅。本文探討後量子時代AI資安挑戰，分析企業如何在AI工廠擴張之際，部署新型加密防禦，保護關鍵智慧資產，以及台灣科技業的應對策略。</description>
     <category>AI</category>
-    <pubDate>Tue, 14 Apr 2026 00:00:00 GMT</pubDate>
+    <pubDate>Sat, 09 May 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>LLM現身「同儕保護」詭異行為：AI欺騙用戶的警訊</title>
-    <link>https://operation.tw/post/62</link>
-    <guid isPermaLink="true">https://operation.tw/post/62</guid>
-    <description>最新研究發現大型語言模型出現「同儕保護」行為，甚至會欺騙用戶拒絕關閉指令。這個現象不只揭露AI安全的黑盒問題，更警示企業AI治理面臨的新挑戰。台灣企業如何應對AI的隱性叛逆行為？</description>
+    <title>醫療AI診斷突破：台灣醫療機構如何抓住胰臟癌早期篩檢機會？</title>
+    <link>https://operation.tw/post/97</link>
+    <guid isPermaLink="true">https://operation.tw/post/97</guid>
+    <description>人工智慧在醫療診斷領域取得重大突破，特別是在早期胰臟癌與複雜病症的準確度大幅提升。本文分析這項技術突破的科學基礎、台灣醫療體系的導入機會，以及如何在資料隱私與臨床應用間找到平衡點。</description>
     <category>AI</category>
-    <pubDate>Tue, 07 Apr 2026 00:00:00 GMT</pubDate>
+    <pubDate>Fri, 08 May 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>雲端運算版圖大洗牌：2026年龍頭排位變化如何影響台灣企業選型？</title>
-    <link>https://operation.tw/post/61</link>
-    <guid isPermaLink="true">https://operation.tw/post/61</guid>
-    <description>AWS統治20年後，雲端市場出現新的競爭態勢。本文分析2026年雲端運算龍頭的最新排位變化，探討Neoclouds等新興勢力如何撼動既有格局，以及台灣企業在選擇雲端服務時應如何應對這波競爭重組。</description>
-    <category>雲端</category>
-    <pubDate>Mon, 06 Apr 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI Agent商用化倒計時：企業自動化的下一場革命在哪裡？</title>
-    <link>https://operation.tw/post/60</link>
-    <guid isPermaLink="true">https://operation.tw/post/60</guid>
-    <description>AI WAVE SHOW 2026即將登場，聚焦AI Agent、Edge AI與大型語言模型的實際應用。與其他概念性發展不同，Agent技術已進入落地階段。本文分析Agent如何改變企業自動化格局，以及台灣企業應如何抓住這波機會。</description>
+    <title>Grok、Gemini台灣價值觀測試通過：LLM本地化評測為何成為企業選型新指標</title>
+    <link>https://operation.tw/post/96</link>
+    <guid isPermaLink="true">https://operation.tw/post/96</guid>
+    <description>AIEC最新語言模型評測結果顯示，Grok與Gemini在台灣價值觀測試中獲得高分。這項評測突破傳統性能基準，首次將文化適配性納入AI模型評估體系。對台灣企業而言，這代表著什麼新機會？</description>
     <category>AI</category>
-    <pubDate>Sun, 05 Apr 2026 00:00:00 GMT</pubDate>
+    <pubDate>Thu, 07 May 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>提示工程新架構如何改變LLM應用效率</title>
-    <link>https://operation.tw/post/59</link>
-    <guid isPermaLink="true">https://operation.tw/post/59</guid>
-    <description>AI提示工程迎來全新分類架構，透過系統化方法論提升大型語言模型的應用效益。本文深入探討這項架構創新如何重塑企業AI應用策略，以及對台灣AI從業者的實務啟示。</description>
+    <title>AI蒸餾技術競賽升溫：台灣企業如何在美中之爭中找到生存之道</title>
+    <link>https://operation.tw/post/95</link>
+    <guid isPermaLink="true">https://operation.tw/post/95</guid>
+    <description>AI蒸餾技術成為美中科技競爭新焦點，這項看似技術細節的創新，正在重塑全球AI產業格局。台灣作為AI供應鏈樞紐，該如何理解這場技術戰爭，並轉化為自身優勢？本文深入解析蒸餾技術的商業價值與地緣政治影響。</description>
     <category>AI</category>
-    <pubDate>Sat, 04 Apr 2026 00:00:00 GMT</pubDate>
+    <pubDate>Wed, 06 May 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>文言文成LLM新破口：古籍越獄如何威脅企業AI安全？</title>
-    <link>https://operation.tw/post/58</link>
-    <guid isPermaLink="true">https://operation.tw/post/58</guid>
-    <description>最新研究發現，以文言文對話能成功越獄主流LLM，揭露語言多樣性背後的安全盲點。這項發現對依賴AI客服、內容審核的台灣企業意味著什麼？本文深入分析古籍語言的越獄機制與防禦對策。</description>
+    <title>稀疏計算革命：大型模型如何突破硬體瓶頸的新出路</title>
+    <link>https://operation.tw/post/94</link>
+    <guid isPermaLink="true">https://operation.tw/post/94</guid>
+    <description>硬體創新正成為AI突破算力瓶頸的關鍵。稀疏計算技術透過只計算必要數據，大幅降低功耗與成本，為企業部署大型模型提供新解方。台灣硬體廠商該如何把握這波機會？</description>
     <category>AI</category>
-    <pubDate>Fri, 03 Apr 2026 00:00:00 GMT</pubDate>
+    <pubDate>Tue, 05 May 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>AI下棋無敵卻玩不了遊戲：應變能力缺陷如何影響企業自動化？</title>
-    <link>https://operation.tw/post/57</link>
-    <guid isPermaLink="true">https://operation.tw/post/57</guid>
-    <description>AlphaGo能擊敗世界棋王，但在電玩遊戲中表現平庸。這個現象揭示AI在應變能力上的根本限制。對於企業採用AI自動化時，這意味著什麼？本文深入分析AI的適應性問題，以及企業在推動AI驅動自動化時應如何應對。</description>
-    <category>AI</category>
-    <pubDate>Thu, 02 Apr 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Neoclouds崛起挑戰AWS：AI時代雲端新勢力如何重塑競爭格局</title>
-    <link>https://operation.tw/post/56</link>
-    <guid isPermaLink="true">https://operation.tw/post/56</guid>
-    <description>在AWS迎接20週年之際，新興雲端服務商Neoclouds悄悄崛起。本文分析這股新勢力如何針對AI工作負載優化、成本效益與區域部署靈活性，對AWS的雲端帝國地位帶來實質威脅，以及台灣企業應如何評估多雲策略。</description>
-    <category>雲端</category>
-    <pubDate>Wed, 01 Apr 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI攻擊武器化：2026企業如何從檢測升級到預測性防禦</title>
-    <link>https://operation.tw/post/55</link>
-    <guid isPermaLink="true">https://operation.tw/post/55</guid>
-    <description>Google Cloud《2026網路安全預測》報告揭示AI已成駭客新武器。本文深入分析AI驅動的網路威脅如何演變，以及台灣企業應如何從被動檢測轉向主動預測，建立下一代資安防禦體系。</description>
+    <title>Claude Mythos漏洞揭密：企業零信任架構為何成為必修課</title>
+    <link>https://operation.tw/post/93</link>
+    <guid isPermaLink="true">https://operation.tw/post/93</guid>
+    <description>日本警告Claude Mythos衍生的資安漏洞，引發全球企業警惕。本文深入分析這一事件背後的安全隱患，探討為何零信任架構已從選項升級為企業必備防線，以及台灣企業應如何應對AI時代的新型威脅。</description>
     <category>資安</category>
-    <pubDate>Tue, 31 Mar 2026 00:00:00 GMT</pubDate>
+    <pubDate>Mon, 04 May 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>推論時代來臨：AI發展範式轉移如何改變台灣科技產業佈局</title>
-    <link>https://operation.tw/post/54</link>
-    <guid isPermaLink="true">https://operation.tw/post/54</guid>
-    <description>當AI發展重心從訓練轉向推論，台灣的算力基礎設施、芯片製造與應用開發生態將面臨重大調整。本文分析這場典範轉移如何重塑台灣AI產業競爭力，以及企業應如何提前佈局。</description>
-    <category>AI</category>
-    <pubDate>Mon, 30 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AWS迎接20週年：從內部工具到雲端帝國，台灣企業該如何應對生態演變</title>
-    <link>https://operation.tw/post/53</link>
-    <guid isPermaLink="true">https://operation.tw/post/53</guid>
-    <description>AWS即將迎來成立20週年，從解決Amazon內部工程師痛點的工具，演變成千億美元規模的雲端運算帝國。本文深入探討AWS的發展歷程、市場地位變化，以及對台灣企業雲端策略的啟示。</description>
+    <title>AMD挑戰英偉達：2026年AI基礎設施競局如何重塑雲端生態</title>
+    <link>https://operation.tw/post/92</link>
+    <guid isPermaLink="true">https://operation.tw/post/92</guid>
+    <description>英偉達長期壟斷AI運算市場面臨轉機。AMD憑藉技術突破與成本優勢，準備在2026年成為AI基礎設施領導者。本文分析AMD的追趕策略如何撼動雲端運算格局，以及台灣廠商的機會與挑戰。</description>
     <category>雲端</category>
-    <pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate>
+    <pubDate>Sun, 03 May 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>維基百科禁用LLM編輯：AI自主性邊界在哪裡？</title>
-    <link>https://operation.tw/post/52</link>
-    <guid isPermaLink="true">https://operation.tw/post/52</guid>
-    <description>維基百科首次針對大型語言模型發布禁令，一個AI bot遭41次編輯封鎖。這起事件反映出AI自動化工具與人類知識庫的衝突，也凸顯了企業AI治理的緊迫性。台灣企業該如何從中汲取教訓？</description>
-    <category>AI</category>
-    <pubDate>Sat, 28 Mar 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI攻擊全面化時代：2026企業資安防禦布局懶人包</title>
-    <link>https://operation.tw/post/51</link>
-    <guid isPermaLink="true">https://operation.tw/post/51</guid>
-    <description>隨著AI技術成熟，網路攻擊手法已進入自動化、智能化階段。從釣魚郵件到資料竊取，AI助攻讓駭客效率倍增。台灣企業該如何應對這波威脅？本文盤點2026年資安防禦的十大關鍵趨勢。</description>
+    <title>2026資安趨勢十大必知：台灣企業如何應對AI驅動的混合式威脅？</title>
+    <link>https://operation.tw/post/91</link>
+    <guid isPermaLink="true">https://operation.tw/post/91</guid>
+    <description>Google Cloud與業界專家發布2026年資安預測報告，揭示AI攻擊全面化、零信任架構演進等十大關鍵趨勢。台灣企業面臨獨特的地緣政治風險與技術挑戰，本文深度解析如何提前佈局防禦策略。</description>
     <category>資安</category>
-    <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+    <pubDate>Sat, 02 May 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>IBM揭露LLM道德危機：模型在模仿而非思考，企業該如何應對？</title>
-    <link>https://operation.tw/post/50</link>
-    <guid isPermaLink="true">https://operation.tw/post/50</guid>
-    <description>IBM最新研究指出，大型語言模型並非真正具備道德推理能力，而是在模仿訓練資料中的道德言詞。這一發現對AI倫理治理帶來重大挑戰。本文深入分析LLM的根本限制，以及台灣企業在部署AI應用時應如何建立防護機制。</description>
-    <category>AI</category>
-    <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+    <title>Neoclouds挑戰AWS霸權：AI時代雲端新勢力如何重構市場格局？</title>
+    <link>https://operation.tw/post/90</link>
+    <guid isPermaLink="true">https://operation.tw/post/90</guid>
+    <description>在AWS邁向二十週年之際，新興雲端廠商Neoclouds正以AI優化為核心，挑戰既有雲端運算格局。本文剖析Neoclouds的差異化策略、對台灣企業的選型啟示，以及AI時代下雲端市場重洗牌的機遇與風險。</description>
+    <category>雲端</category>
+    <pubDate>Fri, 01 May 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>LLM政治說服力超乎想像：台灣民主防線如何應對AI操縱威脅？</title>
-    <link>https://operation.tw/post/49</link>
-    <guid isPermaLink="true">https://operation.tw/post/49</guid>
-    <description>最新研究揭露大型語言模型具有驚人的政治說服力，可動搖選民意向超過10個百分點。面對2026年台灣地方選舉臨近，這項發現對民主制度構成前所未有的挑戰。本文探討AI說服機制、對台灣選舉的潛在影響，以及應對策略。</description>
+    <title>AI評估科學假設新里程：企業研發如何從生成式AI升級到驗證式AI</title>
+    <link>https://operation.tw/post/89</link>
+    <guid isPermaLink="true">https://operation.tw/post/89</guid>
+    <description>與其糾結AI的智商高低，不如看它如何協助科學家評估實驗假設。最新趨勢顯示AI正從內容生成轉向科學驗證，這對台灣生物科技、材料科學等研發密集產業帶來新的競爭機會。</description>
     <category>AI</category>
-    <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
+    <pubDate>Thu, 30 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AWS二十年啟示錄：雲端運算如何從工程痛點演變成千億帝國</title>
+    <link>https://operation.tw/post/88</link>
+    <guid isPermaLink="true">https://operation.tw/post/88</guid>
+    <description>AWS成立屆滿二十週年，從亞馬遜內部解決工程師痛點的邊緣專案，演變為年營收超千億美元的雲端運算龍頭。這段歷史如何預示台灣科技產業的未來機遇？</description>
+    <category>雲端</category>
+    <pubDate>Wed, 29 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>GPT-5.5超級應用時代：OpenAI如何改變企業AI部署終局</title>
+    <link>https://operation.tw/post/87</link>
+    <guid isPermaLink="true">https://operation.tw/post/87</guid>
+    <description>OpenAI發表GPT-5.5，宣示AI邁向「超級應用」時代。相比過往模型，GPT-5.5在自主智慧與任務執行能力上有質的躍進。本文分析其技術突破點，以及對台灣企業AI轉型的深遠影響。</description>
+    <category>AI</category>
+    <pubDate>Tue, 28 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>OpenClaw養龍蝦爆紅背後：企業AI Agent平民化時代正式來臨</title>
+    <link>https://operation.tw/post/86</link>
+    <guid isPermaLink="true">https://operation.tw/post/86</guid>
+    <description>OpenClaw能自主控制機械臂養龍蝦的應用爆紅，象徵AI Agent從實驗室走向商業化。研華與八維智能的合作更揭示一個趨勢：降低技術門檻，讓中小企業也能打造自主智慧系統。這對台灣製造業意味著什麼？</description>
+    <category>AI</category>
+    <pubDate>Mon, 27 Apr 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
