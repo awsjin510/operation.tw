@@ -32,6 +32,10 @@ jobs:
         working-directory: scripts
 
       - name: Run auto-post script
+        # 部落格自動發文（依賴 Supabase / Anthropic）與 Podcast 更新互相獨立。
+        # 即使這步因 Supabase 暫時性錯誤（例如 500）失敗，也不該擋下後續的
+        # podcast/sitemap/feed 產生與 commit，否則 episodes.json 會停止更新。
+        continue-on-error: true
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
