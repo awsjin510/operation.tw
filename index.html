@@ -419,6 +419,12 @@ a.hero-cta{text-decoration:none;}
 /* Fallback cover image (when a post/episode image is missing) */
 .img-fallback{object-fit:cover;opacity:.92;filter:saturate(.92);}
 .pc-img img.img-fallback,.spot-art-img img.img-fallback{object-position:center;}
+/* On-brand category placeholder (shown when a cover image 404s) */
+.cover-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;background:linear-gradient(160deg,#10102a,#070712);overflow:hidden;}
+.cover-ph::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--c,#00f5ff) 1px,transparent 1px),linear-gradient(90deg,var(--c,#00f5ff) 1px,transparent 1px);background-size:34px 34px;opacity:.06;}
+.cover-ph::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 36%,var(--c,#00f5ff),transparent 66%);opacity:.16;}
+.cover-ph-ic{position:relative;font-size:2.6rem;filter:drop-shadow(0 0 12px var(--c,#00f5ff));opacity:.95;}
+.cover-ph-cat{position:relative;font-family:'Share Tech Mono',monospace;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--c,#00f5ff);opacity:.9;}
 
 /* Nav view counters */
 .nav-stats{display:flex;align-items:center;gap:18px;font-family:'Share Tech Mono',monospace;flex-shrink:0;}
@@ -1073,7 +1079,7 @@ function cardHTML(p,featured){
   const c=CAT_COLOR[p.category]||'#aaa';
   const icon=CAT_ICON[p.category]||'📄';
   const rt=readTime(p.body);
-  const img=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" loading="lazy" onerror="this.onerror=null;this.src=\'/default.png\';this.classList.add(\'img-fallback\')">'
+  const img=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" loading="lazy" data-cat="'+esc(p.category)+'" onerror="coverFail(this)">'
     :'<span class="pc-img-ph">'+icon+'</span>';
   const cls=featured?'pc featured':'pc';
   return '<div class="'+cls+'" data-post-id="'+p.id+'" onclick="openPost(\''+p.id+'\')" style="border-left:3px solid '+c+';">'
@@ -1085,6 +1091,20 @@ function cardHTML(p,featured){
     +'</div></div>';
 }
 
+/* ── COVER FALLBACK (broken/missing image → on-brand category placeholder) ── */
+function coverFail(img){
+  if(!img||img.dataset.phDone)return;img.dataset.phDone='1';
+  const wrap=img.parentNode;if(!wrap)return;
+  const cat=img.getAttribute('data-cat')||'';
+  const c=CAT_COLOR[cat]||'#00f5ff';
+  const icon=CAT_ICON[cat]||'📄';
+  img.style.display='none';
+  const ph=document.createElement('div');
+  ph.className='cover-ph';ph.style.setProperty('--c',c);
+  ph.innerHTML='<span class="cover-ph-ic">'+icon+'</span>'+(cat?'<span class="cover-ph-cat">'+esc(cat)+'</span>':'');
+  wrap.appendChild(ph);
+}
+
 /* ── SPOTLIGHT (latest article) ── */
 function renderSpotlight(){
   const posts=publishedPosts();
@@ -1094,7 +1114,7 @@ function renderSpotlight(){
   if(!el)return;
   const c=CAT_COLOR[p.category]||'var(--cyan)';
   const img=el.querySelector('.spot-art-img');
-  if(img)img.innerHTML=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" loading="lazy" onerror="this.onerror=null;this.src=\'/default.png\';this.classList.add(\'img-fallback\')">':'<img src="/default.png" alt="'+esc(p.title)+'" class="img-fallback">';
+  if(img)img.innerHTML='<img src="'+esc(p.image||'/default.png')+'" alt="'+esc(p.title)+'" loading="lazy" data-cat="'+esc(p.category)+'" onerror="coverFail(this)">';
   el.querySelector('.spot-title').textContent=p.title;
   el.querySelector('.spot-desc').textContent=p.excerpt||'';
   el.querySelector('.spot-meta').innerHTML='<span style="color:'+c+'">'+esc(p.category)+'</span><span>📅 '+esc(p.date)+'</span><span>⏱ '+readTime(p.body)+' 分鐘</span>';
