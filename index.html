@@ -182,7 +182,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .about-bio{font-size:.9rem;color:var(--mid);line-height:1.9;margin-bottom:24px;}
 .bio-lead{font-size:1.05rem;color:#fff;line-height:1.8;margin-bottom:18px;padding-left:14px;border-left:3px solid var(--cyan);white-space:pre-line;}
 .bio-body{font-size:.9rem;color:var(--n8);line-height:1.9;white-space:pre-line;}
-.about-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.about-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:360px;}
 .about-stats > div{padding:12px 8px;border:1px solid transparent;transition:border-color .3s,background .3s;}
 .about-stats > div:hover{border-color:var(--border);background:rgba(0,245,255,.03);}
 .stat-n{font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:900;line-height:1.1;}
@@ -983,7 +983,12 @@ function renderHome(){
   initCountUp();
 }
 
-let _podcastLoaded=false;
+let _podcastLoaded=false,_podEps=null;
+function applyPodStats(eps){
+  // 每次 render 都重新套用，避免第二次（網路資料）render 用 admin 的空值蓋掉
+  if(D.about){D.about.s2n=String(eps.length);D.about.s2l='Podcast';}
+  setText('s2n',eps.length);setText('s2l','Podcast');
+}
 function updateDynamicStats(){
   // 文章：從已載入資料即時計算
   const n=publishedPosts().length;
@@ -991,18 +996,16 @@ function updateDynamicStats(){
     if(D.about){D.about.s1n=String(n);D.about.s1l='篇文章';}
     setText('s1n',n);setText('s1l','篇文章');
   }
-  // Podcast：從 episodes.json 讀取一次
-  if(!_podcastLoaded){
+  // Podcast：抓一次後快取，之後每次 render 都重新套用
+  if(_podEps){
+    applyPodStats(_podEps);renderPodcast(_podEps);
+  }else if(!_podcastLoaded){
     _podcastLoaded=true;
     fetch('/episodes.json')
       .then(function(r){return r.ok?r.json():null;})
       .then(function(data){
         const eps=(data&&data.episodes)?data.episodes:[];
-        if(eps.length>0){
-          if(D.about){D.about.s2n=String(eps.length);D.about.s2l='Podcast';}
-          setText('s2n',eps.length);setText('s2l','Podcast');
-          renderPodcast(eps);
-        }
+        if(eps.length>0){_podEps=eps;applyPodStats(eps);renderPodcast(eps);}
       })
       .catch(function(){});
   }
@@ -1304,6 +1307,7 @@ function typewrite(id,text){
 /* ── COUNT UP ── */
 function countUp(id,target){
   const el=document.getElementById(id);if(!el)return;
+  if(target==null||String(target).trim()===''){return;} // 不要把已有數字清成空白
   const num=parseInt(target);if(isNaN(num)){el.textContent=target;return;}
   const hasPlus=String(target).includes('+');
   const dur=1200;const t0=performance.now();
@@ -1322,8 +1326,9 @@ function initCountUp(){
   const about=document.getElementById('about');if(!about)return;
   const io=new IntersectionObserver(entries=>{
     if(entries[0].isIntersecting){
-      const a=D.about||{};
-      countUp('s1n',a.s1n);countUp('s2n',a.s2n);
+      const g=function(id){const e=document.getElementById(id);return e?e.textContent:'';};
+      // 用畫面上已渲染的值（已含最新文章/Podcast 數），避免讀到過期的 D.about
+      countUp('s1n',g('s1n'));countUp('s2n',g('s2n'));
       io.disconnect();
     }
   },{threshold:0.3});
