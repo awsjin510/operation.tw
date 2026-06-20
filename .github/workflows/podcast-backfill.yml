@@ -1,0 +1,85 @@
+name: Podcast Backfill
+
+# 手動補寫舊單集：把尚未產文的 Podcast 舊單集，用 Claude 延伸成文章並發布。
+# 每次可指定產幾篇與用哪個模型，可重複觸發直到全部補完（以 podcast-posts.json 去重）。
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: '本次要產生的文章數量上限'
+        required: true
+        default: '5'
+      model:
+        description: '生成模型'
+        required: true
+        default: 'claude-sonnet-4-6'
+        type: choice
+        options:
+          - claude-sonnet-4-6
+          - claude-haiku-4-5-20251001
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: scripts
+
+      - name: Backfill articles from old podcast episodes
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BACKFILL: '1'
+          MAX_PER_RUN: ${{ github.event.inputs.count }}
+          PODCAST_MODEL: ${{ github.event.inputs.model }}
+        run: node podcast-to-post.js
+        working-directory: scripts
+
+      - name: Build static article pages (SEO)
+        run: node build-static.js
+        working-directory: scripts
+        continue-on-error: true
+
+      - name: Commit and push generated articles
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add posts.json images/ post/ sitemap.xml feed.xml llms.txt index.html
+          [ -f podcast-posts.json ] && git add podcast-posts.json || true
+          if git diff --cached --quiet; then
+            echo "No new articles generated"
+          else
+            git commit -m "chore(podcast): backfill articles from old episodes"
+            for i in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                echo "Push succeeded on attempt $i"
+                break
+              fi
+              if [ "$i" -eq 3 ]; then
+                echo "Push failed after 3 attempts"
+                exit 1
+              fi
+              echo "Push failed, retrying in $((i * 2))s..."
+              sleep $((i * 2))
+            done
+          fi

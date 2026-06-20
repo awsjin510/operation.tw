@@ -26,6 +26,9 @@ const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const DRY_RUN = process.env.DRY_RUN === '1';
+// BACKFILL=1：補寫舊單集。跳過「首次種子化」捷徑，直接把尚未產文的舊單集
+// 依序產出（每次最多 MAX_PER_RUN 篇，可重複觸發直到全部完成）。
+const BACKFILL = process.env.BACKFILL === '1';
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY || !ANTHROPIC_API_KEY) {
   console.error('❌ 缺少必要環境變數：SUPABASE_URL、SUPABASE_SERVICE_KEY、ANTHROPIC_API_KEY');
@@ -34,8 +37,8 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY || !ANTHROPIC_API_KEY) {
 
 const RSS_URL = 'https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml';
 const SPOTIFY_SHOW = 'https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl';
-const MODEL = 'claude-haiku-4-5-20251001';
-const MAX_PER_RUN = 3;          // 每次執行最多生成幾篇
+const MODEL = process.env.PODCAST_MODEL || 'claude-haiku-4-5-20251001'; // 可用環境變數覆寫（backfill 用 sonnet）
+const MAX_PER_RUN = parseInt(process.env.MAX_PER_RUN || '3', 10); // 每次執行最多生成幾篇
 const MIN_DESC_LEN = 150;       // 簡介太短就跳過，避免硬擴寫
 const STATE_PATH = path.join(__dirname, '..', 'podcast-posts.json');
 const POSTS_JSON_PATH = path.join(__dirname, '..', 'posts.json');
@@ -108,7 +111,7 @@ async function saveState(state) {
 async function generateArticle(ep, category) {
   const resp = await anthropic.messages.create({
     model: MODEL,
-    max_tokens: 2200,
+    max_tokens: 3000,
     messages: [{
       role: 'user',
       content: `你是科技自媒體「操作一下」的部落格作者。以下是我 Podcast 的一集單集資訊，請把它延伸成一篇可獨立閱讀的繁體中文文章（不是逐字稿，而是延伸單集的重點與說明）。
@@ -251,7 +254,8 @@ async function main() {
   const state = await loadState();
 
   // 首次執行：種子化目前所有單集為已處理，不生成文章
-  if (!state.existed) {
+  // （BACKFILL 模式則跳過種子化，直接補寫舊單集）
+  if (!state.existed && !BACKFILL) {
     episodes.forEach((ep) => { state.processed[ep.guid] = 0; });
     await saveState(state);
     console.log(`  ✓ 首次執行：已將 ${episodes.length} 集標記為已處理（種子化），不生成文章。`);
@@ -259,9 +263,16 @@ async function main() {
     return;
   }
 
-  const fresh = episodes.filter((ep) => !(ep.guid in state.processed));
-  console.log(`  ✓ 未處理的新單集：${fresh.length} 集`);
-  if (fresh.length === 0) { console.log('✅ 沒有新單集，結束'); return; }
+  // 一般模式：只處理「沒在狀態檔裡」的新單集。
+  // BACKFILL 模式：把種子化留下的占位（value 0，代表已標記但沒產文）也視為待補。
+  const eligible = (ep) => {
+    if (!(ep.guid in state.processed)) return true;
+    if (BACKFILL && state.processed[ep.guid] === 0) return true;
+    return false;
+  };
+  const fresh = episodes.filter(eligible);
+  console.log(`  ✓ 待處理單集：${fresh.length} 集${BACKFILL ? '（BACKFILL）' : ''}（模型：${MODEL}，本次上限 ${MAX_PER_RUN}）`);
+  if (fresh.length === 0) { console.log('✅ 沒有待處理單集，結束'); return; }
 
   // 載入現有文章，供文末「同主題延伸閱讀」做內部連結（新文帶老集數）
   const localPosts = await loadLocalPosts();
