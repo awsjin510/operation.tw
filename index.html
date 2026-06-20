@@ -415,6 +415,19 @@ a.hero-cta{text-decoration:none;}
 .pod-d{font-family:'Share Tech Mono',monospace;font-size:.58rem;color:var(--dim);margin-top:5px;}
 .pod-cta-row{display:flex;justify-content:center;margin-top:28px;}
 @media(max-width:768px){.spotlight{grid-template-columns:1fr;}.hero{min-height:auto;}}
+
+/* Fallback cover image (when a post/episode image is missing) */
+.img-fallback{object-fit:cover;opacity:.92;filter:saturate(.92);}
+.pc-img img.img-fallback,.spot-art-img img.img-fallback{object-position:center;}
+
+/* Nav view counters */
+.nav-stats{display:flex;align-items:center;gap:18px;font-family:'Share Tech Mono',monospace;flex-shrink:0;}
+.ns-item{display:flex;flex-direction:column;align-items:flex-end;line-height:1.15;}
+.ns-l{font-size:.5rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;}
+.ns-n{font-size:.8rem;font-weight:700;}
+.ns-total .ns-n{color:var(--cyan);text-shadow:0 0 8px rgba(0,245,255,.4);}
+.ns-today .ns-n{color:var(--purple);text-shadow:0 0 8px rgba(191,0,255,.45);}
+@media(max-width:980px){.nav-stats{display:none;}}
 </style>
 </head>
 <body>
@@ -431,6 +444,10 @@ a.hero-cta{text-decoration:none;}
     <button onclick="goHome();gotoSection('about')">關於我</button>
     <button onclick="goHome();gotoSection('contact')">聯絡</button>
     <button onclick="goHome();gotoSection('newsletter')">訂閱</button>
+  </div>
+  <div class="nav-stats" title="網站瀏覽次數">
+    <div class="ns-item ns-total"><span class="ns-l">👁 累積瀏覽</span><span class="ns-n" id="stat-total">—</span></div>
+    <div class="ns-item ns-today"><span class="ns-l">今日</span><span class="ns-n" id="stat-today">—</span></div>
   </div>
   <div class="nav-search">
     <span style="color:var(--dim);font-size:.8rem;">🔍</span>
@@ -1056,7 +1073,7 @@ function cardHTML(p,featured){
   const c=CAT_COLOR[p.category]||'#aaa';
   const icon=CAT_ICON[p.category]||'📄';
   const rt=readTime(p.body);
-  const img=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" loading="lazy">'
+  const img=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" loading="lazy" onerror="this.onerror=null;this.src=\'/default.png\';this.classList.add(\'img-fallback\')">'
     :'<span class="pc-img-ph">'+icon+'</span>';
   const cls=featured?'pc featured':'pc';
   return '<div class="'+cls+'" data-post-id="'+p.id+'" onclick="openPost(\''+p.id+'\')" style="border-left:3px solid '+c+';">'
@@ -1077,7 +1094,7 @@ function renderSpotlight(){
   if(!el)return;
   const c=CAT_COLOR[p.category]||'var(--cyan)';
   const img=el.querySelector('.spot-art-img');
-  if(img)img.innerHTML=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" loading="lazy">':'';
+  if(img)img.innerHTML=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" loading="lazy" onerror="this.onerror=null;this.src=\'/default.png\';this.classList.add(\'img-fallback\')">':'<img src="/default.png" alt="'+esc(p.title)+'" class="img-fallback">';
   el.querySelector('.spot-title').textContent=p.title;
   el.querySelector('.spot-desc').textContent=p.excerpt||'';
   el.querySelector('.spot-meta').innerHTML='<span style="color:'+c+'">'+esc(p.category)+'</span><span>📅 '+esc(p.date)+'</span><span>⏱ '+readTime(p.body)+' 分鐘</span>';
@@ -1094,7 +1111,7 @@ function renderPodcast(eps){
   const sp=document.getElementById('spot-pod');
   if(sp){
     const img=sp.querySelector('.spot-art-img');
-    if(img)img.innerHTML=e.art?'<img src="'+esc(e.art)+'" alt="'+esc(e.title)+'" loading="lazy">':'';
+    if(img)img.innerHTML=e.art?'<img src="'+esc(e.art)+'" alt="'+esc(e.title)+'" loading="lazy" onerror="this.onerror=null;this.src=\'/default.png\';this.classList.add(\'img-fallback\')">':'<img src="/default.png" alt="'+esc(e.title)+'" class="img-fallback">';
     sp.querySelector('.spot-title').textContent=e.title;
     sp.querySelector('.spot-desc').textContent=(e.desc||'').replace(/\s+/g,' ').trim().slice(0,110);
     sp.querySelector('.spot-meta').innerHTML='<span style="color:var(--purple)">最新一集</span><span>📅 '+esc(e.date)+'</span>'+(e.dur?'<span>⏱ '+e.dur+' 分鐘</span>':'');
@@ -1103,7 +1120,7 @@ function renderPodcast(eps){
   const list=document.getElementById('pod-list');
   if(list){
     list.innerHTML=eps.slice(0,4).map(function(ep){
-      const thumb=ep.art?'<img class="pod-thumb" src="'+esc(ep.art)+'" alt="" loading="lazy">':'<div class="pod-thumb"></div>';
+      const thumb=ep.art?'<img class="pod-thumb" src="'+esc(ep.art)+'" alt="" loading="lazy" onerror="this.onerror=null;this.src=\'/default.png\'">':'<div class="pod-thumb"></div>';
       return '<a class="pod-item" href="podcast.html">'+thumb
         +'<div class="pod-info"><div class="pod-t">'+esc(ep.title)+'</div>'
         +'<div class="pod-d">📅 '+esc(ep.date)+(ep.dur?' · '+ep.dur+' 分鐘':'')+'</div></div></a>';
@@ -1150,7 +1167,7 @@ async function openPost(id){
     e=>console.warn('[views] increment_post_views failed:',e?.message||e)
   );
   const cover=document.getElementById('a-cover');
-  if(p.image){cover.src=p.image;cover.style.display='block';}else{cover.style.display='none';}
+  if(p.image){cover.onerror=function(){this.onerror=null;this.src='/default.png';this.classList.add('img-fallback');};cover.src=p.image;cover.style.display='block';}else{cover.style.display='none';}
   // Load body: 先顯示快取，一律去 Supabase 拉最新版（確保手動更新立即可見）
   const bodyEl=document.getElementById('a-body');
   if(p.body){
