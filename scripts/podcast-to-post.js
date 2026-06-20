@@ -233,12 +233,24 @@ async function saveCoverFromArt(postId, artUrl) {
 }
 
 async function refreshPostsJson() {
-  const res = await fetchWithTimeout(
-    `${SUPABASE_URL}/rest/v1/posts?select=id,title,category,date,status,excerpt,image,views&status=eq.published&order=date.desc`,
-    { headers: { apikey: SUPABASE_SERVICE_KEY, Authorization: `Bearer ${SUPABASE_SERVICE_KEY}` } }
-  );
-  if (!res.ok) throw new Error(`posts fetch failed: ${res.status}`);
-  const all = await res.json();
+  // Supabase 偶有暫時性 500（冷啟/statement timeout），重試 4 次再放棄。
+  let all;
+  for (let i = 1; i <= 4; i++) {
+    try {
+      const res = await fetchWithTimeout(
+        `${SUPABASE_URL}/rest/v1/posts?select=id,title,category,date,status,excerpt,image,views&status=eq.published&order=date.desc`,
+        { headers: { apikey: SUPABASE_SERVICE_KEY, Authorization: `Bearer ${SUPABASE_SERVICE_KEY}` } }
+      );
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      all = await res.json();
+      break;
+    } catch (err) {
+      if (i === 4) throw err;
+      const wait = i * 4000;
+      console.warn(`  ⚠ posts.json 重建第 ${i} 次失敗（${err.message}），${wait / 1000}s 後重試…`);
+      await new Promise((r) => setTimeout(r, wait));
+    }
+  }
   const lean = all.map((p) => ({ ...p, image: (p.image && p.image.startsWith('/')) ? p.image : '' }));
   await fs.writeFile(POSTS_JSON_PATH, JSON.stringify({ generated: new Date().toISOString(), posts: lean }, null, 0));
   console.log(`  ✓ posts.json 已更新（${lean.length} 篇）`);
@@ -327,7 +339,15 @@ async function main() {
   }
 
   await saveState(state);
-  if (created > 0 && !DRY_RUN) await refreshPostsJson();
+  // posts.json 重建失敗不該讓整個流程失敗（文章與狀態檔都已寫好）；
+  // workflow 後續的 sync-posts-json.js 會再保險重建一次。
+  if (created > 0 && !DRY_RUN) {
+    try {
+      await refreshPostsJson();
+    } catch (err) {
+      console.warn(`  ⚠ posts.json 重建最終失敗（不影響已發布文章，後續 sync 會補）：${err.message}`);
+    }
+  }
   console.log(`\n✅ 完成，本次生成 ${created} 篇`);
 }
 
