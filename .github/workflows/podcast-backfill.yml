@@ -1,14 +1,11 @@
 name: Podcast Backfill
 
 # 手動補寫舊單集：把尚未產文的 Podcast 舊單集，用 Claude 延伸成文章並發布。
-# 每次可指定產幾篇與用哪個模型，可重複觸發直到全部補完（以 podcast-posts.json 去重）。
+# 內部分批迴圈：一次觸發會自動分批生成、每批 commit/push，直到全部補完
+# （以 podcast-posts.json 去重；每批先推上去，崩潰也不會掉資料）。
 on:
   workflow_dispatch:
     inputs:
-      count:
-        description: '本次要產生的文章數量上限'
-        required: true
-        default: '5'
       model:
         description: '生成模型'
         required: true
@@ -17,8 +14,20 @@ on:
         options:
           - claude-sonnet-4-6
           - claude-haiku-4-5-20251001
+      batch_size:
+        description: '每批生成幾篇（每批會 commit/push 一次）'
+        required: true
+        default: '10'
+      max_batches:
+        description: '最多跑幾批（batch_size × max_batches 要 ≥ 想補的總數）'
+        required: true
+        default: '20'
       cleanup_ids:
-        description: '（選填）先刪除這些 Supabase 文章 ID，逗號分隔。用於清掉先前失敗留下的孤兒文章再重產。'
+        description: '（選填）先刪除這些 Supabase 文章 ID，逗號分隔，用於清掉失敗留下的孤兒。'
+        required: false
+        default: ''
+      retag:
+        description: '（選填）改分類，格式 id:分類,id:分類，例如 153:成長,156:成長'
         required: false
         default: ''
 
@@ -28,7 +37,7 @@ permissions:
 jobs:
   backfill:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 320
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
@@ -48,8 +57,6 @@ jobs:
         working-directory: scripts
 
       - name: Cleanup orphaned posts (optional)
-        # 先前 run 若在「發布後、commit 前」失敗，會在 Supabase 留下沒有封面/沒被去重的孤兒文章。
-        # 這裡依輸入的 ID 把它們刪掉，後面再乾淨重產。
         if: ${{ github.event.inputs.cleanup_ids != '' }}
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
@@ -66,57 +73,65 @@ jobs:
           if [ "$code" -ge 300 ]; then cat /tmp/del.txt; exit 1; fi
           echo "✓ 清除完成"
 
-      - name: Backfill articles from old podcast episodes
-        # continue-on-error：即使最後 posts.json 重建失敗，也要讓後續 sync / build / commit 跑完，
-        # 確保 podcast-posts.json（去重狀態）一定被 commit，不會下次重複生成。
-        continue-on-error: true
+      - name: Retag categories (optional)
+        if: ${{ github.event.inputs.retag != '' }}
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          IFS=',' read -ra PAIRS <<< "${{ github.event.inputs.retag }}"
+          for pair in "${PAIRS[@]}"; do
+            id="${pair%%:*}"; cat="${pair##*:}"
+            echo "🏷  retag id=$id → $cat"
+            code=$(curl -sS -o /tmp/patch.txt -w '%{http_code}' -X PATCH \
+              "$SUPABASE_URL/rest/v1/posts?id=eq.$id" \
+              -H "apikey: $SUPABASE_SERVICE_KEY" \
+              -H "Authorization: Bearer $SUPABASE_SERVICE_KEY" \
+              -H "Content-Type: application/json" \
+              -H "Prefer: return=minimal" \
+              --data "{\"category\":\"$cat\"}")
+            echo "HTTP $code"
+            if [ "$code" -ge 300 ]; then cat /tmp/patch.txt; exit 1; fi
+          done
+          echo "✓ 分類更新完成"
+
+      - name: Backfill all remaining episodes (batched, push each batch)
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           BACKFILL: '1'
-          MAX_PER_RUN: ${{ github.event.inputs.count }}
           PODCAST_MODEL: ${{ github.event.inputs.model }}
-        run: node podcast-to-post.js
-        working-directory: scripts
-
-      - name: Sync posts.json from Supabase (safety net)
-        # 以 Supabase 為準重建 posts.json（內建 4 次重試）。這只是「額外保險」：
-        # podcast-to-post.js 已經自己重建過 posts.json，所以這步即使 Supabase 暫時掛掉
-        # 也不能讓整個 job 失敗，否則 commit 會被 skip、文章與封面又變孤兒。
-        continue-on-error: true
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-        run: node sync-posts-json.js
-        working-directory: scripts
-
-      - name: Build static article pages (SEO)
-        run: node build-static.js
-        working-directory: scripts
-        continue-on-error: true
-
-      - name: Commit and push generated articles
+          MAX_PER_RUN: ${{ github.event.inputs.batch_size }}
         run: |
-          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add posts.json images/ post/ sitemap.xml feed.xml llms.txt index.html
-          [ -f podcast-posts.json ] && git add podcast-posts.json || true
-          if git diff --cached --quiet; then
-            echo "No new articles generated"
-          else
-            git commit -m "chore(podcast): backfill articles from old episodes"
-            for i in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                echo "Push succeeded on attempt $i"
-                break
-              fi
-              if [ "$i" -eq 3 ]; then
-                echo "Push failed after 3 attempts"
-                exit 1
-              fi
-              echo "Push failed, retrying in $((i * 2))s..."
-              sleep $((i * 2))
+          MAXB="${{ github.event.inputs.max_batches }}"
+          for i in $(seq 1 "$MAXB"); do
+            echo "════════════ Batch $i/$MAXB ════════════"
+            # 生成一批（模組路徑以 __dirname 為基準，從 repo 根目錄呼叫沒問題）
+            OUT=$(node scripts/podcast-to-post.js 2>&1) || true
+            echo "$OUT"
+            # 只要這批沒有「實際生成 ≥1 篇」（含沒有待處理單集／全部失敗）就結束迴圈
+            if ! echo "$OUT" | grep -qE "本次生成 [1-9]"; then
+              echo "✅ 沒有更多可生成的單集，補完。"
+              break
+            fi
+            # 安全網：以 Supabase 為準重建 posts.json，再產靜態頁（失敗都不致命）
+            node scripts/sync-posts-json.js 2>&1 || echo "(sync 失敗，沿用上一步的 posts.json)"
+            node scripts/build-static.js 2>&1 || echo "(build 失敗，略過)"
+            git add posts.json images/ post/ sitemap.xml feed.xml llms.txt index.html
+            [ -f podcast-posts.json ] && git add podcast-posts.json || true
+            if git diff --cached --quiet; then
+              echo "本批無變更，結束。"
+              break
+            fi
+            git commit -m "chore(podcast): backfill batch $i"
+            pushed=0
+            for r in 1 2 3; do
+              if git pull --rebase origin main && git push; then pushed=1; break; fi
+              echo "push 失敗，$((r * 3))s 後重試…"; sleep $((r * 3))
             done
-          fi
+            [ "$pushed" = "1" ] || { echo "push 連續失敗"; exit 1; }
+          done
+          echo "🎉 全部批次結束"
