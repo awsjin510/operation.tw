@@ -5,8 +5,24 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 20 Jun 2026 11:22:02 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 20 Jun 2026 13:51:56 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</title>
+    <link>https://operation.tw/post/140</link>
+    <guid isPermaLink="true">https://operation.tw/post/140</guid>
+    <description>Google Cybersecurity Certificate在台灣掀起報名潮，正值AI攻擊全面化的2026年。本文分析這波認證浪潮背後的產業需求，探討台灣資安人才缺口，以及企業如何透過結構化培訓強化防禦能力。</description>
+    <category>資安</category>
+    <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>大型語言模型應用全解：從原理到實戰場景的完整指南</title>
+    <link>https://operation.tw/post/141</link>
+    <guid isPermaLink="true">https://operation.tw/post/141</guid>
+    <description>隨著LLM技術成熟，企業與開發者面臨選型困境。本文深入解析大型語言模型的核心原理、主流模型差異，以及在台灣各產業的實際應用場景，幫助讀者掌握AI時代的競爭優勢。</description>
+    <category>AI</category>
+    <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</title>
     <link>https://operation.tw/post/139</link>
@@ -150,22 +166,6 @@
     <description>AI代理在軟體開發中扮演越來越重要的角色，但專家警示不能完全自動化。本文分析AI代理的5大高價值貢獻面向，以及為何人類管理與監督仍是不可或缺的核心要素，助台灣開發團隊把握AI時代機遇。</description>
     <category>AI</category>
     <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</title>
-    <link>https://operation.tw/post/121</link>
-    <guid isPermaLink="true">https://operation.tw/post/121</guid>
-    <description>歐盟擬修訂網路安全法案，強化供應鏈資安管理並限制高風險供應商。此舉將直接衝擊台灣半導體、電子製造與軟體企業的歐洲業務。本文深度分析新法規內涵、合規挑戰，以及台灣企業的因應之道。</description>
-    <category>資安</category>
-    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</title>
-    <link>https://operation.tw/post/120</link>
-    <guid isPermaLink="true">https://operation.tw/post/120</guid>
-    <description>AWS邁入20週年關鍵時刻，其從解決Amazon內部工程師痛點的工具，演變為千億美元規模的雲端運算基礎設施的故事，對台灣企業的雲端轉型與平台思維有重要啟發。</description>
-    <category>雲端</category>
-    <pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
