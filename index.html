@@ -423,7 +423,8 @@ a.hero-cta{text-decoration:none;}
 .cover-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;background:linear-gradient(160deg,#10102a,#070712);overflow:hidden;}
 .cover-ph::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--c,#00f5ff) 1px,transparent 1px),linear-gradient(90deg,var(--c,#00f5ff) 1px,transparent 1px);background-size:34px 34px;opacity:.06;}
 .cover-ph::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 36%,var(--c,#00f5ff),transparent 66%);opacity:.16;}
-.cover-ph-ic{position:relative;font-size:2.6rem;filter:drop-shadow(0 0 12px var(--c,#00f5ff));opacity:.95;}
+.cover-ph-ic{position:relative;color:var(--c,#00f5ff);filter:drop-shadow(0 0 9px var(--c,#00f5ff));opacity:.95;line-height:0;}
+.cover-ph-ic svg{width:52px;height:52px;display:block;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
 .cover-ph-cat{position:relative;font-family:'Share Tech Mono',monospace;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--c,#00f5ff);opacity:.9;}
 
 /* Nav view counters */
@@ -1092,16 +1093,25 @@ function cardHTML(p,featured){
 }
 
 /* ── COVER FALLBACK (broken/missing image → on-brand category placeholder) ── */
+function catIconSVG(cat){
+  const P={
+    '雲端':'<path d="M7 18h9a3.8 3.8 0 0 0 .5-7.57A5.3 5.3 0 0 0 6.6 9 3.8 3.8 0 0 0 7 18Z"/>',
+    '資安':'<path d="M12 3l7 3v5.2c0 4.3-3 7.4-7 8.8-4-1.4-7-4.5-7-8.8V6l7-3Z"/><path d="M9 11.8l2 2 4-4"/>',
+    'AI':'<rect x="7" y="7" width="10" height="10" rx="1.6"/><rect x="10.4" y="10.4" width="3.2" height="3.2" rx="0.6"/><path d="M10 4v3M14 4v3M10 17v3M14 17v3M4 10h3M4 14h3M17 10h3M17 14h3"/>',
+    '閱讀':'<path d="M12 6c-1.6-1-4-1.5-6-1.5V18c2 0 4.4.5 6 1.5 1.6-1 4-1.5 6-1.5V4.5c-2 0-4.4.5-6 1.5Z"/><path d="M12 6v13.5"/>',
+    '成長':'<path d="M4 19h16"/><path d="M5 15l4-4.5 3 3 6-8"/><path d="M15 5.5h3v3"/>'
+  };
+  return '<svg viewBox="0 0 24 24" aria-hidden="true">'+(P[cat]||'<rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 12h6"/>')+'</svg>';
+}
 function coverFail(img){
   if(!img||img.dataset.phDone)return;img.dataset.phDone='1';
   const wrap=img.parentNode;if(!wrap)return;
   const cat=img.getAttribute('data-cat')||'';
   const c=CAT_COLOR[cat]||'#00f5ff';
-  const icon=CAT_ICON[cat]||'📄';
   img.style.display='none';
   const ph=document.createElement('div');
   ph.className='cover-ph';ph.style.setProperty('--c',c);
-  ph.innerHTML='<span class="cover-ph-ic">'+icon+'</span>'+(cat?'<span class="cover-ph-cat">'+esc(cat)+'</span>':'');
+  ph.innerHTML='<span class="cover-ph-ic">'+catIconSVG(cat)+'</span>'+(cat?'<span class="cover-ph-cat">'+esc(cat)+'</span>':'');
   wrap.appendChild(ph);
 }
 
