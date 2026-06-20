@@ -35,14 +35,21 @@ jobs:
       - name: Prepare static files
         run: |
           mkdir -p _site
-          cp index.html admin.html podcast.html 404.html _site/
-          cp googlee07640d17600c538.html _site/
-          cp robots.txt sitemap.xml feed.xml posts.json llms.txt ghost-custom.css _site/
-          if [ -f episodes.json ]; then cp episodes.json _site/; fi
-          cp logo.jpg profile.jpg default.png _site/
-          if [ -f logo.png ]; then cp logo.png _site/; fi
-          cp CNAME _site/
-          if [ -d images ]; then cp -r images _site/; fi
+          # 複製整個網站（含 post/、category/、about/ 等所有已產生的靜態頁面），
+          # 排除開發用檔案。避免漏抄任一目錄而讓部署後的頁面 404，
+          # 也不再因為硬編碼某個檔名（例如已不存在的 Google 驗證檔）而整步失敗。
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='scripts' \
+            --exclude='node_modules' \
+            --exclude='_site' \
+            --exclude='package.json' \
+            --exclude='package-lock.json' \
+            --exclude='zbpack.json' \
+            --exclude='supabase-setup.sql' \
+            --exclude='README.md' \
+            ./ _site/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
