@@ -143,13 +143,43 @@ body 要求：
   return parsed;
 }
 
-// ── 文末加「收聽這集」引導區塊 ────────────────────────────────────
-function listenBlock(ep) {
+function escHtml(s) {
+  return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// ── 讀本地 posts.json，挑同分類的舊文章做內部連結 ──────────────────
+// 目的：讓每篇新文章把 SEO 權重與真人流量導回老集數（內部連結 / topic cluster）。
+async function loadLocalPosts() {
+  try {
+    const raw = await fs.readFile(POSTS_JSON_PATH, 'utf8');
+    const json = JSON.parse(raw);
+    return (json.posts || []).filter((p) => p.status === 'published');
+  } catch (_) {
+    return [];
+  }
+}
+function pickRelated(posts, category, n = 3) {
+  return posts
+    .filter((p) => p.category === category)
+    .sort((a, b) => (b.date || '').localeCompare(a.date || ''))
+    .slice(0, n);
+}
+
+// ── 文末加「延伸閱讀（同主題舊文）＋ 收聽這集」引導區塊 ────────────
+function listenBlock(ep, related = []) {
+  let html = '\n<hr>\n';
+  if (related.length) {
+    const items = related
+      .map((p) => `<li><a href="/post/${p.id}">${escHtml(p.title)}</a></li>`)
+      .join('\n');
+    html += `<p>📚 <strong>同主題的其他單集 / 文章，延伸聽下去：</strong></p>\n<ul>\n${items}\n</ul>\n`;
+  }
   const links = [];
   if (ep.apple) links.push(`<li><a href="${ep.apple}" target="_blank" rel="noopener">在 Apple Podcast 收聽這集</a></li>`);
   links.push(`<li><a href="${spotifySearchUrl(ep.title)}" target="_blank" rel="noopener">在 Spotify 收聽</a></li>`);
   links.push(`<li><a href="/podcast.html">瀏覽所有單集 →</a></li>`);
-  return `\n<hr>\n<p>🎙 <strong>這篇文章延伸自 Podcast《操作一下》。</strong>想用聽的，完整一集在這裡：</p>\n<ul>\n${links.join('\n')}\n</ul>`;
+  html += `<p>🎙 <strong>這篇文章延伸自 Podcast《操作一下》。</strong>想用聽的，完整一集在這裡：</p>\n<ul>\n${links.join('\n')}\n</ul>`;
+  return html;
 }
 
 // ── Supabase 發布 ─────────────────────────────────────────────────
@@ -233,6 +263,9 @@ async function main() {
   console.log(`  ✓ 未處理的新單集：${fresh.length} 集`);
   if (fresh.length === 0) { console.log('✅ 沒有新單集，結束'); return; }
 
+  // 載入現有文章，供文末「同主題延伸閱讀」做內部連結（新文帶老集數）
+  const localPosts = await loadLocalPosts();
+
   // 由舊到新處理，最多 MAX_PER_RUN 篇
   const targets = fresh.sort((a, b) => (a.date || '').localeCompare(b.date || '')).slice(0, MAX_PER_RUN);
   let created = 0;
@@ -256,7 +289,8 @@ async function main() {
 
     try {
       const art = await generateArticle(ep, category);
-      const body = art.body + listenBlock(ep);
+      const related = pickRelated(localPosts, category);
+      const body = art.body + listenBlock(ep, related);
       const published = await publishPost({
         title: art.title,
         category,
