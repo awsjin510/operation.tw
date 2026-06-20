@@ -81,8 +81,10 @@ jobs:
         working-directory: scripts
 
       - name: Sync posts.json from Supabase (safety net)
-        # 以 Supabase 為準重建 posts.json（內建 4 次重試），確保即使上一步的重建失敗，
-        # 新發布的文章也一定會進到 posts.json。
+        # 以 Supabase 為準重建 posts.json（內建 4 次重試）。這只是「額外保險」：
+        # podcast-to-post.js 已經自己重建過 posts.json，所以這步即使 Supabase 暫時掛掉
+        # 也不能讓整個 job 失敗，否則 commit 會被 skip、文章與封面又變孤兒。
+        continue-on-error: true
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
