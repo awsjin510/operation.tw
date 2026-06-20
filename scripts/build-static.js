@@ -141,7 +141,7 @@ function cardHTML(p, featured = false) {
   const c    = CAT_COLOR[p.category] || '#aaa';
   const icon = CAT_ICON[p.category]  || '📄';
   const imgTag = p.image
-    ? `<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy">`
+    ? `<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')">`
     : `<span class="pc-img-ph">${icon}</span>`;
   const cls = featured ? 'pc featured' : 'pc';
   const slug = p.slug || p.id;
