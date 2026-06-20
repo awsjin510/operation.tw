@@ -52,12 +52,24 @@ jobs:
         working-directory: scripts
         continue-on-error: true
 
+      - name: Generate articles from new podcast episodes
+        # 偵測 Podcast 新單集 → 用 Claude 延伸成文章並發布。
+        # 與其他步驟獨立，失敗不應擋下 commit。
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node podcast-to-post.js
+        working-directory: scripts
+        continue-on-error: true
+
       - name: Commit and push sitemap/feed/posts updates
         run: |
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add sitemap.xml feed.xml posts.json images/ episodes.json
+          [ -f podcast-posts.json ] && git add podcast-posts.json || true
           if git diff --cached --quiet; then
             echo "No changes to sitemap/feed/posts/episodes"
           else
