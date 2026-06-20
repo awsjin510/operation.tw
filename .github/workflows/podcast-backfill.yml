@@ -17,6 +17,10 @@ on:
         options:
           - claude-sonnet-4-6
           - claude-haiku-4-5-20251001
+      cleanup_ids:
+        description: '（選填）先刪除這些 Supabase 文章 ID，逗號分隔。用於清掉先前失敗留下的孤兒文章再重產。'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -43,7 +47,29 @@ jobs:
         run: npm ci
         working-directory: scripts
 
+      - name: Cleanup orphaned posts (optional)
+        # 先前 run 若在「發布後、commit 前」失敗，會在 Supabase 留下沒有封面/沒被去重的孤兒文章。
+        # 這裡依輸入的 ID 把它們刪掉，後面再乾淨重產。
+        if: ${{ github.event.inputs.cleanup_ids != '' }}
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          ids="${{ github.event.inputs.cleanup_ids }}"
+          echo "🗑  刪除 Supabase 孤兒文章 id in ($ids)"
+          code=$(curl -sS -o /tmp/del.txt -w '%{http_code}' -X DELETE \
+            "$SUPABASE_URL/rest/v1/posts?id=in.($ids)" \
+            -H "apikey: $SUPABASE_SERVICE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_SERVICE_KEY" \
+            -H "Prefer: return=minimal")
+          echo "HTTP $code"
+          if [ "$code" -ge 300 ]; then cat /tmp/del.txt; exit 1; fi
+          echo "✓ 清除完成"
+
       - name: Backfill articles from old podcast episodes
+        # continue-on-error：即使最後 posts.json 重建失敗，也要讓後續 sync / build / commit 跑完，
+        # 確保 podcast-posts.json（去重狀態）一定被 commit，不會下次重複生成。
+        continue-on-error: true
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
@@ -52,6 +78,15 @@ jobs:
           MAX_PER_RUN: ${{ github.event.inputs.count }}
           PODCAST_MODEL: ${{ github.event.inputs.model }}
         run: node podcast-to-post.js
+        working-directory: scripts
+
+      - name: Sync posts.json from Supabase (safety net)
+        # 以 Supabase 為準重建 posts.json（內建 4 次重試），確保即使上一步的重建失敗，
+        # 新發布的文章也一定會進到 posts.json。
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: node sync-posts-json.js
         working-directory: scripts
 
       - name: Build static article pages (SEO)
