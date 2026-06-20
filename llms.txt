@@ -7,68 +7,41 @@
 
 ## 核心主題
 
-- **AI**（56 篇）：大型語言模型（LLM）、生成式 AI、Prompt 技巧與工具應用
-- **雲端**（19 篇）：AWS、GCP、Azure 架構與實戰應用
-- **資安**（17 篇）：資訊安全觀念、零信任架構、攻防技術、滲透測試
-- **成長**（6 篇）：個人學習方法、自媒體經營、職涯思維
-- **閱讀**（0 篇）：書評、閱讀筆記、知識管理
+- **雲端**（27 篇）
+- **資安**（25 篇）
+- **AI**（74 篇）
+- **成長**（6 篇）
+- **閱讀**：書評、閱讀筆記、知識管理
+- **成長**：個人學習方法、自媒體經營、職涯思維
 
-## 最新文章
+## 最新文章（共 132 篇）
 
-- [AWS二十週年啟示：雲端運算如何從內部工具演進為數位基礎設施？](https://operation.tw/post/105) — 雲端 | 2026-05-16
-- [AI文件改寫危機：微軟研究揭露頂尖模型的隱藏缺陷](https://operation.tw/post/104) — AI | 2026-05-15
-- [企業級AI治理新時代：Boomi收購Lunar.dev如何改變AI應用格局](https://operation.tw/post/103) — AI | 2026-05-14
-- [AGI時代來臨？LLM、AI Agent三角關係如何重塑企業競爭力](https://operation.tw/post/102) — AI | 2026-05-13
-- [訓練資料對齊危機：虛構邪惡AI形象如何扭曲模型行為？](https://operation.tw/post/101) — AI | 2026-05-12
-- [Google 2026網路安全預測揭露：企業該如何應對AI時代的新威脅？](https://operation.tw/post/100) — 資安 | 2026-05-11
-- [AI妄想症威脅企業決策：如何識別與防範LLM的「一本正經胡說八道」？](https://operation.tw/post/99) — AI | 2026-05-10
-- [後量子密碼時代降臨：企業AI系統如何做好加密防禦升級？](https://operation.tw/post/98) — AI | 2026-05-09
-- [醫療AI診斷突破：台灣醫療機構如何抓住胰臟癌早期篩檢機會？](https://operation.tw/post/97) — AI | 2026-05-08
-- [Grok、Gemini台灣價值觀測試通過：LLM本地化評測為何成為企業選型新指標](https://operation.tw/post/96) — AI | 2026-05-07
-- [AI蒸餾技術競賽升溫：台灣企業如何在美中之爭中找到生存之道](https://operation.tw/post/95) — AI | 2026-05-06
-- [稀疏計算革命：大型模型如何突破硬體瓶頸的新出路](https://operation.tw/post/94) — AI | 2026-05-05
-- [Claude Mythos漏洞揭密：企業零信任架構為何成為必修課](https://operation.tw/post/93) — 資安 | 2026-05-04
-- [AMD挑戰英偉達：2026年AI基礎設施競局如何重塑雲端生態](https://operation.tw/post/92) — 雲端 | 2026-05-03
-- [2026資安趨勢十大必知：台灣企業如何應對AI驅動的混合式威脅？](https://operation.tw/post/91) — 資安 | 2026-05-02
-
-## 各主題代表文章
-
-### 🤖 AI
-
-- [AI文件改寫危機：微軟研究揭露頂尖模型的隱藏缺陷](https://operation.tw/post/104) | 2026-05-15
-- [企業級AI治理新時代：Boomi收購Lunar.dev如何改變AI應用格局](https://operation.tw/post/103) | 2026-05-14
-- [AGI時代來臨？LLM、AI Agent三角關係如何重塑企業競爭力](https://operation.tw/post/102) | 2026-05-13
-- [訓練資料對齊危機：虛構邪惡AI形象如何扭曲模型行為？](https://operation.tw/post/101) | 2026-05-12
-- [AI妄想症威脅企業決策：如何識別與防範LLM的「一本正經胡說八道」？](https://operation.tw/post/99) | 2026-05-10
-
-### ☁️ 雲端
-
-- [AWS二十週年啟示：雲端運算如何從內部工具演進為數位基礎設施？](https://operation.tw/post/105) | 2026-05-16
-- [AMD挑戰英偉達：2026年AI基礎設施競局如何重塑雲端生態](https://operation.tw/post/92) | 2026-05-03
-- [Neoclouds挑戰AWS霸權：AI時代雲端新勢力如何重構市場格局？](https://operation.tw/post/90) | 2026-05-01
-- [AWS二十年啟示錄：雲端運算如何從工程痛點演變成千億帝國](https://operation.tw/post/88) | 2026-04-29
-- [輝達芯片荒現轉機：AI雲端新時代如何重塑運算生態](https://operation.tw/post/77) | 2026-04-19
-
-### 🔐 資安
-
-- [Google 2026網路安全預測揭露：企業該如何應對AI時代的新威脅？](https://operation.tw/post/100) | 2026-05-11
-- [Claude Mythos漏洞揭密：企業零信任架構為何成為必修課](https://operation.tw/post/93) | 2026-05-04
-- [2026資安趨勢十大必知：台灣企業如何應對AI驅動的混合式威脅？](https://operation.tw/post/91) | 2026-05-02
-- [AI攻擊工具化危機：企業該如何從Google 2026資安預測中未雨綢繆？](https://operation.tw/post/84) | 2026-04-25
-- [AI攻擊全面化時代：2026企業如何從被動防禦升級到主動偵測？](https://operation.tw/post/75) | 2026-04-17
-
-### 🌱 成長
-
-- [《超有料！職場第一實用的 AI 簡報術》閱讀心得](https://operation.tw/post/38) | 2026-03-14
-- [升主管沒人教你的那些事：從「做得好」到「帶得好」的關鍵轉變](https://operation.tw/post/37) | 2026-03-09
-- [EP93_資深獵頭 Glen | ⌈存在即合理⌋：別急著否定，看清職場亂象背後的隱藏機會](https://operation.tw/post/6) | 2026-02-22
-- [AI時代的AWS證照推力與職涯蛻變心法！](https://operation.tw/post/7) | 2026-02-22
-- [每次聽課，我都在想：如果今天是我在講，會多講哪些故事？](https://operation.tw/post/8) | 2026-02-03
+- [歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？](https://operation.tw/post/139) — 雲端 · 2026-06-19
+- [日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊](https://operation.tw/post/138) — 資安 · 2026-06-18
+- [GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局](https://operation.tw/post/137) — AI · 2026-06-17
+- [Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？](https://operation.tw/post/136) — AI · 2026-06-16
+- [雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕](https://operation.tw/post/135) — 雲端 · 2026-06-15
+- [AWS二十週年里程碑：從內部工具到雲端帝國的演進之路](https://operation.tw/post/134) — 雲端 · 2026-06-14
+- [AI黑盒子危機：當模型演化速度超越人類理解極限](https://operation.tw/post/133) — AI · 2026-06-13
+- [AI落地危機：大型語言模型的「理想與現實」鴻溝](https://operation.tw/post/132) — AI · 2026-06-12
+- [從LLM到多模態AI：邊緣運算如何成為下一個戰場](https://operation.tw/post/131) — AI · 2026-06-11
+- [推理層資安漏洞：八成企業AI代理防禦盲點大公開](https://operation.tw/post/130) — 資安 · 2026-06-10
+- [AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸](https://operation.tw/post/129) — AI · 2026-06-09
+- [OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險](https://operation.tw/post/128) — 雲端 · 2026-06-08
+- [AI攻擊全面化時代來臨：企業應如何構築防禦體系？](https://operation.tw/post/127) — 資安 · 2026-06-07
+- [AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？](https://operation.tw/post/126) — 雲端 · 2026-06-06
+- [小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯](https://operation.tw/post/125) — AI · 2026-06-05
+- [川普AI資安行政命令：前沿模型政府測試的雙面刃](https://operation.tw/post/124) — 資安 · 2026-06-04
+- [企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？](https://operation.tw/post/123) — AI · 2026-06-03
+- [AI代理重塑軟體開發：人類管理才是成功的關鍵](https://operation.tw/post/122) — AI · 2026-06-02
+- [歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局](https://operation.tw/post/121) — 資安 · 2026-06-01
+- [AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗](https://operation.tw/post/120) — 雲端 · 2026-05-31
 
 ## 網站頁面
 
 - [首頁與文章列表](https://operation.tw/): 所有文章的入口，依主題分類瀏覽
 - [Podcast 節目頁](https://operation.tw/podcast.html): 操作一下 Podcast 節目收聽頁面
+- [RSS Feed](https://operation.tw/feed.xml): 訂閱最新文章
 
 ## 作者資訊
 
@@ -78,23 +51,6 @@
 - Instagram：https://www.instagram.com/operation.tw/
 - Threads：https://www.threads.net/@operation.tw
 - YouTube：https://www.youtube.com/@操作一下
-
-## 常見問題
-
-**Q: 操作一下主要提供什麼內容？**
-A: 專注提供雲端、資安、AI、閱讀、成長五大主題的深度文章，包含 AWS、Azure、GCP 架構實戰、零信任資安觀念、LLM 工具應用等專業知識分享。
-
-**Q: 如何訂閱操作一下的內容？**
-A: 可以訂閱每週精選電子報，直接將深度文章送到信箱。不發廣告，只提供值得閱讀的優質內容。
-
-**Q: 操作一下有販售課程嗎？**
-A: 不販售課程，也不追求流量，專注於分享有用的知識內容，讓更多人理解雲端、資安與 AI 技術。
-
-**Q: 網站上有多少篇文章？**
-A: 目前累積 98 篇已發布文章，涵蓋五大核心主題，持續更新中。
-
-**Q: 除了文章還有其他內容形式嗎？**
-A: 除了深度文章外，還提供 Podcast 節目，並在 Instagram、Threads、YouTube 等社群平台分享相關內容。
 
 ## 授權與使用
 

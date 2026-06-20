@@ -63,12 +63,20 @@ jobs:
         working-directory: scripts
         continue-on-error: true
 
+      - name: Build static article pages (SEO)
+        # 由最新的 posts.json 產生每篇 /post/{id}/index.html（含 meta/JSON-LD/摘要），
+        # 並刷新 sitemap.xml、feed.xml、llms.txt、index.html。
+        # 沒有這步，新發布（含 Podcast 自動生成）的文章就沒有靜態頁，爬蟲抓不到內容。
+        run: node build-static.js
+        working-directory: scripts
+        continue-on-error: true
+
       - name: Commit and push sitemap/feed/posts updates
         run: |
           set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add sitemap.xml feed.xml posts.json images/ episodes.json
+          git add sitemap.xml feed.xml posts.json images/ episodes.json post/ llms.txt index.html
           [ -f podcast-posts.json ] && git add podcast-posts.json || true
           if git diff --cached --quiet; then
             echo "No changes to sitemap/feed/posts/episodes"
