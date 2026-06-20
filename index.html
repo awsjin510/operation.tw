@@ -362,6 +362,59 @@ footer address a:hover{color:var(--cyan);}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:var(--bg2);}
 ::-webkit-scrollbar-thumb{background:rgba(0,245,255,.2);}
+
+/* ═══════════ Phase 5: Hero restructure + Spotlight + Podcast ═══════════ */
+/* Hero refinement */
+.hero{min-height:56vh;padding:56px 24px 28px;}
+.hero-logo img{width:min(132px,32vw);height:auto;filter:drop-shadow(0 0 24px rgba(0,245,255,.5));}
+.hero-head{font-family:'Noto Sans TC',sans-serif;font-weight:900;font-size:clamp(1.45rem,4.2vw,2.5rem);line-height:1.55;color:#fff;margin:12px 0 14px;letter-spacing:.01em;}
+.hero-head em{font-style:normal;}
+.ac-cyan{color:var(--cyan);text-shadow:0 0 16px rgba(0,245,255,.5);}
+.ac-purple{color:var(--purple);text-shadow:0 0 16px rgba(191,0,255,.55);}
+.ac-pink{color:var(--pink);text-shadow:0 0 15px rgba(255,0,128,.45);}
+.ac-yellow{color:var(--yellow);text-shadow:0 0 15px rgba(255,255,0,.4);}
+.hero-cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:6px;}
+a.hero-cta{text-decoration:none;}
+.hero-cta.alt{border-color:var(--purple);color:var(--purple);}
+.hero-cta.alt:hover{background:var(--purple);color:#fff;box-shadow:0 0 26px rgba(191,0,255,.5);}
+
+/* Spotlight 今日重點 */
+.spotlight{max-width:1100px;margin:6px auto 0;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:18px;position:relative;z-index:1;}
+.spot-card{position:relative;display:grid;grid-template-rows:152px 1fr;background:linear-gradient(158deg,rgba(255,255,255,.045),rgba(255,255,255,.006));border:1px solid var(--border);overflow:hidden;cursor:pointer;text-decoration:none;transition:transform .34s cubic-bezier(.25,.46,.45,.94),box-shadow .34s,border-color .34s;}
+.spot-card:hover{transform:translateY(-5px);}
+.spot-card.is-post{border-top:2px solid rgba(0,245,255,.55);}
+.spot-card.is-post:hover{border-color:var(--border2);box-shadow:0 26px 56px rgba(0,0,0,.6),0 0 30px rgba(0,245,255,.12);}
+.spot-card.is-post .spot-eyebrow{color:var(--cyan);border-color:rgba(0,245,255,.5);}
+.spot-card.is-post:hover .spot-title{color:var(--cyan);}
+.spot-card.is-pod{border-top:2px solid rgba(191,0,255,.6);}
+.spot-card.is-pod:hover{border-color:rgba(191,0,255,.45);box-shadow:0 26px 56px rgba(0,0,0,.6),0 0 32px rgba(191,0,255,.16);}
+.spot-card.is-pod .spot-eyebrow{color:var(--purple);border-color:rgba(191,0,255,.55);}
+.spot-card.is-pod:hover .spot-title{color:#d98bff;}
+.spot-art{position:relative;overflow:hidden;background:var(--bg3);}
+.spot-art-img{position:absolute;inset:0;}
+.spot-art-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.spot-card:hover .spot-art-img img{transform:scale(1.05);}
+.spot-art::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 45%,rgba(5,5,16,.8));}
+.spot-eyebrow{position:absolute;top:12px;left:12px;z-index:2;font-family:'Share Tech Mono',monospace;font-size:.57rem;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;background:rgba(5,5,16,.72);border:1px solid;backdrop-filter:blur(4px);}
+.spot-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:9px;}
+.spot-title{font-size:1.04rem;font-weight:700;line-height:1.5;color:#fff;transition:color .2s;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.spot-desc{font-size:.79rem;color:var(--mid);line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.spot-meta{margin-top:auto;display:flex;align-items:center;gap:13px;font-family:'Share Tech Mono',monospace;font-size:.61rem;color:var(--dim);flex-wrap:wrap;}
+.spot-go{font-family:'Share Tech Mono',monospace;font-size:.65rem;letter-spacing:.1em;color:var(--cyan);}
+.spot-play{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:2px;font-family:'Share Tech Mono',monospace;font-size:.67rem;letter-spacing:.1em;padding:8px 16px;border:1px solid var(--yellow);color:var(--yellow);background:rgba(255,255,0,.04);transition:all .25s;}
+.spot-card.is-pod:hover .spot-play{background:var(--yellow);color:var(--bg);box-shadow:0 0 18px rgba(255,255,0,.35);}
+
+/* Podcast section */
+.pod-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:14px;}
+.pod-item{display:flex;gap:12px;align-items:center;padding:12px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--purple);text-decoration:none;transition:transform .26s,box-shadow .26s,border-color .26s;}
+.pod-item:hover{border-color:rgba(191,0,255,.45);transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.45);}
+.pod-thumb{width:56px;height:56px;flex-shrink:0;object-fit:cover;border:1px solid var(--border);background:var(--bg3);}
+.pod-info{min-width:0;}
+.pod-t{font-size:.8rem;font-weight:600;color:var(--text);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color .2s;}
+.pod-item:hover .pod-t{color:#d98bff;}
+.pod-d{font-family:'Share Tech Mono',monospace;font-size:.58rem;color:var(--dim);margin-top:5px;}
+.pod-cta-row{display:flex;justify-content:center;margin-top:28px;}
+@media(max-width:768px){.spotlight{grid-template-columns:1fr;}.hero{min-height:auto;}}
 </style>
 </head>
 <body>
@@ -407,15 +460,36 @@ footer address a:hover{color:var(--cyan);}
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
   <div class="orb orb3"></div>
-  <div class="hero-tag" id="h-tag">個人品牌 · 自媒體創作者</div>
-  <div style="margin-bottom:16px;text-align:center;"><img src="logo.png" alt="操作一下" style="width:min(160px,38vw);height:auto;display:inline-block;filter:drop-shadow(0 0 22px rgba(0,245,255,0.45));"></div>
-  <div class="hero-brand">
-    <span class="t1" data-text="操作" id="h-t1">操作</span><span class="t2" id="h-t2">一下</span>
-  </div>
-  <div class="hero-value-prop">每日深度觀點<span class="sep"> · </span><em>雲端</em><span class="sep"> / </span><em>AI</em><span class="sep"> / </span><em>資安</em></div>
-  <div class="hero-sub" id="h-sub"></div>
+  <div class="hero-tag" id="h-tag">每日一則 · 自媒體創作者</div>
+  <div class="hero-logo"><img src="logo.png" alt="操作一下"></div>
+  <h1 class="hero-head">把複雜的<em class="ac-cyan">雲端</em>、<em class="ac-purple">AI</em>、<em class="ac-pink">資安</em><br>用一篇文章、一集 Podcast 說清楚</h1>
   <div class="hero-quote" id="h-quote">簡單的事情專注做，<br>有一天世界會為了你而感動</div>
-  <button class="hero-cta" id="h-cta" onclick="gotoSection('posts')">開始閱讀 →</button>
+  <div class="hero-cta-row">
+    <button class="hero-cta" id="h-cta" onclick="gotoSection('posts')">開始閱讀 →</button>
+    <a class="hero-cta alt" href="podcast.html">🎙 聽 Podcast</a>
+  </div>
+</div>
+
+<!-- ═══ SPOTLIGHT 今日重點 ═══ -->
+<div class="spotlight" id="spotlight">
+  <div class="spot-card is-post" id="spot-post" style="display:none;" role="link" tabindex="0">
+    <div class="spot-art"><div class="spot-art-img"></div><span class="spot-eyebrow">最新文章</span></div>
+    <div class="spot-body">
+      <div class="spot-title"></div>
+      <div class="spot-desc"></div>
+      <div class="spot-meta"></div>
+      <span class="spot-go">閱讀全文 →</span>
+    </div>
+  </div>
+  <a class="spot-card is-pod" id="spot-pod" href="podcast.html" style="display:none;">
+    <div class="spot-art"><div class="spot-art-img"></div><span class="spot-eyebrow">最新 Podcast</span></div>
+    <div class="spot-body">
+      <div class="spot-title"></div>
+      <div class="spot-desc"></div>
+      <div class="spot-meta"></div>
+      <span class="spot-play">▶ 立即收聽</span>
+    </div>
+  </a>
 </div>
 
 <div class="section sec-fade" id="posts">
@@ -435,6 +509,16 @@ footer address a:hover{color:var(--cyan);}
   <div class="load-more-wrap" id="load-more" style="display:none;">
     <button class="load-more-btn" onclick="loadMorePosts()">查看更多文章 ↓</button>
   </div>
+</div>
+
+<!-- ═══ PODCAST 最新單集 ═══ -->
+<div class="section sec-fade" id="pod-sec" style="display:none;">
+  <div class="sec-hd">
+    <div class="sec-hd-text"><h2>Podcast 最新單集</h2><div class="sec-sub">// podcast · 操作一下<span class="cursor">▋</span></div></div>
+    <div class="sec-line"></div>
+  </div>
+  <div class="pod-list" id="pod-list"></div>
+  <div class="pod-cta-row"><a class="hero-cta alt" href="podcast.html">查看全部單集 →</a></div>
 </div>
 
 <div class="section sec-fade" id="topics" style="background:rgba(255,255,255,.012);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
@@ -894,6 +978,7 @@ function renderHome(){
   setText('stat-today',fmtViews(sv.today));
   updateTopicCounts();
   renderGrid('grid-main',publishedPosts());
+  renderSpotlight();
   updateDynamicStats();
   initCountUp();
 }
@@ -912,10 +997,11 @@ function updateDynamicStats(){
     fetch('/episodes.json')
       .then(function(r){return r.ok?r.json():null;})
       .then(function(data){
-        const ep=(data&&data.episodes)?data.episodes.length:0;
-        if(ep>0){
-          if(D.about){D.about.s2n=String(ep);D.about.s2l='Podcast';}
-          setText('s2n',ep);setText('s2l','Podcast');
+        const eps=(data&&data.episodes)?data.episodes:[];
+        if(eps.length>0){
+          if(D.about){D.about.s2n=String(eps.length);D.about.s2l='Podcast';}
+          setText('s2n',eps.length);setText('s2l','Podcast');
+          renderPodcast(eps);
         }
       })
       .catch(function(){});
@@ -975,8 +1061,53 @@ function cardHTML(p,featured){
     +'<div class="pc-body"><div class="pc-title">'+esc(p.title)+'</div>'
     +'<div class="pc-exc">'+esc(p.excerpt||'')+'</div>'
     +'<div class="pc-read-more">閱讀更多 →</div>'
-    +'<div class="pc-foot"><span>📅 '+esc(p.date)+'</span><span class="pc-view-cnt">👁 '+(p.views||0)+'</span><span class="pc-rt">⏱ '+rt+' 分鐘</span></div>'
+    +'<div class="pc-foot"><span>📅 '+esc(p.date)+'</span>'+(p.views>0?'<span class="pc-view-cnt">👁 '+p.views+'</span>':'')+'<span class="pc-rt">⏱ '+rt+' 分鐘</span></div>'
     +'</div></div>';
+}
+
+/* ── SPOTLIGHT (latest article) ── */
+function renderSpotlight(){
+  const posts=publishedPosts();
+  if(!posts.length)return;
+  const p=posts[0];
+  const el=document.getElementById('spot-post');
+  if(!el)return;
+  const c=CAT_COLOR[p.category]||'var(--cyan)';
+  const img=el.querySelector('.spot-art-img');
+  if(img)img.innerHTML=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" loading="lazy">':'';
+  el.querySelector('.spot-title').textContent=p.title;
+  el.querySelector('.spot-desc').textContent=p.excerpt||'';
+  el.querySelector('.spot-meta').innerHTML='<span style="color:'+c+'">'+esc(p.category)+'</span><span>📅 '+esc(p.date)+'</span><span>⏱ '+readTime(p.body)+' 分鐘</span>';
+  const open=function(){openPost(String(p.id));};
+  el.onclick=open;
+  el.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};
+  el.style.display='';
+}
+
+/* ── PODCAST (latest episode + section) ── */
+function renderPodcast(eps){
+  if(!eps||!eps.length)return;
+  const e=eps[0];
+  const sp=document.getElementById('spot-pod');
+  if(sp){
+    const img=sp.querySelector('.spot-art-img');
+    if(img)img.innerHTML=e.art?'<img src="'+esc(e.art)+'" alt="'+esc(e.title)+'" loading="lazy">':'';
+    sp.querySelector('.spot-title').textContent=e.title;
+    sp.querySelector('.spot-desc').textContent=(e.desc||'').replace(/\s+/g,' ').trim().slice(0,110);
+    sp.querySelector('.spot-meta').innerHTML='<span style="color:var(--purple)">最新一集</span><span>📅 '+esc(e.date)+'</span>'+(e.dur?'<span>⏱ '+e.dur+' 分鐘</span>':'');
+    sp.style.display='';
+  }
+  const list=document.getElementById('pod-list');
+  if(list){
+    list.innerHTML=eps.slice(0,4).map(function(ep){
+      const thumb=ep.art?'<img class="pod-thumb" src="'+esc(ep.art)+'" alt="" loading="lazy">':'<div class="pod-thumb"></div>';
+      return '<a class="pod-item" href="podcast.html">'+thumb
+        +'<div class="pod-info"><div class="pod-t">'+esc(ep.title)+'</div>'
+        +'<div class="pod-d">📅 '+esc(ep.date)+(ep.dur?' · '+ep.dur+' 分鐘':'')+'</div></div></a>';
+    }).join('');
+    const sec=document.getElementById('pod-sec');
+    if(sec)sec.style.display='';
+  }
 }
 
 function readTime(html){return Math.max(1,Math.round(((html||'').replace(/<[^>]+>/g,'').length)/300));}
