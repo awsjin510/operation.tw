@@ -19,24 +19,24 @@
 
 - [Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？](https://operation.tw/post/140) — 資安 · 2026-06-20
 - [大型語言模型應用全解：從原理到實戰場景的完整指南](https://operation.tw/post/141) — AI · 2026-06-20
-- [技術會過時，提問力不會：AI時代最值錢的思考肌肉](https://operation.tw/post/284) — 閱讀 · 2026-06-20
+- [AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉](https://operation.tw/post/284) — 閱讀 · 2026-06-20
 - [歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？](https://operation.tw/post/139) — 雲端 · 2026-06-19
 - [日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊](https://operation.tw/post/138) — 資安 · 2026-06-18
 - [GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局](https://operation.tw/post/137) — AI · 2026-06-17
-- [《Rewire 神經可塑性》：大腦靠重複動作刻迴路，不是靠想](https://operation.tw/post/283) — 閱讀 · 2026-06-17
+- [AI33｜《Rewire 神經可塑性》：大腦靠重複動作刻迴路，不是靠想](https://operation.tw/post/283) — 閱讀 · 2026-06-17
 - [Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？](https://operation.tw/post/136) — AI · 2026-06-16
 - [雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕](https://operation.tw/post/135) — 雲端 · 2026-06-15
 - [AWS二十週年里程碑：從內部工具到雲端帝國的演進之路](https://operation.tw/post/134) — 雲端 · 2026-06-14
-- [前LINE台灣總經理親自下海寫程式，AI時代老闆該怎麼做？](https://operation.tw/post/282) — 閱讀 · 2026-06-14
+- [EP99｜前LINE台灣總經理親自下海寫程式，AI時代老闆該怎麼做？](https://operation.tw/post/282) — 閱讀 · 2026-06-14
 - [AI黑盒子危機：當模型演化速度超越人類理解極限](https://operation.tw/post/133) — AI · 2026-06-13
 - [AI落地危機：大型語言模型的「理想與現實」鴻溝](https://operation.tw/post/132) — AI · 2026-06-12
 - [從LLM到多模態AI：邊緣運算如何成為下一個戰場](https://operation.tw/post/131) — AI · 2026-06-11
-- [同一個模型、兩種護欄：拆解 Claude Fable 5 與 Mythos 5 的策略佈局](https://operation.tw/post/281) — 資安 · 2026-06-11
+- [AI32｜同一個模型、兩種護欄：拆解 Claude Fable 5 與 Mythos 5 的策略佈局](https://operation.tw/post/281) — 資安 · 2026-06-11
 - [推理層資安漏洞：八成企業AI代理防禦盲點大公開](https://operation.tw/post/130) — 資安 · 2026-06-10
 - [AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸](https://operation.tw/post/129) — AI · 2026-06-09
-- [讀書不是任務，是一場相遇——《命定之書》與你的閱讀覺醒](https://operation.tw/post/280) — 閱讀 · 2026-06-09
+- [AI31｜讀書不是任務，是一場相遇——《命定之書》與你的閱讀覺醒](https://operation.tw/post/280) — 閱讀 · 2026-06-09
 - [OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險](https://operation.tw/post/128) — 雲端 · 2026-06-08
-- [FDE：人類與 AI 之間最值錢的那座橋](https://operation.tw/post/279) — AI · 2026-06-08
+- [AI30｜FDE：人類與 AI 之間最值錢的那座橋](https://operation.tw/post/279) — AI · 2026-06-08
 
 ## 網站頁面
 
