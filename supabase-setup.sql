@@ -175,3 +175,47 @@ grant execute on function increment_site_views() to anon;
 -- ============================================================
 create index if not exists idx_posts_status_date on public.posts(status, date desc);
 create index if not exists idx_posts_category on public.posts(category);
+
+-- ============================================================
+-- 8. 電子報訂閱（subscribers）
+-- ============================================================
+-- 8.1 資料表
+create table if not exists public.subscribers (
+  id bigint generated always as identity primary key,
+  email text not null unique,
+  source text default 'homepage',
+  created_at timestamptz not null default now()
+);
+
+-- 8.2 RLS：開啟但不開放 anon 直接讀寫（一律透過下方 RPC 寫入，名單不外洩）
+alter table public.subscribers enable row level security;
+drop policy if exists "subscribers_admin_all" on public.subscribers;
+create policy "subscribers_admin_all"
+  on public.subscribers for all
+  to authenticated
+  using (auth.jwt() ->> 'email' = 'keepfighting510@gmail.com')
+  with check (auth.jwt() ->> 'email' = 'keepfighting510@gmail.com');
+
+-- 8.3 RPC：訂閱電子報（anon 可呼叫；重複訂閱不報錯、不外洩是否已存在）
+--      回傳 'subscribed'（新訂閱）/ 'exists'（已訂閱）/ 'invalid'（格式錯誤）
+create or replace function subscribe_newsletter(p_email text)
+returns text
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_email text := lower(trim(p_email));
+  v_inserted int;
+begin
+  if v_email is null or v_email !~ '^[^@\s]+@[^@\s]+\.[^@\s]+$' or length(v_email) > 254 then
+    return 'invalid';
+  end if;
+  insert into public.subscribers (email) values (v_email)
+  on conflict (email) do nothing;
+  get diagnostics v_inserted = row_count;
+  return case when v_inserted > 0 then 'subscribed' else 'exists' end;
+end;
+$$;
+
+grant execute on function subscribe_newsletter(text) to anon;
