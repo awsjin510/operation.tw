@@ -266,7 +266,7 @@ function patchIndexHtml(posts) {
 
   // 4. 替換 skeleton cards → 前 10 篇靜態文章卡片
   const top10 = posts.slice(0, 10);
-  const staticCards = top10.map((p, i) => cardHTML(p, i === 0)).join('');
+  const staticCards = top10.map((p) => cardHTML(p, false)).join('');
   const skeletonRe = /<div class="post-grid" id="grid-main">[\s\S]*?<\/div>(?=\s*<div class="load-more-wrap")/;
   html = html.replace(skeletonRe, `<div class="post-grid" id="grid-main">${staticCards}</div>`);
 
