@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:#060609; font-family:'Noto Sans TC',sans-serif; -webkit-font-smoothing:antialiased;}
+  ::selection{background:rgba(0,229,255,.3); color:#fff;}
+  @keyframes flick{0%,92%,100%{opacity:1;}94%{opacity:.5;}96%{opacity:.9;}}
+  @keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+</style>
+</helmet>
+
+<div style="position:relative; min-height:100vh; background:radial-gradient(ellipse at 75% -5%, #0d1626 0%, #08080f 48%, #060609 100%); overflow:hidden;">
+  <!-- fixed atmosphere -->
+  <div style="position:fixed; inset:0; background-image:linear-gradient(rgba(0,229,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.04) 1px,transparent 1px); background-size:42px 42px; pointer-events:none; z-index:0;"></div>
+  <div style="position:fixed; inset:0; opacity:.5; pointer-events:none; z-index:0; background-image:radial-gradient(rgba(255,255,255,.035) 1px, transparent 1px); background-size:5px 5px;"></div>
+  <div style="position:fixed; inset:0; background:repeating-linear-gradient(0deg,rgba(255,255,255,.012) 0px,rgba(255,255,255,.012) 1px,transparent 1px,transparent 3px); pointer-events:none; z-index:0;"></div>
+  <div style="position:fixed; top:-10%; right:4%; width:620px; height:620px; background:radial-gradient(circle, rgba(0,229,255,.16), transparent 68%); pointer-events:none; z-index:0;"></div>
+  <div style="position:fixed; bottom:0; left:-10%; width:560px; height:560px; background:radial-gradient(circle, rgba(255,43,214,.1), transparent 70%); pointer-events:none; z-index:0;"></div>
+
+  <!-- ===== NAV ===== -->
+  <div style="position:sticky; top:0; z-index:50; padding:14px 0; background:rgba(6,6,9,.72); border-bottom:1px solid rgba(0,229,255,.12); backdrop-filter:blur(16px);">
+    <div style="max-width:1240px; margin:0 auto; padding:0 32px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:13px;">
+        <div style="width:36px; height:36px; border-radius:9px; background:linear-gradient(135deg,#00e5ff,#7b61ff); display:flex; align-items:center; justify-content:center; font-family:'Chakra Petch',sans-serif; font-weight:700; color:#07070d; font-size:17px; box-shadow:0 0 20px rgba(0,229,255,.5);">操</div>
+        <span style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:19px; color:#f2f2f7; letter-spacing:.04em;">操作一下</span>
+      </div>
+      <div style="display:flex; gap:34px; font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.06em; color:#9a9ab0;">
+        <span style="color:#00e5ff;">文章</span><span style="cursor:pointer;" style-hover="color:#e8e8f5;">Podcast</span><span style="cursor:pointer;" style-hover="color:#e8e8f5;">主題</span><span style="cursor:pointer;" style-hover="color:#e8e8f5;">關於我</span><span style="cursor:pointer;" style-hover="color:#e8e8f5;">聯絡</span>
+      </div>
+      <div style="display:flex; gap:14px; align-items:center;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:14px; color:#9a9ab0; cursor:pointer;">🔍</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.1em; color:#07070d; background:linear-gradient(135deg,#00e5ff,#7b61ff); padding:10px 20px; border-radius:8px; box-shadow:0 0 18px rgba(0,229,255,.4); cursor:pointer;">訂閱 →</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative; z-index:1; max-width:1240px; margin:0 auto; padding:0 32px;">
+
+    <!-- ===== HERO ===== -->
+    <div style="padding:90px 0 60px;">
+      <div style="display:flex; align-items:center; gap:11px; margin-bottom:26px;">
+        <span style="width:7px; height:7px; border-radius:50%; background:#00e5ff; box-shadow:0 0 10px #00e5ff; animation:flick 4s infinite;"></span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.34em; color:#00e5ff; text-transform:uppercase;">每日一則 · 自媒體創作者</span>
+      </div>
+      <h1 style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:62px; line-height:1.22; color:#f2f2f7; letter-spacing:.01em; max-width:1000px;">把複雜的<span style="background:linear-gradient(120deg,#00e5ff,#7b61ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:#00e5ff; filter:drop-shadow(0 0 20px rgba(0,229,255,.35));">雲端</span>、<span style="background:linear-gradient(120deg,#c8ff00,#00e5ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:#c8ff00; filter:drop-shadow(0 0 20px rgba(200,255,0,.3));">AI</span>、<span style="background:linear-gradient(120deg,#ff2bd6,#7b61ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:#ff2bd6; filter:drop-shadow(0 0 20px rgba(255,43,214,.35));">資安</span><br>用一篇文章、一集 Podcast 說清楚</h1>
+      <p style="margin-top:26px; font-size:18px; line-height:1.9; color:#9a9ab0; max-width:580px;">簡單的事情專注做，有一天世界會為了你而感動。</p>
+      <div style="display:flex; gap:14px; margin-top:38px; align-items:center;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:14px; letter-spacing:.06em; color:#07070d; background:linear-gradient(135deg,#00e5ff,#7b61ff); padding:15px 30px; border-radius:9px; box-shadow:0 0 28px rgba(0,229,255,.45); cursor:pointer;">開始閱讀 →</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:14px; letter-spacing:.06em; color:#00e5ff; border:1px solid rgba(0,229,255,.4); padding:14px 28px; border-radius:9px; background:rgba(0,229,255,.04); cursor:pointer;">🎙 聽 Podcast</span>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:40px; font-family:'JetBrains Mono',monospace; font-size:12px;">
+        <div style="display:flex; align-items:center; gap:9px; padding:11px 17px; border-radius:8px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);"><span style="color:#5d5d72;">累積文章</span><span style="color:#00e5ff;">50+</span></div>
+        <div style="display:flex; align-items:center; gap:9px; padding:11px 17px; border-radius:8px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);"><span style="color:#5d5d72;">核心主題</span><span style="color:#00e5ff;">5</span></div>
+        <div style="display:flex; align-items:center; gap:9px; padding:11px 17px; border-radius:8px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);"><span style="color:#5d5d72;">更新頻率</span><span style="color:#00e5ff;">每日</span></div>
+        <div style="display:flex; align-items:center; gap:9px; padding:11px 17px; border-radius:8px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);"><span style="color:#5d5d72;">領域</span><span style="color:#00e5ff;">雲端 / AI / 資安</span></div>
+      </div>
+    </div>
+
+    <!-- ===== LATEST ARTICLES ===== -->
+    <div style="padding:40px 0 10px; display:flex; align-items:baseline; justify-content:space-between;">
+      <div style="display:flex; align-items:baseline; gap:14px;">
+        <h2 style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:32px; color:#f2f2f7;">最新文章</h2>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.18em; color:#00e5ff;">// latest_posts<span style="animation:blink 1s steps(1) infinite;">▋</span></span>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#5d5d72; cursor:pointer;">查看全部 →</span>
+    </div>
+    <div style="display:flex; gap:10px; padding:22px 0 0; font-family:'JetBrains Mono',monospace; font-size:13px;">
+      <span style="padding:9px 17px; border-radius:7px; color:#07070d; background:linear-gradient(135deg,#00e5ff,#7b61ff); cursor:pointer;">全部</span>
+      <span style="padding:9px 17px; border-radius:7px; color:#9a9ab0; border:1px solid rgba(255,255,255,.1); cursor:pointer;">AI</span>
+      <span style="padding:9px 17px; border-radius:7px; color:#9a9ab0; border:1px solid rgba(255,255,255,.1); cursor:pointer;">雲端</span>
+      <span style="padding:9px 17px; border-radius:7px; color:#9a9ab0; border:1px solid rgba(255,255,255,.1); cursor:pointer;">資安</span>
+      <span style="padding:9px 17px; border-radius:7px; color:#9a9ab0; border:1px solid rgba(255,255,255,.1); cursor:pointer;">閱讀</span>
+      <span style="padding:9px 17px; border-radius:7px; color:#9a9ab0; border:1px solid rgba(255,255,255,.1); cursor:pointer;">成長</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:18px; padding:26px 0 20px;">
+      <!-- featured -->
+      <div style="grid-column:span 2; display:grid; grid-template-columns:1.1fr 1fr; border-radius:16px; overflow:hidden; background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)); border:1px solid rgba(0,229,255,.18); box-shadow:inset 0 1px 0 rgba(255,255,255,.05); cursor:pointer;" style-hover="border-color:rgba(0,229,255,.6); box-shadow:0 18px 48px rgba(0,229,255,.18);">
+        <div style="position:relative; min-height:268px; overflow:hidden;">
+          <div style="position:absolute; inset:0; background:url('https://operation.tw/images/posts/post-141.jpg') center/cover; filter:grayscale(.35) contrast(1.05) brightness(.85);"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(120deg,rgba(0,229,255,.4),rgba(123,97,255,.35)); mix-blend-mode:screen;"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(90deg,transparent 52%,rgba(13,15,24,.92));"></div>
+          <span style="position:absolute; top:18px; left:18px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:#07070d; background:#00e5ff; padding:6px 12px; border-radius:6px;">AI · 精選</span>
+        </div>
+        <div style="padding:32px 30px; display:flex; flex-direction:column; justify-content:center;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#ff2bd6; letter-spacing:.1em; margin-bottom:14px;">FEATURED / 2026.06.20</div>
+          <h3 style="font-size:24px; line-height:1.5; color:#f2f2f7; font-weight:700; margin-bottom:14px;">大型語言模型應用全解：從原理到實戰場景的完整指南</h3>
+          <p style="font-size:14px; line-height:1.85; color:#8a8aa0;">隨著 LLM 技術成熟，企業與開發者面臨選型困境。本文深入解析核心原理、主流模型差異與台灣各產業的實際應用場景。</p>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#00e5ff; margin-top:20px;">閱讀全文 →</span>
+        </div>
+      </div>
+      <!-- side card -->
+      <div style="border-radius:16px; overflow:hidden; background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)); border:1px solid rgba(0,229,255,.14); cursor:pointer;" style-hover="border-color:rgba(0,229,255,.6); box-shadow:0 14px 38px rgba(0,229,255,.16);">
+        <div style="position:relative; height:160px; overflow:hidden;">
+          <div style="position:absolute; inset:0; background:url('https://operation.tw/images/posts/post-140.jpg') center/cover; filter:grayscale(.35) contrast(1.05) brightness(.85);"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,43,214,.4),rgba(0,229,255,.3)); mix-blend-mode:screen;"></div>
+          <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:#fff; background:rgba(255,43,214,.85); padding:4px 9px; border-radius:5px;">資安</span>
+        </div>
+        <div style="padding:20px;">
+          <h3 style="font-size:16px; line-height:1.55; color:#ecedf5; font-weight:700; margin-bottom:10px;">Google 資安認證熱潮：搶佔 AI 時代防禦先機</h3>
+          <p style="font-size:13px; line-height:1.75; color:#8a8aa0;">分析認證浪潮背後的產業需求與台灣資安人才缺口。</p>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d5d72; margin-top:14px;">2026.06.20</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- row of 4 -->
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:18px; padding:0 0 30px;">
+      <div style="border-radius:16px; overflow:hidden; background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)); border:1px solid rgba(0,229,255,.14); cursor:pointer;" style-hover="border-color:rgba(0,229,255,.6); box-shadow:0 14px 38px rgba(0,229,255,.16);">
+        <div style="position:relative; height:140px; overflow:hidden;">
+          <div style="position:absolute; inset:0; background:url('https://operation.tw/images/posts/post-284.jpg') center/cover; filter:grayscale(.35) contrast(1.05) brightness(.85);"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(135deg,rgba(200,255,0,.3),rgba(0,229,255,.3)); mix-blend-mode:screen;"></div>
+          <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:#07070d; background:#c8ff00; padding:4px 9px; border-radius:5px;">閱讀</span>
+        </div>
+        <div style="padding:18px;"><h3 style="font-size:15px; line-height:1.55; color:#ecedf5; font-weight:700; margin-bottom:10px;">技術會過時，提問力不會：最值錢的思考肌肉</h3><div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d5d72;">2026.06.20</div></div>
+      </div>
+      <div style="border-radius:16px; overflow:hidden; background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)); border:1px solid rgba(0,229,255,.14); cursor:pointer;" style-hover="border-color:rgba(0,229,255,.6); box-shadow:0 14px 38px rgba(0,229,255,.16);">
+        <div style="position:relative; height:140px; overflow:hidden;">
+          <div style="position:absolute; inset:0; background:url('https://operation.tw/images/posts/post-139.jpg') center/cover; filter:grayscale(.35) contrast(1.05) brightness(.85);"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(135deg,rgba(0,229,255,.4),rgba(123,97,255,.3)); mix-blend-mode:screen;"></div>
+          <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:#fff; background:rgba(123,97,255,.85); padding:4px 9px; border-radius:5px;">雲端</span>
+        </div>
+        <div style="padding:18px;"><h3 style="font-size:15px; line-height:1.55; color:#ecedf5; font-weight:700; margin-bottom:10px;">歐洲雲端反擊戰：OVHcloud 邊緣 AI 撼動美國巨頭</h3><div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d5d72;">2026.06.19</div></div>
+      </div>
+      <div style="border-radius:16px; overflow:hidden; background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)); border:1px solid rgba(0,229,255,.14); cursor:pointer;" style-hover="border-color:rgba(0,229,255,.6); box-shadow:0 14px 38px rgba(0,229,255,.16);">
+        <div style="position:relative; height:140px; overflow:hidden;">
+          <div style="position:absolute; inset:0; background:url('https://operation.tw/images/posts/post-138.jpg') center/cover; filter:grayscale(.35) contrast(1.05) brightness(.85);"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,43,214,.4),rgba(123,97,255,.3)); mix-blend-mode:screen;"></div>
+          <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:#fff; background:rgba(255,43,214,.85); padding:4px 9px; border-radius:5px;">資安</span>
+        </div>
+        <div style="padding:18px;"><h3 style="font-size:15px; line-height:1.55; color:#ecedf5; font-weight:700; margin-bottom:10px;">日本防禦策略轉向：Claude Mythos 的資安新警訊</h3><div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d5d72;">2026.06.18</div></div>
+      </div>
+      <div style="border-radius:16px; overflow:hidden; background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)); border:1px solid rgba(0,229,255,.14); cursor:pointer;" style-hover="border-color:rgba(0,229,255,.6); box-shadow:0 14px 38px rgba(0,229,255,.16);">
+        <div style="position:relative; height:140px; overflow:hidden;">
+          <div style="position:absolute; inset:0; background:url('https://operation.tw/images/posts/post-137.jpg') center/cover; filter:grayscale(.35) contrast(1.05) brightness(.85);"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(135deg,rgba(0,229,255,.4),rgba(200,255,0,.25)); mix-blend-mode:screen;"></div>
+          <span style="position:absolute; top:12px; left:12px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; color:#07070d; background:#00e5ff; padding:4px 9px; border-radius:5px;">AI</span>
+        </div>
+        <div style="padding:18px;"><h3 style="font-size:15px; line-height:1.55; color:#ecedf5; font-weight:700; margin-bottom:10px;">GLM-5.2 開源挑戰：編程 AI 成本戰重塑格局</h3><div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d5d72;">2026.06.17</div></div>
+      </div>
+    </div>
+
+    <!-- ===== PODCAST ===== -->
+    <div style="padding:50px 0 10px; display:flex; align-items:baseline; gap:14px;">
+      <h2 style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:32px; color:#f2f2f7;">Podcast 最新單集</h2>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.18em; color:#ff2bd6;">// podcast<span style="animation:blink 1s steps(1) infinite;">▋</span></span>
+    </div>
+    <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:18px; padding:24px 0 30px;">
+      <!-- featured player -->
+      <div style="display:grid; grid-template-columns:180px 1fr; gap:24px; padding:24px; border-radius:16px; background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)); border:1px solid rgba(0,229,255,.22); box-shadow:0 0 34px rgba(0,229,255,.1);">
+        <div style="position:relative; aspect-ratio:1; border-radius:12px; overflow:hidden;">
+          <div style="position:absolute; inset:0; background:linear-gradient(135deg,#00e5ff,#ff2bd6); opacity:.92;"></div>
+          <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#07070d;">
+            <div style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:12px; letter-spacing:.2em;">OPERATION</div>
+            <div style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:38px; line-height:1;">EP.48</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; margin-top:8px;">操作一下 PODCAST</div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; justify-content:center;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#ff2bd6; letter-spacing:.12em;">最新單集 · 2026.06.20</span>
+          <h3 style="font-size:19px; line-height:1.45; color:#f2f2f7; font-weight:700; margin:11px 0 6px;">GLM-5.2 開源衝擊：當編程 AI 的成本只剩六分之一</h3>
+          <p style="font-size:13px; line-height:1.75; color:#8a8aa0;">開放權重模型如何改寫台灣企業的 AI 採購決策。</p>
+          <div style="display:flex; align-items:center; gap:14px; margin-top:18px;">
+            <div style="width:44px; height:44px; border-radius:50%; background:#00e5ff; display:flex; align-items:center; justify-content:center; color:#07070d; font-size:17px; box-shadow:0 0 20px rgba(0,229,255,.5); cursor:pointer;">▶</div>
+            <div style="flex:1;">
+              <div style="height:4px; border-radius:2px; background:rgba(255,255,255,.12); position:relative;"><div style="position:absolute; left:0; top:0; bottom:0; width:34%; border-radius:2px; background:#00e5ff; box-shadow:0 0 10px rgba(0,229,255,.7);"></div><div style="position:absolute; left:34%; top:-3px; width:10px; height:10px; border-radius:50%; background:#fff;"></div></div>
+              <div style="display:flex; justify-content:space-between; margin-top:7px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#5d5d72;"><span>12:24</span><span>36:10</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- mini list -->
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; align-items:center; gap:14px; padding:14px 16px; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid rgba(0,229,255,.12); cursor:pointer;" style-hover="border-color:rgba(0,229,255,.45);">
+          <span style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:16px; color:#8a8aa0;">47</span>
+          <div style="flex:1;"><div style="font-size:14px; color:#ecedf5; font-weight:700; line-height:1.4;">當 Claude 學會說「我不確定」</div><div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5d5d72; margin-top:4px;">AI · 41:55</div></div>
+          <span style="color:#00e5ff;">▶</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; padding:14px 16px; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid rgba(0,229,255,.12); cursor:pointer;" style-hover="border-color:rgba(0,229,255,.45);">
+          <span style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:16px; color:#8a8aa0;">46</span>
+          <div style="flex:1;"><div style="font-size:14px; color:#ecedf5; font-weight:700; line-height:1.4;">AI 對打 AI：拆解 Google Threat Defense</div><div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5d5d72; margin-top:4px;">資安 · 29:08</div></div>
+          <span style="color:#00e5ff;">▶</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; padding:14px 16px; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid rgba(0,229,255,.12); cursor:pointer;" style-hover="border-color:rgba(0,229,255,.45);">
+          <span style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:16px; color:#8a8aa0;">45</span>
+          <div style="flex:1;"><div style="font-size:14px; color:#ecedf5; font-weight:700; line-height:1.4;">FDE：人類與 AI 之間最值錢的橋</div><div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#5d5d72; margin-top:4px;">成長 · 33:42</div></div>
+          <span style="color:#00e5ff;">▶</span>
+        </div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#00e5ff; align-self:flex-end; margin-top:4px; cursor:pointer;">查看全部單集 →</span>
+      </div>
+    </div>
+
+    <!-- ===== CORE TOPICS ===== -->
+    <div style="padding:50px 0 10px; display:flex; align-items:baseline; gap:14px;">
+      <h2 style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:32px; color:#f2f2f7;">核心主題</h2>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.18em; color:#00e5ff;">// core_topics</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:14px; padding:24px 0 30px;">
+      <div style="border-radius:14px; padding:24px 18px; background:rgba(255,255,255,.03); border:1px solid rgba(0,229,255,.14); cursor:pointer;" style-hover="border-color:rgba(0,229,255,.5); box-shadow:0 0 24px rgba(0,229,255,.1);"><div style="font-size:26px; margin-bottom:12px;">☁️</div><div style="font-weight:700; color:#ecedf5; font-size:17px;">雲端</div><div style="font-size:12px; color:#8a8aa0; margin-top:8px; line-height:1.6;">AWS、Azure、GCP 架構實戰</div><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#00e5ff; margin-top:14px;">19 篇</div></div>
+      <div style="border-radius:14px; padding:24px 18px; background:rgba(255,255,255,.03); border:1px solid rgba(0,229,255,.14); cursor:pointer;" style-hover="border-color:rgba(0,229,255,.5); box-shadow:0 0 24px rgba(0,229,255,.1);"><div style="font-size:26px; margin-bottom:12px;">🔐</div><div style="font-weight:700; color:#ecedf5; font-size:17px;">資安</div><div style="font-size:12px; color:#8a8aa0; margin-top:8px; line-height:1.6;">零信任、滲透測試、資安觀念</div><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#00e5ff; margin-top:14px;">17 篇</div></div>
+      <div style="border-radius:14px; padding:24px 18px; background:linear-gradient(135deg,rgba(0,229,255,.12),rgba(123,97,255,.08)); border:1px solid rgba(0,229,255,.4); box-shadow:inset 0 0 26px rgba(0,229,255,.08); cursor:pointer;"><div style="font-size:26px; margin-bottom:12px;">🤖</div><div style="font-weight:700; color:#fff; font-size:17px;">AI</div><div style="font-size:12px; color:#a8b6cc; margin-top:8px; line-height:1.6;">LLM 工具、Prompt、工作流程</div><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#00e5ff; margin-top:14px;">56 篇</div></div>
+      <div style="border-radius:14px; padding:24px 18px; background:rgba(255,255,255,.03); border:1px solid rgba(0,229,255,.14); cursor:pointer;" style-hover="border-color:rgba(0,229,255,.5); box-shadow:0 0 24px rgba(0,229,255,.1);"><div style="font-size:26px; margin-bottom:12px;">📚</div><div style="font-weight:700; color:#ecedf5; font-size:17px;">閱讀</div><div style="font-size:12px; color:#8a8aa0; margin-top:8px; line-height:1.6;">書評、心得、知識管理</div><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#00e5ff; margin-top:14px;">2 篇</div></div>
+      <div style="border-radius:14px; padding:24px 18px; background:rgba(255,255,255,.03); border:1px solid rgba(0,229,255,.14); cursor:pointer;" style-hover="border-color:rgba(0,229,255,.5); box-shadow:0 0 24px rgba(0,229,255,.1);"><div style="font-size:26px; margin-bottom:12px;">🌱</div><div style="font-weight:700; color:#ecedf5; font-size:17px;">成長</div><div style="font-size:12px; color:#8a8aa0; margin-top:8px; line-height:1.6;">個人成長、習慣、自媒體經營</div><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#00e5ff; margin-top:14px;">6 篇</div></div>
+    </div>
+
+    <!-- ===== ABOUT ===== -->
+    <div style="margin:50px 0 0; padding:44px; border-radius:18px; background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02)); border:1px solid rgba(0,229,255,.16); display:grid; grid-template-columns:auto 1fr; gap:40px; align-items:center;">
+      <div style="position:relative;">
+        <div style="position:absolute; inset:-6px; border-radius:18px; background:linear-gradient(135deg,#00e5ff,#ff2bd6); opacity:.5; filter:blur(14px);"></div>
+        <div style="position:relative; width:160px; height:160px; border-radius:16px; overflow:hidden; border:1px solid rgba(0,229,255,.4);">
+          <div style="position:absolute; inset:0; background:url('https://operation.tw/profile.jpg') center/cover; filter:grayscale(.2) contrast(1.05);"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(135deg,rgba(0,229,255,.18),rgba(255,43,214,.15)); mix-blend-mode:screen;"></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.18em; color:#00e5ff; margin-bottom:14px;">// about_me</div>
+        <h2 style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:26px; color:#f2f2f7; margin-bottom:14px;">我是 Jin，操作一下</h2>
+        <p style="font-size:15px; line-height:1.9; color:#9a9ab0; max-width:680px;">深耕雲端、資安與 AI 的自媒體創作者。我相信科技不應只是工程師的語言，每個人都值得理解這些工具。不賣課程，不追流量，只想把有用的東西說清楚。</p>
+        <div style="display:flex; gap:32px; margin-top:24px;">
+          <div><div style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:34px; color:#00e5ff;">50+</div><div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d5d72; margin-top:4px;">篇文章</div></div>
+          <div style="width:1px; background:rgba(255,255,255,.1);"></div>
+          <div><div style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:34px; color:#f2f2f7;">5</div><div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d5d72; margin-top:4px;">核心主題</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== NEWSLETTER ===== -->
+    <div style="margin:24px 0 0; padding:48px 44px; border-radius:18px; position:relative; overflow:hidden; background:linear-gradient(135deg, rgba(0,229,255,.1), rgba(123,97,255,.06)); border:1px solid rgba(0,229,255,.3); text-align:center;">
+      <div style="position:absolute; top:-40%; left:50%; width:400px; height:400px; transform:translateX(-50%); background:radial-gradient(circle, rgba(0,229,255,.2), transparent 70%); pointer-events:none;"></div>
+      <div style="position:relative;">
+        <h2 style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:30px; color:#f2f2f7;">訂閱電子報</h2>
+        <p style="font-size:15px; line-height:1.85; color:#9a9ab0; margin:14px auto 0; max-width:520px;">每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。</p>
+        <div style="display:flex; gap:12px; justify-content:center; margin-top:28px;">
+          <div style="display:flex; align-items:center; padding:0 18px; min-width:320px; border-radius:9px; background:rgba(6,6,9,.6); border:1px solid rgba(0,229,255,.3); font-family:'JetBrains Mono',monospace; font-size:13px; color:#5d5d72; height:48px;">your@email.com</div>
+          <span style="display:flex; align-items:center; font-family:'JetBrains Mono',monospace; font-size:14px; color:#07070d; background:linear-gradient(135deg,#00e5ff,#7b61ff); padding:0 28px; border-radius:9px; box-shadow:0 0 24px rgba(0,229,255,.4); cursor:pointer;">訂閱 →</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CONTACT ===== -->
+    <div style="padding:60px 0 10px; display:flex; align-items:baseline; gap:14px;">
+      <h2 style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:32px; color:#f2f2f7;">聯絡方式</h2>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:.18em; color:#00e5ff;">// contact</span>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; padding:24px 0 40px;">
+      <div style="display:flex; align-items:center; gap:14px; padding:18px 20px; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08);"><span style="font-size:18px;">✉️</span><div><div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d5d72;">EMAIL</div><div style="font-size:14px; color:#ecedf5; margin-top:3px;"><span>keepfighting510</span><span style="color:#00e5ff;">＠</span><span>gmail.com</span></div></div></div>
+      <div style="display:flex; align-items:center; gap:14px; padding:18px 20px; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08);"><span style="font-size:18px;">📸</span><div><div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d5d72;">INSTAGRAM</div><div style="font-size:14px; color:#ecedf5; margin-top:3px;">@operation.tw</div></div></div>
+      <div style="display:flex; align-items:center; gap:14px; padding:18px 20px; border-radius:12px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08);"><span style="font-size:18px;">▶️</span><div><div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#5d5d72;">YOUTUBE</div><div style="font-size:14px; color:#ecedf5; margin-top:3px;">@操作一下</div></div></div>
+    </div>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <div style="position:relative; z-index:1; border-top:1px solid rgba(0,229,255,.12); background:rgba(6,6,9,.6); margin-top:30px;">
+    <div style="max-width:1240px; margin:0 auto; padding:36px 32px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:30px; height:30px; border-radius:8px; background:linear-gradient(135deg,#00e5ff,#7b61ff); display:flex; align-items:center; justify-content:center; font-family:'Chakra Petch',sans-serif; font-weight:700; color:#07070d; font-size:14px;">操</div>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#5d5d72;">© 2026 操作一下 · operation.tw</span>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#00e5ff;">simple things, done with focus_</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
