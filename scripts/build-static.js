@@ -325,6 +325,19 @@ async function main() {
   }
   console.log(`  ✓ 已產生 ${generated} 篇文章頁（/post/{id}/index.html）\n`);
 
+  // 1b. 清掉已不存在（已刪除）文章的殘留靜態頁，避免孤兒頁殘留
+  const validSlugs = new Set(posts.map((p) => encodeURIComponent(String(p.slug || p.id))));
+  let pruned = 0;
+  for (const name of fs.readdirSync(postDir)) {
+    const full = path.join(postDir, name);
+    if (!fs.statSync(full).isDirectory()) continue;
+    if (!validSlugs.has(name)) {
+      fs.rmSync(full, { recursive: true, force: true });
+      pruned++;
+    }
+  }
+  if (pruned) console.log(`  ✓ 已清除 ${pruned} 個已刪除文章的殘留靜態頁\n`);
+
   // 2. 更新 sitemap.xml & feed.xml
   console.log('🗺️  更新 sitemap.xml & feed.xml...');
   updateSitemap(posts);

@@ -148,3 +148,27 @@ jobs:
             [ "$pushed" = "1" ] || { echo "push 連續失敗"; exit 1; }
           done
           echo "🎉 全部批次結束"
+
+      - name: Final reconcile (sync + build + commit)
+        # 不論有沒有生成，最後都以 Supabase 為準重建一次 posts.json / 靜態頁並 commit。
+        # 這樣「只用 cleanup_ids 刪文、不生成」的 run 也能讓刪除反映到前台
+        # （build-static 會自動清掉已刪文章的殘留靜態頁）。
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          node scripts/sync-posts-json.js 2>&1 || echo "(sync 失敗)"
+          node scripts/build-static.js 2>&1 || echo "(build 失敗)"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add posts.json post/ sitemap.xml feed.xml llms.txt index.html images/
+          [ -f podcast-posts.json ] && git add podcast-posts.json || true
+          if git diff --cached --quiet; then
+            echo "最終無變更"
+          else
+            git commit -m "chore(podcast): reconcile posts.json/static after run"
+            for r in 1 2 3; do
+              if git pull --rebase origin main && git push; then break; fi
+              echo "push 失敗，重試…"; sleep $((r * 3))
+            done
+          fi
