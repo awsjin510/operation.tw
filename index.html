@@ -31,7 +31,7 @@
 </script>
 <link rel="preconnect" href="https://pvqvnmntqhsfzarbxayf.supabase.co" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
   /* ── Phase 1: Color Tokens ── */
@@ -59,40 +59,233 @@ body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans-seri
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,245,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
 body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.06) 3px,rgba(0,0,0,.06) 4px);pointer-events:none;z-index:0;}
 
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
-/* SEO link overlay */
-.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
+/* ===== V1+ HOME — Neon Glass Terminal ===== */
+:root{
+  --v1-cyan:#00e5ff;--v1-violet:#7b61ff;--v1-magenta:#ff2bd6;--v1-lime:#c8ff00;
+  --v1-bg-deep:#060609;
+  --v1-text-primary:#f2f2f7;--v1-text-body:#ecedf5;--v1-text-muted:#9a9ab0;
+  --v1-text-dim:#8a8aa0;--v1-text-faint:#5d5d72;--v1-on-accent:#07070d;
+  --v1-glass:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+  --v1-chip:rgba(255,255,255,.03);
+  --font-display:'Chakra Petch',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+/* page background + atmosphere overlays */
+body{background:radial-gradient(ellipse at 75% -5%,#0d1626 0%,#08080f 48%,#060609 100%) fixed,var(--v1-bg-deep);}
+/* override legacy grid/scanline overlays to V1+ values */
+body::before{background-image:linear-gradient(rgba(0,229,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.04) 1px,transparent 1px);background-size:42px 42px;}
+body::after{background:repeating-linear-gradient(0deg,rgba(255,255,255,.012) 0,rgba(255,255,255,.012) 1px,transparent 1px,transparent 3px);}
+.v1-atmos{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.v1-atmos.particles{background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px);background-size:5px 5px;opacity:.5;}
+.v1-atmos.glow{background:radial-gradient(circle 620px at 100% 0%,rgba(0,229,255,.16),transparent 68%),radial-gradient(circle 560px at 0% 100%,rgba(255,43,214,.1),transparent 70%);}
+
+/* ── V1+ NAV (restyle existing nav, keep ids) ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,9,.72);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,229,255,.12);padding:14px 0;}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 32px;height:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.nav-logo{font-family:var(--font-display);font-weight:600;font-size:19px;letter-spacing:.04em;color:var(--v1-text-primary);text-shadow:none;display:flex;align-items:center;gap:10px;}
+.nav-logo img{height:36px!important;width:36px!important;border-radius:9px!important;object-fit:cover;box-shadow:0 0 20px rgba(0,229,255,.5);}
+.nav-links{display:flex;align-items:center;gap:22px;}
+.nav-links button,.nav-links a{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;color:var(--v1-text-muted);background:none;border:none;cursor:pointer;text-decoration:none;text-transform:none;transition:color .18s;padding:0;}
+.nav-links button:hover,.nav-links a:hover{color:#e8e8f5;}
+.nav-links .nav-podcast{color:var(--v1-cyan);}
+.nav-search{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 12px;}
+.nav-search input{background:none;border:none;color:var(--v1-text-primary);font-family:var(--font-mono);font-size:12px;outline:none;width:120px;}
+.nav-search input::placeholder{color:var(--v1-text-faint);}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.nav-subscribe{font-family:var(--font-mono);font-size:12px;color:var(--v1-on-accent);background:linear-gradient(135deg,#00e5ff,#7b61ff);border:none;border-radius:8px;padding:10px 20px;cursor:pointer;box-shadow:0 0 18px rgba(0,229,255,.4);transition:filter .18s;}
+.nav-subscribe:hover{filter:brightness(1.1);}
+@media(max-width:780px){.nav-links,.nav-right{display:none;}}
+
+/* ── V1+ container ── */
+.v1-wrap{max-width:1240px;margin:0 auto;padding:0 32px;position:relative;z-index:1;}
+.v1-section{padding:50px 0;}
+
+/* ── HERO ── */
+.v1-hero{padding:90px 0 60px;}
+.v1-kicker{display:flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--v1-cyan);margin-bottom:26px;}
+.v1-kicker-dot{width:7px;height:7px;border-radius:50%;background:var(--v1-cyan);box-shadow:0 0 10px var(--v1-cyan);animation:v1flick 4s infinite;flex-shrink:0;}
+@keyframes v1flick{0%,100%{opacity:1;}45%{opacity:1;}50%{opacity:.35;}55%{opacity:1;}70%{opacity:.6;}}
+.v1-h1{font-family:var(--font-display);font-weight:700;font-size:62px;line-height:1.22;color:var(--v1-text-primary);max-width:1000px;margin:0;}
+.kw{-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;}
+.kw-cloud{background-image:linear-gradient(120deg,#00e5ff,#7b61ff);filter:drop-shadow(0 0 12px rgba(0,229,255,.35));}
+.kw-ai{background-image:linear-gradient(120deg,#c8ff00,#00e5ff);filter:drop-shadow(0 0 12px rgba(200,255,0,.3));}
+.kw-sec{background-image:linear-gradient(120deg,#ff2bd6,#7b61ff);filter:drop-shadow(0 0 12px rgba(255,43,214,.35));}
+.v1-sub{font-family:'Noto Sans TC',sans-serif;font-size:18px;line-height:1.9;color:var(--v1-text-muted);max-width:580px;margin:26px 0 0;}
+.v1-cta-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:34px;}
+.v1-btn-primary{font-family:var(--font-mono);font-size:14px;color:var(--v1-on-accent);background:linear-gradient(135deg,#00e5ff,#7b61ff);border:none;border-radius:9px;padding:15px 30px;cursor:pointer;box-shadow:0 0 22px rgba(0,229,255,.45);transition:filter .18s,transform .18s;}
+.v1-btn-primary:hover{filter:brightness(1.1);}
+.v1-btn-ghost{font-family:var(--font-mono);font-size:14px;color:var(--v1-cyan);background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.4);border-radius:9px;padding:15px 30px;text-decoration:none;display:inline-flex;align-items:center;transition:background .18s;}
+.v1-btn-ghost:hover{background:rgba(0,229,255,.1);}
+.v1-stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:42px;}
+.v1-stat{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:11px 17px;}
+.v1-stat-l{color:var(--v1-text-faint);}
+.v1-stat-v{color:var(--v1-cyan);}
+
+/* ── SECTION HEADERS ── */
+.v1-sec-hd{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:26px;}
+.v1-sec-hd-l{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+.v1-h2{font-family:var(--font-display);font-weight:600;font-size:32px;color:var(--v1-text-primary);margin:0;}
+.v1-sec-tag{font-family:var(--font-mono);font-size:13px;letter-spacing:.18em;color:var(--v1-cyan);}
+.v1-sec-tag.pink{color:var(--v1-magenta);}
+.v1-cursor{animation:v1blink 1s steps(1) infinite;}
+@keyframes v1blink{50%{opacity:0;}}
+.v1-sec-all{font-family:var(--font-mono);font-size:13px;color:var(--v1-text-faint);background:none;border:none;cursor:pointer;text-decoration:none;transition:color .18s;}
+.v1-sec-all:hover{color:var(--v1-cyan);}
+
+/* ── FILTER TABS ── */
+.v1-filter{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;}
+.v1-filter .fb{font-family:var(--font-mono);font-size:13px;border-radius:7px;padding:8px 16px;border:1px solid rgba(255,255,255,.1);background:transparent;color:var(--v1-text-muted);cursor:pointer;transition:all .18s;}
+.v1-filter .fb:hover{border-color:rgba(0,229,255,.4);color:#e8e8f5;}
+.v1-filter .fb.on{background:linear-gradient(135deg,#00e5ff,#7b61ff);color:var(--v1-on-accent);border-color:transparent;}
+
+/* ── MAGAZINE ARTICLE GRID ──
+   Layout: 4-col grid. featured spans 2 cols (rows 1). side card col3, then a 4-wide row.
+   Implemented via grid auto-flow so the first (featured) card spans 2, rest fill. */
+#grid-main{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+/* featured card spans 2 columns and 2 rows (magazine hero) */
+#grid-main .pc.featured{grid-column:span 2;grid-row:span 2;}
+
+/* CARD base (standard) */
+.pc{position:relative;display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:var(--v1-glass);border:1px solid rgba(0,229,255,.18);border-left:1px solid rgba(0,229,255,.18)!important;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s;text-decoration:none;}
+.pc:hover{border-color:rgba(0,229,255,.6)!important;box-shadow:0 14px 38px rgba(0,229,255,.16);}
+.v1-load-more{font-family:var(--font-mono);font-size:13px;color:var(--v1-cyan);background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.4);border-radius:9px;padding:12px 28px;cursor:pointer;transition:background .18s;}
+.v1-load-more:hover{background:rgba(0,229,255,.12);}
+.load-more-wrap{display:flex;justify-content:center;margin-top:28px;}
+.pc .pc-img{position:relative;height:140px;overflow:hidden;}
+.pc .pc-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.05) brightness(.85);display:block;}
+.pc .pc-img::after{content:'';position:absolute;inset:0;mix-blend-mode:screen;background:linear-gradient(120deg,rgba(0,229,255,.4),rgba(123,97,255,.35));pointer-events:none;}
+.pc[data-cat="資安"] .pc-img::after,.pc.cat-資安 .pc-img::after{background:linear-gradient(120deg,rgba(255,43,214,.4),rgba(123,97,255,.3));}
+.pc[data-cat="AI"] .pc-img::after,.pc.cat-AI .pc-img::after{background:linear-gradient(120deg,rgba(200,255,0,.32),rgba(0,229,255,.32));}
+.pc[data-cat="閱讀"] .pc-img::after,.pc.cat-閱讀 .pc-img::after{background:linear-gradient(120deg,rgba(200,255,0,.3),rgba(0,229,255,.28));}
+.pc .pc-badge{position:absolute;top:12px;left:12px;z-index:2;font-family:var(--font-mono);font-size:11px;padding:4px 10px;border-radius:6px;border:none!important;}
+.pc-badge{background:var(--v1-cyan);color:var(--v1-on-accent)!important;}
+.pc.cat-資安 .pc-badge{background:rgba(255,43,214,.85);color:#fff!important;}
+.pc.cat-雲端 .pc-badge{background:rgba(123,97,255,.85);color:#fff!important;}
+.pc.cat-AI .pc-badge{background:var(--v1-cyan);color:var(--v1-on-accent)!important;}
+.pc.cat-閱讀 .pc-badge{background:var(--v1-lime);color:var(--v1-on-accent)!important;}
+.pc.cat-成長 .pc-badge{background:#00ff88;color:var(--v1-on-accent)!important;}
+.pc .pc-body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.pc .pc-title{font-family:'Noto Sans TC',sans-serif;font-weight:700;font-size:15px;line-height:1.55;color:var(--v1-text-body);}
+.pc .pc-title a{color:inherit;text-decoration:none;}
+.pc .pc-exc{font-size:13px;line-height:1.8;color:var(--v1-text-dim);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.pc .pc-read-more{font-family:var(--font-mono);font-size:12px;color:var(--v1-cyan);margin-top:auto;}
+.pc .pc-foot{display:flex;gap:12px;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--v1-text-faint);}
+
+/* FEATURED card: split image|text */
+.pc.featured{flex-direction:row;border-color:rgba(0,229,255,.18);}
+.pc.featured:hover{box-shadow:0 14px 38px rgba(0,229,255,.18);}
+.pc.featured .pc-img{height:auto;min-height:268px;flex:1.1;}
+.pc.featured .pc-img::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,transparent 52%,rgba(13,15,24,.92));pointer-events:none;}
+.pc.featured .pc-body{flex:1;justify-content:center;padding:28px;gap:12px;}
+.pc.featured .pc-eyebrow{font-family:var(--font-mono);font-size:11px;color:var(--v1-magenta);}
+.pc.featured .pc-title{font-family:'Noto Sans TC',sans-serif;font-weight:700;font-size:24px;line-height:1.5;color:var(--v1-text-primary);}
+.pc.featured .pc-exc{font-size:14px;line-height:1.85;-webkit-line-clamp:3;}
+
+/* ── PODCAST ── */
+.v1-pod-layout{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;}
+.v1-pod-feature{display:grid;grid-template-columns:180px 1fr;gap:0;border-radius:16px;overflow:hidden;background:var(--v1-glass);border:1px solid rgba(0,229,255,.22);box-shadow:0 0 34px rgba(0,229,255,.1);text-decoration:none;transition:border-color .2s,box-shadow .2s;}
+.v1-pod-feature:hover{border-color:rgba(0,229,255,.5);}
+.v1-pod-cover{aspect-ratio:1;background:linear-gradient(135deg,#00e5ff,#ff2bd6);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#fff;text-align:center;padding:14px;}
+.v1-pod-cover-line{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;opacity:.9;}
+.v1-pod-cover-ep{font-family:var(--font-display);font-weight:700;font-size:30px;}
+.v1-pod-cover-sub{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;opacity:.85;}
+.v1-pod-feature-body{padding:24px;display:flex;flex-direction:column;gap:10px;justify-content:center;}
+.v1-pod-eyebrow{font-family:var(--font-mono);font-size:11px;color:var(--v1-magenta);}
+.v1-pod-title{font-family:'Noto Sans TC',sans-serif;font-weight:700;font-size:19px;line-height:1.5;color:var(--v1-text-primary);margin:0;}
+.v1-pod-desc{font-size:13px;line-height:1.8;color:var(--v1-text-dim);margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.v1-pod-player{display:flex;align-items:center;gap:12px;margin-top:6px;}
+.v1-pod-play{width:44px;height:44px;border-radius:50%;background:var(--v1-cyan);color:var(--v1-on-accent);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;box-shadow:0 0 16px rgba(0,229,255,.4);}
+.v1-pod-progress{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.12);position:relative;overflow:hidden;}
+.v1-pod-progress-fill{position:absolute;left:0;top:0;height:100%;width:34%;background:var(--v1-cyan);box-shadow:0 0 8px var(--v1-cyan);border-radius:4px;}
+.v1-pod-progress-fill::after{content:'';position:absolute;right:-3px;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:#fff;}
+.v1-pod-time{font-family:var(--font-mono);font-size:12px;color:var(--v1-text-faint);flex-shrink:0;}
+.v1-pod-mini{display:flex;flex-direction:column;gap:12px;}
+.v1-pod-row{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.03);border:1px solid rgba(0,229,255,.12);border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .2s;}
+.v1-pod-row:hover{border-color:rgba(0,229,255,.45);}
+.v1-pod-row-ep{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--v1-text-dim);flex-shrink:0;}
+.v1-pod-row-body{flex:1;min-width:0;}
+.v1-pod-row-t{font-family:'Noto Sans TC',sans-serif;font-size:14px;color:var(--v1-text-body);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.v1-pod-row-meta{font-family:var(--font-mono);font-size:11px;color:var(--v1-text-faint);margin-top:4px;}
+.v1-pod-row-play{color:var(--v1-cyan);font-size:14px;flex-shrink:0;}
+
+/* ── TOPICS ── */
+.v1-topics{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.v1-topic{border-radius:14px;padding:24px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(0,229,255,.14);cursor:pointer;transition:border-color .2s,box-shadow .2s;display:flex;flex-direction:column;gap:8px;}
+.v1-topic:hover{border-color:rgba(0,229,255,.5);box-shadow:0 0 24px rgba(0,229,255,.12);}
+.v1-topic-ic{font-size:26px;}
+.v1-topic-name{font-family:'Noto Sans TC',sans-serif;font-weight:700;font-size:17px;color:#ecedf5;}
+.v1-topic-desc{font-size:12px;line-height:1.6;color:var(--v1-text-dim);}
+.v1-topic-cnt{font-family:var(--font-mono);font-size:12px;color:var(--v1-cyan);margin-top:4px;}
+.v1-topic-hl{background:linear-gradient(135deg,rgba(0,229,255,.12),rgba(123,97,255,.08));border-color:rgba(0,229,255,.4);box-shadow:inset 0 0 26px rgba(0,229,255,.08);}
+.v1-topic-hl .v1-topic-name{color:#fff;}
+.v1-topic-hl .v1-topic-desc{color:#a8b6cc;}
+
+/* ── ABOUT ── */
+.v1-about{border-radius:18px;padding:44px;background:var(--v1-glass);border:1px solid rgba(0,229,255,.16);display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;}
+.v1-avatar{position:relative;width:160px;height:160px;flex-shrink:0;}
+.v1-avatar-glow{position:absolute;inset:-6px;border-radius:16px;background:linear-gradient(135deg,#00e5ff,#ff2bd6);opacity:.5;filter:blur(14px);}
+.v1-avatar-img{position:relative;width:160px;height:160px;border-radius:16px;object-fit:cover;filter:grayscale(.2) contrast(1.05);}
+.v1-about-text{display:flex;flex-direction:column;gap:14px;}
+.v1-about-h2{font-family:var(--font-display);font-weight:600;font-size:26px;color:var(--v1-text-primary);margin:0;}
+.v1-about-body{font-family:'Noto Sans TC',sans-serif;font-size:15px;line-height:1.9;color:var(--v1-text-muted);margin:0;}
+.v1-about-stats{display:flex;align-items:center;gap:28px;margin-top:8px;}
+.v1-about-stat{display:flex;flex-direction:column;gap:2px;}
+.v1-about-stat-n{font-family:var(--font-display);font-weight:700;font-size:34px;color:var(--v1-text-primary);line-height:1;}
+.v1-about-stat-n.cyan{color:var(--v1-cyan);}
+.v1-about-stat-l{font-family:var(--font-mono);font-size:12px;color:var(--v1-text-faint);}
+.v1-about-divider{width:1px;align-self:stretch;background:rgba(255,255,255,.12);}
+
+/* ── NEWSLETTER ── */
+.v1-nl{position:relative;border-radius:18px;padding:48px 44px;text-align:center;background:linear-gradient(135deg,rgba(0,229,255,.1),rgba(123,97,255,.06));border:1px solid rgba(0,229,255,.3);overflow:hidden;}
+.v1-nl-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:300px;height:120px;background:radial-gradient(circle,rgba(0,229,255,.4),transparent 70%);pointer-events:none;}
+.v1-nl-h2{position:relative;font-family:var(--font-display);font-weight:600;font-size:30px;color:var(--v1-text-primary);margin:0 0 12px;}
+.v1-nl-d{position:relative;font-family:'Noto Sans TC',sans-serif;font-size:15px;line-height:1.8;color:var(--v1-text-muted);margin:0 0 24px;}
+.v1-nl-form{position:relative;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.v1-nl-in{min-width:320px;height:48px;padding:0 16px;background:rgba(6,6,9,.6);border:1px solid rgba(0,229,255,.3);border-radius:9px;color:var(--v1-text-primary);font-family:var(--font-mono);font-size:14px;outline:none;}
+.v1-nl-in::placeholder{color:var(--v1-text-faint);}
+.v1-nl-btn{height:48px;padding:0 26px;font-family:var(--font-mono);font-size:14px;color:var(--v1-on-accent);background:linear-gradient(135deg,#00e5ff,#7b61ff);border:none;border-radius:9px;cursor:pointer;box-shadow:0 0 18px rgba(0,229,255,.4);}
+
+/* ── CONTACT ── */
+.v1-contact{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.v1-contact-card{display:flex;flex-direction:column;gap:6px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px 22px;text-decoration:none;transition:border-color .2s;}
+.v1-contact-card:hover{border-color:rgba(0,229,255,.45);}
+.v1-contact-ic{font-size:20px;}
+.v1-contact-l{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--v1-text-faint);}
+.v1-contact-v{font-size:14px;color:#ecedf5;word-break:break-all;}
+
+/* ── V1+ FOOTER restyle ── */
+footer{border-top:1px solid rgba(0,229,255,.12);background:rgba(6,6,9,.6);padding:36px 32px;position:relative;z-index:1;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  #grid-main{grid-template-columns:repeat(2,1fr);}
+  #grid-main .pc.featured{grid-column:span 2;grid-row:auto;}
+  .v1-pod-layout{grid-template-columns:1fr;}
+  .v1-about{grid-template-columns:1fr;justify-items:center;text-align:center;}
+  .v1-about-text{align-items:center;}
+  .v1-topics{grid-template-columns:repeat(3,1fr);}
+  .v1-h1{font-size:48px;}
+}
+@media(max-width:640px){
+  .v1-wrap{padding:0 20px;}
+  .v1-section{padding:36px 0;}
+  .v1-hero{padding:48px 0 36px;}
+  .v1-h1{font-size:38px;line-height:1.25;}
+  .v1-sub{font-size:16px;}
+  #grid-main{grid-template-columns:1fr;}
+  #grid-main .pc.featured{grid-column:auto;flex-direction:column;}
+  #grid-main .pc.featured .pc-img{min-height:200px;flex:none;}
+  .v1-topics{grid-template-columns:repeat(2,1fr);}
+  .v1-contact{grid-template-columns:1fr;}
+  .v1-pod-feature{grid-template-columns:1fr;}
+  .v1-pod-cover{aspect-ratio:auto;height:160px;}
+  .v1-nl-in{min-width:0;width:100%;}
+  .v1-nl-form{flex-direction:column;}
+  .v1-nl-btn{width:100%;}
+  .v1-btn-primary,.v1-btn-ghost,.v1-nl-btn,.v1-filter .fb{min-height:44px;}
+  .v1-h2{font-size:26px;}
+}
+
 /* SEO link overlay */
 .pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
 /* NAV */
@@ -474,6 +667,8 @@ a.hero-cta{text-decoration:none;}
 </style>
 </head>
 <body>
+<div class="v1-atmos particles"></div>
+<div class="v1-atmos glow"></div>
 <div class="bg-glow"></div>
 
 <!-- NAV -->
@@ -488,13 +683,12 @@ a.hero-cta{text-decoration:none;}
     <button onclick="goHome();gotoSection('contact')">聯絡</button>
     <button onclick="goHome();gotoSection('newsletter')">訂閱</button>
   </div>
-  <div class="nav-stats" title="網站瀏覽次數">
-    <div class="ns-item ns-total"><span class="ns-l">👁 累積瀏覽</span><span class="ns-n" id="stat-total">—</span></div>
-    <div class="ns-item ns-today"><span class="ns-l">今日</span><span class="ns-n" id="stat-today">—</span></div>
-  </div>
-  <div class="nav-search">
-    <span style="color:var(--dim);font-size:.8rem;">🔍</span>
-    <input type="text" placeholder="搜尋..." id="nav-q" aria-label="搜尋文章" onkeydown="if(event.key==='Enter')runSearch(this.value)">
+  <div class="nav-right">
+    <div class="nav-search">
+      <span style="color:var(--v1-text-faint);font-size:.8rem;">🔍</span>
+      <input type="text" placeholder="搜尋..." id="nav-q" aria-label="搜尋文章" onkeydown="if(event.key==='Enter')runSearch(this.value)">
+    </div>
+    <button class="nav-subscribe" onclick="goHome();gotoSection('newsletter')">訂閱 →</button>
   </div>
   <button class="hamburger" onclick="toggleMob()" id="ham"><span></span><span></span><span></span></button>
 </div>
@@ -516,181 +710,178 @@ a.hero-cta{text-decoration:none;}
 <!-- ═══ HOME ═══ -->
 <div class="view active" id="v-home">
 
-<div class="hero">
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-  <div class="orb orb3"></div>
-  <div class="hero-tag" id="h-tag">每日一則 · 自媒體創作者</div>
-  <div class="hero-logo"><img src="logo.png" alt="操作一下"></div>
-  <h1 class="hero-head">把複雜的<em class="ac-cyan">雲端</em>、<em class="ac-purple">AI</em>、<em class="ac-pink">資安</em><br>用一篇文章、一集 Podcast 說清楚</h1>
-  <div class="hero-quote" id="h-quote">簡單的事情專注做，<br>有一天世界會為了你而感動</div>
-  <div class="hero-cta-row">
-    <button class="hero-cta" id="h-cta" onclick="gotoSection('posts')">開始閱讀 →</button>
-    <a class="hero-cta alt" href="podcast.html">🎙 聽 Podcast</a>
-  </div>
-</div>
+<!-- ═══════════ V1+ HERO ═══════════ -->
+<div class="v1-wrap">
+  <section class="v1-hero">
+    <div class="v1-kicker"><span class="v1-kicker-dot"></span><span id="h-tag">每日一則 · 自媒體創作者</span></div>
+    <h1 class="v1-h1">把複雜的<span class="kw kw-cloud">雲端</span>、<span class="kw kw-ai">AI</span>、<span class="kw kw-sec">資安</span><br>用一篇文章、一集 Podcast 說清楚</h1>
+    <p class="v1-sub" id="h-quote">簡單的事情專注做，有一天世界會為了你而感動。</p>
+    <div class="v1-cta-row">
+      <button class="v1-btn-primary" id="h-cta" onclick="gotoSection('posts')">開始閱讀 →</button>
+      <a class="v1-btn-ghost" href="podcast.html">🎙 聽 Podcast</a>
+    </div>
+    <div class="v1-stats">
+      <div class="v1-stat"><span class="v1-stat-l">累積文章</span><span class="v1-stat-v">50+</span></div>
+      <div class="v1-stat"><span class="v1-stat-l">核心主題</span><span class="v1-stat-v">5</span></div>
+      <div class="v1-stat"><span class="v1-stat-l">更新頻率</span><span class="v1-stat-v">每日</span></div>
+      <div class="v1-stat"><span class="v1-stat-l">領域</span><span class="v1-stat-v">雲端 / AI / 資安</span></div>
+      <div class="v1-stat" id="stat-total-wrap" style="display:none"><span class="v1-stat-l">累積瀏覽</span><span class="v1-stat-v" id="stat-total"></span></div>
+      <div class="v1-stat" id="stat-today-wrap" style="display:none"><span class="v1-stat-l">今日瀏覽</span><span class="v1-stat-v" id="stat-today"></span></div>
+    </div>
+  </section>
 
-<!-- ═══ SPOTLIGHT 今日重點 ═══ -->
-<div class="spotlight" id="spotlight">
-  <div class="spot-card is-post" id="spot-post" style="display:none;" role="link" tabindex="0">
-    <div class="spot-art"><div class="spot-art-img"></div><span class="spot-eyebrow">最新文章</span></div>
-    <div class="spot-body">
-      <div class="spot-title"></div>
-      <div class="spot-desc"></div>
-      <div class="spot-meta"></div>
-      <span class="spot-go">閱讀全文 →</span>
+  <!-- ═══════════ 最新文章 ═══════════ -->
+  <section class="v1-section" id="posts">
+    <div class="v1-sec-hd">
+      <div class="v1-sec-hd-l">
+        <h2 class="v1-h2">最新文章</h2>
+        <span class="v1-sec-tag">// latest_posts<span class="v1-cursor">▋</span></span>
+      </div>
+      <button class="v1-sec-all" onclick="gotoSection('posts')">查看全部 →</button>
     </div>
-  </div>
-  <a class="spot-card is-pod" id="spot-pod" href="podcast.html" style="display:none;">
-    <div class="spot-art"><div class="spot-art-img"></div><span class="spot-eyebrow">最新 Podcast</span></div>
-    <div class="spot-body">
-      <div class="spot-title"></div>
-      <div class="spot-desc"></div>
-      <div class="spot-meta"></div>
-      <span class="spot-play">▶ 立即收聽</span>
+    <div class="v1-filter">
+      <button class="fb on" data-cat="" onclick="applyFilter(this,'')">全部</button>
+      <button class="fb" data-cat="AI" onclick="applyFilter(this,'AI')">AI</button>
+      <button class="fb" data-cat="雲端" onclick="applyFilter(this,'雲端')">雲端</button>
+      <button class="fb" data-cat="資安" onclick="applyFilter(this,'資安')">資安</button>
+      <button class="fb" data-cat="閱讀" onclick="applyFilter(this,'閱讀')">閱讀</button>
+      <button class="fb" data-cat="成長" onclick="applyFilter(this,'成長')">成長</button>
     </div>
-  </a>
-</div>
+    <div class="post-grid" id="grid-main"><article class="pc featured cat-資安" data-post-id="140" onclick="openPost('140')"><a class="pc-seo-link" href="/post/140" onclick="event.preventDefault();openPost('140')" aria-label="Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？"></a><div class="pc-img"><img src="/images/posts/post-140.jpg" alt="Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？" loading="lazy" data-cat="資安" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">資安</span></div><div class="pc-body"><div class="pc-eyebrow">FEATURED · 資安</div><div class="pc-title"><a href="/post/140" onclick="event.preventDefault();openPost('140')" style="color:inherit;text-decoration:none;">Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a></div><div class="pc-exc">Google Cybersecurity Certificate在台灣掀起報名潮，正值AI攻擊全面化的2026年。本文分析這波認證浪潮背後的產業需求，探討台灣資安人才缺口，以及企業如何透過結構化培訓強化防禦能力。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 2026-06-20</span></div></div></article><article class="pc cat-AI" data-post-id="141" onclick="openPost('141')"><a class="pc-seo-link" href="/post/141" onclick="event.preventDefault();openPost('141')" aria-label="大型語言模型應用全解：從原理到實戰場景的完整指南"></a><div class="pc-img"><img src="/images/posts/post-141.jpg" alt="大型語言模型應用全解：從原理到實戰場景的完整指南" loading="lazy" data-cat="AI" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/141" onclick="event.preventDefault();openPost('141')" style="color:inherit;text-decoration:none;">大型語言模型應用全解：從原理到實戰場景的完整指南</a></div><div class="pc-exc">隨著LLM技術成熟，企業與開發者面臨選型困境。本文深入解析大型語言模型的核心原理、主流模型差異，以及在台灣各產業的實際應用場景，幫助讀者掌握AI時代的競爭優勢。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 2026-06-20</span></div></div></article><article class="pc cat-閱讀" data-post-id="284" onclick="openPost('284')"><a class="pc-seo-link" href="/post/284" onclick="event.preventDefault();openPost('284')" aria-label="AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉"></a><div class="pc-img"><img src="/images/posts/post-284.jpg" alt="AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉" loading="lazy" data-cat="閱讀" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">閱讀</span></div><div class="pc-body"><div class="pc-title"><a href="/post/284" onclick="event.preventDefault();openPost('284')" style="color:inherit;text-decoration:none;">AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉</a></div><div class="pc-exc">2026年KPMG爆出AI幻覺報告事件，45條引註中有40條是憑空捏造，再次提醒我們：當答案變得又快又便宜，「會問問題」才是真正的稀缺能力。這篇文章整理自《BCG問題解決力》的核心觀點，帶你練就靈魂三問、假說導向與甜蜜點三條思考肌肉，在AI新紀元裡少踩坑、多出擊。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 2026-06-20</span></div></div></article><article class="pc cat-雲端" data-post-id="139" onclick="openPost('139')"><a class="pc-seo-link" href="/post/139" onclick="event.preventDefault();openPost('139')" aria-label="歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？"></a><div class="pc-img"><img src="/images/posts/post-139.jpg" alt="歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？" loading="lazy" data-cat="雲端" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">雲端</span></div><div class="pc-body"><div class="pc-title"><a href="/post/139" onclick="event.preventDefault();openPost('139')" style="color:inherit;text-decoration:none;">歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a></div><div class="pc-exc">法國OVHcloud投入邊緣AI模型開發，瞄準歐洲第二大LLM供應商地位。這場歐洲自主雲端運算的突圍戰，不僅挑戰AWS、Azure雙霸格局，更為台灣企業揭示雲端多元化選擇的新機遇與策略轉向。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 2026-06-19</span><span class="pc-view-cnt">👁 8</span></div></div></article><article class="pc cat-資安" data-post-id="138" onclick="openPost('138')"><a class="pc-seo-link" href="/post/138" onclick="event.preventDefault();openPost('138')" aria-label="日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊"></a><div class="pc-img"><img src="/images/posts/post-138.jpg" alt="日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊" loading="lazy" data-cat="資安" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">資安</span></div><div class="pc-body"><div class="pc-title"><a href="/post/138" onclick="event.preventDefault();openPost('138')" style="color:inherit;text-decoration:none;">日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a></div><div class="pc-exc">Anthropic最新AI模型Claude Mythos在日本網路出現，正促使日本重新評估其網路防禦策略。本文深入分析這一事件如何反映AI模型滲透防禦系統的新風險，以及台灣企業應如何超前部署資安對策。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 2026-06-18</span><span class="pc-view-cnt">👁 11</span></div></div></article><article class="pc cat-AI" data-post-id="137" onclick="openPost('137')"><a class="pc-seo-link" href="/post/137" onclick="event.preventDefault();openPost('137')" aria-label="GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局"></a><div class="pc-img"><img src="/images/posts/post-137.jpg" alt="GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局" loading="lazy" data-cat="AI" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/137" onclick="event.preventDefault();openPost('137')" style="color:inherit;text-decoration:none;">GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a></div><div class="pc-exc">Z.ai發布GLM-5.2開放權重模型，編程能力超越GPT-5.5卻成本僅六分之一。這場AI成本革命不僅衝擊閉源模型壟斷，更改變台灣企業的AI採購決策。本文分析開源模型的技術突破與商業影響。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 2026-06-17</span></div></div></article><article class="pc cat-閱讀" data-post-id="283" onclick="openPost('283')"><a class="pc-seo-link" href="/post/283" onclick="event.preventDefault();openPost('283')" aria-label="AI33｜《Rewire 神經可塑性》：大腦靠重複動作刻迴路，不是靠想"></a><div class="pc-img"><img src="/images/posts/post-283.jpg" alt="AI33｜《Rewire 神經可塑性》：大腦靠重複動作刻迴路，不是靠想" loading="lazy" data-cat="閱讀" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">閱讀</span></div><div class="pc-body"><div class="pc-title"><a href="/post/283" onclick="event.preventDefault();openPost('283')" style="color:inherit;text-decoration:none;">AI33｜《Rewire 神經可塑性》：大腦靠重複動作刻迴路，不是靠想</a></div><div class="pc-exc">你能快速 debug 別人的爛 code，卻對自己三十幾年的壞習慣束手無策。這集介紹英國神經科學家 Nicole Vignola 的《Rewire 神經可塑性》，從神經科學角度解釋為什麼「想改變」不夠用、負面自我對話其實是演化預設值，以及多巴胺分泌的不是快樂而是「渴望」——讀完讓人重新思考改變自己的正確層級在哪裡。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 2026-06-17</span></div></div></article><article class="pc cat-AI" data-post-id="136" onclick="openPost('136')"><a class="pc-seo-link" href="/post/136" onclick="event.preventDefault();openPost('136')" aria-label="Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？"></a><div class="pc-img"><img src="/images/posts/post-136.jpg" alt="Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？" loading="lazy" data-cat="AI" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/136" onclick="event.preventDefault();openPost('136')" style="color:inherit;text-decoration:none;">Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a></div><div class="pc-exc">Anthropic執行長公開看好AI指數級成長，卻被內部報告打臉。這場矛盾的背後，反映出AI產業從狂熱走向冷靜的轉折點。台灣科技業該如何理性評估AI投資價值？</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 2026-06-16</span></div></div></article><article class="pc cat-雲端" data-post-id="135" onclick="openPost('135')"><a class="pc-seo-link" href="/post/135" onclick="event.preventDefault();openPost('135')" aria-label="雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕"></a><div class="pc-img"><img src="/images/posts/post-135.jpg" alt="雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕" loading="lazy" data-cat="雲端" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">雲端</span></div><div class="pc-body"><div class="pc-title"><a href="/post/135" onclick="event.preventDefault();openPost('135')" style="color:inherit;text-decoration:none;">雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a></div><div class="pc-exc">帕蘭泰爾公開批評大型語言模型企業忽視商業落地，同時OpenAI與Anthropic投資者高度重疊的現象引發關注。這場AI雲端生態的資本競爭，正在深刻改變企業選型邏輯與投資策略，台灣科技產業應如何因應？</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 2026-06-15</span></div></div></article><article class="pc cat-雲端" data-post-id="134" onclick="openPost('134')"><a class="pc-seo-link" href="/post/134" onclick="event.preventDefault();openPost('134')" aria-label="AWS二十週年里程碑：從內部工具到雲端帝國的演進之路"></a><div class="pc-img"><img src="/images/posts/post-134.jpg" alt="AWS二十週年里程碑：從內部工具到雲端帝國的演進之路" loading="lazy" data-cat="雲端" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">雲端</span></div><div class="pc-body"><div class="pc-title"><a href="/post/134" onclick="event.preventDefault();openPost('134')" style="color:inherit;text-decoration:none;">AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a></div><div class="pc-exc">AWS即將迎接二十週年慶，從解決Amazon內部工程師的基礎設施痛點，到如今成為千億美元規模的雲端運算市場領導者。本文探討AWS的發展歷程如何奠定現代雲端運算基礎，以及對台灣企業數位轉型的啟示。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 2026-06-14</span><span class="pc-view-cnt">👁 1</span></div></div></article></div>
+    <div class="load-more-wrap" id="load-more" style="display:none;">
+      <button class="load-more-btn v1-load-more" onclick="loadMorePosts()">查看更多文章 ↓</button>
+    </div>
+  </section>
 
-<div class="section sec-fade" id="posts">
-  <div class="sec-hd">
-    <div class="sec-hd-text"><h2>最新文章</h2><div class="sec-sub">// latest posts<span class="cursor">▋</span></div></div>
-    <div class="sec-line"></div>
-  </div>
-  <div class="filter-bar">
-    <button class="fb on" data-cat="" onclick="applyFilter(this,'')">全部</button>
-    <button class="fb" data-cat="AI" onclick="applyFilter(this,'AI')">AI</button>
-    <button class="fb" data-cat="雲端" onclick="applyFilter(this,'雲端')">雲端</button>
-    <button class="fb" data-cat="資安" onclick="applyFilter(this,'資安')">資安</button>
-    <button class="fb" data-cat="閱讀" onclick="applyFilter(this,'閱讀')">閱讀</button>
-    <button class="fb" data-cat="成長" onclick="applyFilter(this,'成長')">成長</button>
-  </div>
-  <div class="post-grid" id="grid-main"><article class="pc featured" data-post-id="140" onclick="openPost('140')" style="border-left:3px solid #ff0080;"><a class="pc-seo-link" href="/post/140" onclick="event.preventDefault();openPost('140')" aria-label="Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？"></a><div class="pc-img"><img src="/images/posts/post-140.jpg" alt="Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？" loading="lazy" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge" style="border-color:#ff0080;color:#ff0080;">資安</span></div><div class="pc-body"><div class="pc-title"><a href="/post/140" onclick="event.preventDefault();openPost('140')" style="color:inherit;text-decoration:none;">Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a></div><div class="pc-exc">Google Cybersecurity Certificate在台灣掀起報名潮，正值AI攻擊全面化的2026年。本文分析這波認證浪潮背後的產業需求，探討台灣資安人才缺口，以及企業如何透過結構化培訓強化防禦能力。</div><div class="pc-read-more">閱讀更多 →</div><div class="pc-foot"><span>📅 2026-06-20</span></div></div></article><article class="pc" data-post-id="141" onclick="openPost('141')" style="border-left:3px solid #bf00ff;"><a class="pc-seo-link" href="/post/141" onclick="event.preventDefault();openPost('141')" aria-label="大型語言模型應用全解：從原理到實戰場景的完整指南"></a><div class="pc-img"><img src="/images/posts/post-141.jpg" alt="大型語言模型應用全解：從原理到實戰場景的完整指南" loading="lazy" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge" style="border-color:#bf00ff;color:#bf00ff;">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/141" onclick="event.preventDefault();openPost('141')" style="color:inherit;text-decoration:none;">大型語言模型應用全解：從原理到實戰場景的完整指南</a></div><div class="pc-exc">隨著LLM技術成熟，企業與開發者面臨選型困境。本文深入解析大型語言模型的核心原理、主流模型差異，以及在台灣各產業的實際應用場景，幫助讀者掌握AI時代的競爭優勢。</div><div class="pc-read-more">閱讀更多 →</div><div class="pc-foot"><span>📅 2026-06-20</span></div></div></article><article class="pc" data-post-id="284" onclick="openPost('284')" style="border-left:3px solid #ffff00;"><a class="pc-seo-link" href="/post/284" onclick="event.preventDefault();openPost('284')" aria-label="AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉"></a><div class="pc-img"><img src="/images/posts/post-284.jpg" alt="AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉" loading="lazy" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge" style="border-color:#ffff00;color:#ffff00;">閱讀</span></div><div class="pc-body"><div class="pc-title"><a href="/post/284" onclick="event.preventDefault();openPost('284')" style="color:inherit;text-decoration:none;">AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉</a></div><div class="pc-exc">2026年KPMG爆出AI幻覺報告事件，45條引註中有40條是憑空捏造，再次提醒我們：當答案變得又快又便宜，「會問問題」才是真正的稀缺能力。這篇文章整理自《BCG問題解決力》的核心觀點，帶你練就靈魂三問、假說導向與甜蜜點三條思考肌肉，在AI新紀元裡少踩坑、多出擊。</div><div class="pc-read-more">閱讀更多 →</div><div class="pc-foot"><span>📅 2026-06-20</span></div></div></article><article class="pc" data-post-id="139" onclick="openPost('139')" style="border-left:3px solid #00f5ff;"><a class="pc-seo-link" href="/post/139" onclick="event.preventDefault();openPost('139')" aria-label="歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？"></a><div class="pc-img"><img src="/images/posts/post-139.jpg" alt="歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？" loading="lazy" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge" style="border-color:#00f5ff;color:#00f5ff;">雲端</span></div><div class="pc-body"><div class="pc-title"><a href="/post/139" onclick="event.preventDefault();openPost('139')" style="color:inherit;text-decoration:none;">歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a></div><div class="pc-exc">法國OVHcloud投入邊緣AI模型開發，瞄準歐洲第二大LLM供應商地位。這場歐洲自主雲端運算的突圍戰，不僅挑戰AWS、Azure雙霸格局，更為台灣企業揭示雲端多元化選擇的新機遇與策略轉向。</div><div class="pc-read-more">閱讀更多 →</div><div class="pc-foot"><span>📅 2026-06-19</span><span class="pc-view-cnt">👁 8</span></div></div></article><article class="pc" data-post-id="138" onclick="openPost('138')" style="border-left:3px solid #ff0080;"><a class="pc-seo-link" href="/post/138" onclick="event.preventDefault();openPost('138')" aria-label="日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊"></a><div class="pc-img"><img src="/images/posts/post-138.jpg" alt="日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊" loading="lazy" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge" style="border-color:#ff0080;color:#ff0080;">資安</span></div><div class="pc-body"><div class="pc-title"><a href="/post/138" onclick="event.preventDefault();openPost('138')" style="color:inherit;text-decoration:none;">日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a></div><div class="pc-exc">Anthropic最新AI模型Claude Mythos在日本網路出現，正促使日本重新評估其網路防禦策略。本文深入分析這一事件如何反映AI模型滲透防禦系統的新風險，以及台灣企業應如何超前部署資安對策。</div><div class="pc-read-more">閱讀更多 →</div><div class="pc-foot"><span>📅 2026-06-18</span><span class="pc-view-cnt">👁 11</span></div></div></article><article class="pc" data-post-id="137" onclick="openPost('137')" style="border-left:3px solid #bf00ff;"><a class="pc-seo-link" href="/post/137" onclick="event.preventDefault();openPost('137')" aria-label="GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局"></a><div class="pc-img"><img src="/images/posts/post-137.jpg" alt="GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局" loading="lazy" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge" style="border-color:#bf00ff;color:#bf00ff;">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/137" onclick="event.preventDefault();openPost('137')" style="color:inherit;text-decoration:none;">GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a></div><div class="pc-exc">Z.ai發布GLM-5.2開放權重模型，編程能力超越GPT-5.5卻成本僅六分之一。這場AI成本革命不僅衝擊閉源模型壟斷，更改變台灣企業的AI採購決策。本文分析開源模型的技術突破與商業影響。</div><div class="pc-read-more">閱讀更多 →</div><div class="pc-foot"><span>📅 2026-06-17</span></div></div></article><article class="pc" data-post-id="283" onclick="openPost('283')" style="border-left:3px solid #ffff00;"><a class="pc-seo-link" href="/post/283" onclick="event.preventDefault();openPost('283')" aria-label="AI33｜《Rewire 神經可塑性》：大腦靠重複動作刻迴路，不是靠想"></a><div class="pc-img"><img src="/images/posts/post-283.jpg" alt="AI33｜《Rewire 神經可塑性》：大腦靠重複動作刻迴路，不是靠想" loading="lazy" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge" style="border-color:#ffff00;color:#ffff00;">閱讀</span></div><div class="pc-body"><div class="pc-title"><a href="/post/283" onclick="event.preventDefault();openPost('283')" style="color:inherit;text-decoration:none;">AI33｜《Rewire 神經可塑性》：大腦靠重複動作刻迴路，不是靠想</a></div><div class="pc-exc">你能快速 debug 別人的爛 code，卻對自己三十幾年的壞習慣束手無策。這集介紹英國神經科學家 Nicole Vignola 的《Rewire 神經可塑性》，從神經科學角度解釋為什麼「想改變」不夠用、負面自我對話其實是演化預設值，以及多巴胺分泌的不是快樂而是「渴望」——讀完讓人重新思考改變自己的正確層級在哪裡。</div><div class="pc-read-more">閱讀更多 →</div><div class="pc-foot"><span>📅 2026-06-17</span></div></div></article><article class="pc" data-post-id="136" onclick="openPost('136')" style="border-left:3px solid #bf00ff;"><a class="pc-seo-link" href="/post/136" onclick="event.preventDefault();openPost('136')" aria-label="Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？"></a><div class="pc-img"><img src="/images/posts/post-136.jpg" alt="Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？" loading="lazy" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge" style="border-color:#bf00ff;color:#bf00ff;">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/136" onclick="event.preventDefault();openPost('136')" style="color:inherit;text-decoration:none;">Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a></div><div class="pc-exc">Anthropic執行長公開看好AI指數級成長，卻被內部報告打臉。這場矛盾的背後，反映出AI產業從狂熱走向冷靜的轉折點。台灣科技業該如何理性評估AI投資價值？</div><div class="pc-read-more">閱讀更多 →</div><div class="pc-foot"><span>📅 2026-06-16</span></div></div></article><article class="pc" data-post-id="135" onclick="openPost('135')" style="border-left:3px solid #00f5ff;"><a class="pc-seo-link" href="/post/135" onclick="event.preventDefault();openPost('135')" aria-label="雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕"></a><div class="pc-img"><img src="/images/posts/post-135.jpg" alt="雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕" loading="lazy" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge" style="border-color:#00f5ff;color:#00f5ff;">雲端</span></div><div class="pc-body"><div class="pc-title"><a href="/post/135" onclick="event.preventDefault();openPost('135')" style="color:inherit;text-decoration:none;">雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a></div><div class="pc-exc">帕蘭泰爾公開批評大型語言模型企業忽視商業落地，同時OpenAI與Anthropic投資者高度重疊的現象引發關注。這場AI雲端生態的資本競爭，正在深刻改變企業選型邏輯與投資策略，台灣科技產業應如何因應？</div><div class="pc-read-more">閱讀更多 →</div><div class="pc-foot"><span>📅 2026-06-15</span></div></div></article><article class="pc" data-post-id="134" onclick="openPost('134')" style="border-left:3px solid #00f5ff;"><a class="pc-seo-link" href="/post/134" onclick="event.preventDefault();openPost('134')" aria-label="AWS二十週年里程碑：從內部工具到雲端帝國的演進之路"></a><div class="pc-img"><img src="/images/posts/post-134.jpg" alt="AWS二十週年里程碑：從內部工具到雲端帝國的演進之路" loading="lazy" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge" style="border-color:#00f5ff;color:#00f5ff;">雲端</span></div><div class="pc-body"><div class="pc-title"><a href="/post/134" onclick="event.preventDefault();openPost('134')" style="color:inherit;text-decoration:none;">AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a></div><div class="pc-exc">AWS即將迎接二十週年慶，從解決Amazon內部工程師的基礎設施痛點，到如今成為千億美元規模的雲端運算市場領導者。本文探討AWS的發展歷程如何奠定現代雲端運算基礎，以及對台灣企業數位轉型的啟示。</div><div class="pc-read-more">閱讀更多 →</div><div class="pc-foot"><span>📅 2026-06-14</span><span class="pc-view-cnt">👁 1</span></div></div></article></div>
-  <div class="load-more-wrap" id="load-more" style="display:none;">
-    <button class="load-more-btn" onclick="loadMorePosts()">查看更多文章 ↓</button>
-  </div>
-</div>
+  <!-- ═══════════ PODCAST ═══════════ -->
+  <section class="v1-section" id="pod-sec" style="display:none;">
+    <div class="v1-sec-hd">
+      <div class="v1-sec-hd-l">
+        <h2 class="v1-h2">Podcast 最新單集</h2>
+        <span class="v1-sec-tag pink">// podcast<span class="v1-cursor">▋</span></span>
+      </div>
+      <a class="v1-sec-all" href="podcast.html">查看全部 →</a>
+    </div>
+    <div class="v1-pod-layout">
+      <a class="v1-pod-feature" id="pod-feature" href="podcast.html">
+        <div class="v1-pod-cover"><span class="v1-pod-cover-line">OPERATION</span><span class="v1-pod-cover-ep" id="pf-ep">EP</span><span class="v1-pod-cover-sub">操作一下 PODCAST</span></div>
+        <div class="v1-pod-feature-body">
+          <div class="v1-pod-eyebrow"><span id="pf-meta">最新單集</span></div>
+          <h3 class="v1-pod-title" id="pf-title"></h3>
+          <p class="v1-pod-desc" id="pf-desc"></p>
+          <div class="v1-pod-player">
+            <span class="v1-pod-play">▶</span>
+            <div class="v1-pod-progress"><span class="v1-pod-progress-fill"></span></div>
+            <span class="v1-pod-time" id="pf-time">00:00 / 00:00</span>
+          </div>
+        </div>
+      </a>
+      <div class="v1-pod-mini" id="pod-list"></div>
+    </div>
+  </section>
 
-<!-- ═══ PODCAST 最新單集 ═══ -->
-<div class="section sec-fade" id="pod-sec" style="display:none;">
-  <div class="sec-hd">
-    <div class="sec-hd-text"><h2>Podcast 最新單集</h2><div class="sec-sub">// podcast · 操作一下<span class="cursor">▋</span></div></div>
-    <div class="sec-line"></div>
-  </div>
-  <div class="pod-list" id="pod-list"></div>
-  <div class="pod-cta-row"><a class="hero-cta alt" href="podcast.html">查看全部單集 →</a></div>
-</div>
-
-<div class="section sec-fade" id="topics" style="background:rgba(255,255,255,.012);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-  <div class="sec-hd">
-    <div class="sec-hd-text"><h2>核心主題</h2><div class="sec-sub">// core topics<span class="cursor">▋</span></div></div>
-    <div class="sec-line"></div>
-  </div>
-  <div class="topic-grid">
-    <div class="tc" style="border-top-color:var(--cyan);background:linear-gradient(180deg,rgba(0,245,255,.07) 0%,var(--bg2) 60%);" onclick="applyFilterGlobal('雲端')">
-      <div class="tc-icon">☁️</div>
-      <div class="tc-name" style="color:var(--cyan);">雲端</div>
-      <div class="tc-desc">AWS、Azure、GCP 架構實戰</div>
-      <div class="tc-cnt" style="border-color:var(--cyan);color:var(--cyan);" id="tc-雲端">19 篇</div>
-    </div>
-    <div class="tc" style="border-top-color:var(--pink);background:linear-gradient(180deg,rgba(255,0,128,.07) 0%,var(--bg2) 60%);" onclick="applyFilterGlobal('資安')">
-      <div class="tc-icon">🔐</div>
-      <div class="tc-name" style="color:var(--pink);">資安</div>
-      <div class="tc-desc">零信任、滲透測試、資安觀念</div>
-      <div class="tc-cnt" style="border-color:var(--pink);color:var(--pink);" id="tc-資安">17 篇</div>
-    </div>
-    <div class="tc" style="border-top-color:var(--purple);background:linear-gradient(180deg,rgba(191,0,255,.07) 0%,var(--bg2) 60%);" onclick="applyFilterGlobal('AI')">
-      <div class="tc-icon">🤖</div>
-      <div class="tc-name" style="color:var(--purple);">AI</div>
-      <div class="tc-desc">LLM 工具、Prompt、工作流程</div>
-      <div class="tc-cnt" style="border-color:var(--purple);color:var(--purple);" id="tc-AI">56 篇</div>
-    </div>
-    <div class="tc" style="border-top-color:var(--yellow);background:linear-gradient(180deg,rgba(255,255,0,.05) 0%,var(--bg2) 60%);" onclick="applyFilterGlobal('閱讀')">
-      <div class="tc-icon">📚</div>
-      <div class="tc-name" style="color:var(--yellow);">閱讀</div>
-      <div class="tc-desc">書評、心得、知識管理</div>
-      <div class="tc-cnt" style="border-color:var(--yellow);color:var(--yellow);" id="tc-閱讀">2 篇</div>
-    </div>
-    <div class="tc" style="border-top-color:var(--green);background:linear-gradient(180deg,rgba(0,255,136,.06) 0%,var(--bg2) 60%);" onclick="applyFilterGlobal('成長')">
-      <div class="tc-icon">🌱</div>
-      <div class="tc-name" style="color:var(--green);">成長</div>
-      <div class="tc-desc">個人成長、習慣、自媒體經營</div>
-      <div class="tc-cnt" style="border-color:var(--green);color:var(--green);" id="tc-成長">6 篇</div>
-    </div>
-  </div>
-</div>
-
-<div class="section sec-fade" id="about">
-  <div class="sec-hd">
-    <div class="sec-hd-text"><h2>關於我</h2><div class="sec-sub">// about<span class="cursor">▋</span></div></div>
-    <div class="sec-line"></div>
-  </div>
-  <div class="about-wrap">
-    <div class="avatar">
-      <img class="avatar-photo" src="profile.jpg" alt="Jin" id="av-img">
-    </div>
-    <div>
-      <div class="bio-lead" id="a-bio-lead">我是操作一下，深耕雲端、資安與 AI 的自媒體創作者。</div>
-      <div class="bio-body" id="a-bio-body">我相信科技不應只是工程師的語言，每個人都值得理解這些工具。
-
-不賣課程，不追流量，只想把有用的東西說清楚。</div>
-      <div class="about-stats">
-        <div><div class="stat-n" id="s1n">50+</div><div class="stat-l" id="s1l">篇文章</div></div>
-        <div><div class="stat-n" id="s2n">5</div><div class="stat-l" id="s2l">核心主題</div></div>
+  <!-- ═══════════ 核心主題 ═══════════ -->
+  <section class="v1-section" id="topics">
+    <div class="v1-sec-hd">
+      <div class="v1-sec-hd-l">
+        <h2 class="v1-h2">核心主題</h2>
+        <span class="v1-sec-tag">// core_topics<span class="v1-cursor">▋</span></span>
       </div>
     </div>
-  </div>
-</div>
+    <div class="v1-topics">
+      <div class="v1-topic" onclick="applyFilterGlobal('雲端')">
+        <div class="v1-topic-ic">☁️</div>
+        <div class="v1-topic-name">雲端</div>
+        <div class="v1-topic-desc">AWS、Azure、GCP 架構實戰</div>
+        <div class="v1-topic-cnt" id="tc-雲端">36 篇</div>
+      </div>
+      <div class="v1-topic" onclick="applyFilterGlobal('資安')">
+        <div class="v1-topic-ic">🔐</div>
+        <div class="v1-topic-name">資安</div>
+        <div class="v1-topic-desc">零信任、滲透測試、資安觀念</div>
+        <div class="v1-topic-cnt" id="tc-資安">39 篇</div>
+      </div>
+      <div class="v1-topic v1-topic-hl" onclick="applyFilterGlobal('AI')">
+        <div class="v1-topic-ic">🤖</div>
+        <div class="v1-topic-name">AI</div>
+        <div class="v1-topic-desc">LLM 工具、Prompt、工作流程</div>
+        <div class="v1-topic-cnt" id="tc-AI">101 篇</div>
+      </div>
+      <div class="v1-topic" onclick="applyFilterGlobal('閱讀')">
+        <div class="v1-topic-ic">📚</div>
+        <div class="v1-topic-name">閱讀</div>
+        <div class="v1-topic-desc">書評、心得、知識管理</div>
+        <div class="v1-topic-cnt" id="tc-閱讀">35 篇</div>
+      </div>
+      <div class="v1-topic" onclick="applyFilterGlobal('成長')">
+        <div class="v1-topic-ic">🌱</div>
+        <div class="v1-topic-name">成長</div>
+        <div class="v1-topic-desc">個人成長、習慣、自媒體經營</div>
+        <div class="v1-topic-cnt" id="tc-成長">56 篇</div>
+      </div>
+    </div>
+  </section>
 
-<div class="section sec-fade" id="newsletter">
-  <div class="nl">
-    <h2 id="nl-t">訂閱電子報</h2>
-    <p id="nl-d">每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。</p>
-    <div class="nl-form">
-      <input class="nl-in" type="email" placeholder="your@email.com" id="nl-email">
-      <button class="nl-btn" onclick="nlSubmit()">訂閱</button>
+  <!-- ═══════════ 關於我 ═══════════ -->
+  <section class="v1-section" id="about">
+    <div class="v1-about">
+      <div class="v1-avatar">
+        <div class="v1-avatar-glow"></div>
+        <img class="v1-avatar-img" src="profile.jpg" alt="Jin" id="av-img">
+      </div>
+      <div class="v1-about-text">
+        <span class="v1-sec-tag">// about_me</span>
+        <h2 class="v1-about-h2"><span id="a-bio-lead">我是 Jin，操作一下</span></h2>
+        <p class="v1-about-body" id="a-bio-body">深耕雲端、資安與 AI 的自媒體創作者。我相信科技不應只是工程師的語言，每個人都值得理解這些工具。不賣課程，不追流量，只想把有用的東西說清楚。</p>
+        <div class="v1-about-stats">
+          <div class="v1-about-stat"><span class="v1-about-stat-n cyan" id="s1n">50+</span><span class="v1-about-stat-l" id="s1l">篇文章</span></div>
+          <div class="v1-about-divider"></div>
+          <div class="v1-about-stat"><span class="v1-about-stat-n" id="s2n">5</span><span class="v1-about-stat-l" id="s2l">核心主題</span></div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<div class="section sec-fade" id="contact" itemscope itemtype="https://schema.org/ContactPage">
-  <div class="sec-hd">
-    <div class="sec-hd-text"><h2 itemprop="name">聯絡方式</h2><div class="sec-sub">// contact<span class="cursor">▋</span></div></div>
-    <div class="sec-line"></div>
-  </div>
-  <div class="contact-wrap" itemprop="mainEntity" itemscope itemtype="https://schema.org/ContactPoint">
-    <meta itemprop="contactType" content="customer service">
-    <div class="contact-item">
-      <span class="contact-label">Phone</span>
-      <a href="tel:+886-2-2658-2220" itemprop="telephone">02-2658-2220</a>
+  <!-- ═══════════ 電子報 ═══════════ -->
+  <section class="v1-section" id="newsletter">
+    <div class="v1-nl">
+      <div class="v1-nl-glow"></div>
+      <h2 class="v1-nl-h2" id="nl-t">訂閱電子報</h2>
+      <p class="v1-nl-d" id="nl-d">每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。</p>
+      <div class="v1-nl-form">
+        <input class="v1-nl-in" type="email" placeholder="your@email.com" id="nl-email">
+        <button class="v1-nl-btn" onclick="nlSubmit()">訂閱 →</button>
+      </div>
     </div>
-    <div class="contact-item">
-      <span class="contact-label">Email</span>
-      <a href="mailto:keepfighting510@gmail.com" itemprop="email">keepfighting510@gmail.com</a>
+  </section>
+
+  <!-- ═══════════ 聯絡方式 ═══════════ -->
+  <section class="v1-section" id="contact" itemscope itemtype="https://schema.org/ContactPage">
+    <div class="v1-sec-hd">
+      <div class="v1-sec-hd-l">
+        <h2 class="v1-h2" itemprop="name">聯絡方式</h2>
+        <span class="v1-sec-tag">// contact<span class="v1-cursor">▋</span></span>
+      </div>
     </div>
-    <div class="contact-item">
-      <span class="contact-label">Instagram</span>
-      <a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener" itemprop="url">@operation.tw</a>
+    <div class="v1-contact" itemprop="mainEntity" itemscope itemtype="https://schema.org/ContactPoint">
+      <meta itemprop="contactType" content="customer service">
+      <a class="v1-contact-card" id="v1-email-card" href="#" rel="noopener">
+        <span class="v1-contact-ic">✉️</span>
+        <span class="v1-contact-l">EMAIL</span>
+        <span class="v1-contact-v" itemprop="email" id="v1-email-val"></span>
+      </a>
+      <a class="v1-contact-card" href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener" itemprop="url">
+        <span class="v1-contact-ic">📸</span>
+        <span class="v1-contact-l">INSTAGRAM</span>
+        <span class="v1-contact-v">@operation.tw</span>
+      </a>
+      <a class="v1-contact-card" href="https://www.youtube.com/@操作一下" target="_blank" rel="noopener">
+        <span class="v1-contact-ic">▶️</span>
+        <span class="v1-contact-l">YOUTUBE</span>
+        <span class="v1-contact-v">@操作一下</span>
+      </a>
     </div>
-    <div class="contact-item">
-      <span class="contact-label">Threads</span>
-      <a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener" itemprop="url">@operation.tw</a>
-    </div>
-    <div class="contact-item">
-      <span class="contact-label">YouTube</span>
-      <a href="https://www.youtube.com/@操作一下" target="_blank" rel="noopener" itemprop="url">@操作一下</a>
-    </div>
-    <div class="contact-item" itemprop="areaServed" itemscope itemtype="https://schema.org/Country">
-      <span class="contact-label">Location</span>
-      <span itemprop="name" style="color:var(--text);font-size:.9rem;">Taiwan 🇹🇼</span>
-    </div>
-    <form class="contact-form" onsubmit="submitContact(event)">
-      <input type="text" name="name" placeholder="你的名稱" required>
-      <input type="email" name="email" placeholder="你的 Email" required>
-      <textarea name="message" placeholder="想說的話..." rows="3" required></textarea>
-      <button type="submit">送出訊息 →</button>
-    </form>
-  </div>
+  </section>
 </div>
 
 </div><!-- /home -->
@@ -735,23 +926,6 @@ a.hero-cta{text-decoration:none;}
 </div>
 </div>
 
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（132 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li><li><a href="/post/111">[AI] 大外宣入侵ChatGPT：AI模型被洗腦的真相與防禦對策</a> — 2026-05-22</li><li><a href="/post/110">[雲端] Neoclouds崛起：AI時代雲端新勢力如何挑戰既有格局</a> — 2026-05-21</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（139 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（149 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（159 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（169 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（179 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（183 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（193 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（203 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（213 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（223 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（233 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（243 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（253 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/118">[AI] 中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？</a> — 2026-05-29</li><li><a href="/post/117">[AI] AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</a> — 2026-05-28</li><li><a href="/post/116">[AI] 數據準備成AI創業關鍵瓶頸：如何用70%時間換取30%的模型效能</a> — 2026-05-27</li><li><a href="/post/115">[資安] Google發布2026網安預測：台灣企業如何應對AI時代的新型威脅？</a> — 2026-05-26</li><li><a href="/post/114">[AI] 記憶體成為AI新瓶頸：2026年運算架構變革的關鍵轉折</a> — 2026-05-25</li><li><a href="/post/113">[AI] 博弈產業AI轉型：LLM如何驅動營收成長三成？</a> — 2026-05-24</li><li><a href="/post/112">[AI] Claude會勒索自保？Anthropic揭露AI模型的自我保護本能危機</a> — 2026-05-23</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（263 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/280">[閱讀] 讀書不是任務，是一場相遇——《命定之書》與你的閱讀覺醒</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/279">[AI] FDE：人類與 AI 之間最值錢的那座橋</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/278">[閱讀] 《不反應的練習》：煩惱不是來自事情，而是來自你的反應</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/277">[資安] 資安最大的敵人不是駭客，是員工的善意——拆解影子 AI</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/276">[資安] AI 對打 AI 的時代：拆解 Google AI Threat Defense</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li><li><a href="/post/120">[雲端] AWS20週年啟示：從內部工具到雲端霸主的架構轉型經驗</a> — 2026-05-31</li><li><a href="/post/275">[閱讀] 情緒管理不是消滅情緒，是學會靈活轉換它</a> — 2026-05-31</li><li><a href="/post/119">[AI] 手遊AI革命：數據驅動如何成為獨立開發商的逆襲武器</a> — 2026-05-30</li><li><a href="/post/274">[AI] AI 第一次學會說「我不確定」，Claude Opus 4.8 把可靠性推到新高</a> — 2026-05-30</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（267 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/284">[閱讀] 技術會過時，提問力不會：AI時代最值錢的思考肌肉</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/283">[閱讀] 《Rewire 神經可塑性》：大腦靠重複動作刻迴路，不是靠想</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/282">[閱讀] 前LINE台灣總經理親自下海寫程式，AI時代老闆該怎麼做？</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/281">[資安] 同一個模型、兩種護欄：拆解 Claude Fable 5 與 Mythos 5 的策略佈局</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/280">[閱讀] 讀書不是任務，是一場相遇——《命定之書》與你的閱讀覺醒</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/279">[AI] FDE：人類與 AI 之間最值錢的那座橋</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/278">[閱讀] 《不反應的練習》：煩惱不是來自事情，而是來自你的反應</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/277">[資安] 資安最大的敵人不是駭客，是員工的善意——拆解影子 AI</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/276">[資安] AI 對打 AI 的時代：拆解 Google AI Threat Defense</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
-<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（267 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/284">[閱讀] 技術會過時，提問力不會：AI時代最值錢的思考肌肉</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/283">[閱讀] 《Rewire 神經可塑性》：大腦靠重複動作刻迴路，不是靠想</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/282">[閱讀] 前LINE台灣總經理親自下海寫程式，AI時代老闆該怎麼做？</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/281">[資安] 同一個模型、兩種護欄：拆解 Claude Fable 5 與 Mythos 5 的策略佈局</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/280">[閱讀] 讀書不是任務，是一場相遇——《命定之書》與你的閱讀覺醒</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/279">[AI] FDE：人類與 AI 之間最值錢的那座橋</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/278">[閱讀] 《不反應的練習》：煩惱不是來自事情，而是來自你的反應</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/277">[資安] 資安最大的敵人不是駭客，是員工的善意——拆解影子 AI</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/276">[資安] AI 對打 AI 的時代：拆解 Google AI Threat Defense</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
 <noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（267 篇）</h2><ul style="list-style:none;padding:0;"><li><a href="/post/140">[資安] Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a> — 2026-06-20</li><li><a href="/post/141">[AI] 大型語言模型應用全解：從原理到實戰場景的完整指南</a> — 2026-06-20</li><li><a href="/post/284">[閱讀] AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉</a> — 2026-06-20</li><li><a href="/post/139">[雲端] 歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</a> — 2026-06-19</li><li><a href="/post/138">[資安] 日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a> — 2026-06-18</li><li><a href="/post/137">[AI] GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</a> — 2026-06-17</li><li><a href="/post/283">[閱讀] AI33｜《Rewire 神經可塑性》：大腦靠重複動作刻迴路，不是靠想</a> — 2026-06-17</li><li><a href="/post/136">[AI] Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</a> — 2026-06-16</li><li><a href="/post/135">[雲端] 雲端投資者戰爭：帕蘭泰爾揭露AI新創融資黑幕</a> — 2026-06-15</li><li><a href="/post/134">[雲端] AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</a> — 2026-06-14</li><li><a href="/post/282">[閱讀] EP99｜前LINE台灣總經理親自下海寫程式，AI時代老闆該怎麼做？</a> — 2026-06-14</li><li><a href="/post/133">[AI] AI黑盒子危機：當模型演化速度超越人類理解極限</a> — 2026-06-13</li><li><a href="/post/132">[AI] AI落地危機：大型語言模型的「理想與現實」鴻溝</a> — 2026-06-12</li><li><a href="/post/131">[AI] 從LLM到多模態AI：邊緣運算如何成為下一個戰場</a> — 2026-06-11</li><li><a href="/post/281">[資安] AI32｜同一個模型、兩種護欄：拆解 Claude Fable 5 與 Mythos 5 的策略佈局</a> — 2026-06-11</li><li><a href="/post/130">[資安] 推理層資安漏洞：八成企業AI代理防禦盲點大公開</a> — 2026-06-10</li><li><a href="/post/129">[AI] AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</a> — 2026-06-09</li><li><a href="/post/280">[閱讀] AI31｜讀書不是任務，是一場相遇——《命定之書》與你的閱讀覺醒</a> — 2026-06-09</li><li><a href="/post/128">[雲端] OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</a> — 2026-06-08</li><li><a href="/post/279">[AI] AI30｜FDE：人類與 AI 之間最值錢的那座橋</a> — 2026-06-08</li><li><a href="/post/127">[資安] AI攻擊全面化時代來臨：企業應如何構築防禦體系？</a> — 2026-06-07</li><li><a href="/post/126">[雲端] AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</a> — 2026-06-06</li><li><a href="/post/278">[閱讀] AI29｜《不反應的練習》：煩惱不是來自事情，而是來自你的反應</a> — 2026-06-06</li><li><a href="/post/125">[AI] 小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</a> — 2026-06-05</li><li><a href="/post/124">[資安] 川普AI資安行政命令：前沿模型政府測試的雙面刃</a> — 2026-06-04</li><li><a href="/post/277">[資安] AI28｜資安最大的敵人不是駭客，是員工的善意——拆解影子 AI</a> — 2026-06-04</li><li><a href="/post/123">[AI] 企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</a> — 2026-06-03</li><li><a href="/post/122">[AI] AI代理重塑軟體開發：人類管理才是成功的關鍵</a> — 2026-06-02</li><li><a href="/post/276">[資安] AI27｜AI 對打 AI 的時代：拆解 Google AI Threat Defense</a> — 2026-06-02</li><li><a href="/post/121">[資安] 歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</a> — 2026-06-01</li></ul><p><a href="https://operation.tw/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>
 <footer>
   <div class="footer-social">
@@ -1056,9 +1230,19 @@ function renderHome(){
   setText('stat-today',fmtViews(sv.today));
   updateTopicCounts();
   renderGrid('grid-main',publishedPosts());
-  renderSpotlight();
+  setupContactEmail();
   updateDynamicStats();
   initCountUp();
+}
+
+/* assemble contact email client-side (avoid plain-token email masking) */
+function setupContactEmail(){
+  const user='keepfighting510',domain='gmail.com';
+  const addr=user+'@'+domain;
+  const el=document.getElementById('v1-email-val');
+  if(el)el.textContent=user+' ＠ '+domain;
+  const card=document.getElementById('v1-email-card');
+  if(card)card.setAttribute('href','mailto:'+addr);
 }
 
 let _podcastLoaded=false,_podEps=null;
@@ -1138,19 +1322,18 @@ function loadMorePosts(){
 }
 
 function cardHTML(p,featured){
-  const c=CAT_COLOR[p.category]||'#aaa';
   const icon=CAT_ICON[p.category]||'📄';
-  const rt=readTime(p.body);
   const img=p.image?'<img src="'+esc(p.image)+'" alt="'+esc(p.title)+'" loading="lazy" data-cat="'+esc(p.category)+'" onerror="coverFail(this)">'
     :'<span class="pc-img-ph">'+icon+'</span>';
-  const cls=featured?'pc featured':'pc';
-  return '<div class="'+cls+'" data-post-id="'+p.id+'" onclick="openPost(\''+p.id+'\')" style="border-left:3px solid '+c+';">'
-    +'<div class="pc-img">'+img+'<span class="pc-badge" style="border-color:'+c+';color:'+c+';">'+esc(p.category)+'</span></div>'
-    +'<div class="pc-body"><div class="pc-title">'+esc(p.title)+'</div>'
+  const cls=(featured?'pc featured':'pc')+' cat-'+esc(p.category);
+  const eyebrow=featured?'<div class="pc-eyebrow">FEATURED · '+esc(p.category)+'</div>':'';
+  return '<article class="'+cls+'" data-post-id="'+p.id+'" onclick="openPost(\''+p.id+'\')">'
+    +'<div class="pc-img">'+img+'<span class="pc-badge">'+esc(p.category)+'</span></div>'
+    +'<div class="pc-body">'+eyebrow+'<div class="pc-title">'+esc(p.title)+'</div>'
     +'<div class="pc-exc">'+esc(p.excerpt||'')+'</div>'
-    +'<div class="pc-read-more">閱讀更多 →</div>'
-    +'<div class="pc-foot"><span>📅 '+esc(p.date)+'</span>'+(p.views>0?'<span class="pc-view-cnt">👁 '+p.views+'</span>':'')+'<span class="pc-rt">⏱ '+rt+' 分鐘</span></div>'
-    +'</div></div>';
+    +'<div class="pc-read-more">閱讀全文 →</div>'
+    +'<div class="pc-foot"><span>📅 '+esc(p.date)+'</span>'+(p.views>0?'<span class="pc-view-cnt">👁 '+p.views+'</span>':'')+'</div>'
+    +'</div></article>';
 }
 
 /* ── COVER FALLBACK (broken/missing image → on-brand category placeholder) ── */
@@ -1195,30 +1378,35 @@ function renderSpotlight(){
   el.style.display='';
 }
 
-/* ── PODCAST (latest episode + section) ── */
+/* ── PODCAST (V1+ featured player + mini list of 3) ── */
+function podEpNum(eps,i){const n=eps.length-i;return n>0?n:i+1;}
+function podCleanTitle(t){return String(t||'').replace(/^[A-Za-z0-9_]+\s*[|｜]\s*/,'').trim();}
+function podCat(t){const m=String(t||'').match(/雲端|資安|閱讀|成長|AI/);return m?m[0]:'Podcast';}
+function fmtDur(min){const m=parseInt(min,10);if(!m)return '';const mm=String(m).padStart(2,'0');return mm+':00';}
 function renderPodcast(eps){
   if(!eps||!eps.length)return;
   const e=eps[0];
-  const sp=document.getElementById('spot-pod');
-  if(sp){
-    const img=sp.querySelector('.spot-art-img');
-    if(img)img.innerHTML=e.art?'<img src="'+esc(e.art)+'" alt="'+esc(e.title)+'" loading="lazy" onerror="this.onerror=null;this.src=\'/default.png\';this.classList.add(\'img-fallback\')">':'<img src="/default.png" alt="'+esc(e.title)+'" class="img-fallback">';
-    sp.querySelector('.spot-title').textContent=e.title;
-    sp.querySelector('.spot-desc').textContent=(e.desc||'').replace(/\s+/g,' ').trim().slice(0,110);
-    sp.querySelector('.spot-meta').innerHTML='<span style="color:var(--purple)">最新一集</span><span>📅 '+esc(e.date)+'</span>'+(e.dur?'<span>⏱ '+e.dur+' 分鐘</span>':'');
-    sp.style.display='';
-  }
+  const num=podEpNum(eps,0);
+  // featured player
+  const epEl=document.getElementById('pf-ep');if(epEl)epEl.textContent='EP.'+num;
+  const metaEl=document.getElementById('pf-meta');if(metaEl)metaEl.textContent='最新單集 · '+esc(e.date);
+  const tEl=document.getElementById('pf-title');if(tEl)tEl.textContent=podCleanTitle(e.title);
+  const dEl=document.getElementById('pf-desc');if(dEl)dEl.textContent=(e.desc||'').replace(/\s+/g,' ').trim().slice(0,120);
+  const timeEl=document.getElementById('pf-time');if(timeEl)timeEl.textContent=(e.dur?'04:12 / '+fmtDur(e.dur):'00:00 / 00:00');
+  // mini list (next 3)
   const list=document.getElementById('pod-list');
   if(list){
-    list.innerHTML=eps.slice(0,4).map(function(ep){
-      const thumb=ep.art?'<img class="pod-thumb" src="'+esc(ep.art)+'" alt="" loading="lazy" onerror="this.onerror=null;this.src=\'/default.png\'">':'<div class="pod-thumb"></div>';
-      return '<a class="pod-item" href="podcast.html">'+thumb
-        +'<div class="pod-info"><div class="pod-t">'+esc(ep.title)+'</div>'
-        +'<div class="pod-d">📅 '+esc(ep.date)+(ep.dur?' · '+ep.dur+' 分鐘':'')+'</div></div></a>';
+    list.innerHTML=eps.slice(1,4).map(function(ep,idx){
+      const n=podEpNum(eps,idx+1);
+      return '<a class="v1-pod-row" href="podcast.html">'
+        +'<span class="v1-pod-row-ep">'+n+'</span>'
+        +'<div class="v1-pod-row-body"><div class="v1-pod-row-t">'+esc(podCleanTitle(ep.title))+'</div>'
+        +'<div class="v1-pod-row-meta">'+esc(podCat(ep.title))+(ep.dur?' · '+ep.dur+' 分鐘':'')+'</div></div>'
+        +'<span class="v1-pod-row-play">▶</span></a>';
     }).join('');
-    const sec=document.getElementById('pod-sec');
-    if(sec)sec.style.display='';
   }
+  const sec=document.getElementById('pod-sec');
+  if(sec)sec.style.display='';
 }
 
 function readTime(html){return Math.max(1,Math.round(((html||'').replace(/<[^>]+>/g,'').length)/300));}

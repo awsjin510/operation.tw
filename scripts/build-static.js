@@ -138,14 +138,14 @@ time{color:#6060a0;font-size:.85rem;}
 
 // ── 產生靜態文章卡片 HTML（注入 index.html 用）─────────────────────
 function cardHTML(p, featured = false) {
-  const c    = CAT_COLOR[p.category] || '#aaa';
   const icon = CAT_ICON[p.category]  || '📄';
   const imgTag = p.image
-    ? `<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')">`
+    ? `<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy" data-cat="${esc(p.category)}" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')">`
     : `<span class="pc-img-ph">${icon}</span>`;
-  const cls = featured ? 'pc featured' : 'pc';
+  const cls = (featured ? 'pc featured' : 'pc') + ' cat-' + esc(p.category);
+  const eyebrow = featured ? `<div class="pc-eyebrow">FEATURED · ${esc(p.category)}</div>` : '';
   const slug = p.slug || p.id;
-  return `<article class="${cls}" data-post-id="${p.id}" onclick="openPost('${p.id}')" style="border-left:3px solid ${c};"><a class="pc-seo-link" href="/post/${encodeURIComponent(slug)}" onclick="event.preventDefault();openPost('${p.id}')" aria-label="${esc(p.title)}"></a><div class="pc-img">${imgTag}<span class="pc-badge" style="border-color:${c};color:${c};">${esc(p.category)}</span></div><div class="pc-body"><div class="pc-title"><a href="/post/${encodeURIComponent(slug)}" onclick="event.preventDefault();openPost('${p.id}')" style="color:inherit;text-decoration:none;">${esc(p.title)}</a></div><div class="pc-exc">${esc(p.excerpt || '')}</div><div class="pc-read-more">閱讀更多 →</div><div class="pc-foot"><span>📅 ${esc(p.date)}</span>${p.views > 0 ? `<span class="pc-view-cnt">👁 ${p.views}</span>` : ''}</div></div></article>`;
+  return `<article class="${cls}" data-post-id="${p.id}" onclick="openPost('${p.id}')"><a class="pc-seo-link" href="/post/${encodeURIComponent(slug)}" onclick="event.preventDefault();openPost('${p.id}')" aria-label="${esc(p.title)}"></a><div class="pc-img">${imgTag}<span class="pc-badge">${esc(p.category)}</span></div><div class="pc-body">${eyebrow}<div class="pc-title"><a href="/post/${encodeURIComponent(slug)}" onclick="event.preventDefault();openPost('${p.id}')" style="color:inherit;text-decoration:none;">${esc(p.title)}</a></div><div class="pc-exc">${esc(p.excerpt || '')}</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 ${esc(p.date)}</span>${p.views > 0 ? `<span class="pc-view-cnt">👁 ${p.views}</span>` : ''}</div></div></article>`;
 }
 
 // ── 更新 sitemap.xml ────────────────────────────────────────────────
@@ -270,11 +270,15 @@ function patchIndexHtml(posts) {
   const skeletonRe = /<div class="post-grid" id="grid-main">[\s\S]*?<\/div>(?=\s*<div class="load-more-wrap")/;
   html = html.replace(skeletonRe, `<div class="post-grid" id="grid-main">${staticCards}</div>`);
 
-  // 5. 加入 .pc-seo-link 樣式（隱藏連結覆蓋層）
+  // 5. 加入 .pc-seo-link 樣式（隱藏連結覆蓋層）— 先移除舊的，確保冪等（避免每次 build 累積）
+  html = html.replace(/\/\* SEO link overlay \*\/\n?/g, '');
+  html = html.replace(/\n?\.pc-seo-link\{[^}]*\}/g, '');
   const seoLinkStyle = `\n.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}`;
   html = html.replace('/* NAV */', `/* SEO link overlay */${seoLinkStyle}\n/* NAV */`);
 
   // 6. 加入 noscript 文章列表（讓不跑 JS 的爬蟲也能看到全部文章）
+  // 先移除舊的 noscript-articles 區塊，確保冪等（避免每次 build 在 <footer> 前累積）
+  html = html.replace(/<noscript><section id="noscript-articles"[\s\S]*?<\/section><\/noscript>\n?/g, '');
   const noscriptList = posts.slice(0, 30).map(p => {
     const slug = p.slug || p.id;
     return `<li><a href="/post/${encodeURIComponent(slug)}">[${esc(p.category)}] ${esc(p.title)}</a> — ${esc(p.date)}</li>`;
