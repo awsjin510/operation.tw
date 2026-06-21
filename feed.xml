@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 21 Jun 2026 04:09:21 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 21 Jun 2026 04:15:56 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</title>
@@ -112,11 +112,27 @@
     <pubDate>Tue, 09 Jun 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
+    <title>讀書不是任務，是一場相遇——《命定之書》與你的閱讀覺醒</title>
+    <link>https://operation.tw/post/280</link>
+    <guid isPermaLink="true">https://operation.tw/post/280</guid>
+    <description>書架越堆越滿，卻越來越少真正讀完一本書？這不是你的問題，是現代知識焦慮的標配症狀。這篇文章整理自 Podcast 單集，介紹作者愛瑞克提出的「命定之書」概念與 ICE 閱讀法，帶你重新思考閱讀的意義——不是為了完成任務，而是找到那本在對的時間點徹底打開你思維的書。</description>
+    <category>閱讀</category>
+    <pubDate>Tue, 09 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
     <title>OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</title>
     <link>https://operation.tw/post/128</link>
     <guid isPermaLink="true">https://operation.tw/post/128</guid>
     <description>最新數據揭露OpenAI與Anthropic的投資者有42%重疊，這一現象背後反映出AI雲端投資生態的集中度風險。本文分析這種投資結構如何影響技術創新、市場競爭，以及台灣科技產業應如何因應。</description>
     <category>雲端</category>
+    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>FDE：人類與 AI 之間最值錢的那座橋</title>
+    <link>https://operation.tw/post/279</link>
+    <guid isPermaLink="true">https://operation.tw/post/279</guid>
+    <description>你公司花了 500 萬導入 AI 工具，半年後還在「導入中」？問題不在工具，在於從簽約到真正上線之間，有一個沒人填得起來的「死亡谷」。這篇文章拆解矽谷最新顯學職業 Forward Deployed Engineer（FDE）——他們在做什麼、為什麼年薪可達 1,200 萬台幣，以及就算你不是工程師，這個趨勢對你職涯的三個啟發。</description>
+    <category>AI</category>
     <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -136,36 +152,20 @@
     <pubDate>Sat, 06 Jun 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
+    <title>《不反應的練習》：煩惱不是來自事情，而是來自你的反應</title>
+    <link>https://operation.tw/post/278</link>
+    <guid isPermaLink="true">https://operation.tw/post/278</guid>
+    <description>手機一叫你就看、email 還沒讀就先緊張、腦袋在下班後繼續跟同事的眼神打架——這些消耗你的，不是事情本身，而是你對每件事太快做出的反應。這篇文章整理自 Podcast《操作一下》的閱讀單元，介紹日本僧侶草薙龍瞬的《不反應的練習》，帶你看懂四個過度反應陷阱，以及如何在日常生活中實際練習「不反應」。</description>
+    <category>閱讀</category>
+    <pubDate>Sat, 06 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
     <title>小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</title>
     <link>https://operation.tw/post/125</link>
     <guid isPermaLink="true">https://operation.tw/post/125</guid>
     <description>國泰金控棄用大模型，轉向開源小型語言模型(SLM)精準判斷客戶意圖。這個轉變不只是成本考量，更反映企業AI應用正從規模迷思走向實效主義。我們分析SLM為何成為金融業的新寵，以及這股趨勢對台灣科技企業的啟示。</description>
     <category>AI</category>
     <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>川普AI資安行政命令：前沿模型政府測試的雙面刃</title>
-    <link>https://operation.tw/post/124</link>
-    <guid isPermaLink="true">https://operation.tw/post/124</guid>
-    <description>美國川普政府簽署AI資安行政命令，要求科技業者自願提供前沿AI模型供政府安全測試。這道命令象徵全球AI治理從寬鬆走向嚴格，對台灣科技企業與AI發展路線圖都將帶來深遠影響。</description>
-    <category>資安</category>
-    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>企業AI驗證成本爆炸：隱藏的運算費用如何吞噬ROI？</title>
-    <link>https://operation.tw/post/123</link>
-    <guid isPermaLink="true">https://operation.tw/post/123</guid>
-    <description>最新數據揭露企業AI部署的黑暗面：模型驗證成本已超越運算費用本身，成為最大的隱憂。台灣企業在導入AI時，往往低估驗證投入，導致項目成本失控。本文深入分析驗證成本結構，並提供控制策略。</description>
-    <category>AI</category>
-    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI代理重塑軟體開發：人類管理才是成功的關鍵</title>
-    <link>https://operation.tw/post/122</link>
-    <guid isPermaLink="true">https://operation.tw/post/122</guid>
-    <description>AI代理在軟體開發中扮演越來越重要的角色，但專家警示不能完全自動化。本文分析AI代理的5大高價值貢獻面向，以及為何人類管理與監督仍是不可或缺的核心要素，助台灣開發團隊把握AI時代機遇。</description>
-    <category>AI</category>
-    <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
