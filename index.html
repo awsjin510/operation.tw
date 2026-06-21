@@ -219,9 +219,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(6,6,9,.72);backdrop-filter
 
 /* ── ABOUT ── */
 .v1-about{border-radius:18px;padding:44px;background:var(--v1-glass);border:1px solid rgba(0,229,255,.16);display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;}
-.v1-avatar{position:relative;width:160px;height:160px;flex-shrink:0;}
-.v1-avatar-glow{position:absolute;inset:-6px;border-radius:16px;background:linear-gradient(135deg,#00e5ff,#ff2bd6);opacity:.5;filter:blur(14px);}
-.v1-avatar-img{position:relative;width:160px;height:160px;border-radius:16px;object-fit:cover;filter:grayscale(.2) contrast(1.05);}
+.v1-avatar{position:relative;width:200px;height:200px;flex-shrink:0;}
+.v1-avatar-glow{position:absolute;inset:-6px;border-radius:18px;background:linear-gradient(135deg,#00e5ff,#ff2bd6);opacity:.5;filter:blur(14px);}
+.v1-avatar-img{position:relative;width:200px;height:200px;border-radius:18px;object-fit:cover;}
 .v1-about-text{display:flex;flex-direction:column;gap:14px;}
 .v1-about-h2{font-family:var(--font-display);font-weight:600;font-size:26px;color:var(--v1-text-primary);margin:0;}
 .v1-about-body{font-family:'Noto Sans TC',sans-serif;font-size:15px;line-height:1.9;color:var(--v1-text-muted);margin:0;}
@@ -260,6 +260,7 @@ footer{border-top:1px solid rgba(0,229,255,.12);background:rgba(6,6,9,.6);paddin
   .v1-pod-layout{grid-template-columns:1fr;}
   .v1-about{grid-template-columns:1fr;justify-items:center;text-align:center;}
   .v1-about-text{align-items:center;}
+  .v1-about-body{text-align:left;}
   .v1-topics{grid-template-columns:repeat(3,1fr);}
   .v1-h1{font-size:48px;}
 }
@@ -1212,12 +1213,12 @@ function renderHome(){
   setText('h-cta',h.cta);
   const q=document.getElementById('h-t1');if(q)q.setAttribute('data-text',h.t1||'操作');
   const a=D.about||{};
-  const bioRaw=a.bio||'';
-  const bioParts=bioRaw.split(/\n\s*\n/);
-  const lead=bioParts.shift()||'';
-  const body=bioParts.join('\n\n');
-  setHTML('a-bio-lead',lead.replace(/\n/g,'<br>'));
-  setHTML('a-bio-body',body.replace(/\n/g,'<br>'));
+  // bio：第一行當標題（h2），其餘進內文段落（15px）；濾掉空行與落單的「.」
+  const bioLines=(a.bio||'').split('\n').map(s=>s.trim()).filter(s=>s&&s!=='.'&&s!=='。');
+  const lead=bioLines.shift()||'我是 Jin，操作一下';
+  const body=bioLines.join('<br>');
+  setHTML('a-bio-lead',lead);
+  setHTML('a-bio-body',body);
   setText('s1n',a.s1n);setText('s1l',a.s1l);
   setText('s2n',a.s2n);setText('s2l',a.s2l);
   setText('nl-t',h.nlt);setText('nl-d',h.nld);
