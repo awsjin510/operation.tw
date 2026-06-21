@@ -847,7 +847,7 @@ a.hero-cta{text-decoration:none;}
       <h2 class="v1-nl-h2" id="nl-t">訂閱電子報</h2>
       <p class="v1-nl-d" id="nl-d">每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。</p>
       <div class="v1-nl-form">
-        <input class="v1-nl-in" type="email" placeholder="your@email.com" id="nl-email">
+        <input class="v1-nl-in" type="email" placeholder="your@email.com" id="nl-email" onkeydown="if(event.key==='Enter')nlSubmit()">
         <button class="v1-nl-btn" onclick="nlSubmit()">訂閱 →</button>
       </div>
     </div>
@@ -1564,13 +1564,29 @@ function resetMeta(){
 }
 
 /* ── NEWSLETTER ── */
-function nlSubmit(){
+async function nlSubmit(){
   const inp=document.getElementById('nl-email');
-  if(!inp.value.includes('@')){inp.style.borderColor='var(--pink)';return;}
-  inp.style.borderColor='';
   const btn=inp.nextElementSibling;
-  btn.textContent='訂閱成功 ✓';btn.style.background='var(--green)';inp.value='';
-  setTimeout(()=>{btn.textContent='訂閱';btn.style.background='';},3000);
+  const email=(inp.value||'').trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+    inp.style.borderColor='var(--pink)';inp.focus();return;
+  }
+  inp.style.borderColor='';
+  const orig=btn.dataset.orig||btn.textContent;btn.dataset.orig=orig;
+  btn.disabled=true;btn.style.opacity='.7';btn.textContent='送出中…';
+  try{
+    const {data,error}=await sb.rpc('subscribe_newsletter',{p_email:email});
+    if(error)throw error;
+    if(data==='invalid'){inp.style.borderColor='var(--pink)';btn.textContent='Email 格式錯誤';}
+    else{
+      btn.textContent=(data==='exists')?'你已訂閱過 ✓':'訂閱成功 ✓';
+      btn.style.background='var(--green)';btn.style.color='#07070d';inp.value='';
+    }
+  }catch(e){
+    console.warn('subscribe failed:',e);
+    btn.textContent='失敗，請稍後再試';btn.style.background='var(--pink)';btn.style.color='#fff';
+  }
+  setTimeout(()=>{btn.disabled=false;btn.style.opacity='';btn.textContent=orig;btn.style.background='';btn.style.color='';},3200);
 }
 
 /* ── CONTACT FORM ── */
