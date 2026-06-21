@@ -67,6 +67,7 @@ async function main() {
   for (const p of posts) idToTitle[p.id] = p.title;
 
   let updated = 0, skipped = 0, missing = 0;
+  const newTitleById = {}; // postId → 新標題（成功更新的）
   for (const [guid, postId] of Object.entries(state)) {
     if (!(typeof postId === 'number' && postId > 0)) continue;
     const code = guidToCode[guid];
@@ -98,7 +99,19 @@ async function main() {
       continue;
     }
     console.log(`  ✓ #${postId} → ${next}`);
+    newTitleById[postId] = next;
     updated++;
+  }
+
+  // 直接把成功的標題寫回 posts.json（不依賴可能 timeout 的 sync-posts-json）。
+  if (!DRY_RUN && Object.keys(newTitleById).length) {
+    const raw = JSON.parse(await fs.readFile(POSTS_JSON_PATH, 'utf8'));
+    for (const p of raw.posts || []) {
+      if (newTitleById[p.id]) p.title = newTitleById[p.id];
+    }
+    raw.generated = new Date().toISOString();
+    await fs.writeFile(POSTS_JSON_PATH, JSON.stringify(raw, null, 0));
+    console.log(`  ✓ 已直接更新 posts.json（${Object.keys(newTitleById).length} 篇標題）`);
   }
 
   console.log(`\n✅ 完成：${DRY_RUN ? '將更新' : '已更新'} ${updated} 篇，跳過（已有前綴）${skipped} 篇，無對應 ${missing} 篇`);
