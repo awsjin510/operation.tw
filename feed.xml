@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 21 Jun 2026 04:15:56 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 21 Jun 2026 04:19:12 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</title>
@@ -21,6 +21,14 @@
     <guid isPermaLink="true">https://operation.tw/post/141</guid>
     <description>隨著LLM技術成熟，企業與開發者面臨選型困境。本文深入解析大型語言模型的核心原理、主流模型差異，以及在台灣各產業的實際應用場景，幫助讀者掌握AI時代的競爭優勢。</description>
     <category>AI</category>
+    <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>技術會過時，提問力不會：AI時代最值錢的思考肌肉</title>
+    <link>https://operation.tw/post/284</link>
+    <guid isPermaLink="true">https://operation.tw/post/284</guid>
+    <description>2026年KPMG爆出AI幻覺報告事件，45條引註中有40條是憑空捏造，再次提醒我們：當答案變得又快又便宜，「會問問題」才是真正的稀缺能力。這篇文章整理自《BCG問題解決力》的核心觀點，帶你練就靈魂三問、假說導向與甜蜜點三條思考肌肉，在AI新紀元裡少踩坑、多出擊。</description>
+    <category>閱讀</category>
     <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -48,6 +56,14 @@
     <pubDate>Wed, 17 Jun 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
+    <title>《Rewire 神經可塑性》：大腦靠重複動作刻迴路，不是靠想</title>
+    <link>https://operation.tw/post/283</link>
+    <guid isPermaLink="true">https://operation.tw/post/283</guid>
+    <description>你能快速 debug 別人的爛 code，卻對自己三十幾年的壞習慣束手無策。這集介紹英國神經科學家 Nicole Vignola 的《Rewire 神經可塑性》，從神經科學角度解釋為什麼「想改變」不夠用、負面自我對話其實是演化預設值，以及多巴胺分泌的不是快樂而是「渴望」——讀完讓人重新思考改變自己的正確層級在哪裡。</description>
+    <category>閱讀</category>
+    <pubDate>Wed, 17 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
     <title>Anthropic內部報告打臉樂觀預期：AI成長天花板在哪？</title>
     <link>https://operation.tw/post/136</link>
     <guid isPermaLink="true">https://operation.tw/post/136</guid>
@@ -72,6 +88,14 @@
     <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
+    <title>前LINE台灣總經理親自下海寫程式，AI時代老闆該怎麼做？</title>
+    <link>https://operation.tw/post/282</link>
+    <guid isPermaLink="true">https://operation.tw/post/282</guid>
+    <description>前LINE台灣總經理陶韻智（Sting老師）過去一年獨力完成超過100個AI應用，從「動口不動手」的高階主管，變成親自下海實作的人。這集Podcast我們聊了他的新書《AI First自我升級革命》，談的不是Prompt技巧，而是在價值重分配的拐點，管理者如何重新定義自己的角色，搶在浪頭之前站穩位置。</description>
+    <category>閱讀</category>
+    <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
     <title>AI黑盒子危機：當模型演化速度超越人類理解極限</title>
     <link>https://operation.tw/post/133</link>
     <guid isPermaLink="true">https://operation.tw/post/133</guid>
@@ -93,6 +117,14 @@
     <guid isPermaLink="true">https://operation.tw/post/131</guid>
     <description>隨著影像採集需求回升，多模態AI正在重塑邊緣運算市場格局。本文分析為何企業正從雲端轉向邊緣部署，以及台灣供應鏈在這波轉型中的機會與挑戰。</description>
     <category>AI</category>
+    <pubDate>Thu, 11 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>同一個模型、兩種護欄：拆解 Claude Fable 5 與 Mythos 5 的策略佈局</title>
+    <link>https://operation.tw/post/281</link>
+    <guid isPermaLink="true">https://operation.tw/post/281</guid>
+    <description>Anthropic 在同一週完成天價募資、秘密遞交 IPO 文件、同時發表兩款旗艦模型——Claude Fable 5 與 Mythos 5。這兩個名字背後藏著一個關鍵邏輯：它們其實是同一個底層模型，差別只在安全護欄開不開。本文拆解命名策略、模型競爭力比較，以及 Fable 5 推出三天就爆發的「秘密削弱能力」爭議，帶你看懂 AI 安全與透明度之間的核心矛盾。</description>
+    <category>資安</category>
     <pubDate>Thu, 11 Jun 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -134,38 +166,6 @@
     <description>你公司花了 500 萬導入 AI 工具，半年後還在「導入中」？問題不在工具，在於從簽約到真正上線之間，有一個沒人填得起來的「死亡谷」。這篇文章拆解矽谷最新顯學職業 Forward Deployed Engineer（FDE）——他們在做什麼、為什麼年薪可達 1,200 萬台幣，以及就算你不是工程師，這個趨勢對你職涯的三個啟發。</description>
     <category>AI</category>
     <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI攻擊全面化時代來臨：企業應如何構築防禦體系？</title>
-    <link>https://operation.tw/post/127</link>
-    <guid isPermaLink="true">https://operation.tw/post/127</guid>
-    <description>2026年資安威脅已進入AI驅動的全新階段。從自動化攻擊到智能化社工詐騙，AI成為駭客的新利器。本文深入分析AI攻擊的具體形式、企業面臨的實戰挑戰，以及台灣組織應如何超前部署防禦策略。</description>
-    <category>資安</category>
-    <pubDate>Sun, 07 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI時代的雲端新勢力：Neoclouds如何挑戰AWS、Azure雙霸格局？</title>
-    <link>https://operation.tw/post/126</link>
-    <guid isPermaLink="true">https://operation.tw/post/126</guid>
-    <description>隨著AI應用爆發，傳統雲端三巨頭面臨新興勢力挑戰。Neoclouds作為專為AI優化的新興雲端平台，以更靈活的定價、更低的延遲和更強的AI原生支援，正在重塑亞太雲端市場。台灣企業該如何評估這波雲端變革的機會？</description>
-    <category>雲端</category>
-    <pubDate>Sat, 06 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>《不反應的練習》：煩惱不是來自事情，而是來自你的反應</title>
-    <link>https://operation.tw/post/278</link>
-    <guid isPermaLink="true">https://operation.tw/post/278</guid>
-    <description>手機一叫你就看、email 還沒讀就先緊張、腦袋在下班後繼續跟同事的眼神打架——這些消耗你的，不是事情本身，而是你對每件事太快做出的反應。這篇文章整理自 Podcast《操作一下》的閱讀單元，介紹日本僧侶草薙龍瞬的《不反應的練習》，帶你看懂四個過度反應陷阱，以及如何在日常生活中實際練習「不反應」。</description>
-    <category>閱讀</category>
-    <pubDate>Sat, 06 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</title>
-    <link>https://operation.tw/post/125</link>
-    <guid isPermaLink="true">https://operation.tw/post/125</guid>
-    <description>國泰金控棄用大模型，轉向開源小型語言模型(SLM)精準判斷客戶意圖。這個轉變不只是成本考量，更反映企業AI應用正從規模迷思走向實效主義。我們分析SLM為何成為金融業的新寵，以及這股趨勢對台灣科技企業的啟示。</description>
-    <category>AI</category>
-    <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
