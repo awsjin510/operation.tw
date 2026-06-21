@@ -107,24 +107,37 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           MAXB="${{ github.event.inputs.max_batches }}"
+          noprogress=0
           for i in $(seq 1 "$MAXB"); do
             echo "════════════ Batch $i/$MAXB ════════════"
             # 生成一批（模組路徑以 __dirname 為基準，從 repo 根目錄呼叫沒問題）
             OUT=$(node scripts/podcast-to-post.js 2>&1) || true
             echo "$OUT"
-            # 只要這批沒有「實際生成 ≥1 篇」（含沒有待處理單集／全部失敗）就結束迴圈
-            if ! echo "$OUT" | grep -qE "本次生成 [1-9]"; then
-              echo "✅ 沒有更多可生成的單集，補完。"
+            # 真的沒有待處理單集 → 全部補完，乾淨結束
+            if echo "$OUT" | grep -q "沒有待處理單集"; then
+              echo "✅ 已沒有待處理單集，全部補完。"
               break
             fi
+            # 這批沒有實際產出（暫時性錯誤／API 額度不足等）→ 不 commit，稍等重試
+            if ! echo "$OUT" | grep -qE "本次生成 [1-9]"; then
+              noprogress=$((noprogress + 1))
+              echo "⚠ 本批 0 產出（連續第 $noprogress 次）。可能是暫時性錯誤或 API 額度不足。"
+              if [ "$noprogress" -ge 3 ]; then
+                echo "❌ 連續 3 批沒有進度，判定卡住（多半是 Anthropic 額度用盡或持續性錯誤），標記失敗結束。"
+                exit 1
+              fi
+              sleep 15
+              continue
+            fi
+            noprogress=0
             # 安全網：以 Supabase 為準重建 posts.json，再產靜態頁（失敗都不致命）
             node scripts/sync-posts-json.js 2>&1 || echo "(sync 失敗，沿用上一步的 posts.json)"
             node scripts/build-static.js 2>&1 || echo "(build 失敗，略過)"
             git add posts.json images/ post/ sitemap.xml feed.xml llms.txt index.html
             [ -f podcast-posts.json ] && git add podcast-posts.json || true
             if git diff --cached --quiet; then
-              echo "本批無變更，結束。"
-              break
+              echo "本批無檔案變更，繼續。"
+              continue
             fi
             git commit -m "chore(podcast): backfill batch $i"
             pushed=0
