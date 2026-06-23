@@ -59,7 +59,52 @@ time{color:#6060a0;font-size:.85rem;}
     <time datetime="2026-04-15">2026-04-15</time>
     <img class="cover" src="https://operation.tw/images/posts/post-250.jpg" alt="AI04｜AI 代理元年來了：免費工具、自動化工作流與那個神秘的超強模型">
     <div class="excerpt"><p>2025 年可能真的是 AI 代理的元年。這篇文章整理自「操作一下」Podcast 最新一集，從免費跑起 Claude Code 的實用步驟、Google 與 Anthropic 的最新動態，到真正搞懂 AI 代理的本質差異——LLM、AI Workflow、AI Agent 到底差在哪？讀完你會對「讓 AI 幫你工作」這件事有更清楚的輪廓。</p></div>
-    <div class="post-body"><!--BODY:START--><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><p>如果你最近感覺 AI 新聞多到跟不上，你不孤單。每週都有新工具、新模型、新功能冒出來，但真正值得你花時間搞懂的，其實沒那麼多。這集 Podcast 我試著幫你篩掉雜訊，聚焦在三個真正有料的方向：免費開發工具的實用設定、這週幾個關鍵的 AI 大新聞，以及一個很多人混淆的核心概念——AI 代理到底是什麼。</p>
+
+<h2>免費跑 Claude Code：設定方法與工作流程習慣</h2>
+<p>Claude Code 是 Anthropic 推出的 AI 編程助手，但要免費使用它，需要一點繞路的技巧。透過 OpenRouter 做請求路由、搭配免費模型，你在 VS Code 裡幾個步驟就能讓它跑起來，不需要直接付費給 Anthropic。</p>
+<p>不過，光是「能用」還不夠。這集聊到三個讓 AI 真正幫到你的工作流程習慣，缺一不可：</p>
+<ul>
+  <li><strong>模組化結構</strong>：每支檔案盡量保持在 600 行以內，讓 AI 有足夠的上下文理解你的程式碼，不會一開口就迷失在一個龐大的檔案裡。</li>
+  <li><strong>先搞懂架構再下 prompt</strong>：在叫 AI 動手之前，你自己要先想清楚這個功能的結構是什麼。AI 是執行者，不是替你思考架構的人。</li>
+  <li><strong>一個任務、一個 Session，測完再 commit</strong>：不要讓 AI 在同一個 session 裡做太多事，完成一個任務、確認沒問題，再往下走。這樣出錯也好追。</li>
+</ul>
+<p>這三個習慣背後的邏輯是一致的：AI 很強，但它需要你給它清晰的邊界和結構，才能發揮最大效用。</p>
+
+<h2>這週的 AI 大新聞：從知識管理到神秘政府模型</h2>
+<p>新聞這塊這週特別熱鬧，幾個值得記下來的動態：</p>
+<ul>
+  <li><strong>Google Gemini × NotebookLM</strong>：兩者整合之後，知識管理的體驗終於變得更順，不用再在不同工具之間來回切換。</li>
+  <li><strong>Anthropic 的 Mythos 模型</strong>：這個最讓人好奇。Mythos 強大到能找出存在長達 27 年的軟體安全漏洞，但 Anthropic 並沒有公開發布它——而是透過一個叫 Project Glasswing 的計畫，只提供給特定政府機構與大型企業使用。能力越強、越不公開，這個邏輯讓人既覺得合理，又隱隱有點毛。</li>
+  <li><strong>其他動態</strong>：GenSpark 現在可以完整控制桌面、Perplexity 能連上銀行帳戶進行財務分析、ChatGPT 也補上了每月 100 美元的中間方案——AI 工具的能力邊界正在快速往外擴張。</li>
+</ul>
+
+<h2>真正搞懂 AI 代理：LLM、Workflow、Agent 差在哪</h2>
+<p>這是這集我覺得最值得花時間說清楚的部分。很多人把這三個詞混著用，但它們本質上差很多：</p>
+<ul>
+  <li><strong>LLM（大型語言模型）</strong>：「有腦無手」。它能理解、能回答，但它自己不會去做任何事。</li>
+  <li><strong>AI Workflow</strong>：給了 LLM 工具和流程，但每一步還是你在指路，它照著走。</li>
+  <li><strong>AI Agent（AI 代理）</strong>：你只給它目標，剩下的它自己想辦法——觀察環境、規劃步驟、執行、從結果中學習，整個閉環都自己跑完。</li>
+</ul>
+<p>這集用了一個旅行社的比喻，我覺得很好懂：你跟旅行社說「我想去日本賞櫻花」，真正的 AI Agent 就像一個頂級的旅行顧問，會幫你查機票、訂飯店、規劃行程、甚至提醒你帶什麼——你不需要一步步發號施令，只要說清楚你的目標就好。</p>
+
+<h2>對你來說，這代表什麼</h2>
+<p>AI 代理的概念聽起來很遠，但它帶來的影響其實已經在發生了。Perplexity 連上你的銀行帳戶、GenSpark 控制你的桌面——這些都是 AI 從「回答問題」走向「幫你做事」的具體案例。</p>
+<p>作為使用者，現在最值得建立的習慣，是學會「定義目標」而不是「下指令」。你越能清楚說出你要什麼結果，AI 就越能幫你走完中間那些重複性的步驟，把你的時間還給真正需要判斷力和創造力的工作。</p>
+<p>但這集最後也提到一個重要的提醒：能力越大，責任越大。怎麼用、用在哪、授權到什麼程度——這些問題的答案，還是你說了算。AI 是工具，方向盤還在你手上。</p>
+<hr>
+<p>📚 <strong>同主題的其他單集 / 文章，延伸聽下去：</strong></p>
+<ul>
+<li><a href="/post/140">Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</a></li>
+<li><a href="/post/138">日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</a></li>
+<li><a href="/post/130">推理層資安漏洞：八成企業AI代理防禦盲點大公開</a></li>
+</ul>
+<p>🎙 <strong>這篇文章延伸自 Podcast《操作一下》。</strong>想用聽的，完整一集在這裡：</p>
+<ul>
+<li><a href="https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/7f002158-f1e7-4542-b1a8-acfd8a1433ef" target="_blank" rel="noopener">在 Apple Podcast 收聽這集</a></li>
+<li><a href="https://open.spotify.com/search/AI04_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20AI%20%E4%BB%A3%E7%90%86%E5%85%83%E5%B9%B4%EF%BC%9A%E5%85%8D%E8%B2%BB%E9%96%8B%E7%99%BC%E5%B7%A5%E5%85%B7%E3%80%81%E8%87%AA%E5%8B%95%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E3%80%81%E9%82%84%E6%9C%89%E9%82%A3%E5%80%8B%E4%B8%8D%E6%95%A2%E5%85%AC%E9%96%8B%E7%9A%84%E8%B6%85%E5%BC%B7%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener">在 Spotify 收聽</a></li>
+<li><a href="/podcast.html">瀏覽所有單集 →</a></li>
+</ul><!--BODY:END--></div>
     <a class="cta" href="/">← 在操作一下看完整體驗 →</a>
   </article>
 </div>
