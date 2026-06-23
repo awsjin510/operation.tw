@@ -5,16 +5,8 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 23 Jun 2026 04:42:36 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 23 Jun 2026 13:16:45 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
-  <item>
-    <title>AI記憶體戰爭升溫：SK海力士超越三星背後的雲端晶片革命</title>
-    <link>https://operation.tw/post/285</link>
-    <guid isPermaLink="true">https://operation.tw/post/285</guid>
-    <description>SK海力士市值超越三星電子，背後是AI浪潮對高效能記憶體的爆炸性需求。這場晶片爭奪戰如何重塑亞太雲端生態？台灣半導體產業又將面臨什麼機遇與挑戰？</description>
-    <category>雲端</category>
-    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
   <item>
     <title>Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</title>
     <link>https://operation.tw/post/140</link>
@@ -165,6 +157,14 @@
     <guid isPermaLink="true">https://operation.tw/post/128</guid>
     <description>最新數據揭露OpenAI與Anthropic的投資者有42%重疊，這一現象背後反映出AI雲端投資生態的集中度風險。本文分析這種投資結構如何影響技術創新、市場競爭，以及台灣科技產業應如何因應。</description>
     <category>雲端</category>
+    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI30｜FDE：人類與 AI 之間最值錢的那座橋</title>
+    <link>https://operation.tw/post/279</link>
+    <guid isPermaLink="true">https://operation.tw/post/279</guid>
+    <description>你公司花了 500 萬導入 AI 工具，半年後還在「導入中」？問題不在工具，在於從簽約到真正上線之間，有一個沒人填得起來的「死亡谷」。這篇文章拆解矽谷最新顯學職業 Forward Deployed Engineer（FDE）——他們在做什麼、為什麼年薪可達 1,200 萬台幣，以及就算你不是工程師，這個趨勢對你職涯的三個啟發。</description>
+    <category>AI</category>
     <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>

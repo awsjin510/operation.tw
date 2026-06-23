@@ -1118,6 +1118,9 @@ function getCache(){
 function setCache(posts,settings){
   try{localStorage.setItem(CACHE_KEY,JSON.stringify({ts:Date.now(),posts:posts,settings:settings}));}catch(e){}
 }
+// 文章內文快取（localStorage）：內文發布後幾乎不變，快取後不再重打 Supabase（省 egress）
+function getBodyCache(id){try{return localStorage.getItem('op_body_'+id)||null;}catch(e){return null;}}
+function setBodyCache(id,html){try{localStorage.setItem('op_body_'+id,html);}catch(e){/* quota 滿就略過 */}}
 
 // ── DB INIT ──
 async function initDB(){
@@ -1147,20 +1150,13 @@ async function initDB(){
     }catch(e){console.warn('posts.json fetch failed:',e);}
   }
 
-  // 3) 背景從 Supabase 同步最新文章 + 設定（確保手動新增/修改立即可見）
-  Promise.all([
-    sb.from('posts').select('id,title,category,date,status,excerpt,image,views').eq('status','published').order('date',{ascending:false}),
-    sb.from('settings').select('*')
-  ]).then(([{data:freshPosts,error:pe},{data:settings,error:se}])=>{
-    if(se)console.warn('Settings query error:',se);
+  // 3) 背景只同步「設定」(hp/about/footer)。文章清單一律用靜態 posts.json，
+  //    不再每次載入就向 Supabase 全表撈 267 篇 → 大幅降低 API egress。
+  sb.from('settings').select('*').then(({data:settings,error:se})=>{
+    if(se){console.warn('Settings query error:',se);return;}
     const sm={};(settings||[]).forEach(s=>{sm[s.key]=s.value;});
-    let merged=D.posts||[];
-    if(!pe&&freshPosts){
-      const bodyMap=new Map((D.posts||[]).filter(p=>p.body).map(p=>[p.id,p.body]));
-      merged=freshPosts.map(p=>({...p,body:bodyMap.get(p.id)}));
-    }
-    applyData(merged,sm);
-    setCache(merged,sm);
+    applyData(D.posts||[],sm);
+    setCache(D.posts||[],sm);
     renderHome();
   });
 
@@ -1445,26 +1441,28 @@ async function openPost(id){
   );
   const cover=document.getElementById('a-cover');
   if(p.image){cover.onerror=function(){this.onerror=null;this.src='/default.png';this.classList.add('img-fallback');};cover.src=p.image;cover.style.display='block';}else{cover.style.display='none';}
-  // Load body: 先顯示快取，一律去 Supabase 拉最新版（確保手動更新立即可見）
+  // Load body：優先用記憶體 / localStorage 快取；只有沒快取時才向 Supabase 拉一次
+  // （內文發布後幾乎不變 → 快取後不再重打 API，省 egress）
   const bodyEl=document.getElementById('a-body');
+  if(!p.body){const cb=getBodyCache(p.id);if(cb)p.body=cb;}
   if(p.body){
     setText('a-rt',readTime(p.body));
     bodyEl.innerHTML=safeHTML(p.body)||'<p style="color:var(--dim)">（尚無內容）</p>';
   }else{
     bodyEl.innerHTML='<div style="text-align:center;padding:40px;color:var(--dim);">載入中…</div>';
+    try{
+      const ctrl=new AbortController();
+      const timer=setTimeout(()=>ctrl.abort(),10000);
+      const {data,error}=await sb.from('posts').select('body').eq('id',p.id).single().abortSignal(ctrl.signal);
+      clearTimeout(timer);
+      if(!error&&data&&data.body){p.body=data.body;setBodyCache(p.id,data.body);}
+    }catch(e){
+      console.warn('Failed to load post body:',e);
+      if(!p.body)bodyEl.innerHTML='<p style="color:var(--pink)">內容載入失敗，請稍後再試。</p>';
+    }
+    setText('a-rt',readTime(p.body));
+    if(p.body)bodyEl.innerHTML=safeHTML(p.body)||'<p style="color:var(--dim)">（尚無內容）</p>';
   }
-  try{
-    const ctrl=new AbortController();
-    const timer=setTimeout(()=>ctrl.abort(),10000);
-    const {data,error}=await sb.from('posts').select('body').eq('id',p.id).single().abortSignal(ctrl.signal);
-    clearTimeout(timer);
-    if(!error&&data&&data.body)p.body=data.body;
-  }catch(e){
-    console.warn('Failed to load post body:',e);
-    if(!p.body)bodyEl.innerHTML='<p style="color:var(--pink)">內容載入失敗，請稍後再試。</p>';
-  }
-  setText('a-rt',readTime(p.body));
-  if(p.body)bodyEl.innerHTML=safeHTML(p.body)||'<p style="color:var(--dim)">（尚無內容）</p>';
   const rel=publishedPosts(p.category).filter(x=>x.id!=id).slice(0,3);
   const rg=document.getElementById('rel-grid'),rs=document.getElementById('related');
   if(rel.length){
