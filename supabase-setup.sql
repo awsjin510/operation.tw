@@ -51,7 +51,8 @@ security invoker
 set search_path = public
 as $$
   select coalesce(auth.jwt() ->> 'email', '') in (
-    'awsjin510@gmail.com'  -- 管理員 Email
+    'awsjin510@gmail.com',      -- 管理員 Email
+    'keepfighting510@gmail.com' -- 管理員 Email（後台登入用）
   );
 $$;
 
@@ -193,8 +194,8 @@ drop policy if exists "subscribers_admin_all" on public.subscribers;
 create policy "subscribers_admin_all"
   on public.subscribers for all
   to authenticated
-  using (auth.jwt() ->> 'email' = 'keepfighting510@gmail.com')
-  with check (auth.jwt() ->> 'email' = 'keepfighting510@gmail.com');
+  using (public.is_admin())
+  with check (public.is_admin());
 
 -- 8.3 RPC：訂閱電子報（anon 可呼叫；重複訂閱不報錯、不外洩是否已存在）
 --      回傳 'subscribed'（新訂閱）/ 'exists'（已訂閱）/ 'invalid'（格式錯誤）
