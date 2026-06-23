@@ -5,6 +5,7 @@
  */
 
 const fs = require('fs').promises;
+const fsSync = require('fs');
 const path = require('path');
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
@@ -59,13 +60,19 @@ async function main() {
     }
   }
 
-  const postsJsonPath = path.join(__dirname, '..', 'posts.json');
+  const ROOT = path.join(__dirname, '..');
+  const postsJsonPath = path.join(ROOT, 'posts.json');
 
   // 過濾掉 data URL（舊文章可能把 base64 圖片直接存到 image 欄位，會造成 MB 級膨脹）
-  const lean = posts.map(p => ({
-    ...p,
-    image: (p.image && p.image.startsWith('/')) ? p.image : '',
-  }));
+  const lean = posts.map(p => {
+    let image = (p.image && p.image.startsWith('/')) ? p.image : '';
+    // 自我修復：Supabase 沒有有效路徑、但 repo 內有對應封面檔時，補回連結。
+    // 避免 sync 把「封面檔還在、但 Supabase image 欄位是空/Storage URL」的封面洗掉。
+    if (!image && fsSync.existsSync(path.join(ROOT, 'images', 'posts', `post-${p.id}.jpg`))) {
+      image = `/images/posts/post-${p.id}.jpg`;
+    }
+    return { ...p, image };
+  });
 
   await fs.writeFile(
     postsJsonPath,
