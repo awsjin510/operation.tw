@@ -207,7 +207,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(6,6,9,.72);backdrop-filter
 
 /* ── TOPICS ── */
 .v1-topics{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
-.v1-topic{border-radius:14px;padding:24px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(0,229,255,.14);cursor:pointer;transition:border-color .2s,box-shadow .2s;display:flex;flex-direction:column;gap:8px;}
+.v1-topic{position:relative;border-radius:14px;padding:24px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(0,229,255,.14);cursor:pointer;transition:border-color .2s,box-shadow .2s;display:flex;flex-direction:column;gap:8px;}
+.v1-topic-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}
 .v1-topic:hover{border-color:rgba(0,229,255,.5);box-shadow:0 0 24px rgba(0,229,255,.12);}
 .v1-topic-ic{font-size:26px;}
 .v1-topic-name{font-family:'Noto Sans TC',sans-serif;font-weight:700;font-size:17px;color:#ecedf5;}
@@ -788,30 +789,35 @@ a.hero-cta{text-decoration:none;}
     </div>
     <div class="v1-topics">
       <div class="v1-topic" onclick="applyFilterGlobal('雲端')">
+        <a class="v1-topic-link" href="/category/雲端" aria-label="雲端文章彙整"></a>
         <div class="v1-topic-ic">☁️</div>
         <div class="v1-topic-name">雲端</div>
         <div class="v1-topic-desc">AWS、Azure、GCP 架構實戰</div>
         <div class="v1-topic-cnt" id="tc-雲端">36 篇</div>
       </div>
       <div class="v1-topic" onclick="applyFilterGlobal('資安')">
+        <a class="v1-topic-link" href="/category/資安" aria-label="資安文章彙整"></a>
         <div class="v1-topic-ic">🔐</div>
         <div class="v1-topic-name">資安</div>
         <div class="v1-topic-desc">零信任、滲透測試、資安觀念</div>
         <div class="v1-topic-cnt" id="tc-資安">39 篇</div>
       </div>
       <div class="v1-topic v1-topic-hl" onclick="applyFilterGlobal('AI')">
+        <a class="v1-topic-link" href="/category/AI" aria-label="AI文章彙整"></a>
         <div class="v1-topic-ic">🤖</div>
         <div class="v1-topic-name">AI</div>
         <div class="v1-topic-desc">LLM 工具、Prompt、工作流程</div>
         <div class="v1-topic-cnt" id="tc-AI">101 篇</div>
       </div>
       <div class="v1-topic" onclick="applyFilterGlobal('閱讀')">
+        <a class="v1-topic-link" href="/category/閱讀" aria-label="閱讀文章彙整"></a>
         <div class="v1-topic-ic">📚</div>
         <div class="v1-topic-name">閱讀</div>
         <div class="v1-topic-desc">書評、心得、知識管理</div>
         <div class="v1-topic-cnt" id="tc-閱讀">35 篇</div>
       </div>
       <div class="v1-topic" onclick="applyFilterGlobal('成長')">
+        <a class="v1-topic-link" href="/category/成長" aria-label="成長文章彙整"></a>
         <div class="v1-topic-ic">🌱</div>
         <div class="v1-topic-name">成長</div>
         <div class="v1-topic-desc">個人成長、習慣、自媒體經營</div>

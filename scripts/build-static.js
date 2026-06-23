@@ -15,6 +15,14 @@ const SITE_URL = 'https://operation.tw';
 const CAT_COLOR = { AI: '#bf00ff', 雲端: '#00f5ff', 資安: '#ff0080', 閱讀: '#ffff00', 成長: '#00ff88' };
 const CAT_ICON  = { AI: '🤖', 雲端: '☁️', 資安: '🔐', 閱讀: '📚', 成長: '🌱' };
 const PODCAST_SHOW_URL = 'https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl';
+// 分類主題頁（Hub）的描述文案，供 /category/{類} 的 meta / H1 副標使用
+const CAT_DESC = {
+  雲端: 'AWS、Azure、GCP 架構實戰與雲端策略',
+  資安: '零信任、滲透測試、資安觀念與威脅情報',
+  AI: 'LLM 工具、Prompt、AI 工作流程與趨勢',
+  閱讀: '書評、讀書心得與知識管理',
+  成長: '個人成長、習慣養成與自媒體經營'
+};
 
 // 從標題開頭抓 Podcast 集數碼（AI35 / EP99…），文章與單集標題都用得到
 function episodeCode(title) {
@@ -214,6 +222,119 @@ time{color:#6060a0;font-size:.85rem;}
 </html>`;
 }
 
+// ── 產生分類主題頁 /category/{類}/index.html（Pillar–Cluster 彙整頁）──
+// 把同一主題的所有文章互連在一起，建立主題權重、讓長尾文章更易被索引與引用。
+function generateCategoryPage(cat, posts) {
+  const url    = `${SITE_URL}/category/${encodeURIComponent(cat)}`;
+  const icon   = CAT_ICON[cat]  || '📂';
+  const color  = CAT_COLOR[cat] || '#00f5ff';
+  const lead   = CAT_DESC[cat]  || `操作一下「${cat}」主題文章`;
+  const desc   = `${lead}。操作一下「${cat}」主題共 ${posts.length} 篇文章彙整。`;
+  const sorted = posts.slice().sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+
+  const itemList = {
+    '@type': 'ItemList',
+    numberOfItems: sorted.length,
+    itemListElement: sorted.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${SITE_URL}/post/${encodeURIComponent(p.slug || p.id)}`,
+      name: p.title
+    }))
+  };
+  const graph = [
+    {
+      '@type': 'CollectionPage',
+      '@id': url,
+      url,
+      name: `${cat}文章彙整 | 操作一下`,
+      description: lead,
+      inLanguage: 'zh-TW',
+      isPartOf: { '@type': 'WebSite', name: '操作一下', url: SITE_URL },
+      mainEntity: itemList
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首頁', item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: cat,   item: url }
+      ]
+    }
+  ];
+  const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+
+  const otherCats = Object.keys(CAT_ICON)
+    .filter(c => c !== cat)
+    .map(c => `<a class="catnav-link" href="/category/${encodeURIComponent(c)}">${CAT_ICON[c]} ${esc(c)}</a>`)
+    .join('');
+
+  const list = sorted.map(p => {
+    const slug = p.slug || p.id;
+    return `<li class="ci"><a class="ci-t" href="/post/${encodeURIComponent(slug)}">${esc(p.title)}</a>`
+      + `<div class="ci-meta"><time datetime="${esc(p.date)}">${esc(p.date)}</time>${p.views > 0 ? ` · 👁 ${p.views}` : ''}</div>`
+      + (p.excerpt ? `<p class="ci-exc">${esc(p.excerpt)}</p>` : '')
+      + `</li>`;
+  }).join('\n');
+
+  return `<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${esc(cat)}文章彙整（共 ${posts.length} 篇）| 操作一下</title>
+<meta name="description" content="${esc(desc)}">
+<link rel="canonical" href="${url}">
+<meta property="og:type"        content="website">
+<meta property="og:title"       content="${esc(cat)}文章彙整 | 操作一下">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:url"         content="${url}">
+<meta property="og:image"       content="${SITE_URL}/default.png">
+<meta property="og:locale"      content="zh_TW">
+<meta name="twitter:card"        content="summary">
+<meta name="twitter:title"       content="${esc(cat)}文章彙整 | 操作一下">
+<meta name="twitter:description" content="${esc(desc)}">
+<script type="application/ld+json">${schema}</script>
+<style>
+body{font-family:system-ui,sans-serif;background:#050510;color:#e0e0ff;margin:0;padding:24px;line-height:1.7;}
+.wrap{max-width:760px;margin:0 auto;}
+nav{margin-bottom:24px;font-size:.85rem;color:#6060a0;}
+nav a{color:#00f5ff;text-decoration:none;}
+.hero{border:1px solid ${color}44;border-radius:12px;padding:24px;background:linear-gradient(180deg,${color}14,transparent);margin-bottom:28px;}
+.hero h1{font-size:1.7rem;margin:0 0 8px;color:#fff;}
+.hero p{margin:0;color:#b8b8e0;}
+.count{color:${color};font-weight:600;}
+ul.list{list-style:none;padding:0;margin:0;}
+.ci{padding:18px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+.ci-t{font-size:1.12rem;color:#fff;text-decoration:none;font-weight:600;}
+.ci-t:hover{color:${color};}
+.ci-meta{color:#6060a0;font-size:.82rem;margin:4px 0 6px;}
+.ci-exc{margin:0;color:#a8a8cc;font-size:.95rem;}
+.catnav{margin:32px 0 8px;display:flex;flex-wrap:wrap;gap:10px;}
+.catnav-link{display:inline-block;padding:6px 14px;border:1px solid rgba(255,255,255,.15);border-radius:20px;color:#c0c0e0;text-decoration:none;font-size:.9rem;}
+.catnav-link:hover{border-color:${color};color:${color};}
+.home{display:inline-block;margin-top:20px;color:#00f5ff;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="/">操作一下</a> › ${esc(cat)}</nav>
+  <header class="hero">
+    <h1>${icon} ${esc(cat)}</h1>
+    <p>${esc(lead)}</p>
+    <p style="margin-top:10px;">共 <span class="count">${posts.length}</span> 篇文章</p>
+  </header>
+  <main>
+    <ul class="list">
+${list}
+    </ul>
+  </main>
+  <nav class="catnav">${otherCats}</nav>
+  <a class="home" href="/">← 回操作一下首頁</a>
+</div>
+</body>
+</html>`;
+}
+
 // ── 產生靜態文章卡片 HTML（注入 index.html 用）─────────────────────
 function cardHTML(p, featured = false) {
   const icon = CAT_ICON[p.category]  || '📄';
@@ -265,13 +386,21 @@ function updateSitemap(posts) {
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
   xml += `  <url>\n    <loc>${SITE_URL}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
   xml += `  <url>\n    <loc>${SITE_URL}/podcast.html</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+  // 分類主題頁（只列出實際有文章的分類）
+  const catSet = new Set(posts.map((p) => p.category).filter((c) => CAT_ICON[c]));
+  let catUrls = 0;
+  for (const cat of Object.keys(CAT_ICON)) {
+    if (!catSet.has(cat)) continue;
+    xml += `  <url>\n    <loc>${SITE_URL}/category/${encodeURIComponent(cat)}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
+    catUrls++;
+  }
   for (const p of posts) {
     const slug = p.slug || p.id;
     xml += `  <url>\n    <loc>${SITE_URL}/post/${encodeURIComponent(slug)}</loc>\n    <lastmod>${p.date || today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n`;
   }
   xml += '</urlset>\n';
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml);
-  console.log(`  ✓ sitemap.xml 更新（${posts.length + 2} URLs）`);
+  console.log(`  ✓ sitemap.xml 更新（${posts.length + 2 + catUrls} URLs，含 ${catUrls} 分類頁）`);
 }
 
 // ── 更新 feed.xml ────────────────────────────────────────────────────
@@ -459,6 +588,24 @@ async function main() {
     }
   }
   if (pruned) console.log(`  ✓ 已清除 ${pruned} 個已刪除文章的殘留靜態頁\n`);
+
+  // 1c. 產生分類主題頁 /category/{類}/index.html（互連同主題文章，建立主題權重）
+  console.log('📂 產生分類主題頁...');
+  const byCat = {};
+  for (const p of posts) (byCat[p.category] = byCat[p.category] || []).push(p);
+  const catDir = path.join(ROOT, 'category');
+  if (!fs.existsSync(catDir)) fs.mkdirSync(catDir);
+  let catCount = 0;
+  for (const cat of Object.keys(CAT_ICON)) {
+    const list = byCat[cat] || [];
+    if (!list.length) continue;
+    // 目錄用「原始 UTF-8 分類名」（非 %xx 編碼）：瀏覽器請求 /category/雲端 會被解碼後對應到此檔。
+    const dir = path.join(catDir, cat);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, 'index.html'), generateCategoryPage(cat, list));
+    catCount++;
+  }
+  console.log(`  ✓ 已產生 ${catCount} 個分類主題頁\n`);
 
   // 2. 更新 sitemap.xml & feed.xml
   console.log('🗺️  更新 sitemap.xml & feed.xml...');
