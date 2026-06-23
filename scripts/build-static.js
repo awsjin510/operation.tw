@@ -23,6 +23,25 @@ function esc(s) {
     .replace(/"/g, '&quot;');
 }
 
+function stripTags(s) {
+  return String(s || '').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').trim();
+}
+// 從內文「常見問題」段落擷取 Q&A（<h2>常見問題</h2> 後成對的 <h3>問</h3><p>答</p>）
+function extractFaq(body) {
+  if (!body) return [];
+  const i = body.search(/<h2[^>]*>\s*常見問題/);
+  if (i < 0) return [];
+  const seg = body.slice(i);
+  const re = /<h3[^>]*>([\s\S]*?)<\/h3>\s*<p[^>]*>([\s\S]*?)<\/p>/g;
+  const out = [];
+  let m;
+  while ((m = re.exec(seg)) && out.length < 8) {
+    const q = stripTags(m[1]), a = stripTags(m[2]);
+    if (q && a) out.push({ q, a });
+  }
+  return out;
+}
+
 function loadPosts() {
   const raw = fs.readFileSync(path.join(ROOT, 'posts.json'), 'utf8');
   const data = JSON.parse(raw);
@@ -41,44 +60,55 @@ function generatePostPage(post, body) {
   const catColor = CAT_COLOR[post.category] || '#aaa';
   const catIcon  = CAT_ICON[post.category]  || '📄';
 
-  const schema = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'BlogPosting',
-        '@id': url,
-        headline: post.title,
-        description: post.excerpt || '',
-        datePublished: post.date,
-        dateModified: post.date,
-        author: {
-          '@type': 'Person',
-          name: 'Jin',
-          url: SITE_URL,
-          sameAs: [
-            'https://www.instagram.com/operation.tw/',
-            'https://www.threads.net/@operation.tw',
-            'https://www.youtube.com/@操作一下'
-          ]
-        },
-        publisher: { '@type': 'Organization', name: '操作一下', url: SITE_URL },
-        url,
-        mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-        articleSection: post.category,
-        image: img,
-        keywords: post.category,
-        inLanguage: 'zh-TW'
-      },
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: '首頁',         item: SITE_URL },
-          { '@type': 'ListItem', position: 2, name: post.category,  item: `${SITE_URL}/` },
-          { '@type': 'ListItem', position: 3, name: post.title,     item: url }
+  const graph = [
+    {
+      '@type': 'BlogPosting',
+      '@id': url,
+      headline: post.title,
+      description: post.excerpt || '',
+      datePublished: post.date,
+      dateModified: post.date,
+      author: {
+        '@type': 'Person',
+        name: 'Jin',
+        url: SITE_URL,
+        sameAs: [
+          'https://www.instagram.com/operation.tw/',
+          'https://www.threads.net/@operation.tw',
+          'https://www.youtube.com/@操作一下'
         ]
-      }
-    ]
-  });
+      },
+      publisher: { '@type': 'Organization', name: '操作一下', url: SITE_URL },
+      url,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      articleSection: post.category,
+      image: img,
+      keywords: post.category,
+      inLanguage: 'zh-TW'
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首頁',         item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: post.category,  item: `${SITE_URL}/` },
+        { '@type': 'ListItem', position: 3, name: post.title,     item: url }
+      ]
+    }
+  ];
+  // 從內文的「常見問題」段落抽出 Q&A → FAQPage 結構化資料（SEO 問答 rich result + AI 引用）
+  const faqs = extractFaq(body);
+  if (faqs.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: faqs.map(f => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a }
+      }))
+    });
+  }
+  const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
 
   return `<!DOCTYPE html>
 <html lang="zh-Hant-TW">
