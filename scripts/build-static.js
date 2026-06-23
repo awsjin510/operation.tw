@@ -14,6 +14,22 @@ const SITE_URL = 'https://operation.tw';
 
 const CAT_COLOR = { AI: '#bf00ff', 雲端: '#00f5ff', 資安: '#ff0080', 閱讀: '#ffff00', 成長: '#00ff88' };
 const CAT_ICON  = { AI: '🤖', 雲端: '☁️', 資安: '🔐', 閱讀: '📚', 成長: '🌱' };
+const PODCAST_SHOW_URL = 'https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl';
+
+// 從標題開頭抓 Podcast 集數碼（AI35 / EP99…），文章與單集標題都用得到
+function episodeCode(title) {
+  const m = String(title || '').trim().match(/^([A-Za-z]{1,6}\d{1,4})[｜|_\s．.:：-]/);
+  return m ? m[1].toUpperCase() : '';
+}
+// 讀 episodes.json，建「集數碼 → 單集」對照（供文章頁加 PodcastEpisode 結構化資料）
+function loadEpisodeMap() {
+  try {
+    const eps = JSON.parse(fs.readFileSync(path.join(ROOT, 'episodes.json'), 'utf8')).episodes || [];
+    const map = {};
+    for (const e of eps) { const c = episodeCode(e.title); if (c && !map[c]) map[c] = e; }
+    return map;
+  } catch (e) { return {}; }
+}
 
 function esc(s) {
   return String(s || '')
@@ -51,7 +67,7 @@ function loadPosts() {
 }
 
 // ── 產生個別文章 stub 頁 ────────────────────────────────────────────
-function generatePostPage(post, body) {
+function generatePostPage(post, body, episode) {
   body = body || '';
   const slug  = post.slug || post.id;
   const url   = `${SITE_URL}/post/${encodeURIComponent(slug)}`;
@@ -107,6 +123,25 @@ function generatePostPage(post, body) {
         acceptedAnswer: { '@type': 'Answer', text: f.a }
       }))
     });
+  }
+  // Podcast 衍生文章 → PodcastEpisode 結構化資料（吃 Podcast rich result、釐清實體供 AI 引用）
+  if (episode) {
+    const code = episodeCode(post.title);
+    const num = code ? parseInt(code.replace(/\D/g, ''), 10) : null;
+    const ep = {
+      '@type': 'PodcastEpisode',
+      '@id': `${url}#episode`,
+      name: post.title,
+      url,
+      datePublished: episode.date || post.date,
+      description: post.excerpt || '',
+      image: img,
+      partOfSeries: { '@type': 'PodcastSeries', name: '操作一下', url: PODCAST_SHOW_URL }
+    };
+    if (num) ep.episodeNumber = num;
+    if (episode.dur) ep.duration = `PT${episode.dur}M`;
+    if (episode.url) ep.associatedMedia = { '@type': 'MediaObject', contentUrl: episode.url, encodingFormat: 'audio/mpeg' };
+    graph.push(ep);
   }
   const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
 
@@ -394,19 +429,22 @@ async function main() {
   // 1. 產生個別文章頁（含完整內文，供搜尋引擎 / AI 爬蟲索引）
   console.log('📄 產生個別文章頁面...');
   const bodies = await loadBodies(posts);
+  const epMap = loadEpisodeMap();
   const postDir = path.join(ROOT, 'post');
   if (!fs.existsSync(postDir)) fs.mkdirSync(postDir);
-  let generated = 0, withBody = 0;
+  let generated = 0, withBody = 0, withEp = 0;
   for (const post of posts) {
     const slug = String(post.slug || post.id);
     const dir  = path.join(postDir, encodeURIComponent(slug));
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     const body = bodies[post.id] || '';
     if (body) withBody++;
-    fs.writeFileSync(path.join(dir, 'index.html'), generatePostPage(post, body));
+    const episode = epMap[episodeCode(post.title)] || null;
+    if (episode) withEp++;
+    fs.writeFileSync(path.join(dir, 'index.html'), generatePostPage(post, body, episode));
     generated++;
   }
-  console.log(`  ✓ 其中含完整內文：${withBody}/${generated} 篇`);
+  console.log(`  ✓ 其中含完整內文：${withBody}/${generated} 篇、含 PodcastEpisode：${withEp} 篇`);
   console.log(`  ✓ 已產生 ${generated} 篇文章頁（/post/{id}/index.html）\n`);
 
   // 1b. 清掉已不存在（已刪除）文章的殘留靜態頁，避免孤兒頁殘留
