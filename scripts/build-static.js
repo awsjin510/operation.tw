@@ -32,7 +32,8 @@ function loadPosts() {
 }
 
 // ── 產生個別文章 stub 頁 ────────────────────────────────────────────
-function generatePostPage(post) {
+function generatePostPage(post, body) {
+  body = body || '';
   const slug  = post.slug || post.id;
   const url   = `${SITE_URL}/post/${encodeURIComponent(slug)}`;
   const img   = post.image ? `${SITE_URL}${post.image}` : `${SITE_URL}/default.png`;
@@ -117,8 +118,18 @@ nav a{color:#00f5ff;text-decoration:none;}
 .badge{display:inline-block;border:1px solid ${catColor};color:${catColor};border-radius:3px;padding:2px 8px;font-size:.75rem;margin-bottom:12px;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
-.excerpt{margin-top:20px;color:#c0c0e0;}
-.cta{display:inline-block;margin-top:24px;color:#00f5ff;border:1px solid #00f5ff;padding:8px 20px;text-decoration:none;font-size:.9rem;}
+.excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
+.post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
+.post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
+.post-body h3{font-size:1.08rem;margin:1.4em 0 .5em;color:#fff;}
+.post-body p{margin:0 0 1.1em;}
+.post-body ul,.post-body ol{margin:0 0 1.1em 1.4em;}
+.post-body li{margin:.4em 0;}
+.post-body a{color:#00f5ff;}
+.post-body blockquote{margin:1.2em 0;padding:.4em 1em;border-left:3px solid #00f5ff;color:#a8b6cc;}
+.post-body img{max-width:100%;border-radius:8px;}
+.post-body hr{border:none;border-top:1px solid rgba(255,255,255,.12);margin:1.6em 0;}
 </style>
 </head>
 <body>
@@ -128,8 +139,10 @@ time{color:#6060a0;font-size:.85rem;}
     <div class="badge">${catIcon} ${esc(post.category)}</div>
     <h1>${esc(post.title)}</h1>
     <time datetime="${esc(post.date)}">${esc(post.date)}</time>
+    ${post.image ? `<img class="cover" src="${esc(img)}" alt="${esc(post.title)}">` : ''}
     <div class="excerpt"><p>${esc(post.excerpt || '')}</p></div>
-    <a class="cta" href="/">← 前往操作一下閱讀全文</a>
+    <div class="post-body"><!--BODY:START-->${body}<!--BODY:END--></div>
+    <a class="cta" href="/">← 在操作一下看完整體驗 →</a>
   </article>
 </div>
 </body>
@@ -146,6 +159,39 @@ function cardHTML(p, featured = false) {
   const eyebrow = featured ? `<div class="pc-eyebrow">FEATURED · ${esc(p.category)}</div>` : '';
   const slug = p.slug || p.id;
   return `<article class="${cls}" data-post-id="${p.id}" onclick="openPost('${p.id}')"><a class="pc-seo-link" href="/post/${encodeURIComponent(slug)}" onclick="event.preventDefault();openPost('${p.id}')" aria-label="${esc(p.title)}"></a><div class="pc-img">${imgTag}<span class="pc-badge">${esc(p.category)}</span></div><div class="pc-body">${eyebrow}<div class="pc-title"><a href="/post/${encodeURIComponent(slug)}" onclick="event.preventDefault();openPost('${p.id}')" style="color:inherit;text-decoration:none;">${esc(p.title)}</a></div><div class="pc-exc">${esc(p.excerpt || '')}</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 ${esc(p.date)}</span>${p.views > 0 ? `<span class="pc-view-cnt">👁 ${p.views}</span>` : ''}</div></div></article>`;
+}
+
+// ── 取得文章完整內文 ────────────────────────────────────────────────
+// CI（有 Supabase 金鑰）時直接從 Supabase 拉；否則沿用「已烤入現有頁面」的內文，
+// 避免在沒有金鑰的環境 build 時把內文洗成只有摘要。
+const BODY_RE = /<!--BODY:START-->([\s\S]*?)<!--BODY:END-->/;
+function existingBody(post) {
+  try {
+    const slug = String(post.slug || post.id);
+    const html = fs.readFileSync(path.join(ROOT, 'post', encodeURIComponent(slug), 'index.html'), 'utf8');
+    const m = html.match(BODY_RE);
+    return (m && m[1]) ? m[1] : '';
+  } catch (e) { return ''; }
+}
+async function loadBodies(posts) {
+  const URL = process.env.SUPABASE_URL, KEY = process.env.SUPABASE_SERVICE_KEY;
+  const map = {};
+  if (URL && KEY) {
+    try {
+      const res = await fetch(`${URL}/rest/v1/posts?select=id,body&status=eq.published`, {
+        headers: { apikey: KEY, Authorization: `Bearer ${KEY}` }
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      for (const r of await res.json()) if (r && r.body) map[r.id] = r.body;
+      console.log(`  ✓ 從 Supabase 取得 ${Object.keys(map).length} 篇內文`);
+    } catch (e) { console.warn(`  ⚠ 取內文失敗（沿用既有靜態內文）：${e.message}`); }
+  } else {
+    console.log('  ℹ 無 Supabase 金鑰，沿用既有靜態頁內文');
+  }
+  for (const p of posts) {
+    if (!map[p.id]) { const b = existingBody(p); if (b) map[p.id] = b; }
+  }
+  return map;
 }
 
 // ── 更新 sitemap.xml ────────────────────────────────────────────────
@@ -315,18 +361,22 @@ async function main() {
   const posts = loadPosts();
   console.log(`  📚 已載入 ${posts.length} 篇已發布文章\n`);
 
-  // 1. 產生個別文章頁
+  // 1. 產生個別文章頁（含完整內文，供搜尋引擎 / AI 爬蟲索引）
   console.log('📄 產生個別文章頁面...');
+  const bodies = await loadBodies(posts);
   const postDir = path.join(ROOT, 'post');
   if (!fs.existsSync(postDir)) fs.mkdirSync(postDir);
-  let generated = 0;
+  let generated = 0, withBody = 0;
   for (const post of posts) {
     const slug = String(post.slug || post.id);
     const dir  = path.join(postDir, encodeURIComponent(slug));
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, 'index.html'), generatePostPage(post));
+    const body = bodies[post.id] || '';
+    if (body) withBody++;
+    fs.writeFileSync(path.join(dir, 'index.html'), generatePostPage(post, body));
     generated++;
   }
+  console.log(`  ✓ 其中含完整內文：${withBody}/${generated} 篇`);
   console.log(`  ✓ 已產生 ${generated} 篇文章頁（/post/{id}/index.html）\n`);
 
   // 1b. 清掉已不存在（已刪除）文章的殘留靜態頁，避免孤兒頁殘留
