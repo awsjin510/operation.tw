@@ -133,7 +133,7 @@ jobs:
             # 安全網：以 Supabase 為準重建 posts.json，再產靜態頁（失敗都不致命）
             node scripts/sync-posts-json.js 2>&1 || echo "(sync 失敗，沿用上一步的 posts.json)"
             node scripts/build-static.js 2>&1 || echo "(build 失敗，略過)"
-            git add posts.json images/ post/ sitemap.xml feed.xml llms.txt index.html
+            git add posts.json images/ post/ category/ sitemap.xml feed.xml llms.txt index.html
             [ -f podcast-posts.json ] && git add podcast-posts.json || true
             if git diff --cached --quiet; then
               echo "本批無檔案變更，繼續。"
@@ -161,7 +161,7 @@ jobs:
           node scripts/build-static.js 2>&1 || echo "(build 失敗)"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add posts.json post/ sitemap.xml feed.xml llms.txt index.html images/
+          git add posts.json post/ category/ sitemap.xml feed.xml llms.txt index.html images/
           [ -f podcast-posts.json ] && git add podcast-posts.json || true
           if git diff --cached --quiet; then
             echo "最終無變更"
