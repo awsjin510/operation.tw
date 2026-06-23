@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 23 Jun 2026 15:17:47 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 23 Jun 2026 16:18:29 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>AI攻擊全面化時代：2026企業該如何主動出擊？</title>
@@ -24,11 +24,11 @@
     <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>從提示工程到迴圈工程：AI代理時代的工作革命</title>
+    <title>AI35｜從提示工程到迴圈工程：AI代理時代的工作革命</title>
     <link>https://operation.tw/post/287</link>
     <guid isPermaLink="true">https://operation.tw/post/287</guid>
     <description>提示詞時代已經結束。OpenAI和Anthropic的核心開發者不約而同宣告，未來不是寫更好的提示，而是設計能自己寫提示的系統。這集我們深入迴圈工程的核心——它如何改變我們與AI協作的方式，以及企業資安該如何應對24小時不休的AI代理。</description>
-    <category>資安</category>
+    <category>AI</category>
     <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
