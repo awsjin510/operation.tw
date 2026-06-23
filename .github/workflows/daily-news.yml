@@ -69,9 +69,12 @@ jobs:
         continue-on-error: true
 
       - name: Build static article pages (SEO)
-        # 由最新的 posts.json 產生每篇 /post/{id}/index.html（含 meta/JSON-LD/摘要），
+        # 由最新的 posts.json 產生每篇 /post/{id}/index.html（含 meta/JSON-LD + 完整內文），
         # 並刷新 sitemap.xml、feed.xml、llms.txt、index.html。
-        # 沒有這步，新發布（含 Podcast 自動生成）的文章就沒有靜態頁，爬蟲抓不到內容。
+        # 需要 Supabase 金鑰以把文章完整內文烤進靜態頁（供搜尋引擎 / AI 爬蟲索引）。
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: node build-static.js
         working-directory: scripts
         continue-on-error: true
