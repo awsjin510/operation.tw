@@ -13,6 +13,10 @@ on:
         options:
           - 'true'
           - 'false'
+      retag:
+        description: '（選填）順便改分類，格式 id:分類,id:分類，例如 287:AI'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -38,6 +42,29 @@ jobs:
       - name: Install dependencies
         run: npm ci
         working-directory: scripts
+
+      - name: Retag categories (optional)
+        # 選填：同一次也修正分類（例：287:AI）。dry_run 時略過，避免預覽就寫入。
+        if: ${{ github.event.inputs.retag != '' && github.event.inputs.dry_run == 'false' }}
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          IFS=',' read -ra PAIRS <<< "${{ github.event.inputs.retag }}"
+          for pair in "${PAIRS[@]}"; do
+            id="${pair%%:*}"; cat="${pair##*:}"
+            echo "🏷  retag id=$id → $cat"
+            code=$(curl -sS -o /tmp/patch.txt -w '%{http_code}' -X PATCH \
+              "$SUPABASE_URL/rest/v1/posts?id=eq.$id" \
+              -H "apikey: $SUPABASE_SERVICE_KEY" \
+              -H "Authorization: Bearer $SUPABASE_SERVICE_KEY" \
+              -H "Content-Type: application/json" \
+              -H "Prefer: return=minimal" \
+              --data "{\"category\":\"$cat\"}")
+            echo "HTTP $code"
+            if [ "$code" -ge 300 ]; then cat /tmp/patch.txt; exit 1; fi
+          done
+          echo "✓ 分類更新完成"
 
       - name: Update titles with EP codes
         env:
