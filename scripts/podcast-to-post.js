@@ -55,12 +55,28 @@ function spotifySearchUrl(title) {
   return title ? 'https://open.spotify.com/search/' + encodeURIComponent(title) : SPOTIFY_SHOW;
 }
 
-// ── 分類：用標題＋簡介關鍵字對應到現有 5 類 ──────────────────────────
-function classifyCategory(title, desc) {
-  const t = (title + ' ' + desc).toLowerCase();
+// ── 從單集標題開頭抓集數碼（AI35 / EP99 / EP01…），後接分隔符 ────────────
+function episodeCode(title) {
+  const m = (title || '').trim().match(/^([A-Za-z]{1,6}\d{1,4})\s*[_|｜\-:：．.]/);
+  return m ? m[1].toUpperCase() : '';
+}
+
+// 在乾淨標題前補上 EP 集數碼（例：AI35｜…）。已有正確前綴則不重複加。
+function prefixEpisodeCode(cleanTitle, epTitle) {
+  const code = episodeCode(epTitle);
+  if (!code) return cleanTitle;
+  const t = (cleanTitle || '').trim();
+  if (t.toUpperCase().startsWith(code + '｜') || t.toUpperCase().startsWith(code + '|')) return t;
+  return `${code}｜${t}`;
+}
+
+// ── 分類：用「標題」對應到現有 5 類；標題無訊號時才看簡介 ──────────────
+// （簡介裡偶然出現的關鍵字——例如 AI 單集順帶提到「資安」——不該蓋過標題的主題。）
+function classifyFrom(text) {
+  const t = (text || '').toLowerCase();
   const has = (...kw) => kw.some((k) => t.includes(k.toLowerCase()));
   // 「閱讀操作」單集或出現書名號 → 閱讀
-  if (title.includes('閱讀操作') || /《[^》]+》/.test(title)) return '閱讀';
+  if (/閱讀操作/.test(text) || /《[^》]+》/.test(text)) return '閱讀';
   if (has('資安', '安全', '攻擊', '零信任', '漏洞', '勒索', '滲透', 'security', 'ransomware', 'phishing')) return '資安';
   if (has('雲端', 'aws', 'azure', 'gcp', 'kubernetes', 'serverless', '雲服務', 'cloud')) return '雲端';
   if (has('ai', '模型', 'llm', 'gpt', 'claude', 'gemini', 'prompt', '生成式', '機器學習', '人工智慧', 'agent')) return 'AI';
@@ -68,7 +84,11 @@ function classifyCategory(title, desc) {
   if (has('成長', '習慣', '職涯', '心態', '心法', '自媒體', '經營', '管理', '情緒',
     '減重', '減脂', '減掉', '公斤', '斷食', '瘦', '健身', '重訓', '運動', '跑步', '路跑',
     '復跑', '備賽', '馬拉松', '自律', '堅持', '目標', '動機', '創作', '輸出', '魅力', '人際')) return '成長';
-  return '成長'; // 預設改為「成長」（個人品牌 Podcast 多為生活/成長類，未命中時比 AI 合理）
+  return null;
+}
+function classifyCategory(title, desc) {
+  // 標題優先；標題無訊號時才退而求其次看標題＋簡介。預設「成長」。
+  return classifyFrom(title) || classifyFrom(`${title} ${desc}`) || '成長';
 }
 
 // ── 抓 RSS 單集 ────────────────────────────────────────────────────
@@ -319,10 +339,11 @@ async function main() {
 
     try {
       const art = await generateArticle(ep, category);
+      const finalTitle = prefixEpisodeCode(art.title, ep.title); // 補上對應 EP 集數碼
       const related = pickRelated(localPosts, category);
       const body = art.body + listenBlock(ep, related);
       const published = await publishPost({
-        title: art.title,
+        title: finalTitle,
         category,
         date: ep.date || new Date().toISOString().split('T')[0],
         status: 'published',
@@ -331,7 +352,7 @@ async function main() {
         body,
       });
       const postId = published.id;
-      console.log(`  ✓ 已發布 ID ${postId}：[${category}] ${art.title}`);
+      console.log(`  ✓ 已發布 ID ${postId}：[${category}] ${finalTitle}`);
 
       const imagePath = await saveCoverFromArt(postId, ep.art);
       if (imagePath) {
