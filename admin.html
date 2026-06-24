@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src https://pvqvnmntqhsfzarbxayf.supabase.co;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.operation.tw;">
 <title>後台管理 | operation.tw</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
@@ -158,7 +158,8 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 ::-webkit-scrollbar-track{background:var(--bg2);}
 ::-webkit-scrollbar-thumb{background:rgba(0,245,255,.2);}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
+<script src="/js/api-config.js"></script>
+<script src="/js/api.js"></script>
 <script src="https://unpkg.com/dompurify@3.2.4/dist/purify.min.js"></script>
 </head>
 <body>
@@ -500,10 +501,7 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 </div>
 
 <script>
-// ── SUPABASE ──
-const SUPABASE_URL='https://pvqvnmntqhsfzarbxayf.supabase.co';
-const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2cXZubW50cWhzZnphcmJ4YXlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2NjQ0MjUsImV4cCI6MjA4NzI0MDQyNX0.sKn8yzJos9F8ghKrp3icx6zR2RO39898DenWlLodpqA';
-const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+// ── API（Cloudflare Worker；見 /js/api.js）──
 
 const CAT_COLOR={AI:'#bf00ff',雲端:'#00f5ff',資安:'#ff0080',閱讀:'#ffff00',成長:'#00ff88'};
 
@@ -526,62 +524,46 @@ const DEFAULTS={
 
 let D={posts:[],hp:DEFAULTS.hp,about:DEFAULTS.about,footer:DEFAULTS.footer};
 
-// ── AUTH ──
+// ── AUTH（改用 Cloudflare Access：頁面與 /api/admin 都在邊緣被 Google 登入保護）──
+// 頁面能載入＝已通過 Access；這裡再呼叫 /api/admin/me 確認 Email 在白名單內。
 async function checkAuth(){
-  const {data:{session}}=await sb.auth.getSession();
-  if(session){
-    document.getElementById('login-overlay').style.display='none';
+  const overlay=document.getElementById('login-overlay');
+  try{
+    await api.me();
+    overlay.style.display='none';
     await loadData();
-  }else{
-    document.getElementById('login-overlay').style.display='flex';
+  }catch(err){
+    // 401：未登入 → 重新載入會觸發 Access 的 Google 登入頁
+    // 403：登入了但 Email 不在白名單
+    const msg=document.getElementById('login-err');
+    if(msg){
+      msg.textContent=(err.status===403)?'此帳號無後台權限':'請以 Google 登入後台';
+      msg.style.display='block';
+    }
+    overlay.style.display='flex';
   }
 }
 
-async function doLogin(){
-  const email=document.getElementById('login-email').value.trim();
-  const pw=document.getElementById('login-pw').value;
-  const errEl=document.getElementById('login-err');
-  const btn=document.getElementById('login-btn');
-  errEl.style.display='none';
-  btn.textContent='驗證中...';btn.disabled=true;
-  const {error}=await sb.auth.signInWithPassword({email,password:pw});
-  btn.textContent='登入後台';btn.disabled=false;
-  if(error){
-    errEl.textContent='登入失敗：帳號或密碼錯誤';
-    errEl.style.display='block';
-  }else{
-    document.getElementById('login-overlay').style.display='none';
-    await loadData();
-  }
-}
-
-async function doLogout(){
-  await sb.auth.signOut();
-  document.getElementById('login-overlay').style.display='flex';
-  document.getElementById('login-email').value='';
-  document.getElementById('login-pw').value='';
-}
+function doLogin(){ location.reload(); }            // 交給 Cloudflare Access 接手登入
+function doLogout(){ location.href='/cdn-cgi/access/logout'; }
 
 // ── DB LOAD ──
 async function loadData(){
   try{
-    const [pr,sr]=await Promise.all([
-      sb.from('posts').select('id,title,category,date,status,excerpt,image,views').order('date',{ascending:false}),
-      sb.from('settings').select('*')
+    const [posts,sm]=await Promise.all([
+      api.adminListPosts(),
+      api.adminGetSettings()
     ]);
-    if(pr.error)throw pr.error;
-    const sm={};
-    (sr.data||[]).forEach(s=>{sm[s.key]=s.value;});
     D={
-      posts:pr.data||[],
+      posts:posts||[],
       hp:sm.hp||DEFAULTS.hp,
       about:sm.about||DEFAULTS.about,
       footer:(sm.footer&&sm.footer.text)||DEFAULTS.footer
     };
-    if(!pr.data.length&&!Object.keys(sm).length){await seedDefaults();return;}
+    if(!posts.length&&!Object.keys(sm).length){await seedDefaults();return;}
   }catch(err){
-    console.error('Supabase error:',err);
-    toast('資料庫連線失敗，請確認 Supabase 設定','error');
+    console.error('API error:',err);
+    toast('資料庫連線失敗，請確認 Worker / D1 設定','error');
   }
   renderDash();
 }
@@ -593,11 +575,11 @@ async function initDB(){
 
 async function seedDefaults(){
   const rows=DEFAULTS.posts.map(({id,...r})=>r);
-  await sb.from('posts').insert(rows);
+  await api.adminCreatePosts(rows);
   await Promise.all([
-    sb.from('settings').upsert({key:'hp',value:DEFAULTS.hp}),
-    sb.from('settings').upsert({key:'about',value:DEFAULTS.about}),
-    sb.from('settings').upsert({key:'footer',value:{text:DEFAULTS.footer}})
+    api.adminPutSetting('hp',DEFAULTS.hp),
+    api.adminPutSetting('about',DEFAULTS.about),
+    api.adminPutSetting('footer',{text:DEFAULTS.footer})
   ]);
   await initDB();
 }
@@ -675,8 +657,8 @@ async function editPost(id){
   if(!p.body){
     document.getElementById('ed-body').innerHTML='<p style="color:var(--dim)">載入內文中…</p>';
     try{
-      const {data,error}=await sb.from('posts').select('body').eq('id',id).single();
-      if(!error&&data)p.body=data.body;
+      const full=await api.adminGetPost(id);
+      if(full)p.body=full.body;
     }catch(e){console.warn('Failed to load post body:',e);}
   }
   document.getElementById('ed-body').innerHTML=safeHTML(p.body);
@@ -697,29 +679,25 @@ async function savePost(){
   const post={title,slug,category:document.getElementById('ed-cat').value,date:document.getElementById('ed-date').value,status:document.getElementById('ed-status').value,excerpt:document.getElementById('ed-exc').value.trim(),image:document.getElementById('ed-cover-url').value.trim(),body};
 
   async function trySave(obj){
-    if(id){
-      const {error}=await sb.from('posts').update(obj).eq('id',id);
-      if(error)return{error};
-      const idx=D.posts.findIndex(x=>x.id==id);
-      if(idx>=0)D.posts[idx]={...D.posts[idx],...obj};
-      return{};
-    }else{
-      const {data,error}=await sb.from('posts').insert(obj).select().single();
-      if(error)return{error};
-      D.posts.unshift(data);
-      document.getElementById('ed-id').value=data.id;
-      document.getElementById('del-btn').style.display='inline-flex';
-      document.getElementById('ed-title-label').textContent='編輯文章';
-      return{};
-    }
+    try{
+      if(id){
+        await api.adminUpdatePost(id,obj);
+        const idx=D.posts.findIndex(x=>x.id==id);
+        if(idx>=0)D.posts[idx]={...D.posts[idx],...obj};
+        return{};
+      }else{
+        const data=await api.adminCreatePosts(obj);
+        const created=Array.isArray(data)?data[0]:data;
+        D.posts.unshift(created);
+        document.getElementById('ed-id').value=created.id;
+        document.getElementById('del-btn').style.display='inline-flex';
+        document.getElementById('ed-title-label').textContent='編輯文章';
+        return{};
+      }
+    }catch(error){return{error};}
   }
 
-  let res=await trySave(post);
-  if(res.error&&res.error.message&&res.error.message.includes('slug')){
-    const {slug:_,...postNoSlug}=post;
-    res=await trySave(postNoSlug);
-    if(!res.error){toast('已儲存，但請在 Supabase 新增 slug 欄位以啟用分頁網址','error');return;}
-  }
+  const res=await trySave(post);
   if(res.error){toast('儲存失敗：'+res.error.message,'error');return;}
   toast('文章已儲存 ✓');
 }
@@ -737,8 +715,8 @@ function askDelete(id){deleteTargetId=id;openModal('del-modal');}
 function deleteCurrentPost(){deleteTargetId=parseInt(document.getElementById('ed-id').value);openModal('del-modal');}
 async function confirmDelete(){
   if(!deleteTargetId)return;
-  const {error}=await sb.from('posts').delete().eq('id',deleteTargetId);
-  if(error){toast('刪除失敗：'+error.message,'error');return;}
+  try{await api.adminDeletePost(deleteTargetId);}
+  catch(error){toast('刪除失敗：'+error.message,'error');return;}
   D.posts=D.posts.filter(x=>x.id!==deleteTargetId);
   closeModal('del-modal');toast('文章已刪除');deleteTargetId=null;newPost();renderPostList();
 }
@@ -856,8 +834,9 @@ function loadHomepage(){
 async function saveHomepage(){
   const hp={t1:getVal('hp-t1'),t2:getVal('hp-t2'),tag:getVal('hp-tag'),sub:getVal('hp-sub'),quote:getVal('hp-quote'),cta:getVal('hp-cta'),nlt:getVal('hp-nlt'),nld:getVal('hp-nld')};
   const footerText=getVal('hp-footer');
-  const [r1,r2]=await Promise.all([sb.from('settings').upsert({key:'hp',value:hp}),sb.from('settings').upsert({key:'footer',value:{text:footerText}})]);
-  if(r1.error||r2.error){toast('儲存失敗','error');return;}
+  try{
+    await Promise.all([api.adminPutSetting('hp',hp),api.adminPutSetting('footer',{text:footerText})]);
+  }catch(err){toast('儲存失敗','error');return;}
   D.hp=hp;D.footer=footerText;toast('首頁設定已儲存 ✓');
 }
 
@@ -868,8 +847,8 @@ function loadAbout(){
 }
 async function saveAbout(){
   const about={initials:getVal('ab-init'),bio:getVal('ab-bio'),s1n:getVal('ab-s1n'),s1l:getVal('ab-s1l'),s2n:getVal('ab-s2n'),s2l:getVal('ab-s2l')};
-  const {error}=await sb.from('settings').upsert({key:'about',value:about});
-  if(error){toast('儲存失敗：'+error.message,'error');return;}
+  try{await api.adminPutSetting('about',about);}
+  catch(error){toast('儲存失敗：'+error.message,'error');return;}
   D.about=about;toast('關於我已儲存 ✓');
 }
 
@@ -878,8 +857,7 @@ async function generateSitemap(){
   const btn=document.getElementById('sitemap-btn');
   btn.textContent='產生中...';btn.disabled=true;
   try{
-    const{data,error}=await sb.from('posts').select('slug,id,date').eq('status','published').order('date',{ascending:false});
-    if(error)throw error;
+    const data=(D.posts||[]).filter(p=>p.status==='published');
     const base='https://operation.tw';
     const now=new Date().toISOString().slice(0,10);
     let xml='<?xml version="1.0" encoding="UTF-8"?>\n';
@@ -914,24 +892,24 @@ async function importData(event){
       const d=JSON.parse(e.target.result);
       if(!d||typeof d!=='object'){throw new Error('無效的 JSON 格式');}
       if(d.posts&&!Array.isArray(d.posts)){throw new Error('posts 欄位格式錯誤');}
-      await sb.from('posts').delete().gt('id',0);
-      if(d.posts&&d.posts.length){const rows=d.posts.map(({id,created_at,...r})=>r);const {error}=await sb.from('posts').insert(rows);if(error)throw error;}
+      await api.adminDeleteAll();
+      if(d.posts&&d.posts.length){const rows=d.posts.map(({id,created_at,...r})=>r);await api.adminCreatePosts(rows);}
       const ups=[];
-      if(d.hp)ups.push(sb.from('settings').upsert({key:'hp',value:d.hp}));
-      if(d.about)ups.push(sb.from('settings').upsert({key:'about',value:d.about}));
-      if(d.footer)ups.push(sb.from('settings').upsert({key:'footer',value:{text:d.footer}}));
+      if(d.hp)ups.push(api.adminPutSetting('hp',d.hp));
+      if(d.about)ups.push(api.adminPutSetting('about',d.about));
+      if(d.footer)ups.push(api.adminPutSetting('footer',{text:d.footer}));
       await Promise.all(ups);await initDB();toast('資料已匯入 ✓');
     }catch(err){toast('匯入失敗：'+err.message,'error');}
   };reader.readAsText(file);
 }
 async function resetData(){
   if(!confirm('確定要重設所有資料嗎？此操作無法復原。'))return;
-  await sb.from('posts').delete().gt('id',0);
+  await api.adminDeleteAll();
   const rows=DEFAULTS.posts.map(({id,...r})=>r);
-  await sb.from('posts').insert(rows);
-  await sb.from('settings').upsert({key:'hp',value:DEFAULTS.hp});
-  await sb.from('settings').upsert({key:'about',value:DEFAULTS.about});
-  await sb.from('settings').upsert({key:'footer',value:{text:DEFAULTS.footer}});
+  await api.adminCreatePosts(rows);
+  await api.adminPutSetting('hp',DEFAULTS.hp);
+  await api.adminPutSetting('about',DEFAULTS.about);
+  await api.adminPutSetting('footer',{text:DEFAULTS.footer});
   await initDB();toast('已重設為預設值');
 }
 
