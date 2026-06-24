@@ -39,8 +39,8 @@ jobs:
         # podcast/sitemap/feed 產生與 commit，否則 episodes.json 會停止更新。
         continue-on-error: true
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node auto-post.js
         working-directory: scripts
@@ -61,8 +61,8 @@ jobs:
         # 偵測 Podcast 新單集 → 用 Claude 延伸成文章並發布。
         # 與其他步驟獨立，失敗不應擋下 commit。
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node podcast-to-post.js
         working-directory: scripts
@@ -73,8 +73,8 @@ jobs:
         # 並刷新 sitemap.xml、feed.xml、llms.txt、index.html。
         # 需要 Supabase 金鑰以把文章完整內文烤進靜態頁（供搜尋引擎 / AI 爬蟲索引）。
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
         run: node build-static.js
         working-directory: scripts
         continue-on-error: true

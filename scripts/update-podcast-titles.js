@@ -19,8 +19,9 @@ const Parser = require('rss-parser');
 const path = require('path');
 const fs = require('fs').promises;
 
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
+const cfdb = require('./lib/cf-db');
+const CF_API_BASE = process.env.CF_API_BASE;
+const CF_SERVICE_TOKEN = process.env.CF_SERVICE_TOKEN;
 const DRY_RUN = process.env.DRY_RUN === '1';
 const SEP = '｜'; // 集數碼與標題之間的分隔符
 
@@ -28,8 +29,8 @@ const RSS_URL = 'https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8
 const STATE_PATH = path.join(__dirname, '..', 'podcast-posts.json');
 const POSTS_JSON_PATH = path.join(__dirname, '..', 'posts.json');
 
-if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
-  console.error('❌ 缺少 SUPABASE_URL 或 SUPABASE_SERVICE_KEY');
+if (!DRY_RUN && (!CF_API_BASE || !CF_SERVICE_TOKEN)) {
+  console.error('❌ 缺少 CF_API_BASE 或 CF_SERVICE_TOKEN');
   process.exit(1);
 }
 
@@ -84,18 +85,10 @@ async function main() {
       updated++;
       continue;
     }
-    const res = await fetchWithTimeout(`${SUPABASE_URL}/rest/v1/posts?id=eq.${postId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        apikey: SUPABASE_SERVICE_KEY,
-        Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-        Prefer: 'return=minimal',
-      },
-      body: JSON.stringify({ title: next }),
-    });
-    if (!res.ok) {
-      console.warn(`  ✗ #${postId} 更新失敗 HTTP ${res.status}: ${await res.text()}`);
+    try {
+      await cfdb.updatePost(postId, { title: next });
+    } catch (err) {
+      console.warn(`  ✗ #${postId} 更新失敗：${err.message}`);
       continue;
     }
     console.log(`  ✓ #${postId} → ${next}`);

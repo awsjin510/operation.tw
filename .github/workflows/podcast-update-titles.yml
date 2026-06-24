@@ -47,19 +47,17 @@ jobs:
         # 選填：同一次也修正分類（例：287:AI）。dry_run 時略過，避免預覽就寫入。
         if: ${{ github.event.inputs.retag != '' && github.event.inputs.dry_run == 'false' }}
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
         run: |
           IFS=',' read -ra PAIRS <<< "${{ github.event.inputs.retag }}"
           for pair in "${PAIRS[@]}"; do
             id="${pair%%:*}"; cat="${pair##*:}"
             echo "🏷  retag id=$id → $cat"
             code=$(curl -sS -o /tmp/patch.txt -w '%{http_code}' -X PATCH \
-              "$SUPABASE_URL/rest/v1/posts?id=eq.$id" \
-              -H "apikey: $SUPABASE_SERVICE_KEY" \
-              -H "Authorization: Bearer $SUPABASE_SERVICE_KEY" \
+              "$CF_API_BASE/api/admin/posts/$id" \
+              -H "Authorization: Bearer $CF_SERVICE_TOKEN" \
               -H "Content-Type: application/json" \
-              -H "Prefer: return=minimal" \
               --data "{\"category\":\"$cat\"}")
             echo "HTTP $code"
             if [ "$code" -ge 300 ]; then cat /tmp/patch.txt; exit 1; fi
@@ -68,8 +66,8 @@ jobs:
 
       - name: Update titles with EP codes
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
           DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
         run: node update-podcast-titles.js
         working-directory: scripts
@@ -77,8 +75,8 @@ jobs:
       - name: Rebuild posts.json + static pages and commit
         if: ${{ github.event.inputs.dry_run == 'false' }}
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
         run: |
           node scripts/sync-posts-json.js || echo "(sync 失敗)"
           node scripts/build-static.js || echo "(build 失敗)"

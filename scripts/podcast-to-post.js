@@ -21,17 +21,18 @@ const Parser = require('rss-parser');
 const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs').promises;
+const cfdb = require('./lib/cf-db');
 
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
+const CF_API_BASE = process.env.CF_API_BASE;
+const CF_SERVICE_TOKEN = process.env.CF_SERVICE_TOKEN;
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const DRY_RUN = process.env.DRY_RUN === '1';
 // BACKFILL=1：補寫舊單集。跳過「首次種子化」捷徑，直接把尚未產文的舊單集
 // 依序產出（每次最多 MAX_PER_RUN 篇，可重複觸發直到全部完成）。
 const BACKFILL = process.env.BACKFILL === '1';
 
-if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY || !ANTHROPIC_API_KEY) {
-  console.error('❌ 缺少必要環境變數：SUPABASE_URL、SUPABASE_SERVICE_KEY、ANTHROPIC_API_KEY');
+if (!CF_API_BASE || !CF_SERVICE_TOKEN || !ANTHROPIC_API_KEY) {
+  console.error('❌ 缺少必要環境變數：CF_API_BASE、CF_SERVICE_TOKEN、ANTHROPIC_API_KEY');
   process.exit(1);
 }
 
@@ -212,33 +213,13 @@ function listenBlock(ep, related = []) {
   return html;
 }
 
-// ── Supabase 發布 ─────────────────────────────────────────────────
+// ── 發布（Cloudflare Worker）────────────────────────────────────────
 async function publishPost(post) {
-  const res = await fetchWithTimeout(`${SUPABASE_URL}/rest/v1/posts`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      apikey: SUPABASE_SERVICE_KEY,
-      Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-      Prefer: 'return=representation',
-    },
-    body: JSON.stringify(post),
-  });
-  if (!res.ok) throw new Error(`Supabase 寫入失敗 (HTTP ${res.status}): ${await res.text()}`);
-  return (await res.json())[0];
+  return await cfdb.createPost(post);
 }
 
 async function updatePostImage(postId, imagePath) {
-  const res = await fetchWithTimeout(`${SUPABASE_URL}/rest/v1/posts?id=eq.${postId}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      apikey: SUPABASE_SERVICE_KEY,
-      Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-    },
-    body: JSON.stringify({ image: imagePath }),
-  });
-  if (!res.ok) throw new Error(`Supabase 更新圖片失敗 (HTTP ${res.status}): ${await res.text()}`);
+  await cfdb.updatePost(postId, { image: imagePath });
 }
 
 // ── 用單集 artwork 產生封面（模糊放大背景 + 置中方圖）───────────────
@@ -260,24 +241,8 @@ async function saveCoverFromArt(postId, artUrl) {
 }
 
 async function refreshPostsJson() {
-  // Supabase 偶有暫時性 500（冷啟/statement timeout），重試 4 次再放棄。
-  let all;
-  for (let i = 1; i <= 4; i++) {
-    try {
-      const res = await fetchWithTimeout(
-        `${SUPABASE_URL}/rest/v1/posts?select=id,title,category,date,status,excerpt,image,views&status=eq.published&order=date.desc`,
-        { headers: { apikey: SUPABASE_SERVICE_KEY, Authorization: `Bearer ${SUPABASE_SERVICE_KEY}` } }
-      );
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      all = await res.json();
-      break;
-    } catch (err) {
-      if (i === 4) throw err;
-      const wait = i * 4000;
-      console.warn(`  ⚠ posts.json 重建第 ${i} 次失敗（${err.message}），${wait / 1000}s 後重試…`);
-      await new Promise((r) => setTimeout(r, wait));
-    }
-  }
+  // cfdb 內建重試；取回已發布清單後重建 posts.json。
+  const all = await cfdb.getPublishedPosts();
   const lean = all.map((p) => ({ ...p, image: (p.image && p.image.startsWith('/')) ? p.image : '' }));
   await fs.writeFile(POSTS_JSON_PATH, JSON.stringify({ generated: new Date().toISOString(), posts: lean }, null, 0));
   console.log(`  ✓ posts.json 已更新（${lean.length} 篇）`);
