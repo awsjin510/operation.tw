@@ -124,8 +124,9 @@ async function route(request, env, url) {
     if (p === '/api/admin/me' && m === 'GET') return json({ email: who.email, via: who.via });
 
     if (p === '/api/admin/posts' && m === 'GET') {
+      const cols = url.searchParams.get('include') === 'body' ? '*' : LIST_COLS;
       const { results } = await env.DB.prepare(
-        `select ${LIST_COLS} from posts order by date desc`
+        `select ${cols} from posts order by date desc`
       ).all();
       return json({ posts: results });
     }

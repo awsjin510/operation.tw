@@ -8,6 +8,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const cfdb = require('./lib/cf-db');
 
 const ROOT = path.resolve(__dirname, '..');
 const SITE_URL = 'https://operation.tw';
@@ -360,19 +361,15 @@ function existingBody(post) {
   } catch (e) { return ''; }
 }
 async function loadBodies(posts) {
-  const URL = process.env.SUPABASE_URL, KEY = process.env.SUPABASE_SERVICE_KEY;
   const map = {};
-  if (URL && KEY) {
+  if (process.env.CF_API_BASE && process.env.CF_SERVICE_TOKEN) {
     try {
-      const res = await fetch(`${URL}/rest/v1/posts?select=id,body&status=eq.published`, {
-        headers: { apikey: KEY, Authorization: `Bearer ${KEY}` }
-      });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      for (const r of await res.json()) if (r && r.body) map[r.id] = r.body;
-      console.log(`  ✓ 從 Supabase 取得 ${Object.keys(map).length} 篇內文`);
+      const rows = await cfdb.getAllPostsWithBody();
+      for (const r of rows) if (r && r.status === 'published' && r.body) map[r.id] = r.body;
+      console.log(`  ✓ 從 Worker 取得 ${Object.keys(map).length} 篇內文`);
     } catch (e) { console.warn(`  ⚠ 取內文失敗（沿用既有靜態內文）：${e.message}`); }
   } else {
-    console.log('  ℹ 無 Supabase 金鑰，沿用既有靜態頁內文');
+    console.log('  ℹ 無 CF_API_BASE/CF_SERVICE_TOKEN，沿用既有靜態頁內文');
   }
   for (const p of posts) {
     if (!map[p.id]) { const b = existingBody(p); if (b) map[p.id] = b; }
