@@ -31,6 +31,23 @@ npm i -g wrangler
 wrangler login          # 用你已登入 Cloudflare 的帳號授權
 ```
 
+### 0.5 把網域 DNS 搬到 Cloudflare（保留 GitHub Pages 當原站）
+> 現況確認：operation.tw 由 **GitHub Pages** 服務（A record 指向 185.199.108–111.153），
+> DNS **不在** Cloudflare。同網域方案（operation.tw/api/*）需要流量經過 Cloudflare，
+> 故先把網域接進 Cloudflare —— **這是搬 DNS，不是搬主機，GitHub Pages 繼續服務靜態站**。
+
+1. Cloudflare 後台 → **Add a site** → 輸入 `operation.tw` → 選 Free 方案。
+2. Cloudflare 會掃描現有 DNS。確認保留 GitHub Pages 的紀錄（四個 A record 指向
+   `185.199.108.153`、`.109.153`、`.110.153`、`.111.153`，**橙雲 Proxied**）。
+   `www` 的 CNAME（若有）也設 Proxied。
+3. 到你的網域註冊商，把 **nameserver 改成 Cloudflare 指定的兩台**（例 `xxx.ns.cloudflare.com`）。
+   等生效（通常數分鐘到數小時）。生效後 `curl -sI https://operation.tw` 應出現 `cf-ray` 標頭。
+4. SSL/TLS 模式設 **Full**（GitHub Pages 有有效憑證）。
+5. 確認站台照常開得起來（GitHub Pages origin 沒變，只是前面多了 Cloudflare）。
+
+> 不想搬 DNS 的替代方案：後台改放 `admin.operation.tw`，單獨用 Cloudflare Pages/Worker
+> 服務並掛 Access；前台 operation.tw 維持 GitHub Pages。較多零件，非預設路徑。
+
 ### 1. 建立 D1 並套用 schema
 ```bash
 wrangler d1 create operation-tw
