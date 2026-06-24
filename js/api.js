@@ -1,15 +1,18 @@
 // operation.tw — Cloudflare Worker API client（取代 supabase-js）
-// 公開呼叫用一般 fetch；/api/admin/* 帶 credentials:'include' 讓 Cloudflare Access cookie 一起送。
+// 公開端點：一般 fetch。/api/admin/*：帶 Google 登入拿到的 ID token（Authorization: Bearer）。
 (function () {
   const BASE = () => (window.API_BASE || '').replace(/\/+$/, '');
+  let authToken = null; // Google ID token（admin 登入後設定）
 
   async function call(pathname, { method = 'GET', body, admin = false, signal } = {}) {
+    const headers = {};
+    if (body) headers['Content-Type'] = 'application/json';
+    if (admin) {
+      if (!authToken) { const e = new Error('尚未登入'); e.status = 401; throw e; }
+      headers['Authorization'] = 'Bearer ' + authToken;
+    }
     const res = await fetch(BASE() + pathname, {
-      method,
-      headers: body ? { 'Content-Type': 'application/json' } : undefined,
-      body: body ? JSON.stringify(body) : undefined,
-      credentials: admin ? 'include' : 'same-origin',
-      signal,
+      method, headers, body: body ? JSON.stringify(body) : undefined, signal,
     });
     if (!res.ok) {
       let msg = 'HTTP ' + res.status;
@@ -20,6 +23,10 @@
   }
 
   window.api = {
+    // 設定 / 清除 Google ID token
+    setAuthToken: (t) => { authToken = t || null; },
+    hasAuthToken: () => !!authToken,
+
     // ── 公開 ──
     getSettings: () => call('/api/settings'),
     getPublishedPosts: () => call('/api/posts').then((r) => r.posts || []),
@@ -28,7 +35,7 @@
     incrementPostViews: (id) => call('/api/views/post', { method: 'POST', body: { id } }),
     subscribe: (email) => call('/api/subscribe', { method: 'POST', body: { email } }).then((r) => r.result),
 
-    // ── 後台（需 Cloudflare Access 登入）──
+    // ── 後台（需 Google 登入）──
     me: () => call('/api/admin/me', { admin: true }),
     adminListPosts: () => call('/api/admin/posts', { admin: true }).then((r) => r.posts || []),
     adminGetPost: (id) => call(`/api/admin/posts/${id}`, { admin: true }).then((r) => r.post),

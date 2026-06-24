@@ -3,16 +3,13 @@
  * 取代各腳本裡直接打 Supabase REST 的程式碼。
  *
  * 環境變數：
- *   CF_API_BASE                Worker 網址（例 https://operation.tw 或 https://api.operation.tw）
+ *   CF_API_BASE                Worker 網址（例 https://api.operation.tw）
  *   CF_SERVICE_TOKEN           後台寫入用的 Bearer token（對應 worker 的 SERVICE_TOKEN）
- *   CF_ACCESS_CLIENT_ID/SECRET （選用）若 API 在邊緣被 Access 保護，改用 Access service token
  */
 'use strict';
 
 const BASE = (process.env.CF_API_BASE || '').replace(/\/+$/, '');
 const SERVICE_TOKEN = process.env.CF_SERVICE_TOKEN || '';
-const ACCESS_ID = process.env.CF_ACCESS_CLIENT_ID || '';
-const ACCESS_SECRET = process.env.CF_ACCESS_CLIENT_SECRET || '';
 
 function assertConfigured() {
   if (!BASE) throw new Error('缺少 CF_API_BASE');
@@ -20,10 +17,6 @@ function assertConfigured() {
 function adminHeaders(extra = {}) {
   const h = { ...extra };
   if (SERVICE_TOKEN) h.Authorization = `Bearer ${SERVICE_TOKEN}`;
-  if (ACCESS_ID && ACCESS_SECRET) {
-    h['CF-Access-Client-Id'] = ACCESS_ID;
-    h['CF-Access-Client-Secret'] = ACCESS_SECRET;
-  }
   return h;
 }
 

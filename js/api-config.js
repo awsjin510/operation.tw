@@ -1,7 +1,7 @@
-// Cloudflare Worker API 來源。
-// 預設空字串＝同網域（建議）：Worker 掛在 operation.tw/api/* 的路由，
-// 與前端同源 → 無 CORS、後台 Access cookie 自動帶上，最簡單可靠。
-//
-// 若你改用獨立子網域（例 https://api.operation.tw），把下面改成該網址，
-// 並記得在 worker.js 的 CORS、Access、CSP 一併設定該網域。
-window.API_BASE = '';
+// Cloudflare Worker API 來源（部署 Worker 後改成你的網址）。
+// 建議子網域：'https://api.operation.tw'；測試可先用 '*.workers.dev' 網址。
+window.API_BASE = 'https://api.operation.tw';
+
+// Google 登入用的 OAuth Client ID（Google Cloud Console → 憑證 → OAuth 2.0 用戶端 ID）。
+// 後台 admin.html 的「用 Google 登入」按鈕會用到；前台 index.html 不需要。
+window.GOOGLE_CLIENT_ID = 'REPLACE_WITH_YOUR_GOOGLE_OAUTH_CLIENT_ID.apps.googleusercontent.com';

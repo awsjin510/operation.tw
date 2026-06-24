@@ -13,3 +13,4 @@ _site/
 # Cloudflare 遷移匯出檔（含文章內文與訂閱者 Email，切勿提交/公開）
 cloudflare/seed.sql
 cloudflare/.wrangler/
+.dev.vars

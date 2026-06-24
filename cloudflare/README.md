@@ -1,9 +1,9 @@
 # Supabase → Cloudflare 遷移 Runbook
 
 把 `operation.tw` 的資料層從 Supabase 搬到 **Cloudflare D1 + Worker**，後台登入改用
-**Cloudflare Access（Google 登入）**。前端與 GitHub Actions 改打 Worker API。
+**直接 Google 登入（Google Identity Services）**。前端與 GitHub Actions 改打 Worker API。
 
-> 我（Claude）能寫好所有程式碼，但**開資源、設 Access、綁網域這些後台操作要你來跑**。
+> 我（Claude）能寫好所有程式碼，但**開資源、建 Google OAuth、綁網域這些操作要你來跑**。
 > 以下指令在你本機（已 `wrangler login`）執行即可。
 
 ---
@@ -14,7 +14,7 @@
 |---|---|
 | Postgres 資料表 | **D1**（`cloudflare/schema.sql`） |
 | PostgREST 自動 API + RPC | **Worker**（`cloudflare/worker.js`） |
-| Auth（密碼登入） | **Cloudflare Access**（Google） |
+| Auth（密碼登入） | **Google 登入**（前端 GSI 取 ID token；Worker 驗章 + Email 白名單） |
 | RLS 權限 | Worker 內的授權判斷 |
 | Service key（Actions 寫入） | Worker 的 `SERVICE_TOKEN` |
 
@@ -31,22 +31,21 @@ npm i -g wrangler
 wrangler login          # 用你已登入 Cloudflare 的帳號授權
 ```
 
-### 0.5 把網域 DNS 搬到 Cloudflare（保留 GitHub Pages 當原站）
-> 現況確認：operation.tw 由 **GitHub Pages** 服務（A record 指向 185.199.108–111.153），
-> DNS **不在** Cloudflare。同網域方案（operation.tw/api/*）需要流量經過 Cloudflare，
-> 故先把網域接進 Cloudflare —— **這是搬 DNS，不是搬主機，GitHub Pages 繼續服務靜態站**。
+### 0.5 把網域接進 Cloudflare（只為了綁 `api.operation.tw`；可選）
+> 現況：operation.tw 由 **GitHub Pages** 服務（A record 185.199.108–111.153），DNS 不在 Cloudflare。
+> **因為改用 Google 直接登入，auth 已不需要這一步**；只有當你想要漂亮的
+> `api.operation.tw` 自訂網域時才需要（Worker 自訂網域要求 zone 在 Cloudflare）。
+> 想最省事：先跳過這步，用預設 `*.workers.dev` 網址（CORS 已設好，照樣能動）。
 
-1. Cloudflare 後台 → **Add a site** → 輸入 `operation.tw` → 選 Free 方案。
-2. Cloudflare 會掃描現有 DNS。確認保留 GitHub Pages 的紀錄（四個 A record 指向
-   `185.199.108.153`、`.109.153`、`.110.153`、`.111.153`，**橙雲 Proxied**）。
-   `www` 的 CNAME（若有）也設 Proxied。
-3. 到你的網域註冊商，把 **nameserver 改成 Cloudflare 指定的兩台**（例 `xxx.ns.cloudflare.com`）。
-   等生效（通常數分鐘到數小時）。生效後 `curl -sI https://operation.tw` 應出現 `cf-ray` 標頭。
-4. SSL/TLS 模式設 **Full**（GitHub Pages 有有效憑證）。
-5. 確認站台照常開得起來（GitHub Pages origin 沒變，只是前面多了 Cloudflare）。
+若要綁 `api.operation.tw`：
+1. Cloudflare 後台 → **Add a site** → 輸入 `operation.tw` → Free 方案。
+2. 確認保留 GitHub Pages 的四個 A record（`185.199.108–111.153`，**橙雲 Proxied**）；`www` CNAME 一併保留。
+3. 到註冊商把 **nameserver 改成 Cloudflare 指定的兩台**，等生效（`curl -sI https://operation.tw` 出現 `cf-ray` 即成功）。
+4. SSL/TLS 設 **Full**（GitHub Pages 有有效憑證）。站台 origin 沒變，只是前面多了 Cloudflare。
 
-> 不想搬 DNS 的替代方案：後台改放 `admin.operation.tw`，單獨用 Cloudflare Pages/Worker
-> 服務並掛 Access；前台 operation.tw 維持 GitHub Pages。較多零件，非預設路徑。
+> 用 `*.workers.dev` 時：把 `js/api-config.js` 的 `API_BASE` 設成該網址，並把它加進
+> `wrangler.toml` 的 `ALLOWED_ORIGINS` 不需要（CORS 看的是前端來源 operation.tw）。
+> 同時把 `wrangler.toml` 的 `[[routes]]` 區塊註解掉（不綁自訂網域）。
 
 ### 1. 建立 D1 並套用 schema
 ```bash
@@ -67,21 +66,32 @@ wrangler d1 execute operation-tw --remote --file=cloudflare/seed.sql
 wrangler d1 execute operation-tw --remote --command "select count(*) from posts"
 ```
 
-### 3. 設定 Cloudflare Access（Google 登入保護後台）
-在 Cloudflare 後台 **Zero Trust → Access → Applications → Add application（Self-hosted）**：
-- **Application domain**：保護兩條路徑
-  - `operation.tw/admin.html`（後台頁面本身）
-  - `api.operation.tw/api/admin`（後台 API；若 Worker 用 workers.dev 網域，填那個）
-- **Identity provider**：加入 **Google**（Zero Trust → Settings → Authentication）
-- **Policy**：Action = Allow，Include → Emails → `awsjin510@gmail.com`、`keepfighting510@gmail.com`
-- 建好後在應用程式的 **Overview** 複製 **Application Audience (AUD) Tag**
-- 你的團隊網域在 Zero Trust → Settings → Custom Pages，形如 `yourteam.cloudflareaccess.com`
+### 3. 建立 Google 登入（OAuth 用戶端）
+後台用「直接 Google 登入」（不需 Cloudflare Access / Zero Trust）。在
+**Google Cloud Console**（https://console.cloud.google.com）：
 
-把這兩個值填進 `cloudflare/wrangler.toml`：
-```toml
-ACCESS_TEAM_DOMAIN = "yourteam.cloudflareaccess.com"
-ACCESS_AUD = "<剛剛複製的 AUD>"
-```
+1. 建一個專案（或用現有的）。
+2. **APIs & Services → OAuth consent screen**：
+   - User type 選 **External** → 建立。
+   - App name、support email 填一填；Audience 階段先設 **Testing** 即可，
+     在 **Test users** 加入 `awsjin510@gmail.com`、`keepfighting510@gmail.com`
+     （只有測試使用者能登入，不需 Google 審核）。
+3. **APIs & Services → Credentials → Create credentials → OAuth client ID**：
+   - Application type：**Web application**
+   - **Authorized JavaScript origins** 加入後台頁面的來源（精確比對，要有 https、不含路徑）：
+     - `https://operation.tw`
+     - `https://www.operation.tw`（若會用 www）
+     - 本機測試另加 `http://localhost:8787` 等
+   - **Authorized redirect URIs**：用 Google Identity Services（GSI）按鈕**不需要**填，可留空。
+   - 建立後複製 **Client ID**（形如 `xxxx.apps.googleusercontent.com`）。
+
+把這個 Client ID 同時填到兩個地方：
+- `js/api-config.js` 的 `window.GOOGLE_CLIENT_ID`
+- `cloudflare/wrangler.toml` 的 `GOOGLE_CLIENT_ID`（Worker 驗證 token 的 audience）
+
+> 運作方式：admin.html 顯示「Sign in with Google」按鈕 → 使用者登入 → 瀏覽器拿到
+> Google **ID token** → 隨每個 `/api/admin/*` 請求以 `Authorization: Bearer` 送出 →
+> Worker 用 Google 公鑰驗章、檢查 audience＝你的 Client ID、且 email 在 `ADMIN_EMAILS` 白名單。
 
 ### 4. 設定 Worker 機密並部署
 ```bash
@@ -90,15 +100,17 @@ cd cloudflare
 wrangler secret put SERVICE_TOKEN
 wrangler deploy
 ```
-部署後會得到 Worker 網址（`https://operation-tw-api.<子網域>.workers.dev` 或你綁的 `api.operation.tw`）。
-**建議綁自訂網域** `api.operation.tw`（解開 wrangler.toml 的 `[[routes]]` 區塊再 deploy）。
+部署後會得到 Worker 網址。**建議綁自訂網域** `api.operation.tw`（wrangler.toml 已設
+`[[routes]] custom_domain`，需網域 zone 在 Cloudflare 上）。想零 DNS 變動可先用
+預設 `*.workers.dev` 網址測試——因為走 Google 直接登入＋CORS，跨網域也能運作。
 
 ### 5. 前端切換 API 來源
-編輯 `js/api-config.js`，把 `API_BASE` 改成你的 Worker 網址：
+編輯 `js/api-config.js`：
 ```js
 window.API_BASE = 'https://api.operation.tw';   // 或 workers.dev 網址
+window.GOOGLE_CLIENT_ID = 'xxxx.apps.googleusercontent.com';
 ```
-`index.html` 與 `admin.html` 已改成讀這個變數（見前端改動）。
+`index.html`（公開端點）與 `admin.html`（Google 登入）已改成讀這些變數。
 
 ### 6. GitHub Actions 換密鑰
 Repo → Settings → Secrets and variables → Actions，新增：
@@ -113,12 +125,24 @@ curl https://api.operation.tw/api/health                 # {"ok":true}
 curl https://api.operation.tw/api/posts | head -c 200    # 文章清單
 curl -X POST https://api.operation.tw/api/views/site     # {"total":..,"today":..}
 ```
-後台：開 `operation.tw/admin.html` → 應跳 Google 登入 → 進得去且看得到文章清單。
+後台：開 `operation.tw/admin.html` → 顯示「Sign in with Google」按鈕 → 用白名單帳號登入 → 看得到文章清單。
+
+### （可選）先在本機測整套 Worker + D1
+不需 Cloudflare 帳號，用 wrangler 本地模式（已驗證可行）：
+```bash
+cd cloudflare && npm i        # 安裝 wrangler（devDependency）
+npx wrangler d1 execute operation-tw --local --config wrangler.dev.toml --file=schema.sql
+echo "SERVICE_TOKEN=devtoken-abc123" > .dev.vars
+npx wrangler dev --config wrangler.dev.toml --port 8787 --local
+# 另開終端：
+curl localhost:8787/api/health
+curl localhost:8787/api/admin/posts -H "Authorization: Bearer devtoken-abc123"
+```
 
 ---
 
 ## 切換順序（重要，避免線上壞掉）
-1. 先把 Worker 部署好、資料灌好、Access 設好（線上前端**還在用 Supabase**，不受影響）。
+1. 先把 Worker 部署好、資料灌好、Google OAuth 設好（線上前端**還在用 Supabase**，不受影響）。
 2. 驗證 API 全綠。
 3. 合併本分支（前端 + 腳本改打 Worker）。
 4. 觀察一兩天。確認沒問題再去 Supabase 暫停專案。

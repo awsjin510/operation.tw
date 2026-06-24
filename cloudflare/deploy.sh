@@ -52,13 +52,15 @@ cat <<EOF
 ✅ wrangler 部分完成。
 
 接下來「手動」的部分（見 cloudflare/README.md）：
-  • 步驟 0.5：把 operation.tw 接進 Cloudflare、改 nameserver（保留 GitHub Pages origin）
-  • 步驟 3  ：設定 Cloudflare Access（Google 登入 + Email 白名單），
-              把 ACCESS_TEAM_DOMAIN / ACCESS_AUD 填進 wrangler.toml 後再 wrangler deploy 一次
+  • 步驟 3  ：在 Google Cloud Console 建 OAuth Client ID（Web 應用程式，
+              Authorized JS origins 加 https://operation.tw），把 Client ID 填進
+              js/api-config.js 與 wrangler.toml 的 GOOGLE_CLIENT_ID，然後再 wrangler deploy 一次
+  • 步驟 0.5：（可選）想綁 api.operation.tw 才需把網域接進 Cloudflare；
+              否則直接用上面 deploy 出來的 *.workers.dev 網址即可
   • GitHub  ：Repo Secrets 加入
-                CF_API_BASE      = https://operation.tw
+                CF_API_BASE      = 你的 Worker 網址（api.operation.tw 或 *.workers.dev）
                 CF_SERVICE_TOKEN = $SERVICE_TOKEN
 
 驗證：
-  curl https://operation.tw/api/health      # 期望 {"ok":true}（需先完成 0.5 並等 DNS 生效）
+  curl <你的 Worker 網址>/api/health      # 期望 {"ok":true}
 EOF
