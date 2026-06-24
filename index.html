@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://pvqvnmntqhsfzarbxayf.supabase.co;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.operation.tw;">
 <title>操作一下 | operation.tw</title>
 <meta name="description" content="雲端、資安、AI、閱讀、成長 — 簡單的事情專注做">
 <meta name="google-site-verification" content="puSeWyYwLv1eXCJhWEzExzrvlq0XQV6dH9jNYkyDO4c" />
@@ -29,7 +29,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"EducationalOrganization","name":"操作一下","url":"https://operation.tw","description":"專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享","alternateName":"Operation.tw","telephone":"+886-2-2658-2220","image":"https://operation.tw/default.png"}
 </script>
-<link rel="preconnect" href="https://pvqvnmntqhsfzarbxayf.supabase.co" crossorigin>
+<link rel="preconnect" href="https://api.operation.tw" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
@@ -1083,7 +1083,8 @@ a.hero-cta{text-decoration:none;}
 </noscript>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.min.js"></script>
+<script src="/js/api-config.js"></script>
+<script src="/js/api.js"></script>
 <script src="https://unpkg.com/dompurify@3.2.4/dist/purify.min.js"></script>
 <script>
 // ── GITHUB PAGES SPA ROUTING: restore URL from 404 redirect ──
@@ -1092,10 +1093,7 @@ a.hero-cta{text-decoration:none;}
   if(q&&q[1]==='/'){history.replaceState(null,null,q.slice(1)||'/');}
 })();
 
-// ── SUPABASE ──
-const SUPABASE_URL='https://pvqvnmntqhsfzarbxayf.supabase.co';
-const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2cXZubW50cWhzZnphcmJ4YXlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2NjQ0MjUsImV4cCI6MjA4NzI0MDQyNX0.sKn8yzJos9F8ghKrp3icx6zR2RO39898DenWlLodpqA';
-const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+// ── API（Cloudflare Worker；見 /js/api.js）──
 
 const CAT_COLOR={AI:'#bf00ff',雲端:'#00f5ff',資安:'#ff0080',閱讀:'#ffff00',成長:'#00ff88'};
 const CAT_ICON={AI:'🤖',雲端:'☁️',資安:'🔐',閱讀:'📚',成長:'🌱'};
@@ -1167,42 +1165,32 @@ async function initDB(){
   }
 
   // 3) 背景只同步「設定」(hp/about/footer)。文章清單一律用靜態 posts.json，
-  //    不再每次載入就向 Supabase 全表撈 267 篇 → 大幅降低 API egress。
-  sb.from('settings').select('*').then(({data:settings,error:se})=>{
-    if(se){console.warn('Settings query error:',se);return;}
-    const sm={};(settings||[]).forEach(s=>{sm[s.key]=s.value;});
+  //    不再每次載入就向後端全表撈 → 大幅降低 API 用量。
+  api.getSettings().then(sm=>{
     applyData(D.posts||[],sm);
     setCache(D.posts||[],sm);
     renderHome();
-  });
+  },e=>console.warn('Settings query error:',e));
 
-  // 4) 若靜態 JSON 也沒有（首次部署前）→ 直接從 Supabase 撈
+  // 4) 若靜態 JSON 也沒有（首次部署前）→ 直接從 API 撈
   if(!postsRendered){
     try{
-      const {data,error}=await sb.from('posts').select('id,title,category,date,status,excerpt,image,views').eq('status','published').order('date',{ascending:false});
-      if(error)throw error;
+      const data=await api.getPublishedPosts();
       applyData(data||[],null);
     }catch(err){
-      console.error('Supabase posts error:',err);
+      console.error('API posts error:',err);
       D=JSON.parse(JSON.stringify(DEFAULTS));D.siteViews={total:0,today:0};
     }
     renderHome();handleRoute();
   }
-  // 先遞增瀏覽數，再查詢統計（確保資料已寫入）
-  sb.rpc('increment_site_views').then(({error:incErr})=>{
-    if(incErr)console.warn('increment_site_views error:',incErr);
-    return sb.from('site_stats').select('*').in('id',['total',today]);
-  },e=>{console.warn('increment_site_views failed:',e);return sb.from('site_stats').select('*').in('id',['total',today]);})
-  .then(({data,error})=>{
-    if(error){console.warn('site_stats query error:',error);return;}
-    if(data&&data.length){
-      data.forEach(s=>{if(s.id==='total')D.siteViews.total=s.count;else D.siteViews.today=s.count;});
+  // 遞增網站瀏覽數並取回最新統計
+  api.incrementSiteViews().then(stats=>{
+    if(stats){
+      D.siteViews.total=stats.total;D.siteViews.today=stats.today;
       setText('stat-total',fmtViews(D.siteViews.total));
       setText('stat-today',fmtViews(D.siteViews.today));
-    }else{
-      console.warn('site_stats: no data returned',data);
     }
-  });
+  },e=>console.warn('site views error:',e));
 }
 
 function applyData(posts,sm){
@@ -1444,11 +1432,10 @@ async function openPost(id){
   badge.textContent=p.category;badge.style.borderColor=c;badge.style.color=c;
   setText('a-title',p.title);setText('a-date',p.date);setText('a-cat-tag','🏷 '+p.category);
   setText('a-views',p.views||0);
-  sb.rpc('increment_post_views',{post_id:p.id}).then(
-    async()=>{
-      const{data:vd}=await sb.from('posts').select('views').eq('id',p.id).single();
-      if(vd?.views!=null){
-        p.views=vd.views;setText('a-views',p.views);
+  api.incrementPostViews(p.id).then(
+    r=>{
+      if(r&&r.views!=null){
+        p.views=r.views;setText('a-views',p.views);
         const cardEl=document.querySelector('[data-post-id="'+p.id+'"] .pc-view-cnt');
         if(cardEl)cardEl.textContent='👁 '+p.views;
       }
@@ -1466,18 +1453,18 @@ async function openPost(id){
     bodyEl.innerHTML=safeHTML(p.body)||'<p style="color:var(--dim)">（尚無內容）</p>';
   }else{
     bodyEl.innerHTML='<div style="text-align:center;padding:40px;color:var(--dim);">載入中…</div>';
-    // 先讀靜態文章頁的全文（Netlify CDN，零 Supabase egress）
+    // 先讀靜態文章頁的全文（CDN，零 API 用量）
     const staticBody=await fetchStaticBody(p.slug||p.id);
     if(staticBody){
       p.body=staticBody;setBodyCache(p.id,staticBody);
     }else{
-      // 靜態頁尚無全文 → 退而求其次向 Supabase 拉一次
+      // 靜態頁尚無全文 → 退而求其次向 API 拉一次
       try{
         const ctrl=new AbortController();
         const timer=setTimeout(()=>ctrl.abort(),10000);
-        const {data,error}=await sb.from('posts').select('body').eq('id',p.id).single().abortSignal(ctrl.signal);
+        const body=await api.getPostBody(p.id,ctrl.signal);
         clearTimeout(timer);
-        if(!error&&data&&data.body){p.body=data.body;setBodyCache(p.id,data.body);}
+        if(body){p.body=body;setBodyCache(p.id,body);}
       }catch(e){
         console.warn('Failed to load post body:',e);
         if(!p.body)bodyEl.innerHTML='<p style="color:var(--pink)">內容載入失敗，請稍後再試。</p>';
@@ -1596,8 +1583,7 @@ async function nlSubmit(){
   const orig=btn.dataset.orig||btn.textContent;btn.dataset.orig=orig;
   btn.disabled=true;btn.style.opacity='.7';btn.textContent='送出中…';
   try{
-    const {data,error}=await sb.rpc('subscribe_newsletter',{p_email:email});
-    if(error)throw error;
+    const data=await api.subscribe(email);
     if(data==='invalid'){inp.style.borderColor='var(--pink)';btn.textContent='Email 格式錯誤';}
     else{
       btn.textContent=(data==='exists')?'你已訂閱過 ✓':'訂閱成功 ✓';
