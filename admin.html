@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.operation.tw;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://accounts.google.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com https://accounts.google.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.operation.tw https://accounts.google.com; frame-src https://accounts.google.com;">
 <title>後台管理 | operation.tw</title>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -487,16 +488,9 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
   <div style="width:100%;max-width:380px;padding:0 24px;">
     <div style="font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:4px;">後台登入</div>
     <div style="font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);letter-spacing:.15em;margin-bottom:32px;">// OPERATION.TW ADMIN</div>
-    <div class="form-group">
-      <div class="form-label">Email</div>
-      <input type="email" id="login-email" placeholder="your@email.com" onkeydown="if(event.key==='Enter')doLogin()">
-    </div>
-    <div class="form-group">
-      <div class="form-label">密碼</div>
-      <input type="password" id="login-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
-    </div>
-    <div id="login-err" style="font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--pink);margin-bottom:14px;display:none;"></div>
-    <button class="btn btn-primary" style="width:100%;" onclick="doLogin()" id="login-btn">登入後台</button>
+    <div style="font-family:'Share Tech Mono',monospace;font-size:.7rem;color:var(--dim);margin-bottom:18px;">請用授權的 Google 帳號登入</div>
+    <div id="g-signin"></div>
+    <div id="login-err" style="font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--pink);margin-top:16px;display:none;"></div>
   </div>
 </div>
 
@@ -524,28 +518,52 @@ const DEFAULTS={
 
 let D={posts:[],hp:DEFAULTS.hp,about:DEFAULTS.about,footer:DEFAULTS.footer};
 
-// ── AUTH（改用 Cloudflare Access：頁面與 /api/admin 都在邊緣被 Google 登入保護）──
-// 頁面能載入＝已通過 Access；這裡再呼叫 /api/admin/me 確認 Email 在白名單內。
-async function checkAuth(){
-  const overlay=document.getElementById('login-overlay');
+// ── AUTH（直接 Google 登入：Google Identity Services 取得 ID token，
+//    送給 Worker 驗證 + Email 白名單。不需 Cloudflare Access）──
+function showLoginErr(text){
+  const msg=document.getElementById('login-err');
+  if(msg){msg.textContent=text;msg.style.display=text?'block':'none';}
+}
+
+// Google 回傳 credential（ID token）後的處理
+async function onGoogleCredential(resp){
+  const token=resp&&resp.credential;
+  if(!token){showLoginErr('Google 登入失敗，請再試一次');return;}
+  api.setAuthToken(token);
   try{
-    await api.me();
-    overlay.style.display='none';
+    await api.me();                              // 驗證 token + 白名單
+    showLoginErr('');
+    document.getElementById('login-overlay').style.display='none';
     await loadData();
   }catch(err){
-    // 401：未登入 → 重新載入會觸發 Access 的 Google 登入頁
-    // 403：登入了但 Email 不在白名單
-    const msg=document.getElementById('login-err');
-    if(msg){
-      msg.textContent=(err.status===403)?'此帳號無後台權限':'請以 Google 登入後台';
-      msg.style.display='block';
-    }
-    overlay.style.display='flex';
+    api.setAuthToken(null);
+    showLoginErr(err.status===403?'此 Google 帳號無後台權限':'登入驗證失敗：'+err.message);
+    document.getElementById('login-overlay').style.display='flex';
   }
 }
 
-function doLogin(){ location.reload(); }            // 交給 Cloudflare Access 接手登入
-function doLogout(){ location.href='/cdn-cgi/access/logout'; }
+// 初始化 Google 登入按鈕（等 GSI script 載入）
+function initGoogleSignIn(){
+  if(!window.google||!google.accounts||!google.accounts.id){return setTimeout(initGoogleSignIn,200);}
+  if(!window.GOOGLE_CLIENT_ID||/REPLACE_WITH/.test(window.GOOGLE_CLIENT_ID)){
+    showLoginErr('尚未設定 GOOGLE_CLIENT_ID（見 js/api-config.js）');return;
+  }
+  google.accounts.id.initialize({client_id:window.GOOGLE_CLIENT_ID,callback:onGoogleCredential});
+  google.accounts.id.renderButton(document.getElementById('g-signin'),
+    {theme:'filled_black',size:'large',text:'signin_with',shape:'pill',width:280});
+}
+
+// 進站：顯示登入畫面、初始化 Google 按鈕（不自動跳過登入）
+async function checkAuth(){
+  document.getElementById('login-overlay').style.display='flex';
+  initGoogleSignIn();
+}
+
+function doLogout(){
+  api.setAuthToken(null);
+  try{google.accounts.id.disableAutoSelect();}catch(_){}
+  location.reload();
+}
 
 // ── DB LOAD ──
 async function loadData(){

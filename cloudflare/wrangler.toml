@@ -11,24 +11,18 @@ binding = "DB"
 database_name = "operation-tw"
 database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
 
-# 路由（建議同網域，與前端同源 → 無 CORS、Access cookie 自動帶上）
-# 需求：operation.tw 的 DNS 在 Cloudflare 上（橙雲代理）。
-# operation.tw/api/* 交給這個 Worker，其餘路徑仍回 GitHub Pages。
+# 子網域路由：api.operation.tw（需網域 zone 在 Cloudflare 上）
+# 測試階段可先註解掉，改用預設的 *.workers.dev 網址（搭配 Google 直接登入＋CORS 即可運作）。
 [[routes]]
-pattern = "operation.tw/api/*"
-zone_name = "operation.tw"
+pattern = "api.operation.tw"
+custom_domain = true
 
-# 替代方案：獨立子網域（需另設 CORS / Access / CSP）
-# [[routes]]
-# pattern = "api.operation.tw"
-# custom_domain = true
-
-# 非機密設定（機密一律用 wrangler secret put，勿寫在這裡）
+# 非機密設定（機密一律用 wrangler secret put）
 [vars]
 ALLOWED_ORIGINS = "https://operation.tw,https://www.operation.tw"
 ADMIN_EMAILS = "awsjin510@gmail.com,keepfighting510@gmail.com"
-ACCESS_TEAM_DOMAIN = "REPLACE.cloudflareaccess.com"
-ACCESS_AUD = "REPLACE_WITH_ACCESS_APPLICATION_AUD"
+# Google OAuth 2.0 用戶端 ID（與前端 js/api-config.js 的 GOOGLE_CLIENT_ID 同一個）
+GOOGLE_CLIENT_ID = "REPLACE_WITH_YOUR_GOOGLE_OAUTH_CLIENT_ID.apps.googleusercontent.com"
 
 # 機密（用指令設定，不要寫在檔案）：
 #   wrangler secret put SERVICE_TOKEN     # 給 GitHub Actions 用的長隨機字串

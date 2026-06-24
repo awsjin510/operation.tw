@@ -1,0 +1,11 @@
+name = "operation-tw-api-dev"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+[[d1_databases]]
+binding = "DB"
+database_name = "operation-tw"
+database_id = "local-test-id"
+[vars]
+ALLOWED_ORIGINS = "*"
+ADMIN_EMAILS = "awsjin510@gmail.com,keepfighting510@gmail.com"
+GOOGLE_CLIENT_ID = "test-client-id.apps.googleusercontent.com"

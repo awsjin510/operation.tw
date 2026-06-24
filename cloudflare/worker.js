@@ -10,8 +10,9 @@
  *   POST /api/subscribe   {email}    電子報訂閱 → { result }
  *
  * 管理端點（需授權，前綴 /api/admin）：
- *   由 Cloudflare Access（Google 登入）在邊緣保護；Worker 再驗 Access JWT + Email 白名單。
- *   GitHub Actions 等自動化則用 Authorization: Bearer <SERVICE_TOKEN>。
+ *   瀏覽器：Google 登入取得的 ID token，以 Authorization: Bearer 送出；
+ *           Worker 用 Google 公鑰驗章，檢查 aud＝GOOGLE_CLIENT_ID 且 email 在白名單。
+ *   GitHub Actions 等自動化：Authorization: Bearer <SERVICE_TOKEN>。
  *   GET    /api/admin/me
  *   GET    /api/admin/posts           全部文章（含草稿，不含 body）
  *   GET    /api/admin/posts/:id       單篇（含 body）
@@ -26,8 +27,7 @@
  *   env.DB                D1 binding
  *   env.ALLOWED_ORIGINS   逗號分隔的允許來源（CORS），例：https://operation.tw
  *   env.ADMIN_EMAILS      逗號分隔的管理員 Email 白名單
- *   env.ACCESS_TEAM_DOMAIN  你的 Access 團隊網域，例：yourteam.cloudflareaccess.com
- *   env.ACCESS_AUD        Access 應用程式的 Application Audience (AUD) tag
+ *   env.GOOGLE_CLIENT_ID  Google OAuth 2.0 用戶端 ID（驗證 ID token 的 audience）
  *   env.SERVICE_TOKEN     給自動化腳本用的長隨機字串（secret）
  */
 
@@ -214,32 +214,26 @@ function settingsToObject(rows) {
   return o;
 }
 
-// ── Auth：Service token 或 Cloudflare Access JWT ─────────
+// ── Auth：Service token（腳本）或 Google ID token（瀏覽器）─────────
 async function requireAuth(request, env) {
   const auth = request.headers.get('Authorization') || '';
-  if (auth.startsWith('Bearer ')) {
-    const tok = auth.slice(7);
-    if (env.SERVICE_TOKEN && tok === env.SERVICE_TOKEN) return { email: 'service', via: 'token' };
-    throw httpError(401, 'invalid service token');
-  }
-  // Cloudflare Access：JWT 可能來自 header（API 在邊緣被 Access 保護時）
-  // 或 CF_Authorization cookie（同網域下 Access 登入頁面後種下的）。
-  const jwt = request.headers.get('Cf-Access-Jwt-Assertion') || getCookie(request, 'CF_Authorization');
-  if (!jwt) throw httpError(401, 'unauthenticated');
-  const claims = await verifyAccessJwt(jwt, env);
-  const allow = (env.ADMIN_EMAILS || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
+  if (!auth.startsWith('Bearer ')) throw httpError(401, 'unauthenticated');
+  const tok = auth.slice(7);
+  // 自動化腳本：Service token（非 JWT 的隨機字串，先比對）
+  if (env.SERVICE_TOKEN && tok === env.SERVICE_TOKEN) return { email: 'service', via: 'token' };
+  // 瀏覽器：Google 登入拿到的 ID token
+  const claims = await verifyGoogleIdToken(tok, env);
   const email = (claims.email || '').toLowerCase();
-  if (email && allow.includes(email)) return { email, via: 'access' };
-  // 服務型 Access token（非互動，無 email，有 common_name）— Access 政策已在邊緣放行
-  if (claims.common_name) return { email: claims.common_name, via: 'access-service' };
-  throw httpError(403, 'not an admin');
+  const allow = (env.ADMIN_EMAILS || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
+  if (!email || !allow.includes(email)) throw httpError(403, 'not an admin');
+  return { email, via: 'google' };
 }
 
-let _certsCache = null;
-async function getAccessCerts(env) {
-  if (_certsCache) return _certsCache;
-  const res = await fetch(`https://${env.ACCESS_TEAM_DOMAIN}/cdn-cgi/access/certs`);
-  if (!res.ok) throw httpError(500, 'cannot fetch Access certs');
+let _googleCerts = null;
+async function getGoogleCerts() {
+  if (_googleCerts) return _googleCerts;
+  const res = await fetch('https://www.googleapis.com/oauth2/v3/certs');
+  if (!res.ok) throw httpError(500, 'cannot fetch Google certs');
   const data = await res.json();
   const keys = {};
   for (const jwk of data.keys || []) {
@@ -247,16 +241,20 @@ async function getAccessCerts(env) {
       'jwk', jwk, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']
     );
   }
-  _certsCache = keys;
+  _googleCerts = keys;
   return keys;
 }
 
-async function verifyAccessJwt(token, env) {
+async function verifyGoogleIdToken(token, env) {
   const parts = token.split('.');
-  if (parts.length !== 3) throw httpError(401, 'malformed jwt');
-  const header = JSON.parse(b64urlToString(parts[0]));
-  const payload = JSON.parse(b64urlToString(parts[1]));
-  const keys = await getAccessCerts(env);
+  if (parts.length !== 3) throw httpError(401, 'malformed token');
+  let header, payload;
+  try {
+    header = JSON.parse(b64urlToString(parts[0]));
+    payload = JSON.parse(b64urlToString(parts[1]));
+  } catch (_) { throw httpError(401, 'malformed token'); }
+  let keys = await getGoogleCerts();
+  if (!keys[header.kid]) { _googleCerts = null; keys = await getGoogleCerts(); } // 金鑰輪替 → 重抓一次
   const key = keys[header.kid];
   if (!key) throw httpError(401, 'unknown signing key');
   const ok = await crypto.subtle.verify(
@@ -267,10 +265,10 @@ async function verifyAccessJwt(token, env) {
   if (!ok) throw httpError(401, 'bad signature');
   const now = Math.floor(Date.now() / 1000);
   if (payload.exp && now > payload.exp) throw httpError(401, 'token expired');
-  if (env.ACCESS_AUD) {
-    const aud = Array.isArray(payload.aud) ? payload.aud : [payload.aud];
-    if (!aud.includes(env.ACCESS_AUD)) throw httpError(401, 'bad audience');
-  }
+  const iss = payload.iss || '';
+  if (iss !== 'accounts.google.com' && iss !== 'https://accounts.google.com') throw httpError(401, 'bad issuer');
+  if (env.GOOGLE_CLIENT_ID && payload.aud !== env.GOOGLE_CLIENT_ID) throw httpError(401, 'bad audience');
+  if (payload.email_verified === false) throw httpError(401, 'email not verified');
   return payload;
 }
 
@@ -284,11 +282,6 @@ async function readJson(request) {
   try { return await request.json(); } catch { return {}; }
 }
 function httpError(status, msg) { const e = new Error(msg); e.status = status; return e; }
-function getCookie(request, name) {
-  const c = request.headers.get('Cookie') || '';
-  const m = c.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]+)'));
-  return m ? decodeURIComponent(m[1]) : null;
-}
 
 function cors(res, request, env) {
   const origin = request.headers.get('Origin') || '';
