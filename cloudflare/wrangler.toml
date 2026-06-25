@@ -11,11 +11,12 @@ binding = "DB"
 database_name = "operation-tw"
 database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
 
-# 子網域路由：api.operation.tw（需網域 zone 在 Cloudflare 上）
-# 測試階段可先註解掉，改用預設的 *.workers.dev 網址（搭配 Google 直接登入＋CORS 即可運作）。
-[[routes]]
-pattern = "api.operation.tw"
-custom_domain = true
+# 子網域路由：api.operation.tw（需網域 zone 在 Cloudflare 上）。
+# 你目前在 GitHub Pages、DNS 不在 Cloudflare → 先用預設 *.workers.dev 網址，
+# 故此區塊先註解掉。日後把網域接進 Cloudflare 再解除註解綁自訂網域。
+# [[routes]]
+# pattern = "api.operation.tw"
+# custom_domain = true
 
 # 非機密設定（機密一律用 wrangler secret put）
 [vars]

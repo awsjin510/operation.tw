@@ -52,11 +52,11 @@ done
 echo "  驗證："
 wrangler d1 execute "$DB_NAME" --remote --command "select count(*) as posts from posts"
 
-echo "▸ 5/6 設定 SERVICE_TOKEN 機密"
-printf '%s' "$SERVICE_TOKEN" | wrangler secret put SERVICE_TOKEN --config cloudflare/wrangler.toml
-
-echo "▸ 6/6 部署 Worker"
+echo "▸ 5/6 部署 Worker（先部署，secret 才能掛上去）"
 wrangler deploy --config cloudflare/wrangler.toml
+
+echo "▸ 6/6 設定 SERVICE_TOKEN 機密（即時生效，不需再部署）"
+printf '%s' "$SERVICE_TOKEN" | wrangler secret put SERVICE_TOKEN --config cloudflare/wrangler.toml
 
 cat <<EOF
 
