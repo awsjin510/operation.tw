@@ -5,9 +5,10 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."   # 切到 repo 根目錄
 
-# ── 你要填的值 ───────────────────────────────────────────────
-: "${SUPABASE_URL:?請設定 SUPABASE_URL（用來匯出舊資料）}"
-: "${SUPABASE_SERVICE_KEY:?請設定 SUPABASE_SERVICE_KEY}"
+# ── 資料來源 ─────────────────────────────────────────────────
+# 預設 SEED_SOURCE=repo：直接用 repo 內 posts.json + 靜態頁產生 seed（不需 Supabase）。
+# 若要從 Supabase 匯出（含草稿/訂閱者），設 SEED_SOURCE=supabase 並提供 SUPABASE_URL/SERVICE_KEY。
+SEED_SOURCE="${SEED_SOURCE:-repo}"
 # SERVICE_TOKEN：給 GitHub Actions 用的長隨機字串；沒給就自動產一組
 SERVICE_TOKEN="${SERVICE_TOKEN:-$(openssl rand -hex 32)}"
 DB_NAME="operation-tw"
@@ -32,12 +33,22 @@ PY
 echo "▸ 2/6 套用 schema 到 D1"
 wrangler d1 execute "$DB_NAME" --remote --file=cloudflare/schema.sql
 
-echo "▸ 3/6 從 Supabase 匯出資料 → seed.sql"
-SUPABASE_URL="$SUPABASE_URL" SUPABASE_SERVICE_KEY="$SUPABASE_SERVICE_KEY" \
-  node cloudflare/migrate-from-supabase.js
+echo "▸ 3/6 產生 seed（來源：$SEED_SOURCE）"
+if [ "$SEED_SOURCE" = "supabase" ]; then
+  : "${SUPABASE_URL:?supabase 模式需 SUPABASE_URL}"
+  : "${SUPABASE_SERVICE_KEY:?supabase 模式需 SUPABASE_SERVICE_KEY}"
+  node cloudflare/migrate-from-supabase.js          # 產生 cloudflare/seed.sql（單檔）
+  SEED_FILES="cloudflare/seed.sql"
+else
+  node cloudflare/seed-from-repo.js                 # 從 repo 產生 cloudflare/seed/*.sql（多檔）
+  SEED_FILES="cloudflare/seed/*.sql"
+fi
 
 echo "▸ 4/6 灌資料進 D1"
-wrangler d1 execute "$DB_NAME" --remote --file=cloudflare/seed.sql
+for f in $SEED_FILES; do
+  echo "  載入 $f"
+  wrangler d1 execute "$DB_NAME" --remote --file="$f"
+done
 echo "  驗證："
 wrangler d1 execute "$DB_NAME" --remote --command "select count(*) as posts from posts"
 
