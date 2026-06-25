@@ -55,8 +55,10 @@ const q = (v) => {
 
 function insertStmt(table, cols, rows) {
   if (!rows.length) return `-- ${table}: 無資料\n`;
-  const lines = rows.map((r) => `(${cols.map((c) => q(r[c])).join(',')})`);
-  return `insert into ${table} (${cols.join(',')}) values\n${lines.join(',\n')};\n`;
+  // 每列各一條 INSERT，避免單一超大 statement 觸發 SQLITE_TOOBIG。
+  return rows.map((r) =>
+    `insert into ${table} (${cols.join(',')}) values (${cols.map((c) => q(r[c])).join(',')});`
+  ).join('\n') + '\n';
 }
 
 async function main() {

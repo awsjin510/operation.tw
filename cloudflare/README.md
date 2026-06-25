@@ -54,16 +54,26 @@ wrangler d1 create operation-tw
 wrangler d1 execute operation-tw --remote --file=cloudflare/schema.sql
 ```
 
-### 2. 從 Supabase 匯出資料 → 灌進 D1
+### 2. 灌資料進 D1
+
+**（預設）方案 A — 從 repo 產生，不需 Supabase**
+直接用 repo 內 `posts.json`（metadata）+ `post/<id>/index.html`（完整內文）產生 seed：
 ```bash
-# 用你的 Supabase 專案網址與 service key
+node cloudflare/seed-from-repo.js                 # 產生 cloudflare/seed/*.sql（已分段，避免 D1 100KB 單句上限）
+for f in cloudflare/seed/*.sql; do
+  wrangler d1 execute operation-tw --remote --file="$f"
+done
+wrangler d1 execute operation-tw --remote --command "select count(*) from posts"   # 應為 270
+```
+> 取捨：拿不到「草稿」「訂閱者名單」「精確的 site_stats」（這些只在 Supabase）。
+> 已發布文章與內文 100% 完整。settings 留空 → 後台用內建預設值，可在新後台重存。
+
+**方案 B — 從 Supabase 匯出（要 Supabase 還活著，含草稿/訂閱者）**
+```bash
 SUPABASE_URL=https://pvqvnmntqhsfzarbxayf.supabase.co \
 SUPABASE_SERVICE_KEY=<你的 service key> \
 node cloudflare/migrate-from-supabase.js          # 產生 cloudflare/seed.sql
-
 wrangler d1 execute operation-tw --remote --file=cloudflare/seed.sql
-# 驗證：
-wrangler d1 execute operation-tw --remote --command "select count(*) from posts"
 ```
 
 ### 3. 建立 Google 登入（OAuth 用戶端）
