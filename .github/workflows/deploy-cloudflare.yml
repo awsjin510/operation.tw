@@ -1,0 +1,63 @@
+name: Deploy Cloudflare (D1 + Worker)
+
+# 手動觸發：在雲端建立 D1、從 repo 灌資料、部署 Worker。
+# 需先在 Repo → Settings → Secrets and variables → Actions 設定：
+#   CLOUDFLARE_API_TOKEN   （Cloudflare → My Profile → API Tokens，含 Workers Scripts:Edit + D1:Edit）
+#   CLOUDFLARE_ACCOUNT_ID  （Cloudflare 右側欄 Account ID）
+#   CF_SERVICE_TOKEN       （自訂一串長隨機字串，內容工作流程也會用同一串）
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout（一律抓 Cloudflare 遷移分支，內含 deploy 腳本與資料）
+        uses: actions/checkout@v4
+        with:
+          ref: claude/lucid-noether-5lmint
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install wrangler
+        run: npm i -g wrangler
+
+      - name: Deploy（建 D1 + 灌資料 + 部署 Worker）
+        id: deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+          SEED_SOURCE: repo
+        run: |
+          set -o pipefail
+          bash cloudflare/deploy.sh 2>&1 | tee /tmp/deploy.log
+          # 從輸出抓出 Worker 網址
+          URL=$(grep -oE 'https://operation-tw-api[^ ]*\.workers\.dev' /tmp/deploy.log | head -1)
+          echo "worker_url=$URL" >> "$GITHUB_OUTPUT"
+          {
+            echo "## ✅ Cloudflare 部署完成"
+            echo ""
+            echo "**Worker 網址：** \`$URL\`"
+            echo ""
+            echo "把這個網址貼回對話，我幫你接 CF_API_BASE 與前端設定。"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit D1 database_id back to branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add cloudflare/wrangler.toml
+          if git diff --cached --quiet; then
+            echo "wrangler.toml 無變更"
+          else
+            git commit -m "chore(cloudflare): record D1 database_id"
+            git push
+          fi
