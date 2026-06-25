@@ -16,8 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Checkout
+      - name: Checkout（一律抓 Cloudflare 遷移分支，內含 deploy 腳本與資料）
         uses: actions/checkout@v4
+        with:
+          ref: claude/lucid-noether-5lmint
 
       - name: Setup Node.js 22
         uses: actions/setup-node@v4
