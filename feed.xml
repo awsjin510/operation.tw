@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 24 Jun 2026 04:45:21 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 25 Jun 2026 04:40:23 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>OpenAI與Anthropic投資者重疊42%：AI雲端新秩序的隱形力量</title>
+    <link>https://operation.tw/post/288</link>
+    <guid isPermaLink="true">https://operation.tw/post/288</guid>
+    <description>最新數據揭露OpenAI與Anthropic的投資者有42%重疊，反映出AI時代雲端運算市場的投資邏輯轉變。這種現象背後隱含著什麼策略考量？對台灣雲端產業生態將造成什麼影響？</description>
+    <category>雲端</category>
+    <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI攻擊全面化時代：2026企業該如何主動出擊？</title>
     <link>https://operation.tw/post/286</link>
@@ -158,14 +166,6 @@
     <description>超過八成大企業部署AI代理卻缺乏安全防護，資安業界發現「推理層」成為新型攻擊面。本文深入分析這個被忽視的資安死角，以及企業應如何建立多層防禦策略，保護AI應用的推理過程。</description>
     <category>資安</category>
     <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</title>
-    <link>https://operation.tw/post/129</link>
-    <guid isPermaLink="true">https://operation.tw/post/129</guid>
-    <description>最新研究揭示語言模型透過「離線整理記憶」機制，能顯著提升長程推理能力。這項發現挑戰了傳統AI訓練模式，為企業級應用帶來新的效能優化方向，台灣科技業應密切關注此技術趨勢。</description>
-    <category>AI</category>
-    <pubDate>Tue, 09 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
