@@ -22,7 +22,7 @@ custom_domain = true
 ALLOWED_ORIGINS = "https://operation.tw,https://www.operation.tw"
 ADMIN_EMAILS = "awsjin510@gmail.com,keepfighting510@gmail.com"
 # Google OAuth 2.0 用戶端 ID（與前端 js/api-config.js 的 GOOGLE_CLIENT_ID 同一個）
-GOOGLE_CLIENT_ID = "REPLACE_WITH_YOUR_GOOGLE_OAUTH_CLIENT_ID.apps.googleusercontent.com"
+GOOGLE_CLIENT_ID = "802015592462-80erc0326lthbv8rvkqinhn0vfa6u9k4.apps.googleusercontent.com"
 
 # 機密（用指令設定，不要寫在檔案）：
 #   wrangler secret put SERVICE_TOKEN     # 給 GitHub Actions 用的長隨機字串
