@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://operation.tw/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -13,37 +13,37 @@
   </url>
   <url>
     <loc>https://operation.tw/category/AI</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://operation.tw/category/%E9%9B%B2%E7%AB%AF</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://operation.tw/category/%E8%B3%87%E5%AE%89</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://operation.tw/category/%E9%96%B1%E8%AE%80</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://operation.tw/category/%E6%88%90%E9%95%B7</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://operation.tw/post/288</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -384,13 +384,13 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/267</loc>
+    <loc>https://operation.tw/post/105</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/105</loc>
+    <loc>https://operation.tw/post/267</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1014,12 +1014,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/23</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://operation.tw/post/18</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
@@ -1032,13 +1026,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://operation.tw/post/20</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://operation.tw/post/22</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/20</loc>
+    <loc>https://operation.tw/post/23</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1656,13 +1656,13 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/154</loc>
+    <loc>https://operation.tw/post/153</loc>
     <lastmod>2022-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/153</loc>
+    <loc>https://operation.tw/post/154</loc>
     <lastmod>2022-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
