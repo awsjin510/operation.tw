@@ -1,0 +1,29 @@
+# operation.tw — Cloudflare Worker 設定
+# 部署：cd cloudflare && wrangler deploy
+name = "operation-tw-api"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+
+# D1 資料庫綁定（建立後把 database_id 填進來）
+#   wrangler d1 create operation-tw
+[[d1_databases]]
+binding = "DB"
+database_name = "operation-tw"
+database_id = "97fbb532-eec3-44ae-99f0-d831cb6b90af"
+
+# 子網域路由：api.operation.tw（需網域 zone 在 Cloudflare 上）。
+# 你目前在 GitHub Pages、DNS 不在 Cloudflare → 先用預設 *.workers.dev 網址，
+# 故此區塊先註解掉。日後把網域接進 Cloudflare 再解除註解綁自訂網域。
+# [[routes]]
+# pattern = "api.operation.tw"
+# custom_domain = true
+
+# 非機密設定（機密一律用 wrangler secret put）
+[vars]
+ALLOWED_ORIGINS = "https://operation.tw,https://www.operation.tw"
+ADMIN_EMAILS = "awsjin510@gmail.com,keepfighting510@gmail.com"
+# Google OAuth 2.0 用戶端 ID（與前端 js/api-config.js 的 GOOGLE_CLIENT_ID 同一個）
+GOOGLE_CLIENT_ID = "802015592462-80erc0326lthbv8rvkqinhn0vfa6u9k4.apps.googleusercontent.com"
+
+# 機密（用指令設定，不要寫在檔案）：
+#   wrangler secret put SERVICE_TOKEN     # 給 GitHub Actions 用的長隨機字串

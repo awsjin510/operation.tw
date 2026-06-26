@@ -26,8 +26,8 @@ jobs:
 
       - name: Sync posts.json with latest views
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
         run: node scripts/sync-posts-json.js
 
       - name: Commit and push if changed

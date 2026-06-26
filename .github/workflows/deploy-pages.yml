@@ -48,6 +48,7 @@ jobs:
             --exclude='package-lock.json' \
             --exclude='zbpack.json' \
             --exclude='supabase-setup.sql' \
+            --exclude='cloudflare' \
             --exclude='README.md' \
             ./ _site/
 
