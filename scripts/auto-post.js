@@ -13,14 +13,15 @@ const Parser = require('rss-parser');
 const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs').promises;
+const cfdb = require('./lib/cf-db');
 
 // ── 環境變數檢查 ────────────────────────────────────────────────
-const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
+const CF_API_BASE = process.env.CF_API_BASE;
+const CF_SERVICE_TOKEN = process.env.CF_SERVICE_TOKEN;
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
-if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY || !ANTHROPIC_API_KEY) {
-  console.error('❌ 缺少必要的環境變數：SUPABASE_URL、SUPABASE_SERVICE_KEY、ANTHROPIC_API_KEY');
+if (!CF_API_BASE || !CF_SERVICE_TOKEN || !ANTHROPIC_API_KEY) {
+  console.error('❌ 缺少必要的環境變數：CF_API_BASE、CF_SERVICE_TOKEN、ANTHROPIC_API_KEY');
   process.exit(1);
 }
 
@@ -58,20 +59,10 @@ async function fetchRecentPosts(days = 14) {
   const sinceStr = since.toISOString().split('T')[0];
 
   try {
-    const url = `${SUPABASE_URL}/rest/v1/posts?select=title,category,date&date=gte.${sinceStr}&order=date.desc&limit=30`;
-    const res = await fetchWithTimeout(url, {
-      headers: {
-        apikey: SUPABASE_SERVICE_KEY,
-        Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-      },
-    });
-
-    if (!res.ok) {
-      console.warn(`  ⚠ 無法取得近期文章，將跳過去重：${res.status}`);
-      return [];
-    }
-
-    const posts = await res.json();
+    const all = await cfdb.getPublishedPosts();
+    const posts = all
+      .filter((p) => (p.date || '') >= sinceStr)
+      .map((p) => ({ title: p.title, category: p.category, date: p.date }));
     console.log(`  ✓ 取得近 ${days} 天的 ${posts.length} 篇已發布文章`);
     return posts;
   } catch (err) {
@@ -205,7 +196,7 @@ ${dedupContext}
   return parsed;
 }
 
-// ── 寫入 Supabase ────────────────────────────────────────────────
+// ── 寫入（Cloudflare Worker）─────────────────────────────────────
 async function publishPost(article) {
   const today = new Date().toISOString().split('T')[0];
 
@@ -219,24 +210,7 @@ async function publishPost(article) {
     body: article.body,
   };
 
-  const res = await fetchWithTimeout(`${SUPABASE_URL}/rest/v1/posts`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      apikey: SUPABASE_SERVICE_KEY,
-      Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-      Prefer: 'return=representation',
-    },
-    body: JSON.stringify(post),
-  });
-
-  if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(`Supabase 寫入失敗 (HTTP ${res.status}): ${errText}`);
-  }
-
-  const data = await res.json();
-  return data[0];
+  return await cfdb.createPost(post);
 }
 
 // ── 封面圖生成 ────────────────────────────────────────────────────
@@ -408,19 +382,7 @@ async function generateCoverImage(postId, category) {
 }
 
 async function updatePostImage(postId, imagePath) {
-  const res = await fetchWithTimeout(`${SUPABASE_URL}/rest/v1/posts?id=eq.${postId}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      apikey: SUPABASE_SERVICE_KEY,
-      Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-    },
-    body: JSON.stringify({ image: imagePath }),
-  });
-  if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(`Supabase 更新圖片失敗 (HTTP ${res.status}): ${errText}`);
-  }
+  await cfdb.updatePost(postId, { image: imagePath });
 }
 
 // ── 主流程 ────────────────────────────────────────────────────────
@@ -451,20 +413,15 @@ async function main() {
   const imagePath = await generateCoverImage(postId, article.category);
   console.log(`  ✓ 封面圖已生成：${imagePath}`);
 
-  // 步驟 5：更新 Supabase image 欄位
-  console.log('\n步驟 5：更新 Supabase 封面圖欄位...');
+  // 步驟 5：更新封面圖欄位
+  console.log('\n步驟 5：更新封面圖欄位...');
   await updatePostImage(postId, imagePath);
   console.log(`  ✓ image 欄位已更新`);
 
   // 步驟 6：更新本地 posts.json（含最新 views 數字）
   console.log('\n步驟 6：更新 posts.json...');
   const postsJsonPath = path.join(__dirname, '..', 'posts.json');
-  const allPostsRes = await fetchWithTimeout(
-    `${SUPABASE_URL}/rest/v1/posts?select=id,title,category,date,status,excerpt,image,views&status=eq.published&order=date.desc`,
-    { headers: { apikey: SUPABASE_SERVICE_KEY, Authorization: `Bearer ${SUPABASE_SERVICE_KEY}` } }
-  );
-  if (!allPostsRes.ok) throw new Error(`posts fetch failed: ${allPostsRes.status}`);
-  const allPosts = await allPostsRes.json();
+  const allPosts = await cfdb.getPublishedPosts();
   const leanPosts = allPosts.map(p => ({
     ...p,
     image: (p.image && p.image.startsWith('/')) ? p.image : '',

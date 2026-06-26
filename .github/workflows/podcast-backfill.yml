@@ -59,36 +59,36 @@ jobs:
       - name: Cleanup orphaned posts (optional)
         if: ${{ github.event.inputs.cleanup_ids != '' }}
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
         run: |
           ids="${{ github.event.inputs.cleanup_ids }}"
-          echo "🗑  刪除 Supabase 孤兒文章 id in ($ids)"
-          code=$(curl -sS -o /tmp/del.txt -w '%{http_code}' -X DELETE \
-            "$SUPABASE_URL/rest/v1/posts?id=in.($ids)" \
-            -H "apikey: $SUPABASE_SERVICE_KEY" \
-            -H "Authorization: Bearer $SUPABASE_SERVICE_KEY" \
-            -H "Prefer: return=minimal")
-          echo "HTTP $code"
-          if [ "$code" -ge 300 ]; then cat /tmp/del.txt; exit 1; fi
+          echo "🗑  刪除孤兒文章 id in ($ids)"
+          IFS=',' read -ra IDS <<< "$ids"
+          for id in "${IDS[@]}"; do
+            id="$(echo "$id" | tr -d ' ')"
+            code=$(curl -sS -o /tmp/del.txt -w '%{http_code}' -X DELETE \
+              "$CF_API_BASE/api/admin/posts/$id" \
+              -H "Authorization: Bearer $CF_SERVICE_TOKEN")
+            echo "delete $id → HTTP $code"
+            if [ "$code" -ge 300 ]; then cat /tmp/del.txt; exit 1; fi
+          done
           echo "✓ 清除完成"
 
       - name: Retag categories (optional)
         if: ${{ github.event.inputs.retag != '' }}
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
         run: |
           IFS=',' read -ra PAIRS <<< "${{ github.event.inputs.retag }}"
           for pair in "${PAIRS[@]}"; do
             id="${pair%%:*}"; cat="${pair##*:}"
             echo "🏷  retag id=$id → $cat"
             code=$(curl -sS -o /tmp/patch.txt -w '%{http_code}' -X PATCH \
-              "$SUPABASE_URL/rest/v1/posts?id=eq.$id" \
-              -H "apikey: $SUPABASE_SERVICE_KEY" \
-              -H "Authorization: Bearer $SUPABASE_SERVICE_KEY" \
+              "$CF_API_BASE/api/admin/posts/$id" \
+              -H "Authorization: Bearer $CF_SERVICE_TOKEN" \
               -H "Content-Type: application/json" \
-              -H "Prefer: return=minimal" \
               --data "{\"category\":\"$cat\"}")
             echo "HTTP $code"
             if [ "$code" -ge 300 ]; then cat /tmp/patch.txt; exit 1; fi
@@ -97,8 +97,8 @@ jobs:
 
       - name: Backfill all remaining episodes (batched, push each batch)
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           BACKFILL: '1'
           PODCAST_MODEL: ${{ github.event.inputs.model }}
@@ -154,8 +154,8 @@ jobs:
         # 這樣「只用 cleanup_ids 刪文、不生成」的 run 也能讓刪除反映到前台
         # （build-static 會自動清掉已刪文章的殘留靜態頁）。
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
         run: |
           node scripts/sync-posts-json.js 2>&1 || echo "(sync 失敗)"
           node scripts/build-static.js 2>&1 || echo "(build 失敗)"
