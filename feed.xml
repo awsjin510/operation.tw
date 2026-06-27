@@ -5,14 +5,30 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 26 Jun 2026 04:47:52 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 27 Jun 2026 04:32:20 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>實體AI革命：世界模型如何改變機器人的現實感知</title>
+    <link>https://operation.tw/post/289</link>
+    <guid isPermaLink="true">https://operation.tw/post/289</guid>
+    <description>從虛擬走向現實，實體AI成為科技產業新戰場。世界模型技術正在重塑機器人對真實環境的理解方式，不再只是數據處理，而是真正的環境認知。台灣機器人與自動化產業該如何抓住這波機會？</description>
+    <category>AI</category>
+    <pubDate>Sat, 27 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>川普AI資安令的背後：政府測試模型時代來臨</title>
     <link>https://operation.tw/post/288</link>
     <guid isPermaLink="true">https://operation.tw/post/288</guid>
     <description>川普政府簽署AI資安行政命令，要求AI廠商自願提供前沿模型供政府測試。這不僅標誌著政府對AI安全的重視，更揭示了一場新的資安博弈——企業如何在開放與防禦間找到平衡點。</description>
     <category>資安</category>
+    <pubDate>Fri, 26 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI36｜把時間買回來：改變職場困局的時間管理哲學</title>
+    <link>https://operation.tw/post/290</link>
+    <guid isPermaLink="true">https://operation.tw/post/290</guid>
+    <description>為什麼再怎麼努力薪水還是到頂？這個問題的答案藏在《把時間買回來》這本書裡。從凌晨三點的退婚故事，到「買回率」算法、替身階梯，我們帶你看懂 35-40 歲職場工作者為什麼需要從「我還能做什麼」改成「我還能不做什麼」。</description>
+    <category>閱讀</category>
     <pubDate>Fri, 26 Jun 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -150,22 +166,6 @@
     <description>隨著影像採集需求回升，多模態AI正在重塑邊緣運算市場格局。本文分析為何企業正從雲端轉向邊緣部署，以及台灣供應鏈在這波轉型中的機會與挑戰。</description>
     <category>AI</category>
     <pubDate>Thu, 11 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI32｜同一個模型、兩種護欄：拆解 Claude Fable 5 與 Mythos 5 的策略佈局</title>
-    <link>https://operation.tw/post/281</link>
-    <guid isPermaLink="true">https://operation.tw/post/281</guid>
-    <description>Anthropic 在同一週完成天價募資、秘密遞交 IPO 文件、同時發表兩款旗艦模型——Claude Fable 5 與 Mythos 5。這兩個名字背後藏著一個關鍵邏輯：它們其實是同一個底層模型，差別只在安全護欄開不開。本文拆解命名策略、模型競爭力比較，以及 Fable 5 推出三天就爆發的「秘密削弱能力」爭議，帶你看懂 AI 安全與透明度之間的核心矛盾。</description>
-    <category>資安</category>
-    <pubDate>Thu, 11 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>推理層資安漏洞：八成企業AI代理防禦盲點大公開</title>
-    <link>https://operation.tw/post/130</link>
-    <guid isPermaLink="true">https://operation.tw/post/130</guid>
-    <description>超過八成大企業部署AI代理卻缺乏安全防護，資安業界發現「推理層」成為新型攻擊面。本文深入分析這個被忽視的資安死角，以及企業應如何建立多層防禦策略，保護AI應用的推理過程。</description>
-    <category>資安</category>
-    <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
