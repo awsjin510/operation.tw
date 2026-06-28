@@ -201,7 +201,7 @@ function listenBlock(ep, related = []) {
   let html = '\n<hr>\n';
   if (related.length) {
     const items = related
-      .map((p) => `<li><a href="/post/${p.id}">${escHtml(p.title)}</a></li>`)
+      .map((p) => `<li><a href="/post/${p.id}/">${escHtml(p.title)}</a></li>`)
       .join('\n');
     html += `<p>📚 <strong>同主題的其他單集 / 文章，延伸聽下去：</strong></p>\n<ul>\n${items}\n</ul>\n`;
   }
