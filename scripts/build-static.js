@@ -79,7 +79,7 @@ function loadPosts() {
 function generatePostPage(post, body, episode) {
   body = body || '';
   const slug  = post.slug || post.id;
-  const url   = `${SITE_URL}/post/${encodeURIComponent(slug)}`;
+  const url   = `${SITE_URL}/post/${encodeURIComponent(slug)}/`;
   const img   = post.image ? `${SITE_URL}${post.image}` : `${SITE_URL}/default.png`;
   const desc  = post.excerpt || post.title;
   const catColor = CAT_COLOR[post.category] || '#aaa';
@@ -114,8 +114,8 @@ function generatePostPage(post, body, episode) {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: '首頁',         item: SITE_URL },
-        { '@type': 'ListItem', position: 2, name: post.category,  item: `${SITE_URL}/` },
+        { '@type': 'ListItem', position: 1, name: '首頁',         item: `${SITE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: post.category,  item: `${SITE_URL}/category/${encodeURIComponent(post.category)}/` },
         { '@type': 'ListItem', position: 3, name: post.title,     item: url }
       ]
     }
@@ -208,7 +208,7 @@ time{color:#6060a0;font-size:.85rem;}
 </head>
 <body>
 <div class="wrap">
-  <nav><a href="/">操作一下</a> › <a href="/">${esc(post.category)}</a> › ${esc(post.title)}</nav>
+  <nav><a href="/">操作一下</a> › <a href="/category/${encodeURIComponent(post.category)}/">${esc(post.category)}</a> › ${esc(post.title)}</nav>
   <article>
     <div class="badge">${catIcon} ${esc(post.category)}</div>
     <h1>${esc(post.title)}</h1>
@@ -226,7 +226,7 @@ time{color:#6060a0;font-size:.85rem;}
 // ── 產生分類主題頁 /category/{類}/index.html（Pillar–Cluster 彙整頁）──
 // 把同一主題的所有文章互連在一起，建立主題權重、讓長尾文章更易被索引與引用。
 function generateCategoryPage(cat, posts) {
-  const url    = `${SITE_URL}/category/${encodeURIComponent(cat)}`;
+  const url    = `${SITE_URL}/category/${encodeURIComponent(cat)}/`;
   const icon   = CAT_ICON[cat]  || '📂';
   const color  = CAT_COLOR[cat] || '#00f5ff';
   const lead   = CAT_DESC[cat]  || `操作一下「${cat}」主題文章`;
@@ -239,7 +239,7 @@ function generateCategoryPage(cat, posts) {
     itemListElement: sorted.map((p, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      url: `${SITE_URL}/post/${encodeURIComponent(p.slug || p.id)}`,
+      url: `${SITE_URL}/post/${encodeURIComponent(p.slug || p.id)}/`,
       name: p.title
     }))
   };
@@ -257,7 +257,7 @@ function generateCategoryPage(cat, posts) {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: '首頁', item: SITE_URL },
+        { '@type': 'ListItem', position: 1, name: '首頁', item: `${SITE_URL}/` },
         { '@type': 'ListItem', position: 2, name: cat,   item: url }
       ]
     }
@@ -266,12 +266,12 @@ function generateCategoryPage(cat, posts) {
 
   const otherCats = Object.keys(CAT_ICON)
     .filter(c => c !== cat)
-    .map(c => `<a class="catnav-link" href="/category/${encodeURIComponent(c)}">${CAT_ICON[c]} ${esc(c)}</a>`)
+    .map(c => `<a class="catnav-link" href="/category/${encodeURIComponent(c)}/">${CAT_ICON[c]} ${esc(c)}</a>`)
     .join('');
 
   const list = sorted.map(p => {
     const slug = p.slug || p.id;
-    return `<li class="ci"><a class="ci-t" href="/post/${encodeURIComponent(slug)}">${esc(p.title)}</a>`
+    return `<li class="ci"><a class="ci-t" href="/post/${encodeURIComponent(slug)}/">${esc(p.title)}</a>`
       + `<div class="ci-meta"><time datetime="${esc(p.date)}">${esc(p.date)}</time>${p.views > 0 ? ` · 👁 ${p.views}` : ''}</div>`
       + (p.excerpt ? `<p class="ci-exc">${esc(p.excerpt)}</p>` : '')
       + `</li>`;
@@ -345,7 +345,7 @@ function cardHTML(p, featured = false) {
   const cls = (featured ? 'pc featured' : 'pc') + ' cat-' + esc(p.category);
   const eyebrow = featured ? `<div class="pc-eyebrow">FEATURED · ${esc(p.category)}</div>` : '';
   const slug = p.slug || p.id;
-  return `<article class="${cls}" data-post-id="${p.id}" onclick="openPost('${p.id}')"><a class="pc-seo-link" href="/post/${encodeURIComponent(slug)}" onclick="event.preventDefault();openPost('${p.id}')" aria-label="${esc(p.title)}"></a><div class="pc-img">${imgTag}<span class="pc-badge">${esc(p.category)}</span></div><div class="pc-body">${eyebrow}<div class="pc-title"><a href="/post/${encodeURIComponent(slug)}" onclick="event.preventDefault();openPost('${p.id}')" style="color:inherit;text-decoration:none;">${esc(p.title)}</a></div><div class="pc-exc">${esc(p.excerpt || '')}</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 ${esc(p.date)}</span>${p.views > 0 ? `<span class="pc-view-cnt">👁 ${p.views}</span>` : ''}</div></div></article>`;
+  return `<article class="${cls}" data-post-id="${p.id}" onclick="openPost('${p.id}')"><a class="pc-seo-link" href="/post/${encodeURIComponent(slug)}/" onclick="event.preventDefault();openPost('${p.id}')" aria-label="${esc(p.title)}"></a><div class="pc-img">${imgTag}<span class="pc-badge">${esc(p.category)}</span></div><div class="pc-body">${eyebrow}<div class="pc-title"><a href="/post/${encodeURIComponent(slug)}/" onclick="event.preventDefault();openPost('${p.id}')" style="color:inherit;text-decoration:none;">${esc(p.title)}</a></div><div class="pc-exc">${esc(p.excerpt || '')}</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 ${esc(p.date)}</span>${p.views > 0 ? `<span class="pc-view-cnt">👁 ${p.views}</span>` : ''}</div></div></article>`;
 }
 
 // ── 取得文章完整內文 ────────────────────────────────────────────────
@@ -388,12 +388,12 @@ function updateSitemap(posts) {
   let catUrls = 0;
   for (const cat of Object.keys(CAT_ICON)) {
     if (!catSet.has(cat)) continue;
-    xml += `  <url>\n    <loc>${SITE_URL}/category/${encodeURIComponent(cat)}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
+    xml += `  <url>\n    <loc>${SITE_URL}/category/${encodeURIComponent(cat)}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
     catUrls++;
   }
   for (const p of posts) {
     const slug = p.slug || p.id;
-    xml += `  <url>\n    <loc>${SITE_URL}/post/${encodeURIComponent(slug)}</loc>\n    <lastmod>${p.date || today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n`;
+    xml += `  <url>\n    <loc>${SITE_URL}/post/${encodeURIComponent(slug)}/</loc>\n    <lastmod>${p.date || today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n`;
   }
   xml += '</urlset>\n';
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml);
@@ -411,7 +411,7 @@ function updateFeed(posts) {
   xml += `  <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>\n`;
   for (const p of top20) {
     const slug = p.slug || p.id;
-    const link = `${SITE_URL}/post/${encodeURIComponent(slug)}`;
+    const link = `${SITE_URL}/post/${encodeURIComponent(slug)}/`;
     xml += `  <item>\n    <title>${esc(p.title)}</title>\n    <link>${link}</link>\n`;
     xml += `    <guid isPermaLink="true">${link}</guid>\n`;
     xml += `    <description>${esc(p.excerpt || '')}</description>\n`;
@@ -432,7 +432,7 @@ function updateLlms(posts) {
 
   const articleLines = top20.map(p => {
     const slug = p.slug || p.id;
-    return `- [${p.title}](${SITE_URL}/post/${encodeURIComponent(slug)}) — ${p.category} · ${p.date}`;
+    return `- [${p.title}](${SITE_URL}/post/${encodeURIComponent(slug)}/) — ${p.category} · ${p.date}`;
   }).join('\n');
 
   const content = `# 操作一下 | Operation.tw
@@ -518,7 +518,7 @@ function patchIndexHtml(posts) {
   html = html.replace(/<noscript><section id="noscript-articles"[\s\S]*?<\/section><\/noscript>\n?/g, '');
   const noscriptList = posts.slice(0, 30).map(p => {
     const slug = p.slug || p.id;
-    return `<li><a href="/post/${encodeURIComponent(slug)}">[${esc(p.category)}] ${esc(p.title)}</a> — ${esc(p.date)}</li>`;
+    return `<li><a href="/post/${encodeURIComponent(slug)}/">[${esc(p.category)}] ${esc(p.title)}</a> — ${esc(p.date)}</li>`;
   }).join('');
   const noscriptBlock = `<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（${posts.length} 篇）</h2><ul style="list-style:none;padding:0;">${noscriptList}</ul><p><a href="${SITE_URL}/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>`;
 
