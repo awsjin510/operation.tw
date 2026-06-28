@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 27 Jun 2026 04:32:20 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 28 Jun 2026 04:57:35 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI選股神話破滅？簡單策略如何贏過大型語言模型</title>
+    <link>https://operation.tw/post/291</link>
+    <guid isPermaLink="true">https://operation.tw/post/291</guid>
+    <description>最新研究顯示，大型語言模型在金融交易中並非萬能。一種簡單的統計策略竟然超越了複雜的AI系統。這項發現對於正積極導入AI的台灣金融機構有什麼啟示？本文深入探討AI選股的真實侷限與未來方向。</description>
+    <category>AI</category>
+    <pubDate>Sun, 28 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>實體AI革命：世界模型如何改變機器人的現實感知</title>
     <link>https://operation.tw/post/289</link>
@@ -158,14 +166,6 @@
     <description>帕蘭泰爾直指AI巨頭痛點：企業迫切需要的不是更強大的模型，而是真正能解決實際問題的應用方案。本文分析為何LLM產業走向岔路，以及台灣企業應如何重新評估AI投資策略。</description>
     <category>AI</category>
     <pubDate>Fri, 12 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>從LLM到多模態AI：邊緣運算如何成為下一個戰場</title>
-    <link>https://operation.tw/post/131</link>
-    <guid isPermaLink="true">https://operation.tw/post/131</guid>
-    <description>隨著影像採集需求回升，多模態AI正在重塑邊緣運算市場格局。本文分析為何企業正從雲端轉向邊緣部署，以及台灣供應鏈在這波轉型中的機會與挑戰。</description>
-    <category>AI</category>
-    <pubDate>Thu, 11 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
