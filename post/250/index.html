@@ -37,6 +37,15 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
 .cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
@@ -60,9 +69,10 @@ time{color:#6060a0;font-size:.85rem;}
     <time datetime="2026-04-15">2026-04-15</time>
     <img class="cover" src="https://operation.tw/images/posts/post-250.jpg" alt="AI04｜AI 代理元年來了：免費工具、自動化工作流與那個神秘的超強模型">
     <div class="excerpt"><p>2025 年可能真的是 AI 代理的元年。這篇文章整理自「操作一下」Podcast 最新一集，從免費跑起 Claude Code 的實用步驟、Google 與 Anthropic 的最新動態，到真正搞懂 AI 代理的本質差異——LLM、AI Workflow、AI Agent 到底差在哪？讀完你會對「讓 AI 幫你工作」這件事有更清楚的輪廓。</p></div>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">免費跑 Claude Code：設定方法與工作流程習慣</a></li><li class="toc-l2"><a href="#sec-2">這週的 AI 大新聞：從知識管理到神秘政府模型</a></li><li class="toc-l2"><a href="#sec-3">真正搞懂 AI 代理：LLM、Workflow、Agent 差在哪</a></li><li class="toc-l2"><a href="#sec-4">對你來說，這代表什麼</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>如果你最近感覺 AI 新聞多到跟不上，你不孤單。每週都有新工具、新模型、新功能冒出來，但真正值得你花時間搞懂的，其實沒那麼多。這集 Podcast 我試著幫你篩掉雜訊，聚焦在三個真正有料的方向：免費開發工具的實用設定、這週幾個關鍵的 AI 大新聞，以及一個很多人混淆的核心概念——AI 代理到底是什麼。</p>
 
-<h2>免費跑 Claude Code：設定方法與工作流程習慣</h2>
+<h2 id="sec-1">免費跑 Claude Code：設定方法與工作流程習慣</h2>
 <p>Claude Code 是 Anthropic 推出的 AI 編程助手，但要免費使用它，需要一點繞路的技巧。透過 OpenRouter 做請求路由、搭配免費模型，你在 VS Code 裡幾個步驟就能讓它跑起來，不需要直接付費給 Anthropic。</p>
 <p>不過，光是「能用」還不夠。這集聊到三個讓 AI 真正幫到你的工作流程習慣，缺一不可：</p>
 <ul>
@@ -72,7 +82,7 @@ time{color:#6060a0;font-size:.85rem;}
 </ul>
 <p>這三個習慣背後的邏輯是一致的：AI 很強，但它需要你給它清晰的邊界和結構，才能發揮最大效用。</p>
 
-<h2>這週的 AI 大新聞：從知識管理到神秘政府模型</h2>
+<h2 id="sec-2">這週的 AI 大新聞：從知識管理到神秘政府模型</h2>
 <p>新聞這塊這週特別熱鬧，幾個值得記下來的動態：</p>
 <ul>
   <li><strong>Google Gemini × NotebookLM</strong>：兩者整合之後，知識管理的體驗終於變得更順，不用再在不同工具之間來回切換。</li>
@@ -80,7 +90,7 @@ time{color:#6060a0;font-size:.85rem;}
   <li><strong>其他動態</strong>：GenSpark 現在可以完整控制桌面、Perplexity 能連上銀行帳戶進行財務分析、ChatGPT 也補上了每月 100 美元的中間方案——AI 工具的能力邊界正在快速往外擴張。</li>
 </ul>
 
-<h2>真正搞懂 AI 代理：LLM、Workflow、Agent 差在哪</h2>
+<h2 id="sec-3">真正搞懂 AI 代理：LLM、Workflow、Agent 差在哪</h2>
 <p>這是這集我覺得最值得花時間說清楚的部分。很多人把這三個詞混著用，但它們本質上差很多：</p>
 <ul>
   <li><strong>LLM（大型語言模型）</strong>：「有腦無手」。它能理解、能回答，但它自己不會去做任何事。</li>
@@ -89,7 +99,7 @@ time{color:#6060a0;font-size:.85rem;}
 </ul>
 <p>這集用了一個旅行社的比喻，我覺得很好懂：你跟旅行社說「我想去日本賞櫻花」，真正的 AI Agent 就像一個頂級的旅行顧問，會幫你查機票、訂飯店、規劃行程、甚至提醒你帶什麼——你不需要一步步發號施令，只要說清楚你的目標就好。</p>
 
-<h2>對你來說，這代表什麼</h2>
+<h2 id="sec-4">對你來說，這代表什麼</h2>
 <p>AI 代理的概念聽起來很遠，但它帶來的影響其實已經在發生了。Perplexity 連上你的銀行帳戶、GenSpark 控制你的桌面——這些都是 AI 從「回答問題」走向「幫你做事」的具體案例。</p>
 <p>作為使用者，現在最值得建立的習慣，是學會「定義目標」而不是「下指令」。你越能清楚說出你要什麼結果，AI 就越能幫你走完中間那些重複性的步驟，把你的時間還給真正需要判斷力和創造力的工作。</p>
 <p>但這集最後也提到一個重要的提醒：能力越大，責任越大。怎麼用、用在哪、授權到什麼程度——這些問題的答案，還是你說了算。AI 是工具，方向盤還在你手上。</p>

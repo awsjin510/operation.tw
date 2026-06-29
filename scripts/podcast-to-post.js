@@ -22,6 +22,7 @@ const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs').promises;
 const cfdb = require('./lib/cf-db');
+const indexnow = require('./lib/indexnow');
 
 const CF_API_BASE = process.env.CF_API_BASE;
 const CF_SERVICE_TOKEN = process.env.CF_SERVICE_TOKEN;
@@ -284,6 +285,7 @@ async function main() {
   // 由舊到新處理，最多 MAX_PER_RUN 篇
   const targets = fresh.sort((a, b) => (a.date || '').localeCompare(b.date || '')).slice(0, MAX_PER_RUN);
   let created = 0;
+  const newUrls = [];
 
   for (const ep of targets) {
     console.log(`\n— 處理單集：${ep.title}`);
@@ -325,6 +327,7 @@ async function main() {
         console.log(`  ✓ 封面：${imagePath}`);
       }
       state.processed[ep.guid] = postId;
+      newUrls.push(`https://operation.tw/post/${postId}/`);
       created++;
     } catch (err) {
       console.warn(`  ✗ 生成/發布失敗，保留為未處理下次重試：${err.message}`);
@@ -340,6 +343,10 @@ async function main() {
     } catch (err) {
       console.warn(`  ⚠ posts.json 重建最終失敗（不影響已發布文章，後續 sync 會補）：${err.message}`);
     }
+  }
+  // 通知 IndexNow 新網址（Bing/Yandex 快速索引）
+  if (created > 0 && !DRY_RUN) {
+    await indexnow.ping([...newUrls, 'https://operation.tw/', 'https://operation.tw/sitemap.xml']);
   }
   console.log(`\n✅ 完成，本次生成 ${created} 篇`);
 }

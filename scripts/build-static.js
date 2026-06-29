@@ -78,9 +78,31 @@ function loadPosts() {
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
+// ── 從 h2/h3 自動產生文章目錄（錨點）；少於 3 個標題就不顯示 ──────────
+function buildToc(body) {
+  const items = [];
+  let i = 0;
+  const withIds = String(body).replace(/<h([23])([^>]*)>([\s\S]*?)<\/h\1>/gi, (m, lvl, attrs, inner) => {
+    const text = inner.replace(/<[^>]+>/g, '').trim();
+    if (!text) return m;
+    i++;
+    const idMatch = attrs.match(/\bid=["']([^"']+)["']/);
+    if (idMatch) { items.push({ lvl: Number(lvl), id: idMatch[1], text }); return m; }
+    const id = `sec-${i}`;
+    items.push({ lvl: Number(lvl), id, text });
+    return `<h${lvl}${attrs} id="${id}">${inner}</h${lvl}>`;
+  });
+  if (items.length < 3) return { body, toc: '' };
+  const lis = items.map(it => `<li class="toc-l${it.lvl}"><a href="#${it.id}">${esc(it.text)}</a></li>`).join('');
+  const toc = `<nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul>${lis}</ul></nav>`;
+  return { body: withIds, toc };
+}
+
 // ── 產生個別文章 stub 頁 ────────────────────────────────────────────
 function generatePostPage(post, body, episode) {
   body = body || '';
+  const { body: bodyWithToc, toc } = buildToc(body);
+  body = bodyWithToc;
   const slug  = post.slug || post.id;
   const url   = `${SITE_URL}/post/${encodeURIComponent(slug)}/`;
   const img   = post.image ? `${SITE_URL}${post.image}` : `${SITE_URL}/default.png`;
@@ -196,6 +218,15 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
 .cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
@@ -219,6 +250,7 @@ ${CF_BEACON}
     <time datetime="${esc(post.date)}">${esc(post.date)}</time>
     ${post.image ? `<img class="cover" src="${esc(img)}" alt="${esc(post.title)}">` : ''}
     <div class="excerpt"><p>${esc(post.excerpt || '')}</p></div>
+    ${toc}
     <div class="post-body"><!--BODY:START-->${body}<!--BODY:END--></div>
     <a class="cta" href="/">← 在操作一下看完整體驗 →</a>
   </article>

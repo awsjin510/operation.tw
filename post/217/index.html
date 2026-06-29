@@ -37,6 +37,15 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
 .cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
@@ -60,17 +69,18 @@ time{color:#6060a0;font-size:.85rem;}
     <time datetime="2025-04-09">2025-04-09</time>
     <img class="cover" src="https://operation.tw/images/posts/post-217.jpg" alt="EP66｜狂掃 15 張 AWS 證照、拿到黃金夾克，雲端架構師 Tony 的轉職實戰心法">
     <div class="excerpt"><p>從企業管理到雲端架構師，Tony 用五年時間考下 15 張 AWS 認證、成為 AWS 大使，還拿到象徵全球頂尖認可的 Golden Jacket。這集 Podcast 他不藏私分享：怎麼從零開始學雲端、SA 的角色究竟在做什麼、AI 時代新人該如何突圍，以及那句讓他一路走來的座右銘。</p></div>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">從微軟實習生到雲端架構師，轉職的契機在哪裡？</a></li><li class="toc-l2"><a href="#sec-2">AWS 解決方案架構師（SA）到底在做什麼？</a></li><li class="toc-l2"><a href="#sec-3">考 AWS 認證，從哪裡開始？</a></li><li class="toc-l2"><a href="#sec-4">AI 時代，雲端新人還有機會嗎？</a></li><li class="toc-l2"><a href="#sec-5">給想入行者的路徑建議</a></li><li class="toc-l2"><a href="#sec-6">結語：開始，才能厲害</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>如果你曾經懷疑過「我不是本科系，能不能跨進雲端產業？」——Tony 的故事，或許正是你需要聽的那一集。</p>
 
 <p>在這集《操作一下》Podcast 中，我們邀請到資深雲端架構主管 Tony，他擁有超過五年的 AWS 實戰經驗、15 張 AWS 認證，同時是 AWS 大使與 AWS Community Builder 社群促進者，更是少數獲得傳說中 <strong>Golden Jacket</strong> 的台灣人之一。他的起點，不是資工系，而是企業管理。</p>
 
-<h2>從微軟實習生到雲端架構師，轉職的契機在哪裡？</h2>
+<h2 id="sec-1">從微軟實習生到雲端架構師，轉職的契機在哪裡？</h2>
 
 <p>Tony 最初在微軟擔任實習生，負責推廣 Windows 10，那段經歷讓他提早嗅到公有雲正在崛起的趨勢。後來透過研究所同學的引薦，他進入雲端相關產業，一開始擔任的是<strong>產品行銷</strong>的角色——不是工程師，而是負責寫技術文章、溝通產品。</p>
 
 <p>就是這個「寫文章」的契機，讓他開始大量閱讀 AWS 技術文件，技術的濃厚興趣也就此被點燃。有趣的是，Tony 在還沒轉職為技術職之前，就已經在產品行銷期間考下了整整十張 AWS 認證。這件事本身就說明了一件事：<strong>學習雲端，不需要等到你已經是工程師。</strong></p>
 
-<h2>AWS 解決方案架構師（SA）到底在做什麼？</h2>
+<h2 id="sec-2">AWS 解決方案架構師（SA）到底在做什麼？</h2>
 
 <p>很多人對「架構師」的想像是整天畫系統圖、寫程式，但 Tony 在節目中點出了一個關鍵：SA 的核心價值，是扮演<strong>客戶與公司業務之間的技術溝通橋樑</strong>。</p>
 
@@ -83,7 +93,7 @@ time{color:#6060a0;font-size:.85rem;}
 
 <p>換句話說，SA 不只是技術職，更是一個需要軟實力的角色。Tony 特別強調，溝通、團隊合作、以及把複雜技術「翻譯」成客戶能理解的語言，往往是決定一位 SA 能走多遠的關鍵。</p>
 
-<h2>考 AWS 認證，從哪裡開始？</h2>
+<h2 id="sec-3">考 AWS 認證，從哪裡開始？</h2>
 
 <p>針對想入門 AWS 認證的朋友，Tony 給出了很實際的建議：先從 <strong>AWS Skill Builder</strong> 平台上的免費線上課程開始，不需要花大錢買課程，官方資源就已經相當豐富。</p>
 
@@ -91,19 +101,19 @@ time{color:#6060a0;font-size:.85rem;}
 
 <p>至於傳說中的 <strong>Golden Jacket</strong>，條件只有一個：取得所有 AWS 認證。Tony 透過參與 AWS Community Builder 計畫中的 Golden Jacket program 完成了這個目標，這件外套代表的是全球級別的技術認可，也是他多年持續學習的具體見證。</p>
 
-<h2>AI 時代，雲端新人還有機會嗎？</h2>
+<h2 id="sec-4">AI 時代，雲端新人還有機會嗎？</h2>
 
 <p>這個問題幾乎是每個想入行者心中最大的焦慮。Tony 坦言，AI 的快速發展確實可能讓企業更傾向「用資深人員搭配 AI 工具」，對中途轉職或剛畢業的新人來說，競爭門檻確實在提高。</p>
 
 <p>但他也給出了應對思路：<strong>反過來把 AI 當成學習工具</strong>，並且在面試中展現出你不只是「會用工具」，而是真的理解技術背後的知識點與實作邏輯。表面的操作誰都能做，但對原理的理解，才是讓你和 AI 工具區隔開來的核心競爭力。</p>
 
-<h2>給想入行者的路徑建議</h2>
+<h2 id="sec-5">給想入行者的路徑建議</h2>
 
 <p>Tony 建議，如果你是初階者，不要一開始就鎖定「架構師」的職稱，而是先從<strong>雲端工程師</strong>做起，踏踏實實熟悉雲端觀念與服務建置，累積兩到三年的實戰經驗後，再往架構師方向發展，這樣的路徑會更穩固。</p>
 
 <p>對於還在學的同學，他也鼓勵在學期間就開始修習相關課程，甚至把考取證照列為學期目標之一。非本科系的朋友更不用害怕，雲端產業對軟實力的重視程度，和技術能力是並駕齊驅的。</p>
 
-<h2>結語：開始，才能厲害</h2>
+<h2 id="sec-6">結語：開始，才能厲害</h2>
 
 <p>節目最後，Tony 分享了他最喜歡的一句話：<strong>「你不需要很厲害才開始，你要開始才能厲害。」</strong></p>
 
