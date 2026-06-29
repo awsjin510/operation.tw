@@ -37,6 +37,15 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
 .cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
@@ -60,10 +69,11 @@ time{color:#6060a0;font-size:.85rem;}
     <time datetime="2026-06-08">2026-06-08</time>
     <img class="cover" src="https://operation.tw/images/posts/post-128.jpg" alt="OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險">
     <div class="excerpt"><p>最新數據揭露OpenAI與Anthropic的投資者有42%重疊，這一現象背後反映出AI雲端投資生態的集中度風險。本文分析這種投資結構如何影響技術創新、市場競爭，以及台灣科技產業應如何因應。</p></div>
-    <div class="post-body"><!--BODY:START--><h2>AI巨頭投資者高度重疊：一個被忽視的風險信號</h2>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">AI巨頭投資者高度重疊：一個被忽視的風險信號</a></li><li class="toc-l2"><a href="#sec-2">投資結構的三層風險分析</a></li><li class="toc-l2"><a href="#sec-3">對台灣科技產業的啟示</a></li><li class="toc-l2"><a href="#sec-4">結論與建議</a></li></ul></nav>
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">AI巨頭投資者高度重疊：一個被忽視的風險信號</h2>
 <p>根據最新報告，OpenAI與Anthropic的投資者陣容中有42%屬於同一批人，這個數字遠高於業界預期。乍看之下，這似乎只是資本市場的常見現象，但深入分析會發現，這個高重疊率背後隱含著全球AI雲端生態的結構性問題。當兩家被視為「競爭對手」的AI公司共享超過四成的投資者時，市場究竟是在進行多元化投資，還是在進行隱形的生態壟斷？</p>
 
-<h2>投資結構的三層風險分析</h2>
+<h2 id="sec-2">投資結構的三層風險分析</h2>
 <p><strong>第一層：創新方向的同質化風險</strong></p>
 <p>共同投資者往往帶來相似的戰略期望和商業邏輯。當投資者同時持有OpenAI和Anthropic股權時，他們會無意識地施加相同的市場壓力—追求更快的商業化、更大的模型規模、更aggressive的價格戰略。這導致兩家公司雖然在公開場景互相批評，但在真正的技術路線選擇上卻出現驚人的一致性。近期兩家公司都在加大多模態能力投入、都在爭奪企業客戶、都在擴張雲端基礎設施，這種「看似競爭實則協調」的現象對整個AI產業生態是一種損失。</p>
 
@@ -73,7 +83,7 @@ time{color:#6060a0;font-size:.85rem;}
 <p><strong>第三層：雲端服務提供商的隱形利益衝突</strong></p>
 <p>值得注意的是，這些共同投資者往往也在AWS、Microsoft Azure、Google Cloud等雲端基礎設施提供商中持有股份。這創造了一個複雜的利益鏈條：投資者既推動AI公司進行計算密集的模型開發，又從提供這些計算資源的雲端服務商獲利。這種結構客觀上導致AI產業被推向「更大模型、更多計算」的方向，而非「更高效、更創新」的方向。</p>
 
-<h2>對台灣科技產業的啟示</h2>
+<h2 id="sec-3">對台灣科技產業的啟示</h2>
 <p>台灣在AI雲端產業中面臨獨特的位置挑戰：我們擁有IC設計和製造的領先優勢，卻在AI基礎設施層面嚴重依賴國外資本和技術。OpenAI與Anthropic投資者高度重疊這個現象，應該敲響警鐘。</p>
 
 <ul>
@@ -82,7 +92,7 @@ time{color:#6060a0;font-size:.85rem;}
 <li><strong>雲端自主</strong>：這個現象強化了發展自主雲端平台的必要性。政府資料中心、台灣本土雲服務商的支持，應納入中長期國家戰略。</li>
 </ul>
 
-<h2>結論與建議</h2>
+<h2 id="sec-4">結論與建議</h2>
 <p>投資者的重疊本身不是問題，但42%的高度重疊確實反映出全球AI雲端生態的集中趨勢。對台灣而言，機會與風險並存。短期內，我們應：</p>
 
 <ul>

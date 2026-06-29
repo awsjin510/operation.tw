@@ -37,6 +37,15 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
 .cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
@@ -60,21 +69,22 @@ time{color:#6060a0;font-size:.85rem;}
     <time datetime="2026-04-22">2026-04-22</time>
     <img class="cover" src="https://operation.tw/images/posts/post-254.jpg" alt="AI07｜多雲不再是口號：三大雲巨頭正在重新定義雲端遊戲規則">
     <div class="excerpt"><p>超過九成企業都在跑多雲，但八成大企業說管理多雲是一場噩夢。就在最近，AWS 與 Google Cloud 宣布多雲直連正式上線，AWS 同步發表自研 AI 晶片 Trainium3，微軟則把 GPT-5 全系列深度嵌入 Azure。三件大事幾乎同一週發生，雲端競爭正從零和對抗走向多雲共生，這對台灣的雲端與 AI 從業者意味著什麼？</p></div>
-    <div class="post-body"><!--BODY:START--><h2>多雲是對的方向，但一直很難真正做到</h2>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">多雲是對的方向，但一直很難真正做到</a></li><li class="toc-l2"><a href="#sec-2">三個大動作，同一週發生</a></li><li class="toc-l2"><a href="#sec-3">這不是巧合，是競爭策略的集體轉向</a></li><li class="toc-l2"><a href="#sec-4">對台灣雲端與 AI 從業者的實際意義</a></li><li class="toc-l2"><a href="#sec-5">雲端的下一章，正在這週開始寫</a></li></ul></nav>
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">多雲是對的方向，但一直很難真正做到</h2>
 <p>「多雲策略」這個詞講了好幾年，幾乎每家企業的 IT 簡報裡都有它。超過九成的企業確實在同時使用多個雲端平台，但諷刺的是，八成的大型企業同時表示，管理多雲是一件讓人頭痛的事——網路連線複雜、資料搬移費用高、不同平台的管理介面各自為政，理想和現實之間一直存在一道很深的溝。</p>
 <p>但就在最近，這件事開始有了真實的改變，而且三個信號幾乎同一週出現。這集 Podcast 就是要拆解這三件事背後的戰略邏輯，以及它們加在一起對整個雲端產業意味著什麼。</p>
 
-<h2>三個大動作，同一週發生</h2>
+<h2 id="sec-2">三個大動作，同一週發生</h2>
 <p>第一件事：<strong>AWS 與 Google Cloud 宣布多雲直連正式上線。</strong>過去要完成兩個主要雲端平台之間的跨雲連線，往往需要幾個禮拜的設定、測試與調整。現在這個流程被壓縮到幾分鐘。這不是一個小優化，而是把「多雲互通」從工程挑戰變成了基礎設施的標準配備。</p>
 <p>第二件事：<strong>AWS 同步發表自研 AI 晶片 Trainium3，算力相較上一代翻倍。</strong>更值得注意的是，OpenAI 與 Apple 都出現在早期客戶名單上。這個細節很關鍵——當 OpenAI 這個幾乎與 Azure 深度綁定的公司，也開始使用 AWS 自研晶片，代表算力競爭已經進入一個新階段，沒有任何一家雲端廠商可以在 AI 基礎建設上獨占話語權。</p>
 <p>第三件事：<strong>微軟把 GPT-5 全系列深度嵌入 Azure 生態系。</strong>這不只是「把新模型上架到雲端」，而是讓 Azure 自動幫你根據任務選擇適合的模型版本、自動協調 AI 助理的執行，把 AI 能力變成整個平台不可分割的底層邏輯。這個做法的意圖很清楚：讓用戶不需要懂模型選型，Azure 就是你的 AI 決策層。</p>
 
-<h2>這不是巧合，是競爭策略的集體轉向</h2>
+<h2 id="sec-3">這不是巧合，是競爭策略的集體轉向</h2>
 <p>把三件事放在一起看，會發現雲端市場的競爭邏輯正在發生一個根本性的轉變——<strong>從「把對手鎖在門外」變成「把自己的優勢做到最強」。</strong></p>
 <p>AWS 與 Google Cloud 的直連合作，表面上看起來是競爭對手在握手，但背後的邏輯是：與其花力氣阻止企業用多雲，不如讓自己成為多雲架構裡最不可或缺的那一塊。AWS 的優勢是算力與服務廣度，Google Cloud 的優勢是網路基礎建設與 AI 研究能量，兩者直連對雙方都是加分，對用戶更是直接受益。</p>
 <p>微軟的策略則是另一條路：不靠互通，靠深度整合。把 GPT-5 嵌進 Azure 的每一層，讓你一旦在 Azure 上跑 AI 工作負載，就很難輕易切換出去。這是一種「讓生態系本身成為護城河」的玩法。</p>
 
-<h2>對台灣雲端與 AI 從業者的實際意義</h2>
+<h2 id="sec-4">對台灣雲端與 AI 從業者的實際意義</h2>
 <p>這些變化對在台灣做雲端架構或 AI 導入的從業者，有幾個值得留意的方向：</p>
 <ul>
   <li><strong>多雲架構的建置成本正在下降。</strong>AWS 與 Google Cloud 直連上線後，過去讓很多中型企業卻步的跨雲連線複雜度大幅降低，現在是重新評估多雲架構可行性的好時機。</li>
@@ -82,7 +92,7 @@ time{color:#6060a0;font-size:.85rem;}
   <li><strong>Azure 的 AI 整合邏輯適合快速落地的場景。</strong>如果你的團隊沒有深厚的 MLOps 能力，但又需要快速把 AI 能力接進既有系統，Azure 的自動模型選型機制確實能降低導入門檻。</li>
 </ul>
 
-<h2>雲端的下一章，正在這週開始寫</h2>
+<h2 id="sec-5">雲端的下一章，正在這週開始寫</h2>
 <p>多雲共生不再只是簡報裡的策略方向，它正在變成真實可用的基礎建設。三大雲端巨頭用同一週的三個動作，宣告了這個轉變的到來。</p>
 <p>如果你想更深入了解這三件事背後的戰略細節，以及它們對雲端架構決策的具體影響，這集 Podcast 有完整的拆解，直接去聽會比看摘要更有感。雲端的遊戲規則正在改寫，現在是最值得花時間搞清楚的時候。</p>
 <hr>

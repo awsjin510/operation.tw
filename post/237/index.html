@@ -37,6 +37,15 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
 .cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
@@ -60,35 +69,36 @@ time{color:#6060a0;font-size:.85rem;}
     <time datetime="2025-10-28">2025-10-28</time>
     <img class="cover" src="https://operation.tw/images/posts/post-237.jpg" alt="EP86｜從跑步到翻譯，敏捷傳教士Jenson的人生迭代心法">
     <div class="excerpt"><p>當「敏捷思維」不再只是工作術語，而是滲透進跑步訓練、書籍翻譯與面對人生困境的每一個角落，會產生什麼樣的化學反應？本文整理自 Podcast《操作一下》EP86，敏捷傳教士 Jenson 分享翻譯《產品領導人之道》的幕後故事、用專案思維跑馬拉松的心法，以及「每個方向都是無限的」這句話背後深刻的成長哲學。</p></div>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼要自己動手翻譯一本書？</a></li><li class="toc-l2"><a href="#sec-2">跑步，是一場你親自主持的個人專案</a></li><li class="toc-l2"><a href="#sec-3">讀書會要成功，關鍵在「會前會」</a></li><li class="toc-l2"><a href="#sec-4">「每個方向都是無限的」——面對困境的終極心法</a></li><li class="toc-l2"><a href="#sec-5">這些觀念，你可以怎麼用？</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>你有沒有想過，一個人對「成長」的執著，可以深到什麼程度？不只是工作上追求精進，連跑步、讀書、甚至面對一面空白的牆壁，都能變成一場場個人迭代的實驗。</p>
 
 <p>這集《操作一下》邀請到敏捷傳教士 Jenson，延續上集 PM 職涯心法的話題，這次聊得更深、更廣——從翻譯一本書的初心，到馬拉松訓練的科學化思維，再到一句讓人豁然開朗的話：「每個方向都是無限的」。</p>
 
-<h2>為什麼要自己動手翻譯一本書？</h2>
+<h2 id="sec-1">為什麼要自己動手翻譯一本書？</h2>
 
 <p>Jenson 翻譯了《產品領導人之道》，這件事本身就值得細細品味。他分享，翻譯這本書不只是因為喜歡，更是一種主動學習的方式——把書「吃透」最好的方法之一，就是把它翻譯出來。</p>
 
 <p>翻譯過程中，他同時扮演「產品人」與「譯者」兩種角色，這兩個身份之間存在著持續的拉扯：要貼近原文的精準，還是要貼近中文讀者的閱讀習慣？這個取捨的過程，其實跟做產品時面對「技術可行性」與「用戶體驗」之間的權衡，有著異曲同工之妙。</p>
 
-<h2>跑步，是一場你親自主持的個人專案</h2>
+<h2 id="sec-2">跑步，是一場你親自主持的個人專案</h2>
 
 <p>Jenson 把跑步訓練當成一個敏捷專案來經營，這個視角相當有趣。他使用「以終為始」的思維——先確立目標（例如完成馬拉松、設定完賽時間），再反推科學化的訓練課表，讓每一次出門跑步都不是隨興而為，而是有策略的累積。</p>
 
 <p>更有意思的是，他還保持寫跑步日誌的習慣。這不只是記錄配速與距離的數據日記，更是一種「個人回顧會議」——定期審視自己的狀態、找出瓶頸、調整下一個衝刺週期。這種思維，本質上就是敏捷開發中 Sprint Review 與 Retrospective 的個人版本。</p>
 
-<h2>讀書會要成功，關鍵在「會前會」</h2>
+<h2 id="sec-3">讀書會要成功，關鍵在「會前會」</h2>
 
 <p>聊到讀書會，Jenson 點出了一個很多人忽略的細節：一場真正有效的讀書會，成敗往往在會議開始之前就決定了。</p>
 
 <p>他強調「會前會」的重要性——在正式共讀之前，先讓參與者建立共識、對齊目標、甚至預先分配討論角色。這樣一來，讀書會就不只是大家一起把書念完，而是一場有結構的集體成長體驗。這個方法，對於想在公司內部推動讀書文化的人來說，非常值得參考。</p>
 
-<h2>「每個方向都是無限的」——面對困境的終極心法</h2>
+<h2 id="sec-4">「每個方向都是無限的」——面對困境的終極心法</h2>
 
 <p>這集最讓我印象深刻的，是 Jenson 分享的這句話。他說，當你盯著一面空白的牆壁感到無聊時，換個方式想：這面牆可以往裡鑿多深？可以貼什麼？可以拆掉嗎？每一個看似受限的處境，其實都有無限延伸的可能性。</p>
 
 <p>把這個思維套用在職涯挫折上，同樣適用。當你覺得卡關、走不下去，也許不是因為前方沒有路，而是你還沒找到那個「往深處走」的角度。</p>
 
-<h2>這些觀念，你可以怎麼用？</h2>
+<h2 id="sec-5">這些觀念，你可以怎麼用？</h2>
 
 <ul>
   <li><strong>設定個人 OKR：</strong>不管是學習、運動還是副業，試著用「以終為始」的方式設定目標，再拆解成每週可執行的小行動。</li>
