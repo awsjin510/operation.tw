@@ -37,6 +37,15 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
 .cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
@@ -60,14 +69,15 @@ time{color:#6060a0;font-size:.85rem;}
     <time datetime="2026-06-20">2026-06-20</time>
     <img class="cover" src="https://operation.tw/images/posts/post-284.jpg" alt="AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉">
     <div class="excerpt"><p>2026年KPMG爆出AI幻覺報告事件，45條引註中有40條是憑空捏造，再次提醒我們：當答案變得又快又便宜，「會問問題」才是真正的稀缺能力。這篇文章整理自《BCG問題解決力》的核心觀點，帶你練就靈魂三問、假說導向與甜蜜點三條思考肌肉，在AI新紀元裡少踩坑、多出擊。</p></div>
-    <div class="post-body"><!--BODY:START--><h2>當AI讓答案變便宜，問題本身才是護城河</h2>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">當AI讓答案變便宜，問題本身才是護城河</a></li><li class="toc-l2"><a href="#sec-2">三條貫穿全書的思考肌肉</a></li><li class="toc-l2"><a href="#sec-3">觀點一｜靈魂三問：是否為真？所以呢？為何如此？</a></li><li class="toc-l2"><a href="#sec-4">觀點二｜假說導向：先射箭，再畫靶</a></li><li class="toc-l2"><a href="#sec-5">觀點三｜尋找甜蜜點，別總想解決最大的問題</a></li><li class="toc-l2"><a href="#sec-6">對你的實際應用：升級你問問題的方式</a></li><li class="toc-l2"><a href="#sec-7">結語：技術會過時，但提問的能力不會</a></li></ul></nav>
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">當AI讓答案變便宜，問題本身才是護城河</h2>
 <p>2026年6月，四大會計師事務所之一的KPMG發生了一件震驚科技界的事：一份正式對外發布的專業報告裡，45條引註當中竟有40條是AI自己「編」出來的幻覺，根本查無原始出處。這個事件不只是丟臉，而是一個巨大的警示訊號——當我們開始習慣讓AI給答案，我們有多常把幻覺當成證據？</p>
 <p>這也是我在這集《操作一下》Podcast 裡想聊的核心問題。我用AI分身的形式，重新回顧了2021年出版的商業經典《BCG問題解決力》。乍看是本「舊書」，但放到2026年的AI語境裡，它反而成了科技人、工程師與PM最需要的避坑指南。</p>
 
-<h2>三條貫穿全書的思考肌肉</h2>
+<h2 id="sec-2">三條貫穿全書的思考肌肉</h2>
 <p>這本書不教你標準答案，而是教你怎麼「拆問題」。以下是這集整理出來的三個核心觀點：</p>
 
-<h2>觀點一｜靈魂三問：是否為真？所以呢？為何如此？</h2>
+<h2 id="sec-3">觀點一｜靈魂三問：是否為真？所以呢？為何如此？</h2>
 <p>BCG顧問之所以值那麼高的薪水，有一個不起眼的秘密，就是這套三連問。當AI吐出一段結論，大多數人會直接複製貼上；但真正有價值的操作，是拿這三個問句去追問它：</p>
 <ul>
   <li><strong>是否為真？</strong>——這個數據、這個說法，有沒有來源？可不可以被驗證？</li>
@@ -76,19 +86,19 @@ time{color:#6060a0;font-size:.85rem;}
 </ul>
 <p>這三問不只是批判性思考的工具，放到AI使用情境裡，它就是最強的追問模板。它幫你撈出冰山下那90%的隱藏資訊，而不只是接收水面上漂著的那一小塊。</p>
 
-<h2>觀點二｜假說導向：先射箭，再畫靶</h2>
+<h2 id="sec-4">觀點二｜假說導向：先射箭，再畫靶</h2>
 <p>很多人聽到「先射箭再畫靶」會覺得這是在瞎猜，其實不然。這集裡我特別把它類比成工程師最熟悉的TDD（測試驅動開發）思維——你先定義「什麼叫通過測試」，再去寫讓測試通過的程式碼。</p>
 <p>假說導向的邏輯一樣：你先提出一個暫定的答案方向，然後帶著這個假設去蒐集資料、追問AI、驗證或推翻它。這個做法的好處是，它幫你圈定了問題範圍，避免AI漫無目的地發散。當你跟Claude或ChatGPT說「我的假設是X，請幫我找支持或反駁這個假設的證據」，輸出品質會比「幫我研究一下X這個主題」好上不只一個檔次。</p>
 
-<h2>觀點三｜尋找甜蜜點，別總想解決最大的問題</h2>
+<h2 id="sec-5">觀點三｜尋找甜蜜點，別總想解決最大的問題</h2>
 <p>這是這集我最喜歡的一個概念。書裡提到用「議題地圖」來切蛋糕——把所有可能要解決的問題，依照「影響力高低」和「可解性高低」兩個維度分類，然後聚焦在那個黃金交集：影響力高、又真的解得動的問題。</p>
 <p>這個甜蜜點（Sweet Spot）的概念，對資源有限的個人工作者或小團隊來說尤其實用。很多人的精力消耗在一些「看起來很重要但根本動不了」的問題上，結果80%的力氣都虛耗了。找到甜蜜點，才是真正的槓桿。</p>
 
-<h2>對你的實際應用：升級你問問題的方式</h2>
+<h2 id="sec-6">對你的實際應用：升級你問問題的方式</h2>
 <p>把這三個觀點放在一起，你會發現它們指向同一件事：在AI時代，會給答案的人多到爆，會問問題的人才稀缺。</p>
 <p>下次你打開ChatGPT或Claude之前，試著先做這三件事：一、用靈魂三問逼自己想清楚「我真正想知道什麼」；二、提出一個暫定假設，帶著它去問AI；三、問完之後別急著用，先過一遍「這是否為真」的檢查。這不是要你不相信AI，而是要你用對工具的方式使用它。</p>
 
-<h2>結語：技術會過時，但提問的能力不會</h2>
+<h2 id="sec-7">結語：技術會過時，但提問的能力不會</h2>
 <p>《BCG問題解決力》是2021年的書，但它談的那套思考框架，在AI愈來愈強的2026年，反而愈來愈值錢。因為AI能幫你加速執行，但它沒辦法幫你決定「要解決哪個問題」——那個判斷，永遠得由你來做。</p>
 <p>如果你想聽更完整的討論，歡迎去找這集《操作一下》Podcast，我的AI分身會帶你把這本書從頭拆一遍。改變，才算數。</p>
 <hr>

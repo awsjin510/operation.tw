@@ -37,6 +37,15 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
 .cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
@@ -60,10 +69,11 @@ time{color:#6060a0;font-size:.85rem;}
     <time datetime="2026-06-20">2026-06-20</time>
     <img class="cover" src="https://operation.tw/images/posts/post-141.jpg" alt="大型語言模型應用全解：從原理到實戰場景的完整指南">
     <div class="excerpt"><p>隨著LLM技術成熟，企業與開發者面臨選型困境。本文深入解析大型語言模型的核心原理、主流模型差異，以及在台灣各產業的實際應用場景，幫助讀者掌握AI時代的競爭優勢。</p></div>
-    <div class="post-body"><!--BODY:START--><h2>LLM技術成熟期：從概念走向實戰</h2>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">LLM技術成熟期：從概念走向實戰</a></li><li class="toc-l2"><a href="#sec-2">LLM原理深度解析：Transformer架構的魔力</a></li><li class="toc-l2"><a href="#sec-3">主流模型對比：選型要點速覽</a></li><li class="toc-l2"><a href="#sec-4">台灣產業應用場景：從理論到實踐</a></li><li class="toc-l2"><a href="#sec-5">隱藏成本與風險提示</a></li><li class="toc-l2"><a href="#sec-6">對台灣企業的建議</a></li><li class="toc-l2"><a href="#sec-7">結語：從認知到行動</a></li></ul></nav>
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">LLM技術成熟期：從概念走向實戰</h2>
 <p>2026年中旬，大型語言模型（LLM）已從象牙塔的研究課題演變為企業的核心競爭工具。隨著GPT系列、Claude系列、國產GLM等模型相繼迭代，市場對LLM的理解也逐漸從「黑科技」轉向「實用工具」。然而，許多台灣企業與開發者仍對LLM的運作原理、選型標準、應用邊界缺乏清晰認知，這也成為推進AI轉型的隱形障礙。</p>
 
-<h2>LLM原理深度解析：Transformer架構的魔力</h2>
+<h2 id="sec-2">LLM原理深度解析：Transformer架構的魔力</h2>
 <p>大型語言模型的核心技術基礎是Transformer架構，其關鍵創新在於「注意力機制」（Attention Mechanism）。與傳統序列模型相比，注意力機制讓模型能夠同時參考輸入文本的所有部分，而不是按順序處理，大幅提升了長文本理解能力。</p>
 <p>LLM的訓練過程包括三個階段：</p>
 <ul>
@@ -73,7 +83,7 @@ time{color:#6060a0;font-size:.85rem;}
 </ul>
 <p>這種多層次的訓練架構，使現代LLM能夠具備推理、創意寫作、代碼生成等複雜能力。</p>
 
-<h2>主流模型對比：選型要點速覽</h2>
+<h2 id="sec-3">主流模型對比：選型要點速覽</h2>
 <p>當前市場主要分為三大陣營：</p>
 <ul>
 <li><strong>美國開源生態</strong>（Meta的Llama、Mistral等）：速度快、成本低，適合邊緣部署與私有化部署</li>
@@ -82,13 +92,13 @@ time{color:#6060a0;font-size:.85rem;}
 </ul>
 <p>台灣企業應根據應用場景選型：若重視數據隱私與本地化，開源模型或國產方案更合適；若優先考慮性能與創新功能，API服務仍是首選。</p>
 
-<h2>台灣產業應用場景：從理論到實踐</h2>
+<h2 id="sec-4">台灣產業應用場景：從理論到實踐</h2>
 <p><strong>金融服務業</strong>：利用LLM進行智能客服、風險評估、投資建議，國內多家銀行已試點私有化部署，確保監管合規。</p>
 <p><strong>製造業與工業4.0</strong>：LLM可應用於設備異常診斷、工藝流程優化、技術文檔自動化生成，台灣半導體與機械廠商正積極評估。</p>
 <p><strong>醫療健康領域</strong>：輔助醫學影像分析、病歷智能整理、患者溝通自動化，但需謹慎處理隱私與責任邊界。</p>
 <p><strong>教育與內容產業</strong>：個性化教學、課程內容生成、自適應學習系統，新創企業切入機會大。</p>
 
-<h2>隱藏成本與風險提示</h2>
+<h2 id="sec-5">隱藏成本與風險提示</h2>
 <p>企業在採用LLM時常忽視的挑戰包括：</p>
 <ul>
 <li><strong>幻覺問題</strong>：LLM可能生成看似合理但完全虛假的內容，關鍵應用需人工審核</li>
@@ -97,13 +107,13 @@ time{color:#6060a0;font-size:.85rem;}
 <li><strong>數據合規風險</strong>：敏感數據餵入公有API服務涉及國際數據流動問題</li>
 </ul>
 
-<h2>對台灣企業的建議</h2>
+<h2 id="sec-6">對台灣企業的建議</h2>
 <p>第一步：進行試驗與評估，不要盲目跟風。建議選擇非關鍵業務流程進行POC，累積內部經驗。</p>
 <p>第二步：根據合規要求選擇部署方案。若涉及個資或機密數據，優先考慮開源模型的私有部署。</p>
 <p>第三步：建立質量控制機制。LLM輸出需經人工檢驗，尤其在金融、醫療、法律等高風險領域。</p>
 <p>第四步：人才儲備先行。模型選型與部署是技術問題，但真正的競爭優勢來自於懂業務、懂模型、懂工程的複合型人才。</p>
 
-<h2>結語：從認知到行動</h2>
+<h2 id="sec-7">結語：從認知到行動</h2>
 <p>LLM不是萬靈藥，也不是無所不能的黑盒子。理解其原理、認清其邊界、評估真實ROI，才是2026年台灣企業AI轉型的正確姿態。那些既不盲目樂觀、也不因噎廢食的組織，將在即將到來的AI時代贏得先機。</p><!--BODY:END--></div>
     <a class="cta" href="/">← 在操作一下看完整體驗 →</a>
   </article>

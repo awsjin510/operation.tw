@@ -37,6 +37,15 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
 .cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
@@ -60,15 +69,16 @@ time{color:#6060a0;font-size:.85rem;}
     <time datetime="2025-05-29">2025-05-29</time>
     <img class="cover" src="https://operation.tw/images/posts/post-222.jpg" alt="EP71｜資深資安架構師Kuro：學習過程比考到證照更重要">
     <div class="excerpt"><p>手握超過40張國際資安證照、橫跨高科技製造、金融業與四大會計師事務所的資深架構師Kuro，在這集操作一下Podcast中不藏私分享：如何建立資安職涯技能樹、甲方乙方各自的優勢、時間管理秘訣，以及面對AI浪潮時資安人才該有的心態。最值得記住的一句話：學習的過程，比考到證照更重要。</p></div>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">資安架構師，到底在做什麼？</a></li><li class="toc-l2"><a href="#sec-2">甲方 vs 乙方：哪邊適合你？</a></li><li class="toc-l2"><a href="#sec-3">資安證照怎麼考？新手從哪裡開始？</a></li><li class="toc-l2"><a href="#sec-4">時間管理：一個人如何同時做好這麼多事？</a></li><li class="toc-l2"><a href="#sec-5">AI 時代，資安人才的危與機</a></li><li class="toc-l2"><a href="#sec-6">寫作與社群，是另一種學習的方式</a></li><li class="toc-l2"><a href="#sec-7">給每個想踏入資安領域的人</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>如果你曾經想過「資安這條路該怎麼走」，或是對一堆英文縮寫的證照感到頭暈，這篇文章你一定要讀完。</p>
 
 <p>在最新一集的「操作一下」Podcast 中，我邀請到了資安界的重量級來賓——黃星評，也就是大家熟悉的 <strong>Kuro</strong>。他是現任 ISC2 Taipei Chapter 的理監事、AWS Community Builder，同時也是「Kuro的資安學習手記」的作者。職涯橫跨高科技製造、金融業與四大會計師事務所，手上握有 CISSP、CCSP 等超過40張國際資安證照。光是這份履歷，就足夠讓人好好聽他說話了。</p>
 
-<h2>資安架構師，到底在做什麼？</h2>
+<h2 id="sec-1">資安架構師，到底在做什麼？</h2>
 <p>很多人對「資安架構師」這個職稱有點模糊，覺得應該是很厲害、但不確定厲害在哪裡。Kuro 在節目中解釋，資安架構師需要同時具備技術深度與管理廣度，從技術檢測、管理架構、資料保護到風險控制，都要能掌握。更重要的是，這個角色需要能把技術語言翻譯成商業決策語言，讓非技術背景的主管或客戶理解資安投資的必要性。</p>
 <p>這不只是「會防駭客」那麼簡單，而是需要對整個組織的風險架構有全局觀。</p>
 
-<h2>甲方 vs 乙方：哪邊適合你？</h2>
+<h2 id="sec-2">甲方 vs 乙方：哪邊適合你？</h2>
 <p>這是這集我覺得最實用的討論之一。Kuro 本身有甲方（企業端）與乙方（事務所、顧問公司）的完整經歷，他從自身角度分析了兩種路線各自的魅力：</p>
 <ul>
   <li><strong>乙方（事務所、顧問公司）：</strong>接觸的產業多元、案子類型豐富，學習曲線陡，能快速累積不同場景的實戰經驗，視野開闊。</li>
@@ -76,21 +86,21 @@ time{color:#6060a0;font-size:.85rem;}
 </ul>
 <p>沒有哪條路更好，關鍵在於你想要的職涯節奏是什麼。</p>
 
-<h2>資安證照怎麼考？新手從哪裡開始？</h2>
+<h2 id="sec-3">資安證照怎麼考？新手從哪裡開始？</h2>
 <p>說到資安證照，很多人的第一反應是「好貴、好難、不知道從哪裡開始」。Kuro 在節目中給出了相當實際的建議，針對不同階段的學習者提供了入門方向，也特別強調了一個核心觀念：</p>
 <p><strong>「學習的過程，比考到證照更重要。」</strong></p>
 <p>這句話乍聽之下有點反直覺，畢竟大家考證照不就是為了那張紙嗎？但 Kuro 的意思是，準備證照的過程，才是真正讓你建立知識體系的時刻。如果只是為了考過而背題庫，考完就忘，那張證照的含金量其實非常有限。真正能讓你在職場上發揮的，是你在準備過程中內化的思維方式。</p>
 
-<h2>時間管理：一個人如何同時做好這麼多事？</h2>
+<h2 id="sec-4">時間管理：一個人如何同時做好這麼多事？</h2>
 <p>Kuro 同時兼顧正職、社群經營、寫作與持續考證，很多聽眾一定好奇他怎麼分配時間。節目中他分享了自己的高效規劃方式，核心概念是把學習與工作的邊界模糊化——不是硬切出「學習時間」，而是讓每一個工作場景都成為學習機會，並且透過輸出（寫作、分享）來強化記憶與理解。</p>
 
-<h2>AI 時代，資安人才的危與機</h2>
+<h2 id="sec-5">AI 時代，資安人才的危與機</h2>
 <p>這集也聊到了現在大家都很關心的 AI 議題。Kuro 對此抱持的是務實樂觀的態度——AI 確實會改變資安的攻防格局，攻擊者會用 AI，防禦者也必須用 AI。這對資安人才來說，與其說是威脅，不如說是一個重新定義自身價值的機會。那些能夠結合資安專業與 AI 工具應用的人，將會是未來最搶手的人才。</p>
 
-<h2>寫作與社群，是另一種學習的方式</h2>
+<h2 id="sec-6">寫作與社群，是另一種學習的方式</h2>
 <p>Kuro 經營「Kuro的資安學習手記」的初心，其實很單純——就是想把自己學到的東西整理下來。但這個習慣慢慢讓他建立起個人品牌，也成為資安社群中重要的知識貢獻者。這讓我想到，無論你在哪個領域，持續輸出其實是對自己最好的投資。</p>
 
-<h2>給每個想踏入資安領域的人</h2>
+<h2 id="sec-7">給每個想踏入資安領域的人</h2>
 <p>不管你是剛畢業想找方向的新鮮人、還是已經在業界打滾多年想轉換跑道的朋友，Kuro 這集給的建議都非常接地氣。資安不是只有技術宅才能做的事，它需要溝通、需要視角、需要持續學習的心態。</p>
 <p>這集錄完，我自己都更有動力繼續學習了。如果你也對資安有興趣，或是正在規劃自己的職涯方向，強烈推薦你去聽這集完整的對談，Kuro 分享的細節和實際建議，絕對值得你花時間好好聽一遍。</p>
 <hr>

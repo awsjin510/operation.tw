@@ -37,6 +37,15 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
 .cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
@@ -60,7 +69,8 @@ time{color:#6060a0;font-size:.85rem;}
     <time datetime="2026-04-15">2026-04-15</time>
     <img class="cover" src="https://operation.tw/images/posts/post-73.jpg" alt="AI引用虛構疾病的警訊：學術誠信與AI可信度危機">
     <div class="excerpt"><p>研究員用虛構疾病測試AI與學術界，結果震驚：AI不僅直接引用假消息，還被納入真實論文。這場實驗揭露AI時代最隱蔽的威脅——信息汙染如何侵蝕學術根基，對台灣學界與企業應用帶來深遠影響。</p></div>
-    <div class="post-body"><!--BODY:START--><h2>虛構疾病實驗：AI誠信危機的冰山一角</h2><p>一項驚人的實驗結果最近引發科學界震動。研究員故意虛構一種疾病，用來測試AI與學術界的防禦機制。結果令人憂心：不僅大型語言模型直接引用了這個虛構疾病，甚至有真實論文將其納入參考文獻，形成一條完整的「假信息傳播鏈」。這不是簡單的AI錯誤，而是反映出AI時代學術生態面臨的根本性危機。</p><h2>為什麼AI會引用不存在的知識？</h2><p>表面上看，這反映的是AI模型的「幻覺問題」(hallucination)——即模型生成看起來合理但實際不存在的信息。但更深層的原因值得關注：</p><ul><li><strong>訓練數據的延遲性</strong>：AI模型基於歷史數據訓練，但互聯網信息時時變化。虛構內容一旦被發布，就可能被爬蟲收集並進入訓練集。</li><li><strong>缺乏事實檢驗機制</strong>：當前LLM在生成文本時，並未內建強大的現實檢查系統。它只是基於統計模式預測下一個詞，而非驗證內容真偽。</li><li><strong>學術引用的「權威假象」</strong>：一旦虛假信息出現在看似學術的平台上，AI會因為表面的「學術格式」而提升其可信度評分。</li></ul><h2>學術界為何也上當？</h2><p>更令人擔憂的是，真實研究人員也引用了這個虛構疾病。這表明：</p><ul><li>過度依賴AI搜索與文獻整理工具，導致驗證流程弱化</li><li>同儕評審機制在AI時代面臨效率與準確性的矛盾</li><li>學者普遍信任「已發表」的內容，缺乏根本性的懷疑精神</li></ul><h2>對台灣學界與產業的實際影響</h2><p>台灣擁有強大的半導體、生技等高科技產業，這些領域都高度依賴學術研究。虛構信息的污染可能造成連鎖反應：</p><ul><li><strong>生技製藥領域</strong>：如果虛假的疾病或治療方法被引用，可能誤導藥物開發方向，浪費研發資源。</li><li><strong>企業AI應用信任危機</strong>：台灣企業在採用生成式AI進行市場研究、競爭分析時，面臨輸出信息真偽難辨的風險。</li><li><strong>人才培育困境</strong>：學生依賴AI完成論文時，將虛假知識內化為「常識」，形成知識汙染的代際傳遞。</li></ul><h2>企業與學術機構該如何應對？</h2><p><strong>技術層面：</strong>企業應投資可追蹤性更強的AI解決方案，要求AI標註信息來源、發布時間，並整合事實檢驗API。</p><p><strong>流程層面：</strong>強化同儕評審、編輯審查，建立「AI生成內容」標籤機制，提醒讀者需要額外驗證。</p><p><strong>文化層面：</strong>重建對知識來源的嚴謹態度，將「驗證而非相信」作為AI時代的學術倫理基礎。</p><h2>結論：可信度是AI時代最稀缺的資源</h2><p>這場虛構疾病實驗提醒我們，AI的威脅不在於它做不了什麼，而在於它能說服人們相信錯誤的東西。對台灣而言，在全球AI競賽中領先，同時保護學術與商業信息的完整性，將是下一個十年的核心課題。企業應從今天開始，檢視自己的AI應用流程，在速度與準確性間找到平衡。</p><!--BODY:END--></div>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">虛構疾病實驗：AI誠信危機的冰山一角</a></li><li class="toc-l2"><a href="#sec-2">為什麼AI會引用不存在的知識？</a></li><li class="toc-l2"><a href="#sec-3">學術界為何也上當？</a></li><li class="toc-l2"><a href="#sec-4">對台灣學界與產業的實際影響</a></li><li class="toc-l2"><a href="#sec-5">企業與學術機構該如何應對？</a></li><li class="toc-l2"><a href="#sec-6">結論：可信度是AI時代最稀缺的資源</a></li></ul></nav>
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">虛構疾病實驗：AI誠信危機的冰山一角</h2><p>一項驚人的實驗結果最近引發科學界震動。研究員故意虛構一種疾病，用來測試AI與學術界的防禦機制。結果令人憂心：不僅大型語言模型直接引用了這個虛構疾病，甚至有真實論文將其納入參考文獻，形成一條完整的「假信息傳播鏈」。這不是簡單的AI錯誤，而是反映出AI時代學術生態面臨的根本性危機。</p><h2 id="sec-2">為什麼AI會引用不存在的知識？</h2><p>表面上看，這反映的是AI模型的「幻覺問題」(hallucination)——即模型生成看起來合理但實際不存在的信息。但更深層的原因值得關注：</p><ul><li><strong>訓練數據的延遲性</strong>：AI模型基於歷史數據訓練，但互聯網信息時時變化。虛構內容一旦被發布，就可能被爬蟲收集並進入訓練集。</li><li><strong>缺乏事實檢驗機制</strong>：當前LLM在生成文本時，並未內建強大的現實檢查系統。它只是基於統計模式預測下一個詞，而非驗證內容真偽。</li><li><strong>學術引用的「權威假象」</strong>：一旦虛假信息出現在看似學術的平台上，AI會因為表面的「學術格式」而提升其可信度評分。</li></ul><h2 id="sec-3">學術界為何也上當？</h2><p>更令人擔憂的是，真實研究人員也引用了這個虛構疾病。這表明：</p><ul><li>過度依賴AI搜索與文獻整理工具，導致驗證流程弱化</li><li>同儕評審機制在AI時代面臨效率與準確性的矛盾</li><li>學者普遍信任「已發表」的內容，缺乏根本性的懷疑精神</li></ul><h2 id="sec-4">對台灣學界與產業的實際影響</h2><p>台灣擁有強大的半導體、生技等高科技產業，這些領域都高度依賴學術研究。虛構信息的污染可能造成連鎖反應：</p><ul><li><strong>生技製藥領域</strong>：如果虛假的疾病或治療方法被引用，可能誤導藥物開發方向，浪費研發資源。</li><li><strong>企業AI應用信任危機</strong>：台灣企業在採用生成式AI進行市場研究、競爭分析時，面臨輸出信息真偽難辨的風險。</li><li><strong>人才培育困境</strong>：學生依賴AI完成論文時，將虛假知識內化為「常識」，形成知識汙染的代際傳遞。</li></ul><h2 id="sec-5">企業與學術機構該如何應對？</h2><p><strong>技術層面：</strong>企業應投資可追蹤性更強的AI解決方案，要求AI標註信息來源、發布時間，並整合事實檢驗API。</p><p><strong>流程層面：</strong>強化同儕評審、編輯審查，建立「AI生成內容」標籤機制，提醒讀者需要額外驗證。</p><p><strong>文化層面：</strong>重建對知識來源的嚴謹態度，將「驗證而非相信」作為AI時代的學術倫理基礎。</p><h2 id="sec-6">結論：可信度是AI時代最稀缺的資源</h2><p>這場虛構疾病實驗提醒我們，AI的威脅不在於它做不了什麼，而在於它能說服人們相信錯誤的東西。對台灣而言，在全球AI競賽中領先，同時保護學術與商業信息的完整性，將是下一個十年的核心課題。企業應從今天開始，檢視自己的AI應用流程，在速度與準確性間找到平衡。</p><!--BODY:END--></div>
     <a class="cta" href="/">← 在操作一下看完整體驗 →</a>
   </article>
 </div>
