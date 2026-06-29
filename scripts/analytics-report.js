@@ -1,32 +1,33 @@
 /**
  * analytics-report.js
- * 抓 Cloudflare Web Analytics（RUM）過去 24 小時數據，整理成報告，經 Resend 寄出。
+ * 抓 Cloudflare Web Analytics（RUM）過去 24 小時數據，整理成報告，
+ * 貼到一個固定的 GitHub Issue（每天一則留言）。不需 email / 第三方服務。
  *
  * 環境變數：
  *   CLOUDFLARE_API_TOKEN   需含「Account Analytics: Read」權限
  *   CLOUDFLARE_ACCOUNT_ID  Cloudflare 帳號 ID
- *   RESEND_API_KEY         Resend API key（寄信用）
- *   REPORT_TO              收件 email（預設 keepfighting510@gmail.com）
+ *   GITHUB_TOKEN           GitHub Actions 內建（issues: write）
+ *   GITHUB_REPOSITORY      owner/repo（Actions 自動帶入）
  */
 'use strict';
 
 const ACCOUNT_TAG = process.env.CLOUDFLARE_ACCOUNT_ID;
 const API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const TO = process.env.REPORT_TO || 'keepfighting510@gmail.com';
+const GH_TOKEN = process.env.GITHUB_TOKEN;
+const REPO = process.env.GITHUB_REPOSITORY || 'awsjin510/operation.tw';
 const SITE_TAG = '81a9db35d0634ee983873f7de67c6c4f'; // Web Analytics beacon token = site tag
-const SITE = 'operation.tw';
+const ISSUE_TITLE = '📊 operation.tw 每日成效報告';
 
-if (!ACCOUNT_TAG || !API_TOKEN || !RESEND_API_KEY) {
-  console.error('❌ 缺少 CLOUDFLARE_ACCOUNT_ID / CLOUDFLARE_API_TOKEN / RESEND_API_KEY');
+if (!ACCOUNT_TAG || !API_TOKEN || !GH_TOKEN) {
+  console.error('❌ 缺少 CLOUDFLARE_ACCOUNT_ID / CLOUDFLARE_API_TOKEN / GITHUB_TOKEN');
   process.exit(1);
 }
 
 const iso = (d) => d.toISOString();
 const pct = (cur, prev) => {
-  if (!prev) return cur ? '＋∞%' : '0%';
+  if (!prev) return cur ? '🆕' : '–';
   const d = Math.round(((cur - prev) / prev) * 100);
-  return (d >= 0 ? '＋' : '') + d + '%';
+  return (d > 0 ? `🔺＋${d}%` : d < 0 ? `🔻${d}%` : '→ 0%');
 };
 
 async function cfGraphQL() {
@@ -34,8 +35,6 @@ async function cfGraphQL() {
   const start = new Date(now.getTime() - 24 * 3600 * 1000);
   const prevStart = new Date(now.getTime() - 48 * 3600 * 1000);
   const F = (a, b) => `{siteTag:"${SITE_TAG}",datetime_geq:"${iso(a)}",datetime_lt:"${iso(b)}"}`;
-  const grp = (alias, filter, extra = '') =>
-    `${alias}: rumPageloadEventsAdaptiveGroups(filter:${filter},limit:5${extra}){count sum{visits} ${extra ? 'dimensions{requestPath refererHost countryName}' : ''}}`;
 
   const query = `query {
     viewer { accounts(filter:{accountTag:"${ACCOUNT_TAG}"}) {
@@ -53,82 +52,80 @@ async function cfGraphQL() {
     body: JSON.stringify({ query }),
   });
   const json = await res.json();
-  if (json.errors && json.errors.length) {
-    throw new Error('Cloudflare GraphQL: ' + JSON.stringify(json.errors));
-  }
+  if (json.errors && json.errors.length) throw new Error('Cloudflare GraphQL: ' + JSON.stringify(json.errors));
   const acc = json.data?.viewer?.accounts?.[0];
   if (!acc) throw new Error('無資料：' + JSON.stringify(json).slice(0, 300));
   return acc;
 }
 
-function rows(list, dimKey, label) {
+function mdList(list, dimKey) {
   const items = (list || []).filter((r) => r.dimensions?.[dimKey]);
-  if (!items.length) return `<tr><td colspan="2" style="color:#888">（無資料）</td></tr>`;
-  return items.map((r) =>
-    `<tr><td>${esc(r.dimensions[dimKey] || '(直接/未知)')}</td><td style="text-align:right">${r.count}</td></tr>`
-  ).join('');
+  if (!items.length) return '_（無資料）_';
+  return items.map((r) => `1. \`${r.dimensions[dimKey]}\` — **${r.count}**`).join('\n');
 }
-const esc = (s) => String(s == null ? '' : s).replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
 
-function buildHtml(acc, dateStr) {
+function buildMarkdown(acc, dateStr) {
   const cur = acc.cur?.[0] || { count: 0, sum: { visits: 0 } };
   const prev = acc.prev?.[0] || { count: 0, sum: { visits: 0 } };
   const views = cur.count || 0, pviews = prev.count || 0;
   const visits = cur.sum?.visits || 0, pvisits = prev.sum?.visits || 0;
-  return `<div style="font-family:system-ui,sans-serif;max-width:560px;margin:0 auto;color:#1a1a2e">
-    <h2 style="margin:0 0 4px">📊 operation.tw 每日成效報告</h2>
-    <div style="color:#888;font-size:13px;margin-bottom:18px">${dateStr}（過去 24 小時）</div>
+  return `## ${dateStr}（過去 24 小時）
 
-    <table style="width:100%;border-collapse:collapse;margin-bottom:18px">
-      <tr>
-        <td style="padding:12px;background:#f3f6ff;border-radius:8px">
-          <div style="font-size:13px;color:#666">頁面瀏覽</div>
-          <div style="font-size:26px;font-weight:700">${views}</div>
-          <div style="font-size:12px;color:#888">vs 前一日 ${pct(views, pviews)}</div>
-        </td>
-        <td style="width:12px"></td>
-        <td style="padding:12px;background:#f3f6ff;border-radius:8px">
-          <div style="font-size:13px;color:#666">造訪人次</div>
-          <div style="font-size:26px;font-weight:700">${visits}</div>
-          <div style="font-size:12px;color:#888">vs 前一日 ${pct(visits, pvisits)}</div>
-        </td>
-      </tr>
-    </table>
+| 指標 | 數值 | vs 前一日 |
+|---|---:|---|
+| 頁面瀏覽 | **${views}** | ${pct(views, pviews)} |
+| 造訪人次 | **${visits}** | ${pct(visits, pvisits)} |
 
-    <h3 style="margin:18px 0 6px;font-size:15px">🔥 熱門頁面</h3>
-    <table style="width:100%;border-collapse:collapse;font-size:13px">${rows(acc.topPages, 'requestPath')}</table>
+**🔥 熱門頁面**
+${mdList(acc.topPages, 'requestPath')}
 
-    <h3 style="margin:18px 0 6px;font-size:15px">↗️ 流量來源</h3>
-    <table style="width:100%;border-collapse:collapse;font-size:13px">${rows(acc.topReferers, 'refererHost')}</table>
+**↗️ 流量來源**
+${mdList(acc.topReferers, 'refererHost')}
 
-    <h3 style="margin:18px 0 6px;font-size:15px">🌏 訪客地區</h3>
-    <table style="width:100%;border-collapse:collapse;font-size:13px">${rows(acc.topCountries, 'countryName')}</table>
+**🌏 訪客地區**
+${mdList(acc.topCountries, 'countryName')}
 
-    <div style="margin-top:22px;font-size:12px;color:#aaa">資料來源：Cloudflare Web Analytics · 自動產生</div>
-  </div>`;
+<sub>資料來源：Cloudflare Web Analytics · 自動產生</sub>`;
 }
 
-async function sendEmail(html, dateStr) {
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      from: 'operation.tw 報告 <onboarding@resend.dev>',
-      to: [TO],
-      subject: `📊 operation.tw 成效報告 ${dateStr}`,
-      html,
-    }),
+async function gh(pathname, method = 'GET', body) {
+  const res = await fetch(`https://api.github.com${pathname}`, {
+    method,
+    headers: {
+      Authorization: `Bearer ${GH_TOKEN}`,
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'operation-tw-analytics-report',
+    },
+    body: body ? JSON.stringify(body) : undefined,
   });
-  if (!res.ok) throw new Error(`Resend 寄信失敗 (HTTP ${res.status}): ${await res.text()}`);
-  console.log(`✅ 報告已寄到 ${TO}`);
+  if (!res.ok) throw new Error(`GitHub ${method} ${pathname} → ${res.status}: ${await res.text()}`);
+  return res.json();
+}
+
+async function postToIssue(md) {
+  const [owner, repo] = REPO.split('/');
+  // 找固定的報告 Issue（用標題比對），沒有就建一個
+  const open = await gh(`/repos/${owner}/${repo}/issues?state=open&per_page=100`);
+  let issue = (open || []).find((i) => i.title === ISSUE_TITLE && !i.pull_request);
+  if (!issue) {
+    issue = await gh(`/repos/${owner}/${repo}/issues`, 'POST', {
+      title: ISSUE_TITLE,
+      body: '這個 Issue 由排程自動更新，每天留言一則 operation.tw 的 Cloudflare Web Analytics 成效報告。',
+    });
+    console.log(`  ✓ 已建立報告 Issue #${issue.number}`);
+  }
+  await gh(`/repos/${owner}/${repo}/issues/${issue.number}/comments`, 'POST', {
+    body: `@${owner}\n\n${md}`,
+  });
+  console.log(`✅ 報告已貼到 Issue #${issue.number}`);
 }
 
 async function main() {
   const dateStr = new Date().toISOString().slice(0, 10);
-  console.log(`📊 產生 ${SITE} 成效報告（${dateStr}）...`);
+  console.log(`📊 產生 operation.tw 成效報告（${dateStr}）...`);
   const acc = await cfGraphQL();
-  const html = buildHtml(acc, dateStr);
-  await sendEmail(html, dateStr);
+  const md = buildMarkdown(acc, dateStr);
+  await postToIssue(md);
 }
 
 main().catch((err) => { console.error('❌ 失敗：', err.message); process.exit(1); });
