@@ -37,6 +37,15 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
 .cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
@@ -60,11 +69,12 @@ time{color:#6060a0;font-size:.85rem;}
     <time datetime="2026-01-14">2026-01-14</time>
     <img class="cover" src="https://operation.tw/images/posts/post-242.jpg" alt="EP91｜AI 時代，數據思維才是你真正的護城河">
     <div class="excerpt"><p>當 AI 工具越來越普及，「只會用工具」的人正在快速被取代。本文整理自《操作一下》Podcast 與數據顧問 Sheng 的對談精華，從他十年數據與 AI 實戰經驗出發，探討技術人如何突破「知識詛咒」、與商業世界接軌，並在生成式 AI 浪潮中，用數據思維打造真正不可替代的個人競爭力。</p></div>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">從「會技術」到「能解決問題」，中間差了一道牆</a></li><li class="toc-l2"><a href="#sec-2">數據團隊，如何從「花錢」變成「賺錢」</a></li><li class="toc-l2"><a href="#sec-3">AI 工具普及之後，你剩下什麼？</a></li><li class="toc-l2"><a href="#sec-4">「做那些不會規模化的事」——反直覺的長期思維</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>如果你最近也有一種隱隱的不安——「我現在會的這些，會不會哪天被 AI 取代？」——那這篇文章很值得你讀完。</p>
 
 <p>在《操作一下》EP91，我們邀請到擁有十年數據與 AI 經驗的數據顧問 Sheng，聊他從統計系學生、數據科學家，一路走到數據顧問、AI 產品負責人（PO）的歷程。這集不只是在談技術，更核心的問題是：<strong>在 AI 快速滲透每個工作場景的當下，一個技術人要如何讓自己真正有價值？</strong></p>
 
-<h2>從「會技術」到「能解決問題」，中間差了一道牆</h2>
+<h2 id="sec-1">從「會技術」到「能解決問題」，中間差了一道牆</h2>
 
 <p>Sheng 的背景從統計系出發，研究所期間扎實訓練了數據分析與 SQL 能力，畢業後順理成章進入數據科學領域。聽起來路徑很清晰，但他在節目裡坦承，現實並不那麼順暢。</p>
 
@@ -72,13 +82,13 @@ time{color:#6060a0;font-size:.85rem;}
 
 <p>這就帶出了節目裡我很有感的一個概念——「知識詛咒」（Curse of Knowledge）。當你對某個領域太熟悉，你會自動假設對方也懂，於是溝通出現落差、價值無法傳遞。Sheng 在轉型顧問角色的過程中，最痛苦的磨練之一，就是學會把技術語言轉化成商業語言。</p>
 
-<h2>數據團隊，如何從「花錢」變成「賺錢」</h2>
+<h2 id="sec-2">數據團隊，如何從「花錢」變成「賺錢」</h2>
 
 <p>很多企業的數據團隊長期處於一種尷尬位置：存在感低、難以量化貢獻、預算永遠被質疑。Sheng 在節目中分享了他如何協助客戶端的數據團隊轉型，從成本中心走向能夠直接創造商業價值的角色。</p>
 
 <p>這個轉變的關鍵，不只是技術升級，而是重新定義數據團隊的「產品思維」——他們服務的對象是誰？他們解決的問題是否真的被業務單位重視？這也直接影響了他後來開發 GenBI 產品的思路：用生成式 AI 降低數據分析的門檻，讓非技術背景的業務人員也能自助取得洞察。</p>
 
-<h2>AI 工具普及之後，你剩下什麼？</h2>
+<h2 id="sec-3">AI 工具普及之後，你剩下什麼？</h2>
 
 <p>這集讓我印象最深的段落，是 Sheng 談到他回母校演講時，給學弟妹的三個核心觀念：</p>
 
@@ -90,7 +100,7 @@ time{color:#6060a0;font-size:.85rem;}
 
 <p>他也分享了自己如何在日常工作流程中導入 AI Agent，讓重複性的數據處理與報告工作自動化，把時間留給真正需要判斷力與溝通的環節。</p>
 
-<h2>「做那些不會規模化的事」——反直覺的長期思維</h2>
+<h2 id="sec-4">「做那些不會規模化的事」——反直覺的長期思維</h2>
 
 <p>節目最後，Sheng 分享了他近期很喜歡的一句話：<em>「Do things that don't scale.」</em>——做那些不會規模化的事。</p>
 

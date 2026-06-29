@@ -14,6 +14,7 @@ const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs').promises;
 const cfdb = require('./lib/cf-db');
+const indexnow = require('./lib/indexnow');
 
 // ── 環境變數檢查 ────────────────────────────────────────────────
 const CF_API_BASE = process.env.CF_API_BASE;
@@ -429,6 +430,15 @@ async function main() {
   const postsData = { generated: new Date().toISOString(), posts: leanPosts };
   await fs.writeFile(postsJsonPath, JSON.stringify(postsData, null, 0));
   console.log(`  ✓ posts.json 已更新（${postsData.posts.length} 篇文章，含最新 views）`);
+
+  // 通知 IndexNow（Bing/Yandex 快速索引）
+  if (postId) {
+    await indexnow.ping([
+      `https://operation.tw/post/${postId}/`,
+      'https://operation.tw/',
+      'https://operation.tw/sitemap.xml',
+    ]);
+  }
 
   console.log('\n✅ 完成！\n');
 }

@@ -37,6 +37,15 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
 .cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
@@ -60,7 +69,8 @@ time{color:#6060a0;font-size:.85rem;}
     <time datetime="2026-06-05">2026-06-05</time>
     <img class="cover" src="https://operation.tw/images/posts/post-125.jpg" alt="小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯">
     <div class="excerpt"><p>國泰金控棄用大模型，轉向開源小型語言模型(SLM)精準判斷客戶意圖。這個轉變不只是成本考量，更反映企業AI應用正從規模迷思走向實效主義。我們分析SLM為何成為金融業的新寵，以及這股趨勢對台灣科技企業的啟示。</p></div>
-    <div class="post-body"><!--BODY:START--><h2>大模型並非萬能：國泰金的現實抉擇</h2><p>近年來，生成式AI浪潮席捲全球，大型語言模型(LLM)成為企業爭相採用的「標配」。然而，國泰金控的最新實踐卻給市場潑了冷水：該集團運用開源小型語言模型(SLM)在客戶意圖識別上取得優異成效，這個案例背後隱含的是企業AI應用策略的深層轉變。</p><p>事實上，這並非孤例。隨著大模型部署成本居高不下，許多企業開始反思：動員數十億參數的模型去執行特定任務，是否過度浪費？國泰金的案例提供了一個清晰的答案——在垂直領域應用上，小而精的模型往往勝過「大而全」。</p><h2>SLM為何成為金融業新選擇</h2><p>小型語言模型相比大模型具有多方面優勢：</p><ul><li><strong>推理延遲更低：</strong>SLM的參數量通常在十億以下，推理速度快數倍，對於客服對話、意圖識別等實時應用至關重要</li><li><strong>部署成本驟降：</strong>無需昂貴的高端GPU集群，甚至可在邊緣設備或企業私有雲上運行，符合金融業對數據隱私的嚴格要求</li><li><strong>可解釋性更強：</strong>較小的模型參數使得決策路徑相對透明，便於金融監管審計</li><li><strong>微調效率高：</strong>用業務特定數據微調SLM，往往比提示詞工程調整大模型更經濟有效</li></ul><p>國泰金選擇開源SLM的另一深層考量是主權AI。相比依賴第三方API的大模型服務，自主部署SLM讓企業牢牢掌控業務數據和模型演進，這在金融這個敏感行業尤為重要。</p><h2>Meta Muse Spark延遲背後的產業信號</h2><p>有趣的是，同期Meta旗下Muse Spark API延遲發布的新聞，恰好映照了SLM崛起的另一個維度。大廠在前沿模型開發上投入巨資，卻在商用API落地上頻現延遲。這種局面下，靈活、易用的開源小模型反而搶占了企業應用的先機。</p><h2>對台灣科技產業的啟示</h2><p>台灣在AI晶片、雲端基礎設施上具有優勢，但在模型層的話語權較弱。SLM趨勢為台灣企業帶來重要機遇：</p><ul><li><strong>垂直領域模型化：</strong>可針對台灣強勢產業（如金融科技、製造、半導體）開發優化的小模型，打造「小但精」的競爭力</li><li><strong>邊緣AI應用：</strong>SLM與邊緣運算完美搭配，台灣的製造、零售企業可在本地部署，避免數據跨境風險</li><li><strong>開源生態參與：</strong>國泰金等大型金融機構採用開源SLM，示範效應將驅動整個金融科技生態的轉變</li></ul><h2>結論：從規模迷思到實效主義</h2><p>過去一年，企業選型AI時往往陷入「更大=更好」的陷阱，砸重金採購大模型API卻在實際應用中水土不服。國泰金的實踐是一個轉折點——它宣示企業正從盲目追求規模，回歸到理性的成本-效益評估。</p><p>對台灣的科技企業和決策者而言，該反思的問題不是「要不要用AI」，而是「用什麼樣的AI」。SLM的崛起提供了一條新路徑：在特定場景下，一個經過精心優化的小模型，往往比通用大模型更值得投資。</p><!--BODY:END--></div>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">大模型並非萬能：國泰金的現實抉擇</a></li><li class="toc-l2"><a href="#sec-2">SLM為何成為金融業新選擇</a></li><li class="toc-l2"><a href="#sec-3">Meta Muse Spark延遲背後的產業信號</a></li><li class="toc-l2"><a href="#sec-4">對台灣科技產業的啟示</a></li><li class="toc-l2"><a href="#sec-5">結論：從規模迷思到實效主義</a></li></ul></nav>
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">大模型並非萬能：國泰金的現實抉擇</h2><p>近年來，生成式AI浪潮席捲全球，大型語言模型(LLM)成為企業爭相採用的「標配」。然而，國泰金控的最新實踐卻給市場潑了冷水：該集團運用開源小型語言模型(SLM)在客戶意圖識別上取得優異成效，這個案例背後隱含的是企業AI應用策略的深層轉變。</p><p>事實上，這並非孤例。隨著大模型部署成本居高不下，許多企業開始反思：動員數十億參數的模型去執行特定任務，是否過度浪費？國泰金的案例提供了一個清晰的答案——在垂直領域應用上，小而精的模型往往勝過「大而全」。</p><h2 id="sec-2">SLM為何成為金融業新選擇</h2><p>小型語言模型相比大模型具有多方面優勢：</p><ul><li><strong>推理延遲更低：</strong>SLM的參數量通常在十億以下，推理速度快數倍，對於客服對話、意圖識別等實時應用至關重要</li><li><strong>部署成本驟降：</strong>無需昂貴的高端GPU集群，甚至可在邊緣設備或企業私有雲上運行，符合金融業對數據隱私的嚴格要求</li><li><strong>可解釋性更強：</strong>較小的模型參數使得決策路徑相對透明，便於金融監管審計</li><li><strong>微調效率高：</strong>用業務特定數據微調SLM，往往比提示詞工程調整大模型更經濟有效</li></ul><p>國泰金選擇開源SLM的另一深層考量是主權AI。相比依賴第三方API的大模型服務，自主部署SLM讓企業牢牢掌控業務數據和模型演進，這在金融這個敏感行業尤為重要。</p><h2 id="sec-3">Meta Muse Spark延遲背後的產業信號</h2><p>有趣的是，同期Meta旗下Muse Spark API延遲發布的新聞，恰好映照了SLM崛起的另一個維度。大廠在前沿模型開發上投入巨資，卻在商用API落地上頻現延遲。這種局面下，靈活、易用的開源小模型反而搶占了企業應用的先機。</p><h2 id="sec-4">對台灣科技產業的啟示</h2><p>台灣在AI晶片、雲端基礎設施上具有優勢，但在模型層的話語權較弱。SLM趨勢為台灣企業帶來重要機遇：</p><ul><li><strong>垂直領域模型化：</strong>可針對台灣強勢產業（如金融科技、製造、半導體）開發優化的小模型，打造「小但精」的競爭力</li><li><strong>邊緣AI應用：</strong>SLM與邊緣運算完美搭配，台灣的製造、零售企業可在本地部署，避免數據跨境風險</li><li><strong>開源生態參與：</strong>國泰金等大型金融機構採用開源SLM，示範效應將驅動整個金融科技生態的轉變</li></ul><h2 id="sec-5">結論：從規模迷思到實效主義</h2><p>過去一年，企業選型AI時往往陷入「更大=更好」的陷阱，砸重金採購大模型API卻在實際應用中水土不服。國泰金的實踐是一個轉折點——它宣示企業正從盲目追求規模，回歸到理性的成本-效益評估。</p><p>對台灣的科技企業和決策者而言，該反思的問題不是「要不要用AI」，而是「用什麼樣的AI」。SLM的崛起提供了一條新路徑：在特定場景下，一個經過精心優化的小模型，往往比通用大模型更值得投資。</p><!--BODY:END--></div>
     <a class="cta" href="/">← 在操作一下看完整體驗 →</a>
   </article>
 </div>

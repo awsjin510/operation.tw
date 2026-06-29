@@ -1,0 +1,31 @@
+name: Daily Analytics Report
+
+# 每天把 Cloudflare Web Analytics 成效報告寄到信箱。
+# 需要的 Secrets：
+#   CLOUDFLARE_API_TOKEN  （需含 Account Analytics: Read）
+#   CLOUDFLARE_ACCOUNT_ID
+#   RESEND_API_KEY        （Resend 寄信用）
+on:
+  schedule:
+    - cron: '0 1 * * *'    # 每天 09:00 台灣時間（01:00 UTC）
+  workflow_dispatch:        # 允許手動觸發測試
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Send analytics report
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: node scripts/analytics-report.js

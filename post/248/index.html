@@ -37,6 +37,15 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
 .cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
@@ -60,18 +69,19 @@ time{color:#6060a0;font-size:.85rem;}
     <time datetime="2026-04-12">2026-04-12</time>
     <img class="cover" src="https://operation.tw/images/posts/post-248.jpg" alt="AI02｜AI 不睡覺的一週：五大事件，典範轉移正式開始">
     <div class="excerpt"><p>這週 AI 圈發生的事，不是「哇好酷」等級的小更新，而是真正影響你工作方式的典範轉移。從 Google 全面開源 Gemma 4、Anthropic 原始碼意外外洩、Cursor 啟動多代理人工作流，到影像 AI 開始理解物理世界，再到 AI 網紅時代正式來臨——工具都到齊了，現在輪到你決定怎麼用。</p></div>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">① Google Gemma 4 全面開源：從手機到 Raspberry Pi 都跑得動</a></li><li class="toc-l2"><a href="#sec-2">② Anthropic Claude Code 原始碼外洩：意外變成大師課</a></li><li class="toc-l2"><a href="#sec-3">③ Cursor 3 多代理人工作流：你現在是工程師團隊的指揮官</a></li><li class="toc-l2"><a href="#sec-4">④ 影像 AI 開始理解物理世界：不只是猜像素</a></li><li class="toc-l2"><a href="#sec-5">⑤ AI 網紅時代來了：聲音、臉孔、語言全都能複製</a></li><li class="toc-l2"><a href="#sec-6">這週給你的一個思考</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>如果你上週沒有每天盯著 AI 新聞，這篇文章幫你把最重要的五件事整理好了。這集 Podcast 我用 AI 分身幫大家拆解過去一週 AI 圈最燒的事件，而且講真的——這次不是例行更新，是那種「回頭看會說這週很關鍵」的那種週。</p>
 
-<h2>① Google Gemma 4 全面開源：從手機到 Raspberry Pi 都跑得動</h2>
+<h2 id="sec-1">① Google Gemma 4 全面開源：從手機到 Raspberry Pi 都跑得動</h2>
 <p>Google 把 Gemma 4 開源了，提供四種尺寸任你挑，最小的 20 億參數版本甚至可以直接跑在 Raspberry Pi 上。完全離線、零資料外洩風險，商業使用免費。這代表什麼？以前「在地端跑模型」是工程師的專利，現在門檻低到一塊信用卡大小的電腦就能搞定。企業端不想把資料送上雲端的顧慮，現在有了更實際的解法。</p>
 
-<h2>② Anthropic Claude Code 原始碼外洩：意外變成大師課</h2>
+<h2 id="sec-2">② Anthropic Claude Code 原始碼外洩：意外變成大師課</h2>
 <p>這件事的起因不是駭客，而是一個 npm 打包失誤。結果 50 萬行 TypeScript 程式碼就這樣公開在網路上。壞消息是資安流程出了問題；好消息是，整個 AI 工程師社群意外得到了一堂大師課。外洩內容裡有「臥底模式」的設計邏輯、背景代理人 Chyros 的架構、甚至還有一個叫 Buddy 的虛擬寵物彩蛋。這些細節讓人看見頂尖 AI 產品背後的工程思維，也讓很多人重新思考：原來這些系統的複雜度遠超過我們以為的。</p>
 
-<h2>③ Cursor 3 多代理人工作流：你現在是工程師團隊的指揮官</h2>
+<h2 id="sec-3">③ Cursor 3 多代理人工作流：你現在是工程師團隊的指揮官</h2>
 <p>Cursor 正式啟動多代理人平行工作流，意思是你不再只有一個 AI 助手幫你寫程式，而是可以同時指揮一整個 AI 工程師團隊分頭開工。不同任務拆開給不同代理人跑，效率直接跳級。寫程式這件事的工作方式，正在被重新定義——與其說你是在「寫程式」，不如說你開始在「管理一個會寫程式的團隊」。</p>
 
-<h2>④ 影像 AI 開始理解物理世界：不只是猜像素</h2>
+<h2 id="sec-4">④ 影像 AI 開始理解物理世界：不只是猜像素</h2>
 <p>這週影像 AI 有三件事值得特別注意：</p>
 <ul>
   <li><strong>Google VGGRPO</strong> 解決了「物體恆存問題」——過去 AI 在影片裡常常讓物件憑空消失或變形，這個突破讓 AI 開始真正理解物體在空間裡的持續存在。</li>
@@ -80,10 +90,10 @@ time{color:#6060a0;font-size:.85rem;}
 </ul>
 <p>這三個發展加在一起，代表影像 AI 不再只是「猜下一個像素應該是什麼顏色」，而是開始有了對真實世界的空間理解。</p>
 
-<h2>⑤ AI 網紅時代來了：聲音、臉孔、語言全都能複製</h2>
+<h2 id="sec-5">⑤ AI 網紅時代來了：聲音、臉孔、語言全都能複製</h2>
 <p>最後這個，很多品牌行銷人應該要認真看。Seedance 2.0 可以讓 AI 幫你的產品生出逼真的網紅代言影片；OmniVoice 則支援多達 600 種語言，只需要四秒的聲音樣本，就能跨語言複製一個人的聲線，還能控制情緒表達。這不只是「可以做廣告」的等級，而是整個網紅經濟、品牌代言的商業邏輯都會跟著動。</p>
 
-<h2>這週給你的一個思考</h2>
+<h2 id="sec-6">這週給你的一個思考</h2>
 <p>這集 Podcast 最後我說了一句話，我覺得值得在這裡再說一次：工具都齊了，開源、便宜、強大。現在唯一的問題是——你打算用它們做什麼？</p>
 <p>過去兩年大家都在觀望，等 AI 工具「夠成熟」。但如果這週的五件事告訴我們任何事，那就是「夠成熟」這個門檻已經悄悄過了。現在卡關的不是技術，是你有沒有開始真的把這些工具嵌進你的工作流程裡。</p>
 <p>想聽完整的音頻版本，去找「操作一下」這集的 AI 趨勢週報，我的 AI 分身會用更輕鬆的方式幫你把這些事說清楚。</p>
