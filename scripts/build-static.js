@@ -13,6 +13,9 @@ const cfdb = require('./lib/cf-db');
 const ROOT = path.resolve(__dirname, '..');
 const SITE_URL = 'https://operation.tw';
 
+// Cloudflare Web Analytics beacon（注入所有產生的頁面）
+const CF_BEACON = `<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>`;
+
 const CAT_COLOR = { AI: '#bf00ff', 雲端: '#00f5ff', 資安: '#ff0080', 閱讀: '#ffff00', 成長: '#00ff88' };
 const CAT_ICON  = { AI: '🤖', 雲端: '☁️', 資安: '🔐', 閱讀: '📚', 成長: '🌱' };
 const PODCAST_SHOW_URL = 'https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl';
@@ -205,6 +208,7 @@ time{color:#6060a0;font-size:.85rem;}
 .post-body img{max-width:100%;border-radius:8px;}
 .post-body hr{border:none;border-top:1px solid rgba(255,255,255,.12);margin:1.6em 0;}
 </style>
+${CF_BEACON}
 </head>
 <body>
 <div class="wrap">
@@ -315,6 +319,7 @@ ul.list{list-style:none;padding:0;margin:0;}
 .catnav-link:hover{border-color:${color};color:${color};}
 .home{display:inline-block;margin-top:20px;color:#00f5ff;text-decoration:none;}
 </style>
+${CF_BEACON}
 </head>
 <body>
 <div class="wrap">
