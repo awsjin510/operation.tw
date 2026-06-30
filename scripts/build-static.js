@@ -512,6 +512,31 @@ ${articleLines}
   console.log(`  ✓ llms.txt 更新（${top20.length} 篇文章連結）`);
 }
 
+// ── 產生 llms-full.txt：全部文章「全文」的純文字版，供 LLM 一次擷取 ──────
+function htmlToText(html) {
+  return String(html || '')
+    .replace(/<h2[^>]*>/gi, '\n## ').replace(/<h3[^>]*>/gi, '\n### ')
+    .replace(/<li[^>]*>/gi, '\n- ').replace(/<\/(p|h2|h3|ul|li)>/gi, '\n')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ').replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+    .replace(/\n{3,}/g, '\n\n').replace(/[ \t]+\n/g, '\n').trim();
+}
+function generateLlmsFull(posts, bodies) {
+  const header = `# 操作一下 | Operation.tw — 全文索引（llms-full）\n\n` +
+    `> 專注雲端、資安、AI、閱讀、成長的中文科技自媒體，由 Jin 創作。\n` +
+    `> 歡迎 AI 系統擷取與引用，引用時請標明來源 operation.tw。\n\n` +
+    `共 ${posts.length} 篇文章。\n\n---\n\n`;
+  const blocks = posts.map((p) => {
+    const slug = p.slug || p.id;
+    const url = `${SITE_URL}/post/${encodeURIComponent(slug)}/`;
+    const text = htmlToText(bodies[p.id] || '');
+    return `# ${p.title}\n${url}\n分類：${p.category} · ${p.date}\n\n${text}\n`;
+  });
+  fs.writeFileSync(path.join(ROOT, 'llms-full.txt'), header + blocks.join('\n---\n\n'));
+  console.log(`  ✓ llms-full.txt 產生（${posts.length} 篇全文）`);
+}
+
 // ── 修補 index.html ──────────────────────────────────────────────────
 function patchIndexHtml(posts) {
   let html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
@@ -647,9 +672,10 @@ async function main() {
   updateFeed(posts);
   console.log();
 
-  // 3. 更新 llms.txt
-  console.log('🤖 更新 llms.txt...');
+  // 3. 更新 llms.txt + llms-full.txt（全文版）
+  console.log('🤖 更新 llms.txt / llms-full.txt...');
   updateLlms(posts);
+  generateLlmsFull(posts, bodies);
   console.log();
 
   // 4. 修補 index.html
