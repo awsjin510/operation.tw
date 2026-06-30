@@ -1,0 +1,78 @@
+name: Backfill FAQ / TL;DR
+
+# 手動：為舊文補上「答案先行 TL;DR + 文末 FAQ」（高流量優先）。
+# 預設 dry_run=true 只預覽；確認後再以 false 正式寫入。
+on:
+  workflow_dispatch:
+    inputs:
+      max:
+        description: '本次處理幾篇（高流量優先）'
+        required: true
+        default: '5'
+      dry_run:
+        description: '只預覽不寫入（true）／正式寫入（false）'
+        required: true
+        default: 'true'
+        type: choice
+        options: ['true', 'false']
+      model:
+        description: '生成模型（haiku 省錢 / sonnet 品質）'
+        required: true
+        default: 'claude-haiku-4-5-20251001'
+        type: choice
+        options:
+          - claude-haiku-4-5-20251001
+          - claude-sonnet-4-6
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: scripts
+
+      - name: Backfill FAQ / TL;DR
+        env:
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MAX: ${{ github.event.inputs.max }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
+          MODEL: ${{ github.event.inputs.model }}
+        run: node scripts/backfill-faq.js
+
+      - name: Rebuild posts.json + static pages and commit
+        if: ${{ github.event.inputs.dry_run == 'false' }}
+        env:
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+        run: |
+          node scripts/sync-posts-json.js || echo "(sync 失敗)"
+          node scripts/build-static.js || echo "(build 失敗)"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add posts.json post/ category/ sitemap.xml feed.xml llms.txt llms-full.txt index.html
+          if git diff --cached --quiet; then
+            echo "無變更"
+          else
+            git commit -m "chore(faq): 回填舊文 FAQ/TL;DR"
+            for r in 1 2 3; do
+              if git pull --rebase origin main && git push; then break; fi
+              echo "push 失敗，重試…"; sleep $((r * 3))
+            done
+          fi
