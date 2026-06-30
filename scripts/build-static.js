@@ -99,10 +99,15 @@ function buildToc(body) {
 }
 
 // ── 產生個別文章 stub 頁 ────────────────────────────────────────────
-function generatePostPage(post, body, episode) {
+function generatePostPage(post, body, episode, neighbors) {
   body = body || '';
   const { body: bodyWithToc, toc } = buildToc(body);
   body = bodyWithToc;
+  const L = neighbors && neighbors.newer, R = neighbors && neighbors.older;
+  const postNav = (L || R) ? `<nav class="post-nav">
+      ${L ? `<a class="pn" href="/post/${encodeURIComponent(L.slug || L.id)}/"><span>← 上一篇</span><b>${esc(L.title)}</b></a>` : '<span></span>'}
+      ${R ? `<a class="pn pn-r" href="/post/${encodeURIComponent(R.slug || R.id)}/"><span>下一篇 →</span><b>${esc(R.title)}</b></a>` : '<span></span>'}
+    </nav>` : '';
   const slug  = post.slug || post.id;
   const url   = `${SITE_URL}/post/${encodeURIComponent(slug)}/`;
   const img   = post.image ? `${SITE_URL}${post.image}` : `${SITE_URL}/default.png`;
@@ -184,6 +189,7 @@ function generatePostPage(post, body, episode) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <title>${esc(post.title)} | 操作一下</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${url}">
@@ -218,6 +224,12 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.post-nav{display:flex;gap:12px;margin:32px 0 8px;flex-wrap:wrap;}
+.post-nav .pn{flex:1;min-width:200px;display:block;padding:12px 16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s;}
+.post-nav .pn:hover{border-color:#00f5ff;}
+.post-nav .pn span{display:block;font-size:.78rem;color:#00f5ff;margin-bottom:4px;}
+.post-nav .pn b{display:block;color:#d6d6f0;font-size:.95rem;line-height:1.4;font-weight:500;}
+.post-nav .pn-r{text-align:right;}
 .toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
 .toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
 .toc ul{margin:0;padding:0;list-style:none;}
@@ -252,6 +264,7 @@ ${CF_BEACON}
     <div class="excerpt"><p>${esc(post.excerpt || '')}</p></div>
     ${toc}
     <div class="post-body"><!--BODY:START-->${body}<!--BODY:END--></div>
+    ${postNav}
     <a class="cta" href="/">← 在操作一下看完整體驗 →</a>
   </article>
 </div>
@@ -318,6 +331,7 @@ function generateCategoryPage(cat, posts) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <title>${esc(cat)}文章彙整（共 ${posts.length} 篇）| 操作一下</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${url}">
@@ -417,7 +431,7 @@ async function loadBodies(posts) {
 // ── 更新 sitemap.xml ────────────────────────────────────────────────
 function updateSitemap(posts) {
   const today = new Date().toISOString().split('T')[0];
-  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n';
   xml += `  <url>\n    <loc>${SITE_URL}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
   xml += `  <url>\n    <loc>${SITE_URL}/podcast.html</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
   // 分類主題頁（只列出實際有文章的分類）
@@ -430,7 +444,9 @@ function updateSitemap(posts) {
   }
   for (const p of posts) {
     const slug = p.slug || p.id;
-    xml += `  <url>\n    <loc>${SITE_URL}/post/${encodeURIComponent(slug)}/</loc>\n    <lastmod>${p.date || today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n`;
+    const imageTag = (p.image && p.image.startsWith('/'))
+      ? `\n    <image:image><image:loc>${SITE_URL}${p.image}</image:loc></image:image>` : '';
+    xml += `  <url>\n    <loc>${SITE_URL}/post/${encodeURIComponent(slug)}/</loc>\n    <lastmod>${p.date || today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>${imageTag}\n  </url>\n`;
   }
   xml += '</urlset>\n';
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml);
@@ -618,6 +634,14 @@ async function main() {
   console.log('📄 產生個別文章頁面...');
   const bodies = await loadBodies(posts);
   const epMap = loadEpisodeMap();
+  // 同分類的「上一篇（較新）／下一篇（較舊）」，提升 pages/session
+  const nbr = {};
+  const byCatN = {};
+  posts.forEach(p => (byCatN[p.category] = byCatN[p.category] || []).push(p));
+  for (const cat in byCatN) {
+    const arr = byCatN[cat]; // posts 已由新到舊
+    arr.forEach((p, i) => { nbr[p.id] = { newer: arr[i - 1] || null, older: arr[i + 1] || null }; });
+  }
   const postDir = path.join(ROOT, 'post');
   if (!fs.existsSync(postDir)) fs.mkdirSync(postDir);
   let generated = 0, withBody = 0, withEp = 0;
@@ -629,7 +653,7 @@ async function main() {
     if (body) withBody++;
     const episode = epMap[episodeCode(post.title)] || null;
     if (episode) withEp++;
-    fs.writeFileSync(path.join(dir, 'index.html'), generatePostPage(post, body, episode));
+    fs.writeFileSync(path.join(dir, 'index.html'), generatePostPage(post, body, episode, nbr[post.id]));
     generated++;
   }
   console.log(`  ✓ 其中含完整內文：${withBody}/${generated} 篇、含 PodcastEpisode：${withEp} 篇`);
