@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <title>AI32｜同一個模型、兩種護欄：拆解 Claude Fable 5 與 Mythos 5 的策略佈局 | 操作一下</title>
 <meta name="description" content="Anthropic 在同一週完成天價募資、秘密遞交 IPO 文件、同時發表兩款旗艦模型——Claude Fable 5 與 Mythos 5。這兩個名字背後藏著一個關鍵邏輯：它們其實是同一個底層模型，差別只在安全護欄開不開。本文拆解命名策略、模型競爭力比較，以及 Fable 5 推出三天就爆發的「秘密削弱能力」爭議，帶你看懂 AI 安全與透明度之間的核心矛盾。">
 <link rel="canonical" href="https://operation.tw/post/281/">
@@ -37,6 +38,12 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.post-nav{display:flex;gap:12px;margin:32px 0 8px;flex-wrap:wrap;}
+.post-nav .pn{flex:1;min-width:200px;display:block;padding:12px 16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s;}
+.post-nav .pn:hover{border-color:#00f5ff;}
+.post-nav .pn span{display:block;font-size:.78rem;color:#00f5ff;margin-bottom:4px;}
+.post-nav .pn b{display:block;color:#d6d6f0;font-size:.95rem;line-height:1.4;font-weight:500;}
+.post-nav .pn-r{text-align:right;}
 .toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
 .toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
 .toc ul{margin:0;padding:0;list-style:none;}
@@ -84,6 +91,10 @@ time{color:#6060a0;font-size:.85rem;}
 <li><a href="https://open.spotify.com/search/AI32_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20%E5%90%8C%E4%B8%80%E5%80%8B%E6%A8%A1%E5%9E%8B%E3%80%81%E5%85%A9%E5%80%8B%E7%89%88%E6%9C%AC%EF%BC%8C%E5%B7%AE%E5%88%A5%E5%8F%AA%E5%9C%A8%E3%80%8C%E8%AD%B7%E6%AC%84%E9%96%8B%E4%B8%8D%E9%96%8B%E3%80%8D%E2%80%94%E2%80%94%E6%8B%86%E8%A7%A3%20Claude%20Fable%205%20%E8%88%87%20Mythos%205" target="_blank" rel="noopener">在 Spotify 收聽</a></li>
 <li><a href="/podcast.html">瀏覽所有單集 →</a></li>
 </ul><!--BODY:END--></div>
+    <nav class="post-nav">
+      <a class="pn" href="/post/138/"><span>← 上一篇</span><b>日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</b></a>
+      <a class="pn pn-r" href="/post/130/"><span>下一篇 →</span><b>推理層資安漏洞：八成企業AI代理防禦盲點大公開</b></a>
+    </nav>
     <a class="cta" href="/">← 在操作一下看完整體驗 →</a>
   </article>
 </div>
