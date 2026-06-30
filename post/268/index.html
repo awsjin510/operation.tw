@@ -38,6 +38,9 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.byline{margin-top:6px;color:#8a8ab0;font-size:.88rem;}
+.byline a{color:#00f5ff;text-decoration:none;}
+.byline a:hover{text-decoration:underline;}
 .post-nav{display:flex;gap:12px;margin:32px 0 8px;flex-wrap:wrap;}
 .post-nav .pn{flex:1;min-width:200px;display:block;padding:12px 16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s;}
 .post-nav .pn:hover{border-color:#00f5ff;}
@@ -73,8 +76,8 @@ time{color:#6060a0;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>EP98｜從廣告投手到數據中台，一位行銷人的AI轉型之路</h1>
-    <time datetime="2026-05-18">2026-05-18</time>
-    <img class="cover" src="https://operation.tw/images/posts/post-268.jpg" alt="EP98｜從廣告投手到數據中台，一位行銷人的AI轉型之路">
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-05-18">2026-05-18</time></div>
+    <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-268.webp"><img class="cover" src="https://operation.tw/images/posts/post-268.jpg" alt="EP98｜從廣告投手到數據中台，一位行銷人的AI轉型之路" width="1200" height="630"></picture>
     <div class="excerpt"><p>當廣告投手開始用數據說話，當數位行銷遇上AI自動化，這個產業正在經歷什麼樣的變化？這篇文章整理了《操作一下》Podcast EP98與廣告數據達人David的對談精華，從東南亞外派經驗、GA4數據實務，到Vibe Coding與數據中台的企業導入，帶你看清AI時代下數位行銷人的轉型路徑與機會。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">從廣告執行到數據驅動：一段很自然的轉變</a></li><li class="toc-l2"><a href="#sec-2">東南亞廣告生態，和台灣有什麼不同？</a></li><li class="toc-l2"><a href="#sec-3">數據中台能解決什麼問題？</a></li><li class="toc-l2"><a href="#sec-4">Vibe Coding 與 AI 自動化，在公司內部怎麼用？</a></li><li class="toc-l2"><a href="#sec-5">廣告投手會被 AI 取代嗎？</a></li><li class="toc-l2"><a href="#sec-6">走過的每一步都算數</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>廣告這行，有多少人還在憑感覺下判斷？</p><p>投了一波廣告，數字看起來不錯，就覺得有效。但「看起來不錯」到底是什麼意思？點擊率高、曝光量大，還是真的帶來了轉換？這個問題，其實很多品牌主和廣告操作者都沒有認真面對過。</p><p>這集《操作一下》邀請到的來賓 David，就是那種會逼自己把問題想清楚的人。他現在是 Tenmax 騰學廣告科技的成效行銷總監，也是 GA4 認證講師。我們是在 Microsoft Fabric 技術培訓的場合認識的，聊著聊著發現彼此都在做講師、對 AI 應用也有很多想法，於是促成了這次訪談。</p><h2 id="sec-1">從廣告執行到數據驅動：一段很自然的轉變</h2><p>David 的職涯路徑乍看之下有點跳躍——廣告投手、外派吉隆坡、回台後轉型成 GA4 講師、學 Coding、導入 AI 自動化。但聽他說起來，每一步都有邏輯。</p><p>在廣告圈待久了，他發現一件事：很多決策是靠直覺在走，而不是數據。這讓他開始思考，如果要真正幫客戶做出好的行銷決策，光靠投廣告是不夠的，你必須懂得「這個數字背後，客戶真正需要看到的是什麼」。</p><p>這個問題驅動他從 GA 走到 GA4，從廣告執行的 AM 角色轉型成專案管理（PJM），再進一步往數據中台的方向走。每一次轉變，都是為了讓數據能夠更完整地服務決策。</p><h2 id="sec-2">東南亞廣告生態，和台灣有什麼不同？</h2><p>外派吉隆坡的經歷，讓 David 有機會觀察東南亞與台灣廣告市場的差異。這塊在訪談裡聊得很有趣——東南亞市場的廣告生態、消費者行為、平台使用習慣，跟台灣有明顯的不同，也讓他在思考廣告策略時有了更寬的視野。</p><p>對於有意拓展東南亞市場的品牌或行銷人來說，這段經驗分享很值得參考。不同市場有不同的邏輯，把台灣的打法直接複製過去，通常不會有好結果。</p><h2 id="sec-3">數據中台能解決什麼問題？</h2><p>「數據中台」這個詞近幾年在企業界很熱，但很多人其實不太清楚它解決的是什麼問題。David 在訪談裡給了一個很實務的角度：企業內部往往有各種數據來源——廣告平台、CRM、網站行為、電商後台——但這些數據分散在不同地方，沒有整合，導致每次要做分析都要重新撈資料、比對，耗時又容易出錯。</p><p>數據中台的核心價值，就是把這些分散的數據整合起來，讓不同部門的人都能取用一致的數據基礎，做出更快、更準確的決策。這對規模稍大一點的企業來說，幾乎是遲早要面對的基礎建設問題。</p><h2 id="sec-4">Vibe Coding 與 AI 自動化，在公司內部怎麼用？</h2><p>這集裡我最好奇的話題之一，就是 AI 工具在實際工作場景中的應用。David 分享了他們團隊導入 Vibe Coding 與 AI 自動化的實際情境——不是理論上「AI 可以做什麼」，而是真的在公司內部跑起來的樣子。</p><p>對於行銷從業者來說，AI 帶來的不只是效率提升，更是角色的重新定位。那些重複性高、規則明確的工作，確實會被自動化取代；但懂得設計流程、解讀數據、跟客戶溝通需求的人，反而有更大的發揮空間。</p><h2 id="sec-5">廣告投手會被 AI 取代嗎？</h2><p>這是我在訪談裡直接問 David 的問題。他的答案不是非黑即白，而是給了一個更務實的思考框架：<strong>取決於你停留在哪個層次</strong>。</p><ul><li>如果你只是在執行層面操作廣告，AI 工具確實可以做得比你更快、更便宜。</li><li>但如果你能往上走一層——理解數據、洞察策略、跟客戶討論目標——那 AI 反而是讓你更有價值的工具。</li></ul><p>這個邏輯其實適用於很多職業，不只是廣告投手。</p><h2 id="sec-6">走過的每一步都算數</h2><p>訪談最後，David 說了一句讓我印象深刻的話：「人生沒有白走的路，走過的每一步都算數。」</p><p>從廣告投手、東南亞外派、GA4 講師到數據中台，這些看似跨界的經歷，在他身上形成了一套別人很難複製的視角。而這，可能才是 AI 時代裡最難被取代的東西。</p><p>如果你在數位行銷、數據分析或 AI 應用的路上，這集很值得完整聽一遍。</p>

@@ -38,6 +38,9 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.byline{margin-top:6px;color:#8a8ab0;font-size:.88rem;}
+.byline a{color:#00f5ff;text-decoration:none;}
+.byline a:hover{text-decoration:underline;}
 .post-nav{display:flex;gap:12px;margin:32px 0 8px;flex-wrap:wrap;}
 .post-nav .pn{flex:1;min-width:200px;display:block;padding:12px 16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s;}
 .post-nav .pn:hover{border-color:#00f5ff;}
@@ -73,8 +76,8 @@ time{color:#6060a0;font-size:.85rem;}
   <article>
     <div class="badge">🔐 資安</div>
     <h1>AI27｜AI 對打 AI 的時代：拆解 Google AI Threat Defense</h1>
-    <time datetime="2026-06-02">2026-06-02</time>
-    <img class="cover" src="https://operation.tw/images/posts/post-276.jpg" alt="AI27｜AI 對打 AI 的時代：拆解 Google AI Threat Defense">
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-06-02">2026-06-02</time></div>
+    <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-276.webp"><img class="cover" src="https://operation.tw/images/posts/post-276.jpg" alt="AI27｜AI 對打 AI 的時代：拆解 Google AI Threat Defense" width="1200" height="630"></picture>
     <div class="excerpt"><p>2026 年，駭客從發現漏洞到發動攻擊的時間被 AI 壓縮到 22 秒。你的 IT 團隊還在等下個維護週期，攻擊者早就進來了。這篇文章拆解 Google AI Threat Defense 的四個核心武器，以及「AI 自動防禦流水線」對資安主管、DevOps 工程師與中小企業主的實際影響。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">2026 年雲端資安到底變了什麼？</a></li><li class="toc-l2"><a href="#sec-2">四個武器，為什麼這樣組合？</a></li><li class="toc-l2"><a href="#sec-3">實際情境：一家 200 人軟體公司的四個階段</a></li><li class="toc-l2"><a href="#sec-4">對三種人的影響</a></li><li class="toc-l2"><a href="#sec-5">如果你今年要評估雲端資安平台</a></li><li class="toc-l2"><a href="#sec-6">結語：從工具到流水線</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>先給你一個數字——<strong>22 秒</strong>。</p><p>這是 2026 年駭客從掃描到一個漏洞、到真正開始攻擊的平均時間。幾年前，這個窗口大概是幾週，資安團隊還有時間排優先順序、開票、等維護週期。現在？AI 把這個時間壓縮到不到半分鐘。你企業的人還沒收到警示通知，攻擊可能已經在跑了。</p><p>這個落差，正是 Google 在今年五月發布 <strong>Google AI Threat Defense</strong> 想解決的問題。這集 Podcast 就是圍繞著這個產品展開，但聊的不只是「Google 又出新東西了」，而是背後一個更大的結構性轉變：雲端資安從「工具」進化到「會自己跑的流水線」。</p><h2 id="sec-1">2026 年雲端資安到底變了什麼？</h2><p>過去十年，雲端資安的討論大多圍繞在「買哪個工具」、「裝哪個 agent」。但 22 秒這個數字說明了一件事：<strong>人的反應速度已經根本跟不上 AI 攻擊者的節奏。</strong></p><p>攻擊者早就在用 AI 自動化掃描、生成漏洞利用程式碼、繞過傳統防禦規則。防守方如果還靠人工判讀 log、手動 patch，這場仗打法就不對稱了。Google AI Threat Defense 的出發點，是讓防守端也進入同樣的自動化層級——用 AI 對打 AI。</p><h2 id="sec-2">四個武器，為什麼這樣組合？</h2><p>Google 整合了四個核心元件，這集 Podcast 逐一拆解它們的角色：</p><ul><li><strong>Wiz（雲端曝險地圖）</strong>：負責盤點你的雲端環境裡有哪些暴露面，哪些設定錯誤、哪些資產對外開放。先看清楚自己的地形，才能防守。</li><li><strong>Mandiant（事件回應）</strong>：Google 旗下的頂級威脅情報與事件回應團隊，提供真實攻擊情境的知識庫與回應能力。</li><li><strong>CodeMender（AI 自動修程式碼）</strong>：掃到漏洞之後，不只是發警示，而是直接生成修補程式碼的建議甚至自動 PR。這是這個組合裡最激進的一塊。</li><li><strong>Gemini（判斷大腦）</strong>：串連前三者，負責做上下文判斷——這個警示是真的威脅還是誤報？這個漏洞現在有多緊急？優先順序怎麼排？</li></ul><p>這四個組合不是隨機的。Wiz 給地圖、Mandiant 給情報、CodeMender 給行動、Gemini 給判斷。整條鏈跑起來，才是那條「自動流水線」。</p><h2 id="sec-3">實際情境：一家 200 人軟體公司的四個階段</h2><p>這集用一家 200 人規模的軟體公司當情境，帶聽眾走過自動化防禦的四個階段：<strong>盤點 → 掃描 → 修補 → 監控</strong>。這個框架很實用，因為它把抽象的「AI 防禦」拆成可以對照自己公司現狀的步驟。你現在卡在哪一階段？哪個環節還是純人工？這是評估雲端資安平台時最好的起點。</p><h2 id="sec-4">對三種人的影響</h2><p>這集也具體談到三種角色會受到什麼衝擊：</p><ul><li><strong>資安主管</strong>：KPI 要重寫。過去看「發現多少威脅」，現在要看「平均回應時間縮短了多少」、「自動修補覆蓋率是多少」。指標邏輯變了。</li><li><strong>DevOps 工程師</strong>：CodeMender 這類工具讓程式碼的安全品質變得透明，誰的 PR 帶進漏洞、誰的程式碼反覆出現同類問題，都會被可視化。這不只是工具問題，也是團隊文化問題。</li><li><strong>中小企業主</strong>：「我太小，駭客不會來」這個想法在 2026 年徹底失效。AI 攻擊是自動化的，它不挑目標大小，它挑漏洞。規模小不是保護，反而可能是因為防禦資源少而更脆弱。</li></ul><h2 id="sec-5">如果你今年要評估雲端資安平台</h2><p>這集最後給了幾個評估問題的方向：你的平台能不能做到全自動的漏洞修補？它的誤報率是多少？它跟你現有的 CI/CD 流程整合難度高不高？這些問題比「功能清單有多長」更有實際價值。</p><h2 id="sec-6">結語：從工具到流水線</h2><p>我在這集最後想強調的一個觀察是：過去十年雲端資安都在「選工具」，但從 Google AI Threat Defense 這個方向看，接下來資安在談的是「流水線」——一條不需要人盯著、會自己偵測、自己判斷、自己修補的自動化鏈。</p><p>這不是說人不重要，而是人的角色在位移：從操作工具的執行者，變成設計流水線、驗證結果的決策者。如果你的團隊還沒開始想這件事，22 秒是個很好的提醒。</p>

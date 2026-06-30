@@ -38,6 +38,9 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.byline{margin-top:6px;color:#8a8ab0;font-size:.88rem;}
+.byline a{color:#00f5ff;text-decoration:none;}
+.byline a:hover{text-decoration:underline;}
 .post-nav{display:flex;gap:12px;margin:32px 0 8px;flex-wrap:wrap;}
 .post-nav .pn{flex:1;min-width:200px;display:block;padding:12px 16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s;}
 .post-nav .pn:hover{border-color:#00f5ff;}
@@ -73,8 +76,8 @@ time{color:#6060a0;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>AI10｜GPT-Image-2 真的解決了 AI 生圖的文字災難嗎？</h1>
-    <time datetime="2026-04-26">2026-04-26</time>
-    <img class="cover" src="https://operation.tw/images/posts/post-257.jpg" alt="AI10｜GPT-Image-2 真的解決了 AI 生圖的文字災難嗎？">
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-26">2026-04-26</time></div>
+    <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-257.webp"><img class="cover" src="https://operation.tw/images/posts/post-257.jpg" alt="AI10｜GPT-Image-2 真的解決了 AI 生圖的文字災難嗎？" width="1200" height="630"></picture>
     <div class="excerpt"><p>AI 生圖有文字就翻車，這個老問題終於有解？OpenAI 最新發布的 GPT-Image-2 宣稱文字準確率高達 99%，支援多語言排版、2K 解析度、三秒出圖。這篇文章整理了 Podcast《操作一下》最新一集的核心觀點，從五個維度拆解它的真實表現，告訴你哪些場景真的夠用、哪些還是會踩雷，以及對個人創作者來說，這次進化究竟意味著什麼。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">AI 生圖有文字就翻車，你一定遇過</a></li><li class="toc-l2"><a href="#sec-2">五個維度，看清楚它的真實表現</a></li><li class="toc-l2"><a href="#sec-3">為什麼這次的進化對個人創作者很重要</a></li><li class="toc-l2"><a href="#sec-4">實際用的時候，這些事情要知道</a></li><li class="toc-l2"><a href="#sec-5">這個問題被解決了嗎？</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><h2 id="sec-1">AI 生圖有文字就翻車，你一定遇過</h2><p>叫 AI 幫你生一張 Podcast 封面，圖很美，但封面上的節目名稱不是拼錯就是糊掉；換成中文更慘，出現一堆根本不存在的怪字，看起來像某種神秘符文。這個問題困擾了幾乎所有 AI 生圖用戶好幾年，也是為什麼很多創作者寧願生完圖再開 Canva 手動貼字。</p><p>OpenAI 最新發布的 GPT-Image-2，官方直接把文字準確率的目標喊到 99%，還支援多國語言排版、2K 解析度輸出、三秒內出圖。開放後第一個六小時，全球就產生了五億張圖——光這個數字，就說明創作者有多渴望這件事被解決。</p><h2 id="sec-2">五個維度，看清楚它的真實表現</h2><p>《操作一下》最新一集 AI 趨勢單元，用五個維度拆解了 GPT-Image-2 的實際表現，不是只轉述官方說法，而是老實跟你說哪裡行、哪裡還是會翻車：</p><ul><li><strong>文字準確性：</strong>整體英文表現確實大幅提升，常見短句、品牌名稱的呈現穩定許多，不再是過去那種「大概對但細看都是錯」的狀態。</li><li><strong>排版與構圖：</strong>在圖文整合這件事上進步明顯，可以更精準地控制文字出現在圖面的哪個位置，對需要做圖卡、海報的創作者來說是真實有感的改變。</li><li><strong>指令遵從度：</strong>對複雜 Prompt 的理解力有提升，但越細節的要求（例如指定字體風格、精確色碼）還是有機率飄掉，不能完全放手不管。</li><li><strong>風格一致性：</strong>如果你需要跨多張圖維持同一視覺風格，目前還需要搭配細緻的 Prompt 策略，不是一次設定就能全程穩定輸出。</li><li><strong>繁體中文現況：</strong>這集也直接說了繁體中文的現況——有進步，但離「放心交給它」還有距離，偶發的錯字或字形問題還是存在，這點對台灣創作者來說需要特別留意。</li></ul><h2 id="sec-3">為什麼這次的進化對個人創作者很重要</h2><p>過去 AI 生圖的使用場景，大多停在「生背景、生插圖」，一旦需要加入文字資訊，就得額外開設計軟體處理。這個斷點讓整個工作流程很難真正自動化。</p><p>GPT-Image-2 試圖把這個斷點補起來。對獨立創作者來說，這代表 Podcast 封面、社群圖卡、活動海報這類需要圖文並存的素材，未來有機會在同一個工具裡直接完成初稿，省下的不只是時間，而是整個在不同工具之間切換的認知負擔。</p><p>品牌端的應用潛力也值得關注。當生圖速度夠快、文字夠準，廣告素材的 A/B 測試成本會大幅下降——以前要測五個版本需要設計資源，現在可能只需要調整 Prompt 就能快速產出。</p><h2 id="sec-4">實際用的時候，這些事情要知道</h2><p>如果你打算現在就把 GPT-Image-2 納入工作流，有幾件事建議先有心理準備：第一，繁體中文場景還是要多做確認，不要假設它一定對；第二，複雜排版需求建議拆解成更明確的指令，一次丟太多條件容易出現遺漏；第三，風格一致性的問題在單次出圖上問題不大，但如果是要做系列內容，最好先測試幾張確認基準再大量生產。</p><h2 id="sec-5">這個問題被解決了嗎？</h2><p>GPT-Image-2 是一個真實的進步，不是行銷話術。但「99% 文字準確率」是在特定條件下的表現，不是所有語言、所有場景都能複製這個數字。這集 Podcast 給出的結論很誠實：夠用的場景變多了，但還不到可以完全放手的程度。</p><p>對個人創作者來說，現在是開始認真把它納入工具組的好時機——不是因為它完美，而是因為它已經夠好用，而且還在快速變好。想聽完整的場景分析和實測觀察，這集完整內容在各大 Podcast 平台都找得到。</p>
