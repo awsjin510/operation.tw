@@ -64,6 +64,9 @@ jobs:
           CF_API_BASE: ${{ secrets.CF_API_BASE }}
           CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # 電子報寄送（未設定 RESEND_API_KEY 則自動略過，功能等同關閉）
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEWSLETTER_FROM: ${{ secrets.NEWSLETTER_FROM }}
         run: node podcast-to-post.js
         working-directory: scripts
         continue-on-error: true
