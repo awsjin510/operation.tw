@@ -2,8 +2,45 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 
+# ── 明確歡迎 AI 搜尋 / 檢索爬蟲（提升被 ChatGPT / Perplexity / Gemini 引用機會）──
+User-agent: GPTBot
+Allow: /
+Disallow: /admin.html
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin.html
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://operation.tw/sitemap.xml
 
 # LLM-friendly content index
 # See https://llmstxt.org/
 LLMs: https://operation.tw/llms.txt
+LLMs-full: https://operation.tw/llms-full.txt
