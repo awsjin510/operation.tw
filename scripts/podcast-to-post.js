@@ -23,6 +23,7 @@ const path = require('path');
 const fs = require('fs').promises;
 const cfdb = require('./lib/cf-db');
 const indexnow = require('./lib/indexnow');
+const newsletter = require('./send-newsletter');
 
 const CF_API_BASE = process.env.CF_API_BASE;
 const CF_SERVICE_TOKEN = process.env.CF_SERVICE_TOKEN;
@@ -286,6 +287,7 @@ async function main() {
   const targets = fresh.sort((a, b) => (a.date || '').localeCompare(b.date || '')).slice(0, MAX_PER_RUN);
   let created = 0;
   const newUrls = [];
+  const newPosts = [];
 
   for (const ep of targets) {
     console.log(`\n— 處理單集：${ep.title}`);
@@ -328,6 +330,7 @@ async function main() {
       }
       state.processed[ep.guid] = postId;
       newUrls.push(`https://operation.tw/post/${postId}/`);
+      newPosts.push({ id: postId, title: finalTitle, excerpt: art.excerpt, image: imagePath || '' });
       created++;
     } catch (err) {
       console.warn(`  ✗ 生成/發布失敗，保留為未處理下次重試：${err.message}`);
@@ -347,6 +350,11 @@ async function main() {
   // 通知 IndexNow 新網址（Bing/Yandex 快速索引）
   if (created > 0 && !DRY_RUN) {
     await indexnow.ping([...newUrls, 'https://operation.tw/', 'https://operation.tw/sitemap.xml']);
+  }
+  // 新 Podcast 文章 → 寄電子報給訂閱者（未設定 RESEND_API_KEY 則自動略過）
+  if (newPosts.length && !DRY_RUN) {
+    try { await newsletter.sendForPosts(newPosts); }
+    catch (err) { console.warn(`  ⚠ 電子報寄送失敗（不影響發布）：${err.message}`); }
   }
   console.log(`\n✅ 完成，本次生成 ${created} 篇`);
 }

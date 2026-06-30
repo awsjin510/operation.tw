@@ -117,11 +117,29 @@ async function route(request, env, url) {
     return json({ result: inserted ? 'subscribed' : 'exists' });
   }
 
+  // 退訂：以 HMAC token 驗證後刪除（連結放在電子報底部）
+  if (p === '/api/unsubscribe' && m === 'GET') {
+    const e = String(url.searchParams.get('e') || '').trim().toLowerCase();
+    const t = url.searchParams.get('t') || '';
+    if (!e || !t || !env.SERVICE_TOKEN) return htmlPage('連結無效。', 400);
+    const expect = (await hmacHex(env.SERVICE_TOKEN, e)).slice(0, 32);
+    if (t !== expect) return htmlPage('連結無效或已失效。', 400);
+    await env.DB.prepare(`delete from subscribers where email=?`).bind(e).run();
+    return htmlPage('你已成功退訂,之後不會再收到「操作一下」電子報。');
+  }
+
   // ── 管理（需授權）────────────────────────────────────
   if (p.startsWith('/api/admin/')) {
     const who = await requireAuth(request, env);
 
     if (p === '/api/admin/me' && m === 'GET') return json({ email: who.email, via: who.via });
+
+    if (p === '/api/admin/subscribers' && m === 'GET') {
+      const { results } = await env.DB.prepare(
+        `select email from subscribers order by created_at`
+      ).all();
+      return json({ subscribers: (results || []).map(r => r.email) });
+    }
 
     if (p === '/api/admin/posts' && m === 'GET') {
       const cols = url.searchParams.get('include') === 'body' ? '*' : LIST_COLS;
@@ -282,6 +300,22 @@ async function readJson(request) {
   try { return await request.json(); } catch { return {}; }
 }
 function httpError(status, msg) { const e = new Error(msg); e.status = status; return e; }
+
+async function hmacHex(key, msg) {
+  const k = await crypto.subtle.importKey(
+    'raw', new TextEncoder().encode(key), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
+  );
+  const sig = await crypto.subtle.sign('HMAC', k, new TextEncoder().encode(msg));
+  return [...new Uint8Array(sig)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function htmlPage(msg, status = 200) {
+  const body = `<!doctype html><html lang="zh-Hant-TW"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>操作一下</title>
+<style>body{margin:0;background:#050510;color:#e0e0ff;font-family:system-ui,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:24px}a{color:#00f5ff}</style>
+</head><body><div><h1 style="color:#00f5ff">操作一下</h1><p>${msg}</p><p><a href="https://operation.tw/">← 回首頁</a></p></div></body></html>`;
+  return new Response(body, { status, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+}
 
 function cors(res, request, env) {
   const origin = request.headers.get('Origin') || '';
