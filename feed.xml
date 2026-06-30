@@ -5,14 +5,30 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Mon, 29 Jun 2026 09:24:55 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 30 Jun 2026 04:41:26 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI攻擊全面化2026：企業該從防守轉向主動防禦</title>
+    <link>https://operation.tw/post/294/</link>
+    <guid isPermaLink="true">https://operation.tw/post/294/</guid>
+    <description>2026年AI攻擊已不再是單點威脅，而是系統性風險。從提示注入攻擊到AI驅動的入侵手法，企業傳統防禦已顯不足。本文深入解析當前AI安全威脅全貌，並提出台灣企業的主動防禦策略。</description>
+    <category>資安</category>
+    <pubDate>Tue, 30 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AWS邁向20週年：從內部工具到雲端帝國的啟示</title>
     <link>https://operation.tw/post/292/</link>
     <guid isPermaLink="true">https://operation.tw/post/292/</guid>
     <description>AWS即將迎來成立20週年，從一個解決Amazon內部工程師痛點的邊陲專案，成長為千億美元規模的雲端運算基礎設施。本文探討這段演進史對台灣企業數位轉型的啟示，以及在AI時代下的新機會。</description>
     <category>雲端</category>
+    <pubDate>Mon, 29 Jun 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI36｜幸福不在更快更多，而在過得剛剛好——北歐時間管理的啟示</title>
+    <link>https://operation.tw/post/295/</link>
+    <guid isPermaLink="true">https://operation.tw/post/295/</guid>
+    <description>AI 工具普及後反而讓我們更忙？丹麥人每週只工作 37 小時卻蟬聯世界競爭力第一。透過《北歐時間》一書的「五種時間」練習，我們學會時間的真實價值不是效率，而是活得更像自己。</description>
+    <category>閱讀</category>
     <pubDate>Mon, 29 Jun 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -150,22 +166,6 @@
     <description>帕蘭泰爾公開批評大型語言模型企業忽視商業落地，同時OpenAI與Anthropic投資者高度重疊的現象引發關注。這場AI雲端生態的資本競爭，正在深刻改變企業選型邏輯與投資策略，台灣科技產業應如何因應？</description>
     <category>雲端</category>
     <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AWS二十週年里程碑：從內部工具到雲端帝國的演進之路</title>
-    <link>https://operation.tw/post/134/</link>
-    <guid isPermaLink="true">https://operation.tw/post/134/</guid>
-    <description>AWS即將迎接二十週年慶，從解決Amazon內部工程師的基礎設施痛點，到如今成為千億美元規模的雲端運算市場領導者。本文探討AWS的發展歷程如何奠定現代雲端運算基礎，以及對台灣企業數位轉型的啟示。</description>
-    <category>雲端</category>
-    <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>EP99｜前LINE台灣總經理親自下海寫程式，AI時代老闆該怎麼做？</title>
-    <link>https://operation.tw/post/282/</link>
-    <guid isPermaLink="true">https://operation.tw/post/282/</guid>
-    <description>前LINE台灣總經理陶韻智（Sting老師）過去一年獨力完成超過100個AI應用，從「動口不動手」的高階主管，變成親自下海實作的人。這集Podcast我們聊了他的新書《AI First自我升級革命》，談的不是Prompt技巧，而是在價值重分配的拐點，管理者如何重新定義自己的角色，搶在浪頭之前站穩位置。</description>
-    <category>閱讀</category>
-    <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
