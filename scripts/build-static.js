@@ -111,6 +111,7 @@ function generatePostPage(post, body, episode, neighbors) {
   const slug  = post.slug || post.id;
   const url   = `${SITE_URL}/post/${encodeURIComponent(slug)}/`;
   const img   = post.image ? `${SITE_URL}${post.image}` : `${SITE_URL}/default.png`;
+  const imgWebp = post.image ? `${SITE_URL}${post.image.replace(/\.(jpe?g|png)$/i, '.webp')}` : '';
   const desc  = post.excerpt || post.title;
   const catColor = CAT_COLOR[post.category] || '#aaa';
   const catIcon  = CAT_ICON[post.category]  || '📄';
@@ -224,6 +225,9 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.byline{margin-top:6px;color:#8a8ab0;font-size:.88rem;}
+.byline a{color:#00f5ff;text-decoration:none;}
+.byline a:hover{text-decoration:underline;}
 .post-nav{display:flex;gap:12px;margin:32px 0 8px;flex-wrap:wrap;}
 .post-nav .pn{flex:1;min-width:200px;display:block;padding:12px 16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s;}
 .post-nav .pn:hover{border-color:#00f5ff;}
@@ -259,8 +263,8 @@ ${CF_BEACON}
   <article>
     <div class="badge">${catIcon} ${esc(post.category)}</div>
     <h1>${esc(post.title)}</h1>
-    <time datetime="${esc(post.date)}">${esc(post.date)}</time>
-    ${post.image ? `<img class="cover" src="${esc(img)}" alt="${esc(post.title)}">` : ''}
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="${esc(post.date)}">${esc(post.date)}</time></div>
+    ${post.image ? `<picture><source type="image/webp" srcset="${esc(imgWebp)}"><img class="cover" src="${esc(img)}" alt="${esc(post.title)}" width="1200" height="630"></picture>` : ''}
     <div class="excerpt"><p>${esc(post.excerpt || '')}</p></div>
     ${toc}
     <div class="post-body"><!--BODY:START-->${body}<!--BODY:END--></div>
@@ -624,11 +628,31 @@ function setText(id,v){
 }
 
 // ── 主流程 ──────────────────────────────────────────────────────────
+// ── 為封面 JPG 產生 WebP（缺檔才轉；sharp 未安裝則略過，不影響建置）──────
+function ensureCoverWebp() {
+  let sharp;
+  try { sharp = require('sharp'); } catch { console.log('  ⚠ 未安裝 sharp，略過 WebP 產生'); return Promise.resolve(); }
+  const dir = path.join(ROOT, 'images', 'posts');
+  if (!fs.existsSync(dir)) return Promise.resolve();
+  const jpgs = fs.readdirSync(dir).filter((f) => /\.jpe?g$/i.test(f));
+  const todo = jpgs.filter((f) => !fs.existsSync(path.join(dir, f.replace(/\.jpe?g$/i, '.webp'))));
+  if (!todo.length) { console.log(`  ✓ 封面 WebP 已齊（${jpgs.length} 張）`); return Promise.resolve(); }
+  return Promise.all(todo.map((f) =>
+    sharp(path.join(dir, f)).webp({ quality: 82 }).toFile(path.join(dir, f.replace(/\.jpe?g$/i, '.webp')))
+      .catch((e) => console.warn(`  ✗ ${f} 轉檔失敗：${e.message}`))
+  )).then(() => console.log(`  ✓ 新產生 ${todo.length} 張封面 WebP`));
+}
+
 async function main() {
   console.log('\n🔨 operation.tw 靜態建置開始\n');
 
   const posts = loadPosts();
   console.log(`  📚 已載入 ${posts.length} 篇已發布文章\n`);
+
+  // 0. 封面 WebP（效能：文章頁封面 <picture> 用）
+  console.log('🖼️  確保封面 WebP...');
+  await ensureCoverWebp();
+  console.log();
 
   // 1. 產生個別文章頁（含完整內文，供搜尋引擎 / AI 爬蟲索引）
   console.log('📄 產生個別文章頁面...');

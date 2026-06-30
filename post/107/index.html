@@ -38,6 +38,9 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.byline{margin-top:6px;color:#8a8ab0;font-size:.88rem;}
+.byline a{color:#00f5ff;text-decoration:none;}
+.byline a:hover{text-decoration:underline;}
 .post-nav{display:flex;gap:12px;margin:32px 0 8px;flex-wrap:wrap;}
 .post-nav .pn{flex:1;min-width:200px;display:block;padding:12px 16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s;}
 .post-nav .pn:hover{border-color:#00f5ff;}
@@ -73,8 +76,8 @@ time{color:#6060a0;font-size:.85rem;}
   <article>
     <div class="badge">☁️ 雲端</div>
     <h1>AMD挑戰AI基礎設施霸主：2026年GPU市場洗牌在即</h1>
-    <time datetime="2026-05-18">2026-05-18</time>
-    <img class="cover" src="https://operation.tw/images/posts/post-107.jpg" alt="AMD挑戰AI基礎設施霸主：2026年GPU市場洗牌在即">
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-05-18">2026-05-18</time></div>
+    <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-107.webp"><img class="cover" src="https://operation.tw/images/posts/post-107.jpg" alt="AMD挑戰AI基礎設施霸主：2026年GPU市場洗牌在即" width="1200" height="630"></picture>
     <div class="excerpt"><p>AWS剛慶祝20週年之際，AMD正加緊布局AI基礎設施領域。從被邊緣化到成為挑戰者，AMD在2026年是否能撼動NVIDIA的GPU市場地位？本文分析AMD的機會與挑戰，以及對雲端服務商和台灣企業的影響。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">AI時代的芯片競局：AMD的逆襲之路</a></li><li class="toc-l2"><a href="#sec-2">AMD的核心優勢與技術進展</a></li><li class="toc-l2"><a href="#sec-3">對雲端運算生態的衝擊</a></li><li class="toc-l2"><a href="#sec-4">台灣企業的戰略機遇</a></li><li class="toc-l2"><a href="#sec-5">挑戰不容忽視</a></li><li class="toc-l2"><a href="#sec-6">結論與建議</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><h2 id="sec-1">AI時代的芯片競局：AMD的逆襲之路</h2><p>隨著AWS迎來成立20週年，雲端運算的基礎設施版圖正在重新洗牌。曾經在AI芯片市場默默無聞的AMD，如今正積極爭奪AI基礎設施領導者的寶座。這一轉變不僅代表芯片技術的進步，更預示著整個雲端生態的變革機會。</p><p>AMD長期以來以CPU和傳統GPU著稱，但在深度學習和大模型訓練主導的AI時代，一直被NVIDIA的CUDA生態所壓制。然而，2026年成為一個關鍵轉折點——AMD的EPYC處理器和MI系列加速卡逐漸獲得企業和雲端服務商的認可，特別是在成本效益和能源效率方面展現出競爭力。</p><h2 id="sec-2">AMD的核心優勢與技術進展</h2><ul><li><strong>成本優勢明顯：</strong>AMD的AI芯片和加速卡在單位計算成本上更具競爭力，這對中小企業和初創公司建設私有雲或混合雲環境具有吸引力</li><li><strong>開放生態建設：</strong>ROCm平台的開源特性，為開發者提供了CUDA之外的選擇，降低廠商鎖定風險</li><li><strong>功耗效率提升：</strong>在AI訓練任務中，AMD的功耗表現正在逼近甚至超越競對手，這在大規模部署中能顯著降低營運成本</li><li><strong>企業夥伴擴大：</strong>Meta、Google等科技巨頭已在自研芯片外開始評估AMD方案，代表AMD獲得主流認可</li></ul><h2 id="sec-3">對雲端運算生態的衝擊</h2><p>AMD的崛起將直接衝擊AWS、Azure、Google Cloud等雲端服務商的硬體策略。目前這些廠商都在自研AI芯片或與NVIDIA深度綁定，但AMD的競爭將迫使他們重新評估供應鏈多元化的必要性。</p><p>特別是對AWS而言，20週年慶典强調的「從解決工程師痛點到成為現代雲端基礎設施」的演進故事，如今面臨新挑戰——如何在AI基礎設施成本競爭中保持領先。AMD若能在2026年實現預期的成長，將可能迫使AWS、Azure等調降GPU服務價格或加快自研芯片的商用進程。</p><h2 id="sec-4">台灣企業的戰略機遇</h2><p>對台灣企業而言，這場競局帶來多層面機遇：</p><ul><li><strong>採購成本下降：</strong>AMD與NVIDIA的競爭會推低GPU租賃價格，降低企業AI應用的門檻</li><li><strong>芯片供應鏈機會：</strong>台灣晶圓代工和設計廠商可受惠於AMD的擴產計畫</li><li><strong>雲端遷移加速：</strong>成本優化的AI基礎設施會加速企業上雲步伐，帶動雲端服務需求</li><li><strong>技術棧選擇多元化：</strong>企業不再被單一生態綁定，可根據應用場景靈活選擇最適方案</li></ul><h2 id="sec-5">挑戰不容忽視</h2><p>但AMD的成長之路並非坦途。NVIDIA已建立超過10年的CUDA生態優勢，包括龐大的開發者社區、完整的工具鏈和成熟的最佳實踐。AMD要在2026年實現「成長」並非易事，更難以直接推翻NVIDIA的霸主地位。此外，生態成熟度、軟體支援度和社區規模仍是AMD需要克服的障礙。</p><h2 id="sec-6">結論與建議</h2><p>2026年對AI基礎設施市場而言是關鍵之年。AMD的挑戰不一定會立即改變市場格局，但必將推動整個產業向更健康的競爭方向發展。對台灣企業的建議是：</p><ul><li>積極評估多廠商GPU方案，避免過度依賴單一生態</li><li>關注AMD ROCm平台的成熟度，為未來技術選型預留彈性</li><li>利用成本優勢時機，加速AI應用試驗與部署</li><li>參與開源社區建設，掌握新興技術話語權</li></ul><p>AI時代的雲端基礎設施競爭才剛剛開始，台灣企業應積極把握這波產業洗牌的機遇。</p><!--BODY:END--></div>
