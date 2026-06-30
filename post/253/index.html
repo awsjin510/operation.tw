@@ -38,6 +38,9 @@ nav a{color:#00f5ff;text-decoration:none;}
 h1{font-size:1.5rem;margin:0 0 12px;}
 time{color:#6060a0;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.byline{margin-top:6px;color:#8a8ab0;font-size:.88rem;}
+.byline a{color:#00f5ff;text-decoration:none;}
+.byline a:hover{text-decoration:underline;}
 .post-nav{display:flex;gap:12px;margin:32px 0 8px;flex-wrap:wrap;}
 .post-nav .pn{flex:1;min-width:200px;display:block;padding:12px 16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s;}
 .post-nav .pn:hover{border-color:#00f5ff;}
@@ -73,8 +76,8 @@ time{color:#6060a0;font-size:.85rem;}
   <article>
     <div class="badge">🔐 資安</div>
     <h1>EP96｜從資安工程師到產品經理：如何讓客戶願意為資安買單？</h1>
-    <time datetime="2026-04-20">2026-04-20</time>
-    <img class="cover" src="https://operation.tw/images/posts/post-253.jpg" alt="EP96｜從資安工程師到產品經理：如何讓客戶願意為資安買單？">
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-20">2026-04-20</time></div>
+    <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-253.webp"><img class="cover" src="https://operation.tw/images/posts/post-253.jpg" alt="EP96｜從資安工程師到產品經理：如何讓客戶願意為資安買單？" width="1200" height="630"></picture>
     <div class="excerpt"><p>資安產品明明重要，客戶卻常常不願意掏錢？這集「操作一下」邀請到產品經理 Edward，從他在資安領域的職涯轉換談起，帶我們拆解 EDR、MDR、SOC、MSSP 這些常見縮寫背後的意義，並分享如何量化資安效益、讓決策者看見資安的真實價值，甚至聊到 AI 在資安產品中的實際應用方向。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">先搞懂這些縮寫在說什麼</a></li><li class="toc-l2"><a href="#sec-2">資安效益怎麼量化？這才是真正的難題</a></li><li class="toc-l2"><a href="#sec-3">AI 進來之後，資安產品在變</a></li><li class="toc-l2"><a href="#sec-4">對你的實際啟發</a></li><li class="toc-l2"><a href="#sec-5">結語</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>「資安很重要」這句話幾乎人人都同意，但一談到要花錢，客戶往往又開始猶豫了。對於身在資安產業的人來說，這大概是最令人頭痛的日常——你知道這東西能保護公司，卻很難讓對方「感受到」那份價值。</p><p>這集 Podcast 邀請到資安背景出身的產品經理 Edward，他從技術端走到產品端，一路累積了和客戶打交道、把資安「說清楚、講明白」的豐富經驗。整集對話下來，最讓我印象深刻的，就是他能把一堆縮寫名詞講得讓人秒懂。</p><h2 id="sec-1">先搞懂這些縮寫在說什麼</h2><p>資安領域充滿讓人眼花撩亂的英文縮寫，Edward 在節目中用生活化的方式幫大家拆解了幾個常見名詞：</p><ul><li><strong>EDR（Endpoint Detection and Response）</strong>：端點偵測與回應，可以把它想成裝在每一台電腦上的「監視器加警衛」，不只記錄發生什麼事，還能主動回應威脅。</li><li><strong>MDR（Managed Detection and Response）</strong>：把 EDR 的能力外包出去，由專業的資安團隊幫你 7x24 盯著看、發現問題立即處理，適合沒有足夠資安人力的企業。</li><li><strong>SOC（Security Operations Center）</strong>：資安維運中心，是負責監控、分析與應對資安事件的核心單位，可以是企業自建，也可以委外。</li><li><strong>MSSP（Managed Security Service Provider）</strong>：受管理的資安服務提供商，整合提供多種資安服務的外部廠商，SOC 往往是其中一環。</li></ul><p>這幾個概念環環相扣，從工具、到服務、到整體維運，代表的是企業在資安投入上不同層次的選擇。</p><h2 id="sec-2">資安效益怎麼量化？這才是真正的難題</h2><p>技術懂了，更難的問題來了：怎麼說服客戶掏錢？</p><p>Edward 分享了一個核心思維——資安的價值不是「你買了之後得到什麼」，而是「你沒買，出事之後要損失多少」。這種從風險角度出發的溝通方式，比起列功能清單，更能觸動決策者的神經。</p><p>具體來說，量化資安效益可以從幾個方向切入：估算一次資安事件的平均損失（包含停機成本、資料外洩的法律責任、品牌聲譽傷害）；對比導入解決方案的年度費用；再加上縮短事件應變時間所節省的人力成本。當這些數字攤開來，ROI 的輪廓就會逐漸清晰。</p><p>當然，不同規模與產業的客戶，對風險的敏感度不同。Edward 也提到，和客戶溝通時需要因人而異——對技術主管說技術語言，對財務或 C-level 則要轉換成商業語言，這正是產品經理這個角色的關鍵價值所在。</p><h2 id="sec-3">AI 進來之後，資安產品在變</h2><p>節目後半段，話題自然延伸到 AI 與資安的交叉點。Edward 點出 AI 在資安領域目前最實際的應用，是在大量告警中快速篩出真正需要人工介入的事件，減少分析師的疲勞轟炸，讓有限的人力聚焦在真正重要的威脅上。</p><p>這對 MDR 和 SOC 服務來說尤其關鍵——每天產生的告警數量龐大，沒有 AI 輔助過濾，幾乎不可能有效率地運作。當然，AI 也帶來新的攻擊面，這是另一個產業正在快速演化的方向。</p><h2 id="sec-4">對你的實際啟發</h2><p>不管你是資安從業者、產品經理，還是正在評估要不要加強公司資安防護的決策者，這集都值得一聽。幾個可以帶走的思考點：</p><ul><li>資安溝通的本質是風險管理的溝通，學會用對方聽得懂的語言說話。</li><li>評估資安工具時，除了功能，更要問「出事了，這個工具能幫我節省多少損失」。</li><li>EDR、MDR、SOC、MSSP 不是非此即彼，而是根據企業規模與成熟度逐步疊加的選項。</li></ul><h2 id="sec-5">結語</h2><p>Edward 的職涯路徑——從資安工程師轉型為產品經理——本身就是一個很有意思的故事。技術底子讓他能和工程師對話，產品思維讓他能和客戶溝通，兩者結合，才能在資安這個「重要但難賣」的領域找到自己的位置。</p><p>如果你對資安產業或產品經理這個職涯方向感興趣，強烈推薦去聽這集完整的對話，Edward 分享的那些一線經驗，比任何教科書都來得直接。</p>
