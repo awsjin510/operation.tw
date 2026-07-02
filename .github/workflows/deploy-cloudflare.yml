@@ -1,12 +1,18 @@
 name: Deploy Cloudflare (D1 + Worker)
 
-# 手動觸發：在雲端建立 D1、從 repo 灌資料、部署 Worker。
-# 需先在 Repo → Settings → Secrets and variables → Actions 設定：
-#   CLOUDFLARE_API_TOKEN   （Cloudflare → My Profile → API Tokens，含 Workers Scripts:Edit + D1:Edit）
-#   CLOUDFLARE_ACCOUNT_ID  （Cloudflare 右側欄 Account ID）
-#   CF_SERVICE_TOKEN       （自訂一串長隨機字串，內容工作流程也會用同一串）
+# 手動觸發：部署最新 Worker（從 main），預設「不動任何既有資料」。
+# ⚠️ reseed=true 是破壞性操作：清空 D1 再從 repo 快照重灌，會刪掉快照後新增的
+#    文章與全部訂閱者（6/30 曾因此遺失 7 篇文章）。只限初次建站或災難重建。
+# 需要 Secrets：CLOUDFLARE_API_TOKEN、CLOUDFLARE_ACCOUNT_ID、CF_SERVICE_TOKEN
 on:
   workflow_dispatch:
+    inputs:
+      reseed:
+        description: '⚠️ 清空 D1 重灌資料（會刪除快照後的新文章與訂閱者！日常部署請保持 false）'
+        required: true
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
 
 permissions:
   contents: write
@@ -16,10 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Checkout（一律抓 Cloudflare 遷移分支，內含 deploy 腳本與資料）
+      - name: Checkout main（部署最新的 Worker 程式）
         uses: actions/checkout@v4
-        with:
-          ref: claude/lucid-noether-5lmint
 
       - name: Setup Node.js 22
         uses: actions/setup-node@v4
@@ -29,13 +33,13 @@ jobs:
       - name: Install wrangler
         run: npm i -g wrangler
 
-      - name: Deploy（建 D1 + 灌資料 + 部署 Worker）
+      - name: Deploy（部署 Worker；reseed=true 才會重灌資料）
         id: deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
-          SEED_SOURCE: repo
+          SEED_SOURCE: ${{ github.event.inputs.reseed == 'true' && 'repo' || 'none' }}
         run: |
           set -o pipefail
           bash cloudflare/deploy.sh 2>&1 | tee /tmp/deploy.log
@@ -43,14 +47,12 @@ jobs:
           URL=$(grep -oE 'https://operation-tw-api[^ ]*\.workers\.dev' /tmp/deploy.log | head -1)
           echo "worker_url=$URL" >> "$GITHUB_OUTPUT"
           {
-            echo "## ✅ Cloudflare 部署完成"
+            echo "## ✅ Cloudflare 部署完成（reseed=${{ github.event.inputs.reseed }}）"
             echo ""
             echo "**Worker 網址：** \`$URL\`"
-            echo ""
-            echo "把這個網址貼回對話，我幫你接 CF_API_BASE 與前端設定。"
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Commit D1 database_id back to branch
+      - name: Commit D1 database_id back
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -59,5 +61,5 @@ jobs:
             echo "wrangler.toml 無變更"
           else
             git commit -m "chore(cloudflare): record D1 database_id"
-            git push
+            git pull --rebase --autostash origin main && git push
           fi

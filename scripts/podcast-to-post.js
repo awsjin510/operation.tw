@@ -33,7 +33,7 @@ const DRY_RUN = process.env.DRY_RUN === '1';
 // 依序產出（每次最多 MAX_PER_RUN 篇，可重複觸發直到全部完成）。
 const BACKFILL = process.env.BACKFILL === '1';
 
-if (!CF_API_BASE || !CF_SERVICE_TOKEN || !ANTHROPIC_API_KEY) {
+if (require.main === module && (!CF_API_BASE || !CF_SERVICE_TOKEN || !ANTHROPIC_API_KEY)) {
   console.error('❌ 缺少必要環境變數：CF_API_BASE、CF_SERVICE_TOKEN、ANTHROPIC_API_KEY');
   process.exit(1);
 }
@@ -359,7 +359,12 @@ async function main() {
   console.log(`\n✅ 完成，本次生成 ${created} 篇`);
 }
 
-main().catch((err) => {
-  console.error('\n❌ podcast-to-post 失敗：', err.message);
-  process.exit(1);
-});
+// 供 restore-content.js 等工具重用；直接執行時才跑主流程
+module.exports = { episodeCode, fetchEpisodes, saveCoverFromArt, STATE_PATH };
+
+if (require.main === module) {
+  main().catch((err) => {
+    console.error('\n❌ podcast-to-post 失敗：', err.message);
+    process.exit(1);
+  });
+}
