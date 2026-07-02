@@ -33,7 +33,7 @@
     getPostBody: (id, signal) => call(`/api/posts/${id}/body`, { signal }).then((r) => r.body),
     incrementSiteViews: () => call('/api/views/site', { method: 'POST' }),
     incrementPostViews: (id) => call('/api/views/post', { method: 'POST', body: { id } }),
-    subscribe: (email) => call('/api/subscribe', { method: 'POST', body: { email } }).then((r) => r.result),
+    subscribe: (email, website) => call('/api/subscribe', { method: 'POST', body: { email, website: website || '' } }).then((r) => r.result),
 
     // ── 後台（需 Google 登入）──
     me: () => call('/api/admin/me', { admin: true }),

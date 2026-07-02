@@ -856,6 +856,7 @@ a.hero-cta{text-decoration:none;}
       <p class="v1-nl-d" id="nl-d">每週精選一篇深度文章，直接送到你的信箱。不發廣告，只給值得讀的內容。</p>
       <div class="v1-nl-form">
         <input class="v1-nl-in" type="email" placeholder="your@email.com" id="nl-email" onkeydown="if(event.key==='Enter')nlSubmit()">
+        <input type="text" id="nl-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button class="v1-nl-btn" onclick="nlSubmit()">訂閱 →</button>
       </div>
     </div>
@@ -1585,7 +1586,8 @@ async function nlSubmit(){
   const orig=btn.dataset.orig||btn.textContent;btn.dataset.orig=orig;
   btn.disabled=true;btn.style.opacity='.7';btn.textContent='送出中…';
   try{
-    const data=await api.subscribe(email);
+    const hp=document.getElementById('nl-hp');
+    const data=await api.subscribe(email,hp?hp.value:'');
     if(data==='invalid'){inp.style.borderColor='var(--pink)';btn.textContent='Email 格式錯誤';}
     else{
       btn.textContent=(data==='exists')?'你已訂閱過 ✓':'訂閱成功 ✓';
@@ -1593,7 +1595,8 @@ async function nlSubmit(){
     }
   }catch(e){
     console.warn('subscribe failed:',e);
-    btn.textContent='失敗，請稍後再試';btn.style.background='var(--pink)';btn.style.color='#fff';
+    btn.textContent=(e&&e.status===429)?'太頻繁，請稍後再試':'失敗，請稍後再試';
+    btn.style.background='var(--pink)';btn.style.color='#fff';
   }
   setTimeout(()=>{btn.disabled=false;btn.style.opacity='';btn.textContent=orig;btn.style.background='';btn.style.color='';},3200);
 }

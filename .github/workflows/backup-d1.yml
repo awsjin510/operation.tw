@@ -1,0 +1,45 @@
+name: Backup D1
+
+# 每日備份 D1 全站資料（文章/設定/統計/訂閱者），加密後 commit 進 repo。
+# 還原方式見 backups/README.md。
+on:
+  schedule:
+    - cron: '30 19 * * *'   # 每天 03:30 台灣時間
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Export & encrypt D1 backup
+        env:
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+        run: node scripts/backup-d1.js
+
+      - name: Commit backup
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add backups/
+          if git diff --cached --quiet; then
+            echo "備份內容無變更"
+          else
+            git commit -m "chore(backup): D1 每日備份 $(date -u +%F)"
+            for r in 1 2 3; do
+              if git pull --rebase origin main && git push; then break; fi
+              echo "push 失敗，重試…"; sleep $((r * 3))
+            done
+          fi
