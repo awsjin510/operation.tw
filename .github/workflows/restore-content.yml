@@ -1,0 +1,58 @@
+name: Restore Content (D1 修復)
+
+# 一次性修復 6/30 D1 被舊 seed 重灌的損失：
+# 還原 289-295、刪除重複 Podcast 文、重建 state、補封面、重建靜態頁。
+# 冪等：重跑不會造成額外變更。
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: scripts
+
+      - name: Restore posts / dedupe / rebuild state / covers
+        env:
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+        run: node scripts/restore-content.js
+
+      - name: Rebuild posts.json + static site
+        env:
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+        run: |
+          node scripts/sync-posts-json.js
+          node scripts/build-static.js
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml feed.xml posts.json images/ episodes.json post/ category/ llms.txt llms-full.txt index.html podcast-posts.json
+          if git diff --cached --quiet; then
+            echo "無變更"
+          else
+            git commit -m "fix(content): 還原被舊 seed 重灌刪除的文章、去重、補封面"
+            for r in 1 2 3; do
+              if git pull --rebase --autostash origin main && git push; then break; fi
+              echo "push 失敗，重試…"; sleep $((r * 3))
+            done
+          fi
