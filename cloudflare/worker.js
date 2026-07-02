@@ -105,10 +105,28 @@ async function route(request, env, url) {
   }
 
   if (p === '/api/subscribe' && m === 'POST') {
-    const { email } = await readJson(request);
-    const e = String(email || '').trim().toLowerCase();
+    const body = await readJson(request);
+    // honeypot：隱藏欄位被填 → 判定機器人，回假成功（不入庫）
+    if (body.website) return json({ result: 'subscribed' });
+    const e = String(body.email || '').trim().toLowerCase();
     if (!e || e.length > 254 || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)) {
       return json({ result: 'invalid' });
+    }
+    // 每 IP 每小時最多 5 次（借 site_stats 當計數器；rl: 前綴不影響瀏覽統計，
+    // 讀取皆為精確 id 查詢）
+    const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+    const bucket = `rl:sub:${ip}:${new Date().toISOString().slice(0, 13)}`;
+    const rl = await env.DB.prepare(
+      `insert into site_stats (id,count) values (?1,1)
+       on conflict(id) do update set count=count+1, updated_at=datetime('now')
+       returning count`
+    ).bind(bucket).first();
+    if (rl && rl.count > 5) return json({ result: 'rate_limited' }, 429);
+    if (rl && rl.count === 1) {
+      // 新的小時桶建立時，順手清掉過期限流記錄
+      await env.DB.prepare(
+        `delete from site_stats where id like 'rl:%' and updated_at < datetime('now','-1 day')`
+      ).run();
     }
     const r = await env.DB.prepare(
       `insert into subscribers (email) values (?) on conflict(email) do nothing`
@@ -139,6 +157,20 @@ async function route(request, env, url) {
         `select email from subscribers order by created_at`
       ).all();
       return json({ subscribers: (results || []).map(r => r.email) });
+    }
+
+    if (p === '/api/admin/backup' && m === 'GET') {
+      const [posts, settings, stats, subs] = await Promise.all([
+        env.DB.prepare(`select * from posts order by id`).all(),
+        env.DB.prepare(`select * from settings`).all(),
+        env.DB.prepare(`select * from site_stats where id not like 'rl:%'`).all(),
+        env.DB.prepare(`select * from subscribers order by id`).all(),
+      ]);
+      return json({
+        exported_at: new Date().toISOString(),
+        posts: posts.results, settings: settings.results,
+        site_stats: stats.results, subscribers: subs.results,
+      });
     }
 
     if (p === '/api/admin/posts' && m === 'GET') {
@@ -293,7 +325,12 @@ async function verifyGoogleIdToken(token, env) {
 // ── 小工具 ──────────────────────────────────────────────
 function json(obj, status = 200) {
   return new Response(JSON.stringify(obj), {
-    status, headers: { 'Content-Type': 'application/json; charset=utf-8' },
+    status, headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'DENY',
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+    },
   });
 }
 async function readJson(request) {
@@ -314,7 +351,14 @@ function htmlPage(msg, status = 200) {
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>操作一下</title>
 <style>body{margin:0;background:#050510;color:#e0e0ff;font-family:system-ui,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:24px}a{color:#00f5ff}</style>
 </head><body><div><h1 style="color:#00f5ff">操作一下</h1><p>${msg}</p><p><a href="https://operation.tw/">← 回首頁</a></p></div></body></html>`;
-  return new Response(body, { status, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+  return new Response(body, {
+    status, headers: {
+      'Content-Type': 'text/html; charset=utf-8',
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'DENY',
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+    },
+  });
 }
 
 function cors(res, request, env) {
