@@ -6,9 +6,11 @@ set -euo pipefail
 cd "$(dirname "$0")/.."   # 切到 repo 根目錄
 
 # ── 資料來源 ─────────────────────────────────────────────────
-# 預設 SEED_SOURCE=repo：直接用 repo 內 posts.json + 靜態頁產生 seed（不需 Supabase）。
-# 若要從 Supabase 匯出（含草稿/訂閱者），設 SEED_SOURCE=supabase 並提供 SUPABASE_URL/SERVICE_KEY。
-SEED_SOURCE="${SEED_SOURCE:-repo}"
+# SEED_SOURCE=none（預設）：只部署 Worker + schema，「不動任何既有資料」。日常部署用這個。
+# SEED_SOURCE=repo：⚠️ 破壞性！先清空 D1 再從 repo 的 posts.json + 靜態頁重灌，
+#                   會刪掉 repo 快照之後新增的文章與全部訂閱者。只限初次建站/災難重建。
+# SEED_SOURCE=supabase：從 Supabase 匯出（歷史遷移用，同樣破壞性）。
+SEED_SOURCE="${SEED_SOURCE:-none}"
 # SERVICE_TOKEN：給 GitHub Actions 用的長隨機字串；沒給就自動產一組
 SERVICE_TOKEN="${SERVICE_TOKEN:-$(openssl rand -hex 32)}"
 DB_NAME="operation-tw"
@@ -33,24 +35,28 @@ PY
 echo "▸ 2/6 套用 schema 到 D1"
 wrangler d1 execute "$DB_NAME" --remote --file=cloudflare/schema.sql
 
-echo "▸ 3/6 產生 seed（來源：$SEED_SOURCE）"
-if [ "$SEED_SOURCE" = "supabase" ]; then
-  : "${SUPABASE_URL:?supabase 模式需 SUPABASE_URL}"
-  : "${SUPABASE_SERVICE_KEY:?supabase 模式需 SUPABASE_SERVICE_KEY}"
-  node cloudflare/migrate-from-supabase.js          # 產生 cloudflare/seed.sql（單檔）
-  SEED_FILES="cloudflare/seed.sql"
+if [ "$SEED_SOURCE" = "none" ]; then
+  echo "▸ 3-4/6 略過灌資料（SEED_SOURCE=none，既有資料不動）"
 else
-  node cloudflare/seed-from-repo.js                 # 從 repo 產生 cloudflare/seed/*.sql（多檔）
-  SEED_FILES="cloudflare/seed/*.sql"
-fi
+  echo "▸ 3/6 產生 seed（來源：$SEED_SOURCE）⚠️ 將清空 D1 重灌"
+  if [ "$SEED_SOURCE" = "supabase" ]; then
+    : "${SUPABASE_URL:?supabase 模式需 SUPABASE_URL}"
+    : "${SUPABASE_SERVICE_KEY:?supabase 模式需 SUPABASE_SERVICE_KEY}"
+    node cloudflare/migrate-from-supabase.js          # 產生 cloudflare/seed.sql（單檔）
+    SEED_FILES="cloudflare/seed.sql"
+  else
+    node cloudflare/seed-from-repo.js                 # 從 repo 產生 cloudflare/seed/*.sql（多檔）
+    SEED_FILES="cloudflare/seed/*.sql"
+  fi
 
-echo "▸ 4/6 灌資料進 D1"
-for f in $SEED_FILES; do
-  echo "  載入 $f"
-  wrangler d1 execute "$DB_NAME" --remote --file="$f"
-done
-echo "  驗證："
-wrangler d1 execute "$DB_NAME" --remote --command "select count(*) as posts from posts"
+  echo "▸ 4/6 灌資料進 D1"
+  for f in $SEED_FILES; do
+    echo "  載入 $f"
+    wrangler d1 execute "$DB_NAME" --remote --file="$f"
+  done
+  echo "  驗證："
+  wrangler d1 execute "$DB_NAME" --remote --command "select count(*) as posts from posts"
+fi
 
 echo "▸ 5/6 部署 Worker（先部署，secret 才能掛上去）"
 wrangler deploy --config cloudflare/wrangler.toml
