@@ -1,0 +1,51 @@
+name: Healthcheck
+
+# 每 30 分鐘檢查網站與 Worker API；連續失敗（重試 3 次仍掛）→ 開/更新 GitHub Issue 通知。
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check endpoints
+        id: check
+        run: |
+          failed=""
+          check() { # $1=名稱 $2=網址
+            for i in 1 2 3; do
+              code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$2" || echo 000)
+              if [ "$code" = "200" ]; then echo "✓ $1 ($code)"; return 0; fi
+              echo "… $1 第 $i 次失敗 ($code)"; sleep 15
+            done
+            failed="$failed$1（HTTP $code）、"
+            return 0
+          }
+          check "網站 operation.tw" "https://operation.tw/"
+          check "Worker API" "https://operation-tw-api.survry-123-jin.workers.dev/api/health"
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
+
+      - name: Alert via issue
+        if: steps.check.outputs.failed != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FAILED: ${{ steps.check.outputs.failed }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh label create uptime --repo "$REPO" -c FF0000 -d "網站監測警報" 2>/dev/null || true
+          now=$(date -u '+%F %T')
+          body=$(printf '**%s UTC** 偵測到異常：%s\n\n（連續重試 3 次仍失敗。恢復後請手動關閉此 Issue。）' "$now" "${FAILED%、}")
+          num=$(gh issue list --repo "$REPO" --label uptime --state open --json number -q '.[0].number')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --repo "$REPO" --body "$body"
+          else
+            owner="${REPO%%/*}"
+            gh issue create --repo "$REPO" --label uptime --title "🚨 網站監測警報" \
+              --body "$(printf '@%s\n\n%s' "$owner" "$body")"
+          fi
