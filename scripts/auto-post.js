@@ -21,7 +21,7 @@ const CF_API_BASE = process.env.CF_API_BASE;
 const CF_SERVICE_TOKEN = process.env.CF_SERVICE_TOKEN;
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
-if (!CF_API_BASE || !CF_SERVICE_TOKEN || !ANTHROPIC_API_KEY) {
+if (require.main === module && (!CF_API_BASE || !CF_SERVICE_TOKEN || !ANTHROPIC_API_KEY)) {
   console.error('❌ 缺少必要的環境變數：CF_API_BASE、CF_SERVICE_TOKEN、ANTHROPIC_API_KEY');
   process.exit(1);
 }
@@ -447,7 +447,12 @@ async function main() {
   console.log('\n✅ 完成！\n');
 }
 
-main().catch((err) => {
-  console.error('\n❌ 執行失敗：', err.message);
-  process.exit(1);
-});
+// 供 restore-content.js 等工具重用（產生新聞文 SVG 封面）；直接執行時才跑主流程
+module.exports = { generateCoverImage };
+
+if (require.main === module) {
+  main().catch((err) => {
+    console.error('\n❌ 執行失敗：', err.message);
+    process.exit(1);
+  });
+}

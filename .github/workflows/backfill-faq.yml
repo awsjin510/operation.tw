@@ -66,13 +66,13 @@ jobs:
           node scripts/build-static.js || echo "(build 失敗)"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add posts.json post/ category/ sitemap.xml feed.xml llms.txt llms-full.txt index.html
+          git add posts.json post/ category/ images/ sitemap.xml feed.xml llms.txt llms-full.txt index.html
           if git diff --cached --quiet; then
             echo "無變更"
           else
             git commit -m "chore(faq): 回填舊文 FAQ/TL;DR"
             for r in 1 2 3; do
-              if git pull --rebase origin main && git push; then break; fi
+              if git pull --rebase --autostash origin main && git push; then break; fi
               echo "push 失敗，重試…"; sleep $((r * 3))
             done
           fi
