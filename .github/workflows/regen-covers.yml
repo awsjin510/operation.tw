@@ -1,6 +1,9 @@
 name: Regenerate Covers
 
-# 一次性：用新版合成參數重生 Podcast 文章封面（更清晰），重建靜態頁後 commit。
+# 一次性維護（冪等）：
+#  1. 修正文末收聽連結（Apple 標籤原本連到 SoundOn）
+#  2. 用新版合成參數重生 Podcast 文章封面（更清晰）
+# 之後重建靜態頁 commit。
 on:
   workflow_dispatch:
 
@@ -25,6 +28,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
         working-directory: scripts
+
+      - name: Fix listen links (Apple/SoundOn)
+        env:
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+        run: node scripts/fix-listen-links.js
 
       - name: Regenerate podcast covers
         env:

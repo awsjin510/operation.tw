@@ -39,6 +39,7 @@ if (require.main === module && (!CF_API_BASE || !CF_SERVICE_TOKEN || !ANTHROPIC_
 }
 
 const RSS_URL = 'https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml';
+const APPLE_SHOW_URL = 'https://podcasts.apple.com/podcast/1620760720';
 const SPOTIFY_SHOW = 'https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl';
 const MODEL = process.env.PODCAST_MODEL || 'claude-haiku-4-5-20251001'; // 可用環境變數覆寫（backfill 用 sonnet）
 const MAX_PER_RUN = parseInt(process.env.MAX_PER_RUN || '3', 10); // 每次執行最多生成幾篇
@@ -208,7 +209,9 @@ function listenBlock(ep, related = []) {
     html += `<p>📚 <strong>同主題的其他單集 / 文章，延伸聽下去：</strong></p>\n<ul>\n${items}\n</ul>\n`;
   }
   const links = [];
-  if (ep.apple) links.push(`<li><a href="${ep.apple}" target="_blank" rel="noopener">在 Apple Podcast 收聽這集</a></li>`);
+  // ep.apple 其實是 RSS 的 item.link（SoundOn 播放頁），標籤要對應實際目的地
+  if (ep.apple) links.push(`<li><a href="${ep.apple}" target="_blank" rel="noopener">在 SoundOn 收聽這集</a></li>`);
+  links.push(`<li><a href="${APPLE_SHOW_URL}" target="_blank" rel="noopener">在 Apple Podcast 收聽</a></li>`);
   links.push(`<li><a href="${spotifySearchUrl(ep.title)}" target="_blank" rel="noopener">在 Spotify 收聽</a></li>`);
   links.push(`<li><a href="/podcast.html">瀏覽所有單集 →</a></li>`);
   html += `<p>🎙 <strong>這篇文章延伸自 Podcast《操作一下》。</strong>想用聽的，完整一集在這裡：</p>\n<ul>\n${links.join('\n')}\n</ul>`;
