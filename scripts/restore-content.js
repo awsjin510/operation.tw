@@ -28,41 +28,33 @@ async function main() {
   const existing = await cfdb.getAllPostsWithBody();
   const existingIds = new Set(existing.map((p) => p.id));
 
-  // ── 1. 塞回被刪的 289-295 ──────────────────────────────
+  // ── 1. 對帳式還原：讓 289-295 以「原本的 id」存在 ────────
+  // 前一版還原因舊 Worker 不支援指定 id，內容被塞到 299+ 的新 id（舊網址 404），
+  // 且其中一篇被誤判重複刪除。這裡逐篇對帳：
+  //   - 正確 id 已存在 → 跳過
+  //   - 同標題但 id 不對（299+ 那批）→ 刪掉錯誤的那筆，再以正確 id 重建
   const { posts: restorePosts } = JSON.parse(fs.readFileSync(RESTORE_FILE, 'utf8'));
-  let restored = 0;
+  let restored = 0, deduped = 0;
   for (const p of restorePosts) {
     if (existingIds.has(p.id)) { console.log(`  ↪ #${p.id} 已存在，跳過`); continue; }
-    await cfdb.createPost(p);
+    const wrongIds = existing.filter((e) => e.title === p.title && e.id !== p.id);
+    for (const w of wrongIds) {
+      await cfdb.deletePost(w.id);
+      console.log(`  ✓ 刪除錯誤 id 的同名文章 #${w.id}（${p.title.slice(0, 24)}）`);
+      deduped++;
+    }
+    const created = await cfdb.createPost(p);
+    if (!created || created.id !== p.id) {
+      // Worker 尚未部署「支援指定 id」的版本 → 收拾乾淨並中止，避免再塞出新 id
+      if (created && created.id) await cfdb.deletePost(created.id);
+      throw new Error(`Worker 不支援指定 id（回傳 ${created && created.id}）。請先跑 Deploy Cloudflare（reseed=false）再重跑本 workflow。`);
+    }
     console.log(`  ✓ 還原 #${p.id} ${p.title.slice(0, 30)}`);
     restored++;
   }
 
-  // ── 2. 刪除重複的 Podcast 文章 ─────────────────────────
-  // 只刪「6/30 重灌之後（id ≥ 296）因 state 遺失而重複建立」的那批；
-  // 歷史上同集數碼的不同文章（如 290/295 同為 AI36 但內容不同）不動。
-  const WIPE_BOUNDARY = 296;
-  const all = restored ? await cfdb.getAllPostsWithBody() : existing;
-  const byCode = {};
-  for (const p of all) {
-    const code = episodeCode(p.title);
-    if (code) (byCode[code] = byCode[code] || []).push(p);
-  }
-  let deduped = 0;
-  for (const [code, list] of Object.entries(byCode)) {
-    if (list.length < 2) continue;
-    list.sort((a, b) => a.id - b.id);
-    const keep = list[0];
-    for (const dupe of list.slice(1)) {
-      if (dupe.id < WIPE_BOUNDARY) continue; // 歷史文章，保留
-      await cfdb.deletePost(dupe.id);
-      console.log(`  ✓ 刪除重複 ${code} → #${dupe.id}（保留 #${keep.id}）`);
-      deduped++;
-    }
-  }
-
   // ── 3. 重建 podcast state（RSS guid ↔ 集數碼）───────────
-  const final = (restored || deduped) ? await cfdb.getAllPostsWithBody() : all;
+  const final = (restored || deduped) ? await cfdb.getAllPostsWithBody() : existing;
   const codeToId = {};
   for (const p of final) {
     const code = episodeCode(p.title);

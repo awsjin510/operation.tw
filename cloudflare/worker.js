@@ -236,6 +236,8 @@ async function route(request, env, url) {
 async function insertPost(env, r) {
   const cols = [], ph = [], vals = [];
   let i = 1;
+  // 允許指定 id（災難還原保留原網址用）；一般發文不帶 id，走 autoincrement
+  if (r.id !== undefined && r.id !== null) { cols.push('id'); ph.push('?' + i++); vals.push(r.id); }
   for (const c of POST_COLS) {
     if (r[c] !== undefined) { cols.push(c); ph.push('?' + i++); vals.push(r[c]); }
   }
