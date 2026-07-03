@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://operation.tw/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -13,89 +13,96 @@
   </url>
   <url>
     <loc>https://operation.tw/category/AI/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://operation.tw/category/%E9%9B%B2%E7%AB%AF/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://operation.tw/category/%E8%B3%87%E5%AE%89/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://operation.tw/category/%E9%96%B1%E8%AE%80/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://operation.tw/category/%E6%88%90%E9%95%B7/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/294/</loc>
+    <loc>https://operation.tw/post/298/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://operation.tw/images/posts/post-298.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://operation.tw/post/296/</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://operation.tw/images/posts/post-296.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://operation.tw/post/304/</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-294.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/292/</loc>
+    <loc>https://operation.tw/post/302/</loc>
     <lastmod>2026-06-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-292.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/295/</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-295.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/291/</loc>
+    <loc>https://operation.tw/post/301/</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-291.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/293/</loc>
+    <loc>https://operation.tw/post/303/</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-293.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/289/</loc>
+    <loc>https://operation.tw/post/299/</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-289.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/288/</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-288.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/290/</loc>
+    <loc>https://operation.tw/post/300/</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-290.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://operation.tw/post/288/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://operation.tw/images/posts/post-288.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/286/</loc>
