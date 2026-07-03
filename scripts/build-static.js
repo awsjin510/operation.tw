@@ -219,11 +219,11 @@ function generatePostPage(post, body, episode, neighbors) {
 <style>
 body{font-family:system-ui,sans-serif;background:#050510;color:#e0e0ff;margin:0;padding:24px;line-height:1.7;}
 .wrap{max-width:720px;margin:0 auto;}
-nav{margin-bottom:24px;font-size:.85rem;color:#6060a0;}
+nav{margin-bottom:24px;font-size:.85rem;color:#9494c2;}
 nav a{color:#00f5ff;text-decoration:none;}
 .badge{display:inline-block;border:1px solid ${catColor};color:${catColor};border-radius:3px;padding:2px 8px;font-size:.75rem;margin-bottom:12px;}
 h1{font-size:1.5rem;margin:0 0 12px;}
-time{color:#6060a0;font-size:.85rem;}
+time{color:#9494c2;font-size:.85rem;}
 .excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
 .byline{margin-top:6px;color:#8a8ab0;font-size:.88rem;}
 .byline a{color:#00f5ff;text-decoration:none;}
@@ -325,7 +325,7 @@ function generateCategoryPage(cat, posts) {
   const list = sorted.map(p => {
     const slug = p.slug || p.id;
     return `<li class="ci"><a class="ci-t" href="/post/${encodeURIComponent(slug)}/">${esc(p.title)}</a>`
-      + `<div class="ci-meta"><time datetime="${esc(p.date)}">${esc(p.date)}</time>${p.views > 0 ? ` · 👁 ${p.views}` : ''}</div>`
+      + `<div class="ci-meta"><time datetime="${esc(p.date)}">${esc(p.date)}</time>${p.views > 0 ? ` · ${p.views} 次瀏覽` : ''}</div>`
       + (p.excerpt ? `<p class="ci-exc">${esc(p.excerpt)}</p>` : '')
       + `</li>`;
   }).join('\n');
@@ -352,7 +352,7 @@ function generateCategoryPage(cat, posts) {
 <style>
 body{font-family:system-ui,sans-serif;background:#050510;color:#e0e0ff;margin:0;padding:24px;line-height:1.7;}
 .wrap{max-width:760px;margin:0 auto;}
-nav{margin-bottom:24px;font-size:.85rem;color:#6060a0;}
+nav{margin-bottom:24px;font-size:.85rem;color:#9494c2;}
 nav a{color:#00f5ff;text-decoration:none;}
 .hero{border:1px solid ${color}44;border-radius:12px;padding:24px;background:linear-gradient(180deg,${color}14,transparent);margin-bottom:28px;}
 .hero h1{font-size:1.7rem;margin:0 0 8px;color:#fff;}
@@ -362,7 +362,7 @@ ul.list{list-style:none;padding:0;margin:0;}
 .ci{padding:18px 0;border-bottom:1px solid rgba(255,255,255,.08);}
 .ci-t{font-size:1.12rem;color:#fff;text-decoration:none;font-weight:600;}
 .ci-t:hover{color:${color};}
-.ci-meta{color:#6060a0;font-size:.82rem;margin:4px 0 6px;}
+.ci-meta{color:#9494c2;font-size:.82rem;margin:4px 0 6px;}
 .ci-exc{margin:0;color:#a8a8cc;font-size:.95rem;}
 .catnav{margin:32px 0 8px;display:flex;flex-wrap:wrap;gap:10px;}
 .catnav-link{display:inline-block;padding:6px 14px;border:1px solid rgba(255,255,255,.15);border-radius:20px;color:#c0c0e0;text-decoration:none;font-size:.9rem;}
@@ -400,7 +400,7 @@ function cardHTML(p, featured = false) {
   const cls = (featured ? 'pc featured' : 'pc') + ' cat-' + esc(p.category);
   const eyebrow = featured ? `<div class="pc-eyebrow">FEATURED · ${esc(p.category)}</div>` : '';
   const slug = p.slug || p.id;
-  return `<article class="${cls}" data-post-id="${p.id}" onclick="openPost('${p.id}')"><a class="pc-seo-link" href="/post/${encodeURIComponent(slug)}/" onclick="event.preventDefault();openPost('${p.id}')" aria-label="${esc(p.title)}"></a><div class="pc-img">${imgTag}<span class="pc-badge">${esc(p.category)}</span></div><div class="pc-body">${eyebrow}<div class="pc-title"><a href="/post/${encodeURIComponent(slug)}/" onclick="event.preventDefault();openPost('${p.id}')" style="color:inherit;text-decoration:none;">${esc(p.title)}</a></div><div class="pc-exc">${esc(p.excerpt || '')}</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>📅 ${esc(p.date)}</span>${p.views > 0 ? `<span class="pc-view-cnt">👁 ${p.views}</span>` : ''}</div></div></article>`;
+  return `<article class="${cls}" data-post-id="${p.id}" onclick="openPost('${p.id}')"><a class="pc-seo-link" href="/post/${encodeURIComponent(slug)}/" onclick="event.preventDefault();openPost('${p.id}')" aria-label="${esc(p.title)}"></a><div class="pc-img">${imgTag}<span class="pc-badge">${esc(p.category)}</span></div><div class="pc-body">${eyebrow}<div class="pc-title"><a href="/post/${encodeURIComponent(slug)}/" onclick="event.preventDefault();openPost('${p.id}')" style="color:inherit;text-decoration:none;">${esc(p.title)}</a></div><div class="pc-exc">${esc(p.excerpt || '')}</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>${esc(p.date)}</span>${p.views > 0 ? `<span class="pc-view-cnt">${p.views} 次瀏覽</span>` : ''}</div></div></article>`;
 }
 
 // ── 取得文章完整內文 ────────────────────────────────────────────────
@@ -565,6 +565,12 @@ function patchIndexHtml(posts) {
 
   // 1. lang 屬性
   html = html.replace('<html lang="zh-TW">', '<html lang="zh-Hant-TW">');
+
+  // 1.5 文章總數（hero 統計、關於我統計、JSON-LD FAQ）— 無條件捨去到十位
+  const totalRounded = Math.max(10, Math.floor(posts.length / 10) * 10);
+  html = html.replace(/(累積文章<\/span><span class="v1-stat-v">)[^<]*/, `$1${totalRounded}+`);
+  html = html.replace(/(id="s1n"[^>]*>)[^<]*/, `$1${totalRounded}+`);
+  html = html.replace(/已累積\d+\+?篇文章/, `已累積${totalRounded}+篇文章`);
 
   // 2. 主題計數（0 篇 → 實際數字）
   ['雲端', '資安', 'AI', '閱讀', '成長'].forEach(c => {
