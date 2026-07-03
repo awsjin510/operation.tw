@@ -206,14 +206,15 @@ function generatePostPage(post, body, episode, neighbors) {
 <meta name="twitter:image"       content="${esc(img)}">
 <script type="application/ld+json">${schema}</script>
 <script>
-// 透明載入 SPA 並停留在此 URL（讓 handleRoute() 開啟正確文章）
+// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
+// 瀏覽數照計：向 Worker 發 beacon。
 (function(){
-  var s=document.createElement('script');
-  s.src='/';
-  var slug=${JSON.stringify(String(slug))};
-  // GitHub Pages SPA 相容：透過 sessionStorage 傳遞路由
-  try{sessionStorage.setItem('spa_route','/post/'+encodeURIComponent(slug));}catch(e){}
-  window.location.replace('/?/post/'+encodeURIComponent(slug));
+  try{
+    fetch('https://operation-tw-api.survry-123-jin.workers.dev/api/views/post',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({id:${JSON.stringify(post.id)}})
+    }).catch(function(){});
+  }catch(e){}
 })();
 </script>
 <style>
