@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 03 Jul 2026 03:36:24 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 03 Jul 2026 04:15:15 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>深偽危機衝擊LLM：大語言模型為何面臨「數據崩潰」困局？</title>
+    <link>https://operation.tw/post/307/</link>
+    <guid isPermaLink="true">https://operation.tw/post/307/</guid>
+    <description>深偽內容大量流竄，正在污染用於訓練大語言模型的網路數據。OpenAI、Anthropic等美國AI巨頭面臨發展困境，中國開源模型趁勢崛起。台灣企業該如何應對這場「數據品質危機」？</description>
+    <category>AI</category>
+    <pubDate>Fri, 03 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI38｜iPhone 嗶進北捷10年晚到？這不是悠遊卡贏，是被繞過了</title>
     <link>https://operation.tw/post/298/</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/137/</guid>
     <description>Z.ai發布GLM-5.2開放權重模型，編程能力超越GPT-5.5卻成本僅六分之一。這場AI成本革命不僅衝擊閉源模型壟斷，更改變台灣企業的AI採購決策。本文分析開源模型的技術突破與商業影響。</description>
     <category>AI</category>
-    <pubDate>Wed, 17 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI33｜《Rewire 神經可塑性》：大腦靠重複動作刻迴路，不是靠想</title>
-    <link>https://operation.tw/post/283/</link>
-    <guid isPermaLink="true">https://operation.tw/post/283/</guid>
-    <description>你能快速 debug 別人的爛 code，卻對自己三十幾年的壞習慣束手無策。這集介紹英國神經科學家 Nicole Vignola 的《Rewire 神經可塑性》，從神經科學角度解釋為什麼「想改變」不夠用、負面自我對話其實是演化預設值，以及多巴胺分泌的不是快樂而是「渴望」——讀完讓人重新思考改變自己的正確層級在哪裡。</description>
-    <category>閱讀</category>
     <pubDate>Wed, 17 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
