@@ -231,8 +231,9 @@ async function saveCoverFromArt(postId, artUrl) {
     const resp = await fetchWithTimeout(artUrl, {}, 20000);
     if (!resp.ok) throw new Error(`art HTTP ${resp.status}`);
     const buf = Buffer.from(await resp.arrayBuffer());
-    const bg = await sharp(buf).resize(1200, 630, { fit: 'cover' }).blur(22).modulate({ brightness: 0.55 }).toBuffer();
-    const fg = await sharp(buf).resize(540, 540, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).toBuffer();
+    // 背景更暗、模糊收斂；前景放大到滿版高，卡片縮圖時主體更清楚
+    const bg = await sharp(buf).resize(1200, 630, { fit: 'cover' }).blur(14).modulate({ brightness: 0.42 }).toBuffer();
+    const fg = await sharp(buf).resize(630, 630, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).toBuffer();
     const outPath = path.join(__dirname, '..', 'images', 'posts', `post-${postId}.jpg`);
     await sharp(bg).composite([{ input: fg, gravity: 'center' }]).jpeg({ quality: 82 }).toFile(outPath);
     return `/images/posts/post-${postId}.jpg`;
