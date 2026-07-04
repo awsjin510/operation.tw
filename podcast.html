@@ -93,6 +93,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .ep-btn.play:hover{border-color:var(--cyan);color:var(--cyan);}
 .ep-btn.apple{border-color:rgba(255,255,255,.15);color:#aaa;}
 .ep-btn.apple:hover{border-color:#fff;color:#fff;}
+.ep-btn.soundon{border-color:rgba(0,245,255,.25);color:#7fd8e8;}
+.ep-btn.soundon:hover{border-color:#00f5ff;color:#00f5ff;}
 .ep-btn.spotify{border-color:rgba(30,215,96,.2);color:#1ed760;}
 .ep-btn.spotify:hover{background:rgba(30,215,96,.07);}
 .player-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,26,.97);border-top:1px solid var(--border2);padding:10px 24px;z-index:200;display:none;backdrop-filter:blur(16px);}
@@ -238,7 +240,9 @@ function render(){
     const safe_title=esc(ep.title);
     const safe_desc=esc(ep.desc);
     const safe_art=esc(ep.art);
-    const safe_apple=esc(ep.apple);
+    // RSS 只給得到 SoundOn 播放頁；Apple 按鈕一律連真正的 Apple Podcast 節目頁
+    const safe_soundon=esc(ep.soundon||ep.apple||'');
+    const APPLE_SHOW='https://podcasts.apple.com/podcast/1620760720';
     const safe_spot=esc(ep.spot);
     const safe_date=esc(fmtDate(ep.date));
     return `<div class="ep-card">
@@ -251,7 +255,8 @@ function render(){
       </div>
       <div class="ep-actions">
         <button class="ep-btn play" onclick="playEp(${filtered.indexOf(ep)})">▶ 播放</button>
-        <a class="ep-btn apple" href="${safe_apple}" target="_blank" rel="noopener">🍎 Apple</a>
+        ${safe_soundon?`<a class="ep-btn soundon" href="${safe_soundon}" target="_blank" rel="noopener">▶ SoundOn</a>`:''}
+        <a class="ep-btn apple" href="${APPLE_SHOW}" target="_blank" rel="noopener">🍎 Apple</a>
         <a class="ep-btn spotify" href="${safe_spot}" target="_blank" rel="noopener">🎵 Spotify</a>
       </div>
     </div>`;
