@@ -61,6 +61,8 @@ module.exports = {
   updatePost: (id, patch) => req('PATCH', `/api/admin/posts/${id}`, { admin: true, body: patch }).then((r) => r.post),
   // 後台:刪除
   deletePost: (id) => req('DELETE', `/api/admin/posts/${id}`, { admin: true }),
+  // 後台:數據分析（每日瀏覽/訂閱時序）
+  getStats: () => req('GET', '/api/admin/stats', { admin: true }),
   // 後台:電子報訂閱者 email 清單
   getSubscribers: () => req('GET', '/api/admin/subscribers', { admin: true }).then((r) => r.subscribers || []),
 };
