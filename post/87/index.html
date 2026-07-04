@@ -19,14 +19,15 @@
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-87.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/87/","headline":"GPT-5.5超級應用時代：OpenAI如何改變企業AI部署終局","description":"OpenAI發表GPT-5.5，宣示AI邁向「超級應用」時代。相比過往模型，GPT-5.5在自主智慧與任務執行能力上有質的躍進。本文分析其技術突破點，以及對台灣企業AI轉型的深遠影響。","datePublished":"2026-04-28","dateModified":"2026-04-28","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/87/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/87/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-87.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"GPT-5.5超級應用時代：OpenAI如何改變企業AI部署終局","item":"https://operation.tw/post/87/"}]}]}</script>
 <script>
-// 透明載入 SPA 並停留在此 URL（讓 handleRoute() 開啟正確文章）
+// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
+// 瀏覽數照計：向 Worker 發 beacon。
 (function(){
-  var s=document.createElement('script');
-  s.src='/';
-  var slug="87";
-  // GitHub Pages SPA 相容：透過 sessionStorage 傳遞路由
-  try{sessionStorage.setItem('spa_route','/post/'+encodeURIComponent(slug));}catch(e){}
-  window.location.replace('/?/post/'+encodeURIComponent(slug));
+  try{
+    fetch('https://operation-tw-api.survry-123-jin.workers.dev/api/views/post',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({id:87})
+    }).catch(function(){});
+  }catch(e){}
 })();
 </script>
 <style>
