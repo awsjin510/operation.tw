@@ -38,6 +38,7 @@
     // ── 後台（需 Google 登入）──
     me: () => call('/api/admin/me', { admin: true }),
     adminStats: () => call('/api/admin/stats', { admin: true }),
+    adminTraffic: (days) => call('/api/admin/traffic?days=' + (days || 30), { admin: true }),
     adminListPosts: () => call('/api/admin/posts', { admin: true }).then((r) => r.posts || []),
     adminGetPost: (id) => call(`/api/admin/posts/${id}`, { admin: true }).then((r) => r.post),
     adminCreatePosts: (rows) => call('/api/admin/posts', { method: 'POST', admin: true, body: rows }).then((r) => r.posts || []),

@@ -245,6 +245,27 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
       <div class="ch-card" style="margin-top:16px;"><div class="ch-h">💌 訂閱者累積成長</div><div id="ch-subs"></div><div id="ch-subs-t"></div></div>
     </div>
   </div>
+  <div class="ch-grid">
+    <div class="ch-card"><div class="ch-h">⚡ 分類平均瀏覽／篇（內容效率）</div><div id="ch-eff"></div></div>
+    <div class="ch-card"><div class="ch-h">🗓️ 每週發文數（近 12 週）</div><div id="ch-cadence"></div></div>
+  </div>
+  <div class="ch-grid">
+    <div class="ch-card"><div class="ch-h">🆕 新舊文流量貢獻</div><div id="ch-newold"></div><div id="newold-note" style="font-size:.78rem;color:var(--dim);margin-top:8px;"></div></div>
+    <div class="ch-card"><div class="ch-h">🔍 零瀏覽文章盤點</div><div id="ch-zero"></div></div>
+  </div>
+
+  <div class="divider" style="margin:26px 0 8px;"></div>
+  <div class="ch-h" style="font-size:.8rem;">🌐 訪客流量來源（Cloudflare Web Analytics）</div>
+  <div id="traffic-wrap">
+    <div class="ch-grid">
+      <div class="ch-card"><div class="ch-h">↗️ 流量來源</div><div id="ch-ref"></div></div>
+      <div>
+        <div class="ch-card"><div class="ch-h">🤖 AI 引擎轉介（GEO）</div><div id="ch-ai"></div></div>
+        <div class="ch-card" style="margin-top:16px;"><div class="ch-h">🌏 訪客地區</div><div id="ch-geo"></div></div>
+      </div>
+    </div>
+  </div>
+
   <div id="an-err" style="display:none;color:#ff8fa0;font-size:.85rem;margin-top:10px;"></div>
 </div>
 
@@ -671,6 +692,7 @@ function anRange(d,btn){
   document.querySelectorAll('.an-range').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderAnCharts();
+  loadTraffic();
 }
 async function renderAnalytics(){
   const err=document.getElementById('an-err');
@@ -690,6 +712,28 @@ async function renderAnalytics(){
   setText('an-posts',D.posts.filter(p=>p.status==='published').length);
   setText('an-subs',(s.subscriber_days||[]).reduce((n,d)=>n+(d.n||0),0));
   renderAnCharts();
+  loadTraffic();
+}
+// ── B 組：Cloudflare 訪客來源（Worker 代理）──
+const AI_HOST_RE=/(chatgpt|openai|perplexity|gemini|bard|copilot|claude\.ai|you\.com|phind|poe\.com|duckduckgo|kagi)/i;
+async function loadTraffic(){
+  const C=window.AdminCharts,wrap=document.getElementById('traffic-wrap');
+  const days=AN.days||30;
+  let t;
+  try{t=await api.adminTraffic(days>0?Math.min(days,90):90);}
+  catch(e){wrap.querySelector('#ch-ref').innerHTML='<div style="color:var(--dim);font-size:.82rem;padding:20px;">無法載入：'+esc(e.message)+'</div>';return;}
+  if(t.error){
+    document.getElementById('ch-ref').innerHTML='<div style="color:var(--dim);font-size:.82rem;padding:16px;line-height:1.6;">⚠ '+esc(t.message||t.error)+'<br><span style="font-size:.75rem;">（後台流量來源需 CF token 具 Analytics:Read 權限 + 重新部署 Worker；不影響其他圖表）</span></div>';
+    document.getElementById('ch-ai').innerHTML='';document.getElementById('ch-geo').innerHTML='';return;
+  }
+  const refs=(t.referers||[]).filter(r=>r.host);
+  C.hBarChart(document.getElementById('ch-ref'),refs.slice(0,8).map(r=>({label:r.host,value:r.count})),{color:'#0092ad',label:'瀏覽'});
+  const ai=refs.filter(r=>AI_HOST_RE.test(r.host));
+  const aiSum=ai.reduce((n,r)=>n+r.count,0);
+  document.getElementById('ch-ai').innerHTML=ai.length
+    ? '<div style="font-size:1.4rem;font-weight:700;color:#8464ff;">'+aiSum+' 次</div>'+ai.map(r=>'<div style="font-size:.85rem;color:var(--text);margin-top:4px;">'+esc(r.host)+' — <b>'+r.count+'</b></div>').join('')
+    : '<div style="color:var(--dim);font-size:.82rem;padding:10px 0;">今日尚無 AI 引擎轉介 — 持續累積中</div>';
+  C.hBarChart(document.getElementById('ch-geo'),(t.countries||[]).filter(c=>c.country).slice(0,6).map(c=>({label:c.country,value:c.count})),{color:'#8464ff',label:'瀏覽'});
 }
 function renderAnCharts(){
   const s=AN.stats;if(!s)return;
@@ -722,6 +766,29 @@ function renderAnCharts(){
   const subSeries=(s.subscriber_days||[]).map(d=>({date:d.date,value:(cum+=d.n||0)}));
   C.lineChart(document.getElementById('ch-subs'),subSeries,{color:'#8464ff',label:'累積訂閱',height:180});
   document.getElementById('ch-subs-t').innerHTML=subSeries.length?C.dataTable(subSeries.map(d=>[d.date,d.value]),['日期','累積訂閱']):'';
+
+  const pub=D.posts.filter(p=>p.status==='published');
+  // A1 分類平均瀏覽/篇
+  const eff=cats.map(c=>{const ps=pub.filter(p=>p.category===c);const v=ps.reduce((n,p)=>n+(p.views||0),0);return{label:c,value:ps.length?Math.round(v/ps.length):0};});
+  C.catBarChart(document.getElementById('ch-eff'),eff,{label:'平均瀏覽',height:200});
+  // A2 每週發文（近 12 週）
+  const wk={};
+  pub.forEach(p=>{const d=new Date(p.date);if(isNaN(d))return;const day=(d.getDay()+6)%7;const mon=new Date(d);mon.setDate(d.getDate()-day);wk[mon.toISOString().slice(0,10)]=(wk[mon.toISOString().slice(0,10)]||0)+1;});
+  const weeks=Object.keys(wk).sort().slice(-12).map(k=>({label:k,value:wk[k]}));
+  C.catBarChart(document.getElementById('ch-cadence'),weeks,{color:'#0092ad',shortLabel:true,label:'發文',height:200});
+  // A3 新舊文貢獻（近30天發布 vs 更早）
+  const cut=new Date(Date.now()-30*864e5).toISOString().slice(0,10);
+  const nv=pub.filter(p=>p.date>=cut).reduce((n,p)=>n+(p.views||0),0);
+  const ov=pub.filter(p=>p.date<cut).reduce((n,p)=>n+(p.views||0),0);
+  C.hBarChart(document.getElementById('ch-newold'),[{label:'近 30 天發布',value:nv},{label:'30 天前發布',value:ov}],{color:'#8464ff',label:'總瀏覽'});
+  const tv=nv+ov;
+  document.getElementById('newold-note').textContent=tv?('新文佔總瀏覽 '+Math.round(nv/tv*100)+'%；常青（舊文）佔 '+Math.round(ov/tv*100)+'%'):'';
+  // A4 零瀏覽盤點
+  const zero=pub.filter(p=>!(p.views>0)).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const zEl=document.getElementById('ch-zero');
+  zEl.innerHTML='<div style="font-size:1.6rem;font-weight:700;color:'+(zero.length?'#ffb454':'#7ba100')+';">'+zero.length+' 篇</div>'
+    +'<div style="font-size:.78rem;color:var(--dim);margin:2px 0 10px;">尚無任何瀏覽 — 可回填 FAQ／改標題／轉發社群</div>'
+    +(zero.length?('<div style="max-height:180px;overflow:auto;">'+zero.slice(0,50).map(p=>'<div style="padding:4px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.82rem;"><a href="/post/'+(p.slug||p.id)+'/" target="_blank" style="color:#7fb8ff;text-decoration:none;">'+esc(p.title)+'</a> <span style="color:var(--dim);">· '+esc(p.category)+'</span></div>').join('')+(zero.length>50?'<div style="color:var(--dim);font-size:.75rem;padding-top:6px;">…還有 '+(zero.length-50)+' 篇</div>':'')+'</div>'):'<div style="color:#7ba100;font-size:.85rem;">🎉 每篇文章都有瀏覽</div>');
 }
 
 // ── POST LIST ──
