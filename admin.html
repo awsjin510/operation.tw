@@ -158,9 +158,17 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:var(--bg2);}
 ::-webkit-scrollbar-thumb{background:rgba(0,245,255,.2);}
+/* ── ANALYTICS ── */
+.ch-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:16px 18px;margin-top:16px;}
+.ch-h{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;}
+.ch-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;align-items:start;}
+@media(max-width:900px){.ch-grid{grid-template-columns:1fr;}}
+.an-range{font-family:'Share Tech Mono',monospace;font-size:12px;padding:6px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:none;color:var(--dim);cursor:pointer;}
+.an-range.active{border-color:#0092ad;color:#4dd8f0;background:rgba(0,146,173,.12);}
 </style>
 <script src="/js/api-config.js"></script>
 <script src="/js/api.js"></script>
+<script src="/js/admin-charts.js"></script>
 <script src="https://unpkg.com/dompurify@3.2.4/dist/purify.min.js"></script>
 </head>
 <body>
@@ -174,6 +182,7 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
   <nav class="sb-nav">
     <div class="sb-section">內容</div>
     <button class="sb-item active" onclick="nav('dashboard')" id="nav-dashboard"><span class="si">📊</span>儀表板</button>
+    <button class="sb-item" onclick="nav('analytics')" id="nav-analytics"><span class="si">📈</span>數據分析</button>
     <button class="sb-item" onclick="nav('posts')" id="nav-posts"><span class="si">📝</span>文章管理</button>
     <button class="sb-item" onclick="nav('editor')" id="nav-editor"><span class="si">✏️</span>新增文章</button>
     <div class="sb-section">頁面</div>
@@ -211,6 +220,32 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
   <div class="divider"></div>
   <div style="margin-bottom:14px;font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;">最近文章</div>
   <div id="ds-recent"></div>
+</div>
+
+<!-- ANALYTICS -->
+<div class="panel" id="p-analytics">
+  <div class="panel-title">數據分析</div>
+  <div class="panel-sub">// ANALYTICS — 全站瀏覽、內容與訂閱成效</div>
+  <div class="stat-row">
+    <div class="stat-card"><div class="sn" id="an-total">–</div><div class="sl">總瀏覽</div></div>
+    <div class="stat-card"><div class="sn" id="an-today">–</div><div class="sl">今日瀏覽</div></div>
+    <div class="stat-card"><div class="sn" id="an-posts">–</div><div class="sl">已發布文章</div></div>
+    <div class="stat-card"><div class="sn" id="an-subs">–</div><div class="sl">訂閱者</div></div>
+  </div>
+  <div class="an-filter" style="display:flex;gap:8px;margin:18px 0 6px;">
+    <button class="an-range active" data-d="30" onclick="anRange(30,this)">近 30 天</button>
+    <button class="an-range" data-d="90" onclick="anRange(90,this)">近 90 天</button>
+    <button class="an-range" data-d="0" onclick="anRange(0,this)">全部</button>
+  </div>
+  <div class="ch-card"><div class="ch-h">📈 每日瀏覽趨勢</div><div id="ch-views"></div><div id="ch-views-t"></div></div>
+  <div class="ch-grid">
+    <div class="ch-card"><div class="ch-h">🏆 熱門文章 Top 10（瀏覽數）</div><div id="ch-top"></div></div>
+    <div>
+      <div class="ch-card"><div class="ch-h">📂 分類文章數</div><div id="ch-cat"></div></div>
+      <div class="ch-card" style="margin-top:16px;"><div class="ch-h">💌 訂閱者累積成長</div><div id="ch-subs"></div><div id="ch-subs-t"></div></div>
+    </div>
+  </div>
+  <div id="an-err" style="display:none;color:#ff8fa0;font-size:.85rem;margin-top:10px;"></div>
 </div>
 
 <!-- POSTS -->
@@ -609,6 +644,7 @@ function nav(id){
   document.getElementById('p-'+id).classList.add('active');
   const nb=document.getElementById('nav-'+id);if(nb)nb.classList.add('active');
   if(id==='dashboard')renderDash();
+  if(id==='analytics')renderAnalytics();
   if(id==='posts')renderPostList();
   if(id==='editor'&&!document.getElementById('ed-id').value)newPost();
   if(id==='homepage')loadHomepage();
@@ -626,6 +662,66 @@ function renderDash(){
     const c=CAT_COLOR[p.category]||'#aaa';
     return '<div class="post-row"><span class="pr-cat" style="border-color:'+c+';color:'+c+';">'+esc(p.category)+'</span><span class="pr-title">'+esc(p.title)+'</span><span class="pr-date">'+esc(p.date)+'</span><span class="pr-status '+(p.status==='published'?'pub':'dft')+'">'+(p.status==='published'?'已發布':'草稿')+'</span><div class="pr-actions"><button class="pr-btn" onclick="editPost('+p.id+')">編輯</button></div></div>';
   }).join('');
+}
+
+// ── ANALYTICS（數據分析）──
+let AN={stats:null,days:30};
+function anRange(d,btn){
+  AN.days=d;
+  document.querySelectorAll('.an-range').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAnCharts();
+}
+async function renderAnalytics(){
+  const err=document.getElementById('an-err');
+  err.style.display='none';
+  if(!AN.stats){
+    try{AN.stats=await api.adminStats();}
+    catch(e){
+      err.textContent='⚠ 無法載入統計資料：'+e.message+'（若剛更新 Worker，請先跑 Deploy Cloudflare）';
+      err.style.display='block';return;
+    }
+  }
+  const s=AN.stats;
+  const today=new Date().toISOString().slice(0,10);
+  const todayRow=(s.daily_views||[]).find(d=>d.date===today);
+  setText('an-total',Number(s.total_views||0).toLocaleString());
+  setText('an-today',todayRow?todayRow.count:0);
+  setText('an-posts',D.posts.filter(p=>p.status==='published').length);
+  setText('an-subs',(s.subscriber_days||[]).reduce((n,d)=>n+(d.n||0),0));
+  renderAnCharts();
+}
+function renderAnCharts(){
+  const s=AN.stats;if(!s)return;
+  const C=window.AdminCharts;
+  // 每日瀏覽：補齊缺日為 0，取範圍
+  const byDate={};(s.daily_views||[]).forEach(d=>byDate[d.date]=d.count);
+  const dates=Object.keys(byDate).sort();
+  let series=[];
+  if(dates.length){
+    const end=new Date();const start=new Date(dates[0]);
+    for(let t=new Date(start);t<=end;t.setDate(t.getDate()+1)){
+      const k=t.toISOString().slice(0,10);
+      series.push({date:k,value:byDate[k]||0});
+    }
+    if(AN.days>0)series=series.slice(-AN.days);
+  }
+  C.lineChart(document.getElementById('ch-views'),series,{color:'#0092ad',label:'瀏覽',height:230});
+  document.getElementById('ch-views-t').innerHTML=series.length?C.dataTable(series.map(d=>[d.date,d.value]),['日期','瀏覽']):'';
+  // Top 10 文章
+  const top=[...D.posts].filter(p=>p.status==='published'&&p.views>0)
+    .sort((a,b)=>(b.views||0)-(a.views||0)).slice(0,10)
+    .map(p=>({label:p.title,value:p.views||0,href:'/post/'+(p.slug||p.id)+'/'}));
+  C.hBarChart(document.getElementById('ch-top'),top,{color:'#0092ad',label:'瀏覽'});
+  // 分類文章數（固定色序）
+  const cats=['AI','雲端','資安','閱讀','成長'];
+  const catData=cats.map(c=>({label:c,value:D.posts.filter(p=>p.status==='published'&&p.category===c).length}));
+  C.catBarChart(document.getElementById('ch-cat'),catData,{label:'文章數',height:200});
+  // 訂閱者累積
+  let cum=0;
+  const subSeries=(s.subscriber_days||[]).map(d=>({date:d.date,value:(cum+=d.n||0)}));
+  C.lineChart(document.getElementById('ch-subs'),subSeries,{color:'#8464ff',label:'累積訂閱',height:180});
+  document.getElementById('ch-subs-t').innerHTML=subSeries.length?C.dataTable(subSeries.map(d=>[d.date,d.value]),['日期','累積訂閱']):'';
 }
 
 // ── POST LIST ──
