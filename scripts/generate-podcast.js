@@ -86,7 +86,7 @@ async function main() {
       desc: item.contentSnippet || item.content || '',
       url: (item.enclosure && item.enclosure.url) || '',
       art,
-      apple: item.link || '',
+      soundon: item.link || '', // RSS 的 item.link 是 SoundOn 播放頁（非 Apple）
       spot: spotifySearchUrl(item.title),
     };
   });
