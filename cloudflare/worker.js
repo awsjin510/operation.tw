@@ -154,9 +154,26 @@ async function route(request, env, url) {
 
     if (p === '/api/admin/subscribers' && m === 'GET') {
       const { results } = await env.DB.prepare(
-        `select email from subscribers order by created_at`
+        `select email, source, created_at from subscribers order by created_at desc`
       ).all();
-      return json({ subscribers: (results || []).map(r => r.email) });
+      return json({ subscribers: results || [] });
+    }
+
+    if (p === '/api/admin/subscribers' && m === 'DELETE') {
+      const e = String(url.searchParams.get('email') || '').trim().toLowerCase();
+      if (!e) throw httpError(400, 'missing email');
+      const r = await env.DB.prepare(`delete from subscribers where email=?`).bind(e).run();
+      return json({ ok: true, deleted: (r.meta && r.meta.changes) || 0 });
+    }
+
+    if (p === '/api/admin/subscribers' && m === 'POST') {
+      const b = await readJson(request);
+      const e = String(b.email || '').trim().toLowerCase();
+      if (!e || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)) throw httpError(400, 'invalid email');
+      const r = await env.DB.prepare(
+        `insert into subscribers (email, source) values (?, 'admin') on conflict(email) do nothing`
+      ).bind(e).run();
+      return json({ ok: true, added: (r.meta && r.meta.changes) ? 1 : 0 });
     }
 
     if (p === '/api/admin/stats' && m === 'GET') {

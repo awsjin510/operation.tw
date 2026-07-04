@@ -64,5 +64,6 @@ module.exports = {
   // 後台:數據分析（每日瀏覽/訂閱時序）
   getStats: () => req('GET', '/api/admin/stats', { admin: true }),
   // 後台:電子報訂閱者 email 清單
-  getSubscribers: () => req('GET', '/api/admin/subscribers', { admin: true }).then((r) => r.subscribers || []),
+  getSubscribers: () => req('GET', '/api/admin/subscribers', { admin: true })
+    .then((r) => (r.subscribers || []).map((s) => (typeof s === 'string' ? s : s.email)).filter(Boolean)),
 };
