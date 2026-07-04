@@ -159,6 +159,26 @@ async function route(request, env, url) {
       return json({ subscribers: (results || []).map(r => r.email) });
     }
 
+    if (p === '/api/admin/stats' && m === 'GET') {
+      // 後台數據分析：每日瀏覽時序、總瀏覽、訂閱者每日新增
+      const [daily, total, subs] = await Promise.all([
+        env.DB.prepare(
+          `select id as date, count from site_stats
+           where id glob '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' order by id`
+        ).all(),
+        env.DB.prepare(`select count from site_stats where id='total'`).first(),
+        env.DB.prepare(
+          `select date(created_at) as date, count(*) as n from subscribers
+           group by date(created_at) order by date`
+        ).all(),
+      ]);
+      return json({
+        total_views: (total && total.count) || 0,
+        daily_views: daily.results || [],
+        subscriber_days: subs.results || [],
+      });
+    }
+
     if (p === '/api/admin/backup' && m === 'GET') {
       const [posts, settings, stats, subs] = await Promise.all([
         env.DB.prepare(`select * from posts order by id`).all(),
