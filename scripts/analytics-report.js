@@ -41,7 +41,7 @@ async function cfGraphQL() {
       cur: rumPageloadEventsAdaptiveGroups(filter:${F(start, now)},limit:1){count sum{visits}}
       prev: rumPageloadEventsAdaptiveGroups(filter:${F(prevStart, start)},limit:1){count sum{visits}}
       topPages: rumPageloadEventsAdaptiveGroups(filter:${F(start, now)},limit:8,orderBy:[count_DESC]){count dimensions{requestPath}}
-      topReferers: rumPageloadEventsAdaptiveGroups(filter:${F(start, now)},limit:6,orderBy:[count_DESC]){count dimensions{refererHost}}
+      topReferers: rumPageloadEventsAdaptiveGroups(filter:${F(start, now)},limit:25,orderBy:[count_DESC]){count dimensions{refererHost}}
       topCountries: rumPageloadEventsAdaptiveGroups(filter:${F(start, now)},limit:6,orderBy:[count_DESC]){count dimensions{countryName}}
     }}
   }`;
@@ -58,10 +58,19 @@ async function cfGraphQL() {
   return acc;
 }
 
-function mdList(list, dimKey) {
-  const items = (list || []).filter((r) => r.dimensions?.[dimKey]);
+function mdList(list, dimKey, limit = 6) {
+  const items = (list || []).filter((r) => r.dimensions?.[dimKey]).slice(0, limit);
   if (!items.length) return '_（無資料）_';
   return items.map((r) => `1. \`${r.dimensions[dimKey]}\` — **${r.count}**`).join('\n');
+}
+
+// AI 搜尋 / 助理引擎的 referer host 特徵（判斷 GEO 帶來的流量）
+const AI_HOST_RE = /(chatgpt|openai|perplexity|gemini|bard|copilot|claude\.ai|you\.com|phind|poe\.com|bing\.com|duckduckgo|arc\.net|kagi)/i;
+function aiReferers(list) {
+  const items = (list || []).filter((r) => AI_HOST_RE.test(r.dimensions?.refererHost || ''));
+  if (!items.length) return '_（今日無 AI 引擎轉介 — 持續累積中）_';
+  const sum = items.reduce((n, r) => n + (r.count || 0), 0);
+  return `**合計 ${sum} 次**\n` + items.map((r) => `1. \`${r.dimensions.refererHost}\` — **${r.count}**`).join('\n');
 }
 
 function buildMarkdown(acc, dateStr) {
@@ -81,6 +90,9 @@ ${mdList(acc.topPages, 'requestPath')}
 
 **↗️ 流量來源**
 ${mdList(acc.topReferers, 'refererHost')}
+
+**🤖 AI 引擎轉介（GEO）**
+${aiReferers(acc.topReferers)}
 
 **🌏 訪客地區**
 ${mdList(acc.topCountries, 'countryName')}
