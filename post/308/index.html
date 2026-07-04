@@ -19,14 +19,15 @@
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-308.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/308/","headline":"AI經濟困局：為何擴張速度是網路3倍，獲利卻遲遲未爆發？","description":"AI技術擴張速度遠超網路時代，卻只佔全球經濟0.42%，獲利難題成謎。本文探討AI經濟現狀背後的真相：從投資過熱、商業模式未成熟，到應用場景落地困難，台灣科技業應如何把握機會？","datePublished":"2026-07-04","dateModified":"2026-07-04","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/308/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/308/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-308.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI經濟困局：為何擴張速度是網路3倍，獲利卻遲遲未爆發？","item":"https://operation.tw/post/308/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/308/#faq","mainEntity":[{"@type":"Question","name":"為什麼OpenAI和Google還在虧錢投資AI，卻還要繼續燒錢？","acceptedAnswer":{"@type":"Answer","text":"他們在賭未來市場規模和生態地位。誰先建立用戶習慣和應用生態，誰就能在商業模式成熟後掌握定價權。短期虧損是為了長期壟斷。"}},{"@type":"Question","name":"台灣企業現在投資AI應該從哪裡開始？","acceptedAnswer":{"@type":"Answer","text":"建議先從自身最痛的業務流程開始——例如客服、內容生成、資料整理——用現成的AI工具小規模測試，快速驗證價值，而非大規模自建模型。"}},{"@type":"Question","name":"AI經濟占比0.42%未來會不會快速增長到20-30%？","acceptedAnswer":{"@type":"Answer","text":"不太可能在5年內達到。AI的滲透會比網路時代緩慢，因為涉及產業改造、監管調整、人才培養等長期過程，但一旦達到，增長會持續而穩定。"}}]}]}</script>
 <script>
-// 透明載入 SPA 並停留在此 URL（讓 handleRoute() 開啟正確文章）
+// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
+// 瀏覽數照計：向 Worker 發 beacon。
 (function(){
-  var s=document.createElement('script');
-  s.src='/';
-  var slug="308";
-  // GitHub Pages SPA 相容：透過 sessionStorage 傳遞路由
-  try{sessionStorage.setItem('spa_route','/post/'+encodeURIComponent(slug));}catch(e){}
-  window.location.replace('/?/post/'+encodeURIComponent(slug));
+  try{
+    fetch('https://operation-tw-api.survry-123-jin.workers.dev/api/views/post',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({id:308})
+    }).catch(function(){});
+  }catch(e){}
 })();
 </script>
 <style>

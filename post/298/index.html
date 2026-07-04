@@ -19,14 +19,15 @@
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-298.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/298/","headline":"AI38｜iPhone 嗶進北捷10年晚到？這不是悠遊卡贏，是被繞過了","description":"2026年北捷開放Apple Pay感應進站，看似台灣支付進步，實則是Apple繞過悠遊卡體系用信用卡授權解套。這背後涉及歐盟DMA反壟斷、iPhone晶片封閉史，以及整個台灣支付產業版圖的重新洗牌。","datePublished":"2026-07-01","dateModified":"2026-07-01","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/298/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/298/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-298.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI38｜iPhone 嗶進北捷10年晚到？這不是悠遊卡贏，是被繞過了","item":"https://operation.tw/post/298/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/298/#faq","mainEntity":[{"@type":"Question","name":"iPhone嗶北捷是虛擬悠遊卡嗎？","acceptedAnswer":{"@type":"Answer","text":"不是。iPhone進站使用的是信用卡授權扣款機制，而不是虛擬悠遊卡儲值。這是Apple與銀行、北捷的繞路解套方案。"}},{"@type":"Question","name":"為什麼台灣比日本晚十年才支援iPhone進站？","acceptedAnswer":{"@type":"Answer","text":"主要原因包括iPhone Secure Element長期被Apple控制、歐盟DMA反壟斷壓力才促使開放，以及台灣票證系統架構老化，升級難度遠高於日本現代票卡系統。"}},{"@type":"Question","name":"Apple Pay進北捷對悠遊卡有什麼影響？","acceptedAnswer":{"@type":"Answer","text":"悠遊卡從核心支付工具淪為備選方案，Apple與銀行成為大贏家。消費者可直接用信用卡進站，不再需要虛擬悠遊卡。"}}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/298/#episode","name":"AI38｜iPhone 嗶進北捷10年晚到？這不是悠遊卡贏，是被繞過了","url":"https://operation.tw/post/298/","datePublished":"2026-07-01","description":"2026年北捷開放Apple Pay感應進站，看似台灣支付進步，實則是Apple繞過悠遊卡體系用信用卡授權解套。這背後涉及歐盟DMA反壟斷、iPhone晶片封閉史，以及整個台灣支付產業版圖的重新洗牌。","image":"https://operation.tw/images/posts/post-298.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":38,"duration":"PT15M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/8a885624-6ddc-4371-9dad-ed2153f0a0b4/rssFileVip.mp3?timestamp=1782948596717","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
-// 透明載入 SPA 並停留在此 URL（讓 handleRoute() 開啟正確文章）
+// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
+// 瀏覽數照計：向 Worker 發 beacon。
 (function(){
-  var s=document.createElement('script');
-  s.src='/';
-  var slug="298";
-  // GitHub Pages SPA 相容：透過 sessionStorage 傳遞路由
-  try{sessionStorage.setItem('spa_route','/post/'+encodeURIComponent(slug));}catch(e){}
-  window.location.replace('/?/post/'+encodeURIComponent(slug));
+  try{
+    fetch('https://operation-tw-api.survry-123-jin.workers.dev/api/views/post',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({id:298})
+    }).catch(function(){});
+  }catch(e){}
 })();
 </script>
 <style>
