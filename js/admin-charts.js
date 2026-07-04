@@ -155,9 +155,11 @@
       const bh = Math.max(3, (d.value / max) * ih);
       const bx = cx - bw / 2, by = P.t + ih - bh, r = 4; // 只圓資料端（頂部）
       const path = `M${bx},${P.t + ih} v-${Math.max(0, bh - r)} a${r},${r} 0 0 1 ${r},-${r} h${bw - 2 * r} a${r},${r} 0 0 1 ${r},${r} v${Math.max(0, bh - r)} z`;
-      bars += `<path class="ch-bar" data-i="${i}" d="${path}" fill="${CAT_COLORS[d.label] || '#0092ad'}" opacity="0.92"/>`
-        + `<text x="${cx}" y="${by - 6}" text-anchor="middle" font-size="11" font-weight="600" fill="${INK}">${fmt(d.value)}</text>`
-        + `<text x="${cx}" y="${H - 10}" text-anchor="middle" font-size="11" fill="${INK_DIM}">${esc(d.label)}</text>`;
+      const fill = opts.color || CAT_COLORS[d.label] || '#0092ad';
+      const lbl = opts.shortLabel ? esc(String(d.label).slice(5)) : esc(d.label);
+      bars += `<path class="ch-bar" data-i="${i}" d="${path}" fill="${fill}" opacity="0.92"/>`
+        + `<text x="${cx}" y="${by - 6}" text-anchor="middle" font-size="10" font-weight="600" fill="${INK}">${fmt(d.value)}</text>`
+        + `<text x="${cx}" y="${H - 10}" text-anchor="middle" font-size="9.5" fill="${INK_DIM}">${lbl}</text>`;
     });
     host.innerHTML = `<svg width="100%" viewBox="0 0 ${W} ${H}" style="display:block">${g}${bars}</svg>`;
     host.querySelectorAll('.ch-bar').forEach((b) => {

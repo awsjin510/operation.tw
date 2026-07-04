@@ -64,6 +64,14 @@ wrangler deploy --config cloudflare/wrangler.toml
 echo "▸ 6/6 設定 SERVICE_TOKEN 機密（即時生效，不需再部署）"
 printf '%s' "$SERVICE_TOKEN" | wrangler secret put SERVICE_TOKEN --config cloudflare/wrangler.toml
 
+# 後台「數據分析」的 Cloudflare Analytics 代理用（有給才設；需 Analytics:Read 權限）
+if [ -n "${CLOUDFLARE_API_TOKEN:-}" ]; then
+  printf '%s' "$CLOUDFLARE_API_TOKEN" | wrangler secret put CLOUDFLARE_API_TOKEN --config cloudflare/wrangler.toml
+fi
+if [ -n "${CLOUDFLARE_ACCOUNT_ID:-}" ]; then
+  printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | wrangler secret put CLOUDFLARE_ACCOUNT_ID --config cloudflare/wrangler.toml
+fi
+
 cat <<EOF
 
 ✅ wrangler 部分完成。
