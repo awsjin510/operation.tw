@@ -439,6 +439,7 @@ function updateSitemap(posts) {
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n';
   xml += `  <url>\n    <loc>${SITE_URL}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
   xml += `  <url>\n    <loc>${SITE_URL}/podcast.html</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+  xml += `  <url>\n    <loc>${SITE_URL}/faq/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
   // 分類主題頁（只列出實際有文章的分類）
   const catSet = new Set(posts.map((p) => p.category).filter((c) => CAT_ICON[c]));
   let catUrls = 0;
@@ -634,6 +635,107 @@ function setText(id,v){
   console.log('  ✓ index.html 修補完成（lang、topic counts、views、靜態文章卡片、noscript）');
 }
 
+// ── 產生 /faq/ 常見問題彙整頁（GEO：高密度問答 + FAQPage 結構化，供 AI 引用）──
+function generateFaqPage(posts, bodies) {
+  const CAT_ORDER = ['AI', '雲端', '資安', '閱讀', '成長'];
+  const byCat = {}; // cat → [{q, a, title, slug}]
+  let total = 0;
+  for (const p of posts) {
+    const faqs = extractFaq(bodies[p.id] || '');
+    if (!faqs.length) continue;
+    const slug = encodeURIComponent(p.slug || p.id);
+    for (const f of faqs) {
+      (byCat[p.category] = byCat[p.category] || []).push({ q: f.q, a: f.a, title: p.title, slug });
+      total++;
+    }
+  }
+  if (!total) return 0;
+
+  const url = `${SITE_URL}/faq/`;
+  const allQa = Object.values(byCat).flat();
+  const graph = [
+    {
+      '@type': 'FAQPage', '@id': `${url}#faq`, url,
+      name: '常見問題彙整 | 操作一下',
+      inLanguage: 'zh-TW',
+      mainEntity: allQa.map(x => ({
+        '@type': 'Question', name: x.q,
+        acceptedAnswer: { '@type': 'Answer', text: x.a }
+      }))
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首頁', item: `${SITE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: '常見問題', item: url }
+      ]
+    }
+  ];
+  const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+
+  const sections = CAT_ORDER.filter(c => byCat[c]).map(cat => {
+    const color = CAT_COLOR[cat] || '#00f5ff';
+    const items = byCat[cat].map(x =>
+      `<div class="qa"><h3 class="q">${esc(x.q)}</h3><p class="a">${esc(x.a)}</p>`
+      + `<a class="src" href="/post/${x.slug}/">出自：${esc(x.title)} →</a></div>`
+    ).join('\n');
+    return `<section class="cat"><h2 style="color:${color};border-color:${color}55">${CAT_ICON[cat] || ''} ${esc(cat)}（${byCat[cat].length}）</h2>${items}</section>`;
+  }).join('\n');
+
+  const desc = `操作一下五大主題（AI、雲端、資安、閱讀、成長）常見問題彙整，共 ${total} 則問答，每題連回原文。`;
+  const html = `<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<title>常見問題彙整（${total} 則問答）| 操作一下</title>
+<meta name="description" content="${esc(desc)}">
+<link rel="canonical" href="${url}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="常見問題彙整 | 操作一下">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:url" content="${url}">
+<meta property="og:image" content="${SITE_URL}/default.png">
+<script type="application/ld+json">${schema}</script>
+<style>
+body{font-family:system-ui,sans-serif;background:#050510;color:#e0e0ff;margin:0;padding:24px;line-height:1.75;}
+.wrap{max-width:800px;margin:0 auto;}
+nav{margin-bottom:24px;font-size:.85rem;color:#9494c2;}
+nav a{color:#00f5ff;text-decoration:none;}
+.hero{border:1px solid rgba(0,245,255,.27);border-radius:12px;padding:24px;background:linear-gradient(180deg,rgba(0,245,255,.08),transparent);margin-bottom:28px;}
+.hero h1{font-size:1.7rem;margin:0 0 8px;color:#fff;}
+.hero p{margin:0;color:#b8b8e0;}
+.cat{margin:32px 0;}
+.cat>h2{font-size:1.25rem;padding-bottom:8px;border-bottom:2px solid;margin-bottom:16px;}
+.qa{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);}
+.q{font-size:1.05rem;color:#fff;margin:0 0 6px;}
+.a{margin:0 0 8px;color:#c4c4e4;}
+.src{font-size:.82rem;color:#7fb8ff;text-decoration:none;}
+.src:hover{text-decoration:underline;}
+.home{display:inline-block;margin-top:24px;color:#00f5ff;text-decoration:none;}
+</style>
+${CF_BEACON}
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="/">操作一下</a> › 常見問題</nav>
+  <header class="hero">
+    <h1>❓ 常見問題彙整</h1>
+    <p>五大主題共 <strong>${total}</strong> 則問答，每題都連回完整文章。</p>
+  </header>
+  <main>${sections}</main>
+  <a class="home" href="/">← 回操作一下首頁</a>
+</div>
+</body>
+</html>`;
+
+  const dir = path.join(ROOT, 'faq');
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, 'index.html'), html);
+  return total;
+}
+
 // ── 主流程 ──────────────────────────────────────────────────────────
 // ── 為封面 JPG 產生 WebP（缺檔才轉；sharp 未安裝則略過，不影響建置）──────
 function ensureCoverWebp() {
@@ -720,6 +822,10 @@ async function main() {
     catCount++;
   }
   console.log(`  ✓ 已產生 ${catCount} 個分類主題頁\n`);
+
+  // 1.9 常見問題彙整頁（GEO：高密度問答供 AI 引用）
+  const faqCount = generateFaqPage(posts, bodies);
+  console.log(faqCount ? `  ✓ /faq/ 常見問題彙整（${faqCount} 則問答）\n` : '  · 無 FAQ 內容，略過 /faq/\n');
 
   // 2. 更新 sitemap.xml & feed.xml
   console.log('🗺️  更新 sitemap.xml & feed.xml...');
