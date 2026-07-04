@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 03 Jul 2026 14:37:42 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 04 Jul 2026 04:08:37 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI經濟困局：為何擴張速度是網路3倍，獲利卻遲遲未爆發？</title>
+    <link>https://operation.tw/post/308/</link>
+    <guid isPermaLink="true">https://operation.tw/post/308/</guid>
+    <description>AI技術擴張速度遠超網路時代，卻只佔全球經濟0.42%，獲利難題成謎。本文探討AI經濟現狀背後的真相：從投資過熱、商業模式未成熟，到應用場景落地困難，台灣科技業應如何把握機會？</description>
+    <category>AI</category>
+    <pubDate>Sat, 04 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>深偽危機衝擊LLM：大語言模型為何面臨「數據崩潰」困局？</title>
     <link>https://operation.tw/post/307/</link>
@@ -158,14 +166,6 @@
     <description>Anthropic最新AI模型Claude Mythos在日本網路出現，正促使日本重新評估其網路防禦策略。本文深入分析這一事件如何反映AI模型滲透防禦系統的新風險，以及台灣企業應如何超前部署資安對策。</description>
     <category>資安</category>
     <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>GLM-5.2開源挑戰：編程AI成本戰如何重塑產業格局</title>
-    <link>https://operation.tw/post/137/</link>
-    <guid isPermaLink="true">https://operation.tw/post/137/</guid>
-    <description>Z.ai發布GLM-5.2開放權重模型，編程能力超越GPT-5.5卻成本僅六分之一。這場AI成本革命不僅衝擊閉源模型壟斷，更改變台灣企業的AI採購決策。本文分析開源模型的技術突破與商業影響。</description>
-    <category>AI</category>
-    <pubDate>Wed, 17 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
