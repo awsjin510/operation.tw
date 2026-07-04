@@ -179,6 +179,44 @@ async function route(request, env, url) {
       });
     }
 
+    if (p === '/api/admin/traffic' && m === 'GET') {
+      // 代理 Cloudflare Web Analytics（RUM）→ 來源/地區/AI 引擎；金鑰留在 Worker 端
+      if (!env.CLOUDFLARE_API_TOKEN || !env.CLOUDFLARE_ACCOUNT_ID) {
+        return json({ error: 'analytics_not_configured', message: '尚未設定 CLOUDFLARE_API_TOKEN／ACCOUNT_ID（請重新部署 Worker）' }, 200);
+      }
+      const days = Math.min(90, Math.max(1, parseInt(url.searchParams.get('days') || '30', 10)));
+      const SITE_TAG = '81a9db35d0634ee983873f7de67c6c4f';
+      const end = new Date();
+      const start = new Date(end.getTime() - days * 86400000);
+      const F = `{siteTag:"${SITE_TAG}",datetime_geq:"${start.toISOString()}",datetime_lt:"${end.toISOString()}"}`;
+      const q = `query { viewer { accounts(filter:{accountTag:"${env.CLOUDFLARE_ACCOUNT_ID}"}) {
+        tot: rumPageloadEventsAdaptiveGroups(filter:${F},limit:1){count sum{visits}}
+        refs: rumPageloadEventsAdaptiveGroups(filter:${F},limit:30,orderBy:[count_DESC]){count dimensions{refererHost}}
+        geo: rumPageloadEventsAdaptiveGroups(filter:${F},limit:10,orderBy:[count_DESC]){count dimensions{countryName}}
+      }}}`;
+      let data;
+      try {
+        const r = await fetch('https://api.cloudflare.com/client/v4/graphql', {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${env.CLOUDFLARE_API_TOKEN}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: q }),
+        });
+        data = await r.json();
+      } catch (e) { return json({ error: 'fetch_failed', message: e.message }, 200); }
+      if (data.errors && data.errors.length) {
+        return json({ error: 'graphql_error', message: '查詢失敗（token 可能缺 Analytics:Read 權限）', detail: data.errors }, 200);
+      }
+      const acc = data.data?.viewer?.accounts?.[0] || {};
+      const tot = acc.tot?.[0] || { count: 0, sum: { visits: 0 } };
+      return json({
+        days,
+        pageviews: tot.count || 0,
+        visits: tot.sum?.visits || 0,
+        referers: (acc.refs || []).map(r => ({ host: r.dimensions.refererHost, count: r.count })),
+        countries: (acc.geo || []).map(r => ({ country: r.dimensions.countryName, count: r.count })),
+      });
+    }
+
     if (p === '/api/admin/backup' && m === 'GET') {
       const [posts, settings, stats, subs] = await Promise.all([
         env.DB.prepare(`select * from posts order by id`).all(),
