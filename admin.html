@@ -187,6 +187,7 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
     <button class="sb-item" onclick="nav('editor')" id="nav-editor"><span class="si">✏️</span>新增文章</button>
     <div class="sb-section">頁面</div>
     <button class="sb-item" onclick="nav('homepage')" id="nav-homepage"><span class="si">🏠</span>首頁設定</button>
+    <button class="sb-item" onclick="nav('subs')" id="nav-subs"><span class="si">💌</span>訂閱管理</button>
     <button class="sb-item" onclick="nav('about')" id="nav-about"><span class="si">👤</span>關於我</button>
     <div class="sb-section">系統</div>
     <button class="sb-item" onclick="nav('data')" id="nav-data"><span class="si">💾</span>資料管理</button>
@@ -445,6 +446,29 @@ textarea{resize:vertical;min-height:90px;line-height:1.7;}
   <div class="btn-row"><button class="btn btn-primary" onclick="saveAbout()">💾 儲存關於我</button></div>
 </div>
 
+<!-- SUBSCRIBERS -->
+<div class="panel" id="p-subs">
+  <div class="panel-title">訂閱管理</div>
+  <div class="panel-sub">// SUBSCRIBERS — 電子報訂閱者名單</div>
+  <div class="stat-row">
+    <div class="stat-card"><div class="sn" id="su-total">–</div><div class="sl">總訂閱者</div></div>
+    <div class="stat-card"><div class="sn" id="su-month">–</div><div class="sl">本月新增</div></div>
+    <div class="stat-card"><div class="sn" id="su-week">–</div><div class="sl">近 7 天</div></div>
+    <div class="stat-card"><div class="sn" id="su-src">–</div><div class="sl">主要來源</div></div>
+  </div>
+  <div style="display:flex;gap:8px;margin:18px 0 6px;flex-wrap:wrap;align-items:center;">
+    <input type="text" id="su-search" placeholder="搜尋 email..." style="flex:1;min-width:160px;" oninput="renderSubList()">
+    <button class="an-range" onclick="copyAllSubs()">📋 複製全部 email</button>
+    <button class="an-range" onclick="exportSubsCsv()">⬇ 匯出 CSV</button>
+  </div>
+  <div style="display:flex;gap:8px;margin-bottom:14px;">
+    <input type="email" id="su-add" placeholder="手動新增訂閱者 email..." style="flex:1;min-width:160px;" onkeydown="if(event.key==='Enter')addSub()">
+    <button class="an-range" onclick="addSub()" style="border-color:#7ba100;color:#a8d94d;">＋ 新增</button>
+  </div>
+  <div id="su-msg" style="display:none;font-size:.82rem;margin-bottom:10px;"></div>
+  <div id="su-list"></div>
+</div>
+
 <!-- DATA -->
 <div class="panel" id="p-data">
   <div class="panel-title">資料管理</div>
@@ -666,6 +690,7 @@ function nav(id){
   const nb=document.getElementById('nav-'+id);if(nb)nb.classList.add('active');
   if(id==='dashboard')renderDash();
   if(id==='analytics')renderAnalytics();
+  if(id==='subs')renderSubs();
   if(id==='posts')renderPostList();
   if(id==='editor'&&!document.getElementById('ed-id').value)newPost();
   if(id==='homepage')loadHomepage();
@@ -789,6 +814,61 @@ function renderAnCharts(){
   zEl.innerHTML='<div style="font-size:1.6rem;font-weight:700;color:'+(zero.length?'#ffb454':'#7ba100')+';">'+zero.length+' 篇</div>'
     +'<div style="font-size:.78rem;color:var(--dim);margin:2px 0 10px;">尚無任何瀏覽 — 可回填 FAQ／改標題／轉發社群</div>'
     +(zero.length?('<div style="max-height:180px;overflow:auto;">'+zero.slice(0,50).map(p=>'<div style="padding:4px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.82rem;"><a href="/post/'+(p.slug||p.id)+'/" target="_blank" style="color:#7fb8ff;text-decoration:none;">'+esc(p.title)+'</a> <span style="color:var(--dim);">· '+esc(p.category)+'</span></div>').join('')+(zero.length>50?'<div style="color:var(--dim);font-size:.75rem;padding-top:6px;">…還有 '+(zero.length-50)+' 篇</div>':'')+'</div>'):'<div style="color:#7ba100;font-size:.85rem;">🎉 每篇文章都有瀏覽</div>');
+}
+
+// ── SUBSCRIBERS（訂閱管理）──
+let SUBS=[];
+async function renderSubs(){
+  const msg=document.getElementById('su-msg');msg.style.display='none';
+  try{SUBS=await api.adminSubscribers();}
+  catch(e){document.getElementById('su-list').innerHTML='<div style="color:#ff8fa0;font-size:.85rem;padding:20px;">無法載入：'+esc(e.message)+'（若剛更新 Worker，請先跑 Deploy Cloudflare）</div>';return;}
+  const now=new Date(),mStart=new Date(now.getFullYear(),now.getMonth(),1).toISOString().slice(0,10);
+  const wStart=new Date(Date.now()-7*864e5).toISOString().slice(0,10);
+  setText('su-total',SUBS.length);
+  setText('su-month',SUBS.filter(s=>(s.created_at||'')>=mStart).length);
+  setText('su-week',SUBS.filter(s=>(s.created_at||'')>=wStart).length);
+  const srcCnt={};SUBS.forEach(s=>{const k=s.source||'homepage';srcCnt[k]=(srcCnt[k]||0)+1;});
+  const topSrc=Object.entries(srcCnt).sort((a,b)=>b[1]-a[1])[0];
+  setText('su-src',topSrc?topSrc[0]:'–');
+  renderSubList();
+}
+function fmtDT(s){if(!s)return'';return String(s).slice(0,16).replace('T',' ');}
+function renderSubList(){
+  const q=(document.getElementById('su-search').value||'').toLowerCase();
+  const rows=SUBS.filter(s=>!q||(s.email||'').toLowerCase().includes(q));
+  const el=document.getElementById('su-list');
+  if(!rows.length){el.innerHTML='<div style="color:var(--dim);font-size:.85rem;padding:24px;text-align:center;">'+(SUBS.length?'查無符合的訂閱者':'目前還沒有訂閱者')+'</div>';return;}
+  el.innerHTML='<div style="overflow:auto;"><table style="width:100%;border-collapse:collapse;font-size:.88rem;">'
+    +'<thead><tr style="color:var(--dim);text-align:left;font-size:.78rem;"><th style="padding:8px 12px 8px 0;">Email</th><th style="padding:8px 12px;">來源</th><th style="padding:8px 12px;">訂閱時間</th><th></th></tr></thead><tbody>'
+    +rows.map(s=>'<tr style="border-top:1px solid rgba(255,255,255,.07);"><td style="padding:8px 12px 8px 0;color:var(--text);word-break:break-all;">'+esc(s.email)+'</td>'
+      +'<td style="padding:8px 12px;color:var(--dim);">'+esc(s.source||'homepage')+'</td>'
+      +'<td style="padding:8px 12px;color:var(--dim);white-space:nowrap;">'+esc(fmtDT(s.created_at))+'</td>'
+      +'<td style="padding:8px 0;text-align:right;"><button class="pr-btn" style="border-color:rgba(255,80,120,.4);color:#ff8fa0;" onclick="delSub(\''+esc(s.email).replace(/'/g,"\\'")+'\')">移除</button></td></tr>').join('')
+    +'</tbody></table></div>';
+}
+function suMsg(text,ok){const m=document.getElementById('su-msg');m.textContent=text;m.style.color=ok?'#a8d94d':'#ff8fa0';m.style.display='block';setTimeout(()=>{m.style.display='none';},3000);}
+async function delSub(email){
+  if(!confirm('確定移除訂閱者 '+email+'？此動作無法復原。'))return;
+  try{await api.adminDeleteSubscriber(email);SUBS=SUBS.filter(s=>s.email!==email);renderSubs();suMsg('已移除 '+email,true);}
+  catch(e){suMsg('移除失敗：'+e.message,false);}
+}
+async function addSub(){
+  const inp=document.getElementById('su-add');const e=(inp.value||'').trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){suMsg('Email 格式不正確',false);return;}
+  try{const r=await api.adminAddSubscriber(e);inp.value='';renderSubs();suMsg(r.added?'已新增 '+e:e+' 已在名單中',true);}
+  catch(e2){suMsg('新增失敗：'+e2.message,false);}
+}
+function copyAllSubs(){
+  const txt=SUBS.map(s=>s.email).join(', ');
+  navigator.clipboard.writeText(txt).then(()=>suMsg('已複製 '+SUBS.length+' 個 email 到剪貼簿',true),()=>suMsg('複製失敗（瀏覽器不支援）',false));
+}
+function exportSubsCsv(){
+  const rows=[['email','source','created_at'],...SUBS.map(s=>[s.email,s.source||'homepage',s.created_at||''])];
+  const csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const blob=new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8;'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='subscribers-'+new Date().toISOString().slice(0,10)+'.csv';a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
 }
 
 // ── POST LIST ──
