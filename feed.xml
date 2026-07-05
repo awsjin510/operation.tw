@@ -5,13 +5,21 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 04 Jul 2026 11:27:02 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 05 Jul 2026 04:37:56 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>AI經濟困局：為何擴張速度是網路3倍，獲利卻遲遲未爆發？</title>
     <link>https://operation.tw/post/308/</link>
     <guid isPermaLink="true">https://operation.tw/post/308/</guid>
     <description>AI技術擴張速度遠超網路時代，卻只佔全球經濟0.42%，獲利難題成謎。本文探討AI經濟現狀背後的真相：從投資過熱、商業模式未成熟，到應用場景落地困難，台灣科技業應如何把握機會？</description>
+    <category>AI</category>
+    <pubDate>Sat, 04 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI39｜Anthropic 48 小時三連發：Sonnet 5、Claude Science 背後的戰略佈局</title>
+    <link>https://operation.tw/post/309/</link>
+    <guid isPermaLink="true">https://operation.tw/post/309/</guid>
+    <description>Anthropic 短時間內公布 Sonnet 5、Fable 5 解禁、Claude Science 三大消息，甚至傳出與三星合作自研晶片。這不只是模型更新，而是 AI 成為戰略物資後，科技大廠競爭版圖的重新洗牌。</description>
     <category>AI</category>
     <pubDate>Sat, 04 Jul 2026 00:00:00 GMT</pubDate>
   </item>
@@ -158,14 +166,6 @@
     <description>法國OVHcloud投入邊緣AI模型開發，瞄準歐洲第二大LLM供應商地位。這場歐洲自主雲端運算的突圍戰，不僅挑戰AWS、Azure雙霸格局，更為台灣企業揭示雲端多元化選擇的新機遇與策略轉向。</description>
     <category>雲端</category>
     <pubDate>Fri, 19 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>日本網路防禦策略轉向：Claude Mythos現蹤背後的AI資安新警訊</title>
-    <link>https://operation.tw/post/138/</link>
-    <guid isPermaLink="true">https://operation.tw/post/138/</guid>
-    <description>Anthropic最新AI模型Claude Mythos在日本網路出現，正促使日本重新評估其網路防禦策略。本文深入分析這一事件如何反映AI模型滲透防禦系統的新風險，以及台灣企業應如何超前部署資安對策。</description>
-    <category>資安</category>
-    <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
