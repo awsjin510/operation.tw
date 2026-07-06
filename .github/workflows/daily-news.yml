@@ -34,9 +34,10 @@ jobs:
         working-directory: scripts
 
       - name: Run auto-post script
-        # 部落格自動發文（依賴 Supabase / Anthropic）與 Podcast 更新互相獨立。
-        # 即使這步因 Supabase 暫時性錯誤（例如 500）失敗，也不該擋下後續的
-        # podcast/sitemap/feed 產生與 commit，否則 episodes.json 會停止更新。
+        id: autopost
+        # 部落格自動發文（依賴 Cloudflare / Anthropic）與 Podcast 更新互相獨立。
+        # 即使這步因暫時性錯誤失敗，也不該擋下後續的 podcast/sitemap/feed 產生與
+        # commit。失敗會由下方的告警步驟開 issue（避免靜默失敗）。
         continue-on-error: true
         env:
           CF_API_BASE: ${{ secrets.CF_API_BASE }}
@@ -108,6 +109,23 @@ jobs:
               sleep $((i * 2))
             done
           fi
+
+      - name: Alert if auto-post silently failed
+        # auto-post 設了 continue-on-error，job 不會進 failure()；這裡專門偵測它
+        # 的 outcome=failure，開/更新 issue，避免每日新聞文靜默停擺。
+        if: steps.autopost.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '[CI] 每日新聞文自動發文失敗（auto-post）';
+            const ex = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'ci-failure', per_page: 10
+            });
+            const body = `auto-post 步驟失敗（continue-on-error，未擋下 podcast/commit）。\n\n[查看 log](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})`;
+            const hit = ex.data.find(i => i.title === title);
+            if (hit) { await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: hit.number, body }); }
+            else { await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title, labels: ['ci-failure'], body }); }
 
       - name: Create issue on failure
         if: failure()
