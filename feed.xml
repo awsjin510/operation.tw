@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 05 Jul 2026 04:37:56 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 06 Jul 2026 04:48:50 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI40｜AI焦慮時代，先別急著學——用才能公式找到你已經有的東西</title>
+    <link>https://operation.tw/post/310/</link>
+    <guid isPermaLink="true">https://operation.tw/post/310/</guid>
+    <description>越學AI越焦慮？問題不在你學得還不夠，而是沒看到自己身上已有的才能。《世界最簡單的才能發現法》用8個提問和3條公式，幫你重新定義才能、找出能耗低區，從被動應戰轉變為主動出擊。</description>
+    <category>閱讀</category>
+    <pubDate>Sun, 05 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI經濟困局：為何擴張速度是網路3倍，獲利卻遲遲未爆發？</title>
     <link>https://operation.tw/post/308/</link>
@@ -158,14 +166,6 @@
     <description>2026年KPMG爆出AI幻覺報告事件，45條引註中有40條是憑空捏造，再次提醒我們：當答案變得又快又便宜，「會問問題」才是真正的稀缺能力。這篇文章整理自《BCG問題解決力》的核心觀點，帶你練就靈魂三問、假說導向與甜蜜點三條思考肌肉，在AI新紀元裡少踩坑、多出擊。</description>
     <category>閱讀</category>
     <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</title>
-    <link>https://operation.tw/post/139/</link>
-    <guid isPermaLink="true">https://operation.tw/post/139/</guid>
-    <description>法國OVHcloud投入邊緣AI模型開發，瞄準歐洲第二大LLM供應商地位。這場歐洲自主雲端運算的突圍戰，不僅挑戰AWS、Azure雙霸格局，更為台灣企業揭示雲端多元化選擇的新機遇與策略轉向。</description>
-    <category>雲端</category>
-    <pubDate>Fri, 19 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
