@@ -146,7 +146,7 @@ async function generatePost(newsData, recentPosts = []) {
 
   const response = await anthropic.messages.create({
     model: 'claude-haiku-4-5-20251001',
-    max_tokens: 2000,
+    max_tokens: 4000,
     messages: [
       {
         role: 'user',
@@ -185,7 +185,12 @@ ${dedupContext}
     ],
   });
 
-  const raw = response.content[0].text.trim();
+  // 若回應被 max_tokens 截斷（stop_reason=max_tokens），JSON 不完整 → 明確報錯
+  if (response.stop_reason === 'max_tokens') {
+    throw new Error('Claude 回應被 max_tokens 截斷（內容過長），請提高上限或縮短要求');
+  }
+  // 去除可能的 ```json 代碼圍欄再抓 JSON
+  const raw = response.content[0].text.trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '');
   const jsonMatch = raw.match(/\{[\s\S]*\}/);
   if (!jsonMatch) throw new Error(`Claude 回應格式錯誤：${raw.slice(0, 300)}`);
 
