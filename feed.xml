@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Mon, 06 Jul 2026 05:53:46 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 07 Jul 2026 04:30:13 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>OpenSand統一AI模型平台：企業該如何抓住AI聚合時代的新機會？</title>
+    <link>https://operation.tw/post/312/</link>
+    <guid isPermaLink="true">https://operation.tw/post/312/</guid>
+    <description>OpenSand推出統一AI模型聚合平台，支援企業部署與AI代理開發。這標誌著雲端運算進入「模型聚合」時代——企業不再被單一廠商綁架，而是能彈性整合多個AI模型。台灣企業該如何應對這波變革？</description>
+    <category>雲端</category>
+    <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>中國GLM-5.2進軍歐美遭資安卡關：台灣企業該如何應對？</title>
     <link>https://operation.tw/post/311/</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/140/</guid>
     <description>Google Cybersecurity Certificate在台灣掀起報名潮，正值AI攻擊全面化的2026年。本文分析這波認證浪潮背後的產業需求，探討台灣資安人才缺口，以及企業如何透過結構化培訓強化防禦能力。</description>
     <category>資安</category>
-    <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>大型語言模型應用全解：從原理到實戰場景的完整指南</title>
-    <link>https://operation.tw/post/141/</link>
-    <guid isPermaLink="true">https://operation.tw/post/141/</guid>
-    <description>隨著LLM技術成熟，企業與開發者面臨選型困境。本文深入解析大型語言模型的核心原理、主流模型差異，以及在台灣各產業的實際應用場景，幫助讀者掌握AI時代的競爭優勢。</description>
-    <category>AI</category>
     <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
