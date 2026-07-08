@@ -5,13 +5,29 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 07 Jul 2026 04:30:13 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 08 Jul 2026 03:52:56 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>歐盟網安新規2026：供應鏈管制升級，台灣科技廠商如何應對？</title>
+    <link>https://operation.tw/post/313/</link>
+    <guid isPermaLink="true">https://operation.tw/post/313/</guid>
+    <description>歐盟擬修訂網路安全法案，強化供應鏈資安管理並限制高風險供應商。這項政策將直接影響台灣晶片、軟體供應商的歐洲市場准入。本文分析新規核心內容，以及台灣企業的因應策略。</description>
+    <category>資安</category>
+    <pubDate>Wed, 08 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>OpenSand統一AI模型平台：企業該如何抓住AI聚合時代的新機會？</title>
     <link>https://operation.tw/post/312/</link>
     <guid isPermaLink="true">https://operation.tw/post/312/</guid>
     <description>OpenSand推出統一AI模型聚合平台，支援企業部署與AI代理開發。這標誌著雲端運算進入「模型聚合」時代——企業不再被單一廠商綁架，而是能彈性整合多個AI模型。台灣企業該如何應對這波變革？</description>
+    <category>雲端</category>
+    <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI41｜Meta Compute 雲端算力服務上線：如何改變 AI 產業競局？</title>
+    <link>https://operation.tw/post/314/</link>
+    <guid isPermaLink="true">https://operation.tw/post/314/</guid>
+    <description>Meta 在 7 月 2 日推出 Meta Compute 雲端服務，以激進定價策略震撼市場，牽動 AWS、GCP、Azure 三大雲廠商的競爭格局。本文拆解 Meta Compute 的商業策略、模型層與算力層的產業分野，以及台灣企業採用時該關注的資安與信任問題。</description>
     <category>雲端</category>
     <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
   </item>
@@ -150,22 +166,6 @@
     <description>SK海力士市值超越三星電子，背後是AI浪潮對高效能記憶體的爆炸性需求。這場晶片爭奪戰如何重塑亞太雲端生態？台灣半導體產業又將面臨什麼機遇與挑戰？</description>
     <category>雲端</category>
     <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI35｜從提示工程到迴圈工程：AI代理時代的工作革命</title>
-    <link>https://operation.tw/post/287/</link>
-    <guid isPermaLink="true">https://operation.tw/post/287/</guid>
-    <description>提示詞時代已經結束。OpenAI和Anthropic的核心開發者不約而同宣告，未來不是寫更好的提示，而是設計能自己寫提示的系統。這集我們深入迴圈工程的核心——它如何改變我們與AI協作的方式，以及企業資安該如何應對24小時不休的AI代理。</description>
-    <category>AI</category>
-    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</title>
-    <link>https://operation.tw/post/140/</link>
-    <guid isPermaLink="true">https://operation.tw/post/140/</guid>
-    <description>Google Cybersecurity Certificate在台灣掀起報名潮，正值AI攻擊全面化的2026年。本文分析這波認證浪潮背後的產業需求，探討台灣資安人才缺口，以及企業如何透過結構化培訓強化防禦能力。</description>
-    <category>資安</category>
-    <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
