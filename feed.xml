@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 08 Jul 2026 03:52:56 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 09 Jul 2026 04:32:07 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>葡萄牙AMALIA模型上線：歐洲自主AI突圍戰，台灣廠商的機會在哪？</title>
+    <link>https://operation.tw/post/315/</link>
+    <guid isPermaLink="true">https://operation.tw/post/315/</guid>
+    <description>葡萄牙推出首個自主研發大型語言模型AMALIA，標誌著歐洲在AI領域的自主化努力升級。面對美中AI競爭格局，這一事件對台灣科技廠商在AI生態中的定位有何啟示？本文深入分析歐洲AI自主策略與台灣的角色機遇。</description>
+    <category>AI</category>
+    <pubDate>Thu, 09 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>歐盟網安新規2026：供應鏈管制升級，台灣科技廠商如何應對？</title>
     <link>https://operation.tw/post/313/</link>
@@ -158,14 +166,6 @@
     <description>2026年資安威脅格局正式進入「AI攻擊全面化」階段。從自動化滲透到智慧型社交工程，攻擊者已掌握生成式AI的威力。台灣企業該如何從被動防守轉向主動防禦？本文拆解最新資安趨勢與實戰佈局策略。</description>
     <category>資安</category>
     <pubDate>Tue, 23 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI記憶體戰爭升溫：SK海力士超越三星背後的雲端晶片革命</title>
-    <link>https://operation.tw/post/285/</link>
-    <guid isPermaLink="true">https://operation.tw/post/285/</guid>
-    <description>SK海力士市值超越三星電子，背後是AI浪潮對高效能記憶體的爆炸性需求。這場晶片爭奪戰如何重塑亞太雲端生態？台灣半導體產業又將面臨什麼機遇與挑戰？</description>
-    <category>雲端</category>
-    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
