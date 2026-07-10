@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 10 Jul 2026 03:52:41 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 10 Jul 2026 04:30:32 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>Neoclouds挑戰雲端三巨頭：AI時代新興勢力如何重塑運算生態？</title>
@@ -13,6 +13,14 @@
     <guid isPermaLink="true">https://operation.tw/post/316/</guid>
     <description>隨著AI運算需求爆炸性增長，新興雲端服務商Neoclouds正在挑戰AWS、Azure、GCP的市場地位。本文深度解析這股新勢力的技術優勢、商業策略，以及對台灣雲端及AI產業的啟示。</description>
     <category>雲端</category>
+    <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI網安成國安等級：美國總統令如何改寫企業防禦戰略？</title>
+    <link>https://operation.tw/post/317/</link>
+    <guid isPermaLink="true">https://operation.tw/post/317/</guid>
+    <description>美國將AI網路安全提升至國家安全議題，意味著AI系統漏洞不再只是技術問題。本文分析這項政策轉變對全球企業、尤其是台灣科技廠商的影響，以及企業應如何調整安全佈局。</description>
+    <category>資安</category>
     <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -158,14 +166,6 @@
     <description>為什麼再怎麼努力薪水還是到頂？這個問題的答案藏在《把時間買回來》這本書裡。從凌晨三點的退婚故事，到「買回率」算法、替身階梯，我們帶你看懂 35-40 歲職場工作者為什麼需要從「我還能做什麼」改成「我還能不做什麼」。</description>
     <category>閱讀</category>
     <pubDate>Fri, 26 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>OpenAI與Anthropic投資者重疊42%：AI雲端新秩序的隱形力量</title>
-    <link>https://operation.tw/post/288/</link>
-    <guid isPermaLink="true">https://operation.tw/post/288/</guid>
-    <description>最新數據揭露OpenAI與Anthropic的投資者有42%重疊，反映出AI時代雲端運算市場的投資邏輯轉變。這種現象背後隱含著什麼策略考量？對台灣雲端產業生態將造成什麼影響？</description>
-    <category>雲端</category>
-    <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
