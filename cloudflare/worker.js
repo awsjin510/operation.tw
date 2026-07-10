@@ -35,11 +35,11 @@ const POST_COLS = ['title', 'category', 'date', 'status', 'excerpt', 'image', 'b
 const LIST_COLS = 'id,title,category,date,status,excerpt,image,views,slug';
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (request.method === 'OPTIONS') return cors(new Response(null, { status: 204 }), request, env);
     try {
-      const res = await route(request, env, url);
+      const res = await route(request, env, url, ctx);
       return cors(res, request, env);
     } catch (err) {
       const status = err.status || 500;
@@ -48,7 +48,7 @@ export default {
   },
 };
 
-async function route(request, env, url) {
+async function route(request, env, url, ctx) {
   const p = url.pathname.replace(/\/+$/, '') || '/';
   const m = request.method;
 
@@ -132,6 +132,10 @@ async function route(request, env, url) {
       `insert into subscribers (email) values (?) on conflict(email) do nothing`
     ).bind(e).run();
     const inserted = (r.meta && r.meta.changes) ? r.meta.changes > 0 : false;
+    // 新訂閱 → 背景寄歡迎信（精選必讀）；寄信失敗不影響訂閱結果
+    if (inserted && env.RESEND_API_KEY && ctx) {
+      ctx.waitUntil(sendWelcomeEmail(env, e, url.origin).catch(() => {}));
+    }
     return json({ result: inserted ? 'subscribed' : 'exists' });
   }
 
@@ -414,6 +418,46 @@ async function readJson(request) {
   try { return await request.json(); } catch { return {}; }
 }
 function httpError(status, msg) { const e = new Error(msg); e.status = status; return e; }
+
+// 訂閱歡迎信：立即寄「精選必讀 5 篇」（訂閱當下熱度最高，第一封信開信率最好）
+async function sendWelcomeEmail(env, email, apiOrigin) {
+  const { results } = await env.DB.prepare(
+    `select id, title, excerpt from posts where status='published' order by views desc limit 5`
+  ).all();
+  const posts = results || [];
+  const eh = (s) => String(s == null ? '' : s).replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
+  const items = posts.map((p, i) =>
+    `<tr><td style="padding:10px 0;border-bottom:1px solid #eee;">
+       <div style="font-size:13px;color:#999;">0${i + 1}</div>
+       <a href="https://operation.tw/post/${p.id}/" style="font-size:16px;font-weight:600;color:#1a1a2e;text-decoration:none;">${eh(p.title)}</a>
+       <div style="font-size:13px;color:#666;margin-top:4px;line-height:1.6;">${eh((p.excerpt || '').slice(0, 80))}…</div>
+     </td></tr>`
+  ).join('');
+  const tok = (await hmacHex(env.SERVICE_TOKEN, email)).slice(0, 32);
+  const unsub = `${apiOrigin}/api/unsubscribe?e=${encodeURIComponent(email)}&t=${tok}`;
+  const html = `<div style="font-family:system-ui,sans-serif;max-width:560px;margin:0 auto;padding:8px;color:#1a1a2e;">
+    <h2 style="margin:16px 0 4px;">🎉 歡迎加入「操作一下」</h2>
+    <p style="color:#555;line-height:1.8;">謝謝你的訂閱！之後每當 Podcast 新單集的延伸文章上線，會第一時間寄到你的信箱——重點整理先行，兩分鐘抓到核心。不發廣告，隨時可退訂。</p>
+    <h3 style="margin:22px 0 6px;font-size:16px;">先從這 5 篇最受歡迎的開始 👇</h3>
+    <table width="100%" cellpadding="0" cellspacing="0">${items}</table>
+    <p style="margin-top:22px;"><a href="https://operation.tw/" style="display:inline-block;background:#0a84ff;color:#fff;text-decoration:none;padding:10px 20px;border-radius:8px;font-size:15px;">逛逛全站 →</a></p>
+    <div style="border-top:1px solid #eee;margin-top:26px;padding-top:14px;color:#aaa;font-size:12px;line-height:1.7;">
+      你收到這封信是因為訂閱了「操作一下」電子報。<br>
+      <a href="${unsub}" style="color:#aaa;">取消訂閱</a> · <a href="https://operation.tw/" style="color:#aaa;">operation.tw</a>
+    </div>
+  </div>`;
+  await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from: env.NEWSLETTER_FROM || '操作一下 <hello@operation.tw>',
+      to: [email],
+      subject: '🎉 歡迎加入操作一下！先從這 5 篇開始',
+      html,
+      headers: { 'List-Unsubscribe': `<${unsub}>`, 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' },
+    }),
+  });
+}
 
 async function hmacHex(key, msg) {
   const k = await crypto.subtle.importKey(
