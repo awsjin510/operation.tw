@@ -71,6 +71,10 @@ fi
 if [ -n "${CLOUDFLARE_ACCOUNT_ID:-}" ]; then
   printf '%s' "$CLOUDFLARE_ACCOUNT_ID" | wrangler secret put CLOUDFLARE_ACCOUNT_ID --config cloudflare/wrangler.toml
 fi
+# 訂閱歡迎信用（有給才設）
+if [ -n "${RESEND_API_KEY:-}" ]; then
+  printf '%s' "$RESEND_API_KEY" | wrangler secret put RESEND_API_KEY --config cloudflare/wrangler.toml
+fi
 
 cat <<EOF
 

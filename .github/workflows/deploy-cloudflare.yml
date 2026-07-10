@@ -39,6 +39,7 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           SEED_SOURCE: ${{ github.event.inputs.reseed == 'true' && 'repo' || 'none' }}
         run: |
           set -o pipefail
