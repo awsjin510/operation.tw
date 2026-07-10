@@ -125,6 +125,15 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 ::selection{background:rgba(0,245,255,.2);}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-thumb{background:rgba(0,245,255,.2);}
+/* 訂閱電子報帶 */
+.pod-nl{border-top:1px solid rgba(0,245,255,.15);border-bottom:1px solid rgba(0,245,255,.15);background:linear-gradient(180deg,rgba(0,245,255,.05),transparent);padding:26px 20px;}
+.pod-nl-inner{max-width:960px;margin:0 auto;display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:space-between;}
+.pod-nl-t{font-weight:700;color:#fff;font-size:1.02rem;}
+.pod-nl-d{color:#a8a8cc;font-size:.85rem;margin-top:4px;max-width:460px;}
+.pod-nl-f{display:flex;gap:8px;flex-wrap:wrap;position:relative;}
+.pod-nl-f input[type=email]{min-width:210px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:10px 12px;color:#fff;font-size:.9rem;}
+.pod-nl-f button{background:linear-gradient(135deg,#00e5ff,#7b61ff);color:#07070d;border:none;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer;}
+.pod-nl-msg{flex-basis:100%;font-size:.8rem;color:#9494c2;min-height:1em;}
 </style>
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
@@ -172,6 +181,21 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
   <div class="stat"><div class="stat-n">2022</div><div class="stat-l">開播年份</div></div>
   <div class="stat"><div class="stat-n">2</div><div class="stat-l">收聽平台</div></div>
 </div>
+</div>
+
+<div class="pod-nl">
+  <div class="pod-nl-inner">
+    <div>
+      <div class="pod-nl-t">💌 每集延伸文章，直接寄到你的信箱</div>
+      <div class="pod-nl-d">聽完想複習？訂閱電子報，新單集的重點整理文章上線就寄給你。不發廣告，隨時退訂。</div>
+    </div>
+    <form class="pod-nl-f" onsubmit="return podNlGo(this)">
+      <input type="email" name="email" required placeholder="your@email.com">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button type="submit">訂閱 →</button>
+      <div class="pod-nl-msg" aria-live="polite"></div>
+    </form>
+  </div>
 </div>
 
 <div class="ep-wrap">
@@ -327,6 +351,25 @@ async function initPodcast(){
 }
 
 initPodcast();
+</script>
+<script>
+// 訂閱電子報（同站內 /api/subscribe，含 honeypot 與頻率限制處理）
+function podNlGo(f){
+  var msg=f.querySelector('.pod-nl-msg'),btn=f.querySelector('button');
+  btn.disabled=true;btn.textContent='送出中…';
+  fetch('https://operation-tw-api.survry-123-jin.workers.dev/api/subscribe',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
+  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
+  .then(function(x){
+    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
+    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
+    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
+    else{msg.textContent='訂閱成功！新單集文章上線會寄給你 ✓';f.email.value='';}
+  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
+  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
+  return false;
+}
 </script>
 </body>
 </html>

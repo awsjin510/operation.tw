@@ -208,14 +208,32 @@ function generatePostPage(post, body, episode, neighbors) {
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
 // 瀏覽數照計：向 Worker 發 beacon。
+var API_BASE='https://operation-tw-api.survry-123-jin.workers.dev';
 (function(){
   try{
-    fetch('https://operation-tw-api.survry-123-jin.workers.dev/api/views/post',{
+    fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:${JSON.stringify(post.id)}})
     }).catch(function(){});
   }catch(e){}
 })();
+// 文末訂閱框
+function nlGo(f){
+  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
+  btn.disabled=true;btn.textContent='送出中…';
+  fetch(API_BASE+'/api/subscribe',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
+  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
+  .then(function(x){
+    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
+    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
+    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
+    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
+  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
+  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
+  return false;
+}
 </script>
 <style>
 body{font-family:system-ui,sans-serif;background:#050510;color:#e0e0ff;margin:0;padding:24px;line-height:1.7;}
@@ -235,6 +253,13 @@ time{color:#9494c2;font-size:.85rem;}
 .post-nav .pn span{display:block;font-size:.78rem;color:#00f5ff;margin-bottom:4px;}
 .post-nav .pn b{display:block;color:#d6d6f0;font-size:.95rem;line-height:1.4;font-weight:500;}
 .post-nav .pn-r{text-align:right;}
+.nl-box{margin:28px 0 8px;padding:20px 22px;border:1px solid rgba(0,245,255,.28);border-radius:12px;background:linear-gradient(180deg,rgba(0,245,255,.06),transparent);}
+.nl-t{font-weight:700;color:#fff;font-size:1.05rem;}
+.nl-d{color:#b8b8e0;font-size:.9rem;margin:6px 0 12px;}
+.nl-f{display:flex;gap:8px;flex-wrap:wrap;position:relative;}
+.nl-f input[type=email]{flex:1;min-width:180px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:10px 12px;color:#fff;font-size:.9rem;}
+.nl-f button{background:linear-gradient(135deg,#00e5ff,#7b61ff);color:#07070d;border:none;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer;}
+.nl-msg{font-size:.82rem;margin-top:8px;min-height:1em;color:#9494c2;}
 .toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
 .toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
 .toc ul{margin:0;padding:0;list-style:none;}
@@ -270,6 +295,16 @@ ${CF_BEACON}
     ${toc}
     <div class="post-body"><!--BODY:START-->${body}<!--BODY:END--></div>
     ${postNav}
+    <div class="nl-box">
+      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
+      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
+      <form class="nl-f" onsubmit="return nlGo(this)">
+        <input type="email" name="email" required placeholder="your@email.com">
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button type="submit">訂閱 →</button>
+      </form>
+      <div class="nl-msg" aria-live="polite"></div>
+    </div>
     <a class="cta" href="/">← 在操作一下看完整體驗 →</a>
   </article>
 </div>
@@ -573,6 +608,10 @@ function patchIndexHtml(posts) {
   html = html.replace(/(累積文章<\/span><span class="v1-stat-v">)[^<]*/, `$1${totalRounded}+`);
   html = html.replace(/(id="s1n"[^>]*>)[^<]*/, `$1${totalRounded}+`);
   html = html.replace(/已累積\d+\+?篇文章/, `已累積${totalRounded}+篇文章`);
+  // 訂閱區「最新一期預覽」→ 指向最新文章
+  if (posts[0]) {
+    html = html.replace(/(id="nl-preview" href=")[^"]*/, `$1/post/${encodeURIComponent(posts[0].slug || posts[0].id)}/`);
+  }
 
   // 2. 主題計數（0 篇 → 實際數字）
   ['雲端', '資安', 'AI', '閱讀', '成長'].forEach(c => {
