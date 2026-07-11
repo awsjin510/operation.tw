@@ -671,6 +671,7 @@ a.hero-cta{text-decoration:none;}
 .ns-today .ns-n{color:var(--purple);text-shadow:0 0 8px rgba(191,0,255,.45);}
 @media(max-width:980px){.nav-stats{display:none;}}
 </style>
+<link rel="stylesheet" href="/homepage-v2.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
 <body>
@@ -1596,7 +1597,7 @@ function resetMeta(){
 /* ── NEWSLETTER ── */
 async function nlSubmit(){
   const inp=document.getElementById('nl-email');
-  const btn=inp.nextElementSibling;
+  const btn=inp.closest('form,.op-form,.v1-nl-form')?.querySelector('button')||inp.parentElement.querySelector('button');
   const email=(inp.value||'').trim();
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
     inp.style.borderColor='var(--pink)';inp.focus();return;
@@ -1714,5 +1715,6 @@ initDB();
 initTilt();
 initScrollFade();
 </script>
+<script src="/homepage-v2.js" defer></script>
 </body>
 </html>
