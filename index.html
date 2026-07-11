@@ -1181,9 +1181,16 @@ async function initDB(){
 
   // 3) 背景只同步「設定」(hp/about/footer)。文章清單一律用靜態 posts.json，
   //    不再每次載入就向後端全表撈 → 大幅降低 API 用量。
-  api.getSettings().then(sm=>{
-    applyData(D.posts||[],sm);
-    setCache(D.posts||[],sm);
+  // 同步「設定」+「即時瀏覽數」：posts.json 的 views 是排程快照（最多落後數小時），
+  // 用輕量的 /api/views/posts 對照表把卡片數字對齊資料庫（舊版 Worker 無此端點時靜默略過）。
+  Promise.all([
+    api.getSettings(),
+    api.getPostViews().catch(()=>null),
+  ]).then(([sm,vm])=>{
+    const posts=D.posts||[];
+    if(vm)posts.forEach(p=>{if(vm[p.id]!=null)p.views=vm[p.id];});
+    applyData(posts,sm);
+    setCache(posts,sm);
     renderHome();
   },e=>console.warn('Settings query error:',e));
 
