@@ -20,7 +20,8 @@ create table if not exists posts (
   body        text    not null default '',
   views       integer not null default 0,
   slug        text,
-  created_at  text    not null default (datetime('now'))
+  created_at  text    not null default (datetime('now')),
+  updated_at  text
 );
 create index if not exists idx_posts_status_date on posts(status, date desc);
 create index if not exists idx_posts_category    on posts(category);
