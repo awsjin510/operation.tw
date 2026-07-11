@@ -56,9 +56,11 @@ ${list}
   const resp = await stream.finalMessage();
 
   if (resp.stop_reason === 'max_tokens') throw new Error('回應被截斷，請提高 max_tokens');
-  const raw = (resp.content[0].text || '').trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '');
+  // 新模型回應可能含 thinking 等非文字區塊，只取 text 區塊
+  const text = resp.content.filter((b) => b.type === 'text').map((b) => b.text).join('');
+  const raw = text.trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '');
   const m = raw.match(/\[[\s\S]*\]/);
-  if (!m) throw new Error('回應格式錯誤：' + raw.slice(0, 200));
+  if (!m) throw new Error(`回應格式錯誤（區塊類型：${resp.content.map((b) => b.type).join(',')}）：` + raw.slice(0, 200));
   const terms = JSON.parse(m[0]);
 
   // 基本驗證 + 清洗
