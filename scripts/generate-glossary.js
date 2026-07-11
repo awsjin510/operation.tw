@@ -26,7 +26,8 @@ async function main() {
   const list = posts.map((p) => `${p.id}|${p.category}|${p.title}`).join('\n');
   console.log(`  ✓ 取得 ${posts.length} 篇文章清單`);
 
-  const resp = await anthropic.messages.create({
+  // max_tokens 大於 8192 時 SDK 要求串流模式（避免 10 分鐘逾時）
+  const stream = anthropic.messages.stream({
     model: MODEL,
     max_tokens: 32000,
     messages: [{
@@ -52,6 +53,7 @@ ${list}
 ]`,
     }],
   });
+  const resp = await stream.finalMessage();
 
   if (resp.stop_reason === 'max_tokens') throw new Error('回應被截斷，請提高 max_tokens');
   const raw = (resp.content[0].text || '').trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '');
