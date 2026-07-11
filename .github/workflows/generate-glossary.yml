@@ -1,0 +1,66 @@
+name: Generate Glossary
+
+# 手動：用 Claude 從全站文章萃取科技術語庫（glossary.json）→ 重建 /glossary/ 頁。
+# 建議：初次跑一次；之後每隔一兩個月重跑，納入新文章的新術語。
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: '生成模型'
+        required: true
+        default: 'claude-sonnet-5'
+        type: choice
+        options:
+          - claude-sonnet-5
+          - claude-haiku-4-5-20251001
+
+permissions:
+  contents: write
+
+jobs:
+  glossary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: scripts
+
+      - name: Generate glossary.json
+        env:
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GLOSSARY_MODEL: ${{ github.event.inputs.model }}
+        run: node scripts/generate-glossary.js
+
+      - name: Rebuild static site
+        env:
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+        run: node scripts/build-static.js
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add glossary.json glossary/ sitemap.xml feed.xml llms.txt llms-full.txt index.html posts.json post/ category/ faq/ images/
+          if git diff --cached --quiet; then
+            echo "無變更"
+          else
+            git commit -m "feat(geo): 生成/更新科技術語庫（/glossary/）"
+            for r in 1 2 3; do
+              if git pull --rebase --autostash origin main && git push; then break; fi
+              echo "push 失敗，重試…"; sleep $((r * 3))
+            done
+          fi

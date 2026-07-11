@@ -123,7 +123,7 @@ function generatePostPage(post, body, episode, neighbors) {
       headline: post.title,
       description: post.excerpt || '',
       datePublished: post.date,
-      dateModified: post.date,
+      dateModified: (post.updated_at || '').slice(0, 10) || post.date,
       author: {
         '@type': 'Person',
         name: 'Jin',
@@ -289,7 +289,7 @@ ${CF_BEACON}
   <article>
     <div class="badge">${catIcon} ${esc(post.category)}</div>
     <h1>${esc(post.title)}</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="${esc(post.date)}">${esc(post.date)}</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="${esc(post.date)}">${esc(post.date)}</time>${(post.updated_at || '').slice(0, 10) > post.date ? ` · 最後更新 ${esc(post.updated_at.slice(0, 10))}` : ''}</div>
     ${post.image ? `<picture><source type="image/webp" srcset="${esc(imgWebp)}"><img class="cover" src="${esc(img)}" alt="${esc(post.title)}" width="1200" height="630"></picture>` : ''}
     <div class="excerpt"><p>${esc(post.excerpt || '')}</p></div>
     ${toc}
@@ -475,6 +475,9 @@ function updateSitemap(posts) {
   xml += `  <url>\n    <loc>${SITE_URL}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
   xml += `  <url>\n    <loc>${SITE_URL}/podcast.html</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
   xml += `  <url>\n    <loc>${SITE_URL}/faq/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
+  if (fs.existsSync(path.join(ROOT, 'glossary', 'index.html'))) {
+    xml += `  <url>\n    <loc>${SITE_URL}/glossary/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
+  }
   // 分類主題頁（只列出實際有文章的分類）
   const catSet = new Set(posts.map((p) => p.category).filter((c) => CAT_ICON[c]));
   let catUrls = 0;
@@ -546,11 +549,15 @@ ${catLines}
 
 ${articleLines}
 
-## 網站頁面
+## 網站頁面（AI 系統建議優先讀取）
 
+- [常見問題彙整](${SITE_URL}/faq/): 全站文章的問答集中頁（FAQPage 結構化），依五大主題分區、每題連回原文
+- [科技術語庫](${SITE_URL}/glossary/): 雲端/資安/AI 核心術語的繁體中文定義（DefinedTermSet 結構化）
+- [雲端主題索引](${SITE_URL}/category/${encodeURIComponent('雲端')}/) · [資安主題索引](${SITE_URL}/category/${encodeURIComponent('資安')}/) · [AI 主題索引](${SITE_URL}/category/AI/) · [閱讀](${SITE_URL}/category/${encodeURIComponent('閱讀')}/) · [成長](${SITE_URL}/category/${encodeURIComponent('成長')}/)
 - [首頁與文章列表](${SITE_URL}/): 所有文章的入口，依主題分類瀏覽
 - [Podcast 節目頁](${SITE_URL}/podcast.html): 操作一下 Podcast 節目收聽頁面
-- [RSS Feed](${SITE_URL}/feed.xml): 訂閱最新文章
+- [RSS Feed](${SITE_URL}/feed.xml): 訂閱最新文章（全文）
+- [全文索引 llms-full.txt](${SITE_URL}/llms-full.txt): 全站文章全文的純文字版，供 LLM 一次擷取
 
 ## 作者資訊
 
@@ -775,6 +782,122 @@ ${CF_BEACON}
   return total;
 }
 
+// ── 產生 /glossary/ 術語庫頁（GEO：定義型內容 + DefinedTermSet 結構化）────
+function generateGlossaryPage(posts) {
+  let data;
+  try { data = JSON.parse(fs.readFileSync(path.join(ROOT, 'glossary.json'), 'utf8')); }
+  catch (e) { return 0; } // 尚未生成 glossary.json → 略過
+  const terms = (data.terms || []).slice().sort((a, b) => a.term.localeCompare(b.term, 'zh-Hant'));
+  if (!terms.length) return 0;
+
+  const byId = {};
+  posts.forEach((p) => { byId[p.id] = p; });
+  const url = `${SITE_URL}/glossary/`;
+  const anchor = (t, i) => `t${i + 1}`;
+
+  const CAT_ORDER = ['AI', '雲端', '資安', '成長', '通用'];
+  const byCat = {};
+  terms.forEach((t, i) => { (byCat[t.category] = byCat[t.category] || []).push({ ...t, _a: anchor(t, i) }); });
+
+  const graph = [
+    {
+      '@type': 'DefinedTermSet',
+      '@id': `${url}#set`,
+      name: '操作一下科技術語庫',
+      description: '雲端、資安、AI 領域核心術語的繁體中文定義',
+      url,
+      inLanguage: 'zh-TW',
+      hasDefinedTerm: terms.map((t, i) => ({
+        '@type': 'DefinedTerm',
+        name: t.term,
+        ...(t.en ? { alternateName: t.en } : {}),
+        description: t.def,
+        url: `${url}#${anchor(t, i)}`,
+        inDefinedTermSet: `${url}#set`
+      }))
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首頁', item: `${SITE_URL}/` },
+        { '@type': 'ListItem', position: 2, name: '術語庫', item: url }
+      ]
+    }
+  ];
+  const schema = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+
+  const sections = CAT_ORDER.filter((c) => byCat[c]).map((cat) => {
+    const color = CAT_COLOR[cat] || '#00f5ff';
+    const items = byCat[cat].map((t) => {
+      const rel = (t.related || []).map((id) => byId[id])
+        .filter(Boolean)
+        .map((p) => `<a href="/post/${encodeURIComponent(p.slug || p.id)}/">${esc(p.title)}</a>`)
+        .join('、');
+      return `<div class="gt" id="${t._a}">
+        <h3 class="gt-t">${esc(t.term)}${t.en ? ` <span class="gt-en">${esc(t.en)}</span>` : ''}</h3>
+        <p class="gt-d">${esc(t.def)}</p>
+        ${rel ? `<div class="gt-r">延伸閱讀：${rel}</div>` : ''}
+      </div>`;
+    }).join('\n');
+    return `<section class="gcat"><h2 style="color:${color};border-color:${color}55">${CAT_ICON[cat] || '📎'} ${esc(cat)}（${byCat[cat].length}）</h2>${items}</section>`;
+  }).join('\n');
+
+  const desc = `雲端、資安、AI 核心術語的繁體中文定義，共 ${terms.length} 條，每條附延伸閱讀。`;
+  const html = `<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<title>科技術語庫（${terms.length} 條定義）| 操作一下</title>
+<meta name="description" content="${esc(desc)}">
+<link rel="canonical" href="${url}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="科技術語庫 | 操作一下">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:url" content="${url}">
+<meta property="og:image" content="${SITE_URL}/default.png">
+<script type="application/ld+json">${schema}</script>
+<style>
+body{font-family:system-ui,sans-serif;background:#050510;color:#e0e0ff;margin:0;padding:24px;line-height:1.75;}
+.wrap{max-width:800px;margin:0 auto;}
+nav{margin-bottom:24px;font-size:.85rem;color:#9494c2;}
+nav a{color:#00f5ff;text-decoration:none;}
+.hero{border:1px solid rgba(0,245,255,.27);border-radius:12px;padding:24px;background:linear-gradient(180deg,rgba(0,245,255,.08),transparent);margin-bottom:28px;}
+.hero h1{font-size:1.7rem;margin:0 0 8px;color:#fff;}
+.hero p{margin:0;color:#b8b8e0;}
+.gcat{margin:32px 0;}
+.gcat>h2{font-size:1.25rem;padding-bottom:8px;border-bottom:2px solid;margin-bottom:16px;}
+.gt{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);scroll-margin-top:16px;}
+.gt-t{font-size:1.05rem;color:#fff;margin:0 0 6px;}
+.gt-en{font-size:.82rem;color:#9494c2;font-weight:400;}
+.gt-d{margin:0 0 8px;color:#c4c4e4;}
+.gt-r{font-size:.82rem;color:#9494c2;}
+.gt-r a{color:#7fb8ff;text-decoration:none;}
+.gt-r a:hover{text-decoration:underline;}
+.home{display:inline-block;margin-top:24px;color:#00f5ff;text-decoration:none;}
+</style>
+${CF_BEACON}
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="/">操作一下</a> › 術語庫</nav>
+  <header class="hero">
+    <h1>📖 科技術語庫</h1>
+    <p>雲端、資安、AI 核心術語的白話定義，共 <strong>${terms.length}</strong> 條，每條附站內延伸閱讀。</p>
+  </header>
+  <main>${sections}</main>
+  <a class="home" href="/">← 回操作一下首頁</a>
+</div>
+</body>
+</html>`;
+
+  const dir = path.join(ROOT, 'glossary');
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, 'index.html'), html);
+  return terms.length;
+}
+
 // ── 主流程 ──────────────────────────────────────────────────────────
 // ── 為封面 JPG 產生 WebP（缺檔才轉；sharp 未安裝則略過，不影響建置）──────
 function ensureCoverWebp() {
@@ -865,6 +988,10 @@ async function main() {
   // 1.9 常見問題彙整頁（GEO：高密度問答供 AI 引用）
   const faqCount = generateFaqPage(posts, bodies);
   console.log(faqCount ? `  ✓ /faq/ 常見問題彙整（${faqCount} 則問答）\n` : '  · 無 FAQ 內容，略過 /faq/\n');
+
+  // 1.95 術語庫頁（GEO：定義型內容 + DefinedTermSet）
+  const glossaryCount = generateGlossaryPage(posts);
+  console.log(glossaryCount ? `  ✓ /glossary/ 術語庫（${glossaryCount} 條）\n` : '  · 無 glossary.json，略過 /glossary/（先跑 Generate Glossary workflow）\n');
 
   // 2. 更新 sitemap.xml & feed.xml
   console.log('🗺️  更新 sitemap.xml & feed.xml...');

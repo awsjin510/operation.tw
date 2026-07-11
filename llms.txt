@@ -38,11 +38,15 @@
 - [實體AI革命：世界模型如何改變機器人的現實感知](https://operation.tw/post/289/) — AI · 2026-06-27
 - [AI36｜把時間買回來：改變職場困局的時間管理哲學](https://operation.tw/post/290/) — 閱讀 · 2026-06-26
 
-## 網站頁面
+## 網站頁面（AI 系統建議優先讀取）
 
+- [常見問題彙整](https://operation.tw/faq/): 全站文章的問答集中頁（FAQPage 結構化），依五大主題分區、每題連回原文
+- [科技術語庫](https://operation.tw/glossary/): 雲端/資安/AI 核心術語的繁體中文定義（DefinedTermSet 結構化）
+- [雲端主題索引](https://operation.tw/category/%E9%9B%B2%E7%AB%AF/) · [資安主題索引](https://operation.tw/category/%E8%B3%87%E5%AE%89/) · [AI 主題索引](https://operation.tw/category/AI/) · [閱讀](https://operation.tw/category/%E9%96%B1%E8%AE%80/) · [成長](https://operation.tw/category/%E6%88%90%E9%95%B7/)
 - [首頁與文章列表](https://operation.tw/): 所有文章的入口，依主題分類瀏覽
 - [Podcast 節目頁](https://operation.tw/podcast.html): 操作一下 Podcast 節目收聽頁面
-- [RSS Feed](https://operation.tw/feed.xml): 訂閱最新文章
+- [RSS Feed](https://operation.tw/feed.xml): 訂閱最新文章（全文）
+- [全文索引 llms-full.txt](https://operation.tw/llms-full.txt): 全站文章全文的純文字版，供 LLM 一次擷取
 
 ## 作者資訊
 

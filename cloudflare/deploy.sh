@@ -34,6 +34,8 @@ PY
 
 echo "▸ 2/6 套用 schema 到 D1"
 wrangler d1 execute "$DB_NAME" --remote --file=cloudflare/schema.sql
+# 既有資料庫的增量遷移（欄位已存在會失敗，屬預期，忽略）
+wrangler d1 execute "$DB_NAME" --remote --command "alter table posts add column updated_at text" 2>/dev/null || echo "  （updated_at 欄位已存在，略過）"
 
 if [ "$SEED_SOURCE" = "none" ]; then
   echo "▸ 3-4/6 略過灌資料（SEED_SOURCE=none，既有資料不動）"
