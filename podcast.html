@@ -112,15 +112,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .pg-btn:hover{border-color:var(--border2);color:var(--mid);}
 .pg-btn.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,245,255,.07);}
 @media(max-width:768px){
+  /* 手機版單集卡片版型交由 podcast-v2.css 全權處理（舊規則會與其打架，把內文壓進縮圖欄） */
   .nav-links{display:none;}
   .hamburger{display:flex;}
   .pc-hero-inner{grid-template-columns:1fr;gap:24px;}
-  .pc-cover{width:120px;height:120px;}
-  .pc-cover-wrap{display:flex;justify-content:center;}
-  .ep-card{grid-template-columns:1fr auto;}
-  .ep-num,.ep-thumb{display:none;}
-  .ep-actions{padding:10px 12px;}
-  .ep-btn{padding:5px 8px;font-size:.56rem;}
 }
 ::selection{background:rgba(0,245,255,.2);}
 ::-webkit-scrollbar{width:4px;}
@@ -290,7 +285,7 @@ function render(){
     const safe_date=esc(fmtDate(ep.date));
     return `<article class="ep-card">
       <div class="ep-num">${String(n).padStart(2,'0')}</div>
-      <img class="ep-thumb" src="${safe_art}" alt="${safe_title}" loading="lazy" onerror="this.style.display='none'">
+      <img class="ep-thumb" src="${safe_art}" alt="${safe_title}" loading="lazy" onerror="this.onerror=null;this.src='/logo.jpg'">
       <div class="ep-info">
         <div class="ep-meta"><span>${safe_date}</span><span class="ep-dur">${fmtDur(ep.dur)}</span></div>
         <h3 class="ep-title">${safe_title}</h3>
