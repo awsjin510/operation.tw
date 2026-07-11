@@ -7,6 +7,7 @@
  *   GET  /api/settings               公開設定 hp/about/footer
  *   POST /api/views/site             網站瀏覽 +1 → { total, today }
  *   POST /api/views/post  {id}       文章瀏覽 +1 → { views }
+ *   GET  /api/views/posts            全站文章即時瀏覽數 { id: views, ... }
  *   POST /api/subscribe   {email}    電子報訂閱 → { result }
  *
  * 管理端點（需授權，前綴 /api/admin）：
@@ -94,6 +95,16 @@ async function route(request, env, url, ctx) {
     let total = 0, day = 0;
     for (const r of results) { if (r.id === 'total') total = r.count; else day = r.count; }
     return json({ total, today: day });
+  }
+
+  // 全站文章即時瀏覽數（輕量：只回 id→views 對照表，供首頁卡片與 posts.json 快照對齊）
+  if (p === '/api/views/posts' && m === 'GET') {
+    const { results } = await env.DB.prepare(
+      `select id, views from posts where status='published'`
+    ).all();
+    const map = {};
+    for (const r of results) map[r.id] = r.views || 0;
+    return json(map);
   }
 
   if (p === '/api/views/post' && m === 'POST') {
