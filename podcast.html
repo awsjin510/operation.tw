@@ -135,6 +135,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .pod-nl-f button{background:linear-gradient(135deg,#00e5ff,#7b61ff);color:#07070d;border:none;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer;}
 .pod-nl-msg{flex-basis:100%;font-size:.8rem;color:#9494c2;min-height:1em;}
 </style>
+<link rel="stylesheet" href="/podcast-v2.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
 <body>
@@ -142,7 +143,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 <div class="nav-inner">
   <a class="nav-logo" href="index.html"><img src="logo.jpg" alt="操作一下" style="height:36px;width:36px;object-fit:cover;border-radius:2px;vertical-align:middle;margin-right:8px;">操作一下</a>
   <div class="nav-links">
-    <a href="index.html">文章</a>
+    <a href="index.html#featured">AI</a>
+    <a href="index.html#topics">Cloud</a>
+    <a href="index.html#topics">Cyber Security</a>
     <a href="podcast.html" class="active">Podcast</a>
     <a href="index.html#about">關於我</a>
   </div>
@@ -150,7 +153,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 </div>
 </nav>
 <div class="mob-menu" id="mob-menu">
-  <a href="index.html" onclick="toggleMob()">文章</a>
+  <a href="index.html#featured" onclick="toggleMob()">AI</a>
+  <a href="index.html#topics" onclick="toggleMob()">Cloud</a>
+  <a href="index.html#topics" onclick="toggleMob()">Cyber Security</a>
   <a href="podcast.html" onclick="toggleMob()">Podcast</a>
   <a href="index.html#about" onclick="toggleMob()">關於我</a>
 </div>
@@ -162,9 +167,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
     <div class="pc-cover-ring"></div>
   </div>
   <div>
-    <div class="pc-badge">🎙 PODCAST // 自媒體頻道</div>
-    <h1 class="pc-title">操作<span>一下</span></h1>
-    <p class="pc-desc">聊職涯、雲端、資安、AI、閱讀、成長。<br>邀請各領域達人，分享他們獨特的「操作心法」。<br>簡單的事情專注做，有一天世界會為了你而感動。</p>
+    <div class="pc-badge">OPERATION PODCAST · SINCE 2022</div>
+    <h1 class="pc-title">用聲音，把科技<span>說清楚。</span></h1>
+    <p class="pc-desc">從 AI、Cloud、Cyber Security 到科技趨勢，陪你在通勤與日常中，掌握複雜議題背後真正重要的脈絡。</p>
     <div class="platform-btns">
       <a class="pb pb-apple" href="https://podcasts.apple.com/podcast/1620760720" target="_blank" rel="noopener">🍎 Apple Podcast</a>
       <a class="pb pb-spotify" href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">🎵 Spotify</a>
@@ -183,7 +188,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 </div>
 </div>
 
-<div class="pod-nl">
+<section class="latest-shell" id="latest-episode" aria-live="polite"></section>
+
+<div class="pod-nl" id="podcast-newsletter">
   <div class="pod-nl-inner">
     <div>
       <div class="pod-nl-t">💌 每集延伸文章，直接寄到你的信箱</div>
@@ -199,6 +206,9 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 </div>
 
 <div class="ep-wrap">
+  <div class="ep-heading">
+    <div><span class="ep-kicker">All episodes</span><h2>探索所有單集</h2><p>搜尋想聽的主題，或從最新內容開始。</p></div>
+  </div>
   <div class="ep-controls">
     <input class="ep-search" type="text" id="ep-q" placeholder="搜尋單集標題或描述..." aria-label="搜尋 Podcast 單集" oninput="filterEps()">
     <select class="ep-sort" id="ep-sort" onchange="filterEps()">
@@ -224,8 +234,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 </div>
 </div>
 
-<footer style="border-top:1px solid var(--border);padding:28px 24px;text-align:center;font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.08em;position:relative;z-index:1;">
-  © 2025 操作一下 · 簡單的事情專注做
+<footer>
+  <div><strong>操作一下 Podcast</strong><span>用聲音，把 AI、雲端與資安說清楚。</span></div>
+  <div class="footer-links"><a href="index.html">首頁</a><a href="https://podcasts.apple.com/podcast/1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a></div>
+  <small>© 2025–2026 操作一下 · operation.tw</small>
 </footer>
 
 <script>
@@ -237,6 +249,13 @@ let page=0;
 
 function fmtDur(m){if(!m)return'';const h=Math.floor(m/60),mn=m%60;return h?`${h}h ${mn}m`:`${mn}m`;}
 function fmtDate(s){const d=new Date(s);return d.toLocaleDateString('zh-TW',{year:'numeric',month:'long',day:'numeric'});}
+
+function renderLatest(){
+  const ep=EPS[0],el=document.getElementById('latest-episode');if(!ep||!el)return;
+  const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  const desc=String(ep.desc||'').replace(/--\s*Hosting provided by SoundOn/i,'').trim();
+  el.innerHTML=`<div class="latest-card"><div class="latest-art-wrap"><img src="${esc(ep.art)}" alt="${esc(ep.title)}" class="latest-art"><span class="latest-pulse"><i></i>最新單集</span></div><div class="latest-copy"><div class="latest-meta">EP.${EPS.length} · ${esc(fmtDate(ep.date))} · ${fmtDur(ep.dur)}</div><h2>${esc(ep.title)}</h2><p>${esc(desc)}</p><div class="latest-actions"><button class="latest-play" onclick="playEp(0)">▶ 立即播放</button>${ep.soundon?`<a href="${esc(ep.soundon)}" target="_blank" rel="noopener">SoundOn ↗</a>`:''}${ep.spot?`<a href="${esc(ep.spot)}" target="_blank" rel="noopener">Spotify ↗</a>`:''}</div></div></div>`;
+}
 
 function filterEps(){
   const q=(document.getElementById('ep-q').value||'').toLowerCase();
@@ -269,12 +288,12 @@ function render(){
     const APPLE_SHOW='https://podcasts.apple.com/podcast/1620760720';
     const safe_spot=esc(ep.spot);
     const safe_date=esc(fmtDate(ep.date));
-    return `<div class="ep-card">
-      <div class="ep-num">${n}</div>
+    return `<article class="ep-card">
+      <div class="ep-num">${String(n).padStart(2,'0')}</div>
       <img class="ep-thumb" src="${safe_art}" alt="${safe_title}" loading="lazy" onerror="this.style.display='none'">
       <div class="ep-info">
         <div class="ep-meta"><span>${safe_date}</span><span class="ep-dur">${fmtDur(ep.dur)}</span></div>
-        <div class="ep-title">${safe_title}</div>
+        <h3 class="ep-title">${safe_title}</h3>
         <div class="ep-desc">${safe_desc}</div>
       </div>
       <div class="ep-actions">
@@ -283,7 +302,7 @@ function render(){
         <a class="ep-btn apple" href="${APPLE_SHOW}" target="_blank" rel="noopener">🍎 Apple</a>
         <a class="ep-btn spotify" href="${safe_spot}" target="_blank" rel="noopener">🎵 Spotify</a>
       </div>
-    </div>`;
+    </article>`;
   }).join('');
   renderPag(total);
 }
@@ -347,6 +366,7 @@ async function initPodcast(){
     if(statNums[1])statNums[1].textContent='~'+totalHours;
   }
 
+  renderLatest();
   filterEps();
 }
 
