@@ -15,6 +15,7 @@ const path = require('path');
 const fs = require('fs').promises;
 const cfdb = require('./lib/cf-db');
 const indexnow = require('./lib/indexnow');
+const { fetchPhotoCover, CATEGORY_QUERIES } = require('./lib/photo-cover');
 
 // ── 環境變數檢查 ────────────────────────────────────────────────
 const CF_API_BASE = process.env.CF_API_BASE;
@@ -167,6 +168,7 @@ ${dedupContext}
   "category": "AI" 或 "雲端" 或 "資安",
   "title": "吸引人的文章標題（25字以內）",
   "excerpt": "文章摘要，說明本文重點（80-120字）",
+  "cover_query": "3-5 個英文單字的圖庫搜尋詞，描述適合當本文封面的『具象畫面』（例：smartphone chip closeup、data center server racks、hacker typing laptop）。要挑圖庫真的搜得到的常見畫面，避免抽象概念詞與品牌名",
   "body": "文章正文（HTML格式）"
 }
 
@@ -420,9 +422,10 @@ async function main() {
   const postId = published?.id;
   console.log(`  ✓ 文章已發布！ID: ${postId}`);
 
-  // 步驟 4：生成封面圖
+  // 步驟 4：封面圖 — 優先用 Pexels 找與內容相關的真實示意圖，失敗才退回 SVG 範本
   console.log('\n步驟 4：生成封面圖...');
-  const imagePath = await generateCoverImage(postId, article.category);
+  let imagePath = await fetchPhotoCover(postId, article.cover_query, CATEGORY_QUERIES[article.category]);
+  if (!imagePath) imagePath = await generateCoverImage(postId, article.category);
   console.log(`  ✓ 封面圖已生成：${imagePath}`);
 
   // 步驟 5：更新封面圖欄位
