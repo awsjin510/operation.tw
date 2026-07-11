@@ -15,3 +15,4 @@ footer{max-width:var(--pod-max);margin:0 auto;padding:45px 0 30px;border-top:1px
 @media(max-width:760px){.nav-links{display:none!important}.hamburger{display:flex!important;flex-direction:column;gap:5px;border:0;background:transparent;padding:8px}.hamburger span{display:block;width:22px;height:1px}.nav-logo{white-space:nowrap}}
 .ep-card{align-content:start;min-height:0}.ep-info{align-self:start}.ep-actions{flex-direction:row;align-items:center;align-self:start;justify-content:flex-start;width:100%}.ep-btn{flex:0 0 auto;white-space:nowrap}.ep-btn.play{order:-1}
 @media(max-width:430px){.ep-actions{display:grid;grid-template-columns:1fr 1fr}.ep-btn{width:100%;justify-content:center}.ep-btn.play{grid-column:1/-1}.ep-btn.spotify{display:inline-flex}}
+.ep-info{grid-column:2}.ep-thumb{grid-column:1}
