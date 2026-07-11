@@ -1,0 +1,73 @@
+name: Podcast Watch
+
+# 每 3 小時檢查 Podcast RSS：有新單集就轉成文章、寄電子報、重建靜態頁。
+# （daily-news 一天只跑一次、在台灣中午——新單集最壞要等一整天才變文章；
+#   這個輕量 workflow 只做 podcast→文章，不會重複產每日新聞文。）
+on:
+  schedule:
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: podcast-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: scripts
+
+      - name: Update episodes.json
+        run: node generate-podcast.js
+        working-directory: scripts
+
+      - name: Generate articles from new podcast episodes
+        env:
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEWSLETTER_FROM: ${{ secrets.NEWSLETTER_FROM }}
+        run: node podcast-to-post.js
+        working-directory: scripts
+
+      - name: Build static pages
+        env:
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+        run: node build-static.js
+        working-directory: scripts
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml feed.xml posts.json images/ episodes.json post/ category/ llms.txt llms-full.txt index.html
+          [ -f podcast-posts.json ] && git add podcast-posts.json || true
+          if git diff --cached --quiet; then
+            echo "沒有新單集，無變更"
+          else
+            git commit -m "chore(podcast): 新單集轉文章（podcast-watch）"
+            for i in 1 2 3; do
+              if git pull --rebase --autostash origin main && git push; then break; fi
+              if [ "$i" -eq 3 ]; then echo "push 失敗"; exit 1; fi
+              echo "push 失敗，重試…"; sleep $((i * 2))
+            done
+          fi
