@@ -1,0 +1,75 @@
+name: Photo Covers Backfill
+
+# 手動：把既有新聞自動文的 SVG 範本封面，換成 Pexels 上與內容相關的真實示意圖。
+# 冪等：換過的文章記在 images/posts/pexels-used.json，重跑會自動跳過。
+# 建議先跑一次 dry run 看清單，再分批（每次 30 篇）執行。
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: '本次最多處理幾篇'
+        required: true
+        default: '30'
+      dry_run:
+        description: '只列出目標文章，不實際換圖'
+        required: true
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: scripts
+
+      - name: Backfill photo covers
+        env:
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          LIMIT: ${{ github.event.inputs.limit }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+        run: node scripts/backfill-photo-covers.js
+
+      - name: Rebuild static site (regenerates WebP)
+        if: ${{ github.event.inputs.dry_run == 'false' }}
+        env:
+          CF_API_BASE: ${{ secrets.CF_API_BASE }}
+          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+        run: node scripts/build-static.js
+
+      - name: Commit and push
+        if: ${{ github.event.inputs.dry_run == 'false' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add images/ post/ category/ sitemap.xml feed.xml llms.txt llms-full.txt index.html posts.json
+          if git diff --cached --quiet; then
+            echo "無變更"
+          else
+            git commit -m "chore(covers): 回填真實示意圖封面（Pexels）"
+            for r in 1 2 3; do
+              if git pull --rebase --autostash origin main && git push; then break; fi
+              echo "push 失敗，重試…"; sleep $((r * 3))
+            done
+          fi
