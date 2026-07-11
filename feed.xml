@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 11 Jul 2026 02:58:45 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 11 Jul 2026 03:50:24 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>蘋果AI本地化戰略：大模型上iPhone運行的技術突破與挑戰</title>
+    <link>https://operation.tw/post/318/</link>
+    <guid isPermaLink="true">https://operation.tw/post/318/</guid>
+    <description>蘋果力推AI模型在iPhone本地運行，收購AI新創加速邊緣計算部署。本文分析蘋果如何打破雲端依賴、重塑AI應用生態，以及這股「邊緣AI」浪潮對台灣晶片與軟體廠商的機會與威脅。</description>
+    <category>AI</category>
+    <pubDate>Sat, 11 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Neoclouds挑戰雲端三巨頭：AI時代新興勢力如何重塑運算生態？</title>
     <link>https://operation.tw/post/316/</link>
@@ -21,6 +29,14 @@
     <guid isPermaLink="true">https://operation.tw/post/317/</guid>
     <description>美國將AI網路安全提升至國家安全議題，意味著AI系統漏洞不再只是技術問題。本文分析這項政策轉變對全球企業、尤其是台灣科技廠商的影響，以及企業應如何調整安全佈局。</description>
     <category>資安</category>
+    <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Claude 全家桶完整指南：超越基礎提問的 95% 功能</title>
+    <link>https://operation.tw/post/319/</link>
+    <guid isPermaLink="true">https://operation.tw/post/319/</guid>
+    <description>每月付費訂閱 Claude 卻只用 5% 功能？《Claude 萬用手冊》涵蓋 Claude.ai、Desktop、Cowork、Skills 等九大模組，是中文市場首本完整介紹 Claude 生態的書籍。從介面層、能力層到生態層，教你用對工具才不會浪費訂閱費。</description>
+    <category>閱讀</category>
     <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -150,22 +166,6 @@
     <description>不是你不夠努力，而是你太用力。梁哲維在《好感影響力》揭示累積影響力的真正關鍵：先讓自己有好的感覺，才能真正打動他人。這不是討好，而是一場內在能量的重建。</description>
     <category>閱讀</category>
     <pubDate>Sun, 28 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>實體AI革命：世界模型如何改變機器人的現實感知</title>
-    <link>https://operation.tw/post/289/</link>
-    <guid isPermaLink="true">https://operation.tw/post/289/</guid>
-    <description>從虛擬走向現實，實體AI成為科技產業新戰場。世界模型技術正在重塑機器人對真實環境的理解方式，不再只是數據處理，而是真正的環境認知。台灣機器人與自動化產業該如何抓住這波機會？</description>
-    <category>AI</category>
-    <pubDate>Sat, 27 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI36｜把時間買回來：改變職場困局的時間管理哲學</title>
-    <link>https://operation.tw/post/290/</link>
-    <guid isPermaLink="true">https://operation.tw/post/290/</guid>
-    <description>為什麼再怎麼努力薪水還是到頂？這個問題的答案藏在《把時間買回來》這本書裡。從凌晨三點的退婚故事，到「買回率」算法、替身階梯，我們帶你看懂 35-40 歲職場工作者為什麼需要從「我還能做什麼」改成「我還能不做什麼」。</description>
-    <category>閱讀</category>
-    <pubDate>Fri, 26 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
