@@ -5,7 +5,19 @@ on:
     branches: [main]
   workflow_dispatch:
   workflow_run:
-    workflows: ["Daily News Auto-Post", "Sync Post Views"]
+    # 所有「會用 bot 身分 commit 網站內容」的 workflow 都要列進來——
+    # GITHUB_TOKEN 的 push 不會觸發 on:push，漏列的 workflow 改了內容也不會部署。
+    workflows:
+      - "Daily News Auto-Post"
+      - "Sync Post Views"
+      - "Podcast Watch"
+      - "Generate Glossary"
+      - "Photo Covers Backfill"
+      - "Regenerate Covers"
+      - "Backfill FAQ / TL;DR"
+      - "Podcast Backfill"
+      - "Podcast Update Titles"
+      - "Restore Content (D1 修復)"
     branches: [main]
     types: [completed]
 
