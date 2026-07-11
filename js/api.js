@@ -31,6 +31,7 @@
     getSettings: () => call('/api/settings'),
     getPublishedPosts: () => call('/api/posts').then((r) => r.posts || []),
     getPostBody: (id, signal) => call(`/api/posts/${id}/body`, { signal }).then((r) => r.body),
+    getPostViews: () => call('/api/views/posts'),
     incrementSiteViews: () => call('/api/views/site', { method: 'POST' }),
     incrementPostViews: (id) => call('/api/views/post', { method: 'POST', body: { id } }),
     subscribe: (email, website) => call('/api/subscribe', { method: 'POST', body: { email, website: website || '' } }).then((r) => r.result),
