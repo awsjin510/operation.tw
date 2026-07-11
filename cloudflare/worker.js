@@ -32,7 +32,9 @@
  */
 
 const POST_COLS = ['title', 'category', 'date', 'status', 'excerpt', 'image', 'body', 'views', 'slug'];
-const LIST_COLS = 'id,title,category,date,status,excerpt,image,views,slug';
+const LIST_COLS = 'id,title,category,date,status,excerpt,image,views,slug,updated_at';
+// 這些欄位變更視為「內容更新」→ 自動 bump updated_at（views/image 這類機械更新不算）
+const CONTENT_COLS = ['title', 'category', 'date', 'excerpt', 'body', 'slug'];
 
 export default {
   async fetch(request, env, ctx) {
@@ -332,6 +334,10 @@ async function updatePost(env, id, patch) {
     if (patch[c] !== undefined) { sets.push(`${c}=?${i++}`); vals.push(patch[c]); }
   }
   if (!sets.length) throw httpError(400, 'nothing to update');
+  // 內容有實質變更才 bump updated_at（views/image 等機械更新不算）
+  if (CONTENT_COLS.some((c) => patch[c] !== undefined)) {
+    sets.push(`updated_at=datetime('now')`);
+  }
   vals.push(id);
   const sql = `update posts set ${sets.join(',')} where id=?${i} returning ${LIST_COLS}`;
   const row = await env.DB.prepare(sql).bind(...vals).first();
