@@ -43,6 +43,8 @@ jobs:
           CF_API_BASE: ${{ secrets.CF_API_BASE }}
           CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Pexels 免費圖庫（未設定則自動退回 SVG 範本封面）
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: node auto-post.js
         working-directory: scripts
 
