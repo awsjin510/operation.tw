@@ -415,8 +415,11 @@ async function verifyGoogleIdToken(token, env) {
   if (payload.exp && now > payload.exp) throw httpError(401, 'token expired');
   const iss = payload.iss || '';
   if (iss !== 'accounts.google.com' && iss !== 'https://accounts.google.com') throw httpError(401, 'bad issuer');
-  if (env.GOOGLE_CLIENT_ID && payload.aud !== env.GOOGLE_CLIENT_ID) throw httpError(401, 'bad audience');
-  if (payload.email_verified === false) throw httpError(401, 'email not verified');
+  // fail-closed：未設定 GOOGLE_CLIENT_ID 就拒絕，絕不放行未綁定 audience 的 token
+  if (!env.GOOGLE_CLIENT_ID) throw httpError(401, 'auth not configured');
+  if (payload.aud !== env.GOOGLE_CLIENT_ID) throw httpError(401, 'bad audience');
+  // 只接受明確 verified（缺欄位或字串 "false" 皆視為未驗證）
+  if (payload.email_verified !== true && payload.email_verified !== 'true') throw httpError(401, 'email not verified');
   return payload;
 }
 
