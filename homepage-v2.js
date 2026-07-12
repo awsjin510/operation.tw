@@ -19,13 +19,11 @@
     const [pr,er]=await Promise.allSettled([fetch('/posts.json',{cache:'no-cache'}).then(r=>r.json()),fetch('/episodes.json',{cache:'no-cache'}).then(r=>r.json())]);
     const posts=pr.status==='fulfilled'?(pr.value.posts||pr.value||[]):[];
     const episodes=er.status==='fulfilled'?(er.value.episodes||er.value||[]):[];
-    // 即時瀏覽數：posts.json 是排程快照，這裡向 Worker 對齊（失敗或舊版 Worker 就用快照值）
-    try{
-      if(window.api&&api.getPostViews){
-        const vm=await api.getPostViews();
-        if(vm)posts.forEach(p=>{if(vm[p.id]!=null)p.views=vm[p.id];});
-      }
-    }catch(_){}
+    // 即時瀏覽數不擋建版：先用 posts.json 快照建頁，SPA 的背景同步（initDB）稍後會把
+    // #grid-main 的數字對齊資料庫；這裡只在「還沒建版前剛好先回來」時順帶合併。
+    if(window.api&&api.getPostViews){
+      api.getPostViews().then(vm=>{if(vm)posts.forEach(p=>{if(vm[p.id]!=null)p.views=vm[p.id];});}).catch(()=>{});
+    }
     return {posts:posts.filter(p=>!p.status||p.status==='published'),episodes};
   }
   function platformLinks(ep){
@@ -70,5 +68,13 @@
     const f=document.querySelector('footer');if(!f)return;
     f.innerHTML='<div class="op-footer-brand"><div class="logo-text">操作一下</div><p>把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</p></div><div class="op-footer-links"><div><h4>主題</h4><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></div><div><h4>探索</h4><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="mailto:keepfighting510@gmail.com">合作邀約</a><a href="/#newsletter">訂閱</a></div><div><h4>Follow</h4><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></div></div><div class="op-footer-bottom">© 2025–'+new Date().getFullYear()+' 操作一下 · operation.tw</div>';
   }
-  document.addEventListener('DOMContentLoaded',function(){enhanceNav();enhanceFooter();load().then(build).catch(()=>{});});
+  // 防「先閃舊版再跳新版」：<head> 的小腳本已把 #v-home 隱藏（.v2-boot），
+  // 新版建好（或失敗/逾時）就加 .v2-ready 顯示。資料在腳本載入當下就開抓，不等 DOMContentLoaded。
+  const ready=()=>document.documentElement.classList.add('v2-ready');
+  const dataP=load();
+  setTimeout(ready,3000); // 保險絲：3 秒內沒建好就先顯示現有內容，絕不白屏
+  document.addEventListener('DOMContentLoaded',function(){
+    enhanceNav();enhanceFooter();
+    dataP.then(build).catch(()=>{}).finally(ready);
+  });
 })();

@@ -47,3 +47,6 @@ body::after{opacity:.28;background-size:64px 64px}nav{box-shadow:0 1px 0 rgba(25
 a.op-article{display:block;color:inherit;text-decoration:none}
 a.op-article h3{color:var(--op-text)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.v2-boot #v-home{visibility:hidden}
+.v2-boot footer{visibility:hidden}
+.v2-boot.v2-ready #v-home,.v2-boot.v2-ready footer{visibility:visible}
