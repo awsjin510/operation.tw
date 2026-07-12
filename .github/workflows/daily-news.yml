@@ -60,21 +60,12 @@ jobs:
         working-directory: scripts
         continue-on-error: true
 
-      - name: Generate articles from new podcast episodes
-        # 偵測 Podcast 新單集 → 用 Claude 延伸成文章並發布。
-        # 與其他步驟獨立，失敗不應擋下 commit。
-        env:
-          CF_API_BASE: ${{ secrets.CF_API_BASE }}
-          CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          # 電子報寄送（未設定 RESEND_API_KEY 則自動略過，功能等同關閉）
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          NEWSLETTER_FROM: ${{ secrets.NEWSLETTER_FROM }}
-        run: node podcast-to-post.js
-        working-directory: scripts
-        continue-on-error: true
+      # 註：Podcast 新單集轉文章 + 電子報，改由 podcast-watch.yml（每 3 小時）獨家處理。
+      # 這裡不再跑 podcast-to-post，以避免與 podcast-watch 在每日交界（相差 8 分鐘）
+      # 並行、各自依尚未 push 的 state 去重而重複發同一集（restore-content 就是在清這種）。
 
       - name: Build static article pages (SEO)
+        id: buildstatic
         # 由最新的 posts.json 產生每篇 /post/{id}/index.html（含 meta/JSON-LD + 完整內文），
         # 並刷新 sitemap.xml、feed.xml、llms.txt、index.html。
         # 需要 Supabase 金鑰以把文章完整內文烤進靜態頁（供搜尋引擎 / AI 爬蟲索引）。
@@ -125,6 +116,23 @@ jobs:
               state: 'open', labels: 'ci-failure', per_page: 10
             });
             const body = `auto-post 步驟失敗（continue-on-error，未擋下 podcast/commit）。\n\n[查看 log](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})`;
+            const hit = ex.data.find(i => i.title === title);
+            if (hit) { await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: hit.number, body }); }
+            else { await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title, labels: ['ci-failure'], body }); }
+
+      - name: Alert if static build silently failed
+        # build-static 設了 continue-on-error（避免擋下 commit），失敗時 job 不會變紅。
+        # 這裡專門偵測它的 outcome=failure，避免「壞掉/半殘的靜態頁被 commit 並部署」而無人知。
+        if: steps.buildstatic.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '[CI] 靜態頁重建失敗（build-static）';
+            const ex = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', labels: 'ci-failure', per_page: 10
+            });
+            const body = `build-static 步驟失敗（continue-on-error，可能已 commit 過期/損壞的靜態頁）。\n\n[查看 log](${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})`;
             const hit = ex.data.find(i => i.title === title);
             if (hit) { await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: hit.number, body }); }
             else { await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title, labels: ['ci-failure'], body }); }
