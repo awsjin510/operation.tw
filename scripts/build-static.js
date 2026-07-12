@@ -269,7 +269,7 @@ time{color:#9494c2;font-size:.85rem;}
 .toc-l3{padding-left:18px;}
 .toc-l3 a{color:#9fb8d0;font-size:.88rem;}
 .post-body :is(h2,h3){scroll-margin-top:16px;}
-.cover{width:100%;max-width:720px;border-radius:10px;margin:20px 0;display:block;}
+.cover{width:100%;max-width:720px;height:auto;border-radius:10px;margin:20px 0;display:block;}
 .post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
 .post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
 .post-body h3{font-size:1.08rem;margin:1.4em 0 .5em;color:#fff;}
