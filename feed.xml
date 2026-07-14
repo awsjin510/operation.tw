@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 14 Jul 2026 03:31:00 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 14 Jul 2026 03:42:39 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>美企轉向中國AI模型背後：成本競賽如何重塑全球AI版圖</title>
+    <link>https://operation.tw/post/323/</link>
+    <guid isPermaLink="true">https://operation.tw/post/323/</guid>
+    <description>成本壓力驅動美國企業選擇中國AI模型，引發國會安全調查。本文分析這股趨勢背後的經濟邏輯、地緣政治風險，以及台灣AI產業如何在成本與安全的天秤上找到位置。</description>
+    <category>AI</category>
+    <pubDate>Tue, 14 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>深偽數據毒害LLM：企業如何在AI時代守護訓練資料安全？</title>
     <link>https://operation.tw/post/322/</link>
@@ -158,14 +166,6 @@
     <description>2026年7月1日起，台灣《職業安全衛生法》新增職場霸凌防治專章正式生效。首次明確立法，打破「長期反覆」才成立的舊規則，單次情節重大即可成立。本文解析新法核心、四大職場場景認知、科技業PIP風險，以及AI監控時代的勞權邊界。</description>
     <category>AI</category>
     <pubDate>Tue, 30 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AWS邁向20週年：從內部工具到雲端帝國的啟示</title>
-    <link>https://operation.tw/post/292/</link>
-    <guid isPermaLink="true">https://operation.tw/post/292/</guid>
-    <description>AWS即將迎來成立20週年，從一個解決Amazon內部工程師痛點的邊陲專案，成長為千億美元規模的雲端運算基礎設施。本文探討這段演進史對台灣企業數位轉型的啟示，以及在AI時代下的新機會。</description>
-    <category>雲端</category>
-    <pubDate>Mon, 29 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
