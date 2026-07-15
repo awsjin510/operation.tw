@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 15 Jul 2026 03:30:40 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 15 Jul 2026 03:42:37 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AWS邁入20週年：從內部工具到雲端帝國的科技啟示</title>
+    <link>https://operation.tw/post/324/</link>
+    <guid isPermaLink="true">https://operation.tw/post/324/</guid>
+    <description>AWS成立20週年之際，從解決Amazon工程師痛點的內部工具，成長為年營收千億美元的雲端巨人。本文揭示其成功秘訣如何改變全球運算格局，以及對台灣科技產業的啟示。</description>
+    <category>雲端</category>
+    <pubDate>Wed, 15 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>美企轉向中國AI模型背後：成本競賽如何重塑全球AI版圖</title>
     <link>https://operation.tw/post/323/</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/294/</guid>
     <description>2026年AI攻擊已不再是單點威脅，而是系統性風險。從提示注入攻擊到AI驅動的入侵手法，企業傳統防禦已顯不足。本文深入解析當前AI安全威脅全貌，並提出台灣企業的主動防禦策略。</description>
     <category>資安</category>
-    <pubDate>Tue, 30 Jun 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI37｜職場霸凌新法7月上路：一次也成立，最高罰450萬</title>
-    <link>https://operation.tw/post/296/</link>
-    <guid isPermaLink="true">https://operation.tw/post/296/</guid>
-    <description>2026年7月1日起，台灣《職業安全衛生法》新增職場霸凌防治專章正式生效。首次明確立法，打破「長期反覆」才成立的舊規則，單次情節重大即可成立。本文解析新法核心、四大職場場景認知、科技業PIP風險，以及AI監控時代的勞權邊界。</description>
-    <category>AI</category>
     <pubDate>Tue, 30 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
