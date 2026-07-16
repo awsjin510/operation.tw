@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 15 Jul 2026 22:11:27 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 16 Jul 2026 03:34:44 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>AWS邁入20週年：從內部工具到雲端帝國的科技啟示</title>
@@ -13,6 +13,14 @@
     <guid isPermaLink="true">https://operation.tw/post/324/</guid>
     <description>AWS成立20週年之際，從解決Amazon工程師痛點的內部工具，成長為年營收千億美元的雲端巨人。本文揭示其成功秘訣如何改變全球運算格局，以及對台灣科技產業的啟示。</description>
     <category>雲端</category>
+    <pubDate>Wed, 15 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI44｜AI 時代信任比內容更值錢：職場人必知的信任檢核清單</title>
+    <link>https://operation.tw/post/325/</link>
+    <guid isPermaLink="true">https://operation.tw/post/325/</guid>
+    <description>Google 搜尋市占率被 AI 問答引擎蠶食，AI Overviews 讓傳統 SEO 點擊率暴跌三成。在這場注意力爭奪戰中，勝負不再看誰內容多，而是誰值得被信任。本文拆解《信任效應》的核心觀點，教你在六大職場場景中如何建立真正的信任。</description>
+    <category>閱讀</category>
     <pubDate>Wed, 15 Jul 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -158,14 +166,6 @@
     <description>2026年北捷開放Apple Pay感應進站，看似台灣支付進步，實則是Apple繞過悠遊卡體系用信用卡授權解套。這背後涉及歐盟DMA反壟斷、iPhone晶片封閉史，以及整個台灣支付產業版圖的重新洗牌。</description>
     <category>AI</category>
     <pubDate>Wed, 01 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI攻擊全面化2026：企業該從防守轉向主動防禦</title>
-    <link>https://operation.tw/post/294/</link>
-    <guid isPermaLink="true">https://operation.tw/post/294/</guid>
-    <description>2026年AI攻擊已不再是單點威脅，而是系統性風險。從提示注入攻擊到AI驅動的入侵手法，企業傳統防禦已顯不足。本文深入解析當前AI安全威脅全貌，並提出台灣企業的主動防禦策略。</description>
-    <category>資安</category>
-    <pubDate>Tue, 30 Jun 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
