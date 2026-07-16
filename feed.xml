@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 16 Jul 2026 03:34:44 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 16 Jul 2026 03:45:37 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>中國AI模型的政治內容管控：台灣企業如何識別輸出海外的輿論影響？</title>
+    <link>https://operation.tw/post/326/</link>
+    <guid isPermaLink="true">https://operation.tw/post/326/</guid>
+    <description>最新研究揭露中國將官方敘事嵌入AI模型，透過海外部署進行內容管控。本文解析這一風險如何影響台灣企業的供應鏈決策、員工教育與資訊安全政策，以及企業應採取的檢測與防禦措施。</description>
+    <category>資安</category>
+    <pubDate>Thu, 16 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AWS邁入20週年：從內部工具到雲端帝國的科技啟示</title>
     <link>https://operation.tw/post/324/</link>
@@ -158,14 +166,6 @@
     <description>深偽內容大量流竄，正在污染用於訓練大語言模型的網路數據。OpenAI、Anthropic等美國AI巨頭面臨發展困境，中國開源模型趁勢崛起。台灣企業該如何應對這場「數據品質危機」？</description>
     <category>AI</category>
     <pubDate>Fri, 03 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI38｜iPhone 嗶進北捷10年晚到？這不是悠遊卡贏，是被繞過了</title>
-    <link>https://operation.tw/post/298/</link>
-    <guid isPermaLink="true">https://operation.tw/post/298/</guid>
-    <description>2026年北捷開放Apple Pay感應進站，看似台灣支付進步，實則是Apple繞過悠遊卡體系用信用卡授權解套。這背後涉及歐盟DMA反壟斷、iPhone晶片封閉史，以及整個台灣支付產業版圖的重新洗牌。</description>
-    <category>AI</category>
-    <pubDate>Wed, 01 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
