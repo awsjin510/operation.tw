@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 17 Jul 2026 03:34:33 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 17 Jul 2026 03:45:23 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>台灣TAIDE對標月之暗面：本土AI如何在政治內容管控戰爭中突圍</title>
+    <link>https://operation.tw/post/327/</link>
+    <guid isPermaLink="true">https://operation.tw/post/327/</guid>
+    <description>面對中國AI模型在海外市場快速攀升，台灣推出的本土AI「TAIDE」被視為關鍵防線。本文分析TAIDE的文化優勢、月之暗面的威脅，以及台灣廠商如何透過「內容信任」而非「政治審查」贏得全球市場。</description>
+    <category>AI</category>
+    <pubDate>Fri, 17 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>中國AI模型的政治內容管控：台灣企業如何識別輸出海外的輿論影響？</title>
     <link>https://operation.tw/post/326/</link>
@@ -158,14 +166,6 @@
     <description>Anthropic 短時間內公布 Sonnet 5、Fable 5 解禁、Claude Science 三大消息，甚至傳出與三星合作自研晶片。這不只是模型更新，而是 AI 成為戰略物資後，科技大廠競爭版圖的重新洗牌。</description>
     <category>AI</category>
     <pubDate>Sat, 04 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>深偽危機衝擊LLM：大語言模型為何面臨「數據崩潰」困局？</title>
-    <link>https://operation.tw/post/307/</link>
-    <guid isPermaLink="true">https://operation.tw/post/307/</guid>
-    <description>深偽內容大量流竄，正在污染用於訓練大語言模型的網路數據。OpenAI、Anthropic等美國AI巨頭面臨發展困境，中國開源模型趁勢崛起。台灣企業該如何應對這場「數據品質危機」？</description>
-    <category>AI</category>
-    <pubDate>Fri, 03 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
