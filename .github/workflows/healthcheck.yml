@@ -28,7 +28,7 @@ jobs:
             return 0
           }
           check "網站 operation.tw" "https://operation.tw/"
-          check "Worker API" "https://operation-tw-api.survry-123-jin.workers.dev/api/health"
+          check "Worker API" "https://operation-tw-api.gamania-cloudforce.workers.dev/api/health"
           echo "failed=$failed" >> "$GITHUB_OUTPUT"
 
       - name: Alert via issue
