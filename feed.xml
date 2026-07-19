@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 18 Jul 2026 22:05:43 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 19 Jul 2026 03:51:29 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>AWS20週年的隱形贏家：從工程痛點到雲端帝國的另一面</title>
@@ -13,6 +13,14 @@
     <guid isPermaLink="true">https://operation.tw/post/328/</guid>
     <description>AWS成立20週年，從解決內部工程師痛點到千億美元規模，但真正推動雲端革命的，不只是基礎設施。本文剖析AWS生態中被忽視的三大創新，以及台灣雲端新創如何在這個成熟市場中尋找破口。</description>
     <category>雲端</category>
+    <pubDate>Sat, 18 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI44｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？</title>
+    <link>https://operation.tw/post/329/</link>
+    <guid isPermaLink="true">https://operation.tw/post/329/</guid>
+    <description>Google 官方宣布 NotebookLM 更名為 Gemini Notebook，背後不只是改名，而是整合 Gemini、新增程式碼執行、雲端安全運算等重大升級。3000 萬活躍使用者的工具升級，究竟改變了什麼？</description>
+    <category>AI</category>
     <pubDate>Sat, 18 Jul 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -158,14 +166,6 @@
     <description>越學AI越焦慮？問題不在你學得還不夠，而是沒看到自己身上已有的才能。《世界最簡單的才能發現法》用8個提問和3條公式，幫你重新定義才能、找出能耗低區，從被動應戰轉變為主動出擊。</description>
     <category>閱讀</category>
     <pubDate>Sun, 05 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI經濟困局：為何擴張速度是網路3倍，獲利卻遲遲未爆發？</title>
-    <link>https://operation.tw/post/308/</link>
-    <guid isPermaLink="true">https://operation.tw/post/308/</guid>
-    <description>AI技術擴張速度遠超網路時代，卻只佔全球經濟0.42%，獲利難題成謎。本文探討AI經濟現狀背後的真相：從投資過熱、商業模式未成熟，到應用場景落地困難，台灣科技業應如何把握機會？</description>
-    <category>AI</category>
-    <pubDate>Sat, 04 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
