@@ -5,13 +5,21 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 19 Jul 2026 22:08:03 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 20 Jul 2026 04:02:02 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>習近平親臨世界AI大會：中國開源戰略如何威脅西方AI霸權？</title>
     <link>https://operation.tw/post/330/</link>
     <guid isPermaLink="true">https://operation.tw/post/330/</guid>
     <description>習近平首度現身世界AI大會，宣示中國的「開源」AI戰略。這不只是技術選擇，更是一場地緣政治博弈——中國如何透過開源模式突破晶片限制，重塑全球AI版圖？台灣企業該如何應對？</description>
+    <category>AI</category>
+    <pubDate>Sun, 19 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>EP101｜一個提袋改變人生：美學達人如何用管理思維跨界彩妝</title>
+    <link>https://operation.tw/post/331/</link>
+    <guid isPermaLink="true">https://operation.tw/post/331/</guid>
+    <description>從管理學院學生到資生堂美學專家，嘉嘉因為一堂通識課上的提袋對話，徹底改變了人生軌跡。她分享如何用理性思維駕馭感性領域、AI 時代彩妝師的核心競爭力，以及美妝背後那份接住他人脆弱的溫暖志業。</description>
     <category>AI</category>
     <pubDate>Sun, 19 Jul 2026 00:00:00 GMT</pubDate>
   </item>
@@ -158,14 +166,6 @@
     <description>Meta 在 7 月 2 日推出 Meta Compute 雲端服務，以激進定價策略震撼市場，牽動 AWS、GCP、Azure 三大雲廠商的競爭格局。本文拆解 Meta Compute 的商業策略、模型層與算力層的產業分野，以及台灣企業採用時該關注的資安與信任問題。</description>
     <category>雲端</category>
     <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>中國GLM-5.2進軍歐美遭資安卡關：台灣企業該如何應對？</title>
-    <link>https://operation.tw/post/311/</link>
-    <guid isPermaLink="true">https://operation.tw/post/311/</guid>
-    <description>中國智譜清言的GLM-5.2雖然功能強大且價格低廉，卻因資安疑慮成為進入歐美市場的最大障礙。這反映了AI時代地緣政治與資安防護的新現實。台灣企業如何在成本與安全之間取得平衡，成為當下關鍵課題。</description>
-    <category>資安</category>
-    <pubDate>Mon, 06 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
