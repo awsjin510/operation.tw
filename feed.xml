@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Mon, 20 Jul 2026 04:02:02 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 20 Jul 2026 04:12:28 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Kimi K3被抓包偷美技術：AI模型安全漏洞如何威脅台灣企業？</title>
+    <link>https://operation.tw/post/332/</link>
+    <guid isPermaLink="true">https://operation.tw/post/332/</guid>
+    <description>中國AI模型Kimi K3遭爆宣稱自己是Claude，暴露出開源AI模型的技術歸屬與資安風險。本文分析這起事件背後的技術問題、對全球AI生態的影響，以及台灣企業如何識別與防範類似威脅。</description>
+    <category>資安</category>
+    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>習近平親臨世界AI大會：中國開源戰略如何威脅西方AI霸權？</title>
     <link>https://operation.tw/post/330/</link>
@@ -156,14 +164,6 @@
     <link>https://operation.tw/post/312/</link>
     <guid isPermaLink="true">https://operation.tw/post/312/</guid>
     <description>OpenSand推出統一AI模型聚合平台，支援企業部署與AI代理開發。這標誌著雲端運算進入「模型聚合」時代——企業不再被單一廠商綁架，而是能彈性整合多個AI模型。台灣企業該如何應對這波變革？</description>
-    <category>雲端</category>
-    <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI41｜Meta Compute 雲端算力服務上線：如何改變 AI 產業競局？</title>
-    <link>https://operation.tw/post/314/</link>
-    <guid isPermaLink="true">https://operation.tw/post/314/</guid>
-    <description>Meta 在 7 月 2 日推出 Meta Compute 雲端服務，以激進定價策略震撼市場，牽動 AWS、GCP、Azure 三大雲廠商的競爭格局。本文拆解 Meta Compute 的商業策略、模型層與算力層的產業分野，以及台灣企業採用時該關注的資安與信任問題。</description>
     <category>雲端</category>
     <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
   </item>
