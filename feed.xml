@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 21 Jul 2026 03:41:44 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 21 Jul 2026 03:53:31 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI攻擊全面化2026：企業如何建立分層防禦體系？</title>
+    <link>https://operation.tw/post/333/</link>
+    <guid isPermaLink="true">https://operation.tw/post/333/</guid>
+    <description>Google Cloud發布2026網路安全預測報告，揭示AI攻擊已從實驗階段進入大規模應用。本文解析AI驅動的新型威脅模式，以及台灣企業應如何建構多層防禦架構，從檢測到回應的完整策略。</description>
+    <category>資安</category>
+    <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Kimi K3被抓包偷美技術：AI模型安全漏洞如何威脅台灣企業？</title>
     <link>https://operation.tw/post/332/</link>
@@ -158,14 +166,6 @@
     <description>歐盟擬修訂網路安全法案，強化供應鏈資安管理並限制高風險供應商。這項政策將直接影響台灣晶片、軟體供應商的歐洲市場准入。本文分析新規核心內容，以及台灣企業的因應策略。</description>
     <category>資安</category>
     <pubDate>Wed, 08 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>OpenSand統一AI模型平台：企業該如何抓住AI聚合時代的新機會？</title>
-    <link>https://operation.tw/post/312/</link>
-    <guid isPermaLink="true">https://operation.tw/post/312/</guid>
-    <description>OpenSand推出統一AI模型聚合平台，支援企業部署與AI代理開發。這標誌著雲端運算進入「模型聚合」時代——企業不再被單一廠商綁架，而是能彈性整合多個AI模型。台灣企業該如何應對這波變革？</description>
-    <category>雲端</category>
-    <pubDate>Tue, 07 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
