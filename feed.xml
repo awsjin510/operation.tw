@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 22 Jul 2026 03:42:18 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 22 Jul 2026 03:55:03 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>公有雲市場2035年預測：台灣企業如何搶佔下一波成長紅利？</title>
+    <link>https://operation.tw/post/334/</link>
+    <guid isPermaLink="true">https://operation.tw/post/334/</guid>
+    <description>Research Nester 最新報告預測公有雲市場到 2035 年的規模與份額變化。台灣企業面臨 AI 時代雲端需求激增，如何在全球競爭中找到差異化機會？本文解析雲端市場趨勢與台灣廠商的戰略定位。</description>
+    <category>雲端</category>
+    <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI攻擊全面化2026：企業如何建立分層防禦體系？</title>
     <link>https://operation.tw/post/333/</link>
@@ -158,14 +166,6 @@
     <description>葡萄牙推出首個自主研發大型語言模型AMALIA，標誌著歐洲在AI領域的自主化努力升級。面對美中AI競爭格局，這一事件對台灣科技廠商在AI生態中的定位有何啟示？本文深入分析歐洲AI自主策略與台灣的角色機遇。</description>
     <category>AI</category>
     <pubDate>Thu, 09 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>歐盟網安新規2026：供應鏈管制升級，台灣科技廠商如何應對？</title>
-    <link>https://operation.tw/post/313/</link>
-    <guid isPermaLink="true">https://operation.tw/post/313/</guid>
-    <description>歐盟擬修訂網路安全法案，強化供應鏈資安管理並限制高風險供應商。這項政策將直接影響台灣晶片、軟體供應商的歐洲市場准入。本文分析新規核心內容，以及台灣企業的因應策略。</description>
-    <category>資安</category>
-    <pubDate>Wed, 08 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
