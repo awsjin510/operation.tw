@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 24 Jul 2026 03:40:43 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 24 Jul 2026 03:51:45 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>OpenAI與Anthropic投資者重疊42%：AI巨頭背後的隱形金脈如何改寫雲端版圖？</title>
+    <link>https://operation.tw/post/337/</link>
+    <guid isPermaLink="true">https://operation.tw/post/337/</guid>
+    <description>最新數據揭露OpenAI與Anthropic有42%的共同投資者身份，反映AI產業資本集中現象。這種投資重疊如何影響雲端基礎設施競爭、技術路線選擇，以及台灣科技業的機會與風險？</description>
+    <category>雲端</category>
+    <pubDate>Fri, 24 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>LLM的文化偏見陷阱：為何AI生成內容趨同化威脅創意產業？</title>
     <link>https://operation.tw/post/335/</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/316/</guid>
     <description>隨著AI運算需求爆炸性增長，新興雲端服務商Neoclouds正在挑戰AWS、Azure、GCP的市場地位。本文深度解析這股新勢力的技術優勢、商業策略，以及對台灣雲端及AI產業的啟示。</description>
     <category>雲端</category>
-    <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI網安成國安等級：美國總統令如何改寫企業防禦戰略？</title>
-    <link>https://operation.tw/post/317/</link>
-    <guid isPermaLink="true">https://operation.tw/post/317/</guid>
-    <description>美國將AI網路安全提升至國家安全議題，意味著AI系統漏洞不再只是技術問題。本文分析這項政策轉變對全球企業、尤其是台灣科技廠商的影響，以及企業應如何調整安全佈局。</description>
-    <category>資安</category>
     <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
