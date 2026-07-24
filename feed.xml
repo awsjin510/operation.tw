@@ -5,13 +5,21 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 23 Jul 2026 22:13:24 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 24 Jul 2026 03:40:43 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>LLM的文化偏見陷阱：為何AI生成內容趨同化威脅創意產業？</title>
     <link>https://operation.tw/post/335/</link>
     <guid isPermaLink="true">https://operation.tw/post/335/</guid>
     <description>最新研究揭露大型語言模型存在隱性的文化偏好，特別是對動漫、特定遊戲風格的過度傾斜，導致AI生成內容高度同質化。這對台灣遊戲、動畫創作者意味著什麼？如何在AI時代保護創意多樣性？</description>
+    <category>AI</category>
+    <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI46｜Google Gemini Flash Cyber：資安 AI 軍備競賽的秘密武器</title>
+    <link>https://operation.tw/post/336/</link>
+    <guid isPermaLink="true">https://operation.tw/post/336/</guid>
+    <description>Google 7月發表三款 Gemini 模型，其中 Flash Cyber 是首個由雲端服務商正式推出的漏洞獵捕 AI，兩小時內發現高危漏洞。OpenAI、Anthropic 也在暗地裡進行資安 AI 競賽，這場軍備戰將如何改變資安工程師的工作？</description>
     <category>AI</category>
     <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
   </item>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/317/</guid>
     <description>美國將AI網路安全提升至國家安全議題，意味著AI系統漏洞不再只是技術問題。本文分析這項政策轉變對全球企業、尤其是台灣科技廠商的影響，以及企業應如何調整安全佈局。</description>
     <category>資安</category>
-    <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Claude 全家桶完整指南：超越基礎提問的 95% 功能</title>
-    <link>https://operation.tw/post/319/</link>
-    <guid isPermaLink="true">https://operation.tw/post/319/</guid>
-    <description>每月付費訂閱 Claude 卻只用 5% 功能？《Claude 萬用手冊》涵蓋 Claude.ai、Desktop、Cowork、Skills 等九大模組，是中文市場首本完整介紹 Claude 生態的書籍。從介面層、能力層到生態層，教你用對工具才不會浪費訂閱費。</description>
-    <category>閱讀</category>
     <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
