@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 25 Jul 2026 03:34:48 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 25 Jul 2026 03:45:44 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>川普AI資安命令揭露產業困境：企業如何應對政府測試要求</title>
+    <link>https://operation.tw/post/338/</link>
+    <guid isPermaLink="true">https://operation.tw/post/338/</guid>
+    <description>美國川普政府簽署AI資安行政命令，要求AI業者自願提供前沿模型供政府測試。這項政策反映了AI安全治理的新方向，也對台灣科技企業與雲端業者帶來合規挑戰與機遇。</description>
+    <category>資安</category>
+    <pubDate>Sat, 25 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>OpenAI與Anthropic投資者重疊42%：AI巨頭背後的隱形金脈如何改寫雲端版圖？</title>
     <link>https://operation.tw/post/337/</link>
@@ -158,14 +166,6 @@
     <description>蘋果力推AI模型在iPhone本地運行，收購AI新創加速邊緣計算部署。本文分析蘋果如何打破雲端依賴、重塑AI應用生態，以及這股「邊緣AI」浪潮對台灣晶片與軟體廠商的機會與威脅。</description>
     <category>AI</category>
     <pubDate>Sat, 11 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Neoclouds挑戰雲端三巨頭：AI時代新興勢力如何重塑運算生態？</title>
-    <link>https://operation.tw/post/316/</link>
-    <guid isPermaLink="true">https://operation.tw/post/316/</guid>
-    <description>隨著AI運算需求爆炸性增長，新興雲端服務商Neoclouds正在挑戰AWS、Azure、GCP的市場地位。本文深度解析這股新勢力的技術優勢、商業策略，以及對台灣雲端及AI產業的啟示。</description>
-    <category>雲端</category>
-    <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
