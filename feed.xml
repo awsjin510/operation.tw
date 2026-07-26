@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 26 Jul 2026 03:52:44 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 26 Jul 2026 04:04:12 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Neoclouds如何挑戰AWS：AI時代新興雲端勢力的突圍之路</title>
+    <link>https://operation.tw/post/339/</link>
+    <guid isPermaLink="true">https://operation.tw/post/339/</guid>
+    <description>AWS迎接20週年之際，新興雲端平台Neoclouds正悄悄改變市場版圖。本文深入分析Neoclouds在AI時代的差異化策略，以及為何台灣企業應該關注這股新勢力，而非只守著既有的雲端巨頭。</description>
+    <category>雲端</category>
+    <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>川普AI資安命令揭露產業困境：企業如何應對政府測試要求</title>
     <link>https://operation.tw/post/338/</link>
@@ -158,14 +166,6 @@
     <description>你公司的「AI 策略」只是一張 KPI 表嗎？《好策略．壞策略》作者 Rumelt 指出，策略和目標是兩回事。95% 企業 AI 投資回報率為零的真正原因，不在技術，而在沒有診斷、缺乏聚焦的壞策略。</description>
     <category>閱讀</category>
     <pubDate>Sun, 12 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>蘋果AI本地化戰略：大模型上iPhone運行的技術突破與挑戰</title>
-    <link>https://operation.tw/post/318/</link>
-    <guid isPermaLink="true">https://operation.tw/post/318/</guid>
-    <description>蘋果力推AI模型在iPhone本地運行，收購AI新創加速邊緣計算部署。本文分析蘋果如何打破雲端依賴、重塑AI應用生態，以及這股「邊緣AI」浪潮對台灣晶片與軟體廠商的機會與威脅。</description>
-    <category>AI</category>
-    <pubDate>Sat, 11 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
