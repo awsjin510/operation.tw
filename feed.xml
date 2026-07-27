@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 26 Jul 2026 22:10:56 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 27 Jul 2026 04:00:10 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>Neoclouds如何挑戰AWS：AI時代新興雲端勢力的突圍之路</title>
@@ -13,6 +13,14 @@
     <guid isPermaLink="true">https://operation.tw/post/339/</guid>
     <description>AWS迎接20週年之際，新興雲端平台Neoclouds正悄悄改變市場版圖。本文深入分析Neoclouds在AI時代的差異化策略，以及為何台灣企業應該關注這股新勢力，而非只守著既有的雲端巨頭。</description>
     <category>雲端</category>
+    <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI47｜Claude Opus 5 革新 Agent：同價格能力全面升級，自動化工作流 8 小時不崩</title>
+    <link>https://operation.tw/post/340/</link>
+    <guid isPermaLink="true">https://operation.tw/post/340/</guid>
+    <description>Anthropic 推出的 Claude Opus 5 在同樣訂閱價格下全面提升能力，最大創新是「長時間 Agent」可連續執行 8 小時複雜任務不中斷。這波更新代表 AI 協作進入新階段，也反映四大科技實驗室的短期內連環出招戰略。本文詳解 Opus 5 的核心升級、應用場景與企業決策影響。</description>
+    <category>AI</category>
     <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/320/</guid>
     <description>韓國教授張炳琸指出，與美國競逐超大型語言模型已無勝算，應轉向實體AI領域。這反映亞洲科技產業的戰略調整——從追趕通用模型轉向垂直應用。台灣廠商該如何把握這波產業重組機會？</description>
     <category>雲端</category>
-    <pubDate>Sun, 12 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI43｜策略不是目標：為什麼 95% 企業 AI 專案都失敗</title>
-    <link>https://operation.tw/post/321/</link>
-    <guid isPermaLink="true">https://operation.tw/post/321/</guid>
-    <description>你公司的「AI 策略」只是一張 KPI 表嗎？《好策略．壞策略》作者 Rumelt 指出，策略和目標是兩回事。95% 企業 AI 投資回報率為零的真正原因，不在技術，而在沒有診斷、缺乏聚焦的壞策略。</description>
-    <category>閱讀</category>
     <pubDate>Sun, 12 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
