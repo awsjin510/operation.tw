@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Mon, 27 Jul 2026 04:00:10 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 27 Jul 2026 04:11:32 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>全球雲端市場2035預測：台灣企業如何搶佔AI驅動的下一波成長機會？</title>
+    <link>https://operation.tw/post/341/</link>
+    <guid isPermaLink="true">https://operation.tw/post/341/</guid>
+    <description>Research Nester最新報告預測公有雲市場規模與份額至2035年將迎來重大變化。本文分析AI時代雲端競爭格局如何演變、台灣企業的定位機會，以及應如何調整雲端策略應對新形勢。</description>
+    <category>雲端</category>
+    <pubDate>Mon, 27 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Neoclouds如何挑戰AWS：AI時代新興雲端勢力的突圍之路</title>
     <link>https://operation.tw/post/339/</link>
@@ -158,14 +166,6 @@
     <description>深偽內容大規模蔓延，正在毒害大語言模型的訓練數據池，導致AI系統學習錯誤信息。本文剖析這場「數據污染危機」如何威脅企業AI投資，以及組織應該採取的防禦策略。</description>
     <category>資安</category>
     <pubDate>Mon, 13 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>韓國轉攻實體AI：亞洲雲端巨人如何突圍LLM紅海？</title>
-    <link>https://operation.tw/post/320/</link>
-    <guid isPermaLink="true">https://operation.tw/post/320/</guid>
-    <description>韓國教授張炳琸指出，與美國競逐超大型語言模型已無勝算，應轉向實體AI領域。這反映亞洲科技產業的戰略調整——從追趕通用模型轉向垂直應用。台灣廠商該如何把握這波產業重組機會？</description>
-    <category>雲端</category>
-    <pubDate>Sun, 12 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
