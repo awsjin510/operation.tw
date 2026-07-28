@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 28 Jul 2026 03:32:16 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 28 Jul 2026 03:44:25 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>美國AI監管碎片化危機：兩千提案為何都繞不過長遠規劃問題？</title>
+    <link>https://operation.tw/post/342/</link>
+    <guid isPermaLink="true">https://operation.tw/post/342/</guid>
+    <description>美國AI監管陷入碎片化困境，兩千項提案卻無一觸及長遠規劃。這場監管亂象如何威脅企業合規成本？台灣和亞太地區應如何預先佈局，避免步上美國後塵？本文深入分析背後根因與應對策略。</description>
+    <category>資安</category>
+    <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>全球雲端市場2035預測：台灣企業如何搶佔AI驅動的下一波成長機會？</title>
     <link>https://operation.tw/post/341/</link>
@@ -158,14 +166,6 @@
     <description>成本壓力驅動美國企業選擇中國AI模型，引發國會安全調查。本文分析這股趨勢背後的經濟邏輯、地緣政治風險，以及台灣AI產業如何在成本與安全的天秤上找到位置。</description>
     <category>AI</category>
     <pubDate>Tue, 14 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>深偽數據毒害LLM：企業如何在AI時代守護訓練資料安全？</title>
-    <link>https://operation.tw/post/322/</link>
-    <guid isPermaLink="true">https://operation.tw/post/322/</guid>
-    <description>深偽內容大規模蔓延，正在毒害大語言模型的訓練數據池，導致AI系統學習錯誤信息。本文剖析這場「數據污染危機」如何威脅企業AI投資，以及組織應該採取的防禦策略。</description>
-    <category>資安</category>
-    <pubDate>Mon, 13 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
