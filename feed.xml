@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 30 Jul 2026 03:25:23 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 30 Jul 2026 03:39:52 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Claude AI 大規模中斷事件：生成式AI服務可靠性危機怎麼解？</title>
+    <link>https://operation.tw/post/345/</link>
+    <guid isPermaLink="true">https://operation.tw/post/345/</guid>
+    <description>Anthropic 旗下 Claude AI 於週三發生大規模服務中斷，引發企業對生成式AI可靠性的擔憂。本文分析此事件背後的技術瓶頸、對台灣企業的影響，以及如何建立 AI 服務容錯機制。</description>
+    <category>AI</category>
+    <pubDate>Thu, 30 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Google Cloud 2026資安預測揭露：AI攻擊如何滲透企業防線？</title>
     <link>https://operation.tw/post/343/</link>
@@ -158,14 +166,6 @@
     <description>最新研究揭露中國將官方敘事嵌入AI模型，透過海外部署進行內容管控。本文解析這一風險如何影響台灣企業的供應鏈決策、員工教育與資訊安全政策，以及企業應採取的檢測與防禦措施。</description>
     <category>資安</category>
     <pubDate>Thu, 16 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AWS邁入20週年：從內部工具到雲端帝國的科技啟示</title>
-    <link>https://operation.tw/post/324/</link>
-    <guid isPermaLink="true">https://operation.tw/post/324/</guid>
-    <description>AWS成立20週年之際，從解決Amazon工程師痛點的內部工具，成長為年營收千億美元的雲端巨人。本文揭示其成功秘訣如何改變全球運算格局，以及對台灣科技產業的啟示。</description>
-    <category>雲端</category>
-    <pubDate>Wed, 15 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
