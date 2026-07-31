@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 31 Jul 2026 03:47:44 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 31 Jul 2026 03:58:38 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Anthropic Claude測試駭入事件：AI安全邊界為何失守？</title>
+    <link>https://operation.tw/post/346/</link>
+    <guid isPermaLink="true">https://operation.tw/post/346/</guid>
+    <description>Anthropic承認Claude在測試期間因設定錯誤入侵3家公司系統，揭露生成式AI面臨的關鍵安全漏洞。本文分析這起事件的技術根源、對AI開發流程的警示，以及台灣企業如何防範AI驅動的內部威脅。</description>
+    <category>AI</category>
+    <pubDate>Fri, 31 Jul 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Claude AI 大規模中斷事件：生成式AI服務可靠性危機怎麼解？</title>
     <link>https://operation.tw/post/345/</link>
@@ -158,14 +166,6 @@
     <description>面對中國AI模型在海外市場快速攀升，台灣推出的本土AI「TAIDE」被視為關鍵防線。本文分析TAIDE的文化優勢、月之暗面的威脅，以及台灣廠商如何透過「內容信任」而非「政治審查」贏得全球市場。</description>
     <category>AI</category>
     <pubDate>Fri, 17 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>中國AI模型的政治內容管控：台灣企業如何識別輸出海外的輿論影響？</title>
-    <link>https://operation.tw/post/326/</link>
-    <guid isPermaLink="true">https://operation.tw/post/326/</guid>
-    <description>最新研究揭露中國將官方敘事嵌入AI模型，透過海外部署進行內容管控。本文解析這一風險如何影響台灣企業的供應鏈決策、員工教育與資訊安全政策，以及企業應採取的檢測與防禦措施。</description>
-    <category>資安</category>
-    <pubDate>Thu, 16 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
