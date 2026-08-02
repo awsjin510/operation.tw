@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 01 Aug 2026 22:09:17 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 02 Aug 2026 03:50:29 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>台灣AI生態系新布局：客家文化x人工智能如何創造差異化競爭力？</title>
@@ -13,6 +13,14 @@
     <guid isPermaLink="true">https://operation.tw/post/347/</guid>
     <description>聯合大學打造全台首創「台灣客家AI生態系」，結合在地文化與AI技術。這項新舉措如何突破台灣「只靠硬體」的困境？如何為AI應用開創新的商業機會？我們深入解析其戰略意義與產業潛力。</description>
     <category>AI</category>
+    <pubDate>Sat, 01 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI48｜高功能倖存者：為什麼最靠譜的人最先崩潰？</title>
+    <link>https://operation.tw/post/348/</link>
+    <guid isPermaLink="true">https://operation.tw/post/348/</guid>
+    <description>團隊裡最能幹的人突然生病了？心理諮商師周慕姿用「高功能倖存者」解釋為什麼有些人看似無所不能，卻在無形中消耗殆盡。這不是完美主義，而是把「沒電」誤認為「沒用」的心理困境。</description>
+    <category>閱讀</category>
     <pubDate>Sat, 01 Aug 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/328/</guid>
     <description>AWS成立20週年，從解決內部工程師痛點到千億美元規模，但真正推動雲端革命的，不只是基礎設施。本文剖析AWS生態中被忽視的三大創新，以及台灣雲端新創如何在這個成熟市場中尋找破口。</description>
     <category>雲端</category>
-    <pubDate>Sat, 18 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI44｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？</title>
-    <link>https://operation.tw/post/329/</link>
-    <guid isPermaLink="true">https://operation.tw/post/329/</guid>
-    <description>Google 官方宣布 NotebookLM 更名為 Gemini Notebook，背後不只是改名，而是整合 Gemini、新增程式碼執行、雲端安全運算等重大升級。3000 萬活躍使用者的工具升級，究竟改變了什麼？</description>
-    <category>AI</category>
     <pubDate>Sat, 18 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>

@@ -8,16 +8,17 @@
 ## 核心主題
 
 - **AI**（122 篇）
+- **閱讀**（44 篇）
 - **資安**（51 篇）
-- **閱讀**（43 篇）
 - **雲端**（49 篇）
 - **成長**（56 篇）
 - **閱讀**：書評、閱讀筆記、知識管理
 - **成長**：個人學習方法、自媒體經營、職涯思維
 
-## 最新文章（共 321 篇）
+## 最新文章（共 322 篇）
 
 - [台灣AI生態系新布局：客家文化x人工智能如何創造差異化競爭力？](https://operation.tw/post/347/) — AI · 2026-08-01
+- [AI48｜高功能倖存者：為什麼最靠譜的人最先崩潰？](https://operation.tw/post/348/) — 閱讀 · 2026-08-01
 - [Anthropic Claude測試駭入事件：AI安全邊界為何失守？](https://operation.tw/post/346/) — AI · 2026-07-31
 - [Claude AI 大規模中斷事件：生成式AI服務可靠性危機怎麼解？](https://operation.tw/post/345/) — AI · 2026-07-30
 - [Google Cloud 2026資安預測揭露：AI攻擊如何滲透企業防線？](https://operation.tw/post/343/) — 資安 · 2026-07-29
@@ -36,7 +37,6 @@
 - [習近平親臨世界AI大會：中國開源戰略如何威脅西方AI霸權？](https://operation.tw/post/330/) — AI · 2026-07-19
 - [EP101｜一個提袋改變人生：美學達人如何用管理思維跨界彩妝](https://operation.tw/post/331/) — AI · 2026-07-19
 - [AWS20週年的隱形贏家：從工程痛點到雲端帝國的另一面](https://operation.tw/post/328/) — 雲端 · 2026-07-18
-- [AI44｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？](https://operation.tw/post/329/) — AI · 2026-07-18
 
 ## 網站頁面（AI 系統建議優先讀取）
 
