@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 02 Aug 2026 03:50:29 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 02 Aug 2026 04:02:18 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AWS 20 週年啟示：雲端運算如何從工程痛點演變成產業基礎設施？</title>
+    <link>https://operation.tw/post/349/</link>
+    <guid isPermaLink="true">https://operation.tw/post/349/</guid>
+    <description>AWS 成立 20 週年，從解決亞馬遜內部工程師的痛點出發，成長為千億美元規模的雲端帝國。本文從 AWS 的發展脈絡，剖析雲端運算如何改造全球產業，以及台灣企業該如何在 AI 時代把握雲端紅利。</description>
+    <category>雲端</category>
+    <pubDate>Sun, 02 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>台灣AI生態系新布局：客家文化x人工智能如何創造差異化競爭力？</title>
     <link>https://operation.tw/post/347/</link>
@@ -158,14 +166,6 @@
     <description>從管理學院學生到資生堂美學專家，嘉嘉因為一堂通識課上的提袋對話，徹底改變了人生軌跡。她分享如何用理性思維駕馭感性領域、AI 時代彩妝師的核心競爭力，以及美妝背後那份接住他人脆弱的溫暖志業。</description>
     <category>AI</category>
     <pubDate>Sun, 19 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AWS20週年的隱形贏家：從工程痛點到雲端帝國的另一面</title>
-    <link>https://operation.tw/post/328/</link>
-    <guid isPermaLink="true">https://operation.tw/post/328/</guid>
-    <description>AWS成立20週年，從解決內部工程師痛點到千億美元規模，但真正推動雲端革命的，不只是基礎設施。本文剖析AWS生態中被忽視的三大創新，以及台灣雲端新創如何在這個成熟市場中尋找破口。</description>
-    <category>雲端</category>
-    <pubDate>Sat, 18 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
