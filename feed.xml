@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 04 Aug 2026 03:34:05 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 04 Aug 2026 03:45:40 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>歐盟網安法升級2026：供應鏈資安新門檻，台灣科技廠商如何應對？</title>
+    <link>https://operation.tw/post/351/</link>
+    <guid isPermaLink="true">https://operation.tw/post/351/</guid>
+    <description>歐盟擬修訂網路安全法案，強化供應鏈資安管理並限制高風險供應商。這項新規將直接影響台灣半導體、晶片設計等出口歐洲的企業。本文解析新法重點、合規挑戰，及台灣廠商的應對策略。</description>
+    <category>資安</category>
+    <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>日本AI漏洞前置審查啟示：台灣企業如何預防高性能AI風險？</title>
     <link>https://operation.tw/post/350/</link>
@@ -158,14 +166,6 @@
     <description>中國AI模型Kimi K3遭爆宣稱自己是Claude，暴露出開源AI模型的技術歸屬與資安風險。本文分析這起事件背後的技術問題、對全球AI生態的影響，以及台灣企業如何識別與防範類似威脅。</description>
     <category>資安</category>
     <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>習近平親臨世界AI大會：中國開源戰略如何威脅西方AI霸權？</title>
-    <link>https://operation.tw/post/330/</link>
-    <guid isPermaLink="true">https://operation.tw/post/330/</guid>
-    <description>習近平首度現身世界AI大會，宣示中國的「開源」AI戰略。這不只是技術選擇，更是一場地緣政治博弈——中國如何透過開源模式突破晶片限制，重塑全球AI版圖？台灣企業該如何應對？</description>
-    <category>AI</category>
-    <pubDate>Sun, 19 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
