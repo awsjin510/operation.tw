@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 05 Aug 2026 03:29:36 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 05 Aug 2026 03:41:59 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>中國AI價格戰如何撼動全球市場？台灣企業該如何應對？</title>
+    <link>https://operation.tw/post/352/</link>
+    <guid isPermaLink="true">https://operation.tw/post/352/</guid>
+    <description>中國「AI六強」通過大幅降價挑戰美國高成本生態系，全球AI市場競爭格局正在重塑。本文分析中國AI價格戰的成因、對全球市場的衝擊，以及台灣科技產業與企業應如何因應這波變局。</description>
+    <category>AI</category>
+    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>歐盟網安法升級2026：供應鏈資安新門檻，台灣科技廠商如何應對？</title>
     <link>https://operation.tw/post/351/</link>
@@ -158,14 +166,6 @@
     <description>Google Cloud發布2026網路安全預測報告，揭示AI攻擊已從實驗階段進入大規模應用。本文解析AI驅動的新型威脅模式，以及台灣企業應如何建構多層防禦架構，從檢測到回應的完整策略。</description>
     <category>資安</category>
     <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Kimi K3被抓包偷美技術：AI模型安全漏洞如何威脅台灣企業？</title>
-    <link>https://operation.tw/post/332/</link>
-    <guid isPermaLink="true">https://operation.tw/post/332/</guid>
-    <description>中國AI模型Kimi K3遭爆宣稱自己是Claude，暴露出開源AI模型的技術歸屬與資安風險。本文分析這起事件背後的技術問題、對全球AI生態的影響，以及台灣企業如何識別與防範類似威脅。</description>
-    <category>資安</category>
-    <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
