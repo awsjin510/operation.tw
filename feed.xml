@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 06 Aug 2026 03:33:17 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 06 Aug 2026 03:47:42 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>製造業AI排程革命：從手工排表到智慧決策，台灣傳統產業如何翻身？</title>
+    <link>https://operation.tw/post/353/</link>
+    <guid isPermaLink="true">https://operation.tw/post/353/</guid>
+    <description>崑山科大資工所教授田永昇開發AI智慧排程系統，助力製鞋業提升生產效能。本文深度分析這套系統如何解決製造業排程難題，以及台灣傳統產業如何透過AI轉型，對標全球智慧製造競爭力。</description>
+    <category>AI</category>
+    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>中國AI價格戰如何撼動全球市場？台灣企業該如何應對？</title>
     <link>https://operation.tw/post/352/</link>
@@ -158,14 +166,6 @@
     <description>Research Nester 最新報告預測公有雲市場到 2035 年的規模與份額變化。台灣企業面臨 AI 時代雲端需求激增，如何在全球競爭中找到差異化機會？本文解析雲端市場趨勢與台灣廠商的戰略定位。</description>
     <category>雲端</category>
     <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI攻擊全面化2026：企業如何建立分層防禦體系？</title>
-    <link>https://operation.tw/post/333/</link>
-    <guid isPermaLink="true">https://operation.tw/post/333/</guid>
-    <description>Google Cloud發布2026網路安全預測報告，揭示AI攻擊已從實驗階段進入大規模應用。本文解析AI驅動的新型威脅模式，以及台灣企業應如何建構多層防禦架構，從檢測到回應的完整策略。</description>
-    <category>資安</category>
-    <pubDate>Tue, 21 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
