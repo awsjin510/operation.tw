@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 07 Aug 2026 03:14:07 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 07 Aug 2026 03:23:38 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>企業官網與雲端基礎設施的新關係：AI時代如何重新定義數位門面？</title>
+    <link>https://operation.tw/post/354/</link>
+    <guid isPermaLink="true">https://operation.tw/post/354/</guid>
+    <description>在AI時代，企業官網的角色正在重塑。PMI傳播長指出官網重要性與日俱增，而這背後離不開雲端運算的支撐。本文探討企業如何透過現代雲端架構提升官網能力，以及這對台灣中小企業的啟示。</description>
+    <category>雲端</category>
+    <pubDate>Fri, 07 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>製造業AI排程革命：從手工排表到智慧決策，台灣傳統產業如何翻身？</title>
     <link>https://operation.tw/post/353/</link>
@@ -158,14 +166,6 @@
     <description>Google 7月發表三款 Gemini 模型，其中 Flash Cyber 是首個由雲端服務商正式推出的漏洞獵捕 AI，兩小時內發現高危漏洞。OpenAI、Anthropic 也在暗地裡進行資安 AI 競賽，這場軍備戰將如何改變資安工程師的工作？</description>
     <category>AI</category>
     <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>公有雲市場2035年預測：台灣企業如何搶佔下一波成長紅利？</title>
-    <link>https://operation.tw/post/334/</link>
-    <guid isPermaLink="true">https://operation.tw/post/334/</guid>
-    <description>Research Nester 最新報告預測公有雲市場到 2035 年的規模與份額變化。台灣企業面臨 AI 時代雲端需求激增，如何在全球競爭中找到差異化機會？本文解析雲端市場趨勢與台灣廠商的戰略定位。</description>
-    <category>雲端</category>
-    <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
