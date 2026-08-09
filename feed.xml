@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 09 Aug 2026 02:26:39 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 09 Aug 2026 02:33:45 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>韓國AI雲端野心揭露：亞太區域如何打破AWS壟斷？</title>
+    <link>https://operation.tw/post/356/</link>
+    <guid isPermaLink="true">https://operation.tw/post/356/</guid>
+    <description>韓國力爭AI時代的國際治理主導權，背後隱含雲端基礎設施競爭的激化。面對全球雲端市場2035年的預測增長，台灣與亞太企業如何在AWS、Google、Azure之外，抓住新興雲端勢力崛起的機會窗口？</description>
+    <category>雲端</category>
+    <pubDate>Sun, 09 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>字節跳動10兆參數模型衝擊：台灣AI企業如何在全球競賽中突圍？</title>
     <link>https://operation.tw/post/355/</link>
@@ -158,14 +166,6 @@
     <description>最新數據揭露OpenAI與Anthropic有42%的共同投資者身份，反映AI產業資本集中現象。這種投資重疊如何影響雲端基礎設施競爭、技術路線選擇，以及台灣科技業的機會與風險？</description>
     <category>雲端</category>
     <pubDate>Fri, 24 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>LLM的文化偏見陷阱：為何AI生成內容趨同化威脅創意產業？</title>
-    <link>https://operation.tw/post/335/</link>
-    <guid isPermaLink="true">https://operation.tw/post/335/</guid>
-    <description>最新研究揭露大型語言模型存在隱性的文化偏好，特別是對動漫、特定遊戲風格的過度傾斜，導致AI生成內容高度同質化。這對台灣遊戲、動畫創作者意味著什麼？如何在AI時代保護創意多樣性？</description>
-    <category>AI</category>
-    <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
