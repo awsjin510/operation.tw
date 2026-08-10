@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 09 Aug 2026 21:45:45 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 10 Aug 2026 02:31:51 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>韓國AI雲端野心揭露：亞太區域如何打破AWS壟斷？</title>
@@ -13,6 +13,14 @@
     <guid isPermaLink="true">https://operation.tw/post/356/</guid>
     <description>韓國力爭AI時代的國際治理主導權，背後隱含雲端基礎設施競爭的激化。面對全球雲端市場2035年的預測增長，台灣與亞太企業如何在AWS、Google、Azure之外，抓住新興雲端勢力崛起的機會窗口？</description>
     <category>雲端</category>
+    <pubDate>Sun, 09 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI49｜ChatBot變聰明了？真正升級的是向量搜尋資料庫</title>
+    <link>https://operation.tw/post/357/</link>
+    <guid isPermaLink="true">https://operation.tw/post/357/</guid>
+    <description>你的企業ChatBot最近回答更精確了——但不是AI模型變聰明，而是背後的向量搜尋資料庫在進化。AWS、Google Cloud、Azure全力搶佔RAG時代的資料庫戰爭，這場看不見的競賽正在改寫企業AI底層架構。</description>
+    <category>AI</category>
     <pubDate>Sun, 09 Aug 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -158,14 +166,6 @@
     <description>美國川普政府簽署AI資安行政命令，要求AI業者自願提供前沿模型供政府測試。這項政策反映了AI安全治理的新方向，也對台灣科技企業與雲端業者帶來合規挑戰與機遇。</description>
     <category>資安</category>
     <pubDate>Sat, 25 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>OpenAI與Anthropic投資者重疊42%：AI巨頭背後的隱形金脈如何改寫雲端版圖？</title>
-    <link>https://operation.tw/post/337/</link>
-    <guid isPermaLink="true">https://operation.tw/post/337/</guid>
-    <description>最新數據揭露OpenAI與Anthropic有42%的共同投資者身份，反映AI產業資本集中現象。這種投資重疊如何影響雲端基礎設施競爭、技術路線選擇，以及台灣科技業的機會與風險？</description>
-    <category>雲端</category>
-    <pubDate>Fri, 24 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
