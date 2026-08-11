@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 11 Aug 2026 02:25:25 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 11 Aug 2026 02:33:04 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>加拿大AI獨角獸爆發：亞太雲端市場的新變數</title>
+    <link>https://operation.tw/post/358/</link>
+    <guid isPermaLink="true">https://operation.tw/post/358/</guid>
+    <description>AI投資熱潮正在改寫全球科技版圖。加拿大成功躍升為全球第六大獨角獸孵化地，背後隱含的雲端基礎設施需求與市場機遇，對台灣科技廠商與雲端服務商構成新的挑戰與機會。</description>
+    <category>雲端</category>
+    <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>韓國AI雲端野心揭露：亞太區域如何打破AWS壟斷？</title>
     <link>https://operation.tw/post/356/</link>
@@ -158,14 +166,6 @@
     <description>Anthropic 推出的 Claude Opus 5 在同樣訂閱價格下全面提升能力，最大創新是「長時間 Agent」可連續執行 8 小時複雜任務不中斷。這波更新代表 AI 協作進入新階段，也反映四大科技實驗室的短期內連環出招戰略。本文詳解 Opus 5 的核心升級、應用場景與企業決策影響。</description>
     <category>AI</category>
     <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>川普AI資安命令揭露產業困境：企業如何應對政府測試要求</title>
-    <link>https://operation.tw/post/338/</link>
-    <guid isPermaLink="true">https://operation.tw/post/338/</guid>
-    <description>美國川普政府簽署AI資安行政命令，要求AI業者自願提供前沿模型供政府測試。這項政策反映了AI安全治理的新方向，也對台灣科技企業與雲端業者帶來合規挑戰與機遇。</description>
-    <category>資安</category>
-    <pubDate>Sat, 25 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
