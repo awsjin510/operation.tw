@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 12 Aug 2026 02:41:47 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 12 Aug 2026 03:02:16 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Google承認AI履歷篩選失準：企業HR系統暗藏的偏見陷阱</title>
+    <link>https://operation.tw/post/359/</link>
+    <guid isPermaLink="true">https://operation.tw/post/359/</guid>
+    <description>Google AI團隊公開坦誠，公司自家開發的履歷篩選AI存在性別與種族偏見問題。這起「內部吹哨」揭露企業AI系統的黑箱風險，對台灣HR科技業與資安合規帶來警示：AI決策系統需要更嚴格的偏見審計與透明度機制。</description>
+    <category>資安</category>
+    <pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>加拿大AI獨角獸爆發：亞太雲端市場的新變數</title>
     <link>https://operation.tw/post/358/</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/339/</guid>
     <description>AWS迎接20週年之際，新興雲端平台Neoclouds正悄悄改變市場版圖。本文深入分析Neoclouds在AI時代的差異化策略，以及為何台灣企業應該關注這股新勢力，而非只守著既有的雲端巨頭。</description>
     <category>雲端</category>
-    <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI47｜Claude Opus 5 革新 Agent：同價格能力全面升級，自動化工作流 8 小時不崩</title>
-    <link>https://operation.tw/post/340/</link>
-    <guid isPermaLink="true">https://operation.tw/post/340/</guid>
-    <description>Anthropic 推出的 Claude Opus 5 在同樣訂閱價格下全面提升能力，最大創新是「長時間 Agent」可連續執行 8 小時複雜任務不中斷。這波更新代表 AI 協作進入新階段，也反映四大科技實驗室的短期內連環出招戰略。本文詳解 Opus 5 的核心升級、應用場景與企業決策影響。</description>
-    <category>AI</category>
     <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
