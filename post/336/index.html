@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/336/","headline":"AI46｜Google Gemini Flash Cyber：資安 AI 軍備競賽的秘密武器","description":"Google 7月發表三款 Gemini 模型，其中 Flash Cyber 是首個由雲端服務商正式推出的漏洞獵捕 AI，兩小時內發現高危漏洞。OpenAI、Anthropic 也在暗地裡進行資安 AI 競賽，這場軍備戰將如何改變資安工程師的工作？","datePublished":"2026-07-23","dateModified":"2026-07-23","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/336/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/336/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-336.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI46｜Google Gemini Flash Cyber：資安 AI 軍備競賽的秘密武器","item":"https://operation.tw/post/336/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/336/#faq","mainEntity":[{"@type":"Question","name":"Google Gemini Flash Cyber 是什麼？","acceptedAnswer":{"@type":"Answer","text":"Gemini Flash Cyber 是 Google 於 2024 年 7 月推出的專用 AI 模型，專門設計用來發現程式碼中的安全漏洞，僅透過 CodeMender 工具提供給政府與信任夥伴使用，不對外販售。"}},{"@type":"Question","name":"AI 會取代資安工程師嗎？","acceptedAnswer":{"@type":"Answer","text":"不會完全取代，但會改變工作內容。AI 會接管重複性的漏洞發現工作，資安人才的價值會上移到「判斷、決策、風險評估」的層面，核心競爭力從「會不會找漏洞」轉向「會不會用 AI 找漏洞、怎樣判斷結果」。"}},{"@type":"Question","name":"為什麼 Google、OpenAI、Anthropic 都不完全開放資安 AI？","acceptedAnswer":{"@type":"Answer","text":"資安 AI 涉及國家安全與關鍵基礎設施保護，若完全開放恐被攻擊者濫用。受控開放給政府與信任夥伴，既能發揮防禦效果，又能避免成為攻擊工具。"}}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/336/#episode","name":"AI46｜Google Gemini Flash Cyber：資安 AI 軍備競賽的秘密武器","url":"https://operation.tw/post/336/","datePublished":"2026-07-23","description":"Google 7月發表三款 Gemini 模型，其中 Flash Cyber 是首個由雲端服務商正式推出的漏洞獵捕 AI，兩小時內發現高危漏洞。OpenAI、Anthropic 也在暗地裡進行資安 AI 競賽，這場軍備戰將如何改變資安工程師的工作？","image":"https://operation.tw/images/posts/post-336.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":46,"duration":"PT9M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/f52f08ad-ddcd-4aa1-b3a0-1b8149a24697/rssFileVip.mp3?timestamp=1784919634003","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:336})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>AI46｜Google Gemini Flash Cyber：資安 AI 軍備競賽的秘密武器</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-23">2026-07-23</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-23">2026-07-23</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-336.webp"><img class="cover" src="https://operation.tw/images/posts/post-336.jpg" alt="AI46｜Google Gemini Flash Cyber：資安 AI 軍備競賽的秘密武器" width="1200" height="630"></picture>
     <div class="excerpt"><p>Google 7月發表三款 Gemini 模型，其中 Flash Cyber 是首個由雲端服務商正式推出的漏洞獵捕 AI，兩小時內發現高危漏洞。OpenAI、Anthropic 也在暗地裡進行資安 AI 競賽，這場軍備戰將如何改變資安工程師的工作？</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">Google 為什麼要推出 Gemini Flash Cyber？</a></li><li class="toc-l2"><a href="#sec-2">Flash Cyber 實際的威力有多大？</a></li><li class="toc-l2"><a href="#sec-3">只有 Google 在做資安 AI 嗎？</a></li><li class="toc-l2"><a href="#sec-4">AI 找漏洞和人類資安工程師有什麼本質差異？</a></li><li class="toc-l2"><a href="#sec-5">資安工程師接下來的職業轉變會是什麼？</a></li><li class="toc-l2"><a href="#sec-6">為什麼要關心 AI 資安軍備競賽？</a></li><li class="toc-l2"><a href="#sec-7">常見問題</a></li><li class="toc-l3"><a href="#sec-8">Google Gemini Flash Cyber 是什麼？</a></li><li class="toc-l3"><a href="#sec-9">AI 會取代資安工程師嗎？</a></li><li class="toc-l3"><a href="#sec-10">為什麼 Google、OpenAI、Anthropic 都不完全開放資安 AI？</a></li></ul></nav>

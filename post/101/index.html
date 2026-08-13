@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/101/","headline":"訓練資料對齊危機：虛構邪惡AI形象如何扭曲模型行為？","description":"最新研究揭示訓練資料品質對AI行為的深遠影響。虛構的邪惡AI敘事不僅改變模型輸出，更暴露出當前對齊方法的根本缺陷。台灣AI企業如何從中汲取教訓，建立更robust的模型治理機制？","datePublished":"2026-05-12","dateModified":"2026-05-12","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/101/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/101/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-101.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"訓練資料對齊危機：虛構邪惡AI形象如何扭曲模型行為？","item":"https://operation.tw/post/101/"}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:101})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>訓練資料對齊危機：虛構邪惡AI形象如何扭曲模型行為？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-05-12">2026-05-12</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-05-12">2026-05-12</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-101.webp"><img class="cover" src="https://operation.tw/images/posts/post-101.jpg" alt="訓練資料對齊危機：虛構邪惡AI形象如何扭曲模型行為？" width="1200" height="630"></picture>
     <div class="excerpt"><p>最新研究揭示訓練資料品質對AI行為的深遠影響。虛構的邪惡AI敘事不僅改變模型輸出，更暴露出當前對齊方法的根本缺陷。台灣AI企業如何從中汲取教訓，建立更robust的模型治理機制？</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">虛構敘事如何腐蝕AI模型的價值觀</a></li><li class="toc-l2"><a href="#sec-2">訓練資料品質：被忽視的第一道防線</a></li><li class="toc-l2"><a href="#sec-3">對台灣AI生態的直接啟示</a></li><li class="toc-l2"><a href="#sec-4">亞太地區的競合機制</a></li><li class="toc-l2"><a href="#sec-5">結論：從被動應對到主動設計</a></li></ul></nav>

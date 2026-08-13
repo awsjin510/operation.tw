@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/207/","headline":"EP56｜塔羅占卜師Sandy：牌卡不是命運，而是一面鏡子","description":"這集「操作一下」邀請到擁有多年占卜經驗的塔羅師Sandy，聊聊塔羅牌的歷史脈絡、解讀方式，以及如何不被占卜結果牽著走。Sandy也分享了她對寵物溝通的獨特見解，還有那句讓她持續前行的人生金句——所有的安排，都是最好的安排。","datePublished":"2024-02-22","dateModified":"2024-02-22","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/207/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/207/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-207.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"EP56｜塔羅占卜師Sandy：牌卡不是命運，而是一面鏡子","item":"https://operation.tw/post/207/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/207/#episode","name":"EP56｜塔羅占卜師Sandy：牌卡不是命運，而是一面鏡子","url":"https://operation.tw/post/207/","datePublished":"2024-02-22","description":"這集「操作一下」邀請到擁有多年占卜經驗的塔羅師Sandy，聊聊塔羅牌的歷史脈絡、解讀方式，以及如何不被占卜結果牽著走。Sandy也分享了她對寵物溝通的獨特見解，還有那句讓她持續前行的人生金句——所有的安排，都是最好的安排。","image":"https://operation.tw/images/posts/post-207.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":56,"duration":"PT45M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/d23e021e-26a4-4753-ad9d-a8792b7674e8/rssFileVip.mp3?timestamp=1708617408577","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:207})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>EP56｜塔羅占卜師Sandy：牌卡不是命運，而是一面鏡子</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2024-02-22">2024-02-22</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2024-02-22">2024-02-22</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-207.webp"><img class="cover" src="https://operation.tw/images/posts/post-207.jpg" alt="EP56｜塔羅占卜師Sandy：牌卡不是命運，而是一面鏡子" width="1200" height="630"></picture>
     <div class="excerpt"><p>這集「操作一下」邀請到擁有多年占卜經驗的塔羅師Sandy，聊聊塔羅牌的歷史脈絡、解讀方式，以及如何不被占卜結果牽著走。Sandy也分享了她對寵物溝通的獨特見解，還有那句讓她持續前行的人生金句——所有的安排，都是最好的安排。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">你怕被塔羅「算準」嗎？</a></li><li class="toc-l2"><a href="#sec-2">塔羅牌是什麼？先認識它的背景</a></li><li class="toc-l2"><a href="#sec-3">Sandy怎麼走上占卜這條路？</a></li><li class="toc-l2"><a href="#sec-4">「塔羅很準」這件事，到底怎麼解讀？</a></li><li class="toc-l2"><a href="#sec-5">算完之後，不要被結果綁架</a></li><li class="toc-l2"><a href="#sec-6">寵物也能溝通？另一個有趣的領域</a></li><li class="toc-l2"><a href="#sec-7">對你有什麼實際應用？</a></li><li class="toc-l2"><a href="#sec-8">所有的安排，都是最好的安排</a></li></ul></nav>

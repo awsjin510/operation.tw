@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/165/","headline":"EP14｜隆乳常見迷思大解析：資深醫美業務Erin告訴你那些沒人說清楚的事","description":"你曾好奇那張照片裡是真奶還是假奶嗎？這集《操作一下》邀請到資深醫美業務經理Erin，從業內人的視角分享隆乳的常見迷思與觀念。不論你是正在考慮、還是純粹好奇，這篇文章帶你用更理性、更有根據的方式看待這件事，也聊聊女性選擇成為想要的自己這件事背後的意義。","datePublished":"2022-08-31","dateModified":"2022-08-31","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/165/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/165/"},"articleSection":"成長","image":"https://operation.tw/images/posts/post-165.jpg","keywords":"成長","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"成長","item":"https://operation.tw/category/%E6%88%90%E9%95%B7/"},{"@type":"ListItem","position":3,"name":"EP14｜隆乳常見迷思大解析：資深醫美業務Erin告訴你那些沒人說清楚的事","item":"https://operation.tw/post/165/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/165/#episode","name":"EP14｜隆乳常見迷思大解析：資深醫美業務Erin告訴你那些沒人說清楚的事","url":"https://operation.tw/post/165/","datePublished":"2022-08-31","description":"你曾好奇那張照片裡是真奶還是假奶嗎？這集《操作一下》邀請到資深醫美業務經理Erin，從業內人的視角分享隆乳的常見迷思與觀念。不論你是正在考慮、還是純粹好奇，這篇文章帶你用更理性、更有根據的方式看待這件事，也聊聊女性選擇成為想要的自己這件事背後的意義。","image":"https://operation.tw/images/posts/post-165.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":14,"duration":"PT24M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/f3d0d9d5-5274-41c5-a6bf-5d76b1407f7d/rssFileVip.mp3?timestamp=1687899395513","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:165})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🌱 成長</div>
     <h1>EP14｜隆乳常見迷思大解析：資深醫美業務Erin告訴你那些沒人說清楚的事</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-08-31">2022-08-31</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-08-31">2022-08-31</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-165.webp"><img class="cover" src="https://operation.tw/images/posts/post-165.jpg" alt="EP14｜隆乳常見迷思大解析：資深醫美業務Erin告訴你那些沒人說清楚的事" width="1200" height="630"></picture>
     <div class="excerpt"><p>你曾好奇那張照片裡是真奶還是假奶嗎？這集《操作一下》邀請到資深醫美業務經理Erin，從業內人的視角分享隆乳的常見迷思與觀念。不論你是正在考慮、還是純粹好奇，這篇文章帶你用更理性、更有根據的方式看待這件事，也聊聊女性選擇成為想要的自己這件事背後的意義。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">「她是真的還是假的？」這個問題，比你想的還複雜</a></li><li class="toc-l2"><a href="#sec-2">為什麼連業內人都難以「一眼看穿」？</a></li><li class="toc-l2"><a href="#sec-3">Erin 分享的核心觀點：迷思比你想的多</a></li><li class="toc-l2"><a href="#sec-4">「支持妳，成為想要的自己」——這句話的重量</a></li><li class="toc-l2"><a href="#sec-5">如果你也在考慮，或只是好奇——這些可以先想清楚</a></li><li class="toc-l2"><a href="#sec-6">結語</a></li></ul></nav>

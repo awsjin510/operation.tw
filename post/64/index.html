@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/64/","headline":"語言模型與人腦結構驚人相似：下一代AI突破的鑰匙在大腦科學","description":"最新研究發現語言模型的內部結構與人類大腦有驚人相似之處。這項發現不僅揭示AI運作的神經基礎，更指向未來AI發展的新方向。台灣AI研究機構該如何從腦神經科學汲取靈感，開發更強大的模型？","datePublished":"2026-04-09","dateModified":"2026-04-09","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/64/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/64/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-64.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"語言模型與人腦結構驚人相似：下一代AI突破的鑰匙在大腦科學","item":"https://operation.tw/post/64/"}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:64})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>語言模型與人腦結構驚人相似：下一代AI突破的鑰匙在大腦科學</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-09">2026-04-09</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-09">2026-04-09</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-64.webp"><img class="cover" src="https://operation.tw/images/posts/post-64.jpg" alt="語言模型與人腦結構驚人相似：下一代AI突破的鑰匙在大腦科學" width="1200" height="630"></picture>
     <div class="excerpt"><p>最新研究發現語言模型的內部結構與人類大腦有驚人相似之處。這項發現不僅揭示AI運作的神經基礎，更指向未來AI發展的新方向。台灣AI研究機構該如何從腦神經科學汲取靈感，開發更強大的模型？</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">驚人發現：AI與大腦的結構相似性</a></li><li class="toc-l2"><a href="#sec-2">為什麼大腦科學對AI發展至關重要</a></li><li class="toc-l2"><a href="#sec-3">台灣AI研究的機遇與挑戰</a></li><li class="toc-l2"><a href="#sec-4">產業應用的實際意義</a></li><li class="toc-l2"><a href="#sec-5">結論：從模仿轉向理解</a></li></ul></nav>

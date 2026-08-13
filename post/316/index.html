@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/316/","headline":"Neoclouds挑戰雲端三巨頭：AI時代新興勢力如何重塑運算生態？","description":"隨著AI運算需求爆炸性增長，新興雲端服務商Neoclouds正在挑戰AWS、Azure、GCP的市場地位。本文深度解析這股新勢力的技術優勢、商業策略，以及對台灣雲端及AI產業的啟示。","datePublished":"2026-07-10","dateModified":"2026-07-10","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/316/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/316/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-316.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"Neoclouds挑戰雲端三巨頭：AI時代新興勢力如何重塑運算生態？","item":"https://operation.tw/post/316/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/316/#faq","mainEntity":[{"@type":"Question","name":"Neoclouds相比AWS的主要優勢是什麼？","acceptedAnswer":{"@type":"Answer","text":"Neoclouds採用AI-First架構設計，專注優化GPU叢集調度與分散式訓練，相比AWS的通用型基礎設施，在AI工作負載上的運算效率與成本效益更優。"}},{"@type":"Question","name":"為什麼投資者同時投資OpenAI和新興雲端平台？","acceptedAnswer":{"@type":"Answer","text":"投資機構認為AI運算基礎設施即將重組，通過多層次佈局來對沖不確定性，同時把握新興雲端平台搶佔市場份額的機會。"}},{"@type":"Question","name":"台灣企業應該立即遷移到Neoclouds嗎？","acceptedAnswer":{"@type":"Answer","text":"應先評估特定AI工作負載（如模型訓練、推理部署）在Neoclouds上的成本-性能表現，再做決策；建議採用多雲策略，根據應用特性選擇最優平台。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:316})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">☁️ 雲端</div>
     <h1>Neoclouds挑戰雲端三巨頭：AI時代新興勢力如何重塑運算生態？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-10">2026-07-10</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-10">2026-07-10</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-316.webp"><img class="cover" src="https://operation.tw/images/posts/post-316.jpg" alt="Neoclouds挑戰雲端三巨頭：AI時代新興勢力如何重塑運算生態？" width="1200" height="630"></picture>
     <div class="excerpt"><p>隨著AI運算需求爆炸性增長，新興雲端服務商Neoclouds正在挑戰AWS、Azure、GCP的市場地位。本文深度解析這股新勢力的技術優勢、商業策略，以及對台灣雲端及AI產業的啟示。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼Neoclouds會在2026年突然成為話題？</a></li><li class="toc-l2"><a href="#sec-2">新興雲端服務商的技術優勢具體在哪裡？</a></li><li class="toc-l3"><a href="#sec-3">運算效率的具體表現是什麼？</a></li><li class="toc-l2"><a href="#sec-4">投資者重疊現象代表什麼產業信號？</a></li><li class="toc-l3"><a href="#sec-5">為什麼資本市場對多元化雲端平台的興趣升溫？</a></li><li class="toc-l2"><a href="#sec-6">這個趨勢對台灣企業有什麼實際啟示？</a></li><li class="toc-l3"><a href="#sec-7">台灣雲端與AI人才該如何應對？</a></li><li class="toc-l3"><a href="#sec-8">台灣供應鏈廠商的機會在哪裡？</a></li><li class="toc-l2"><a href="#sec-9">新興雲端平台的短期與長期風險是什麼？</a></li><li class="toc-l2"><a href="#sec-10">常見問題</a></li><li class="toc-l3"><a href="#sec-11">Neoclouds相比AWS的主要優勢是什麼？</a></li><li class="toc-l3"><a href="#sec-12">為什麼投資者同時投資OpenAI和新興雲端平台？</a></li><li class="toc-l3"><a href="#sec-13">台灣企業應該立即遷移到Neoclouds嗎？</a></li></ul></nav>

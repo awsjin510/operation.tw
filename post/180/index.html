@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/180/","headline":"EP29｜少，但是更好：生活需要設計，選擇專注真正重要的事","description":"你是否常常感到忙碌卻毫無成就感？《少，但是更好》這本書點出一個核心問題：我們不是不夠努力，而是把力氣花在太多不重要的事情上。這篇文章整理了 Podcast「操作一下」EP29 的閱讀分享重點，帶你重新思考如何設計自己的生活，學會取捨，把有限的精力投入真正值得的地方。","datePublished":"2023-01-06","dateModified":"2023-01-06","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/180/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/180/"},"articleSection":"閱讀","image":"https://operation.tw/images/posts/post-180.jpg","keywords":"閱讀","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"閱讀","item":"https://operation.tw/category/%E9%96%B1%E8%AE%80/"},{"@type":"ListItem","position":3,"name":"EP29｜少，但是更好：生活需要設計，選擇專注真正重要的事","item":"https://operation.tw/post/180/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/180/#episode","name":"EP29｜少，但是更好：生活需要設計，選擇專注真正重要的事","url":"https://operation.tw/post/180/","datePublished":"2023-01-06","description":"你是否常常感到忙碌卻毫無成就感？《少，但是更好》這本書點出一個核心問題：我們不是不夠努力，而是把力氣花在太多不重要的事情上。這篇文章整理了 Podcast「操作一下」EP29 的閱讀分享重點，帶你重新思考如何設計自己的生活，學會取捨，把有限的精力投入真正值得的地方。","image":"https://operation.tw/images/posts/post-180.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":29,"duration":"PT16M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/28db699b-7873-41e5-aacf-7f14673aec62/rssFileVip.mp3?timestamp=1687899398361","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:180})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">📚 閱讀</div>
     <h1>EP29｜少，但是更好：生活需要設計，選擇專注真正重要的事</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-01-06">2023-01-06</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-01-06">2023-01-06</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-180.webp"><img class="cover" src="https://operation.tw/images/posts/post-180.jpg" alt="EP29｜少，但是更好：生活需要設計，選擇專注真正重要的事" width="1200" height="630"></picture>
     <div class="excerpt"><p>你是否常常感到忙碌卻毫無成就感？《少，但是更好》這本書點出一個核心問題：我們不是不夠努力，而是把力氣花在太多不重要的事情上。這篇文章整理了 Podcast「操作一下」EP29 的閱讀分享重點，帶你重新思考如何設計自己的生活，學會取捨，把有限的精力投入真正值得的地方。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">你很忙，但你真的有在前進嗎？</a></li><li class="toc-l2"><a href="#sec-2">核心觀點：「少，但是更好」不是懶惰，是一種選擇</a></li><li class="toc-l2"><a href="#sec-3">為什麼我們總是陷入「什麼都想做」的困境？</a></li><li class="toc-l2"><a href="#sec-4">實際應用：從一個問題開始練習</a></li><li class="toc-l2"><a href="#sec-5">結語：少一點，才能真正投入</a></li></ul></nav>

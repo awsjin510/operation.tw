@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/296/","headline":"AI37｜職場霸凌新法7月上路：一次也成立，最高罰450萬","description":"2026年7月1日起，台灣《職業安全衛生法》新增職場霸凌防治專章正式生效。首次明確立法，打破「長期反覆」才成立的舊規則，單次情節重大即可成立。本文解析新法核心、四大職場場景認知、科技業PIP風險，以及AI監控時代的勞權邊界。","datePublished":"2026-06-30","dateModified":"2026-06-30","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/296/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/296/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-296.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI37｜職場霸凌新法7月上路：一次也成立，最高罰450萬","item":"https://operation.tw/post/296/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/296/#faq","mainEntity":[{"@type":"Question","name":"職場霸凌新法什麼時候生效？","acceptedAnswer":{"@type":"Answer","text":"2026年7月1日起正式生效。《職業安全衛生法》新增「職場霸凌防治專章」，首次以法律形式明確定義職場霸凌並設置罰則。"}},{"@type":"Question","name":"一次職場霸凌就能被罰嗎？","acceptedAnswer":{"@type":"Answer","text":"是的。新法規定「情節重大者，一次也成立」，打破過去必須證明「長期、持續、反覆」的要求。只要單次事件被認定情節重大，就能依法開罰。"}},{"@type":"Question","name":"AI員工監控在新法下合法嗎？","acceptedAnswer":{"@type":"Answer","text":"目前新法的適用框架還在探索階段。當企業用AI系統監控員工工作行為、根據演算法判定績效與懲處時，若造成員工人格貶損或不合理對待，可能觸犯職場霸凌防治專章，但具體認定仍需要實務案例累積。"}}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/296/#episode","name":"AI37｜職場霸凌新法7月上路：一次也成立，最高罰450萬","url":"https://operation.tw/post/296/","datePublished":"2026-06-30","description":"2026年7月1日起，台灣《職業安全衛生法》新增職場霸凌防治專章正式生效。首次明確立法，打破「長期反覆」才成立的舊規則，單次情節重大即可成立。本文解析新法核心、四大職場場景認知、科技業PIP風險，以及AI監控時代的勞權邊界。","image":"https://operation.tw/images/posts/post-296.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":37,"duration":"PT13M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/fb163e67-baeb-40eb-a6d0-0fac859ca081/rssFileVip.mp3?timestamp=1782932232485","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:296})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>AI37｜職場霸凌新法7月上路：一次也成立，最高罰450萬</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-06-30">2026-06-30</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-06-30">2026-06-30</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-296.webp"><img class="cover" src="https://operation.tw/images/posts/post-296.jpg" alt="AI37｜職場霸凌新法7月上路：一次也成立，最高罰450萬" width="1200" height="630"></picture>
     <div class="excerpt"><p>2026年7月1日起，台灣《職業安全衛生法》新增職場霸凌防治專章正式生效。首次明確立法，打破「長期反覆」才成立的舊規則，單次情節重大即可成立。本文解析新法核心、四大職場場景認知、科技業PIP風險，以及AI監控時代的勞權邊界。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼台灣現在才立法規範職場霸凌？</a></li><li class="toc-l2"><a href="#sec-2">新法的四大核心要點是什麼？</a></li><li class="toc-l2"><a href="#sec-3">職場中那些日常情景，其實已經違反新法？</a></li><li class="toc-l2"><a href="#sec-4">科技業的PIP和AI監控會觸法嗎？</a></li><li class="toc-l2"><a href="#sec-5">中小企業與大企業的新義務分別是什麼？</a></li><li class="toc-l2"><a href="#sec-6">常見問題</a></li><li class="toc-l3"><a href="#sec-7">職場霸凌新法什麼時候生效？</a></li><li class="toc-l3"><a href="#sec-8">一次職場霸凌就能被罰嗎？</a></li><li class="toc-l3"><a href="#sec-9">AI員工監控在新法下合法嗎？</a></li></ul></nav>

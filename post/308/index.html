@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/308/","headline":"AI經濟困局：為何擴張速度是網路3倍，獲利卻遲遲未爆發？","description":"AI技術擴張速度遠超網路時代，卻只佔全球經濟0.42%，獲利難題成謎。本文探討AI經濟現狀背後的真相：從投資過熱、商業模式未成熟，到應用場景落地困難，台灣科技業應如何把握機會？","datePublished":"2026-07-04","dateModified":"2026-07-04","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/308/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/308/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-308.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI經濟困局：為何擴張速度是網路3倍，獲利卻遲遲未爆發？","item":"https://operation.tw/post/308/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/308/#faq","mainEntity":[{"@type":"Question","name":"為什麼OpenAI和Google還在虧錢投資AI，卻還要繼續燒錢？","acceptedAnswer":{"@type":"Answer","text":"他們在賭未來市場規模和生態地位。誰先建立用戶習慣和應用生態，誰就能在商業模式成熟後掌握定價權。短期虧損是為了長期壟斷。"}},{"@type":"Question","name":"台灣企業現在投資AI應該從哪裡開始？","acceptedAnswer":{"@type":"Answer","text":"建議先從自身最痛的業務流程開始——例如客服、內容生成、資料整理——用現成的AI工具小規模測試，快速驗證價值，而非大規模自建模型。"}},{"@type":"Question","name":"AI經濟占比0.42%未來會不會快速增長到20-30%？","acceptedAnswer":{"@type":"Answer","text":"不太可能在5年內達到。AI的滲透會比網路時代緩慢，因為涉及產業改造、監管調整、人才培養等長期過程，但一旦達到，增長會持續而穩定。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:308})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>AI經濟困局：為何擴張速度是網路3倍，獲利卻遲遲未爆發？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-04">2026-07-04</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-04">2026-07-04</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-308.webp"><img class="cover" src="https://operation.tw/images/posts/post-308.jpg" alt="AI經濟困局：為何擴張速度是網路3倍，獲利卻遲遲未爆發？" width="1200" height="630"></picture>
     <div class="excerpt"><p>AI技術擴張速度遠超網路時代，卻只佔全球經濟0.42%，獲利難題成謎。本文探討AI經濟現狀背後的真相：從投資過熱、商業模式未成熟，到應用場景落地困難，台灣科技業應如何把握機會？</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼AI擴張速度是網路時代的3倍，經濟貢獻卻微乎其微？</a></li><li class="toc-l2"><a href="#sec-2">當前AI產業面臨哪三大商業化困境？</a></li><li class="toc-l2"><a href="#sec-3">這對台灣科技業和企業用戶意味著什麼？</a></li><li class="toc-l2"><a href="#sec-4">何時才能看到AI產業的獲利爆發？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">為什麼OpenAI和Google還在虧錢投資AI，卻還要繼續燒錢？</a></li><li class="toc-l3"><a href="#sec-7">台灣企業現在投資AI應該從哪裡開始？</a></li><li class="toc-l3"><a href="#sec-8">AI經濟占比0.42%未來會不會快速增長到20-30%？</a></li></ul></nav>

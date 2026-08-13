@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/187/","headline":"EP36｜不自我設限的人生哲學：行銷達人 Fiona 的熱情實踐","description":"這集「操作一下」邀請到行銷達人 Fiona，從上班族到自創行銷公司，她用親身經歷示範什麼叫做「不自我設限」。人生不是得到，就是學到——這句話貫穿了整集對談的核心，也讓人重新思考：成功與失敗之外，每一段過程本身就是最珍貴的資產。","datePublished":"2023-02-27","dateModified":"2023-02-27","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/187/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/187/"},"articleSection":"成長","image":"https://operation.tw/images/posts/post-187.jpg","keywords":"成長","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"成長","item":"https://operation.tw/category/%E6%88%90%E9%95%B7/"},{"@type":"ListItem","position":3,"name":"EP36｜不自我設限的人生哲學：行銷達人 Fiona 的熱情實踐","item":"https://operation.tw/post/187/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/187/#episode","name":"EP36｜不自我設限的人生哲學：行銷達人 Fiona 的熱情實踐","url":"https://operation.tw/post/187/","datePublished":"2023-02-27","description":"這集「操作一下」邀請到行銷達人 Fiona，從上班族到自創行銷公司，她用親身經歷示範什麼叫做「不自我設限」。人生不是得到，就是學到——這句話貫穿了整集對談的核心，也讓人重新思考：成功與失敗之外，每一段過程本身就是最珍貴的資產。","image":"https://operation.tw/images/posts/post-187.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":36,"duration":"PT38M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/e0f3dedf-8ba8-49a6-b7bc-86edaaa9dff9/rssFileVip.mp3?timestamp=1687899396275","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:187})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🌱 成長</div>
     <h1>EP36｜不自我設限的人生哲學：行銷達人 Fiona 的熱情實踐</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-02-27">2023-02-27</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-02-27">2023-02-27</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-187.webp"><img class="cover" src="https://operation.tw/images/posts/post-187.jpg" alt="EP36｜不自我設限的人生哲學：行銷達人 Fiona 的熱情實踐" width="1200" height="630"></picture>
     <div class="excerpt"><p>這集「操作一下」邀請到行銷達人 Fiona，從上班族到自創行銷公司，她用親身經歷示範什麼叫做「不自我設限」。人生不是得到，就是學到——這句話貫穿了整集對談的核心，也讓人重新思考：成功與失敗之外，每一段過程本身就是最珍貴的資產。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">當眼睛開始發光，那就是熱情的樣子</a></li><li class="toc-l2"><a href="#sec-2">人生不是得到，就是學到</a></li><li class="toc-l2"><a href="#sec-3">不自我設限，說起來容易，做起來需要這些</a></li><li class="toc-l2"><a href="#sec-4">對讀者的實際啟發：你的「下一步」是什麼？</a></li><li class="toc-l2"><a href="#sec-5">結語：每一段過程都值得被珍惜</a></li></ul></nav>

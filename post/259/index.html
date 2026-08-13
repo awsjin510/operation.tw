@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/259/","headline":"AI12｜簡報製作第三世代：用 GPT-Image-2 把每張投影片畫出來","description":"不是用 ChatGPT 產 PPT 檔，也不是在 Gamma 套模板——而是把每一張投影片當作一幅圖像直接生成。這集「操作一下」聊的，是一個可能讓你回不去的工作流：用 GPT-Image-2 一次生成十張風格一致的投影片，品質比花半天套 Canva 模板還要穩。五個步驟、雷區提醒、三種身分的應用場景，完整拆解。","datePublished":"2026-05-01","dateModified":"2026-05-01","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/259/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/259/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-259.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI12｜簡報製作第三世代：用 GPT-Image-2 把每張投影片畫出來","item":"https://operation.tw/post/259/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/259/#episode","name":"AI12｜簡報製作第三世代：用 GPT-Image-2 把每張投影片畫出來","url":"https://operation.tw/post/259/","datePublished":"2026-05-01","description":"不是用 ChatGPT 產 PPT 檔，也不是在 Gamma 套模板——而是把每一張投影片當作一幅圖像直接生成。這集「操作一下」聊的，是一個可能讓你回不去的工作流：用 GPT-Image-2 一次生成十張風格一致的投影片，品質比花半天套 Canva 模板還要穩。五個步驟、雷區提醒、三種身分的應用場景，完整拆解。","image":"https://operation.tw/images/posts/post-259.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":12,"duration":"PT15M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/0c52e13c-488e-4aee-95f6-d1df41575d80/rssFileVip.mp3?timestamp=1777680628576","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:259})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>AI12｜簡報製作第三世代：用 GPT-Image-2 把每張投影片畫出來</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-05-01">2026-05-01</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-05-01">2026-05-01</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-259.webp"><img class="cover" src="https://operation.tw/images/posts/post-259.jpg" alt="AI12｜簡報製作第三世代：用 GPT-Image-2 把每張投影片畫出來" width="1200" height="630"></picture>
     <div class="excerpt"><p>不是用 ChatGPT 產 PPT 檔，也不是在 Gamma 套模板——而是把每一張投影片當作一幅圖像直接生成。這集「操作一下」聊的，是一個可能讓你回不去的工作流：用 GPT-Image-2 一次生成十張風格一致的投影片，品質比花半天套 Canva 模板還要穩。五個步驟、雷區提醒、三種身分的應用場景，完整拆解。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">你上一次做完簡報之後，有沒有覺得哪裡不對勁？</a></li><li class="toc-l2"><a href="#sec-2">第三世代簡報是什麼意思？</a></li><li class="toc-l2"><a href="#sec-3">完整工作流：五個步驟</a></li><li class="toc-l2"><a href="#sec-4">哪些頁面千萬不要這樣做？</a></li><li class="toc-l2"><a href="#sec-5">它跟 NotebookLM 的差異在哪？</a></li><li class="toc-l2"><a href="#sec-6">對不同身分的人，這條路徑代表什麼？</a></li><li class="toc-l2"><a href="#sec-7">你願意試試看嗎？</a></li></ul></nav>

@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/167/","headline":"EP16｜單手掌控的移動書櫃：Kobo Forma 電子書閱讀器使用心得","description":"你有多久沒有好好讀完一本書了？這集「操作一下」Podcast 以 Kobo Forma 電子書閱讀器為主角，從實際使用經驗出發，整理出電子書與實體書各自最適合的閱讀情境，還有幾個你可能不知道的隱藏功能，幫助你找到最順手的閱讀方式。","datePublished":"2022-09-18","dateModified":"2022-09-18","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/167/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/167/"},"articleSection":"閱讀","image":"https://operation.tw/images/posts/post-167.jpg","keywords":"閱讀","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"閱讀","item":"https://operation.tw/category/%E9%96%B1%E8%AE%80/"},{"@type":"ListItem","position":3,"name":"EP16｜單手掌控的移動書櫃：Kobo Forma 電子書閱讀器使用心得","item":"https://operation.tw/post/167/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/167/#episode","name":"EP16｜單手掌控的移動書櫃：Kobo Forma 電子書閱讀器使用心得","url":"https://operation.tw/post/167/","datePublished":"2022-09-18","description":"你有多久沒有好好讀完一本書了？這集「操作一下」Podcast 以 Kobo Forma 電子書閱讀器為主角，從實際使用經驗出發，整理出電子書與實體書各自最適合的閱讀情境，還有幾個你可能不知道的隱藏功能，幫助你找到最順手的閱讀方式。","image":"https://operation.tw/images/posts/post-167.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":16,"duration":"PT13M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/f957449f-3a7e-4c70-949f-f0419ba2cf34/rssFileVip.mp3?timestamp=1687899396585","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:167})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">📚 閱讀</div>
     <h1>EP16｜單手掌控的移動書櫃：Kobo Forma 電子書閱讀器使用心得</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-09-18">2022-09-18</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-09-18">2022-09-18</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-167.webp"><img class="cover" src="https://operation.tw/images/posts/post-167.jpg" alt="EP16｜單手掌控的移動書櫃：Kobo Forma 電子書閱讀器使用心得" width="1200" height="630"></picture>
     <div class="excerpt"><p>你有多久沒有好好讀完一本書了？這集「操作一下」Podcast 以 Kobo Forma 電子書閱讀器為主角，從實際使用經驗出發，整理出電子書與實體書各自最適合的閱讀情境，還有幾個你可能不知道的隱藏功能，幫助你找到最順手的閱讀方式。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">電子書閱讀器最適合讀什麼？</a></li><li class="toc-l2"><a href="#sec-2">哪些書還是建議買實體版？</a></li><li class="toc-l2"><a href="#sec-3">幾個值得知道的隱藏功能</a></li><li class="toc-l2"><a href="#sec-4">找到適合自己的閱讀工具</a></li></ul></nav>

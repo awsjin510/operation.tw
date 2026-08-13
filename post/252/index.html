@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/252/","headline":"AI05｜Claude Opus 4.7 四大新功能完整解析：視覺、思考、預算一次搞懂","description":"Anthropic 最新旗艦模型 Claude Opus 4.7 正式發布，在 13 項主要 benchmark 中拿下 8 項公開模型第一。這篇文章整理了這集 Podcast 拆解的四大核心新功能：三倍解析度視覺、xhigh 思考等級、Task Budgets 預算控制，以及悄悄影響你帳單的新 Tokenizer，幫你快速掌握這次升級的實際意義。","datePublished":"2026-04-19","dateModified":"2026-04-19","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/252/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/252/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-252.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI05｜Claude Opus 4.7 四大新功能完整解析：視覺、思考、預算一次搞懂","item":"https://operation.tw/post/252/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/252/#episode","name":"AI05｜Claude Opus 4.7 四大新功能完整解析：視覺、思考、預算一次搞懂","url":"https://operation.tw/post/252/","datePublished":"2026-04-19","description":"Anthropic 最新旗艦模型 Claude Opus 4.7 正式發布，在 13 項主要 benchmark 中拿下 8 項公開模型第一。這篇文章整理了這集 Podcast 拆解的四大核心新功能：三倍解析度視覺、xhigh 思考等級、Task Budgets 預算控制，以及悄悄影響你帳單的新 Tokenizer，幫你快速掌握這次升級的實際意義。","image":"https://operation.tw/images/posts/post-252.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":5,"duration":"PT24M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/cab4e17c-f9c6-4a0f-9f80-b0e799c80f08/rssFileVip.mp3?timestamp=1776639359985","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:252})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>AI05｜Claude Opus 4.7 四大新功能完整解析：視覺、思考、預算一次搞懂</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-19">2026-04-19</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-19">2026-04-19</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-252.webp"><img class="cover" src="https://operation.tw/images/posts/post-252.jpg" alt="AI05｜Claude Opus 4.7 四大新功能完整解析：視覺、思考、預算一次搞懂" width="1200" height="630"></picture>
     <div class="excerpt"><p>Anthropic 最新旗艦模型 Claude Opus 4.7 正式發布，在 13 項主要 benchmark 中拿下 8 項公開模型第一。這篇文章整理了這集 Podcast 拆解的四大核心新功能：三倍解析度視覺、xhigh 思考等級、Task Budgets 預算控制，以及悄悄影響你帳單的新 Tokenizer，幫你快速掌握這次升級的實際意義。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">這次升級有多大？先看成績單</a></li><li class="toc-l2"><a href="#sec-2">功能一：三倍解析度的高畫質視覺</a></li><li class="toc-l2"><a href="#sec-3">功能二：全新的 xhigh 思考等級</a></li><li class="toc-l2"><a href="#sec-4">功能三：Task Budgets——終於可以幫 AI 設預算了</a></li><li class="toc-l2"><a href="#sec-5">功能四：新 Tokenizer——悄悄讓帳單變貴的那個</a></li><li class="toc-l2"><a href="#sec-6">對你的實際操作意義是什麼？</a></li><li class="toc-l2"><a href="#sec-7">總結</a></li></ul></nav>

@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/327/","headline":"台灣TAIDE對標月之暗面：本土AI如何在政治內容管控戰爭中突圍","description":"面對中國AI模型在海外市場快速攀升，台灣推出的本土AI「TAIDE」被視為關鍵防線。本文分析TAIDE的文化優勢、月之暗面的威脅，以及台灣廠商如何透過「內容信任」而非「政治審查」贏得全球市場。","datePublished":"2026-07-17","dateModified":"2026-07-17","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/327/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/327/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-327.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"台灣TAIDE對標月之暗面：本土AI如何在政治內容管控戰爭中突圍","item":"https://operation.tw/post/327/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/327/#faq","mainEntity":[{"@type":"Question","name":"月之暗面新AI模型會直接威脅台灣廠商嗎？","acceptedAnswer":{"@type":"Answer","text":"短期內不會直接威脅，因為月之暗面瞄準的是全球通用市場，而台灣TAIDE的優勢在於信任與在地化。但長期來看，如果台灣不快速佈局東南亞與日韓市場，中國AI模型的成本優勢與規模優勢會逐漸蠶食台灣的出海機會。"}},{"@type":"Question","name":"TAIDE為何強調「文化底蘊」而不是技術指標？","acceptedAnswer":{"@type":"Answer","text":"因為技術指標（算力、參數量）中國與美國已經領先，台灣無法短期內趕上。但文化與信任是台灣的實際優勢——作為民主國家的開放AI，TAIDE可以承諾不進行隱形審查，這在越來越多國家對AI審查議題敏感的背景下，成為真正的競爭力。"}},{"@type":"Question","name":"台灣企業用TAIDE取代OpenAI或Claude是現實嗎？","acceptedAnswer":{"@type":"Answer","text":"短期內不現實，因為TAIDE的性能與應用成熟度還有差距。但台灣企業可以「混合使用」——在涉及台灣與東亞資料的場景用TAIDE，在需要最先進能力的場景用國際模型。這樣既支持本土AI生態，又不犧牲競爭力。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:327})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>台灣TAIDE對標月之暗面：本土AI如何在政治內容管控戰爭中突圍</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-17">2026-07-17</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-17">2026-07-17</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-327.webp"><img class="cover" src="https://operation.tw/images/posts/post-327.jpg" alt="台灣TAIDE對標月之暗面：本土AI如何在政治內容管控戰爭中突圍" width="1200" height="630"></picture>
     <div class="excerpt"><p>面對中國AI模型在海外市場快速攀升，台灣推出的本土AI「TAIDE」被視為關鍵防線。本文分析TAIDE的文化優勢、月之暗面的威脅，以及台灣廠商如何透過「內容信任」而非「政治審查」贏得全球市場。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼台灣要急著做TAIDE？</a></li><li class="toc-l2"><a href="#sec-2">TAIDE與月之暗面的競爭邏輯差在哪？</a></li><li class="toc-l2"><a href="#sec-3">台灣AI出海的實際機會在哪裡？</a></li><li class="toc-l2"><a href="#sec-4">台灣廠商如何從TAIDE受益？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">月之暗面新AI模型會直接威脅台灣廠商嗎？</a></li><li class="toc-l3"><a href="#sec-7">TAIDE為何強調「文化底蘊」而不是技術指標？</a></li><li class="toc-l3"><a href="#sec-8">台灣企業用TAIDE取代OpenAI或Claude是現實嗎？</a></li></ul></nav>

@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/161/","headline":"EP10｜做筆記，是對一本好書最大的敬意｜高手學習法","description":"你有沒有這種經驗：讀了很多書、上了很多課，卻總覺得學了什麼又好像什麼都沒留下？這集我們聊的是「高效學習」的底層邏輯——真正的學習不是時間的累積，而是認知的突破。做筆記、刻意整理，才是讓知識真正內化的關鍵操作。","datePublished":"2022-06-19","dateModified":"2022-06-19","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/161/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/161/"},"articleSection":"閱讀","image":"https://operation.tw/images/posts/post-161.jpg","keywords":"閱讀","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"閱讀","item":"https://operation.tw/category/%E9%96%B1%E8%AE%80/"},{"@type":"ListItem","position":3,"name":"EP10｜做筆記，是對一本好書最大的敬意｜高手學習法","item":"https://operation.tw/post/161/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/161/#episode","name":"EP10｜做筆記，是對一本好書最大的敬意｜高手學習法","url":"https://operation.tw/post/161/","datePublished":"2022-06-19","description":"你有沒有這種經驗：讀了很多書、上了很多課，卻總覺得學了什麼又好像什麼都沒留下？這集我們聊的是「高效學習」的底層邏輯——真正的學習不是時間的累積，而是認知的突破。做筆記、刻意整理，才是讓知識真正內化的關鍵操作。","image":"https://operation.tw/images/posts/post-161.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":10,"duration":"PT22M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/f5ece2e8-c518-4f36-a3f5-6dd2e3601c38/rssFileVip.mp3?timestamp=1687899396964","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:161})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">📚 閱讀</div>
     <h1>EP10｜做筆記，是對一本好書最大的敬意｜高手學習法</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-06-19">2022-06-19</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-06-19">2022-06-19</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-161.webp"><img class="cover" src="https://operation.tw/images/posts/post-161.jpg" alt="EP10｜做筆記，是對一本好書最大的敬意｜高手學習法" width="1200" height="630"></picture>
     <div class="excerpt"><p>你有沒有這種經驗：讀了很多書、上了很多課，卻總覺得學了什麼又好像什麼都沒留下？這集我們聊的是「高效學習」的底層邏輯——真正的學習不是時間的累積，而是認知的突破。做筆記、刻意整理，才是讓知識真正內化的關鍵操作。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">你學了很多，但真的學進去了嗎？</a></li><li class="toc-l2"><a href="#sec-2">一萬小時定律的盲點</a></li><li class="toc-l2"><a href="#sec-3">認知差距，才是人與人之間最大的差距</a></li><li class="toc-l2"><a href="#sec-4">做筆記，是讓知識真正留下來的操作</a></li><li class="toc-l2"><a href="#sec-5">對你的實際建議</a></li><li class="toc-l2"><a href="#sec-6">結語</a></li></ul></nav>
