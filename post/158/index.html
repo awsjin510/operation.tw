@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/158/","headline":"EP07｜小朋友才做選擇，我全都要：用冰淇淋哲學活出多面向熱情人生","description":"你是不是也有很多興趣，卻總被告知要「專注一件事」？這集我分享了《多面向發展》的核心概念——冰淇淋哲學。與其在熱情之間二選一，不如學會組合你的興趣焦點，讓廣泛的好奇心成為你的優勢，而不是你的罪惡感來源。這篇文章整理了單集的重點觀點，帶你看看如何把「什麼都想做」轉化成真正有力量的人生策略。","datePublished":"2022-05-22","dateModified":"2022-05-22","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/158/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/158/"},"articleSection":"閱讀","image":"https://operation.tw/images/posts/post-158.jpg","keywords":"閱讀","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"閱讀","item":"https://operation.tw/category/%E9%96%B1%E8%AE%80/"},{"@type":"ListItem","position":3,"name":"EP07｜小朋友才做選擇，我全都要：用冰淇淋哲學活出多面向熱情人生","item":"https://operation.tw/post/158/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/158/#episode","name":"EP07｜小朋友才做選擇，我全都要：用冰淇淋哲學活出多面向熱情人生","url":"https://operation.tw/post/158/","datePublished":"2022-05-22","description":"你是不是也有很多興趣，卻總被告知要「專注一件事」？這集我分享了《多面向發展》的核心概念——冰淇淋哲學。與其在熱情之間二選一，不如學會組合你的興趣焦點，讓廣泛的好奇心成為你的優勢，而不是你的罪惡感來源。這篇文章整理了單集的重點觀點，帶你看看如何把「什麼都想做」轉化成真正有力量的人生策略。","image":"https://operation.tw/images/posts/post-158.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":7,"duration":"PT16M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/79f5c0f8-9eb6-4014-a340-31d3b150997e/rssFileVip.mp3?timestamp=1687899398555","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:158})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">📚 閱讀</div>
     <h1>EP07｜小朋友才做選擇，我全都要：用冰淇淋哲學活出多面向熱情人生</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-05-22">2022-05-22</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-05-22">2022-05-22</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-158.webp"><img class="cover" src="https://operation.tw/images/posts/post-158.jpg" alt="EP07｜小朋友才做選擇，我全都要：用冰淇淋哲學活出多面向熱情人生" width="1200" height="630"></picture>
     <div class="excerpt"><p>你是不是也有很多興趣，卻總被告知要「專注一件事」？這集我分享了《多面向發展》的核心概念——冰淇淋哲學。與其在熱情之間二選一，不如學會組合你的興趣焦點，讓廣泛的好奇心成為你的優勢，而不是你的罪惡感來源。這篇文章整理了單集的重點觀點，帶你看看如何把「什麼都想做」轉化成真正有力量的人生策略。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">冰淇淋哲學：不是選一球，而是挑你的組合</a></li><li class="toc-l2"><a href="#sec-2">多面向發展者，你並不孤單</a></li><li class="toc-l2"><a href="#sec-3">喜歡很多事，難的是持續</a></li><li class="toc-l2"><a href="#sec-4">對你的實際應用：三個可以馬上試的思考方向</a></li><li class="toc-l2"><a href="#sec-5">結語：繼續成長、繼續改變，才是你最能做的事</a></li></ul></nav>

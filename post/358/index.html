@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/358/","headline":"加拿大AI獨角獸爆發：亞太雲端市場的新變數","description":"AI投資熱潮正在改寫全球科技版圖。加拿大成功躍升為全球第六大獨角獸孵化地，背後隱含的雲端基礎設施需求與市場機遇，對台灣科技廠商與雲端服務商構成新的挑戰與機會。","datePublished":"2026-08-11","dateModified":"2026-08-11","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/358/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/358/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-358.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"加拿大AI獨角獸爆發：亞太雲端市場的新變數","item":"https://operation.tw/post/358/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/358/#faq","mainEntity":[{"@type":"Question","name":"加拿大為什麼能成為AI投資新熱點？","acceptedAnswer":{"@type":"Answer","text":"加拿大提供了相對於矽谷更具成本效益的研發環境、政府補助與多元人才庫，同時與美國地理接近、法律制度相近，降低了跨國營運成本，因此吸引了大量AI新創企業聚集。"}},{"@type":"Question","name":"AI新創增加對雲端市場有什麼直接影響？","acceptedAnswer":{"@type":"Answer","text":"AI新創企業需要大規模GPU運算、高性能資料庫與即時推理等雲端資源，這導致公有雲與新興雲端平台的需求迅速增長，推動市場競爭與技術創新加速。"}},{"@type":"Question","name":"台灣如何抓住這波亞太雲端機遇？","acceptedAnswer":{"@type":"Answer","text":"台灣應在硬體供應（GPU伺服器、晶片）、軟體工具（容器編排、MLOps）與人才培養三個層面同步發力，建立區域雲端生態系的關鍵位置，而非被動等待國際巨頭的投資。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:358})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">☁️ 雲端</div>
     <h1>加拿大AI獨角獸爆發：亞太雲端市場的新變數</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-08-11">2026-08-11</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-08-11">2026-08-11</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-358.webp"><img class="cover" src="https://operation.tw/images/posts/post-358.jpg" alt="加拿大AI獨角獸爆發：亞太雲端市場的新變數" width="1200" height="630"></picture>
     <div class="excerpt"><p>AI投資熱潮正在改寫全球科技版圖。加拿大成功躍升為全球第六大獨角獸孵化地，背後隱含的雲端基礎設施需求與市場機遇，對台灣科技廠商與雲端服務商構成新的挑戰與機會。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼加拿大突然成為AI投資熱點？</a></li><li class="toc-l2"><a href="#sec-2">加拿大AI熱潮與雲端基礎設施有何關聯？</a></li><li class="toc-l2"><a href="#sec-3">這對亞太與台灣的雲端市場意味著什麼？</a></li><li class="toc-l2"><a href="#sec-4">全球獨角獸分布變化揭示什麼趨勢？</a></li><li class="toc-l2"><a href="#sec-5">企業與決策者應採取什麼行動？</a></li><li class="toc-l2"><a href="#sec-6">常見問題</a></li><li class="toc-l3"><a href="#sec-7">加拿大為什麼能成為AI投資新熱點？</a></li><li class="toc-l3"><a href="#sec-8">AI新創增加對雲端市場有什麼直接影響？</a></li><li class="toc-l3"><a href="#sec-9">台灣如何抓住這波亞太雲端機遇？</a></li></ul></nav>

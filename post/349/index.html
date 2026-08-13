@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/349/","headline":"AWS 20 週年啟示：雲端運算如何從工程痛點演變成產業基礎設施？","description":"AWS 成立 20 週年，從解決亞馬遜內部工程師的痛點出發，成長為千億美元規模的雲端帝國。本文從 AWS 的發展脈絡，剖析雲端運算如何改造全球產業，以及台灣企業該如何在 AI 時代把握雲端紅利。","datePublished":"2026-08-02","dateModified":"2026-08-02","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/349/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/349/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-349.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"AWS 20 週年啟示：雲端運算如何從工程痛點演變成產業基礎設施？","item":"https://operation.tw/post/349/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/349/#faq","mainEntity":[{"@type":"Question","name":"AWS 為什麼能在雲端市場保持領先？","acceptedAnswer":{"@type":"Answer","text":"AWS 最早進場，建立了業界標準，擁有最完善的服務生態與全球資料中心網絡，使得後來者難以追趕。同時，AWS 持續創新，率先整合 AI 加速硬體與軟體工具，強化競爭護城河。"}},{"@type":"Question","name":"台灣企業現在上雲會不會太晚？","acceptedAnswer":{"@type":"Answer","text":"不會。雖然 AWS 已成熟，但新興雲廠商正在開拓市場、提供更多元選擇，亞太區域本地化雲服務正在擴展，企業現在上雲能更輕鬆地找到適合自身規模與需求的方案。"}},{"@type":"Question","name":"AI 時代必須用雲端才能做 AI 嗎？","acceptedAnswer":{"@type":"Answer","text":"不一定全部，但大多數企業的 AI 工作負載（模型訓練、推理服務、資料管道）都會透過雲端執行，因為雲端提供按需的高效能資源與靈活擴展能力，自建成本通常更高。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:349})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">☁️ 雲端</div>
     <h1>AWS 20 週年啟示：雲端運算如何從工程痛點演變成產業基礎設施？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-08-02">2026-08-02</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-08-02">2026-08-02</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-349.webp"><img class="cover" src="https://operation.tw/images/posts/post-349.jpg" alt="AWS 20 週年啟示：雲端運算如何從工程痛點演變成產業基礎設施？" width="1200" height="630"></picture>
     <div class="excerpt"><p>AWS 成立 20 週年，從解決亞馬遜內部工程師的痛點出發，成長為千億美元規模的雲端帝國。本文從 AWS 的發展脈絡，剖析雲端運算如何改造全球產業，以及台灣企業該如何在 AI 時代把握雲端紅利。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">AWS 為什麼能從內部工具做成千億美元帝國？</a></li><li class="toc-l2"><a href="#sec-2">雲端運算在 AI 時代的角色為何從「成本工具」升級為「戰略平台」？</a></li><li class="toc-l2"><a href="#sec-3">台灣企業在雲端 AI 浪潮中的機遇與挑戰是什麼？</a></li><li class="toc-l2"><a href="#sec-4">AWS 的 20 年啟示能給台灣企業什麼建議？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">AWS 為什麼能在雲端市場保持領先？</a></li><li class="toc-l3"><a href="#sec-7">台灣企業現在上雲會不會太晚？</a></li><li class="toc-l3"><a href="#sec-8">AI 時代必須用雲端才能做 AI 嗎？</a></li></ul></nav>

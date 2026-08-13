@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/324/","headline":"AWS邁入20週年：從內部工具到雲端帝國的科技啟示","description":"AWS成立20週年之際，從解決Amazon工程師痛點的內部工具，成長為年營收千億美元的雲端巨人。本文揭示其成功秘訣如何改變全球運算格局，以及對台灣科技產業的啟示。","datePublished":"2026-07-15","dateModified":"2026-07-15","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/324/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/324/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-324.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"AWS邁入20週年：從內部工具到雲端帝國的科技啟示","item":"https://operation.tw/post/324/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/324/#faq","mainEntity":[{"@type":"Question","name":"AWS是如何從內部工具成長為雲端帝國的？","acceptedAnswer":{"@type":"Answer","text":"AWS源於Amazon內部工程師解決基礎設施痛點的需求，逐步將這些內部解決方案產品化並向外部企業提供，最終成長為年營收超千億美元的雲端運算領導者。"}},{"@type":"Question","name":"台灣企業在AI時代應如何複製AWS的成功模式？","acceptedAnswer":{"@type":"Answer","text":"台灣應著重將內部產業知識與製程優勢轉化為可市場化的雲端服務，建立開放的生態系統，並在AI推理、供應鏈管理等利基領域打造行業特化解決方案。"}},{"@type":"Question","name":"AWS的成功對全球運算產業帶來了什麼改變？","acceptedAnswer":{"@type":"Answer","text":"AWS將運算基礎設施從企業內部的資本密集建設，轉變為按需付費的彈性服務，推動了整個產業從自建數據中心向雲端遷移的根本轉向。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:324})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">☁️ 雲端</div>
     <h1>AWS邁入20週年：從內部工具到雲端帝國的科技啟示</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-15">2026-07-15</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-15">2026-07-15</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-324.webp"><img class="cover" src="https://operation.tw/images/posts/post-324.jpg" alt="AWS邁入20週年：從內部工具到雲端帝國的科技啟示" width="1200" height="630"></picture>
     <div class="excerpt"><p>AWS成立20週年之際，從解決Amazon工程師痛點的內部工具，成長為年營收千億美元的雲端巨人。本文揭示其成功秘訣如何改變全球運算格局，以及對台灣科技產業的啟示。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼一家電商公司能主導全球雲端運算？</a></li><li class="toc-l2"><a href="#sec-2">AWS如何改寫了運算產業的遊戲規則？</a></li><li class="toc-l2"><a href="#sec-3">台灣企業應如何從AWS案例中汲取教訓？</a></li><li class="toc-l2"><a href="#sec-4">2026年雲端市場的新挑戰與機會是什麼？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">AWS是如何從內部工具成長為雲端帝國的？</a></li><li class="toc-l3"><a href="#sec-7">台灣企業在AI時代應如何複製AWS的成功模式？</a></li><li class="toc-l3"><a href="#sec-8">AWS的成功對全球運算產業帶來了什麼改變？</a></li></ul></nav>

@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/278/","headline":"AI29｜《不反應的練習》：煩惱不是來自事情，而是來自你的反應","description":"手機一叫你就看、email 還沒讀就先緊張、腦袋在下班後繼續跟同事的眼神打架——這些消耗你的，不是事情本身，而是你對每件事太快做出的反應。這篇文章整理自 Podcast《操作一下》的閱讀單元，介紹日本僧侶草薙龍瞬的《不反應的練習》，帶你看懂四個過度反應陷阱，以及如何在日常生活中實際練習「不反應」。","datePublished":"2026-06-06","dateModified":"2026-06-06","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/278/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/278/"},"articleSection":"閱讀","image":"https://operation.tw/images/posts/post-278.jpg","keywords":"閱讀","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"閱讀","item":"https://operation.tw/category/%E9%96%B1%E8%AE%80/"},{"@type":"ListItem","position":3,"name":"AI29｜《不反應的練習》：煩惱不是來自事情，而是來自你的反應","item":"https://operation.tw/post/278/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/278/#episode","name":"AI29｜《不反應的練習》：煩惱不是來自事情，而是來自你的反應","url":"https://operation.tw/post/278/","datePublished":"2026-06-06","description":"手機一叫你就看、email 還沒讀就先緊張、腦袋在下班後繼續跟同事的眼神打架——這些消耗你的，不是事情本身，而是你對每件事太快做出的反應。這篇文章整理自 Podcast《操作一下》的閱讀單元，介紹日本僧侶草薙龍瞬的《不反應的練習》，帶你看懂四個過度反應陷阱，以及如何在日常生活中實際練習「不反應」。","image":"https://operation.tw/images/posts/post-278.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":29,"duration":"PT15M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/40c7545a-130c-4b72-acf5-0820ea79ee7a/rssFileVip.mp3?timestamp=1780859059710","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:278})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">📚 閱讀</div>
     <h1>AI29｜《不反應的練習》：煩惱不是來自事情，而是來自你的反應</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-06-06">2026-06-06</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-06-06">2026-06-06</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-278.webp"><img class="cover" src="https://operation.tw/images/posts/post-278.jpg" alt="AI29｜《不反應的練習》：煩惱不是來自事情，而是來自你的反應" width="1200" height="630"></picture>
     <div class="excerpt"><p>手機一叫你就看、email 還沒讀就先緊張、腦袋在下班後繼續跟同事的眼神打架——這些消耗你的，不是事情本身，而是你對每件事太快做出的反應。這篇文章整理自 Podcast《操作一下》的閱讀單元，介紹日本僧侶草薙龍瞬的《不反應的練習》，帶你看懂四個過度反應陷阱，以及如何在日常生活中實際練習「不反應」。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">你不是被事情壓垮的，你是被自己的反應壓垮的</a></li><li class="toc-l2"><a href="#sec-2">這本書的作者，不是你想像中的僧侶</a></li><li class="toc-l2"><a href="#sec-3">四個讓你過度消耗的反應陷阱</a></li><li class="toc-l2"><a href="#sec-4">兩個工具與三個練習方向</a></li><li class="toc-l2"><a href="#sec-5">對三種現代工作者的實際意義</a></li><li class="toc-l2"><a href="#sec-6">在 AI 時代，「不反應」才是稀缺能力</a></li></ul></nav>

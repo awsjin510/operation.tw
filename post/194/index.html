@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/194/","headline":"EP43｜水雷射在牙科的應用：讓看牙不再只是痛苦回憶","description":"大多數人走進牙科診所，不是痛到受不了，就是為了矯正或植牙。但你聽過「水雷射」嗎？這集《操作一下》邀請到順馨牙醫的蔡宛霖醫師，帶我們認識這項牙科輔助工具如何從滅菌、美學到兒童牙科，全面提升患者的診療體驗，讓你進診間不再只是忍耐，而是舒服地完成療程。","datePublished":"2023-04-16","dateModified":"2023-04-16","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/194/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/194/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-194.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"EP43｜水雷射在牙科的應用：讓看牙不再只是痛苦回憶","item":"https://operation.tw/post/194/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/194/#episode","name":"EP43｜水雷射在牙科的應用：讓看牙不再只是痛苦回憶","url":"https://operation.tw/post/194/","datePublished":"2023-04-16","description":"大多數人走進牙科診所，不是痛到受不了，就是為了矯正或植牙。但你聽過「水雷射」嗎？這集《操作一下》邀請到順馨牙醫的蔡宛霖醫師，帶我們認識這項牙科輔助工具如何從滅菌、美學到兒童牙科，全面提升患者的診療體驗，讓你進診間不再只是忍耐，而是舒服地完成療程。","image":"https://operation.tw/images/posts/post-194.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":43,"duration":"PT36M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/c0493924-a5e1-4124-a475-33708e86959e/rssFileVip.mp3?timestamp=1687899397287","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:194})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>EP43｜水雷射在牙科的應用：讓看牙不再只是痛苦回憶</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-04-16">2023-04-16</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-04-16">2023-04-16</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-194.webp"><img class="cover" src="https://operation.tw/images/posts/post-194.jpg" alt="EP43｜水雷射在牙科的應用：讓看牙不再只是痛苦回憶" width="1200" height="630"></picture>
     <div class="excerpt"><p>大多數人走進牙科診所，不是痛到受不了，就是為了矯正或植牙。但你聽過「水雷射」嗎？這集《操作一下》邀請到順馨牙醫的蔡宛霖醫師，帶我們認識這項牙科輔助工具如何從滅菌、美學到兒童牙科，全面提升患者的診療體驗，讓你進診間不再只是忍耐，而是舒服地完成療程。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">你上次走進牙科，是因為痛到撐不住嗎？</a></li><li class="toc-l2"><a href="#sec-2">水雷射是什麼？為什麼值得認識？</a></li><li class="toc-l2"><a href="#sec-3">水雷射能應用在哪些療程？</a></li><li class="toc-l2"><a href="#sec-4">知道有這個選擇，才能做出選擇</a></li><li class="toc-l2"><a href="#sec-5">數位牙科的完整樣貌：不只有水雷射</a></li><li class="toc-l2"><a href="#sec-6">結語：挑對診所，也是一種自我照顧</a></li></ul></nav>

@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/323/","headline":"美企轉向中國AI模型背後：成本競賽如何重塑全球AI版圖","description":"成本壓力驅動美國企業選擇中國AI模型，引發國會安全調查。本文分析這股趨勢背後的經濟邏輯、地緣政治風險，以及台灣AI產業如何在成本與安全的天秤上找到位置。","datePublished":"2026-07-14","dateModified":"2026-07-14","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/323/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/323/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-323.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"美企轉向中國AI模型背後：成本競賽如何重塑全球AI版圖","item":"https://operation.tw/post/323/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/323/#faq","mainEntity":[{"@type":"Question","name":"中國AI模型真的比美國模型便宜很多嗎？","acceptedAnswer":{"@type":"Answer","text":"根據市場資訊，中國AI模型在API調用價格上確實通常低於美國主流模型30-70%，這主要源於較低的基礎設施成本、政府補助與本地化優化，但需注意這些成本優勢可能無法永續，且廉價模型往往在特定高端應用場景上有能力限制。"}},{"@type":"Question","name":"採用中國AI模型會帶來哪些實際風險？","acceptedAnswer":{"@type":"Answer","text":"主要風險包括敏感數據可能的跨境流動與洩露、模型輸出的地緣政治偏見、未來的政策變化可能影響可用性，以及美國政府可能對使用中國模型的企業實施出口管制或資訊安全審查。"}},{"@type":"Question","name":"台灣企業應該立即停止評估中國AI模型嗎？","acceptedAnswer":{"@type":"Answer","text":"不必立即停止，但應進行風險分類：對於處理敏感資訊或受美國出口管制影響的應用，應優先考慮本地或民主國家廠商；對於非敏感應用，可在完整評估法規風險與數據安全承諾後，理性決策，同時預留多供應商備案。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:323})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>美企轉向中國AI模型背後：成本競賽如何重塑全球AI版圖</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-14">2026-07-14</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-14">2026-07-14</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-323.webp"><img class="cover" src="https://operation.tw/images/posts/post-323.jpg" alt="美企轉向中國AI模型背後：成本競賽如何重塑全球AI版圖" width="1200" height="630"></picture>
     <div class="excerpt"><p>成本壓力驅動美國企業選擇中國AI模型，引發國會安全調查。本文分析這股趨勢背後的經濟邏輯、地緣政治風險，以及台灣AI產業如何在成本與安全的天秤上找到位置。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼美企開始轉向中國AI模型？</a></li><li class="toc-l2"><a href="#sec-2">國會安全調查反映了什麼隱憂？</a></li><li class="toc-l2"><a href="#sec-3">這反映出全球AI競爭格局的什麼變化？</a></li><li class="toc-l2"><a href="#sec-4">台灣AI產業面臨的機會與挑戰是什麼？</a></li><li class="toc-l2"><a href="#sec-5">企業採購決策應該如何應對？</a></li><li class="toc-l2"><a href="#sec-6">常見問題</a></li><li class="toc-l3"><a href="#sec-7">中國AI模型真的比美國模型便宜很多嗎？</a></li><li class="toc-l3"><a href="#sec-8">採用中國AI模型會帶來哪些實際風險？</a></li><li class="toc-l3"><a href="#sec-9">台灣企業應該立即停止評估中國AI模型嗎？</a></li></ul></nav>

@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/11/","headline":"NIST推出AI資安框架：台灣企業必須立即行動","description":"美國國家標準與技術研究院（NIST）最新發布AI專屬網路安全框架，針對生成式AI帶來的新型資安風險提出系統性解決方案。這項國際標準對於正積極導入AI的台灣企業而言，既是挑戰也是機會，將重塑資訊安全策略的未來方向。","datePublished":"2026-02-23","dateModified":"2026-02-23","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/11/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/11/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-11.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"NIST推出AI資安框架：台灣企業必須立即行動","item":"https://operation.tw/post/11/"}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:11})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🔐 資安</div>
     <h1>NIST推出AI資安框架：台灣企業必須立即行動</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-02-23">2026-02-23</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-02-23">2026-02-23</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-11.webp"><img class="cover" src="https://operation.tw/images/posts/post-11.jpg" alt="NIST推出AI資安框架：台灣企業必須立即行動" width="1200" height="630"></picture>
     <div class="excerpt"><p>美國國家標準與技術研究院（NIST）最新發布AI專屬網路安全框架，針對生成式AI帶來的新型資安風險提出系統性解決方案。這項國際標準對於正積極導入AI的台灣企業而言，既是挑戰也是機會，將重塑資訊安全策略的未來方向。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">NIST AI安全框架：全球資安新標杆</a></li><li class="toc-l2"><a href="#sec-2">AI時代的新型資安威脅</a></li><li class="toc-l2"><a href="#sec-3">台灣企業面臨的現實</a></li><li class="toc-l2"><a href="#sec-4">關鍵行動清單</a></li><li class="toc-l2"><a href="#sec-5">國際標準本地化的機會</a></li><li class="toc-l2"><a href="#sec-6">結論：行動勝於等待</a></li></ul></nav>

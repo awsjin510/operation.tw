@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/174/","headline":"EP23｜午夜圖書館：如果能重來，你會選哪條路？","description":"《午夜圖書館》是一本關於選擇與後悔的覺醒小說。這集「操作一下」閱讀單元，Jin 透過這本書帶我們思考：如果可以把所有平行人生都走過一遍，我們真的能找到那個「最好的自己」嗎？還是說，遺憾本身就是人生不可或缺的一部分？一起來看看這本書藏著什麼值得細細咀嚼的人生命題。","datePublished":"2022-11-27","dateModified":"2022-11-27","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/174/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/174/"},"articleSection":"閱讀","image":"https://operation.tw/images/posts/post-174.jpg","keywords":"閱讀","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"閱讀","item":"https://operation.tw/category/%E9%96%B1%E8%AE%80/"},{"@type":"ListItem","position":3,"name":"EP23｜午夜圖書館：如果能重來，你會選哪條路？","item":"https://operation.tw/post/174/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/174/#episode","name":"EP23｜午夜圖書館：如果能重來，你會選哪條路？","url":"https://operation.tw/post/174/","datePublished":"2022-11-27","description":"《午夜圖書館》是一本關於選擇與後悔的覺醒小說。這集「操作一下」閱讀單元，Jin 透過這本書帶我們思考：如果可以把所有平行人生都走過一遍，我們真的能找到那個「最好的自己」嗎？還是說，遺憾本身就是人生不可或缺的一部分？一起來看看這本書藏著什麼值得細細咀嚼的人生命題。","image":"https://operation.tw/images/posts/post-174.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":23,"duration":"PT14M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/dc927a69-f6e6-4a50-93e2-741f5522a548/rssFileVip.mp3?timestamp=1687899394785","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:174})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">📚 閱讀</div>
     <h1>EP23｜午夜圖書館：如果能重來，你會選哪條路？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-11-27">2022-11-27</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-11-27">2022-11-27</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-174.webp"><img class="cover" src="https://operation.tw/images/posts/post-174.jpg" alt="EP23｜午夜圖書館：如果能重來，你會選哪條路？" width="1200" height="630"></picture>
     <div class="excerpt"><p>《午夜圖書館》是一本關於選擇與後悔的覺醒小說。這集「操作一下」閱讀單元，Jin 透過這本書帶我們思考：如果可以把所有平行人生都走過一遍，我們真的能找到那個「最好的自己」嗎？還是說，遺憾本身就是人生不可或缺的一部分？一起來看看這本書藏著什麼值得細細咀嚼的人生命題。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">你有沒有想過，如果當初選了另一條路？</a></li><li class="toc-l2"><a href="#sec-2">這本書在說什麼？</a></li><li class="toc-l2"><a href="#sec-3">核心觀點：遺憾不等於錯誤</a></li><li class="toc-l2"><a href="#sec-4">延伸思考：我們為什麼總覺得別條路更好？</a></li><li class="toc-l2"><a href="#sec-5">對你我的實際應用：從「後悔清單」找線索</a></li><li class="toc-l2"><a href="#sec-6">結語：你現在這條路，也是某個版本的你夢寐以求的</a></li></ul></nav>

@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/55/","headline":"AI攻擊武器化：2026企業如何從檢測升級到預測性防禦","description":"Google Cloud《2026網路安全預測》報告揭示AI已成駭客新武器。本文深入分析AI驅動的網路威脅如何演變，以及台灣企業應如何從被動檢測轉向主動預測，建立下一代資安防禦體系。","datePublished":"2026-03-31","dateModified":"2026-03-31","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/55/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/55/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-55.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"AI攻擊武器化：2026企業如何從檢測升級到預測性防禦","item":"https://operation.tw/post/55/"}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:55})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🔐 資安</div>
     <h1>AI攻擊武器化：2026企業如何從檢測升級到預測性防禦</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-03-31">2026-03-31</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-03-31">2026-03-31</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-55.webp"><img class="cover" src="https://operation.tw/images/posts/post-55.jpg" alt="AI攻擊武器化：2026企業如何從檢測升級到預測性防禦" width="1200" height="630"></picture>
     <div class="excerpt"><p>Google Cloud《2026網路安全預測》報告揭示AI已成駭客新武器。本文深入分析AI驅動的網路威脅如何演變，以及台灣企業應如何從被動檢測轉向主動預測，建立下一代資安防禦體系。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">AI不再只是防禦工具，已成為攻擊者的致命武器</a></li><li class="toc-l2"><a href="#sec-2">從檢測走向預測：資安範式的革命性轉變</a></li><li class="toc-l2"><a href="#sec-3">台灣企業的機會與挑戰</a></li><li class="toc-l2"><a href="#sec-4">實踐建議：台灣企業的三步走策略</a></li><li class="toc-l2"><a href="#sec-5">結語：從被動應對到主動進攻</a></li></ul></nav>

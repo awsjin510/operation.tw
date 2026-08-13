@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/321/","headline":"AI43｜策略不是目標：為什麼 95% 企業 AI 專案都失敗","description":"你公司的「AI 策略」只是一張 KPI 表嗎？《好策略．壞策略》作者 Rumelt 指出，策略和目標是兩回事。95% 企業 AI 投資回報率為零的真正原因，不在技術，而在沒有診斷、缺乏聚焦的壞策略。","datePublished":"2026-07-12","dateModified":"2026-07-12","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/321/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/321/"},"articleSection":"閱讀","image":"https://operation.tw/images/posts/post-321.jpg","keywords":"閱讀","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"閱讀","item":"https://operation.tw/category/%E9%96%B1%E8%AE%80/"},{"@type":"ListItem","position":3,"name":"AI43｜策略不是目標：為什麼 95% 企業 AI 專案都失敗","item":"https://operation.tw/post/321/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/321/#faq","mainEntity":[{"@type":"Question","name":"策略和目標有什麼差別？","acceptedAnswer":{"@type":"Answer","text":"目標是你想達到的終點（如「提升 30% 效率」），策略是達成目標的具體路線圖——包括診斷問題、選擇方向、執行連貫行動三個環節。寫著願景的 KPI 是目標，寫著「怎麼做」的行動計畫才是策略。"}},{"@type":"Question","name":"為什麼 AI 專案的成功率這麼低？","acceptedAnswer":{"@type":"Answer","text":"因為大多數企業沒有真正診斷自身問題、沒有清晰的指導方針、也缺乏聚焦的行動計畫，只是盲目投資工具。根據 MIT 和波士頓顧問公司的研究，95% 的生成式 AI 專案回報率為零，主要原因就是沒有策略、只有目標。"}},{"@type":"Question","name":"如何分辨自己的策略是好還是壞？","acceptedAnswer":{"@type":"Answer","text":"用 Rumelt 的四大病徵檢查：有沒有廢話（模糊概念）、有沒有迴避難題、有沒有把目標當策略、有沒有不可行的目標。同時問三個問題：我們的診斷是什麼、我們不做什麼、這些行動如何互相強化——答不出來就代表還沒有真正的策略。"}}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/321/#episode","name":"AI43｜策略不是目標：為什麼 95% 企業 AI 專案都失敗","url":"https://operation.tw/post/321/","datePublished":"2026-07-12","description":"你公司的「AI 策略」只是一張 KPI 表嗎？《好策略．壞策略》作者 Rumelt 指出，策略和目標是兩回事。95% 企業 AI 投資回報率為零的真正原因，不在技術，而在沒有診斷、缺乏聚焦的壞策略。","image":"https://operation.tw/images/posts/post-321.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":43,"duration":"PT16M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/1f2798e5-9551-41e2-8d56-4764199b28af/rssFileVip.mp3?timestamp=1783987176271","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:321})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">📚 閱讀</div>
     <h1>AI43｜策略不是目標：為什麼 95% 企業 AI 專案都失敗</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-12">2026-07-12</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-12">2026-07-12</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-321.webp"><img class="cover" src="https://operation.tw/images/posts/post-321.jpg" alt="AI43｜策略不是目標：為什麼 95% 企業 AI 專案都失敗" width="1200" height="630"></picture>
     <div class="excerpt"><p>你公司的「AI 策略」只是一張 KPI 表嗎？《好策略．壞策略》作者 Rumelt 指出，策略和目標是兩回事。95% 企業 AI 投資回報率為零的真正原因，不在技術，而在沒有診斷、缺乏聚焦的壞策略。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">你公司的「AI 策略」真的是策略嗎？</a></li><li class="toc-l2"><a href="#sec-2">壞策略長什麼樣子？四大病徵對照檢查表</a></li><li class="toc-l2"><a href="#sec-3">好策略的三個核心要素是什麼？</a></li><li class="toc-l2"><a href="#sec-4">為什麼 AI 專案的失敗率這麼高？</a></li><li class="toc-l2"><a href="#sec-5">如何檢查自己的策略有沒有問題？</a></li><li class="toc-l2"><a href="#sec-6">常見問題</a></li><li class="toc-l3"><a href="#sec-7">策略和目標有什麼差別？</a></li><li class="toc-l3"><a href="#sec-8">為什麼 AI 專案的成功率這麼低？</a></li><li class="toc-l3"><a href="#sec-9">如何分辨自己的策略是好還是壞？</a></li></ul></nav>

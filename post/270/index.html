@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/270/","headline":"AI21｜代理式企業：當 AI 從員工副手變成組織成員","description":"企業導入 AI 的主流畫面——員工打開聊天框、AI 回答、對話結束——正在快速過時。新的階段叫做「代理式企業」，AI 不再被動等待指令，而是主動規劃、跨系統執行、與其他 AI 協作。這篇文章整理了這集 Podcast 的三大核心：代理式企業與現行 AI 應用的本質差異、所需的雲端基建，以及台灣企業的起步方向。","datePublished":"2026-05-21","dateModified":"2026-05-21","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/270/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/270/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-270.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"AI21｜代理式企業：當 AI 從員工副手變成組織成員","item":"https://operation.tw/post/270/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/270/#episode","name":"AI21｜代理式企業：當 AI 從員工副手變成組織成員","url":"https://operation.tw/post/270/","datePublished":"2026-05-21","description":"企業導入 AI 的主流畫面——員工打開聊天框、AI 回答、對話結束——正在快速過時。新的階段叫做「代理式企業」，AI 不再被動等待指令，而是主動規劃、跨系統執行、與其他 AI 協作。這篇文章整理了這集 Podcast 的三大核心：代理式企業與現行 AI 應用的本質差異、所需的雲端基建，以及台灣企業的起步方向。","image":"https://operation.tw/images/posts/post-270.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":21,"duration":"PT9M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/4bc66e6d-e955-45fc-a8a3-dc2512b49e74/rssFileVip.mp3?timestamp=1779476732403","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:270})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">☁️ 雲端</div>
     <h1>AI21｜代理式企業：當 AI 從員工副手變成組織成員</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-05-21">2026-05-21</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-05-21">2026-05-21</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-270.webp"><img class="cover" src="https://operation.tw/images/posts/post-270.jpg" alt="AI21｜代理式企業：當 AI 從員工副手變成組織成員" width="1200" height="630"></picture>
     <div class="excerpt"><p>企業導入 AI 的主流畫面——員工打開聊天框、AI 回答、對話結束——正在快速過時。新的階段叫做「代理式企業」，AI 不再被動等待指令，而是主動規劃、跨系統執行、與其他 AI 協作。這篇文章整理了這集 Podcast 的三大核心：代理式企業與現行 AI 應用的本質差異、所需的雲端基建，以及台灣企業的起步方向。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">那個「打開聊天框」的畫面，已經過時了</a></li><li class="toc-l2"><a href="#sec-2">代理式企業跟現在的 AI 應用，差在哪？</a></li><li class="toc-l2"><a href="#sec-3">要蓋一個代理式企業，需要哪些雲端基建？</a></li><li class="toc-l2"><a href="#sec-4">治理，才是真正的決勝點</a></li><li class="toc-l2"><a href="#sec-5">台灣企業現在該怎麼起步？</a></li><li class="toc-l2"><a href="#sec-6">這個轉變比你想的更快</a></li></ul></nav>
