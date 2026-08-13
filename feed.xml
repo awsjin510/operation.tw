@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 13 Aug 2026 02:44:52 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 13 Aug 2026 03:05:32 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI攻擊全面化2026：企業資安防禦為何從被動偵測轉向主動預測？</title>
+    <link>https://operation.tw/post/361/</link>
+    <guid isPermaLink="true">https://operation.tw/post/361/</guid>
+    <description>2026年AI攻擊已從單點威脅演變為全面系統性風險。本文解析為何傳統資安防禦模式失效、AI如何被用於攻擊與防禦的對稱賽局，以及台灣企業應如何從被動應對升級為主動預測型防禦架構。</description>
+    <category>資安</category>
+    <pubDate>Thu, 13 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Google承認AI履歷篩選失準：企業HR系統暗藏的偏見陷阱</title>
     <link>https://operation.tw/post/359/</link>
@@ -158,14 +166,6 @@
     <description>美國AI監管陷入碎片化困境，兩千項提案卻無一觸及長遠規劃。這場監管亂象如何威脅企業合規成本？台灣和亞太地區應如何預先佈局，避免步上美國後塵？本文深入分析背後根因與應對策略。</description>
     <category>資安</category>
     <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>全球雲端市場2035預測：台灣企業如何搶佔AI驅動的下一波成長機會？</title>
-    <link>https://operation.tw/post/341/</link>
-    <guid isPermaLink="true">https://operation.tw/post/341/</guid>
-    <description>Research Nester最新報告預測公有雲市場規模與份額至2035年將迎來重大變化。本文分析AI時代雲端競爭格局如何演變、台灣企業的定位機會，以及應如何調整雲端策略應對新形勢。</description>
-    <category>雲端</category>
-    <pubDate>Mon, 27 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
