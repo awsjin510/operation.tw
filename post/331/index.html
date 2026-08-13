@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/331/","headline":"EP101｜一個提袋改變人生：美學達人如何用管理思維跨界彩妝","description":"從管理學院學生到資生堂美學專家，嘉嘉因為一堂通識課上的提袋對話，徹底改變了人生軌跡。她分享如何用理性思維駕馭感性領域、AI 時代彩妝師的核心競爭力，以及美妝背後那份接住他人脆弱的溫暖志業。","datePublished":"2026-07-19","dateModified":"2026-07-19","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/331/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/331/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-331.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"EP101｜一個提袋改變人生：美學達人如何用管理思維跨界彩妝","item":"https://operation.tw/post/331/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/331/#faq","mainEntity":[{"@type":"Question","name":"怎樣才能像嘉嘉一樣抓住轉折點機遇？","acceptedAnswer":{"@type":"Answer","text":"機遇來臨前，你需要的是隱形的準備：持續學習、練習、累積專業。嘉嘉考取美容證照、畫百張練習圖，正是在為某個可能的時刻做準備。當機遇來臨時，只有足夠準備的人才有能力去抓住它。"}},{"@type":"Question","name":"跨界工作時，原本的專業背景會拖累新領域嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。管理學背景對嘉嘉的美妝工作不是負擔，而是優勢。理性思維幫助她把感性工作系統化、效率化。跨界成功的祕訣，往往在於如何整合不同領域的思維方式，而非完全拋棄原本的專業。"}},{"@type":"Question","name":"在 AI 時代，美妝師需要具備什麼新能力？","acceptedAnswer":{"@type":"Answer","text":"最核心的能力是學會運用 AI 工具，而不是害怕被 AI 取代。同時，人與人之間的同理心、溝通能力、對審美的獨特理解，這些人類的優勢是 AI 短期內無法取代的。結合這兩點，才是 AI 時代的美妝專業該走的方向。"}}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/331/#episode","name":"EP101｜一個提袋改變人生：美學達人如何用管理思維跨界彩妝","url":"https://operation.tw/post/331/","datePublished":"2026-07-19","description":"從管理學院學生到資生堂美學專家，嘉嘉因為一堂通識課上的提袋對話，徹底改變了人生軌跡。她分享如何用理性思維駕馭感性領域、AI 時代彩妝師的核心競爭力，以及美妝背後那份接住他人脆弱的溫暖志業。","image":"https://operation.tw/images/posts/post-331.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":101,"duration":"PT50M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/6d222e61-1cbe-43e8-885b-cee7e9762ec4/rssFileVip.mp3?timestamp=1784517104780","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:331})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>EP101｜一個提袋改變人生：美學達人如何用管理思維跨界彩妝</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-19">2026-07-19</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-19">2026-07-19</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-331.webp"><img class="cover" src="https://operation.tw/images/posts/post-331.jpg" alt="EP101｜一個提袋改變人生：美學達人如何用管理思維跨界彩妝" width="1200" height="630"></picture>
     <div class="excerpt"><p>從管理學院學生到資生堂美學專家，嘉嘉因為一堂通識課上的提袋對話，徹底改變了人生軌跡。她分享如何用理性思維駕馭感性領域、AI 時代彩妝師的核心競爭力，以及美妝背後那份接住他人脆弱的溫暖志業。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼一個提袋能改變一個人的人生軌跡？</a></li><li class="toc-l2"><a href="#sec-2">管理學背景怎麼成為美妝領域的競爭優勢？</a></li><li class="toc-l2"><a href="#sec-3">「會化妝」跟「教人化妝」有什麼本質差異？</a></li><li class="toc-l2"><a href="#sec-4">AI 會不會淘汰彩妝師、攝影師、模特兒？</a></li><li class="toc-l2"><a href="#sec-5">美妝專業在快速變化的時代該如何持續進化？</a></li><li class="toc-l2"><a href="#sec-6">常見問題</a></li><li class="toc-l3"><a href="#sec-7">怎樣才能像嘉嘉一樣抓住轉折點機遇？</a></li><li class="toc-l3"><a href="#sec-8">跨界工作時，原本的專業背景會拖累新領域嗎？</a></li><li class="toc-l3"><a href="#sec-9">在 AI 時代，美妝師需要具備什麼新能力？</a></li></ul></nav>

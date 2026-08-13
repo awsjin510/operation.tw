@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/311/","headline":"中國GLM-5.2進軍歐美遭資安卡關：台灣企業該如何應對？","description":"中國智譜清言的GLM-5.2雖然功能強大且價格低廉，卻因資安疑慮成為進入歐美市場的最大障礙。這反映了AI時代地緣政治與資安防護的新現實。台灣企業如何在成本與安全之間取得平衡，成為當下關鍵課題。","datePublished":"2026-07-06","dateModified":"2026-07-06","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/311/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/311/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-311.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"中國GLM-5.2進軍歐美遭資安卡關：台灣企業該如何應對？","item":"https://operation.tw/post/311/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/311/#faq","mainEntity":[{"@type":"Question","name":"GLM-5.2真的比ChatGPT和Claude更便宜？","acceptedAnswer":{"@type":"Answer","text":"根據公開的API定價，GLM-5.2的確在輸入輸出成本上低於OpenAI和Anthropic的主流模型，但一旦加入合規費用、法律審查與數據隔離的基礎設施成本，實際總成本往往相近甚至更高。"}},{"@type":"Question","name":"台灣企業使用中國AI模型會違反什麼法規？","acceptedAnswer":{"@type":"Answer","text":"直接使用未必違法，但若涉及客戶個資、營業秘密或政府採購案，就需符合《個資法》、《貿易秘密法》和政府資安規範，許多中國模型難以達到這些要求的透明度與可稽核性。"}},{"@type":"Question","name":"開源AI模型（如Llama）會不會也面臨地緣政治風險？","acceptedAnswer":{"@type":"Answer","text":"開源模型相對風險較低，因為代碼透明可審查，但使用時仍需注意訓練數據來源與模型微調過程中的資安管控，以及是否違反開源協議的商業使用限制。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:311})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🔐 資安</div>
     <h1>中國GLM-5.2進軍歐美遭資安卡關：台灣企業該如何應對？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-06">2026-07-06</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-06">2026-07-06</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-311.webp"><img class="cover" src="https://operation.tw/images/posts/post-311.jpg" alt="中國GLM-5.2進軍歐美遭資安卡關：台灣企業該如何應對？" width="1200" height="630"></picture>
     <div class="excerpt"><p>中國智譜清言的GLM-5.2雖然功能強大且價格低廉，卻因資安疑慮成為進入歐美市場的最大障礙。這反映了AI時代地緣政治與資安防護的新現實。台灣企業如何在成本與安全之間取得平衡，成為當下關鍵課題。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼中國AI模型進軍歐美會遭遇資安困境？</a></li><li class="toc-l2"><a href="#sec-2">這代表AI領域的地緣政治競爭正式白熱化嗎？</a></li><li class="toc-l2"><a href="#sec-3">台灣企業應該如何應對這波AI供應鏈重組？</a></li><li class="toc-l2"><a href="#sec-4">這會改變台灣AI人才的就業生態嗎？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">GLM-5.2真的比ChatGPT和Claude更便宜？</a></li><li class="toc-l3"><a href="#sec-7">台灣企業使用中國AI模型會違反什麼法規？</a></li><li class="toc-l3"><a href="#sec-8">開源AI模型（如Llama）會不會也面臨地緣政治風險？</a></li></ul></nav>

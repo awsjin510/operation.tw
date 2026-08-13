@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/354/","headline":"企業官網與雲端基礎設施的新關係：AI時代如何重新定義數位門面？","description":"在AI時代，企業官網的角色正在重塑。PMI傳播長指出官網重要性與日俱增，而這背後離不開雲端運算的支撐。本文探討企業如何透過現代雲端架構提升官網能力，以及這對台灣中小企業的啟示。","datePublished":"2026-08-07","dateModified":"2026-08-07","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/354/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/354/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-354.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"企業官網與雲端基礎設施的新關係：AI時代如何重新定義數位門面？","item":"https://operation.tw/post/354/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/354/#faq","mainEntity":[{"@type":"Question","name":"企業官網一定要遷上雲端嗎？","acceptedAnswer":{"@type":"Answer","text":"不一定要全部遷移，但應評估關鍵功能（如電商交易、客戶數據處理、AI功能部署）是否需要雲端的可擴展性與安全性。混合方案（部分系統上雲）是務實的起點。"}},{"@type":"Question","name":"Neoclouds等新興雲端服務是否值得信任？","acceptedAnswer":{"@type":"Answer","text":"新興服務商優勢在於成本與在地支援，但選擇時應確認其資安認證（如ISO 27001）、SLA保證、技術支援品質，與傳統大廠相比並無本質劣勢。"}},{"@type":"Question","name":"官網AI化需要多少預算與時間？","acceptedAnswer":{"@type":"Answer","text":"成本取決於功能複雜度與資料量；簡單的聊天機器人可在數週內以月費數千台幣實現；複雜的個性化引擎則需數月與更高投資。採用雲端的優勢在於初期成本低、可快速測試投報率。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:354})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">☁️ 雲端</div>
     <h1>企業官網與雲端基礎設施的新關係：AI時代如何重新定義數位門面？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-08-07">2026-08-07</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-08-07">2026-08-07</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-354.webp"><img class="cover" src="https://operation.tw/images/posts/post-354.jpg" alt="企業官網與雲端基礎設施的新關係：AI時代如何重新定義數位門面？" width="1200" height="630"></picture>
     <div class="excerpt"><p>在AI時代，企業官網的角色正在重塑。PMI傳播長指出官網重要性與日俱增，而這背後離不開雲端運算的支撐。本文探討企業如何透過現代雲端架構提升官網能力，以及這對台灣中小企業的啟示。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼AI時代企業官網的角色正在改變？</a></li><li class="toc-l2"><a href="#sec-2">現代雲端運算如何支撐AI驅動的官網需求？</a></li><li class="toc-l2"><a href="#sec-3">台灣企業在官網現代化中面臨的機會與挑戰？</a></li><li class="toc-l3"><a href="#sec-4">官網AI功能實現的具體案例</a></li><li class="toc-l3"><a href="#sec-5">實施路徑與建議</a></li><li class="toc-l2"><a href="#sec-6">常見問題</a></li><li class="toc-l3"><a href="#sec-7">企業官網一定要遷上雲端嗎？</a></li><li class="toc-l3"><a href="#sec-8">Neoclouds等新興雲端服務是否值得信任？</a></li><li class="toc-l3"><a href="#sec-9">官網AI化需要多少預算與時間？</a></li></ul></nav>

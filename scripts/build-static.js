@@ -207,14 +207,25 @@ function generatePostPage(post, body, episode, neighbors) {
 <script type="application/ld+json">${schema}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:${JSON.stringify(post.id)}})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -289,7 +300,7 @@ ${CF_BEACON}
   <article>
     <div class="badge">${catIcon} ${esc(post.category)}</div>
     <h1>${esc(post.title)}</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="${esc(post.date)}">${esc(post.date)}</time>${(post.updated_at || '').slice(0, 10) > post.date ? ` · 最後更新 ${esc(post.updated_at.slice(0, 10))}` : ''}</div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="${esc(post.date)}">${esc(post.date)}</time>${(post.updated_at || '').slice(0, 10) > post.date ? ` · 最後更新 ${esc(post.updated_at.slice(0, 10))}` : ''}<span id="pv"></span></div>
     ${post.image ? `<picture><source type="image/webp" srcset="${esc(imgWebp)}"><img class="cover" src="${esc(img)}" alt="${esc(post.title)}" width="1200" height="630"></picture>` : ''}
     <div class="excerpt"><p>${esc(post.excerpt || '')}</p></div>
     ${toc}

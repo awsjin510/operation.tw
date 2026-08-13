@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/330/","headline":"習近平親臨世界AI大會：中國開源戰略如何威脅西方AI霸權？","description":"習近平首度現身世界AI大會，宣示中國的「開源」AI戰略。這不只是技術選擇，更是一場地緣政治博弈——中國如何透過開源模式突破晶片限制，重塑全球AI版圖？台灣企業該如何應對？","datePublished":"2026-07-19","dateModified":"2026-07-19","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/330/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/330/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-330.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"習近平親臨世界AI大會：中國開源戰略如何威脅西方AI霸權？","item":"https://operation.tw/post/330/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/330/#faq","mainEntity":[{"@type":"Question","name":"習近平出席世界AI大會代表中國將放棄自主研發晶片嗎？","acceptedAnswer":{"@type":"Answer","text":"不是。開源戰略是補充，不是替代——中國同時投資晶片自主研發與開源軟體，透過軟體優化來彌補晶片性能差距，雙管齊下應對西方限制。"}},{"@type":"Question","name":"台灣企業參與中國開源AI項目會有政治風險嗎？","acceptedAnswer":{"@type":"Answer","text":"有潛在風險。建議企業在參與開源貢獻前進行法律與合規評估，確認是否涉及敏感技術出口管制，並與政府部門溝通協調。"}},{"@type":"Question","name":"開源AI模型真的能對標OpenAI的商業版本嗎？","acceptedAnswer":{"@type":"Answer","text":"短期內難以，但差距在縮小。開源模型在通用性與成本效率上有優勢，但在企業級應用、安全保障、持續支援上仍落後商業版本。兩者的市場分化將日趨明顯。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:330})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>習近平親臨世界AI大會：中國開源戰略如何威脅西方AI霸權？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-19">2026-07-19</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-19">2026-07-19</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-330.webp"><img class="cover" src="https://operation.tw/images/posts/post-330.jpg" alt="習近平親臨世界AI大會：中國開源戰略如何威脅西方AI霸權？" width="1200" height="630"></picture>
     <div class="excerpt"><p>習近平首度現身世界AI大會，宣示中國的「開源」AI戰略。這不只是技術選擇，更是一場地緣政治博弈——中國如何透過開源模式突破晶片限制，重塑全球AI版圖？台灣企業該如何應對？</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">習近平親自站台背後：開源戰略代表什麼？</a></li><li class="toc-l2"><a href="#sec-2">Kimi K3衝擊是否代表「蒸餾」威脅成真？</a></li><li class="toc-l2"><a href="#sec-3">開源戰略如何改變台灣企業的供應鏈地位？</a></li><li class="toc-l2"><a href="#sec-4">開源模式的風險與限制在哪？</a></li><li class="toc-l2"><a href="#sec-5">台灣企業應如何應對？</a></li><li class="toc-l2"><a href="#sec-6">常見問題</a></li><li class="toc-l3"><a href="#sec-7">習近平出席世界AI大會代表中國將放棄自主研發晶片嗎？</a></li><li class="toc-l3"><a href="#sec-8">台灣企業參與中國開源AI項目會有政治風險嗎？</a></li><li class="toc-l3"><a href="#sec-9">開源AI模型真的能對標OpenAI的商業版本嗎？</a></li></ul></nav>

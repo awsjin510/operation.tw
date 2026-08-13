@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/344/","headline":"EP102｜駭客精神是什麼？從讀書會到HITCON的資安社群故事","description":"駭客精神不是破壞，而是對未知的好奇與對規則的懷疑。HITCON從小型讀書會發展成千人國際年會，今年聚焦AI Agent時代的資安防護挑戰。了解為什麼當AI開始執行動作，資安邊界必須重新定義。","datePublished":"2026-07-29","dateModified":"2026-07-29","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/344/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/344/"},"articleSection":"閱讀","image":"https://operation.tw/images/posts/post-344.jpg","keywords":"閱讀","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"閱讀","item":"https://operation.tw/category/%E9%96%B1%E8%AE%80/"},{"@type":"ListItem","position":3,"name":"EP102｜駭客精神是什麼？從讀書會到HITCON的資安社群故事","item":"https://operation.tw/post/344/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/344/#faq","mainEntity":[{"@type":"Question","name":"駭客（Hacker）和資安專家有什麼不同？","acceptedAnswer":{"@type":"Answer","text":"駭客強調的是一種「好奇心驅動、實驗至上」的思維方式——對系統規則保持懷疑並親手驗證；資安專家則是在這種精神基礎上，把知識系統化、職業化，為組織建立防禦體系。許多優秀的資安專家本身都具備駭客精神。"}},{"@type":"Question","name":"AI Agent進入企業系統後最大的安全風險是什麼？","acceptedAnswer":{"@type":"Answer","text":"最大的風險是「看起來完全合法的異常行為」——AI Agent用被授權的操作去執行惡意指令時，傳統的日誌監控和異常檢測都無法察覺，因為所有行為在紙面上都符合授權範圍。"}},{"@type":"Question","name":"如何避免影子AI造成的資料外洩？","acceptedAnswer":{"@type":"Answer","text":"企業應該：(1)建立明確的AI使用政策，(2)提供員工受控、安全的AI工具選項，(3)對敏感資料的AI處理設置額外的審查機制。從根本上，這是一個「教育+治理」並行的問題。"}}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/344/#episode","name":"EP102｜駭客精神是什麼？從讀書會到HITCON的資安社群故事","url":"https://operation.tw/post/344/","datePublished":"2026-07-29","description":"駭客精神不是破壞，而是對未知的好奇與對規則的懷疑。HITCON從小型讀書會發展成千人國際年會，今年聚焦AI Agent時代的資安防護挑戰。了解為什麼當AI開始執行動作，資安邊界必須重新定義。","image":"https://operation.tw/images/posts/post-344.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":102,"duration":"PT52M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/c4ab0176-6867-4334-9829-555e3440752d/rssFileVip.mp3?timestamp=1785438257721","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:344})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">📚 閱讀</div>
     <h1>EP102｜駭客精神是什麼？從讀書會到HITCON的資安社群故事</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-29">2026-07-29</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-29">2026-07-29</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-344.webp"><img class="cover" src="https://operation.tw/images/posts/post-344.jpg" alt="EP102｜駭客精神是什麼？從讀書會到HITCON的資安社群故事" width="1200" height="630"></picture>
     <div class="excerpt"><p>駭客精神不是破壞，而是對未知的好奇與對規則的懷疑。HITCON從小型讀書會發展成千人國際年會，今年聚焦AI Agent時代的資安防護挑戰。了解為什麼當AI開始執行動作，資安邊界必須重新定義。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">什麼是駭客精神？為什麼名字選「Hacks in Taiwan」而不是「Hackers」？</a></li><li class="toc-l2"><a href="#sec-2">HITCON如何從讀書會發展成千人國際年會？</a></li><li class="toc-l2"><a href="#sec-3">AI Agent時代的資安挑戰是什麼？為什麼資安防護邊界要重新定義？</a></li><li class="toc-l2"><a href="#sec-4">AI自主挖漏洞對產業是好是壞？</a></li><li class="toc-l2"><a href="#sec-5">今年HITCON年會的核心議題是什麼？</a></li><li class="toc-l2"><a href="#sec-6">想進入資安圈，應該從何開始？</a></li><li class="toc-l2"><a href="#sec-7">影子AI與資料外洩有什麼關係？</a></li><li class="toc-l2"><a href="#sec-8">模型與算力為什麼會成為戰略物資？對台灣有什麼啟示？</a></li><li class="toc-l2"><a href="#sec-9">常見問題</a></li><li class="toc-l3"><a href="#sec-10">駭客（Hacker）和資安專家有什麼不同？</a></li><li class="toc-l3"><a href="#sec-11">AI Agent進入企業系統後最大的安全風險是什麼？</a></li><li class="toc-l3"><a href="#sec-12">如何避免影子AI造成的資料外洩？</a></li></ul></nav>

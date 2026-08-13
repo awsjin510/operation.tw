@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/282/","headline":"EP99｜前LINE台灣總經理親自下海寫程式，AI時代老闆該怎麼做？","description":"前LINE台灣總經理陶韻智（Sting老師）過去一年獨力完成超過100個AI應用，從「動口不動手」的高階主管，變成親自下海實作的人。這集Podcast我們聊了他的新書《AI First自我升級革命》，談的不是Prompt技巧，而是在價值重分配的拐點，管理者如何重新定義自己的角色，搶在浪頭之前站穩位置。","datePublished":"2026-06-14","dateModified":"2026-06-14","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/282/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/282/"},"articleSection":"閱讀","image":"https://operation.tw/images/posts/post-282.jpg","keywords":"閱讀","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"閱讀","item":"https://operation.tw/category/%E9%96%B1%E8%AE%80/"},{"@type":"ListItem","position":3,"name":"EP99｜前LINE台灣總經理親自下海寫程式，AI時代老闆該怎麼做？","item":"https://operation.tw/post/282/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/282/#episode","name":"EP99｜前LINE台灣總經理親自下海寫程式，AI時代老闆該怎麼做？","url":"https://operation.tw/post/282/","datePublished":"2026-06-14","description":"前LINE台灣總經理陶韻智（Sting老師）過去一年獨力完成超過100個AI應用，從「動口不動手」的高階主管，變成親自下海實作的人。這集Podcast我們聊了他的新書《AI First自我升級革命》，談的不是Prompt技巧，而是在價值重分配的拐點，管理者如何重新定義自己的角色，搶在浪頭之前站穩位置。","image":"https://operation.tw/images/posts/post-282.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":99,"duration":"PT44M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/e3410655-a4a8-43e8-bd94-448552e65ba2/rssFileVip.mp3?timestamp=1781549424291","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:282})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">📚 閱讀</div>
     <h1>EP99｜前LINE台灣總經理親自下海寫程式，AI時代老闆該怎麼做？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-06-14">2026-06-14</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-06-14">2026-06-14</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-282.webp"><img class="cover" src="https://operation.tw/images/posts/post-282.jpg" alt="EP99｜前LINE台灣總經理親自下海寫程式，AI時代老闆該怎麼做？" width="1200" height="630"></picture>
     <div class="excerpt"><p>前LINE台灣總經理陶韻智（Sting老師）過去一年獨力完成超過100個AI應用，從「動口不動手」的高階主管，變成親自下海實作的人。這集Podcast我們聊了他的新書《AI First自我升級革命》，談的不是Prompt技巧，而是在價值重分配的拐點，管理者如何重新定義自己的角色，搶在浪頭之前站穩位置。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">AI不是工具，是你需要帶的「博士級下屬」</a></li><li class="toc-l2"><a href="#sec-2">沒有親自下海的代價，比你想的嚴重</a></li><li class="toc-l2"><a href="#sec-3">對我自己的衝擊：那些「卡住的點子」</a></li><li class="toc-l2"><a href="#sec-4">這本書在談什麼？適合誰讀？</a></li></ul></nav>

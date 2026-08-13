@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/26/","headline":"Fortinet 2026資安威脅預測：台灣企業面臨的三大生存挑戰","description":"Fortinet最新發布2026全球資安威脅預測報告，指出AI驅動的攻擊、供應鏈風險與零信任架構缺口成為新常態。台灣作為全球半導體與科技樞紐，正面臨前所未有的資安威脅。本文深度解析威脅趨勢，並提出企業應對策略。","datePublished":"2026-03-04","dateModified":"2026-03-04","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/26/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/26/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-26.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"Fortinet 2026資安威脅預測：台灣企業面臨的三大生存挑戰","item":"https://operation.tw/post/26/"}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:26})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🔐 資安</div>
     <h1>Fortinet 2026資安威脅預測：台灣企業面臨的三大生存挑戰</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-03-04">2026-03-04</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-03-04">2026-03-04</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-26.webp"><img class="cover" src="https://operation.tw/images/posts/post-26.jpg" alt="Fortinet 2026資安威脅預測：台灣企業面臨的三大生存挑戰" width="1200" height="630"></picture>
     <div class="excerpt"><p>Fortinet最新發布2026全球資安威脅預測報告，指出AI驅動的攻擊、供應鏈風險與零信任架構缺口成為新常態。台灣作為全球半導體與科技樞紐，正面臨前所未有的資安威脅。本文深度解析威脅趨勢，並提出企業應對策略。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">Fortinet 2026威脅預測：全球資安格局大洗牌</a></li><li class="toc-l2"><a href="#sec-2">三大威脅趨勢解析</a></li><li class="toc-l2"><a href="#sec-3">台灣企業的現實困境</a></li><li class="toc-l2"><a href="#sec-4">企業應該立即採取的行動</a></li><li class="toc-l2"><a href="#sec-5">結論：資安已非選項，而是生存條件</a></li></ul></nav>

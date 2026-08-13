@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/314/","headline":"AI41｜Meta Compute 雲端算力服務上線：如何改變 AI 產業競局？","description":"Meta 在 7 月 2 日推出 Meta Compute 雲端服務，以激進定價策略震撼市場，牽動 AWS、GCP、Azure 三大雲廠商的競爭格局。本文拆解 Meta Compute 的商業策略、模型層與算力層的產業分野，以及台灣企業採用時該關注的資安與信任問題。","datePublished":"2026-07-07","dateModified":"2026-07-07","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/314/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/314/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-314.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"AI41｜Meta Compute 雲端算力服務上線：如何改變 AI 產業競局？","item":"https://operation.tw/post/314/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/314/#faq","mainEntity":[{"@type":"Question","name":"Meta Compute 和 AWS Bedrock 的差別是什麼？","acceptedAnswer":{"@type":"Answer","text":"AWS Bedrock 是託管服務，客戶透過 AWS 介面存取多間廠商的模型（包括 Meta 模型），AWS 負責基礎設施但抽成；Meta Compute 是 Meta 直接販售的算力服務，客戶跳過 AWS 這個中介，定價通常更低但需承擔更多資料安全責任。"}},{"@type":"Question","name":"為什麼 Meta Compute 在台灣推行會遇到困難？","acceptedAnswer":{"@type":"Answer","text":"主要因素是個資跨境、品牌信任與監理風險：企業數據需跨海至美國伺服器涉及法規合規，台灣用戶對 Meta 的資料管理仍有疑慮，政府也可能對外國科技公司施加新的限制，這些都增加了採用成本與風險。"}},{"@type":"Question","name":"應該把 AI 工作負載移到 Meta Compute 嗎？","acceptedAnswer":{"@type":"Answer","text":"不應該只看價格，而要用「總成本公式」評估：算力成本 + 資料移轉成本 + 風險防控成本 + 品牌聲譽成本。若其他三項成本很高，便宜的算力可能不值得，應先確保有充分的資安、合規與商業考量。"}}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/314/#episode","name":"AI41｜Meta Compute 雲端算力服務上線：如何改變 AI 產業競局？","url":"https://operation.tw/post/314/","datePublished":"2026-07-07","description":"Meta 在 7 月 2 日推出 Meta Compute 雲端服務，以激進定價策略震撼市場，牽動 AWS、GCP、Azure 三大雲廠商的競爭格局。本文拆解 Meta Compute 的商業策略、模型層與算力層的產業分野，以及台灣企業採用時該關注的資安與信任問題。","image":"https://operation.tw/images/posts/post-314.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":41,"duration":"PT16M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/eeb92771-c74a-4c62-8031-c4832af84913/rssFileVip.mp3?timestamp=1783477083573","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:314})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">☁️ 雲端</div>
     <h1>AI41｜Meta Compute 雲端算力服務上線：如何改變 AI 產業競局？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-07">2026-07-07</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-07">2026-07-07</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-314.webp"><img class="cover" src="https://operation.tw/images/posts/post-314.jpg" alt="AI41｜Meta Compute 雲端算力服務上線：如何改變 AI 產業競局？" width="1200" height="630"></picture>
     <div class="excerpt"><p>Meta 在 7 月 2 日推出 Meta Compute 雲端服務，以激進定價策略震撼市場，牽動 AWS、GCP、Azure 三大雲廠商的競爭格局。本文拆解 Meta Compute 的商業策略、模型層與算力層的產業分野，以及台灣企業採用時該關注的資安與信任問題。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">Meta Compute 是什麼？為什麼它宣布上線後股市反應這麼大？</a></li><li class="toc-l2"><a href="#sec-2">Meta Compute 的定價策略為什麼最有殺傷力？</a></li><li class="toc-l2"><a href="#sec-3">Meta Compute 的旗艦模型 Muse Spark 是什麼？對標誰？</a></li><li class="toc-l2"><a href="#sec-4">AWS、GCP、Azure 三大雲廠商受到的衝擊為什麼不平均？</a></li><li class="toc-l2"><a href="#sec-5">AI 產業裡「模型層」與「算力層」的分野是什麼？</a></li><li class="toc-l2"><a href="#sec-6">如果公司想採用 Meta Compute，該考量哪些因素？</a></li><li class="toc-l2"><a href="#sec-7">下次看到 AI 模型降價新聞，該問自己哪三個問題？</a></li><li class="toc-l2"><a href="#sec-8">常見問題</a></li><li class="toc-l3"><a href="#sec-9">Meta Compute 和 AWS Bedrock 的差別是什麼？</a></li><li class="toc-l3"><a href="#sec-10">為什麼 Meta Compute 在台灣推行會遇到困難？</a></li><li class="toc-l3"><a href="#sec-11">應該把 AI 工作負載移到 Meta Compute 嗎？</a></li></ul></nav>

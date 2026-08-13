@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/223/","headline":"EP72｜從被客戶轟出門到業務宗師：資訊業務的職涯逆襲心法","description":"你有沒有想過，為什麼有些業務越做越被人敬重，有些業務卻只能靠削價競爭？這集「操作一下」邀請到科技資訊業的業務大前輩 Ben 哥，從他被客戶嫌棄趕出門的慘烈起點，聊到成為多位資訊長口中願意推薦的業務大神，揭露一套書本上學不到的實戰心法。","datePublished":"2025-06-09","dateModified":"2025-06-09","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/223/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/223/"},"articleSection":"成長","image":"https://operation.tw/images/posts/post-223.jpg","keywords":"成長","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"成長","item":"https://operation.tw/category/%E6%88%90%E9%95%B7/"},{"@type":"ListItem","position":3,"name":"EP72｜從被客戶轟出門到業務宗師：資訊業務的職涯逆襲心法","item":"https://operation.tw/post/223/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/223/#episode","name":"EP72｜從被客戶轟出門到業務宗師：資訊業務的職涯逆襲心法","url":"https://operation.tw/post/223/","datePublished":"2025-06-09","description":"你有沒有想過，為什麼有些業務越做越被人敬重，有些業務卻只能靠削價競爭？這集「操作一下」邀請到科技資訊業的業務大前輩 Ben 哥，從他被客戶嫌棄趕出門的慘烈起點，聊到成為多位資訊長口中願意推薦的業務大神，揭露一套書本上學不到的實戰心法。","image":"https://operation.tw/images/posts/post-223.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":72,"duration":"PT44M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/68822f4f-ad3f-4b44-8878-fef8076d8f57/rssFileVip.mp3?timestamp=1766826283404","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:223})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🌱 成長</div>
     <h1>EP72｜從被客戶轟出門到業務宗師：資訊業務的職涯逆襲心法</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2025-06-09">2025-06-09</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2025-06-09">2025-06-09</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-223.webp"><img class="cover" src="https://operation.tw/images/posts/post-223.jpg" alt="EP72｜從被客戶轟出門到業務宗師：資訊業務的職涯逆襲心法" width="1200" height="630"></picture>
     <div class="excerpt"><p>你有沒有想過，為什麼有些業務越做越被人敬重，有些業務卻只能靠削價競爭？這集「操作一下」邀請到科技資訊業的業務大前輩 Ben 哥，從他被客戶嫌棄趕出門的慘烈起點，聊到成為多位資訊長口中願意推薦的業務大神，揭露一套書本上學不到的實戰心法。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">業務不只有一種打法</a></li><li class="toc-l2"><a href="#sec-2">情報收集，才是業務真正的工作核心</a></li><li class="toc-l2"><a href="#sec-3">問問題的藝術：開放式 vs. 控制式</a></li><li class="toc-l2"><a href="#sec-4">Sales 與 Presales 的分工哲學</a></li><li class="toc-l2"><a href="#sec-5">對新進業務的建議：先學賣，再學產品</a></li><li class="toc-l2"><a href="#sec-6">結語：增加業務力，而不只是增加話術</a></li></ul></nav>

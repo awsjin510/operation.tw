@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/329/","headline":"AI44｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？","description":"Google 官方宣布 NotebookLM 更名為 Gemini Notebook，背後不只是改名，而是整合 Gemini、新增程式碼執行、雲端安全運算等重大升級。3000 萬活躍使用者的工具升級，究竟改變了什麼？","datePublished":"2026-07-18","dateModified":"2026-07-18","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/329/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/329/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-329.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI44｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？","item":"https://operation.tw/post/329/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/329/#faq","mainEntity":[{"@type":"Question","name":"NotebookLM 改名 Gemini Notebook 有什麼差別？","acceptedAnswer":{"@type":"Answer","text":"改名代表 Google 將其從實驗產品升級為正式工具，並整合 Gemini AI、新增程式碼執行、雲端運算環境等功能，不只是名字改變，而是產品能力的重大升級。"}},{"@type":"Question","name":"Gemini Notebook 現在有多少人在用？","acceptedAnswer":{"@type":"Answer","text":"根據 Google 官方公告，Gemini Notebook（原 NotebookLM）已有 3000 萬活躍使用者與 60 萬個組織訂閱，規模遠超預期。"}},{"@type":"Question","name":"我是沒有技術背景的內容工作者，Gemini Notebook 對我有用嗎？","acceptedAnswer":{"@type":"Answer","text":"很有用，特別是 Audio Overview 功能可以自動把你的文件轉成 Podcast 討論，省去整理腳本的時間，Gemini 甚至會比你更會行銷自己的內容定位。"}}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/329/#episode","name":"AI44｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？","url":"https://operation.tw/post/329/","datePublished":"2026-07-15","description":"Google 官方宣布 NotebookLM 更名為 Gemini Notebook，背後不只是改名，而是整合 Gemini、新增程式碼執行、雲端安全運算等重大升級。3000 萬活躍使用者的工具升級，究竟改變了什麼？","image":"https://operation.tw/images/posts/post-329.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":44,"duration":"PT15M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/b917c3dd-1c94-4887-87e5-52b5c1cb67e2/rssFileVip.mp3?timestamp=1784241311087","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:329})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>AI44｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-18">2026-07-18</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-18">2026-07-18</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-329.webp"><img class="cover" src="https://operation.tw/images/posts/post-329.jpg" alt="AI44｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？" width="1200" height="630"></picture>
     <div class="excerpt"><p>Google 官方宣布 NotebookLM 更名為 Gemini Notebook，背後不只是改名，而是整合 Gemini、新增程式碼執行、雲端安全運算等重大升級。3000 萬活躍使用者的工具升級，究竟改變了什麼？</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">NotebookLM 為什麼突然改名？背後的策略是什麼？</a></li><li class="toc-l2"><a href="#sec-2">Gemini Notebook 具體升級了哪些功能？</a></li><li class="toc-l2"><a href="#sec-3">為什麼 Google 現在必須做這件事？</a></li><li class="toc-l2"><a href="#sec-4">Gemini Notebook 對內容生產者有什麼實際幫助？</a></li><li class="toc-l2"><a href="#sec-5">對職場工作者來說呢？</a></li><li class="toc-l2"><a href="#sec-6">現在就能試試什麼？</a></li><li class="toc-l2"><a href="#sec-7">常見問題</a></li><li class="toc-l3"><a href="#sec-8">NotebookLM 改名 Gemini Notebook 有什麼差別？</a></li><li class="toc-l3"><a href="#sec-9">Gemini Notebook 現在有多少人在用？</a></li><li class="toc-l3"><a href="#sec-10">我是沒有技術背景的內容工作者，Gemini Notebook 對我有用嗎？</a></li></ul></nav>

@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/253/","headline":"EP96｜從資安工程師到產品經理：如何讓客戶願意為資安買單？","description":"資安產品明明重要，客戶卻常常不願意掏錢？這集「操作一下」邀請到產品經理 Edward，從他在資安領域的職涯轉換談起，帶我們拆解 EDR、MDR、SOC、MSSP 這些常見縮寫背後的意義，並分享如何量化資安效益、讓決策者看見資安的真實價值，甚至聊到 AI 在資安產品中的實際應用方向。","datePublished":"2026-04-20","dateModified":"2026-04-20","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/253/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/253/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-253.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"EP96｜從資安工程師到產品經理：如何讓客戶願意為資安買單？","item":"https://operation.tw/post/253/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/253/#episode","name":"EP96｜從資安工程師到產品經理：如何讓客戶願意為資安買單？","url":"https://operation.tw/post/253/","datePublished":"2026-04-20","description":"資安產品明明重要，客戶卻常常不願意掏錢？這集「操作一下」邀請到產品經理 Edward，從他在資安領域的職涯轉換談起，帶我們拆解 EDR、MDR、SOC、MSSP 這些常見縮寫背後的意義，並分享如何量化資安效益、讓決策者看見資安的真實價值，甚至聊到 AI 在資安產品中的實際應用方向。","image":"https://operation.tw/images/posts/post-253.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":96,"duration":"PT51M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/96edd610-5545-4039-bc26-6c7a45ffe356/rssFileVip.mp3?timestamp=1776813983960","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:253})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🔐 資安</div>
     <h1>EP96｜從資安工程師到產品經理：如何讓客戶願意為資安買單？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-20">2026-04-20</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-20">2026-04-20</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-253.webp"><img class="cover" src="https://operation.tw/images/posts/post-253.jpg" alt="EP96｜從資安工程師到產品經理：如何讓客戶願意為資安買單？" width="1200" height="630"></picture>
     <div class="excerpt"><p>資安產品明明重要，客戶卻常常不願意掏錢？這集「操作一下」邀請到產品經理 Edward，從他在資安領域的職涯轉換談起，帶我們拆解 EDR、MDR、SOC、MSSP 這些常見縮寫背後的意義，並分享如何量化資安效益、讓決策者看見資安的真實價值，甚至聊到 AI 在資安產品中的實際應用方向。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">先搞懂這些縮寫在說什麼</a></li><li class="toc-l2"><a href="#sec-2">資安效益怎麼量化？這才是真正的難題</a></li><li class="toc-l2"><a href="#sec-3">AI 進來之後，資安產品在變</a></li><li class="toc-l2"><a href="#sec-4">對你的實際啟發</a></li><li class="toc-l2"><a href="#sec-5">結語</a></li></ul></nav>

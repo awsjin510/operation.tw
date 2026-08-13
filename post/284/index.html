@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/284/","headline":"AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉","description":"2026年KPMG爆出AI幻覺報告事件，45條引註中有40條是憑空捏造，再次提醒我們：當答案變得又快又便宜，「會問問題」才是真正的稀缺能力。這篇文章整理自《BCG問題解決力》的核心觀點，帶你練就靈魂三問、假說導向與甜蜜點三條思考肌肉，在AI新紀元裡少踩坑、多出擊。","datePublished":"2026-06-20","dateModified":"2026-06-20","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/284/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/284/"},"articleSection":"閱讀","image":"https://operation.tw/images/posts/post-284.jpg","keywords":"閱讀","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"閱讀","item":"https://operation.tw/category/%E9%96%B1%E8%AE%80/"},{"@type":"ListItem","position":3,"name":"AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉","item":"https://operation.tw/post/284/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/284/#episode","name":"AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉","url":"https://operation.tw/post/284/","datePublished":"2026-06-20","description":"2026年KPMG爆出AI幻覺報告事件，45條引註中有40條是憑空捏造，再次提醒我們：當答案變得又快又便宜，「會問問題」才是真正的稀缺能力。這篇文章整理自《BCG問題解決力》的核心觀點，帶你練就靈魂三問、假說導向與甜蜜點三條思考肌肉，在AI新紀元裡少踩坑、多出擊。","image":"https://operation.tw/images/posts/post-284.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":34,"duration":"PT14M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/6d86f7e2-11ab-4bca-890e-9ac8053379a2/rssFileVip.mp3?timestamp=1782068056803","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:284})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">📚 閱讀</div>
     <h1>AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-06-20">2026-06-20</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-06-20">2026-06-20</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-284.webp"><img class="cover" src="https://operation.tw/images/posts/post-284.jpg" alt="AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉" width="1200" height="630"></picture>
     <div class="excerpt"><p>2026年KPMG爆出AI幻覺報告事件，45條引註中有40條是憑空捏造，再次提醒我們：當答案變得又快又便宜，「會問問題」才是真正的稀缺能力。這篇文章整理自《BCG問題解決力》的核心觀點，帶你練就靈魂三問、假說導向與甜蜜點三條思考肌肉，在AI新紀元裡少踩坑、多出擊。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">當AI讓答案變便宜，問題本身才是護城河</a></li><li class="toc-l2"><a href="#sec-2">三條貫穿全書的思考肌肉</a></li><li class="toc-l2"><a href="#sec-3">觀點一｜靈魂三問：是否為真？所以呢？為何如此？</a></li><li class="toc-l2"><a href="#sec-4">觀點二｜假說導向：先射箭，再畫靶</a></li><li class="toc-l2"><a href="#sec-5">觀點三｜尋找甜蜜點，別總想解決最大的問題</a></li><li class="toc-l2"><a href="#sec-6">對你的實際應用：升級你問問題的方式</a></li><li class="toc-l2"><a href="#sec-7">結語：技術會過時，但提問的能力不會</a></li></ul></nav>

@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/264/","headline":"AI16｜Agent = Model + Harness：AI時代真正的競爭力，是會不會駕馭AI","description":"台大教授李宏毅做了一個實驗：同一個AI模型、同一個任務，只因為多了三句引導指令，結果天差地別。這讓我們意識到，AI表現不夠好，問題往往不在模型本身，而在於我們有沒有給它正確的「韁繩」。這篇文章整理自Podcast單集，帶你搞懂什麼是Harness Engineering，以及它為什麼會是2026年最關鍵的AI競爭力。","datePublished":"2026-05-11","dateModified":"2026-05-11","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/264/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/264/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-264.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI16｜Agent = Model + Harness：AI時代真正的競爭力，是會不會駕馭AI","item":"https://operation.tw/post/264/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/264/#episode","name":"AI16｜Agent = Model + Harness：AI時代真正的競爭力，是會不會駕馭AI","url":"https://operation.tw/post/264/","datePublished":"2026-05-11","description":"台大教授李宏毅做了一個實驗：同一個AI模型、同一個任務，只因為多了三句引導指令，結果天差地別。這讓我們意識到，AI表現不夠好，問題往往不在模型本身，而在於我們有沒有給它正確的「韁繩」。這篇文章整理自Podcast單集，帶你搞懂什麼是Harness Engineering，以及它為什麼會是2026年最關鍵的AI競爭力。","image":"https://operation.tw/images/posts/post-264.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":16,"duration":"PT15M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/554fb4d3-481a-4848-af66-60ec221223b3/rssFileVip.mp3?timestamp=1778541753836","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:264})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>AI16｜Agent = Model + Harness：AI時代真正的競爭力，是會不會駕馭AI</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-05-11">2026-05-11</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-05-11">2026-05-11</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-264.webp"><img class="cover" src="https://operation.tw/images/posts/post-264.jpg" alt="AI16｜Agent = Model + Harness：AI時代真正的競爭力，是會不會駕馭AI" width="1200" height="630"></picture>
     <div class="excerpt"><p>台大教授李宏毅做了一個實驗：同一個AI模型、同一個任務，只因為多了三句引導指令，結果天差地別。這讓我們意識到，AI表現不夠好，問題往往不在模型本身，而在於我們有沒有給它正確的「韁繩」。這篇文章整理自Podcast單集，帶你搞懂什麼是Harness Engineering，以及它為什麼會是2026年最關鍵的AI競爭力。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">同一匹馬，差別在韁繩</a></li><li class="toc-l2"><a href="#sec-2">什麼是Harness Engineering？</a></li><li class="toc-l2"><a href="#sec-3">Anthropic的情緒向量研究：AI的狀態也會影響表現</a></li><li class="toc-l2"><a href="#sec-4">AutoDream：讓AI自己設計自己的駕馭框架</a></li><li class="toc-l2"><a href="#sec-5">對我們來說，這意味著什麼？</a></li><li class="toc-l2"><a href="#sec-6">結語</a></li></ul></nav>

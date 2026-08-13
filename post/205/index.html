@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/205/","headline":"EP54｜驗光師Betty：眼睛保養、選鏡眉角，以及怎麼好好生活","description":"你上一次認真檢查視力是什麼時候？這集我邀請了驗光師Betty，聊聊驗光師的專業養成、日常護眼的正確觀念、墨鏡怎麼挑、隱形眼鏡怎麼搭，以及她如何透過部落格建立個人品牌。最後她說了一句話讓我印象很深：不要等到生命快結束時，才開始學著怎麼生活。這篇文章整理了這集的核心重點，帶你一起看懂眼睛這件事。","datePublished":"2023-11-14","dateModified":"2023-11-14","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/205/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/205/"},"articleSection":"成長","image":"https://operation.tw/images/posts/post-205.jpg","keywords":"成長","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"成長","item":"https://operation.tw/category/%E6%88%90%E9%95%B7/"},{"@type":"ListItem","position":3,"name":"EP54｜驗光師Betty：眼睛保養、選鏡眉角，以及怎麼好好生活","item":"https://operation.tw/post/205/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/205/#episode","name":"EP54｜驗光師Betty：眼睛保養、選鏡眉角，以及怎麼好好生活","url":"https://operation.tw/post/205/","datePublished":"2023-11-14","description":"你上一次認真檢查視力是什麼時候？這集我邀請了驗光師Betty，聊聊驗光師的專業養成、日常護眼的正確觀念、墨鏡怎麼挑、隱形眼鏡怎麼搭，以及她如何透過部落格建立個人品牌。最後她說了一句話讓我印象很深：不要等到生命快結束時，才開始學著怎麼生活。這篇文章整理了這集的核心重點，帶你一起看懂眼睛這件事。","image":"https://operation.tw/images/posts/post-205.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":54,"duration":"PT30M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/70018a8e-6f8d-4a25-8760-55313959d77a/rssFileVip.mp3?timestamp=1699964662185","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:205})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🌱 成長</div>
     <h1>EP54｜驗光師Betty：眼睛保養、選鏡眉角，以及怎麼好好生活</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-11-14">2023-11-14</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-11-14">2023-11-14</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-205.webp"><img class="cover" src="https://operation.tw/images/posts/post-205.jpg" alt="EP54｜驗光師Betty：眼睛保養、選鏡眉角，以及怎麼好好生活" width="1200" height="630"></picture>
     <div class="excerpt"><p>你上一次認真檢查視力是什麼時候？這集我邀請了驗光師Betty，聊聊驗光師的專業養成、日常護眼的正確觀念、墨鏡怎麼挑、隱形眼鏡怎麼搭，以及她如何透過部落格建立個人品牌。最後她說了一句話讓我印象很深：不要等到生命快結束時，才開始學著怎麼生活。這篇文章整理了這集的核心重點，帶你一起看懂眼睛這件事。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">驗光師不只是幫你「配眼鏡」的人</a></li><li class="toc-l2"><a href="#sec-2">關於近視，你可能有的幾個誤解</a></li><li class="toc-l2"><a href="#sec-3">墨鏡怎麼選？不只是看起來帥</a></li><li class="toc-l2"><a href="#sec-4">護眼這件事，20-20-20法則是基本功</a></li><li class="toc-l2"><a href="#sec-5">用部落格建立個人品牌，驗光師也可以</a></li><li class="toc-l2"><a href="#sec-6">運動與生活，也是這集聊到的隱藏主線</a></li><li class="toc-l2"><a href="#sec-7">最後這句話，值得你停下來想一想</a></li></ul></nav>
