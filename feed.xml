@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 13 Aug 2026 01:49:09 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 13 Aug 2026 02:44:52 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>Google承認AI履歷篩選失準：企業HR系統暗藏的偏見陷阱</title>
@@ -13,6 +13,14 @@
     <guid isPermaLink="true">https://operation.tw/post/359/</guid>
     <description>Google AI團隊公開坦誠，公司自家開發的履歷篩選AI存在性別與種族偏見問題。這起「內部吹哨」揭露企業AI系統的黑箱風險，對台灣HR科技業與資安合規帶來警示：AI決策系統需要更嚴格的偏見審計與透明度機制。</description>
     <category>資安</category>
+    <pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI50｜AI時代職涯規劃：從爬山到遊樂場，你的努力還算數嗎？</title>
+    <link>https://operation.tw/post/360/</link>
+    <guid isPermaLink="true">https://operation.tw/post/360/</guid>
+    <description>五年前的專業三年後還值錢嗎？《未來1000天》提出三個職涯轉型框架：身份從執行者變指揮官、職涯從單線爬升變遊樂場組合、新職種反而是定義價值的最佳時機。這不是AI會不會取代你的問題，而是接下來一千天怎麼過的問題。</description>
+    <category>閱讀</category>
     <pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -158,14 +166,6 @@
     <description>Research Nester最新報告預測公有雲市場規模與份額至2035年將迎來重大變化。本文分析AI時代雲端競爭格局如何演變、台灣企業的定位機會，以及應如何調整雲端策略應對新形勢。</description>
     <category>雲端</category>
     <pubDate>Mon, 27 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Neoclouds如何挑戰AWS：AI時代新興雲端勢力的突圍之路</title>
-    <link>https://operation.tw/post/339/</link>
-    <guid isPermaLink="true">https://operation.tw/post/339/</guid>
-    <description>AWS迎接20週年之際，新興雲端平台Neoclouds正悄悄改變市場版圖。本文深入分析Neoclouds在AI時代的差異化策略，以及為何台灣企業應該關注這股新勢力，而非只守著既有的雲端巨頭。</description>
-    <category>雲端</category>
-    <pubDate>Sun, 26 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
