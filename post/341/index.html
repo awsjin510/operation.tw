@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/341/","headline":"全球雲端市場2035預測：台灣企業如何搶佔AI驅動的下一波成長機會？","description":"Research Nester最新報告預測公有雲市場規模與份額至2035年將迎來重大變化。本文分析AI時代雲端競爭格局如何演變、台灣企業的定位機會，以及應如何調整雲端策略應對新形勢。","datePublished":"2026-07-27","dateModified":"2026-07-27","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/341/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/341/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-341.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"全球雲端市場2035預測：台灣企業如何搶佔AI驅動的下一波成長機會？","item":"https://operation.tw/post/341/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/341/#faq","mainEntity":[{"@type":"Question","name":"台灣與超大規模雲端廠商（AWS、Azure）相比，真的能有成本優勢嗎？","acceptedAnswer":{"@type":"Answer","text":"在GPU密集型AI工作負載上，本地雲由於無需國際頻寬成本、稅率優化、本地硬體採購效率，理論上可降低20-40%成本；但優勢前提是工作負載必須適合垂直產業需求，通用運算仍是超大型雲商更便宜。"}},{"@type":"Question","name":"邊緣運算會取代公有雲嗎？","acceptedAnswer":{"@type":"Answer","text":"不會完全取代，而是分工。2035年的趨勢是「中心-邊緣協同」：延遲敏感、隱私敏感的任務在邊緣，大規模模型訓練、海量資料分析留在雲心，兩者透過可靠網路整合。台灣企業應同時投資兩者。"}},{"@type":"Question","name":"台灣應該自建雲端，還是與國際廠商合作？","acceptedAnswer":{"@type":"Answer","text":"建議採「棧式合作」：台灣企業聯合出資支持本地新興雲廠商（如Neoclouds），專注垂直產業層應用；底層IaaS仍與AWS或Microsoft合作獲得基礎設施穩定性，形成「台灣應用層 + 國際基礎層」的複合模式，既獲得本地優勢，又規避完全自建的技術與資本風險。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:341})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">☁️ 雲端</div>
     <h1>全球雲端市場2035預測：台灣企業如何搶佔AI驅動的下一波成長機會？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-27">2026-07-27</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-27">2026-07-27</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-341.webp"><img class="cover" src="https://operation.tw/images/posts/post-341.jpg" alt="全球雲端市場2035預測：台灣企業如何搶佔AI驅動的下一波成長機會？" width="1200" height="630"></picture>
     <div class="excerpt"><p>Research Nester最新報告預測公有雲市場規模與份額至2035年將迎來重大變化。本文分析AI時代雲端競爭格局如何演變、台灣企業的定位機會，以及應如何調整雲端策略應對新形勢。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼2035年的雲端市場會與現在截然不同？</a></li><li class="toc-l2"><a href="#sec-2">台灣企業現在還在「租賃」，2035年會變成什麼狀態？</a></li><li class="toc-l2"><a href="#sec-3">台灣如何在2035年前搶佔雲端市場紅利？</a></li><li class="toc-l2"><a href="#sec-4">具體來說，台灣企業現在應採取什麼行動？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">台灣與超大規模雲端廠商（AWS、Azure）相比，真的能有成本優勢嗎？</a></li><li class="toc-l3"><a href="#sec-7">邊緣運算會取代公有雲嗎？</a></li><li class="toc-l3"><a href="#sec-8">台灣應該自建雲端，還是與國際廠商合作？</a></li></ul></nav>

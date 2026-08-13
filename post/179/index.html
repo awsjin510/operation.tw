@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/179/","headline":"EP28｜從餐廳品牌到Podcast達人，Irene的跨界創業人生","description":"JK STUDIO共同創辦人兼行銷總監林冠琳 Irene，用13年創業經歷跨足Podcast世界，打造「創業時代」節目。她如何用創業精神做內容、站在聽眾角度設計題材，並在過程中不斷拓圈學習？這篇文章整理這集訪談的核心觀點，帶你看看一個跨界人生是如何被刻意打造出來的。","datePublished":"2022-12-31","dateModified":"2022-12-31","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/179/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/179/"},"articleSection":"成長","image":"https://operation.tw/images/posts/post-179.jpg","keywords":"成長","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"成長","item":"https://operation.tw/category/%E6%88%90%E9%95%B7/"},{"@type":"ListItem","position":3,"name":"EP28｜從餐廳品牌到Podcast達人，Irene的跨界創業人生","item":"https://operation.tw/post/179/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/179/#episode","name":"EP28｜從餐廳品牌到Podcast達人，Irene的跨界創業人生","url":"https://operation.tw/post/179/","datePublished":"2022-12-31","description":"JK STUDIO共同創辦人兼行銷總監林冠琳 Irene，用13年創業經歷跨足Podcast世界，打造「創業時代」節目。她如何用創業精神做內容、站在聽眾角度設計題材，並在過程中不斷拓圈學習？這篇文章整理這集訪談的核心觀點，帶你看看一個跨界人生是如何被刻意打造出來的。","image":"https://operation.tw/images/posts/post-179.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":28,"duration":"PT42M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/7fb13970-19b4-4602-8f6f-0a1c06a80b62/rssFileVip.mp3?timestamp=1687899395713","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:179})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🌱 成長</div>
     <h1>EP28｜從餐廳品牌到Podcast達人，Irene的跨界創業人生</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-12-31">2022-12-31</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-12-31">2022-12-31</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-179.webp"><img class="cover" src="https://operation.tw/images/posts/post-179.jpg" alt="EP28｜從餐廳品牌到Podcast達人，Irene的跨界創業人生" width="1200" height="630"></picture>
     <div class="excerpt"><p>JK STUDIO共同創辦人兼行銷總監林冠琳 Irene，用13年創業經歷跨足Podcast世界，打造「創業時代」節目。她如何用創業精神做內容、站在聽眾角度設計題材，並在過程中不斷拓圈學習？這篇文章整理這集訪談的核心觀點，帶你看看一個跨界人生是如何被刻意打造出來的。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">用創業的精神，做一個Podcast頻道</a></li><li class="toc-l2"><a href="#sec-2">耐心傾聽，站在聽眾的角度思考</a></li><li class="toc-l2"><a href="#sec-3">跨界不是偶然，而是持續學習的結果</a></li><li class="toc-l2"><a href="#sec-4">對你的實際啟發：如何活出自己喜歡的樣子？</a></li><li class="toc-l2"><a href="#sec-5">結語</a></li></ul></nav>

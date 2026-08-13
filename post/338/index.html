@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/338/","headline":"川普AI資安命令揭露產業困境：企業如何應對政府測試要求","description":"美國川普政府簽署AI資安行政命令，要求AI業者自願提供前沿模型供政府測試。這項政策反映了AI安全治理的新方向，也對台灣科技企業與雲端業者帶來合規挑戰與機遇。","datePublished":"2026-07-25","dateModified":"2026-07-25","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/338/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/338/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-338.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"川普AI資安命令揭露產業困境：企業如何應對政府測試要求","item":"https://operation.tw/post/338/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/338/#faq","mainEntity":[{"@type":"Question","name":"川普的AI資安命令是否具有法律強制力？","acceptedAnswer":{"@type":"Answer","text":"該行政命令在美國本土具有法律效力，可透過聯邦採購禁令、出口管制或國會立法等機制強制執行；對於非美國企業，若要進入美國市場或與美國政府合作，則面臨實質的合規壓力，儘管表面上仍標稱「自願」。"}},{"@type":"Question","name":"台灣企業是否也需要向美國政府提交AI模型？","acceptedAnswer":{"@type":"Answer","text":"若台灣AI企業產品銷售至美國、與美國政府有採購關係，或涉及美國敏感技術領域，則極有可能被納入「自願」提交範疇；建議企業事先與美國商務部或國務院進行合規諮詢。"}},{"@type":"Question","name":"AI資安測試會不會洩露企業的商業機密？","acceptedAnswer":{"@type":"Answer","text":"美國政府通常會簽署保密協議（NDA）保護企業的模型細節，但政府評估團隊會獲得模型架構、性能指標等核心資訊；企業應在簽署前明確談判保密條款的範圍與期限。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:338})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🔐 資安</div>
     <h1>川普AI資安命令揭露產業困境：企業如何應對政府測試要求</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-25">2026-07-25</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-25">2026-07-25</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-338.webp"><img class="cover" src="https://operation.tw/images/posts/post-338.jpg" alt="川普AI資安命令揭露產業困境：企業如何應對政府測試要求" width="1200" height="630"></picture>
     <div class="excerpt"><p>美國川普政府簽署AI資安行政命令，要求AI業者自願提供前沿模型供政府測試。這項政策反映了AI安全治理的新方向，也對台灣科技企業與雲端業者帶來合規挑戰與機遇。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼美國政府要求AI業者提交模型進行測試？</a></li><li class="toc-l2"><a href="#sec-2">「自願」框架背後隱含的強制性與產業衝擊是什麼？</a></li><li class="toc-l2"><a href="#sec-3">台灣與亞太科技企業應如何應對這一趨勢？</a></li><li class="toc-l2"><a href="#sec-4">這對台灣AI與雲端產業的市場機遇有何啟示？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">川普的AI資安命令是否具有法律強制力？</a></li><li class="toc-l3"><a href="#sec-7">台灣企業是否也需要向美國政府提交AI模型？</a></li><li class="toc-l3"><a href="#sec-8">AI資安測試會不會洩露企業的商業機密？</a></li></ul></nav>

@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/322/","headline":"深偽數據毒害LLM：企業如何在AI時代守護訓練資料安全？","description":"深偽內容大規模蔓延，正在毒害大語言模型的訓練數據池，導致AI系統學習錯誤信息。本文剖析這場「數據污染危機」如何威脅企業AI投資，以及組織應該採取的防禦策略。","datePublished":"2026-07-13","dateModified":"2026-07-13","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/322/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/322/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-322.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"深偽數據毒害LLM：企業如何在AI時代守護訓練資料安全？","item":"https://operation.tw/post/322/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/322/#faq","mainEntity":[{"@type":"Question","name":"深偽與LLM崩潰有什麼直接關係？","acceptedAnswer":{"@type":"Answer","text":"大語言模型在訓練時會吸收網路上的所有文本內容，包括深偽生成的虛假信息。當深偽內容大規模混入訓練資料，模型就會學習錯誤信息，導致輸出的答案不可信、事實錯誤增加，最終損害模型品質。"}},{"@type":"Question","name":"我的企業該怎麼知道自己的AI系統是否被污染？","acceptedAnswer":{"@type":"Answer","text":"可觀察三個信號：生成答案中出現明顯的事實錯誤或矛盾；輸出內容的可信度評分（如果有）下降；用戶投訴率上升。更直接的方法是請資安廠商對訓練資料進行毒性檢測，掃描是否存在已知的深偽或虛假內容。"}},{"@type":"Question","name":"防禦數據污染需要多大的預算？","acceptedAnswer":{"@type":"Answer","text":"成本取決於企業規模與AI應用敏感度。小企業可先透過開源數據驗證工具與資安諮詢（新台幣 5-15 萬）啟動；中大型企業或需要高可信度輸出的場景，應預算 50 萬以上進行完整的資料審計與監測系統建置。相比之下，因AI失信導致的聲譽與合規損失往往遠高於防禦投入。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:322})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🔐 資安</div>
     <h1>深偽數據毒害LLM：企業如何在AI時代守護訓練資料安全？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-13">2026-07-13</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-13">2026-07-13</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-322.webp"><img class="cover" src="https://operation.tw/images/posts/post-322.jpg" alt="深偽數據毒害LLM：企業如何在AI時代守護訓練資料安全？" width="1200" height="630"></picture>
     <div class="excerpt"><p>深偽內容大規模蔓延，正在毒害大語言模型的訓練數據池，導致AI系統學習錯誤信息。本文剖析這場「數據污染危機」如何威脅企業AI投資，以及組織應該採取的防禦策略。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">深偽為何成為LLM的無形殺手？</a></li><li class="toc-l2"><a href="#sec-2">企業AI投資為何面臨「數據毒害」風險？</a></li><li class="toc-l2"><a href="#sec-3">如何在三個環節築起防線？</a></li><li class="toc-l2"><a href="#sec-4">台灣企業應該立即採取什麼行動？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">深偽與LLM崩潰有什麼直接關係？</a></li><li class="toc-l3"><a href="#sec-7">我的企業該怎麼知道自己的AI系統是否被污染？</a></li><li class="toc-l3"><a href="#sec-8">防禦數據污染需要多大的預算？</a></li></ul></nav>

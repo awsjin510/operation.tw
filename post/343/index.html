@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/343/","headline":"Google Cloud 2026資安預測揭露：AI攻擊如何滲透企業防線？","description":"Google Cloud 最新發布《2026 網路安全預測》報告，揭示 AI 攻擊手法日益精進的威脅全景。本文深入解析報告核心發現，並探討台灣企業在面對智慧型資安威脅時，應如何提前佈局防禦策略，避免成為攻擊目標。","datePublished":"2026-07-29","dateModified":"2026-07-29","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/343/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/343/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-343.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"Google Cloud 2026資安預測揭露：AI攻擊如何滲透企業防線？","item":"https://operation.tw/post/343/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/343/#faq","mainEntity":[{"@type":"Question","name":"Google Cloud 2026 資安預測報告的核心發現是什麼？","acceptedAnswer":{"@type":"Answer","text":"報告指出 AI 攻擊已進化為策略層威脅，攻擊者利用 AI 實現自適應型滲透與自動化橫向移動，傳統簽章防禦已難以應對。企業需從預防式轉向預測式防禦。"}},{"@type":"Question","name":"台灣企業為何容易成為 AI 攻擊目標？","acceptedAnswer":{"@type":"Answer","text":"台灣企業在全球供應鏈的關鍵地位吸引攻擊者，而中小企業資安投資不足（低於 5%）進一步降低防禦能力，使供應鏈滲透成為高效攻擊路徑。"}},{"@type":"Question","name":"企業應該立即採取哪些防禦措施？","acceptedAnswer":{"@type":"Answer","text":"部署行為分析引擎進行主動監測、實施零信任架構隔離關鍵資產、利用 AI 進行主動威脅狩獵，同時投資人才培訓強化團隊的現代資安能力。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:343})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🔐 資安</div>
     <h1>Google Cloud 2026資安預測揭露：AI攻擊如何滲透企業防線？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-29">2026-07-29</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-29">2026-07-29</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-343.webp"><img class="cover" src="https://operation.tw/images/posts/post-343.jpg" alt="Google Cloud 2026資安預測揭露：AI攻擊如何滲透企業防線？" width="1200" height="630"></picture>
     <div class="excerpt"><p>Google Cloud 最新發布《2026 網路安全預測》報告，揭示 AI 攻擊手法日益精進的威脅全景。本文深入解析報告核心發現，並探討台灣企業在面對智慧型資安威脅時，應如何提前佈局防禦策略，避免成為攻擊目標。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">Google Cloud 2026 資安報告揭示什麼新威脅？</a></li><li class="toc-l2"><a href="#sec-2">為什麼台灣企業特別容易成為目標？</a></li><li class="toc-l2"><a href="#sec-3">「防禦滯後效應」如何威脅企業？</a></li><li class="toc-l2"><a href="#sec-4">台灣企業應該如何應對？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">Google Cloud 2026 資安預測報告的核心發現是什麼？</a></li><li class="toc-l3"><a href="#sec-7">台灣企業為何容易成為 AI 攻擊目標？</a></li><li class="toc-l3"><a href="#sec-8">企業應該立即採取哪些防禦措施？</a></li></ul></nav>

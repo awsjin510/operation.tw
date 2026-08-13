@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/197/","headline":"EP46｜宜蘭教召5天全紀錄：20公斤裝備、生日在營區、那些只有當兵才懂的事","description":"5月的宜蘭教召，5天、20幾公斤裝備、行軍、打靶，還有一個生日在營區裡度過。這篇文章從這集 Podcast 延伸，聊聊教召的現實、一年役期換來的獨特記憶，以及為什麼平常維持運動習慣這件事，在某些時刻真的會救你一命。","datePublished":"2023-05-21","dateModified":"2023-05-21","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/197/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/197/"},"articleSection":"成長","image":"https://operation.tw/images/posts/post-197.jpg","keywords":"成長","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"成長","item":"https://operation.tw/category/%E6%88%90%E9%95%B7/"},{"@type":"ListItem","position":3,"name":"EP46｜宜蘭教召5天全紀錄：20公斤裝備、生日在營區、那些只有當兵才懂的事","item":"https://operation.tw/post/197/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/197/#episode","name":"EP46｜宜蘭教召5天全紀錄：20公斤裝備、生日在營區、那些只有當兵才懂的事","url":"https://operation.tw/post/197/","datePublished":"2023-05-21","description":"5月的宜蘭教召，5天、20幾公斤裝備、行軍、打靶，還有一個生日在營區裡度過。這篇文章從這集 Podcast 延伸，聊聊教召的現實、一年役期換來的獨特記憶，以及為什麼平常維持運動習慣這件事，在某些時刻真的會救你一命。","image":"https://operation.tw/images/posts/post-197.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":46,"duration":"PT36M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/ad49de2e-84af-4db7-b52b-52375c8f0f5c/rssFileVip.mp3?timestamp=1761072948323","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:197})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🌱 成長</div>
     <h1>EP46｜宜蘭教召5天全紀錄：20公斤裝備、生日在營區、那些只有當兵才懂的事</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-05-21">2023-05-21</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-05-21">2023-05-21</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-197.webp"><img class="cover" src="https://operation.tw/images/posts/post-197.jpg" alt="EP46｜宜蘭教召5天全紀錄：20公斤裝備、生日在營區、那些只有當兵才懂的事" width="1200" height="630"></picture>
     <div class="excerpt"><p>5月的宜蘭教召，5天、20幾公斤裝備、行軍、打靶，還有一個生日在營區裡度過。這篇文章從這集 Podcast 延伸，聊聊教召的現實、一年役期換來的獨特記憶，以及為什麼平常維持運動習慣這件事，在某些時刻真的會救你一命。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">生日快樂，請繼續負重前進</a></li><li class="toc-l2"><a href="#sec-2">20幾公斤，走好幾個小時</a></li><li class="toc-l2"><a href="#sec-3">一年役期，換來別人體驗不到的歷程</a></li><li class="toc-l2"><a href="#sec-4">教召這件事，比你想的更會找上你</a></li><li class="toc-l2"><a href="#sec-5">教召之外，那些我在等待時間讀的書</a></li><li class="toc-l2"><a href="#sec-6">結語</a></li></ul></nav>

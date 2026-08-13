@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/57/","headline":"AI下棋無敵卻玩不了遊戲：應變能力缺陷如何影響企業自動化？","description":"AlphaGo能擊敗世界棋王，但在電玩遊戲中表現平庸。這個現象揭示AI在應變能力上的根本限制。對於企業採用AI自動化時，這意味著什麼？本文深入分析AI的適應性問題，以及企業在推動AI驅動自動化時應如何應對。","datePublished":"2026-04-02","dateModified":"2026-04-02","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/57/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/57/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-57.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI下棋無敵卻玩不了遊戲：應變能力缺陷如何影響企業自動化？","item":"https://operation.tw/post/57/"}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:57})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>AI下棋無敵卻玩不了遊戲：應變能力缺陷如何影響企業自動化？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-02">2026-04-02</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-02">2026-04-02</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-57.webp"><img class="cover" src="https://operation.tw/images/posts/post-57.jpg" alt="AI下棋無敵卻玩不了遊戲：應變能力缺陷如何影響企業自動化？" width="1200" height="630"></picture>
     <div class="excerpt"><p>AlphaGo能擊敗世界棋王，但在電玩遊戲中表現平庸。這個現象揭示AI在應變能力上的根本限制。對於企業採用AI自動化時，這意味著什麼？本文深入分析AI的適應性問題，以及企業在推動AI驅動自動化時應如何應對。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">AI的矛盾現象：為何下棋無敵卻玩不了電玩？</a></li><li class="toc-l2"><a href="#sec-2">應變能力缺陷的技術根源</a></li><li class="toc-l2"><a href="#sec-3">企業自動化的隱憂：理論完美 vs. 實踐困局</a></li><li class="toc-l2"><a href="#sec-4">對台灣企業的具體影響與建議</a></li><li class="toc-l2"><a href="#sec-5">結論：理性看待AI，規劃實現主義的自動化策略</a></li></ul></nav>

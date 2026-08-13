@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/196/","headline":"EP45｜從上班族到韓文譯者：翻譯不只是會語言那麼簡單","description":"這集「操作一下」邀請到韓文翻譯達人 Summer（徐小為），她從政大韓語系畢業後，一路從上班族轉型為專職 SOHO 翻譯。訪談中她分享了口譯與筆譯的差異、韓文敬語與文化轉譯的眉角，以及 AI 是否能取代人類翻譯等核心問題。如果你對語言工作或自由接案有興趣，這篇文章值得一讀。","datePublished":"2023-05-14","dateModified":"2023-05-14","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/196/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/196/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-196.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"EP45｜從上班族到韓文譯者：翻譯不只是會語言那麼簡單","item":"https://operation.tw/post/196/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/196/#episode","name":"EP45｜從上班族到韓文譯者：翻譯不只是會語言那麼簡單","url":"https://operation.tw/post/196/","datePublished":"2023-05-14","description":"這集「操作一下」邀請到韓文翻譯達人 Summer（徐小為），她從政大韓語系畢業後，一路從上班族轉型為專職 SOHO 翻譯。訪談中她分享了口譯與筆譯的差異、韓文敬語與文化轉譯的眉角，以及 AI 是否能取代人類翻譯等核心問題。如果你對語言工作或自由接案有興趣，這篇文章值得一讀。","image":"https://operation.tw/images/posts/post-196.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":45,"duration":"PT34M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/ebee1d8f-2db4-45c2-bbd1-181062122e6e/rssFileVip.mp3?timestamp=1687899395343","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:196})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>EP45｜從上班族到韓文譯者：翻譯不只是會語言那麼簡單</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-05-14">2023-05-14</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-05-14">2023-05-14</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-196.webp"><img class="cover" src="https://operation.tw/images/posts/post-196.jpg" alt="EP45｜從上班族到韓文譯者：翻譯不只是會語言那麼簡單" width="1200" height="630"></picture>
     <div class="excerpt"><p>這集「操作一下」邀請到韓文翻譯達人 Summer（徐小為），她從政大韓語系畢業後，一路從上班族轉型為專職 SOHO 翻譯。訪談中她分享了口譯與筆譯的差異、韓文敬語與文化轉譯的眉角，以及 AI 是否能取代人類翻譯等核心問題。如果你對語言工作或自由接案有興趣，這篇文章值得一讀。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">翻譯的需求比你想的廣得多</a></li><li class="toc-l2"><a href="#sec-2">「只要會韓文就能當翻譯」是個常見誤解</a></li><li class="toc-l2"><a href="#sec-3">AI 能取代翻譯嗎？目前還差得遠</a></li><li class="toc-l2"><a href="#sec-4">如果你有翻譯需求，該怎麼找？</a></li><li class="toc-l2"><a href="#sec-5">做喜歡的事，讓它有一個美好的樣子</a></li></ul></nav>

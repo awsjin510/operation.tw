@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/317/","headline":"AI網安成國安等級：美國總統令如何改寫企業防禦戰略？","description":"美國將AI網路安全提升至國家安全議題，意味著AI系統漏洞不再只是技術問題。本文分析這項政策轉變對全球企業、尤其是台灣科技廠商的影響，以及企業應如何調整安全佈局。","datePublished":"2026-07-10","dateModified":"2026-07-10","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/317/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/317/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-317.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"AI網安成國安等級：美國總統令如何改寫企業防禦戰略？","item":"https://operation.tw/post/317/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/317/#faq","mainEntity":[{"@type":"Question","name":"AI Cybersecurity為什麼會升升為國安議題？","acceptedAnswer":{"@type":"Answer","text":"因為AI系統已深度整合到電力、金融、國防等關鍵基礎設施，一旦被攻陷可能導致國家級經濟癱瘓或軍事威脅，這超越了單純商業風險的範疇。"}},{"@type":"Question","name":"美國政策對台灣AI廠商有直接限制嗎？","acceptedAnswer":{"@type":"Answer","text":"目前政策主要針對美國政府合作的AI系統，但預期將進一步擴大到出口管制與投資審查層面，台灣廠商應提前採取合規措施以降低未來風險。"}},{"@type":"Question","name":"中小企業現在需要投入多少成本應對AI安全要求？","acceptedAnswer":{"@type":"Answer","text":"成本因企業規模與AI應用複雜度而異，但基礎的安全評估與工具採購預估在年度IT預算的10-20%，長期看這將成為產品競爭力的必要投資。"}}]}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:317})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🔐 資安</div>
     <h1>AI網安成國安等級：美國總統令如何改寫企業防禦戰略？</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-10">2026-07-10</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-10">2026-07-10</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-317.webp"><img class="cover" src="https://operation.tw/images/posts/post-317.jpg" alt="AI網安成國安等級：美國總統令如何改寫企業防禦戰略？" width="1200" height="630"></picture>
     <div class="excerpt"><p>美國將AI網路安全提升至國家安全議題，意味著AI系統漏洞不再只是技術問題。本文分析這項政策轉變對全球企業、尤其是台灣科技廠商的影響，以及企業應如何調整安全佈局。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼美國把AI網安當國安問題來看待？</a></li><li class="toc-l2"><a href="#sec-2">這個政策轉變對台灣企業意味著什麼？</a></li><li class="toc-l2"><a href="#sec-3">企業應該如何從被動防禦轉向主動防禦？</a></li><li class="toc-l2"><a href="#sec-4">對台灣中小企業的實踐建議是什麼？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">AI Cybersecurity為什麼會升升為國安議題？</a></li><li class="toc-l3"><a href="#sec-7">美國政策對台灣AI廠商有直接限制嗎？</a></li><li class="toc-l3"><a href="#sec-8">中小企業現在需要投入多少成本應對AI安全要求？</a></li></ul></nav>

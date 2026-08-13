@@ -20,14 +20,25 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/340/","headline":"AI47｜Claude Opus 5 革新 Agent：同價格能力全面升級，自動化工作流 8 小時不崩","description":"Anthropic 推出的 Claude Opus 5 在同樣訂閱價格下全面提升能力，最大創新是「長時間 Agent」可連續執行 8 小時複雜任務不中斷。這波更新代表 AI 協作進入新階段，也反映四大科技實驗室的短期內連環出招戰略。本文詳解 Opus 5 的核心升級、應用場景與企業決策影響。","datePublished":"2026-07-26","dateModified":"2026-07-26","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/340/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/340/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-340.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI47｜Claude Opus 5 革新 Agent：同價格能力全面升級，自動化工作流 8 小時不崩","item":"https://operation.tw/post/340/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/340/#faq","mainEntity":[{"@type":"Question","name":"Claude Opus 5 比 GPT-4 好在哪裡？","acceptedAnswer":{"@type":"Answer","text":"Opus 5 的核心優勢是「長時間 Agent」能力，可連續執行 8 小時複雜工作流不中斷，同時維持同樣訂閱價格。而且資安能力與工具使用也全面提升，特別適合自動化繁瑣的多步驟任務。OpenAI 的 GPT-5.6 在原始推理能力上可能更強，但在實務應用層面，Opus 5 的長時間穩定性目前領先。"}},{"@type":"Question","name":"企業導入 Opus 5 需要準備什麼？","acceptedAnswer":{"@type":"Answer","text":"首先要盤點工作流現況，識別哪些流程適合交給 Agent 自動執行（通常是多步驟、規則清晰的任務）。其次要確保數據品質與系統整合，Opus 5 發揮威力的前提是有乾淨的數據和可接入的工具。最後要建立監管與審計機制，因為 Agent 會自主決策，企業必須能追蹤與回滾。"}},{"@type":"Question","name":"Opus 5 的安全風險有多大？","acceptedAnswer":{"@type":"Answer","text":"80% 的攻擊模擬成功率確實有風險，但這更多反映了 AI 能力的雙邊性，而非 Opus 5 特別不安全。關鍵是企業要在導入前做好風險評估，限制 Agent 的系統存取權限、實施審核檢查點、建立應急回滾機制。資安團隊應主動用 Opus 5 來測試自己的防禦，而非被動等待風險發生。"}}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/340/#episode","name":"AI47｜Claude Opus 5 革新 Agent：同價格能力全面升級，自動化工作流 8 小時不崩","url":"https://operation.tw/post/340/","datePublished":"2026-07-26","description":"Anthropic 推出的 Claude Opus 5 在同樣訂閱價格下全面提升能力，最大創新是「長時間 Agent」可連續執行 8 小時複雜任務不中斷。這波更新代表 AI 協作進入新階段，也反映四大科技實驗室的短期內連環出招戰略。本文詳解 Opus 5 的核心升級、應用場景與企業決策影響。","image":"https://operation.tw/images/posts/post-340.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":47,"duration":"PT14M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/bdc2bf6e-abe2-4f75-a753-ce96d3ef100e/rssFileVip.mp3?timestamp=1785178828621","encodingFormat":"audio/mpeg"}}]}</script>
 <script>
 // 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
 var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
 (function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
   try{
     fetch(API_BASE+'/api/views/post',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({id:340})
-    }).catch(function(){});
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
   }catch(e){}
 })();
 // 文末訂閱框
@@ -102,7 +113,7 @@ time{color:#9494c2;font-size:.85rem;}
   <article>
     <div class="badge">🤖 AI</div>
     <h1>AI47｜Claude Opus 5 革新 Agent：同價格能力全面升級，自動化工作流 8 小時不崩</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-26">2026-07-26</time></div>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-26">2026-07-26</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-340.webp"><img class="cover" src="https://operation.tw/images/posts/post-340.jpg" alt="AI47｜Claude Opus 5 革新 Agent：同價格能力全面升級，自動化工作流 8 小時不崩" width="1200" height="630"></picture>
     <div class="excerpt"><p>Anthropic 推出的 Claude Opus 5 在同樣訂閱價格下全面提升能力，最大創新是「長時間 Agent」可連續執行 8 小時複雜任務不中斷。這波更新代表 AI 協作進入新階段，也反映四大科技實驗室的短期內連環出招戰略。本文詳解 Opus 5 的核心升級、應用場景與企業決策影響。</p></div>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">Claude Opus 5 同價格為什麼能全面升級？</a></li><li class="toc-l2"><a href="#sec-2">什麼是「長時間 Agent」，它能幹什麼？</a></li><li class="toc-l2"><a href="#sec-3">為什麼四家 AI 實驗室在兩週內連環出招？</a></li><li class="toc-l2"><a href="#sec-4">Opus 5 提升資安能力，代表什麼風險？</a></li><li class="toc-l2"><a href="#sec-5">哪些職務能從 Opus 5 獲得最大效率提升？</a></li><li class="toc-l2"><a href="#sec-6">AI 能自己用工具時，企業的真正護城河在哪？</a></li><li class="toc-l2"><a href="#sec-7">常見問題</a></li><li class="toc-l3"><a href="#sec-8">Claude Opus 5 比 GPT-4 好在哪裡？</a></li><li class="toc-l3"><a href="#sec-9">企業導入 Opus 5 需要準備什麼？</a></li><li class="toc-l3"><a href="#sec-10">Opus 5 的安全風險有多大？</a></li></ul></nav>
