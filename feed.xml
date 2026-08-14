@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 14 Aug 2026 02:43:03 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 14 Aug 2026 03:04:41 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Anthropic AI內容溯源標記技術：如何改變雲端內容驗證格局？</title>
+    <link>https://operation.tw/post/362/</link>
+    <guid isPermaLink="true">https://operation.tw/post/362/</guid>
+    <description>Anthropic推出AI生成內容嵌標記技術，能即時識別AI手筆內容。這項突破性技術將如何重塑雲端服務商的內容驗證責任？對台灣企業的數位信任基礎設施有何啟示？</description>
+    <category>雲端</category>
+    <pubDate>Fri, 14 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI攻擊全面化2026：企業資安防禦為何從被動偵測轉向主動預測？</title>
     <link>https://operation.tw/post/361/</link>
@@ -158,14 +166,6 @@
     <description>駭客精神不是破壞，而是對未知的好奇與對規則的懷疑。HITCON從小型讀書會發展成千人國際年會，今年聚焦AI Agent時代的資安防護挑戰。了解為什麼當AI開始執行動作，資安邊界必須重新定義。</description>
     <category>閱讀</category>
     <pubDate>Wed, 29 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>美國AI監管碎片化危機：兩千提案為何都繞不過長遠規劃問題？</title>
-    <link>https://operation.tw/post/342/</link>
-    <guid isPermaLink="true">https://operation.tw/post/342/</guid>
-    <description>美國AI監管陷入碎片化困境，兩千項提案卻無一觸及長遠規劃。這場監管亂象如何威脅企業合規成本？台灣和亞太地區應如何預先佈局，避免步上美國後塵？本文深入分析背後根因與應對策略。</description>
-    <category>資安</category>
-    <pubDate>Tue, 28 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
