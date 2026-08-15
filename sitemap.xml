@@ -54,6 +54,13 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://operation.tw/post/363/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://operation.tw/images/posts/post-363.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://operation.tw/post/362/</loc>
     <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
