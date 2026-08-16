@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 15 Aug 2026 21:33:22 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 16 Aug 2026 01:56:18 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>歐盟AI資安行動計畫：台灣科技企業的合規新門檻</title>
@@ -13,6 +13,14 @@
     <guid isPermaLink="true">https://operation.tw/post/363/</guid>
     <description>歐盟正式推出AI資安行動計畫，強化模型安全評估與網路韌性要求。這對出口歐洲市場的台灣AI與科技企業意味著什麼？本文解析新規範內容，及早因應國際資安合規趨勢。</description>
     <category>資安</category>
+    <pubDate>Sat, 15 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI51｜ChatGPT 開始賣廣告，你的答案還純嗎？</title>
+    <link>https://operation.tw/post/364/</link>
+    <guid isPermaLink="true">https://operation.tw/post/364/</guid>
+    <description>OpenAI 在 2026 年 8 月正式擴大 ChatGPT 廣告測試到五個新市場。當 AI 回答裡出現「本條由某品牌贊助」，廣告產業拿到的是前所未有的精準購買意圖信號。為什麼 Google 反而最不敢動？這背後的整盤棋，將如何改變你的資訊判讀和行銷職涯？</description>
+    <category>AI</category>
     <pubDate>Sat, 15 Aug 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -158,14 +166,6 @@
     <description>Anthropic 旗下 Claude AI 於週三發生大規模服務中斷，引發企業對生成式AI可靠性的擔憂。本文分析此事件背後的技術瓶頸、對台灣企業的影響，以及如何建立 AI 服務容錯機制。</description>
     <category>AI</category>
     <pubDate>Thu, 30 Jul 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Google Cloud 2026資安預測揭露：AI攻擊如何滲透企業防線？</title>
-    <link>https://operation.tw/post/343/</link>
-    <guid isPermaLink="true">https://operation.tw/post/343/</guid>
-    <description>Google Cloud 最新發布《2026 網路安全預測》報告，揭示 AI 攻擊手法日益精進的威脅全景。本文深入解析報告核心發現，並探討台灣企業在面對智慧型資安威脅時，應如何提前佈局防禦策略，避免成為攻擊目標。</description>
-    <category>資安</category>
-    <pubDate>Wed, 29 Jul 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
