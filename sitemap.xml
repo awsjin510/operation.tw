@@ -61,6 +61,13 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-366.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://operation.tw/post/367/</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://operation.tw/images/posts/post-367.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://operation.tw/post/365/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
