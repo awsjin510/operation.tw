@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Mon, 17 Aug 2026 01:54:11 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 17 Aug 2026 01:59:33 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>EP103｜AI時代客戶成功經理還有價值嗎？從經驗密度談真人的不可替代性</title>
@@ -13,6 +13,14 @@
     <guid isPermaLink="true">https://operation.tw/post/366/</guid>
     <description>當AI能自動解決產品問題，客戶為什麼還要找真人客戶成功經理？一位B2B軟體從業者分享：AI先替代的是產品操作，不是關係與經驗密度。她如何在AI浪潮中重新定義這個角色的核心價值？</description>
     <category>AI</category>
+    <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AWS 20週年的雲端霸業：從工程痛點到千億美元帝國如何煉成</title>
+    <link>https://operation.tw/post/367/</link>
+    <guid isPermaLink="true">https://operation.tw/post/367/</guid>
+    <description>AWS 成立20週年之際，從解決Amazon內部工程師的基礎設施痛點，演變成市值千億美元的現代雲端運算基石。本文深入解析AWS如何定義雲端時代，以及台灣企業應如何重新審視雲端策略選擇。</description>
+    <category>雲端</category>
     <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/347/</guid>
     <description>聯合大學打造全台首創「台灣客家AI生態系」，結合在地文化與AI技術。這項新舉措如何突破台灣「只靠硬體」的困境？如何為AI應用開創新的商業機會？我們深入解析其戰略意義與產業潛力。</description>
     <category>AI</category>
-    <pubDate>Sat, 01 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI48｜高功能倖存者：為什麼最靠譜的人最先崩潰？</title>
-    <link>https://operation.tw/post/348/</link>
-    <guid isPermaLink="true">https://operation.tw/post/348/</guid>
-    <description>團隊裡最能幹的人突然生病了？心理諮商師周慕姿用「高功能倖存者」解釋為什麼有些人看似無所不能，卻在無形中消耗殆盡。這不是完美主義，而是把「沒電」誤認為「沒用」的心理困境。</description>
-    <category>閱讀</category>
     <pubDate>Sat, 01 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
