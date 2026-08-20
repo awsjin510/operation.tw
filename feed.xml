@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 20 Aug 2026 01:49:40 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 20 Aug 2026 01:56:53 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>亞馬遜拆書掃描AI訓練：雲端巨頭如何重塑數據來源戰略</title>
+    <link>https://operation.tw/post/370/</link>
+    <guid isPermaLink="true">https://operation.tw/post/370/</guid>
+    <description>亞馬遜大量採購稀有書籍用於AI訓練引發關注。這反映了雲端巨頭在AI時代面臨的新挑戰：高品質訓練數據短缺。本文分析亞馬遜策略背後的雲端運算邏輯，以及對台灣科技供應鏈的啟示。</description>
+    <category>雲端</category>
+    <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI訓練數據成新戰場：台灣企業如何守護智慧財產權？</title>
     <link>https://operation.tw/post/369/</link>
@@ -158,14 +166,6 @@
     <description>歐盟擬修訂網路安全法案，強化供應鏈資安管理並限制高風險供應商。這項新規將直接影響台灣半導體、晶片設計等出口歐洲的企業。本文解析新法重點、合規挑戰，及台灣廠商的應對策略。</description>
     <category>資安</category>
     <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>日本AI漏洞前置審查啟示：台灣企業如何預防高性能AI風險？</title>
-    <link>https://operation.tw/post/350/</link>
-    <guid isPermaLink="true">https://operation.tw/post/350/</guid>
-    <description>日本推動AI漏洞前置審查制度，搶先應對高性能AI模型帶來的資安隱患。台灣企業面臨相同的AI安全挑戰，如何建立防禦機制、符合即將到來的國際合規要求？本文解析日本做法與台灣的應對策略。</description>
-    <category>資安</category>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
