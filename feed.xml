@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 22 Aug 2026 01:48:16 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 22 Aug 2026 01:55:45 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>微牛證券AI整合案例：金融雲端如何用大模型驅動股價</title>
+    <link>https://operation.tw/post/372/</link>
+    <guid isPermaLink="true">https://operation.tw/post/372/</guid>
+    <description>微牛證券將AI大型模型整合至交易平台，股價盤中勁揚近4%。這不只是技術升級，更代表金融雲端應用進入實戰階段。本文拆解這波金融科技浪潮對台灣證券業的啟示。</description>
+    <category>雲端</category>
+    <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>裝置端語音AI革命：說話成為新鍵盤，離線AI時代的隱私戰爭</title>
     <link>https://operation.tw/post/371/</link>
@@ -158,14 +166,6 @@
     <description>崑山科大資工所教授田永昇開發AI智慧排程系統，助力製鞋業提升生產效能。本文深度分析這套系統如何解決製造業排程難題，以及台灣傳統產業如何透過AI轉型，對標全球智慧製造競爭力。</description>
     <category>AI</category>
     <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>中國AI價格戰如何撼動全球市場？台灣企業該如何應對？</title>
-    <link>https://operation.tw/post/352/</link>
-    <guid isPermaLink="true">https://operation.tw/post/352/</guid>
-    <description>中國「AI六強」通過大幅降價挑戰美國高成本生態系，全球AI市場競爭格局正在重塑。本文分析中國AI價格戰的成因、對全球市場的衝擊，以及台灣科技產業與企業應如何因應這波變局。</description>
-    <category>AI</category>
-    <pubDate>Wed, 05 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
