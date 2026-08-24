@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Mon, 24 Aug 2026 01:55:57 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 24 Aug 2026 02:03:50 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI心理諮商師的信任危機：有知識卻缺「智慧」的模型能否治癒人心？</title>
+    <link>https://operation.tw/post/373/</link>
+    <guid isPermaLink="true">https://operation.tw/post/373/</guid>
+    <description>AI模型在心理諮商領域崛起，卻暴露一個根本缺陷：擁有龐大知識庫卻缺乏真正的「智慧」。專家警示，現有AI模型無法理解人類情感的複雜性與個殊性，冒然將其當作心理諮商師可能帶來更深層的心理傷害。</description>
+    <category>AI</category>
+    <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>微牛證券AI整合案例：金融雲端如何用大模型驅動股價</title>
     <link>https://operation.tw/post/372/</link>
@@ -158,14 +166,6 @@
     <description>在AI時代，企業官網的角色正在重塑。PMI傳播長指出官網重要性與日俱增，而這背後離不開雲端運算的支撐。本文探討企業如何透過現代雲端架構提升官網能力，以及這對台灣中小企業的啟示。</description>
     <category>雲端</category>
     <pubDate>Fri, 07 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>製造業AI排程革命：從手工排表到智慧決策，台灣傳統產業如何翻身？</title>
-    <link>https://operation.tw/post/353/</link>
-    <guid isPermaLink="true">https://operation.tw/post/353/</guid>
-    <description>崑山科大資工所教授田永昇開發AI智慧排程系統，助力製鞋業提升生產效能。本文深度分析這套系統如何解決製造業排程難題，以及台灣傳統產業如何透過AI轉型，對標全球智慧製造競爭力。</description>
-    <category>AI</category>
-    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
