@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 26 Aug 2026 20:00:55 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 27 Aug 2026 00:46:47 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>公有雲市場2035年翻倍成長：台灣企業搶搭AI雲端新浪潮</title>
@@ -13,6 +13,14 @@
     <guid isPermaLink="true">https://operation.tw/post/375/</guid>
     <description>根據最新市場預測報告，公有雲市場規模預計到2035年將大幅成長。在AI快速發展的驅動下，雲端基礎設施成為企業數位轉型的核心。台灣科技企業如何在這波浪潮中抓住機會，同時應對區域競爭，成為當下關鍵課題。</description>
     <category>雲端</category>
+    <pubDate>Wed, 26 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI52｜好工作不是找來的，是自己打造的｜瓦基《只工作、不上班的自主人生》閱讀筆記</title>
+    <link>https://operation.tw/post/376/</link>
+    <guid isPermaLink="true">https://operation.tw/post/376/</guid>
+    <description>從台積電副理到全職創作者，瓦基在《只工作、不上班的自主人生》中分享如何透過十年願景逆向設計、建立被動收入、反轉工作觀念，打造真正自主的職涯。這本書不只是離職指南，更是幫助你累積「選擇權」的實戰手冊。</description>
+    <category>閱讀</category>
     <pubDate>Wed, 26 Aug 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/356/</guid>
     <description>韓國力爭AI時代的國際治理主導權，背後隱含雲端基礎設施競爭的激化。面對全球雲端市場2035年的預測增長，台灣與亞太企業如何在AWS、Google、Azure之外，抓住新興雲端勢力崛起的機會窗口？</description>
     <category>雲端</category>
-    <pubDate>Sun, 09 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI49｜ChatBot變聰明了？真正升級的是向量搜尋資料庫</title>
-    <link>https://operation.tw/post/357/</link>
-    <guid isPermaLink="true">https://operation.tw/post/357/</guid>
-    <description>你的企業ChatBot最近回答更精確了——但不是AI模型變聰明，而是背後的向量搜尋資料庫在進化。AWS、Google Cloud、Azure全力搶佔RAG時代的資料庫戰爭，這場看不見的競賽正在改寫企業AI底層架構。</description>
-    <category>AI</category>
     <pubDate>Sun, 09 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
