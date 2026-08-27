@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 27 Aug 2026 00:46:47 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 27 Aug 2026 10:03:22 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI模型內部推理語言謎題：為何九成大模型「想英文、答中文」？</title>
+    <link>https://operation.tw/post/377/</link>
+    <guid isPermaLink="true">https://operation.tw/post/377/</guid>
+    <description>Appier最新研究揭露AI推理的隱藏真相：超過九成大型推理模型在內部思考時使用的語言，與最終回答給用戶的語言不一致。這個發現對企業資安與模型信任評估帶來什麼新挑戰？</description>
+    <category>資安</category>
+    <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>公有雲市場2035年翻倍成長：台灣企業搶搭AI雲端新浪潮</title>
     <link>https://operation.tw/post/375/</link>
@@ -158,14 +166,6 @@
     <description>AI投資熱潮正在改寫全球科技版圖。加拿大成功躍升為全球第六大獨角獸孵化地，背後隱含的雲端基礎設施需求與市場機遇，對台灣科技廠商與雲端服務商構成新的挑戰與機會。</description>
     <category>雲端</category>
     <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>韓國AI雲端野心揭露：亞太區域如何打破AWS壟斷？</title>
-    <link>https://operation.tw/post/356/</link>
-    <guid isPermaLink="true">https://operation.tw/post/356/</guid>
-    <description>韓國力爭AI時代的國際治理主導權，背後隱含雲端基礎設施競爭的激化。面對全球雲端市場2035年的預測增長，台灣與亞太企業如何在AWS、Google、Azure之外，抓住新興雲端勢力崛起的機會窗口？</description>
-    <category>雲端</category>
-    <pubDate>Sun, 09 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
