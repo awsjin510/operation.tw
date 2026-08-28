@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 28 Aug 2026 00:24:04 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 28 Aug 2026 11:34:48 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>輝達購併Hugging Face：開源AI民主化下的資安隱憂</title>
+    <link>https://operation.tw/post/378/</link>
+    <guid isPermaLink="true">https://operation.tw/post/378/</guid>
+    <description>輝達宣布以129億美元收購開源AI平台Hugging Face，將重塑AI模型供應鏈生態。這筆交易代表開源AI走向產業化，卻也引發模型安全驗證、數據治理、以及台灣AI企業生態競爭力的深層思考。</description>
+    <category>資安</category>
+    <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI模型內部推理語言謎題：為何九成大模型「想英文、答中文」？</title>
     <link>https://operation.tw/post/377/</link>
@@ -158,14 +166,6 @@
     <description>五年前的專業三年後還值錢嗎？《未來1000天》提出三個職涯轉型框架：身份從執行者變指揮官、職涯從單線爬升變遊樂場組合、新職種反而是定義價值的最佳時機。這不是AI會不會取代你的問題，而是接下來一千天怎麼過的問題。</description>
     <category>閱讀</category>
     <pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>加拿大AI獨角獸爆發：亞太雲端市場的新變數</title>
-    <link>https://operation.tw/post/358/</link>
-    <guid isPermaLink="true">https://operation.tw/post/358/</guid>
-    <description>AI投資熱潮正在改寫全球科技版圖。加拿大成功躍升為全球第六大獨角獸孵化地，背後隱含的雲端基礎設施需求與市場機遇，對台灣科技廠商與雲端服務商構成新的挑戰與機會。</description>
-    <category>雲端</category>
-    <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
