@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 29 Aug 2026 01:44:08 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 29 Aug 2026 07:12:46 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>小型模型崛起：開源AI如何撼動雲端運算成本格局</title>
+    <link>https://operation.tw/post/379/</link>
+    <guid isPermaLink="true">https://operation.tw/post/379/</guid>
+    <description>成本壓力推動AI產業轉向輕量化開發，開源小型模型逐漸普及。本文剖析小模型如何改寫雲端運算經濟學，以及台灣企業如何把握這波技術民主化浪潮，打造更靈活的AI部署策略。</description>
+    <category>雲端</category>
+    <pubDate>Sat, 29 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>輝達購併Hugging Face：開源AI民主化下的資安隱憂</title>
     <link>https://operation.tw/post/378/</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/359/</guid>
     <description>Google AI團隊公開坦誠，公司自家開發的履歷篩選AI存在性別與種族偏見問題。這起「內部吹哨」揭露企業AI系統的黑箱風險，對台灣HR科技業與資安合規帶來警示：AI決策系統需要更嚴格的偏見審計與透明度機制。</description>
     <category>資安</category>
-    <pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI50｜AI時代職涯規劃：從爬山到遊樂場，你的努力還算數嗎？</title>
-    <link>https://operation.tw/post/360/</link>
-    <guid isPermaLink="true">https://operation.tw/post/360/</guid>
-    <description>五年前的專業三年後還值錢嗎？《未來1000天》提出三個職涯轉型框架：身份從執行者變指揮官、職涯從單線爬升變遊樂場組合、新職種反而是定義價值的最佳時機。這不是AI會不會取代你的問題，而是接下來一千天怎麼過的問題。</description>
-    <category>閱讀</category>
     <pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
