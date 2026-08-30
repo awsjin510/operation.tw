@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 30 Aug 2026 05:20:27 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 30 Aug 2026 05:34:54 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI模型安全評估成國安議題：歐美新規如何影響台灣AI產業？</title>
+    <link>https://operation.tw/post/380/</link>
+    <guid isPermaLink="true">https://operation.tw/post/380/</guid>
+    <description>歐盟與美國紛紛推出AI資安行動計畫與行政命令，強化前沿模型的安全評估與網路韌性。本文分析AI Cybersecurity何以躍升為主權國安議題，以及台灣AI開發者與雲端廠商需要做好的準備。</description>
+    <category>資安</category>
+    <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>小型模型崛起：開源AI如何撼動雲端運算成本格局</title>
     <link>https://operation.tw/post/379/</link>
@@ -158,14 +166,6 @@
     <description>2026年AI攻擊已從單點威脅演變為全面系統性風險。本文解析為何傳統資安防禦模式失效、AI如何被用於攻擊與防禦的對稱賽局，以及台灣企業應如何從被動應對升級為主動預測型防禦架構。</description>
     <category>資安</category>
     <pubDate>Thu, 13 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Google承認AI履歷篩選失準：企業HR系統暗藏的偏見陷阱</title>
-    <link>https://operation.tw/post/359/</link>
-    <guid isPermaLink="true">https://operation.tw/post/359/</guid>
-    <description>Google AI團隊公開坦誠，公司自家開發的履歷篩選AI存在性別與種族偏見問題。這起「內部吹哨」揭露企業AI系統的黑箱風險，對台灣HR科技業與資安合規帶來警示：AI決策系統需要更嚴格的偏見審計與透明度機制。</description>
-    <category>資安</category>
-    <pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
