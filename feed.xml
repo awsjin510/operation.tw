@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Mon, 31 Aug 2026 05:28:51 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 31 Aug 2026 05:50:39 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Claude、Codex遭植入惡意程式：AI模型供應鏈中毒成新戰場</title>
+    <link>https://operation.tw/post/381/</link>
+    <guid isPermaLink="true">https://operation.tw/post/381/</guid>
+    <description>繼資料中毒後，AI模型本身淪為惡意軟體傳播工具。Claude、Codex等大模型遭指遭駭客植入後門，開發者用AI寫的程式碼可能帶有隱藏病毒。這場「模型本身被污染」的危機，如何改寫台灣AI開發生態的資安基礎設施？</description>
+    <category>AI</category>
+    <pubDate>Mon, 31 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI模型安全評估成國安議題：歐美新規如何影響台灣AI產業？</title>
     <link>https://operation.tw/post/380/</link>
@@ -158,14 +166,6 @@
     <description>Anthropic推出AI生成內容嵌標記技術，能即時識別AI手筆內容。這項突破性技術將如何重塑雲端服務商的內容驗證責任？對台灣企業的數位信任基礎設施有何啟示？</description>
     <category>雲端</category>
     <pubDate>Fri, 14 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI攻擊全面化2026：企業資安防禦為何從被動偵測轉向主動預測？</title>
-    <link>https://operation.tw/post/361/</link>
-    <guid isPermaLink="true">https://operation.tw/post/361/</guid>
-    <description>2026年AI攻擊已從單點威脅演變為全面系統性風險。本文解析為何傳統資安防禦模式失效、AI如何被用於攻擊與防禦的對稱賽局，以及台灣企業應如何從被動應對升級為主動預測型防禦架構。</description>
-    <category>資安</category>
-    <pubDate>Thu, 13 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
