@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 01 Sep 2026 00:36:06 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 01 Sep 2026 05:22:55 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>在地大語言模型浪潮：台灣企業為何必須打造自己的AI？</title>
+    <link>https://operation.tw/post/382/</link>
+    <guid isPermaLink="true">https://operation.tw/post/382/</guid>
+    <description>從OpenAI壟斷到開源模型興起，在地化大語言模型正成為企業新必需品。本文分析為何台灣企業需要自主AI能力、技術門檻與商業機會，以及如何在國際競爭中找到差異化優勢。</description>
+    <category>AI</category>
+    <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Claude、Codex遭植入惡意程式：AI模型供應鏈中毒成新戰場</title>
     <link>https://operation.tw/post/381/</link>
@@ -158,14 +166,6 @@
     <description>OpenAI 在 2026 年 8 月正式擴大 ChatGPT 廣告測試到五個新市場。當 AI 回答裡出現「本條由某品牌贊助」，廣告產業拿到的是前所未有的精準購買意圖信號。為什麼 Google 反而最不敢動？這背後的整盤棋，將如何改變你的資訊判讀和行銷職涯？</description>
     <category>AI</category>
     <pubDate>Sat, 15 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Anthropic AI內容溯源標記技術：如何改變雲端內容驗證格局？</title>
-    <link>https://operation.tw/post/362/</link>
-    <guid isPermaLink="true">https://operation.tw/post/362/</guid>
-    <description>Anthropic推出AI生成內容嵌標記技術，能即時識別AI手筆內容。這項突破性技術將如何重塑雲端服務商的內容驗證責任？對台灣企業的數位信任基礎設施有何啟示？</description>
-    <category>雲端</category>
-    <pubDate>Fri, 14 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
