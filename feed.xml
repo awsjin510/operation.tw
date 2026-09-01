@@ -5,13 +5,21 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 01 Sep 2026 05:22:55 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 01 Sep 2026 08:35:43 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>在地大語言模型浪潮：台灣企業為何必須打造自己的AI？</title>
     <link>https://operation.tw/post/382/</link>
     <guid isPermaLink="true">https://operation.tw/post/382/</guid>
     <description>從OpenAI壟斷到開源模型興起，在地化大語言模型正成為企業新必需品。本文分析為何台灣企業需要自主AI能力、技術門檻與商業機會，以及如何在國際競爭中找到差異化優勢。</description>
+    <category>AI</category>
+    <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI53｜台灣被撬開的兩扇門：AI駭客與雲服務漏洞如何改變攻擊面</title>
+    <link>https://operation.tw/post/383/</link>
+    <guid isPermaLink="true">https://operation.tw/post/383/</guid>
+    <description>中國駭客用AI Agent四天內攻破政府系統，台灣本土雲平台Zeabur遭未授權存取。這兩起事件指向同一危機：攻擊面正在無聲擴大。本文拆解技術細節與防守對策，提供五項明天就能執行的實務防禦措施。</description>
     <category>AI</category>
     <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
   </item>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/363/</guid>
     <description>歐盟正式推出AI資安行動計畫，強化模型安全評估與網路韌性要求。這對出口歐洲市場的台灣AI與科技企業意味著什麼？本文解析新規範內容，及早因應國際資安合規趨勢。</description>
     <category>資安</category>
-    <pubDate>Sat, 15 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI51｜ChatGPT 開始賣廣告，你的答案還純嗎？</title>
-    <link>https://operation.tw/post/364/</link>
-    <guid isPermaLink="true">https://operation.tw/post/364/</guid>
-    <description>OpenAI 在 2026 年 8 月正式擴大 ChatGPT 廣告測試到五個新市場。當 AI 回答裡出現「本條由某品牌贊助」，廣告產業拿到的是前所未有的精準購買意圖信號。為什麼 Google 反而最不敢動？這背後的整盤棋，將如何改變你的資訊判讀和行銷職涯？</description>
-    <category>AI</category>
     <pubDate>Sat, 15 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
