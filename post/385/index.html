@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<title>AI「無限算力」時代結束：Claude 5.1、Gemini 改價背後的成本轉嫁 | 操作一下</title>
+<meta name="description" content="Anthropic 與 Google 在 9 月同步調整 AI 產品計價模式，從固定額度改為用量計費。這不是巧合，而是 AI 大廠正式撕掉「免費吃到飽」假象的信號。懂得管理 AI 用量成為比寫 Prompt 更稀缺的能力。">
+<link rel="canonical" href="https://operation.tw/post/385/">
+<meta property="og:type"        content="article">
+<meta property="og:title"       content="AI「無限算力」時代結束：Claude 5.1、Gemini 改價背後的成本轉嫁">
+<meta property="og:description" content="Anthropic 與 Google 在 9 月同步調整 AI 產品計價模式，從固定額度改為用量計費。這不是巧合，而是 AI 大廠正式撕掉「免費吃到飽」假象的信號。懂得管理 AI 用量成為比寫 Prompt 更稀缺的能力。">
+<meta property="og:url"         content="https://operation.tw/post/385/">
+<meta property="og:image"       content="https://operation.tw/images/posts/post-385.jpg">
+<meta property="og:locale"      content="zh_TW">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="AI「無限算力」時代結束：Claude 5.1、Gemini 改價背後的成本轉嫁">
+<meta name="twitter:description" content="Anthropic 與 Google 在 9 月同步調整 AI 產品計價模式，從固定額度改為用量計費。這不是巧合，而是 AI 大廠正式撕掉「免費吃到飽」假象的信號。懂得管理 AI 用量成為比寫 Prompt 更稀缺的能力。">
+<meta name="twitter:image"       content="https://operation.tw/images/posts/post-385.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/385/","headline":"AI「無限算力」時代結束：Claude 5.1、Gemini 改價背後的成本轉嫁","description":"Anthropic 與 Google 在 9 月同步調整 AI 產品計價模式，從固定額度改為用量計費。這不是巧合，而是 AI 大廠正式撕掉「免費吃到飽」假象的信號。懂得管理 AI 用量成為比寫 Prompt 更稀缺的能力。","datePublished":"2026-09-02","dateModified":"2026-09-02","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/385/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/385/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-385.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI「無限算力」時代結束：Claude 5.1、Gemini 改價背後的成本轉嫁","item":"https://operation.tw/post/385/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/385/#faq","mainEntity":[{"@type":"Question","name":"Claude 5.1 的快取功能是什麼？","acceptedAnswer":{"@type":"Answer","text":"快取是指 Claude API 記住重複內容（如系統提示詞、長文件）的機制，後續調用時無需重新計算，費用只需原價的 25%，可大幅降低企業的 API 成本。"}},{"@type":"Question","name":"Gemini Notebook 新計價方式對免費用戶有影響嗎？","acceptedAnswer":{"@type":"Answer","text":"有影響。新方式改為依運算量計費，訂閱等級間差距擴大到 20 倍，免費版的可用資源相對會更受限。"}},{"@type":"Question","name":"什麼是「訂閱制 + 用量計費」模式？","acceptedAnswer":{"@type":"Answer","text":"這是 AI 大廠新推行的混合計費方式：用戶先選擇訂閱等級（決定基礎額度），再根據實際使用量計費，超過額度需額外付費或升級，目的是精確轉嫁成本給用戶。"}}]}]}</script>
+<script>
+// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
+var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
+(function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
+  try{
+    fetch(API_BASE+'/api/views/post',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({id:385})
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
+  }catch(e){}
+})();
+// 文末訂閱框
+function nlGo(f){
+  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
+  btn.disabled=true;btn.textContent='送出中…';
+  fetch(API_BASE+'/api/subscribe',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
+  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
+  .then(function(x){
+    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
+    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
+    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
+    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
+  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
+  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
+  return false;
+}
+</script>
+<style>
+body{font-family:system-ui,sans-serif;background:#050510;color:#e0e0ff;margin:0;padding:24px;line-height:1.7;}
+.wrap{max-width:720px;margin:0 auto;}
+nav{margin-bottom:24px;font-size:.85rem;color:#9494c2;}
+nav a{color:#00f5ff;text-decoration:none;}
+.badge{display:inline-block;border:1px solid #bf00ff;color:#bf00ff;border-radius:3px;padding:2px 8px;font-size:.75rem;margin-bottom:12px;}
+h1{font-size:1.5rem;margin:0 0 12px;}
+time{color:#9494c2;font-size:.85rem;}
+.excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.byline{margin-top:6px;color:#8a8ab0;font-size:.88rem;}
+.byline a{color:#00f5ff;text-decoration:none;}
+.byline a:hover{text-decoration:underline;}
+.post-nav{display:flex;gap:12px;margin:32px 0 8px;flex-wrap:wrap;}
+.post-nav .pn{flex:1;min-width:200px;display:block;padding:12px 16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s;}
+.post-nav .pn:hover{border-color:#00f5ff;}
+.post-nav .pn span{display:block;font-size:.78rem;color:#00f5ff;margin-bottom:4px;}
+.post-nav .pn b{display:block;color:#d6d6f0;font-size:.95rem;line-height:1.4;font-weight:500;}
+.post-nav .pn-r{text-align:right;}
+.nl-box{margin:28px 0 8px;padding:20px 22px;border:1px solid rgba(0,245,255,.28);border-radius:12px;background:linear-gradient(180deg,rgba(0,245,255,.06),transparent);}
+.nl-t{font-weight:700;color:#fff;font-size:1.05rem;}
+.nl-d{color:#b8b8e0;font-size:.9rem;margin:6px 0 12px;}
+.nl-f{display:flex;gap:8px;flex-wrap:wrap;position:relative;}
+.nl-f input[type=email]{flex:1;min-width:180px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:10px 12px;color:#fff;font-size:.9rem;}
+.nl-f button{background:linear-gradient(135deg,#00e5ff,#7b61ff);color:#07070d;border:none;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer;}
+.nl-msg{font-size:.82rem;margin-top:8px;min-height:1em;color:#9494c2;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
+.cover{width:100%;max-width:720px;height:auto;border-radius:10px;margin:20px 0;display:block;}
+.post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
+.post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
+.post-body h3{font-size:1.08rem;margin:1.4em 0 .5em;color:#fff;}
+.post-body p{margin:0 0 1.1em;}
+.post-body ul,.post-body ol{margin:0 0 1.1em 1.4em;}
+.post-body li{margin:.4em 0;}
+.post-body a{color:#00f5ff;}
+.post-body blockquote{margin:1.2em 0;padding:.4em 1em;border-left:3px solid #00f5ff;color:#a8b6cc;}
+.post-body img{max-width:100%;border-radius:8px;}
+.post-body hr{border:none;border-top:1px solid rgba(255,255,255,.12);margin:1.6em 0;}
+</style>
+<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="/">操作一下</a> › <a href="/category/AI/">AI</a> › AI「無限算力」時代結束：Claude 5.1、Gemini 改價背後的成本轉嫁</nav>
+  <article>
+    <div class="badge">🤖 AI</div>
+    <h1>AI「無限算力」時代結束：Claude 5.1、Gemini 改價背後的成本轉嫁</h1>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-09-02">2026-09-02</time><span id="pv"></span></div>
+    <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-385.webp"><img class="cover" src="https://operation.tw/images/posts/post-385.jpg" alt="AI「無限算力」時代結束：Claude 5.1、Gemini 改價背後的成本轉嫁" width="1200" height="630"></picture>
+    <div class="excerpt"><p>Anthropic 與 Google 在 9 月同步調整 AI 產品計價模式，從固定額度改為用量計費。這不是巧合，而是 AI 大廠正式撕掉「免費吃到飽」假象的信號。懂得管理 AI 用量成為比寫 Prompt 更稀缺的能力。</p></div>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼 AI 大廠同時調整計價策略？</a></li><li class="toc-l2"><a href="#sec-2">Claude 5.1 與 Fable 5.1 的分層設計代表什麼？</a></li><li class="toc-l2"><a href="#sec-3">快取成本降 75% 真的是優惠嗎？</a></li><li class="toc-l2"><a href="#sec-4">Gemini Notebook 新計價規則如何改變用戶成本？</a></li><li class="toc-l2"><a href="#sec-5">為什麼「調高 25%」聽起來在縮水 17%？</a></li><li class="toc-l2"><a href="#sec-6">「訂閱制 + 用量計費」時代，個人與企業用戶應該如何應對？</a></li><li class="toc-l2"><a href="#sec-7">常見問題</a></li><li class="toc-l3"><a href="#sec-8">Claude 5.1 的快取功能是什麼？</a></li><li class="toc-l3"><a href="#sec-9">Gemini Notebook 新計價方式對免費用戶有影響嗎？</a></li><li class="toc-l3"><a href="#sec-10">什麼是「訂閱制 + 用量計費」模式？</a></li></ul></nav>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>AI 大廠正從「固定免費額度」轉向「用量計費」模式，用「彈性」名義包裝成本傳導給用戶</li><li>Claude 5.1 的快取降價 75% 看似優惠，實際是引導開發者改變應用架構來節省成本</li><li>Gemini Notebook 訂閱等級差距拉到 20 倍，重度用戶無論多付錢或減少使用，都進入「選擇題」時代</li></ul><h2 id="sec-1">為什麼 AI 大廠同時調整計價策略？</h2><p>這不是巧合——Anthropic 和 Google 在 9 月初幾乎同步推出新計價方案，反映整個 AI 產業正在終結「無限算力」的幻想。根據 Anthropic 與 Lambda Labs 簽下的 350 億美元算力合約（相當於台灣年度國防預算的 1.5 倍），可以看出 AI 模型訓練與推理的真實成本已經成為商業可持續性的核心問題。大廠不再靠補貼來搶市佔率，而是開始用更複雜的計價體系讓用戶「各付各的」。</p><h2 id="sec-2">Claude 5.1 與 Fable 5.1 的分層設計代表什麼？</h2><p>Anthropic 推出的 Claude Fable 5.1 與雙胞胎模型 Mythos 5.1，採用「同一底層、不同安全護欄」的分層策略。Fable 5.1 是市售版本，強化安全限制；Mythos 5.1 則可視為「賽道版」，提供研究者與企業客戶更少的內容過濾。這套設計聰明之處在於：Anthropic 用同一套訓練投資支撐兩條產品線，降低研發成本，同時根據用戶需求與風險承受度進行差異化定價。換句話說，他們把一個「模型」賣成了兩個「產品」。</p><h2 id="sec-3">快取成本降 75% 真的是優惠嗎？</h2><p>Claude 5.1 的快取讀取成本從原價砍到 25%（下降 75%），這看起來像是大手筆讓利，但實際上是一套「價格引導架構改造」的手段。快取是指 API 在重複調用相同內容（如系統提示詞、文件資料庫）時，不需要每次都重新計算，直接從記憶中取用。降價的目的是鼓勵開發者投入時間，重新架構應用程式以最大化快取效率。舊應用或許無法受惠，但願意改造的企業可以大幅省成本。這是典型的「用價格槓桿推動技術遷移」——聽起來是降價，實質是在說：「想省錢，就得配合我的新架構。」</p><h2 id="sec-4">Gemini Notebook 新計價規則如何改變用戶成本？</h2><p>Google 在 9 月 2 日將 Gemini Notebook（即 Google 線上筆記本與程式執行環境）從「每日固定次數」改為「依運算量計算、每 5 小時重算」的計費方式，訂閱等級間的差距從原本的數倍擴大到 20 倍。舉例來說，免費版可能只有基礎算力，而最高階訂閱則提供 20 倍的資源配額。表面上看，這提供了「更靈活的選項」，但對重度用戶來說，實質選擇只有兩條路：要麼升級到高階計畫，要麼主動減少使用。短期看似「用戶選擇更多」，長期卻是「成本負擔更重」。</p><h2 id="sec-5">為什麼「調高 25%」聽起來在縮水 17%？</h2><p>這是業者與用戶之間的話術陷阱。假設 Claude Code（代碼執行環境）宣布「提升 25% 的計算能力」，但同時調整快取與用量計費模式，導致每個單位成本上升，實際可用資源反而下降 17%。大廠習慣用「性能提升」的語言，隱藏「成本上升」的事實。讀者需要學會區分：規格提升 ≠ 用戶實際獲益。背後的數學才是真相。</p><h2 id="sec-6">「訂閱制 + 用量計費」時代，個人與企業用戶應該如何應對？</h2><p>AI 產業正式進入混合計費時代。對個人用戶來說，選擇訂閱等級時不能只看名稱，要精確計算「我每月實際用量」與「對應的費用」；對把 AI 嵌進產品的企業來說，「懂得管理 AI 用量」已經成為比「會寫 Prompt」更稀缺的專業能力。這包括優化 API 調用、使用快取機制、選擇適合的模型版本，甚至在成本與效果間找到平衡點。未來，能用較少成本達成相同效果的團隊，將比單純「用最強模型」的競爭對手更有優勢。</p><h2 id="sec-7">常見問題</h2><h3 id="sec-8">Claude 5.1 的快取功能是什麼？</h3><p>快取是指 Claude API 記住重複內容（如系統提示詞、長文件）的機制，後續調用時無需重新計算，費用只需原價的 25%，可大幅降低企業的 API 成本。</p><h3 id="sec-9">Gemini Notebook 新計價方式對免費用戶有影響嗎？</h3><p>有影響。新方式改為依運算量計費，訂閱等級間差距擴大到 20 倍，免費版的可用資源相對會更受限。</p><h3 id="sec-10">什麼是「訂閱制 + 用量計費」模式？</h3><p>這是 AI 大廠新推行的混合計費方式：用戶先選擇訂閱等級（決定基礎額度），再根據實際使用量計費，超過額度需額外付費或升級，目的是精確轉嫁成本給用戶。</p>
+<hr>
+<p>📚 <strong>同主題的其他單集 / 文章，延伸聽下去：</strong></p>
+<ul>
+<li><a href="/post/382/">在地大語言模型浪潮：台灣企業為何必須打造自己的AI？</a></li>
+<li><a href="/post/383/">AI53｜台灣被撬開的兩扇門：AI駭客與雲服務漏洞如何改變攻擊面</a></li>
+<li><a href="/post/381/">Claude、Codex遭植入惡意程式：AI模型供應鏈中毒成新戰場</a></li>
+</ul>
+<p>🎙 <strong>這篇文章延伸自 Podcast《操作一下》。</strong>想用聽的，完整一集在這裡：</p>
+<ul>
+<li><a href="https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/e80725ed-108e-402c-8959-306e50513468" target="_blank" rel="noopener">在 SoundOn 收聽這集</a></li>
+<li><a href="https://podcasts.apple.com/podcast/1620760720" target="_blank" rel="noopener">在 Apple Podcast 收聽</a></li>
+<li><a href="https://open.spotify.com/search/AI54%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20Claude%20Fable%205.1%20%E5%8D%87%E7%B4%9A%E3%80%81Gemini%20Notebook%20%E6%94%B9%E8%A8%88%E5%83%B9%EF%BC%8C%E3%80%8C%E7%84%A1%E9%99%90%E7%AE%97%E5%8A%9B%E3%80%8D%E6%99%82%E4%BB%A3%E6%AD%A3%E5%BC%8F%E7%B5%90%E6%9D%9F" target="_blank" rel="noopener">在 Spotify 收聽</a></li>
+<li><a href="/podcast.html">瀏覽所有單集 →</a></li>
+</ul><!--BODY:END--></div>
+    <nav class="post-nav">
+      <span></span>
+      <a class="pn pn-r" href="/post/382/"><span>下一篇 →</span><b>在地大語言模型浪潮：台灣企業為何必須打造自己的AI？</b></a>
+    </nav>
+    <div class="nl-box">
+      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
+      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
+      <form class="nl-f" onsubmit="return nlGo(this)">
+        <input type="email" name="email" required placeholder="your@email.com">
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button type="submit">訂閱 →</button>
+      </form>
+      <div class="nl-msg" aria-live="polite"></div>
+    </div>
+    <a class="cta" href="/">← 在操作一下看完整體驗 →</a>
+  </article>
+</div>
+</body>
+</html>
