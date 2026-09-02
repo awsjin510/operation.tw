@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 02 Sep 2026 21:00:01 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 02 Sep 2026 23:18:18 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>AWS 20周年：從內部工具到雲端帝國，台灣企業該學什麼？</title>
@@ -13,6 +13,14 @@
     <guid isPermaLink="true">https://operation.tw/post/384/</guid>
     <description>AWS 邁入20周年，從亞馬遜內部工程師的痛點解決方案，演變成千億美元規模的雲端運算基礎設施。這個成長故事對正在數位轉型的台灣企業有什麼啟示？我們深入分析AWS的成功關鍵與未來戰略。</description>
     <category>雲端</category>
+    <pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI「無限算力」時代結束：Claude 5.1、Gemini 改價背後的成本轉嫁</title>
+    <link>https://operation.tw/post/385/</link>
+    <guid isPermaLink="true">https://operation.tw/post/385/</guid>
+    <description>Anthropic 與 Google 在 9 月同步調整 AI 產品計價模式，從固定額度改為用量計費。這不是巧合，而是 AI 大廠正式撕掉「免費吃到飽」假象的信號。懂得管理 AI 用量成為比寫 Prompt 更稀缺的能力。</description>
+    <category>AI</category>
     <pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -158,14 +166,6 @@
     <description>AWS 成立20週年之際，從解決Amazon內部工程師的基礎設施痛點，演變成市值千億美元的現代雲端運算基石。本文深入解析AWS如何定義雲端時代，以及台灣企業應如何重新審視雲端策略選擇。</description>
     <category>雲端</category>
     <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>蘋果攜阿里打造中國專屬AI：全球科技巨頭的在地化策略轉折</title>
-    <link>https://operation.tw/post/365/</link>
-    <guid isPermaLink="true">https://operation.tw/post/365/</guid>
-    <description>蘋果改變過去依賴第三方AI產品的策略，攜手阿里巴巴為中國市場開發專屬AI模型。這一舉措反映出全球AI競賽中地緣政治的加劇，以及科技巨頭如何在監管與市場需求間尋找平衡。對台灣科技業帶來什麼啟示？</description>
-    <category>AI</category>
-    <pubDate>Sun, 16 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
