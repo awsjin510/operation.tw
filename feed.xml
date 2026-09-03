@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 03 Sep 2026 04:19:21 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 03 Sep 2026 04:47:47 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI價值觀校準失敗：Anthropic漏洞揭示模型治理的真實困境</title>
+    <link>https://operation.tw/post/386/</link>
+    <guid isPermaLink="true">https://operation.tw/post/386/</guid>
+    <description>Anthropic坦承旗下AI模型存在安全漏洞，與人類價值觀「未完全校準」。這不是技術bug，而是AI治理的結構性問題。當全球監管收緊、台灣企業急速導入AI時，該如何防範失控風險？</description>
+    <category>資安</category>
+    <pubDate>Thu, 03 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AWS 20周年：從內部工具到雲端帝國，台灣企業該學什麼？</title>
     <link>https://operation.tw/post/384/</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/366/</guid>
     <description>當AI能自動解決產品問題，客戶為什麼還要找真人客戶成功經理？一位B2B軟體從業者分享：AI先替代的是產品操作，不是關係與經驗密度。她如何在AI浪潮中重新定義這個角色的核心價值？</description>
     <category>AI</category>
-    <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AWS 20週年的雲端霸業：從工程痛點到千億美元帝國如何煉成</title>
-    <link>https://operation.tw/post/367/</link>
-    <guid isPermaLink="true">https://operation.tw/post/367/</guid>
-    <description>AWS 成立20週年之際，從解決Amazon內部工程師的基礎設施痛點，演變成市值千億美元的現代雲端運算基石。本文深入解析AWS如何定義雲端時代，以及台灣企業應如何重新審視雲端策略選擇。</description>
-    <category>雲端</category>
     <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
