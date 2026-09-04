@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<title>AWS 20周年後的下一步：從IaC到AI原生基礎設施 | 操作一下</title>
+<meta name="description" content="AWS今年邁入20周年，但雲端市場的競爭已不再只是規模與成本。本文探討AWS、Azure、GCP三大平台如何進化到「AI原生」時代，以及台灣企業應如何調整雲端策略以保持競爭力。">
+<link rel="canonical" href="https://operation.tw/post/387/">
+<meta property="og:type"        content="article">
+<meta property="og:title"       content="AWS 20周年後的下一步：從IaC到AI原生基礎設施">
+<meta property="og:description" content="AWS今年邁入20周年，但雲端市場的競爭已不再只是規模與成本。本文探討AWS、Azure、GCP三大平台如何進化到「AI原生」時代，以及台灣企業應如何調整雲端策略以保持競爭力。">
+<meta property="og:url"         content="https://operation.tw/post/387/">
+<meta property="og:image"       content="https://operation.tw/images/posts/post-387.jpg">
+<meta property="og:locale"      content="zh_TW">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="AWS 20周年後的下一步：從IaC到AI原生基礎設施">
+<meta name="twitter:description" content="AWS今年邁入20周年，但雲端市場的競爭已不再只是規模與成本。本文探討AWS、Azure、GCP三大平台如何進化到「AI原生」時代，以及台灣企業應如何調整雲端策略以保持競爭力。">
+<meta name="twitter:image"       content="https://operation.tw/images/posts/post-387.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/387/","headline":"AWS 20周年後的下一步：從IaC到AI原生基礎設施","description":"AWS今年邁入20周年，但雲端市場的競爭已不再只是規模與成本。本文探討AWS、Azure、GCP三大平台如何進化到「AI原生」時代，以及台灣企業應如何調整雲端策略以保持競爭力。","datePublished":"2026-09-04","dateModified":"2026-09-04","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/387/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/387/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-387.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"AWS 20周年後的下一步：從IaC到AI原生基礎設施","item":"https://operation.tw/post/387/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/387/#faq","mainEntity":[{"@type":"Question","name":"我的企業該在2026年就遷入某個雲平台的AI服務嗎？","acceptedAnswer":{"@type":"Answer","text":"不一定立即遷移全部工作負載，但建議先評估「核心業務中哪些流程可從AI優化中受益」，在該平台上建立試驗環境。根據目前趨勢，選擇能支持本土模型與開源模型的平台將更具長期靈活性。"}},{"@type":"Question","name":"AWS、Azure、GCP三者中，哪一個最適合台灣新創？","acceptedAnswer":{"@type":"Answer","text":"無絕對答案，取決於新創的主要客戶地理位置、所用模型（國際或本土）與預算。建議透過各平台的免費層先行評估AI服務的易用性與成本預估，而非單純比較基礎設施價格。"}},{"@type":"Question","name":"本土模型（如雅婷智慧）會不會讓我們必須自建基礎設施？","acceptedAnswer":{"@type":"Answer","text":"不必。公有雲平台已支持部署第三方模型，選擇支持度最高的平台其實能降低自建成本。關鍵是確認平台對模型微調、推理優化、成本監控的工具是否完善。"}}]}]}</script>
+<script>
+// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
+// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
+// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
+var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
+(function(){
+  function show(n){
+    var el=document.getElementById('pv');
+    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
+    document.addEventListener('DOMContentLoaded',function(){
+      var e2=document.getElementById('pv');
+      if(e2)e2.textContent=' · '+n+' 次瀏覽';
+    });
+  }
+  try{
+    fetch(API_BASE+'/api/views/post',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({id:387})
+    }).then(function(r){return r.ok?r.json():null;})
+      .then(function(j){if(j&&j.views>0)show(j.views);})
+      .catch(function(){});
+  }catch(e){}
+})();
+// 文末訂閱框
+function nlGo(f){
+  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
+  btn.disabled=true;btn.textContent='送出中…';
+  fetch(API_BASE+'/api/subscribe',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
+  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
+  .then(function(x){
+    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
+    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
+    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
+    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
+  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
+  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
+  return false;
+}
+</script>
+<style>
+body{font-family:system-ui,sans-serif;background:#050510;color:#e0e0ff;margin:0;padding:24px;line-height:1.7;}
+.wrap{max-width:720px;margin:0 auto;}
+nav{margin-bottom:24px;font-size:.85rem;color:#9494c2;}
+nav a{color:#00f5ff;text-decoration:none;}
+.badge{display:inline-block;border:1px solid #00f5ff;color:#00f5ff;border-radius:3px;padding:2px 8px;font-size:.75rem;margin-bottom:12px;}
+h1{font-size:1.5rem;margin:0 0 12px;}
+time{color:#9494c2;font-size:.85rem;}
+.excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
+.byline{margin-top:6px;color:#8a8ab0;font-size:.88rem;}
+.byline a{color:#00f5ff;text-decoration:none;}
+.byline a:hover{text-decoration:underline;}
+.post-nav{display:flex;gap:12px;margin:32px 0 8px;flex-wrap:wrap;}
+.post-nav .pn{flex:1;min-width:200px;display:block;padding:12px 16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s;}
+.post-nav .pn:hover{border-color:#00f5ff;}
+.post-nav .pn span{display:block;font-size:.78rem;color:#00f5ff;margin-bottom:4px;}
+.post-nav .pn b{display:block;color:#d6d6f0;font-size:.95rem;line-height:1.4;font-weight:500;}
+.post-nav .pn-r{text-align:right;}
+.nl-box{margin:28px 0 8px;padding:20px 22px;border:1px solid rgba(0,245,255,.28);border-radius:12px;background:linear-gradient(180deg,rgba(0,245,255,.06),transparent);}
+.nl-t{font-weight:700;color:#fff;font-size:1.05rem;}
+.nl-d{color:#b8b8e0;font-size:.9rem;margin:6px 0 12px;}
+.nl-f{display:flex;gap:8px;flex-wrap:wrap;position:relative;}
+.nl-f input[type=email]{flex:1;min-width:180px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:10px 12px;color:#fff;font-size:.9rem;}
+.nl-f button{background:linear-gradient(135deg,#00e5ff,#7b61ff);color:#07070d;border:none;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer;}
+.nl-msg{font-size:.82rem;margin-top:8px;min-height:1em;color:#9494c2;}
+.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
+.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
+.toc ul{margin:0;padding:0;list-style:none;}
+.toc li{margin:4px 0;}
+.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
+.toc li a:hover{color:#fff;text-decoration:underline;}
+.toc-l3{padding-left:18px;}
+.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
+.post-body :is(h2,h3){scroll-margin-top:16px;}
+.cover{width:100%;max-width:720px;height:auto;border-radius:10px;margin:20px 0;display:block;}
+.post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
+.post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
+.post-body h3{font-size:1.08rem;margin:1.4em 0 .5em;color:#fff;}
+.post-body p{margin:0 0 1.1em;}
+.post-body ul,.post-body ol{margin:0 0 1.1em 1.4em;}
+.post-body li{margin:.4em 0;}
+.post-body a{color:#00f5ff;}
+.post-body blockquote{margin:1.2em 0;padding:.4em 1em;border-left:3px solid #00f5ff;color:#a8b6cc;}
+.post-body img{max-width:100%;border-radius:8px;}
+.post-body hr{border:none;border-top:1px solid rgba(255,255,255,.12);margin:1.6em 0;}
+</style>
+<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="/">操作一下</a> › <a href="/category/%E9%9B%B2%E7%AB%AF/">雲端</a> › AWS 20周年後的下一步：從IaC到AI原生基礎設施</nav>
+  <article>
+    <div class="badge">☁️ 雲端</div>
+    <h1>AWS 20周年後的下一步：從IaC到AI原生基礎設施</h1>
+    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-09-04">2026-09-04</time><span id="pv"></span></div>
+    <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-387.webp"><img class="cover" src="https://operation.tw/images/posts/post-387.jpg" alt="AWS 20周年後的下一步：從IaC到AI原生基礎設施" width="1200" height="630"></picture>
+    <div class="excerpt"><p>AWS今年邁入20周年，但雲端市場的競爭已不再只是規模與成本。本文探討AWS、Azure、GCP三大平台如何進化到「AI原生」時代，以及台灣企業應如何調整雲端策略以保持競爭力。</p></div>
+    <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼AWS 20周年對台灣雲端用戶仍然重要？</a></li><li class="toc-l2"><a href="#sec-2">三大平台如何轉向「AI原生」策略？</a></li><li class="toc-l2"><a href="#sec-3">台灣本土AI模型與公有雲平台如何結合？</a></li><li class="toc-l2"><a href="#sec-4">企業在選擇雲平台時應關注哪些新指標？</a></li><li class="toc-l2"><a href="#sec-5">2035年的雲端市場會是什麼樣貌？</a></li><li class="toc-l2"><a href="#sec-6">常見問題</a></li><li class="toc-l3"><a href="#sec-7">我的企業該在2026年就遷入某個雲平台的AI服務嗎？</a></li><li class="toc-l3"><a href="#sec-8">AWS、Azure、GCP三者中，哪一個最適合台灣新創？</a></li><li class="toc-l3"><a href="#sec-9">本土模型（如雅婷智慧）會不會讓我們必須自建基礎設施？</a></li></ul></nav>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>公有雲市場已從單純的運算遷移進入AI驅動的應用層競爭，三大平台均推出模型優化與Agent開發工具</li><li>台灣企業採購雲端服務時，不應只看成本與延遲，更要評估平台對本土化AI模型的支持程度</li><li>2035年前公有雲市場預期翻倍成長，布局AI原生基礎設施將成未來五年的關鍵投資決策</li></ul><h2 id="sec-1">為什麼AWS 20周年對台灣雲端用戶仍然重要？</h2><p>AWS從亞馬遜內部的基礎設施解決方案演變成千億美元雲端帝國，但這段歷史對台灣企業的啟示不在於AWS的成功本身，而在於「基礎設施層的創新會驅動整個產業的轉向」。當年AWS解決的是資料中心成本與靈活性問題；今天的挑戰已演進到如何在雲端上原生支持AI應用——這正是三大平台（AWS、Azure、GCP）全力競爭的新戰場。根據Research Nester的報告，公有雲市場預計在2035年前達到規模翻倍的成長，其中驅動力不再是傳統的伺服器遷移，而是企業對AI基礎設施的投資需求。</p><h2 id="sec-2">三大平台如何轉向「AI原生」策略？</h2><p>AI原生基礎設施是指雲端平台在架構層面就針對大規模模型訓練、推理與Agent開發進行優化，而非事後補強。根據商傳媒的報導，模型上下文協議（Model Context Protocol）正在簡化AI Agent開發並強化不同模型間的互通性——這是AWS、Azure、GCP三方都積極支持的標準。具體而言，AWS在SageMaker上整合多模型支持、Azure透過Copilot Pro與企業應用串接、GCP則強調Vertex AI的端到端管道。這些不是簡單的API更新，而是改變了企業該如何設計雲端架構、如何選擇模型供應商、如何進行多雲策略。</p><h2 id="sec-3">台灣本土AI模型與公有雲平台如何結合？</h2><p>數發部最新公布的台灣主權AI評測顯示，本土模型「雅婷智慧」已躋身前四強，這標誌著台灣AI產業不再完全依賴國際大模型。然而，真正的考驗在於這些本土模型能否有效整合到公有雲平台上。AWS GCP Azure三大平台均已支持部署客製化模型，但整合深度、推理成本、合規便利性差異明顯。舉例來說，若企業採用雅婷智慧進行客服或內容生成，選擇支持度最高的雲平台將直接影響部署速度與營運成本。這也解釋了為何近期多家台灣科技企業開始同時評估多雲架構——不是為了分散風險，而是為了在不同業務場景中選用最適合的本土與國際模型組合。</p><h2 id="sec-4">企業在選擇雲平台時應關注哪些新指標？</h2><p>過去十年，企業評選雲平台的主要指標是成本、延遲、SLA保障三項。但進入AI時代，這份評估清單已需大幅更新：第一是模型優化能力——平台是否針對特定模型類型（如文字、影像、多模態）提供GPU/TPU配置與成本優化工具；第二是邊界模型支持——平台能否順暢集成開源模型與本土模型，還是僅優化第一方服務；第三是Agent開發框架——平台提供的工具是否足以支持複雜的多步驟工作流程，不需大量自開發。根據Nextlink的AWS、GCP、Azure評比資料，三方在這些面向的能力差異已開始明顯化。台灣企業不應被低成本方案誤導，而應從「這個平台能否支持我未來三年的AI應用規劃」出發反推選型。</p><h2 id="sec-5">2035年的雲端市場會是什麼樣貌？</h2><p>Research Nester預測公有雲市場規模將在2035年前翻倍成長，但這個成長並非均勻分佈——AI工作負載預期佔比將從今日的15%躍升至45%以上。這意味著平台競爭將從「誰的基礎設施規模最大」轉向「誰最懂AI應用的成本優化與性能調校」。台灣企業若要在此競爭中保持主動權，現在的決策至關重要：是否投資內部AI工程團隊以充分利用平台功能、是否參與開源生態以降低單一平台的依賴、是否將本土化AI能力視為核心競爭力而非外包服務。雲端選型不再是IT部門的採購決定，而是企業AI戰略的具體體現。</p><h2 id="sec-6">常見問題</h2><h3 id="sec-7">我的企業該在2026年就遷入某個雲平台的AI服務嗎？</h3><p>不一定立即遷移全部工作負載，但建議先評估「核心業務中哪些流程可從AI優化中受益」，在該平台上建立試驗環境。根據目前趨勢，選擇能支持本土模型與開源模型的平台將更具長期靈活性。</p><h3 id="sec-8">AWS、Azure、GCP三者中，哪一個最適合台灣新創？</h3><p>無絕對答案，取決於新創的主要客戶地理位置、所用模型（國際或本土）與預算。建議透過各平台的免費層先行評估AI服務的易用性與成本預估，而非單純比較基礎設施價格。</p><h3 id="sec-9">本土模型（如雅婷智慧）會不會讓我們必須自建基礎設施？</h3><p>不必。公有雲平台已支持部署第三方模型，選擇支持度最高的平台其實能降低自建成本。關鍵是確認平台對模型微調、推理優化、成本監控的工具是否完善。</p><!--BODY:END--></div>
+    <nav class="post-nav">
+      <span></span>
+      <a class="pn pn-r" href="/post/384/"><span>下一篇 →</span><b>AWS 20周年：從內部工具到雲端帝國，台灣企業該學什麼？</b></a>
+    </nav>
+    <div class="nl-box">
+      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
+      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
+      <form class="nl-f" onsubmit="return nlGo(this)">
+        <input type="email" name="email" required placeholder="your@email.com">
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button type="submit">訂閱 →</button>
+      </form>
+      <div class="nl-msg" aria-live="polite"></div>
+    </div>
+    <a class="cta" href="/">← 在操作一下看完整體驗 →</a>
+  </article>
+</div>
+</body>
+</html>
