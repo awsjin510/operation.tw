@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 06 Sep 2026 04:33:29 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 06 Sep 2026 04:53:02 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>公有雲市場2035年翻倍成長：台灣企業的AI雲端策略該怎麼布局？</title>
+    <link>https://operation.tw/post/389/</link>
+    <guid isPermaLink="true">https://operation.tw/post/389/</guid>
+    <description>Research Nester最新報告預測公有雲市場規模與份額將在2035年大幅成長。面對AWS、Azure、GCP三大平台的競爭格局，台灣企業該如何評估選型、規劃混合雲策略，以及在AI時代搶占先機？本文帶你解讀市場趨勢與實戰建議。</description>
+    <category>雲端</category>
+    <pubDate>Sun, 06 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>歐盟AI資安行動計畫出爐：台灣企業的合規倒計時已啟動</title>
     <link>https://operation.tw/post/388/</link>
@@ -158,14 +166,6 @@
     <description>亞馬遜大量採購稀有書籍用於AI訓練引發關注。這反映了雲端巨頭在AI時代面臨的新挑戰：高品質訓練數據短缺。本文分析亞馬遜策略背後的雲端運算邏輯，以及對台灣科技供應鏈的啟示。</description>
     <category>雲端</category>
     <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI訓練數據成新戰場：台灣企業如何守護智慧財產權？</title>
-    <link>https://operation.tw/post/369/</link>
-    <guid isPermaLink="true">https://operation.tw/post/369/</guid>
-    <description>紐約時報揭露中國利用AI訓練數據擴大全球話語權，亞馬遜更大量採購稀有書籍作為AI訓練資料。這場從模型轉向數據的競爭，對台灣科技與文創產業帶來前所未有的資安與著作權挑戰。</description>
-    <category>資安</category>
-    <pubDate>Wed, 19 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
