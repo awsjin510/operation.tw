@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 09 Sep 2026 04:37:13 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 09 Sep 2026 04:55:46 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>中國AI模型調用量連19週領先美國：台灣企業該如何應對算力競賽新局面？</title>
+    <link>https://operation.tw/post/392/</link>
+    <guid isPermaLink="true">https://operation.tw/post/392/</guid>
+    <description>騰訊混元Hy4 preview調用量暴增379%登頂，中國AI模型已連續19週超越美國。這場模型競爭延伸至基礎建設的新階段，對台灣AI產業意味著什麼？本文分析主權AI時代的算力競賽現狀，以及台灣企業的應對策略。</description>
+    <category>AI</category>
+    <pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Anthropic砸千億美元投資AWS：AI晶片戰爭延燒至雲端基礎設施</title>
     <link>https://operation.tw/post/391/</link>
@@ -158,14 +166,6 @@
     <description>AI模型在心理諮商領域崛起，卻暴露一個根本缺陷：擁有龐大知識庫卻缺乏真正的「智慧」。專家警示，現有AI模型無法理解人類情感的複雜性與個殊性，冒然將其當作心理諮商師可能帶來更深層的心理傷害。</description>
     <category>AI</category>
     <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>微牛證券AI整合案例：金融雲端如何用大模型驅動股價</title>
-    <link>https://operation.tw/post/372/</link>
-    <guid isPermaLink="true">https://operation.tw/post/372/</guid>
-    <description>微牛證券將AI大型模型整合至交易平台，股價盤中勁揚近4%。這不只是技術升級，更代表金融雲端應用進入實戰階段。本文拆解這波金融科技浪潮對台灣證券業的啟示。</description>
-    <category>雲端</category>
-    <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
