@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 09 Sep 2026 20:53:54 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 09 Sep 2026 23:13:07 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>中國AI模型調用量連19週領先美國：台灣企業該如何應對算力競賽新局面？</title>
@@ -13,6 +13,14 @@
     <guid isPermaLink="true">https://operation.tw/post/392/</guid>
     <description>騰訊混元Hy4 preview調用量暴增379%登頂，中國AI模型已連續19週超越美國。這場模型競爭延伸至基礎建設的新階段，對台灣AI產業意味著什麼？本文分析主權AI時代的算力競賽現狀，以及台灣企業的應對策略。</description>
     <category>AI</category>
+    <pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI 把駭客攻擊加速 168 倍：為什麼傳統資安防線正在失效</title>
+    <link>https://operation.tw/post/393/</link>
+    <guid isPermaLink="true">https://operation.tw/post/393/</guid>
+    <description>9 月 Palo Alto Networks 公開實驗：AI Agent 用 10 小時完成人類駭客隊伍需要兩週的完整攻擊鏈。問題不是 AI 多強，而是傳統資安架構全盤預設「攻擊者是人類速度」——當這個假設破裂，所有防守時間緩衝瞬間失效。</description>
+    <category>資安</category>
     <pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -158,14 +166,6 @@
     <description>一款名為Ox Alpha的神秘AI模型近日橫空出世，宣稱每天提供百兆Token全免費服務，疑似由中國企業打造。這一舉動打破了當前AI市場的定價邏輯，也暴露出全球AI商業模式面臨的根本挑戰。台灣AI從業者應如何應對？</description>
     <category>AI</category>
     <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI心理諮商師的信任危機：有知識卻缺「智慧」的模型能否治癒人心？</title>
-    <link>https://operation.tw/post/373/</link>
-    <guid isPermaLink="true">https://operation.tw/post/373/</guid>
-    <description>AI模型在心理諮商領域崛起，卻暴露一個根本缺陷：擁有龐大知識庫卻缺乏真正的「智慧」。專家警示，現有AI模型無法理解人類情感的複雜性與個殊性，冒然將其當作心理諮商師可能帶來更深層的心理傷害。</description>
-    <category>AI</category>
-    <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
