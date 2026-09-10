@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 10 Sep 2026 04:37:11 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 10 Sep 2026 04:58:17 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>小型高效AI模型崛起：為什麼2027年是雲端成本結構的分水嶺？</title>
+    <link>https://operation.tw/post/394/</link>
+    <guid isPermaLink="true">https://operation.tw/post/394/</guid>
+    <description>高德納預估高效小型AI模型將在2027年成為主流，直接衝擊Token成本結構。本文探討小型模型如何重塑雲端運算經濟學，以及台灣企業如何在成本與效能間找到最適平衡點。</description>
+    <category>雲端</category>
+    <pubDate>Thu, 10 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>中國AI模型調用量連19週領先美國：台灣企業該如何應對算力競賽新局面？</title>
     <link>https://operation.tw/post/392/</link>
@@ -158,14 +166,6 @@
     <description>從台積電副理到全職創作者，瓦基在《只工作、不上班的自主人生》中分享如何透過十年願景逆向設計、建立被動收入、反轉工作觀念，打造真正自主的職涯。這本書不只是離職指南，更是幫助你累積「選擇權」的實戰手冊。</description>
     <category>閱讀</category>
     <pubDate>Wed, 26 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>神秘AI模型Ox Alpha免費開放：誰在挑戰OpenAI與Google的市場秩序</title>
-    <link>https://operation.tw/post/374/</link>
-    <guid isPermaLink="true">https://operation.tw/post/374/</guid>
-    <description>一款名為Ox Alpha的神秘AI模型近日橫空出世，宣稱每天提供百兆Token全免費服務，疑似由中國企業打造。這一舉動打破了當前AI市場的定價邏輯，也暴露出全球AI商業模式面臨的根本挑戰。台灣AI從業者應如何應對？</description>
-    <category>AI</category>
-    <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
