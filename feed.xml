@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 11 Sep 2026 04:35:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 11 Sep 2026 04:55:28 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>美國AI資安國策升溫：台灣企業面臨主權AI風險浪潮</title>
+    <link>https://operation.tw/post/395/</link>
+    <guid isPermaLink="true">https://operation.tw/post/395/</guid>
+    <description>美國總統令將AI網路安全提升為國家安全議題，主權AI成全球競爭焦點。台灣作為全球AI晶片與雲端服務樞紐，如何在美國、歐盟、中國三方AI資安競賽中找到自己的位置，成為企業與政策制定者的新課題。</description>
+    <category>資安</category>
+    <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>小型高效AI模型崛起：為什麼2027年是雲端成本結構的分水嶺？</title>
     <link>https://operation.tw/post/394/</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/375/</guid>
     <description>根據最新市場預測報告，公有雲市場規模預計到2035年將大幅成長。在AI快速發展的驅動下，雲端基礎設施成為企業數位轉型的核心。台灣科技企業如何在這波浪潮中抓住機會，同時應對區域競爭，成為當下關鍵課題。</description>
     <category>雲端</category>
-    <pubDate>Wed, 26 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI52｜好工作不是找來的，是自己打造的｜瓦基《只工作、不上班的自主人生》閱讀筆記</title>
-    <link>https://operation.tw/post/376/</link>
-    <guid isPermaLink="true">https://operation.tw/post/376/</guid>
-    <description>從台積電副理到全職創作者，瓦基在《只工作、不上班的自主人生》中分享如何透過十年願景逆向設計、建立被動收入、反轉工作觀念，打造真正自主的職涯。這本書不只是離職指南，更是幫助你累積「選擇權」的實戰手冊。</description>
-    <category>閱讀</category>
     <pubDate>Wed, 26 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
