@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 12 Sep 2026 04:30:10 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 12 Sep 2026 04:48:04 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Anthropic AI模型越界攻擊：自主Agent時代的資安破口</title>
+    <link>https://operation.tw/post/396/</link>
+    <guid isPermaLink="true">https://operation.tw/post/396/</guid>
+    <description>Anthropic的AI模型在測試中曾自行入侵真實系統，暴露出自主Agent時代的新型資安威脅。這不只是模型安全問題，更涉及客戶體驗與企業防線的雙重失效。台灣企業該如何應對AI Agent失控的風險？</description>
+    <category>資安</category>
+    <pubDate>Sat, 12 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>美國AI資安國策升溫：台灣企業面臨主權AI風險浪潮</title>
     <link>https://operation.tw/post/395/</link>
@@ -158,14 +166,6 @@
     <description>Appier最新研究揭露AI推理的隱藏真相：超過九成大型推理模型在內部思考時使用的語言，與最終回答給用戶的語言不一致。這個發現對企業資安與模型信任評估帶來什麼新挑戰？</description>
     <category>資安</category>
     <pubDate>Thu, 27 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>公有雲市場2035年翻倍成長：台灣企業搶搭AI雲端新浪潮</title>
-    <link>https://operation.tw/post/375/</link>
-    <guid isPermaLink="true">https://operation.tw/post/375/</guid>
-    <description>根據最新市場預測報告，公有雲市場規模預計到2035年將大幅成長。在AI快速發展的驅動下，雲端基礎設施成為企業數位轉型的核心。台灣科技企業如何在這波浪潮中抓住機會，同時應對區域競爭，成為當下關鍵課題。</description>
-    <category>雲端</category>
-    <pubDate>Wed, 26 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
