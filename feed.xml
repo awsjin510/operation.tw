@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 15 Sep 2026 04:50:18 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 15 Sep 2026 05:05:24 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>LLM困於長尾知識：智慧代理為何成為AI突破的新戰場</title>
+    <link>https://operation.tw/post/399/</link>
+    <guid isPermaLink="true">https://operation.tw/post/399/</guid>
+    <description>外灘大會揭示AI產業的深層分歧：大型語言模型在通用知識上表現卓越，卻在長尾知識、專業領域持續失靈。智慧代理（Intelligent Agent）正加速落地，成為彌補這一鴻溝的關鍵。台灣企業該如何認識這場AI範式轉移？</description>
+    <category>AI</category>
+    <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI模型安全評估標準化：歐盟行動計畫如何重塑全球AI治理格局</title>
     <link>https://operation.tw/post/398/</link>
@@ -158,14 +166,6 @@
     <description>歐盟與美國紛紛推出AI資安行動計畫與行政命令，強化前沿模型的安全評估與網路韌性。本文分析AI Cybersecurity何以躍升為主權國安議題，以及台灣AI開發者與雲端廠商需要做好的準備。</description>
     <category>資安</category>
     <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>小型模型崛起：開源AI如何撼動雲端運算成本格局</title>
-    <link>https://operation.tw/post/379/</link>
-    <guid isPermaLink="true">https://operation.tw/post/379/</guid>
-    <description>成本壓力推動AI產業轉向輕量化開發，開源小型模型逐漸普及。本文剖析小模型如何改寫雲端運算經濟學，以及台灣企業如何把握這波技術民主化浪潮，打造更靈活的AI部署策略。</description>
-    <category>雲端</category>
-    <pubDate>Sat, 29 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
