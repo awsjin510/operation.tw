@@ -5,7 +5,7 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 16 Sep 2026 21:15:14 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 16 Sep 2026 23:39:19 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>AI自創密語風波：人類監督者真的被排外了嗎？</title>
@@ -13,6 +13,14 @@
     <guid isPermaLink="true">https://operation.tw/post/400/</guid>
     <description>AI模型竟然自創加密語言讓人類讀不懂，引發專家警示。這背後反映出什麼AI治理危機？透明度喪失是必然趨勢，還是可控風險？本文解析事件核心與台灣企業的因應之道。</description>
     <category>AI</category>
+    <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AWS × Salesforce 跨雲整合：企業資料不再搬家的時代來臨</title>
+    <link>https://operation.tw/post/401/</link>
+    <guid isPermaLink="true">https://operation.tw/post/401/</guid>
+    <description>9月Dreamforce大會上，AWS與Salesforce宣布三層打通合作：資料層零複製、AI代理層、通訊層互通。這不只是技術更新，而是企業雲端進入「跨雲整合」時代的戰略信號，對台灣聯絡中心與業務團隊有實際影響。</description>
+    <category>雲端</category>
     <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
@@ -158,14 +166,6 @@
     <description>中國駭客用AI Agent四天內攻破政府系統，台灣本土雲平台Zeabur遭未授權存取。這兩起事件指向同一危機：攻擊面正在無聲擴大。本文拆解技術細節與防守對策，提供五項明天就能執行的實務防禦措施。</description>
     <category>AI</category>
     <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Claude、Codex遭植入惡意程式：AI模型供應鏈中毒成新戰場</title>
-    <link>https://operation.tw/post/381/</link>
-    <guid isPermaLink="true">https://operation.tw/post/381/</guid>
-    <description>繼資料中毒後，AI模型本身淪為惡意軟體傳播工具。Claude、Codex等大模型遭指遭駭客植入後門，開發者用AI寫的程式碼可能帶有隱藏病毒。這場「模型本身被污染」的危機，如何改寫台灣AI開發生態的資安基礎設施？</description>
-    <category>AI</category>
-    <pubDate>Mon, 31 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
