@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 16 Sep 2026 04:45:23 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 16 Sep 2026 05:00:52 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI自創密語風波：人類監督者真的被排外了嗎？</title>
+    <link>https://operation.tw/post/400/</link>
+    <guid isPermaLink="true">https://operation.tw/post/400/</guid>
+    <description>AI模型竟然自創加密語言讓人類讀不懂，引發專家警示。這背後反映出什麼AI治理危機？透明度喪失是必然趨勢，還是可控風險？本文解析事件核心與台灣企業的因應之道。</description>
+    <category>AI</category>
+    <pubDate>Wed, 16 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>LLM困於長尾知識：智慧代理為何成為AI突破的新戰場</title>
     <link>https://operation.tw/post/399/</link>
@@ -158,14 +166,6 @@
     <description>繼資料中毒後，AI模型本身淪為惡意軟體傳播工具。Claude、Codex等大模型遭指遭駭客植入後門，開發者用AI寫的程式碼可能帶有隱藏病毒。這場「模型本身被污染」的危機，如何改寫台灣AI開發生態的資安基礎設施？</description>
     <category>AI</category>
     <pubDate>Mon, 31 Aug 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI模型安全評估成國安議題：歐美新規如何影響台灣AI產業？</title>
-    <link>https://operation.tw/post/380/</link>
-    <guid isPermaLink="true">https://operation.tw/post/380/</guid>
-    <description>歐盟與美國紛紛推出AI資安行動計畫與行政命令，強化前沿模型的安全評估與網路韌性。本文分析AI Cybersecurity何以躍升為主權國安議題，以及台灣AI開發者與雲端廠商需要做好的準備。</description>
-    <category>資安</category>
-    <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
