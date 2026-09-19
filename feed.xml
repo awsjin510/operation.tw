@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sat, 19 Sep 2026 04:33:38 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 19 Sep 2026 04:47:58 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AWS 20週年啟示錄：從工程痛點到雲端帝國的創新法則</title>
+    <link>https://operation.tw/post/404/</link>
+    <guid isPermaLink="true">https://operation.tw/post/404/</guid>
+    <description>AWS成立20週年之際，其從解決Amazon內部工程師痛點的內部工具，發展成千億美元規模的雲端運算基礎設施，蘊含了什麼創新邏輯？台灣企業該如何借鑑這套成長方程式，在AI時代做好雲端策略規劃？</description>
+    <category>雲端</category>
+    <pubDate>Sat, 19 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>輝達B200晶片殘值暴漲58%：AI算力短缺時代的投資啟示</title>
     <link>https://operation.tw/post/403/</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/384/</guid>
     <description>AWS 邁入20周年，從亞馬遜內部工程師的痛點解決方案，演變成千億美元規模的雲端運算基礎設施。這個成長故事對正在數位轉型的台灣企業有什麼啟示？我們深入分析AWS的成功關鍵與未來戰略。</description>
     <category>雲端</category>
-    <pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI「無限算力」時代結束：Claude 5.1、Gemini 改價背後的成本轉嫁</title>
-    <link>https://operation.tw/post/385/</link>
-    <guid isPermaLink="true">https://operation.tw/post/385/</guid>
-    <description>Anthropic 與 Google 在 9 月同步調整 AI 產品計價模式，從固定額度改為用量計費。這不是巧合，而是 AI 大廠正式撕掉「免費吃到飽」假象的信號。懂得管理 AI 用量成為比寫 Prompt 更稀缺的能力。</description>
-    <category>AI</category>
     <pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
