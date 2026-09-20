@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 20 Sep 2026 04:50:15 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 05:05:29 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>醫療AI的語義危機：LLM為何難以獨當一面？</title>
+    <link>https://operation.tw/post/405/</link>
+    <guid isPermaLink="true">https://operation.tw/post/405/</guid>
+    <description>大型語言模型在醫療應用中面臨關鍵瓶頸——無法獨撐數據語義基礎。本文探討LLM在醫療領域的盲點、為何單純的文本理解不足以支撐臨床決策，以及企業該如何構建混合型AI架構來彌補缺陷。</description>
+    <category>AI</category>
+    <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AWS 20週年啟示錄：從工程痛點到雲端帝國的創新法則</title>
     <link>https://operation.tw/post/404/</link>
@@ -158,14 +166,6 @@
     <description>Anthropic坦承旗下AI模型存在安全漏洞，與人類價值觀「未完全校準」。這不是技術bug，而是AI治理的結構性問題。當全球監管收緊、台灣企業急速導入AI時，該如何防範失控風險？</description>
     <category>資安</category>
     <pubDate>Thu, 03 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AWS 20周年：從內部工具到雲端帝國，台灣企業該學什麼？</title>
-    <link>https://operation.tw/post/384/</link>
-    <guid isPermaLink="true">https://operation.tw/post/384/</guid>
-    <description>AWS 邁入20周年，從亞馬遜內部工程師的痛點解決方案，演變成千億美元規模的雲端運算基礎設施。這個成長故事對正在數位轉型的台灣企業有什麼啟示？我們深入分析AWS的成功關鍵與未來戰略。</description>
-    <category>雲端</category>
-    <pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
