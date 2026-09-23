@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 23 Sep 2026 04:41:11 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 23 Sep 2026 04:56:20 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Claude Opus 5.5上線：成本與安全的新均衡點</title>
+    <link>https://operation.tw/post/408/</link>
+    <guid isPermaLink="true">https://operation.tw/post/408/</guid>
+    <description>Anthropic推出Claude Opus 5.5模型，強調效能提升與成本優化並行。在AI模型競賽白熱化之際，這次升級如何改變企業AI採購決策？台灣企業該如何評估遷移成本與安全收益？</description>
+    <category>AI</category>
+    <pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>公有雲2035大預言：市場規模翻倍成長，台灣企業的機會在哪？</title>
     <link>https://operation.tw/post/407/</link>
@@ -158,14 +166,6 @@
     <description>Research Nester最新報告預測公有雲市場規模與份額將在2035年大幅成長。面對AWS、Azure、GCP三大平台的競爭格局，台灣企業該如何評估選型、規劃混合雲策略，以及在AI時代搶占先機？本文帶你解讀市場趨勢與實戰建議。</description>
     <category>雲端</category>
     <pubDate>Sun, 06 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>歐盟AI資安行動計畫出爐：台灣企業的合規倒計時已啟動</title>
-    <link>https://operation.tw/post/388/</link>
-    <guid isPermaLink="true">https://operation.tw/post/388/</guid>
-    <description>歐盟推動AI資安行動計畫，強化模型安全評估與網路韌性要求。對出口至歐盟或使用歐盟技術的台灣AI企業而言，這不僅是監管變化，更是產品架構調整的緊迫信號。本文分析新規核心內容與台灣應對之道。</description>
-    <category>資安</category>
-    <pubDate>Sat, 05 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
