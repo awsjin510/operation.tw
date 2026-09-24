@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Thu, 24 Sep 2026 04:44:22 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 24 Sep 2026 05:06:21 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>歐盟AI資安行動計畫解析：台灣企業如何應對全球模型安全新標準？</title>
+    <link>https://operation.tw/post/410/</link>
+    <guid isPermaLink="true">https://operation.tw/post/410/</guid>
+    <description>歐盟推動AI資安行動計畫，強化模型安全評估與網路韌性標準。這不僅是歐洲監管趨勢，更將成為全球AI產業的合規門檻。台灣企業與AI服務提供商必須提前了解這些新規範對產品開發、出口認證的影響。</description>
+    <category>資安</category>
+    <pubDate>Thu, 24 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Claude Opus 5.5上線：成本與安全的新均衡點</title>
     <link>https://operation.tw/post/408/</link>
@@ -158,14 +166,6 @@
     <description>Anthropic宣布向AWS投資超過千億美元，這筆巨額合作不僅反映AI算力需求的爆炸式成長，更象徵雲端運算市場從軟體競爭轉向硬體基礎設施的權力遊戲。台灣企業應重新評估雲端策略。</description>
     <category>雲端</category>
     <pubDate>Tue, 08 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>OpenAI Astra掀AGI浪潮：台灣企業該如何應對5分鐘完成5小時工作的AI？</title>
-    <link>https://operation.tw/post/390/</link>
-    <guid isPermaLink="true">https://operation.tw/post/390/</guid>
-    <description>黃仁勳盛讚OpenAI Astra標誌AGI時代真正到來，其超高效率處理能力引發全球AI版圖重新洗牌。本文分析Astra對台灣產業、資安、人力市場的衝擊，以及企業應立即採取的應對策略。</description>
-    <category>AI</category>
-    <pubDate>Mon, 07 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
