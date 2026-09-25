@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 25 Sep 2026 04:53:04 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 25 Sep 2026 05:08:23 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Anthropic、OpenAI新模型大戰：雲端成本與效率角力如何改寫企業選擇？</title>
+    <link>https://operation.tw/post/411/</link>
+    <guid isPermaLink="true">https://operation.tw/post/411/</guid>
+    <description>AI巨頭Anthropic與OpenAI同時發布新模型，把競爭焦點從能力轉向成本效率與推理速度。這場「效率戰爭」將如何衝擊企業雲端支出預算？台灣中小企業的AI導入門檻是否將大幅降低？</description>
+    <category>雲端</category>
+    <pubDate>Fri, 25 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>歐盟AI資安行動計畫解析：台灣企業如何應對全球模型安全新標準？</title>
     <link>https://operation.tw/post/410/</link>
@@ -158,14 +166,6 @@
     <description>9 月 Palo Alto Networks 公開實驗：AI Agent 用 10 小時完成人類駭客隊伍需要兩週的完整攻擊鏈。問題不是 AI 多強，而是傳統資安架構全盤預設「攻擊者是人類速度」——當這個假設破裂，所有防守時間緩衝瞬間失效。</description>
     <category>資安</category>
     <pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Anthropic砸千億美元投資AWS：AI晶片戰爭延燒至雲端基礎設施</title>
-    <link>https://operation.tw/post/391/</link>
-    <guid isPermaLink="true">https://operation.tw/post/391/</guid>
-    <description>Anthropic宣布向AWS投資超過千億美元，這筆巨額合作不僅反映AI算力需求的爆炸式成長，更象徵雲端運算市場從軟體競爭轉向硬體基礎設施的權力遊戲。台灣企業應重新評估雲端策略。</description>
-    <category>雲端</category>
-    <pubDate>Tue, 08 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
