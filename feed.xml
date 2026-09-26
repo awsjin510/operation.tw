@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Fri, 25 Sep 2026 21:31:54 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 26 Sep 2026 05:12:37 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>AI購物助手失靈？節日電商難題比你想的複雜</title>
+    <link>https://operation.tw/post/412/</link>
+    <guid isPermaLink="true">https://operation.tw/post/412/</guid>
+    <description>最新研究揭示AI在節日購物場景中的根本限制。儘管AI技術進展迅速，但在個性化推薦、複雜決策與信任建立上仍存在關鍵瓶頸。企業如何正視這些難題，成為2026年電商競爭的分水嶺。</description>
+    <category>AI</category>
+    <pubDate>Sat, 26 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Anthropic、OpenAI新模型大戰：雲端成本與效率角力如何改寫企業選擇？</title>
     <link>https://operation.tw/post/411/</link>
@@ -157,14 +165,6 @@
     <guid isPermaLink="true">https://operation.tw/post/392/</guid>
     <description>騰訊混元Hy4 preview調用量暴增379%登頂，中國AI模型已連續19週超越美國。這場模型競爭延伸至基礎建設的新階段，對台灣AI產業意味著什麼？本文分析主權AI時代的算力競賽現狀，以及台灣企業的應對策略。</description>
     <category>AI</category>
-    <pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI 把駭客攻擊加速 168 倍：為什麼傳統資安防線正在失效</title>
-    <link>https://operation.tw/post/393/</link>
-    <guid isPermaLink="true">https://operation.tw/post/393/</guid>
-    <description>9 月 Palo Alto Networks 公開實驗：AI Agent 用 10 小時完成人類駭客隊伍需要兩週的完整攻擊鏈。問題不是 AI 多強，而是傳統資安架構全盤預設「攻擊者是人類速度」——當這個假設破裂，所有防守時間緩衝瞬間失效。</description>
-    <category>資安</category>
     <pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
