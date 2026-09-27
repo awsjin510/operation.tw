@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 27 Sep 2026 05:14:34 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 05:29:07 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>APT28新惡意軟體BadPaw Loader現蹤：台灣企業如何防禦國家級駭客？</title>
+    <link>https://operation.tw/post/413/</link>
+    <guid isPermaLink="true">https://operation.tw/post/413/</guid>
+    <description>俄羅斯駭客組織APT28近期對烏克蘭散布新型惡意程式BadPaw Loader與MeowMeow，標誌著地緣政治衝突已升級至網路前線。台灣作為地緣政治敏感區域，企業需立即提升針對性防禦，了解國家級APT的攻擊手法與防護策略。</description>
+    <category>資安</category>
+    <pubDate>Sun, 27 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>AI購物助手失靈？節日電商難題比你想的複雜</title>
     <link>https://operation.tw/post/412/</link>
@@ -158,14 +166,6 @@
     <description>高德納預估高效小型AI模型將在2027年成為主流，直接衝擊Token成本結構。本文探討小型模型如何重塑雲端運算經濟學，以及台灣企業如何在成本與效能間找到最適平衡點。</description>
     <category>雲端</category>
     <pubDate>Thu, 10 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>中國AI模型調用量連19週領先美國：台灣企業該如何應對算力競賽新局面？</title>
-    <link>https://operation.tw/post/392/</link>
-    <guid isPermaLink="true">https://operation.tw/post/392/</guid>
-    <description>騰訊混元Hy4 preview調用量暴增379%登頂，中國AI模型已連續19週超越美國。這場模型競爭延伸至基礎建設的新階段，對台灣AI產業意味著什麼？本文分析主權AI時代的算力競賽現狀，以及台灣企業的應對策略。</description>
-    <category>AI</category>
-    <pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
