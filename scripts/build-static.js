@@ -28,16 +28,7 @@ const CAT_DESC = {
   成長: '個人成長、習慣養成與自媒體經營'
 };
 
-// 從標題開頭抓 Podcast 集數碼（AI35 / EP99…），文章與單集標題都用得到
-function episodeCode(title) {
-  const t = String(title || '').trim();
-  // 一般情況：碼後接分隔符（AI35_… / EP99｜…）
-  const m = t.match(/^([A-Za-z]{1,6}\d{1,4})\s*[_|｜\-:：．.]/);
-  if (m) return m[1].toUpperCase();
-  // 單集標題偶爾碼後直接接中文（AI56趨勢操作｜…）；只認 AI/EP，避免把 APT28、AWS20 之類誤判成集數
-  const m2 = t.match(/^((?:AI|EP)\d{1,4})(?=[\u3400-\u9fff])/i);
-  return m2 ? m2[1].toUpperCase() : '';
-}
+const { episodeCode } = require('./lib/episode');
 // 讀 episodes.json，建「集數碼 → 單集」對照（供文章頁加 PodcastEpisode 結構化資料）
 function loadEpisodeMap() {
   try {
@@ -56,6 +47,13 @@ function pickEpisode(list, postDate) {
   return list.reduce((best, e) =>
     Math.abs(Date.parse(e.date) - t) < Math.abs(Date.parse(best.date) - t) ? e : best);
 }
+
+// 全站 favicon（Google 搜尋結果與分頁標籤會用到）
+const FAVICON_TAGS = '<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">';
+
+// 內容日期：以文章的 updated_at（沒有就用發文日）為準，讓 sitemap lastmod 與 JSON-LD dateModified 一致
+const postModified = (p) => ((p.updated_at || '').slice(0, 10) || p.date || '');
+const latestDate = (posts) => posts.reduce((m, p) => { const d = postModified(p); return d > m ? d : m; }, '');
 
 function esc(s) {
   return String(s || '')
@@ -115,6 +113,12 @@ function buildToc(body) {
 // ── 產生個別文章 stub 頁 ────────────────────────────────────────────
 function generatePostPage(post, body, episode, neighbors) {
   body = body || '';
+  // 文末收聽區塊是發文當下寫進 D1 的：Apple 只連到節目頁、Spotify 是用「當時的單集標題」搜尋。
+  // 這裡依 episodes.json 的最新資料改寫成該集的 Apple 單集頁與目前標題，不必回頭改 D1。
+  if (episode) {
+    if (episode.apple) body = body.replace(/https:\/\/podcasts\.apple\.com\/podcast\/1620760720(?=["'])/g, episode.apple);
+    if (episode.spot) body = body.replace(/https:\/\/open\.spotify\.com\/search\/[^"'\s]+/g, episode.spot);
+  }
   const { body: bodyWithToc, toc } = buildToc(body);
   body = bodyWithToc;
   const L = neighbors && neighbors.newer, R = neighbors && neighbors.older;
@@ -204,6 +208,7 @@ function generatePostPage(post, body, episode, neighbors) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+${FAVICON_TAGS}
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <title>${esc(post.title)} | 操作一下</title>
 <meta name="description" content="${esc(desc)}">
@@ -386,7 +391,7 @@ function generateCategoryPage(cat, posts) {
   const list = sorted.map(p => {
     const slug = p.slug || p.id;
     return `<li class="ci"><a class="ci-t" href="/post/${encodeURIComponent(slug)}/">${esc(p.title)}</a>`
-      + `<div class="ci-meta"><time datetime="${esc(p.date)}">${esc(p.date)}</time>${p.views > 0 ? ` · ${p.views} 次瀏覽` : ''}</div>`
+      + `<div class="ci-meta"><time datetime="${esc(p.date)}">${esc(p.date)}</time></div>`
       + (p.excerpt ? `<p class="ci-exc">${esc(p.excerpt)}</p>` : '')
       + `</li>`;
   }).join('\n');
@@ -396,6 +401,7 @@ function generateCategoryPage(cat, posts) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+${FAVICON_TAGS}
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <title>${esc(cat)}文章彙整（共 ${posts.length} 篇）| 操作一下</title>
 <meta name="description" content="${esc(desc)}">
@@ -453,15 +459,23 @@ ${list}
 }
 
 // ── 產生靜態文章卡片 HTML（注入 index.html 用）─────────────────────
+// 本站封面 /images/posts/post-N.jpg → 卡片用的 480 寬 WebP（檔案存在才用）
+function thumbWebp(image) {
+  if (!image || !/^\/images\/posts\/[^/]+\.jpe?g$/i.test(image)) return '';
+  const t = image.replace(/\.jpe?g$/i, '-480.webp');
+  return fs.existsSync(path.join(ROOT, t)) ? t : '';
+}
+
 function cardHTML(p, featured = false) {
   const icon = CAT_ICON[p.category]  || '📄';
+  const thumb = thumbWebp(p.image);
   const imgTag = p.image
-    ? `<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy" data-cat="${esc(p.category)}" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')">`
+    ? `${thumb ? `<picture><source type="image/webp" srcset="${esc(thumb)}">` : ''}<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy" decoding="async" data-cat="${esc(p.category)}" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')">${thumb ? '</picture>' : ''}`
     : `<span class="pc-img-ph">${icon}</span>`;
   const cls = (featured ? 'pc featured' : 'pc') + ' cat-' + esc(p.category);
   const eyebrow = featured ? `<div class="pc-eyebrow">FEATURED · ${esc(p.category)}</div>` : '';
   const slug = p.slug || p.id;
-  return `<article class="${cls}" data-post-id="${p.id}" onclick="openPost('${p.id}')"><a class="pc-seo-link" href="/post/${encodeURIComponent(slug)}/" onclick="event.preventDefault();openPost('${p.id}')" aria-label="${esc(p.title)}"></a><div class="pc-img">${imgTag}<span class="pc-badge">${esc(p.category)}</span></div><div class="pc-body">${eyebrow}<div class="pc-title"><a href="/post/${encodeURIComponent(slug)}/" onclick="event.preventDefault();openPost('${p.id}')" style="color:inherit;text-decoration:none;">${esc(p.title)}</a></div><div class="pc-exc">${esc(p.excerpt || '')}</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>${esc(p.date)}</span>${p.views > 0 ? `<span class="pc-view-cnt">${p.views} 次瀏覽</span>` : ''}</div></div></article>`;
+  return `<article class="${cls}" data-post-id="${p.id}" onclick="openPost('${p.id}')"><a class="pc-seo-link" href="/post/${encodeURIComponent(slug)}/" onclick="event.preventDefault();openPost('${p.id}')" aria-label="${esc(p.title)}"></a><div class="pc-img">${imgTag}<span class="pc-badge">${esc(p.category)}</span></div><div class="pc-body">${eyebrow}<div class="pc-title"><a href="/post/${encodeURIComponent(slug)}/" onclick="event.preventDefault();openPost('${p.id}')" style="color:inherit;text-decoration:none;">${esc(p.title)}</a></div><div class="pc-exc">${esc(p.excerpt || '')}</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>${esc(p.date)}</span></div></div></article>`;
 }
 
 // ── 取得文章完整內文 ────────────────────────────────────────────────
@@ -495,7 +509,8 @@ async function loadBodies(posts) {
 
 // ── 更新 sitemap.xml ────────────────────────────────────────────────
 function updateSitemap(posts) {
-  const today = new Date().toISOString().split('T')[0];
+  // lastmod 用內容實際的最後更新日，不用 build 當天：每次 build 都寫今天會讓 lastmod 失去可信度，也會製造空 commit
+  const today = latestDate(posts) || new Date().toISOString().split('T')[0];
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n';
   xml += `  <url>\n    <loc>${SITE_URL}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
   xml += `  <url>\n    <loc>${SITE_URL}/podcast.html</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
@@ -508,14 +523,15 @@ function updateSitemap(posts) {
   let catUrls = 0;
   for (const cat of Object.keys(CAT_ICON)) {
     if (!catSet.has(cat)) continue;
-    xml += `  <url>\n    <loc>${SITE_URL}/category/${encodeURIComponent(cat)}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
+    const catLast = latestDate(posts.filter((p) => p.category === cat)) || today;
+    xml += `  <url>\n    <loc>${SITE_URL}/category/${encodeURIComponent(cat)}/</loc>\n    <lastmod>${catLast}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
     catUrls++;
   }
   for (const p of posts) {
     const slug = p.slug || p.id;
     const imageTag = (p.image && p.image.startsWith('/'))
       ? `\n    <image:image><image:loc>${SITE_URL}${p.image}</image:loc></image:image>` : '';
-    xml += `  <url>\n    <loc>${SITE_URL}/post/${encodeURIComponent(slug)}/</loc>\n    <lastmod>${p.date || today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>${imageTag}\n  </url>\n`;
+    xml += `  <url>\n    <loc>${SITE_URL}/post/${encodeURIComponent(slug)}/</loc>\n    <lastmod>${postModified(p) || today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>${imageTag}\n  </url>\n`;
   }
   xml += '</urlset>\n';
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml);
@@ -524,8 +540,9 @@ function updateSitemap(posts) {
 
 // ── 更新 feed.xml ────────────────────────────────────────────────────
 function updateFeed(posts) {
-  const now = new Date().toUTCString();
   const top20 = posts.slice(0, 20);
+  // lastBuildDate 用最新文章日期：內容沒變就不產生 diff
+  const now = new Date(latestDate(posts) || Date.now()).toUTCString();
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n';
   xml += `  <title>操作一下</title>\n  <link>${SITE_URL}</link>\n`;
   xml += `  <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>\n`;
@@ -759,6 +776,7 @@ function generateFaqPage(posts, bodies) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+${FAVICON_TAGS}
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <title>常見問題彙整（${total} 則問答）| 操作一下</title>
 <meta name="description" content="${esc(desc)}">
@@ -873,6 +891,7 @@ function generateGlossaryPage(posts) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+${FAVICON_TAGS}
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <title>科技術語庫（${terms.length} 條定義）| 操作一下</title>
 <meta name="description" content="${esc(desc)}">
@@ -931,12 +950,17 @@ function ensureCoverWebp() {
   const dir = path.join(ROOT, 'images', 'posts');
   if (!fs.existsSync(dir)) return Promise.resolve();
   const jpgs = fs.readdirSync(dir).filter((f) => /\.jpe?g$/i.test(f));
-  const todo = jpgs.filter((f) => !fs.existsSync(path.join(dir, f.replace(/\.jpe?g$/i, '.webp'))));
-  if (!todo.length) { console.log(`  ✓ 封面 WebP 已齊（${jpgs.length} 張）`); return Promise.resolve(); }
-  return Promise.all(todo.map((f) =>
-    sharp(path.join(dir, f)).webp({ quality: 82 }).toFile(path.join(dir, f.replace(/\.jpe?g$/i, '.webp')))
-      .catch((e) => console.warn(`  ✗ ${f} 轉檔失敗：${e.message}`))
-  )).then(() => console.log(`  ✓ 新產生 ${todo.length} 張封面 WebP`));
+  // 兩種尺寸：原尺寸 .webp（文章頁封面）、480 寬 -480.webp（首頁／分類頁卡片縮圖，卡片實際只顯示約 150～400px）
+  const jobs = [];
+  for (const f of jpgs) {
+    const full = path.join(dir, f.replace(/\.jpe?g$/i, '.webp'));
+    const thumb = path.join(dir, f.replace(/\.jpe?g$/i, '-480.webp'));
+    if (!fs.existsSync(full)) jobs.push(() => sharp(path.join(dir, f)).webp({ quality: 82 }).toFile(full));
+    if (!fs.existsSync(thumb)) jobs.push(() => sharp(path.join(dir, f)).resize({ width: 480, withoutEnlargement: true }).webp({ quality: 78 }).toFile(thumb));
+  }
+  if (!jobs.length) { console.log(`  ✓ 封面 WebP 已齊（${jpgs.length} 張 × 2 尺寸）`); return Promise.resolve(); }
+  return Promise.all(jobs.map((job) => job().catch((e) => console.warn(`  ✗ WebP 轉檔失敗：${e.message}`))))
+    .then(() => console.log(`  ✓ 新產生 ${jobs.length} 張封面 WebP`));
 }
 
 async function main() {

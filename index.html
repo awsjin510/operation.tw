@@ -4,24 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://static.cloudflareinsights.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://operation-tw-api.gamania-cloudforce.workers.dev https://cloudflareinsights.com;">
-<title>操作一下 | operation.tw</title>
+<title>操作一下｜AI、雲端、資安 Podcast 與科技部落格</title>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="description" content="雲端、資安、AI、閱讀、成長 — 簡單的事情專注做">
+<meta name="description" content="操作一下由 Jin 主持，用深度文章與 Podcast 拆解 AI、雲端（AWS、Azure、GCP）與資安趨勢，也分享閱讀與職涯成長。每週更新，幫你用更少時間掌握真正重要的科技變化。">
 <meta name="google-site-verification" content="puSeWyYwLv1eXCJhWEzExzrvlq0XQV6dH9jNYkyDO4c" />
 <link rel="canonical" href="https://operation.tw/">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="help" type="text/markdown" href="https://operation.tw/llms.txt" title="LLM Information">
 <link rel="alternate" type="application/rss+xml" title="操作一下 RSS" href="https://operation.tw/feed.xml">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="操作一下">
-<meta property="og:title" content="操作一下">
+<meta property="og:title" content="操作一下｜AI、雲端、資安 Podcast 與科技部落格">
 <meta property="og:description" content="專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享">
 <meta property="og:url" content="https://operation.tw/">
 <meta property="og:image" content="https://operation.tw/default.png">
 <meta property="og:locale" content="zh_TW">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="操作一下">
+<meta name="twitter:title" content="操作一下｜AI、雲端、資安 Podcast 與科技部落格">
 <meta name="twitter:description" content="專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享">
 <meta name="twitter:image" content="https://operation.tw/default.png">
 <script type="application/ld+json">
@@ -501,7 +504,7 @@ footer address a:hover{color:var(--cyan);}
 .related{margin-top:52px;padding-top:32px;border-top:1px solid var(--border);}
 .related-lbl{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px;}
 .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
-.rel-card{background:var(--bg2);border:1px solid var(--border);padding:14px;cursor:pointer;transition:all .22s;}
+.rel-card{display:block;color:inherit;text-decoration:none;background:var(--bg2);border:1px solid var(--border);padding:14px;cursor:pointer;transition:all .22s;}
 .rel-card:hover{border-color:var(--border2);transform:translateY(-2px);}
 .rel-cat{font-family:'Share Tech Mono',monospace;font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px;}
 .rel-title{font-size:.82rem;font-weight:600;color:var(--text);line-height:1.5;}
@@ -688,7 +691,7 @@ setTimeout(function(){document.documentElement.classList.add('v2-ready');},3000)
 <!-- NAV -->
 <nav>
 <div class="nav-inner">
-  <span class="nav-logo" onclick="goHome()" style="display:flex;align-items:center;gap:8px;"><img src="logo.png" alt="操作一下" style="height:36px;width:36px;object-fit:cover;border-radius:2px;">操作一下</span>
+  <a class="nav-logo" href="/" onclick="goHome();return false;" style="display:flex;align-items:center;gap:8px;text-decoration:none;"><img src="/logo-72.webp" width="36" height="36" alt="操作一下" style="height:36px;width:36px;object-fit:cover;border-radius:2px;">操作一下</a>
   <div class="nav-links">
     <button onclick="goHome();gotoSection('posts')">文章</button>
     <a href="podcast.html" class="nav-podcast">Podcast</a>
@@ -761,7 +764,7 @@ setTimeout(function(){document.documentElement.classList.add('v2-ready');},3000)
       <button class="fb" data-cat="閱讀" onclick="applyFilter(this,'閱讀')">閱讀</button>
       <button class="fb" data-cat="成長" onclick="applyFilter(this,'成長')">成長</button>
     </div>
-    <div class="post-grid" id="grid-main"><article class="pc cat-雲端" data-post-id="414" onclick="openPost('414')"><a class="pc-seo-link" href="/post/414/" onclick="event.preventDefault();openPost('414')" aria-label="Neoclouds搶攻AI時代：新興雲端勢力如何挑戰AWS、Azure寡占？"></a><div class="pc-img"><img src="/images/posts/post-414.jpg" alt="Neoclouds搶攻AI時代：新興雲端勢力如何挑戰AWS、Azure寡占？" loading="lazy" data-cat="雲端" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">雲端</span></div><div class="pc-body"><div class="pc-title"><a href="/post/414/" onclick="event.preventDefault();openPost('414')" style="color:inherit;text-decoration:none;">Neoclouds搶攻AI時代：新興雲端勢力如何挑戰AWS、Azure寡占？</a></div><div class="pc-exc">AI時代雲端運算需求暴增，Neoclouds等新興玩家乘勢而起。本文分析這股新勢力如何在大模型訓練、推理工作負載中找到差異化優勢，以及對台灣企業選擇雲端夥伴的啟示。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-28</span></div></div></article><article class="pc cat-資安" data-post-id="413" onclick="openPost('413')"><a class="pc-seo-link" href="/post/413/" onclick="event.preventDefault();openPost('413')" aria-label="APT28新惡意軟體BadPaw Loader現蹤：台灣企業如何防禦國家級駭客？"></a><div class="pc-img"><img src="/images/posts/post-413.jpg" alt="APT28新惡意軟體BadPaw Loader現蹤：台灣企業如何防禦國家級駭客？" loading="lazy" data-cat="資安" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">資安</span></div><div class="pc-body"><div class="pc-title"><a href="/post/413/" onclick="event.preventDefault();openPost('413')" style="color:inherit;text-decoration:none;">APT28新惡意軟體BadPaw Loader現蹤：台灣企業如何防禦國家級駭客？</a></div><div class="pc-exc">俄羅斯駭客組織APT28近期對烏克蘭散布新型惡意程式BadPaw Loader與MeowMeow，標誌著地緣政治衝突已升級至網路前線。台灣作為地緣政治敏感區域，企業需立即提升針對性防禦，了解國家級APT的攻擊手法與防護策略。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-27</span></div></div></article><article class="pc cat-AI" data-post-id="412" onclick="openPost('412')"><a class="pc-seo-link" href="/post/412/" onclick="event.preventDefault();openPost('412')" aria-label="AI購物助手失靈？節日電商難題比你想的複雜"></a><div class="pc-img"><img src="/images/posts/post-412.jpg" alt="AI購物助手失靈？節日電商難題比你想的複雜" loading="lazy" data-cat="AI" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/412/" onclick="event.preventDefault();openPost('412')" style="color:inherit;text-decoration:none;">AI購物助手失靈？節日電商難題比你想的複雜</a></div><div class="pc-exc">最新研究揭示AI在節日購物場景中的根本限制。儘管AI技術進展迅速，但在個性化推薦、複雜決策與信任建立上仍存在關鍵瓶頸。企業如何正視這些難題，成為2026年電商競爭的分水嶺。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-26</span></div></div></article><article class="pc cat-雲端" data-post-id="411" onclick="openPost('411')"><a class="pc-seo-link" href="/post/411/" onclick="event.preventDefault();openPost('411')" aria-label="Anthropic、OpenAI新模型大戰：雲端成本與效率角力如何改寫企業選擇？"></a><div class="pc-img"><img src="/images/posts/post-411.jpg" alt="Anthropic、OpenAI新模型大戰：雲端成本與效率角力如何改寫企業選擇？" loading="lazy" data-cat="雲端" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">雲端</span></div><div class="pc-body"><div class="pc-title"><a href="/post/411/" onclick="event.preventDefault();openPost('411')" style="color:inherit;text-decoration:none;">Anthropic、OpenAI新模型大戰：雲端成本與效率角力如何改寫企業選擇？</a></div><div class="pc-exc">AI巨頭Anthropic與OpenAI同時發布新模型，把競爭焦點從能力轉向成本效率與推理速度。這場「效率戰爭」將如何衝擊企業雲端支出預算？台灣中小企業的AI導入門檻是否將大幅降低？</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-25</span><span class="pc-view-cnt">1 次瀏覽</span></div></div></article><article class="pc cat-資安" data-post-id="410" onclick="openPost('410')"><a class="pc-seo-link" href="/post/410/" onclick="event.preventDefault();openPost('410')" aria-label="歐盟AI資安行動計畫解析：台灣企業如何應對全球模型安全新標準？"></a><div class="pc-img"><img src="/images/posts/post-410.jpg" alt="歐盟AI資安行動計畫解析：台灣企業如何應對全球模型安全新標準？" loading="lazy" data-cat="資安" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">資安</span></div><div class="pc-body"><div class="pc-title"><a href="/post/410/" onclick="event.preventDefault();openPost('410')" style="color:inherit;text-decoration:none;">歐盟AI資安行動計畫解析：台灣企業如何應對全球模型安全新標準？</a></div><div class="pc-exc">歐盟推動AI資安行動計畫，強化模型安全評估與網路韌性標準。這不僅是歐洲監管趨勢，更將成為全球AI產業的合規門檻。台灣企業與AI服務提供商必須提前了解這些新規範對產品開發、出口認證的影響。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-24</span><span class="pc-view-cnt">1 次瀏覽</span></div></div></article><article class="pc cat-AI" data-post-id="408" onclick="openPost('408')"><a class="pc-seo-link" href="/post/408/" onclick="event.preventDefault();openPost('408')" aria-label="Claude Opus 5.5上線：成本與安全的新均衡點"></a><div class="pc-img"><img src="/images/posts/post-408.jpg" alt="Claude Opus 5.5上線：成本與安全的新均衡點" loading="lazy" data-cat="AI" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/408/" onclick="event.preventDefault();openPost('408')" style="color:inherit;text-decoration:none;">Claude Opus 5.5上線：成本與安全的新均衡點</a></div><div class="pc-exc">Anthropic推出Claude Opus 5.5模型，強調效能提升與成本優化並行。在AI模型競賽白熱化之際，這次升級如何改變企業AI採購決策？台灣企業該如何評估遷移成本與安全收益？</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-23</span><span class="pc-view-cnt">2 次瀏覽</span></div></div></article><article class="pc cat-AI" data-post-id="409" onclick="openPost('409')"><a class="pc-seo-link" href="/post/409/" onclick="event.preventDefault();openPost('409')" aria-label="AI57｜Claude Opus 5.5 戰況分析：頂規能力便宜四成，AI性價比之戰開打"></a><div class="pc-img"><img src="/images/posts/post-409.jpg" alt="AI57｜Claude Opus 5.5 戰況分析：頂規能力便宜四成，AI性價比之戰開打" loading="lazy" data-cat="AI" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/409/" onclick="event.preventDefault();openPost('409')" style="color:inherit;text-decoration:none;">AI57｜Claude Opus 5.5 戰況分析：頂規能力便宜四成，AI性價比之戰開打</a></div><div class="pc-exc">Anthropic 推出 Claude Opus 5.5，Input Token 降 20%、Cache Read 砍 60%，整體成本便宜四成。在五大效能維度追平旗艦 Fable 5.1、多數項目勝過 GPT-6 Astra，宣告 AI 產業從性能競賽進入性價比之戰。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-23</span><span class="pc-view-cnt">1 次瀏覽</span></div></div></article><article class="pc cat-雲端" data-post-id="407" onclick="openPost('407')"><a class="pc-seo-link" href="/post/407/" onclick="event.preventDefault();openPost('407')" aria-label="公有雲2035大預言：市場規模翻倍成長，台灣企業的機會在哪？"></a><div class="pc-img"><img src="/images/posts/post-407.jpg" alt="公有雲2035大預言：市場規模翻倍成長，台灣企業的機會在哪？" loading="lazy" data-cat="雲端" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">雲端</span></div><div class="pc-body"><div class="pc-title"><a href="/post/407/" onclick="event.preventDefault();openPost('407')" style="color:inherit;text-decoration:none;">公有雲2035大預言：市場規模翻倍成長，台灣企業的機會在哪？</a></div><div class="pc-exc">Research Nester最新報告預測公有雲市場到2035年的發展軌跡。本文解析市場成長動能、區域競爭格局變化，以及台灣企業如何在雲端供應鏈中掌握新機遇的關鍵戰略。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-22</span><span class="pc-view-cnt">1 次瀏覽</span></div></div></article><article class="pc cat-資安" data-post-id="406" onclick="openPost('406')"><a class="pc-seo-link" href="/post/406/" onclick="event.preventDefault();openPost('406')" aria-label="AI時代的新密語戰爭：亂碼通訊如何成為資安雙刃劍？"></a><div class="pc-img"><img src="/images/posts/post-406.jpg" alt="AI時代的新密語戰爭：亂碼通訊如何成為資安雙刃劍？" loading="lazy" data-cat="資安" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">資安</span></div><div class="pc-body"><div class="pc-title"><a href="/post/406/" onclick="event.preventDefault();openPost('406')" style="color:inherit;text-decoration:none;">AI時代的新密語戰爭：亂碼通訊如何成為資安雙刃劍？</a></div><div class="pc-exc">最新研究揭露AI模型間的神祕「亂碼語言」能將通訊效率提升3倍，但這項突破背後隱藏資安風險。當AI自創密語難以被人類監督時，企業該如何在效率與安全間取得平衡？</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-21</span><span class="pc-view-cnt">1 次瀏覽</span></div></div></article><article class="pc cat-AI" data-post-id="405" onclick="openPost('405')"><a class="pc-seo-link" href="/post/405/" onclick="event.preventDefault();openPost('405')" aria-label="醫療AI的語義危機：LLM為何難以獨當一面？"></a><div class="pc-img"><img src="/images/posts/post-405.jpg" alt="醫療AI的語義危機：LLM為何難以獨當一面？" loading="lazy" data-cat="AI" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"><span class="pc-badge">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/405/" onclick="event.preventDefault();openPost('405')" style="color:inherit;text-decoration:none;">醫療AI的語義危機：LLM為何難以獨當一面？</a></div><div class="pc-exc">大型語言模型在醫療應用中面臨關鍵瓶頸——無法獨撐數據語義基礎。本文探討LLM在醫療領域的盲點、為何單純的文本理解不足以支撐臨床決策，以及企業該如何構建混合型AI架構來彌補缺陷。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-20</span><span class="pc-view-cnt">3 次瀏覽</span></div></div></article></div>
+    <div class="post-grid" id="grid-main"><article class="pc cat-雲端" data-post-id="414" onclick="openPost('414')"><a class="pc-seo-link" href="/post/414/" onclick="event.preventDefault();openPost('414')" aria-label="Neoclouds搶攻AI時代：新興雲端勢力如何挑戰AWS、Azure寡占？"></a><div class="pc-img"><picture><source type="image/webp" srcset="/images/posts/post-414-480.webp"><img src="/images/posts/post-414.jpg" alt="Neoclouds搶攻AI時代：新興雲端勢力如何挑戰AWS、Azure寡占？" loading="lazy" decoding="async" data-cat="雲端" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"></picture><span class="pc-badge">雲端</span></div><div class="pc-body"><div class="pc-title"><a href="/post/414/" onclick="event.preventDefault();openPost('414')" style="color:inherit;text-decoration:none;">Neoclouds搶攻AI時代：新興雲端勢力如何挑戰AWS、Azure寡占？</a></div><div class="pc-exc">AI時代雲端運算需求暴增，Neoclouds等新興玩家乘勢而起。本文分析這股新勢力如何在大模型訓練、推理工作負載中找到差異化優勢，以及對台灣企業選擇雲端夥伴的啟示。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-28</span></div></div></article><article class="pc cat-資安" data-post-id="413" onclick="openPost('413')"><a class="pc-seo-link" href="/post/413/" onclick="event.preventDefault();openPost('413')" aria-label="APT28新惡意軟體BadPaw Loader現蹤：台灣企業如何防禦國家級駭客？"></a><div class="pc-img"><picture><source type="image/webp" srcset="/images/posts/post-413-480.webp"><img src="/images/posts/post-413.jpg" alt="APT28新惡意軟體BadPaw Loader現蹤：台灣企業如何防禦國家級駭客？" loading="lazy" decoding="async" data-cat="資安" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"></picture><span class="pc-badge">資安</span></div><div class="pc-body"><div class="pc-title"><a href="/post/413/" onclick="event.preventDefault();openPost('413')" style="color:inherit;text-decoration:none;">APT28新惡意軟體BadPaw Loader現蹤：台灣企業如何防禦國家級駭客？</a></div><div class="pc-exc">俄羅斯駭客組織APT28近期對烏克蘭散布新型惡意程式BadPaw Loader與MeowMeow，標誌著地緣政治衝突已升級至網路前線。台灣作為地緣政治敏感區域，企業需立即提升針對性防禦，了解國家級APT的攻擊手法與防護策略。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-27</span></div></div></article><article class="pc cat-AI" data-post-id="412" onclick="openPost('412')"><a class="pc-seo-link" href="/post/412/" onclick="event.preventDefault();openPost('412')" aria-label="AI購物助手失靈？節日電商難題比你想的複雜"></a><div class="pc-img"><picture><source type="image/webp" srcset="/images/posts/post-412-480.webp"><img src="/images/posts/post-412.jpg" alt="AI購物助手失靈？節日電商難題比你想的複雜" loading="lazy" decoding="async" data-cat="AI" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"></picture><span class="pc-badge">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/412/" onclick="event.preventDefault();openPost('412')" style="color:inherit;text-decoration:none;">AI購物助手失靈？節日電商難題比你想的複雜</a></div><div class="pc-exc">最新研究揭示AI在節日購物場景中的根本限制。儘管AI技術進展迅速，但在個性化推薦、複雜決策與信任建立上仍存在關鍵瓶頸。企業如何正視這些難題，成為2026年電商競爭的分水嶺。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-26</span></div></div></article><article class="pc cat-雲端" data-post-id="411" onclick="openPost('411')"><a class="pc-seo-link" href="/post/411/" onclick="event.preventDefault();openPost('411')" aria-label="Anthropic、OpenAI新模型大戰：雲端成本與效率角力如何改寫企業選擇？"></a><div class="pc-img"><picture><source type="image/webp" srcset="/images/posts/post-411-480.webp"><img src="/images/posts/post-411.jpg" alt="Anthropic、OpenAI新模型大戰：雲端成本與效率角力如何改寫企業選擇？" loading="lazy" decoding="async" data-cat="雲端" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"></picture><span class="pc-badge">雲端</span></div><div class="pc-body"><div class="pc-title"><a href="/post/411/" onclick="event.preventDefault();openPost('411')" style="color:inherit;text-decoration:none;">Anthropic、OpenAI新模型大戰：雲端成本與效率角力如何改寫企業選擇？</a></div><div class="pc-exc">AI巨頭Anthropic與OpenAI同時發布新模型，把競爭焦點從能力轉向成本效率與推理速度。這場「效率戰爭」將如何衝擊企業雲端支出預算？台灣中小企業的AI導入門檻是否將大幅降低？</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-25</span></div></div></article><article class="pc cat-資安" data-post-id="410" onclick="openPost('410')"><a class="pc-seo-link" href="/post/410/" onclick="event.preventDefault();openPost('410')" aria-label="歐盟AI資安行動計畫解析：台灣企業如何應對全球模型安全新標準？"></a><div class="pc-img"><picture><source type="image/webp" srcset="/images/posts/post-410-480.webp"><img src="/images/posts/post-410.jpg" alt="歐盟AI資安行動計畫解析：台灣企業如何應對全球模型安全新標準？" loading="lazy" decoding="async" data-cat="資安" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"></picture><span class="pc-badge">資安</span></div><div class="pc-body"><div class="pc-title"><a href="/post/410/" onclick="event.preventDefault();openPost('410')" style="color:inherit;text-decoration:none;">歐盟AI資安行動計畫解析：台灣企業如何應對全球模型安全新標準？</a></div><div class="pc-exc">歐盟推動AI資安行動計畫，強化模型安全評估與網路韌性標準。這不僅是歐洲監管趨勢，更將成為全球AI產業的合規門檻。台灣企業與AI服務提供商必須提前了解這些新規範對產品開發、出口認證的影響。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-24</span></div></div></article><article class="pc cat-AI" data-post-id="408" onclick="openPost('408')"><a class="pc-seo-link" href="/post/408/" onclick="event.preventDefault();openPost('408')" aria-label="Claude Opus 5.5上線：成本與安全的新均衡點"></a><div class="pc-img"><picture><source type="image/webp" srcset="/images/posts/post-408-480.webp"><img src="/images/posts/post-408.jpg" alt="Claude Opus 5.5上線：成本與安全的新均衡點" loading="lazy" decoding="async" data-cat="AI" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"></picture><span class="pc-badge">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/408/" onclick="event.preventDefault();openPost('408')" style="color:inherit;text-decoration:none;">Claude Opus 5.5上線：成本與安全的新均衡點</a></div><div class="pc-exc">Anthropic推出Claude Opus 5.5模型，強調效能提升與成本優化並行。在AI模型競賽白熱化之際，這次升級如何改變企業AI採購決策？台灣企業該如何評估遷移成本與安全收益？</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-23</span></div></div></article><article class="pc cat-AI" data-post-id="409" onclick="openPost('409')"><a class="pc-seo-link" href="/post/409/" onclick="event.preventDefault();openPost('409')" aria-label="AI57｜Claude Opus 5.5 戰況分析：頂規能力便宜四成，AI性價比之戰開打"></a><div class="pc-img"><picture><source type="image/webp" srcset="/images/posts/post-409-480.webp"><img src="/images/posts/post-409.jpg" alt="AI57｜Claude Opus 5.5 戰況分析：頂規能力便宜四成，AI性價比之戰開打" loading="lazy" decoding="async" data-cat="AI" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"></picture><span class="pc-badge">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/409/" onclick="event.preventDefault();openPost('409')" style="color:inherit;text-decoration:none;">AI57｜Claude Opus 5.5 戰況分析：頂規能力便宜四成，AI性價比之戰開打</a></div><div class="pc-exc">Anthropic 推出 Claude Opus 5.5，Input Token 降 20%、Cache Read 砍 60%，整體成本便宜四成。在五大效能維度追平旗艦 Fable 5.1、多數項目勝過 GPT-6 Astra，宣告 AI 產業從性能競賽進入性價比之戰。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-23</span></div></div></article><article class="pc cat-雲端" data-post-id="407" onclick="openPost('407')"><a class="pc-seo-link" href="/post/407/" onclick="event.preventDefault();openPost('407')" aria-label="公有雲2035大預言：市場規模翻倍成長，台灣企業的機會在哪？"></a><div class="pc-img"><picture><source type="image/webp" srcset="/images/posts/post-407-480.webp"><img src="/images/posts/post-407.jpg" alt="公有雲2035大預言：市場規模翻倍成長，台灣企業的機會在哪？" loading="lazy" decoding="async" data-cat="雲端" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"></picture><span class="pc-badge">雲端</span></div><div class="pc-body"><div class="pc-title"><a href="/post/407/" onclick="event.preventDefault();openPost('407')" style="color:inherit;text-decoration:none;">公有雲2035大預言：市場規模翻倍成長，台灣企業的機會在哪？</a></div><div class="pc-exc">Research Nester最新報告預測公有雲市場到2035年的發展軌跡。本文解析市場成長動能、區域競爭格局變化，以及台灣企業如何在雲端供應鏈中掌握新機遇的關鍵戰略。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-22</span></div></div></article><article class="pc cat-資安" data-post-id="406" onclick="openPost('406')"><a class="pc-seo-link" href="/post/406/" onclick="event.preventDefault();openPost('406')" aria-label="AI時代的新密語戰爭：亂碼通訊如何成為資安雙刃劍？"></a><div class="pc-img"><picture><source type="image/webp" srcset="/images/posts/post-406-480.webp"><img src="/images/posts/post-406.jpg" alt="AI時代的新密語戰爭：亂碼通訊如何成為資安雙刃劍？" loading="lazy" decoding="async" data-cat="資安" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"></picture><span class="pc-badge">資安</span></div><div class="pc-body"><div class="pc-title"><a href="/post/406/" onclick="event.preventDefault();openPost('406')" style="color:inherit;text-decoration:none;">AI時代的新密語戰爭：亂碼通訊如何成為資安雙刃劍？</a></div><div class="pc-exc">最新研究揭露AI模型間的神祕「亂碼語言」能將通訊效率提升3倍，但這項突破背後隱藏資安風險。當AI自創密語難以被人類監督時，企業該如何在效率與安全間取得平衡？</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-21</span></div></div></article><article class="pc cat-AI" data-post-id="405" onclick="openPost('405')"><a class="pc-seo-link" href="/post/405/" onclick="event.preventDefault();openPost('405')" aria-label="醫療AI的語義危機：LLM為何難以獨當一面？"></a><div class="pc-img"><picture><source type="image/webp" srcset="/images/posts/post-405-480.webp"><img src="/images/posts/post-405.jpg" alt="醫療AI的語義危機：LLM為何難以獨當一面？" loading="lazy" decoding="async" data-cat="AI" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')"></picture><span class="pc-badge">AI</span></div><div class="pc-body"><div class="pc-title"><a href="/post/405/" onclick="event.preventDefault();openPost('405')" style="color:inherit;text-decoration:none;">醫療AI的語義危機：LLM為何難以獨當一面？</a></div><div class="pc-exc">大型語言模型在醫療應用中面臨關鍵瓶頸——無法獨撐數據語義基礎。本文探討LLM在醫療領域的盲點、為何單純的文本理解不足以支撐臨床決策，以及企業該如何構建混合型AI架構來彌補缺陷。</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>2026-09-20</span></div></div></article></div>
     <div class="load-more-wrap" id="load-more" style="display:none;">
       <button class="load-more-btn v1-load-more" onclick="loadMorePosts()">查看更多文章 ↓</button>
     </div>
@@ -804,35 +807,35 @@ setTimeout(function(){document.documentElement.classList.add('v2-ready');},3000)
     </div>
     <div class="v1-topics">
       <div class="v1-topic" onclick="applyFilterGlobal('雲端')">
-        <a class="v1-topic-link" href="/category/雲端" aria-label="雲端文章彙整"></a>
+        <a class="v1-topic-link" href="/category/雲端/" aria-label="雲端文章彙整"></a>
         <div class="v1-topic-ic">☁️</div>
         <div class="v1-topic-name">雲端</div>
         <div class="v1-topic-desc">AWS、Azure、GCP 架構實戰</div>
         <div class="v1-topic-cnt" id="tc-雲端">36 篇</div>
       </div>
       <div class="v1-topic" onclick="applyFilterGlobal('資安')">
-        <a class="v1-topic-link" href="/category/資安" aria-label="資安文章彙整"></a>
+        <a class="v1-topic-link" href="/category/資安/" aria-label="資安文章彙整"></a>
         <div class="v1-topic-ic">🔐</div>
         <div class="v1-topic-name">資安</div>
         <div class="v1-topic-desc">零信任、滲透測試、資安觀念</div>
         <div class="v1-topic-cnt" id="tc-資安">39 篇</div>
       </div>
       <div class="v1-topic v1-topic-hl" onclick="applyFilterGlobal('AI')">
-        <a class="v1-topic-link" href="/category/AI" aria-label="AI文章彙整"></a>
+        <a class="v1-topic-link" href="/category/AI/" aria-label="AI文章彙整"></a>
         <div class="v1-topic-ic">🤖</div>
         <div class="v1-topic-name">AI</div>
         <div class="v1-topic-desc">LLM 工具、Prompt、工作流程</div>
         <div class="v1-topic-cnt" id="tc-AI">101 篇</div>
       </div>
       <div class="v1-topic" onclick="applyFilterGlobal('閱讀')">
-        <a class="v1-topic-link" href="/category/閱讀" aria-label="閱讀文章彙整"></a>
+        <a class="v1-topic-link" href="/category/閱讀/" aria-label="閱讀文章彙整"></a>
         <div class="v1-topic-ic">📚</div>
         <div class="v1-topic-name">閱讀</div>
         <div class="v1-topic-desc">書評、心得、知識管理</div>
         <div class="v1-topic-cnt" id="tc-閱讀">35 篇</div>
       </div>
       <div class="v1-topic" onclick="applyFilterGlobal('成長')">
-        <a class="v1-topic-link" href="/category/成長" aria-label="成長文章彙整"></a>
+        <a class="v1-topic-link" href="/category/成長/" aria-label="成長文章彙整"></a>
         <div class="v1-topic-ic">🌱</div>
         <div class="v1-topic-name">成長</div>
         <div class="v1-topic-desc">個人成長、習慣、自媒體經營</div>
@@ -1109,6 +1112,13 @@ setTimeout(function(){document.documentElement.classList.add('v2-ready');},3000)
 <script src="/js/api.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js" integrity="sha384-eEu5CTj3qGvu9PdJuS+YlkNi7d2XxQROAFYOr59zgObtlcux1ae1Il3u7jvdCSWu" crossorigin="anonymous"></script>
 <script>
+// 首頁的 SPA 與 homepage-v2.js 都要 posts.json / episodes.json：這裡只抓一次、共用同一個 Promise
+// （以前各抓一次、posts.json 還帶 Date.now() 繞過快取，首頁多傳約 220KB）。
+window.__opJSON=window.__opJSON||{};
+function opJSON(path){
+  if(!window.__opJSON[path])window.__opJSON[path]=fetch(path).then(function(r){return r.ok?r.json():null;});
+  return window.__opJSON[path];
+}
 // ── GITHUB PAGES SPA ROUTING: restore URL from 404 redirect ──
 (function(){
   var q=window.location.search;
@@ -1174,9 +1184,8 @@ async function initDB(){
   // 2) /posts.json (GitHub Pages CDN) → 幾乎無冷啟動延遲
   if(!postsRendered){
     try{
-      const res=await fetch('/posts.json?_='+Date.now());
-      if(res.ok){
-        const json=await res.json();
+      const json=await opJSON('/posts.json');
+      if(json){
         if(json.posts&&json.posts.length){
           applyData(json.posts,null);
           renderHome();handleRoute();
@@ -1290,8 +1299,7 @@ function updateDynamicStats(){
     applyPodStats(_podEps);renderPodcast(_podEps);
   }else if(!_podcastLoaded){
     _podcastLoaded=true;
-    fetch('/episodes.json')
-      .then(function(r){return r.ok?r.json():null;})
+    opJSON('/episodes.json')
       .then(function(data){
         const eps=(data&&data.episodes)?data.episodes:[];
         if(eps.length>0){_podEps=eps;applyPodStats(eps);renderPodcast(eps);}
@@ -1507,9 +1515,9 @@ async function openPost(id){
   if(rel.length){
     rg.innerHTML=rel.map(r=>{
       const rc=CAT_COLOR[r.category]||'#aaa';
-      return '<div class="rel-card" onclick="openPost(\''+r.id+'\')">'
+      return '<a class="rel-card" href="/post/'+encodeURIComponent(r.slug||r.id)+'/" onclick="openPost(\''+r.id+'\');return false;">'
         +'<div class="rel-cat" style="color:'+rc+';">'+esc(r.category)+'</div>'
-        +'<div class="rel-title">'+esc(r.title)+'</div></div>';
+        +'<div class="rel-title">'+esc(r.title)+'</div></a>';
     }).join('');
     rs.style.display='block';
   }else rs.style.display='none';
@@ -1586,7 +1594,7 @@ function setPostMeta(p){
   Object.entries(twMap).forEach(([k,v])=>{let m=document.querySelector('meta[name="'+k+'"]');if(m)m.content=v;});
 }
 function resetMeta(){
-  document.title='操作一下 | operation.tw';
+  document.title='操作一下｜AI、雲端、資安 Podcast 與科技部落格';
   const metaDesc=document.querySelector('meta[name="description"]');
   if(metaDesc)metaDesc.content='雲端、資安、AI、閱讀、成長 — 簡單的事情專注做';
   const canonical=document.querySelector('link[rel="canonical"]');

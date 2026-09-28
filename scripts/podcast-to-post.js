@@ -59,16 +59,7 @@ function spotifySearchUrl(title) {
   return title ? 'https://open.spotify.com/search/' + encodeURIComponent(title) : SPOTIFY_SHOW;
 }
 
-// ── 從單集標題開頭抓集數碼（AI35 / EP99 / EP01…），後接分隔符 ────────────
-function episodeCode(title) {
-  const t = String(title || '').trim();
-  // 一般情況：碼後接分隔符（AI35_… / EP99｜…）
-  const m = t.match(/^([A-Za-z]{1,6}\d{1,4})\s*[_|｜\-:：．.]/);
-  if (m) return m[1].toUpperCase();
-  // 單集標題偶爾碼後直接接中文（AI56趨勢操作｜…）；只認 AI/EP，避免把 APT28、AWS20 之類誤判成集數
-  const m2 = t.match(/^((?:AI|EP)\d{1,4})(?=[\u3400-\u9fff])/i);
-  return m2 ? m2[1].toUpperCase() : '';
-}
+const { episodeCode } = require('./lib/episode');
 
 // 在乾淨標題前補上 EP 集數碼（例：AI35｜…）。已有正確前綴則不重複加。
 function prefixEpisodeCode(cleanTitle, epTitle) {
