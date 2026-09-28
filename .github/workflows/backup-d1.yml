@@ -1,6 +1,7 @@
 name: Backup D1
 
-# 每日備份 D1 全站資料（文章/設定/統計/訂閱者），加密後 commit 進 repo。
+# 每日備份 D1 全站資料（文章/設定/統計/訂閱者），加密後存成 Actions artifact（保留 90 天）。
+# 不再 commit 進 repo：repo 與網站都是公開的，含訂閱者 email 的備份不該可被任何人下載。
 # 還原方式見 backups/README.md。
 on:
   schedule:
@@ -8,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   backup:
@@ -16,10 +17,10 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
 
@@ -27,19 +28,13 @@ jobs:
         env:
           CF_API_BASE: ${{ secrets.CF_API_BASE }}
           CF_SERVICE_TOKEN: ${{ secrets.CF_SERVICE_TOKEN }}
+          BACKUP_KEY: ${{ secrets.BACKUP_KEY }}
         run: node scripts/backup-d1.js
 
-      - name: Commit backup
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add backups/
-          if git diff --cached --quiet; then
-            echo "備份內容無變更"
-          else
-            git commit -m "chore(backup): D1 每日備份 $(date -u +%F)"
-            for r in 1 2 3; do
-              if git pull --rebase origin main && git push; then break; fi
-              echo "push 失敗，重試…"; sleep $((r * 3))
-            done
-          fi
+      - name: Upload backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: d1-backup-${{ github.run_id }}
+          path: backups/d1-latest.json.gz.enc
+          retention-days: 90
+          if-no-files-found: error
