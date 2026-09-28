@@ -4,11 +4,14 @@
  * 備份（GitHub Actions 每日跑）：
  *     CF_API_BASE=... CF_SERVICE_TOKEN=... node scripts/backup-d1.js
  *   → 從 Worker /api/admin/backup 匯出 posts / settings / site_stats / subscribers，
- *     gzip + AES-256-GCM 加密（金鑰＝SHA-256(CF_SERVICE_TOKEN)）後寫入
- *     backups/d1-latest.json.gz.enc（repo 是公開的，訂閱者 email 不可明文入庫）。
+ *     gzip + AES-256-GCM 加密後寫入 backups/d1-latest.json.gz.enc，
+ *     由 workflow 上傳成 Actions artifact（不再 commit 進公開 repo）。
  *
- * 解密（災難還原時）：
- *     CF_SERVICE_TOKEN=... node scripts/backup-d1.js --decrypt backups/d1-latest.json.gz.enc > restore.json
+ * 金鑰：有 BACKUP_KEY 就用它（scrypt 衍生，v2 格式）；沒有才退回 SHA-256(CF_SERVICE_TOKEN)（v1 舊格式）。
+ *   BACKUP_KEY 應與 CF_SERVICE_TOKEN 分開、並另存一份在密碼管理器，否則無法在本機解密。
+ *
+ * 解密（災難還原時，v1/v2 自動判斷）：
+ *     BACKUP_KEY=... node scripts/backup-d1.js --decrypt d1-latest.json.gz.enc > restore.json
  */
 'use strict';
 
@@ -19,26 +22,45 @@ const crypto = require('crypto');
 
 const CF_API_BASE = (process.env.CF_API_BASE || '').replace(/\/+$/, '');
 const SERVICE_TOKEN = process.env.CF_SERVICE_TOKEN || '';
+const BACKUP_KEY = process.env.BACKUP_KEY || '';
 const OUT = path.resolve(__dirname, '..', 'backups', 'd1-latest.json.gz.enc');
 
-const key = () => crypto.createHash('sha256').update(SERVICE_TOKEN).digest();
+// v2 格式：'OTB2'(4B) | salt 16B | iv 12B | tag 16B | payload，金鑰 = scrypt(BACKUP_KEY, salt)
+// v1 格式（舊）：iv 12B | tag 16B | payload，金鑰 = SHA-256(CF_SERVICE_TOKEN)
+const MAGIC = Buffer.from('OTB2');
+const v1Key = () => crypto.createHash('sha256').update(SERVICE_TOKEN).digest();
 
 function encrypt(buf) {
   const iv = crypto.randomBytes(12);
-  const c = crypto.createCipheriv('aes-256-gcm', key(), iv);
+  if (!BACKUP_KEY) {
+    const c = crypto.createCipheriv('aes-256-gcm', v1Key(), iv);
+    const enc = Buffer.concat([c.update(buf), c.final()]);
+    return Buffer.concat([iv, c.getAuthTag(), enc]);
+  }
+  const salt = crypto.randomBytes(16);
+  const c = crypto.createCipheriv('aes-256-gcm', crypto.scryptSync(BACKUP_KEY, salt, 32), iv);
   const enc = Buffer.concat([c.update(buf), c.final()]);
-  return Buffer.concat([iv, c.getAuthTag(), enc]); // 12B iv | 16B tag | payload
+  return Buffer.concat([MAGIC, salt, iv, c.getAuthTag(), enc]);
 }
 
 function decrypt(buf) {
-  const iv = buf.subarray(0, 12), tag = buf.subarray(12, 28), enc = buf.subarray(28);
-  const d = crypto.createDecipheriv('aes-256-gcm', key(), iv);
+  let k, rest;
+  if (buf.subarray(0, 4).equals(MAGIC)) {
+    if (!BACKUP_KEY) throw new Error('這是 v2 備份，需要 BACKUP_KEY');
+    k = crypto.scryptSync(BACKUP_KEY, buf.subarray(4, 20), 32);
+    rest = buf.subarray(20);
+  } else {
+    k = v1Key();
+    rest = buf;
+  }
+  const iv = rest.subarray(0, 12), tag = rest.subarray(12, 28), enc = rest.subarray(28);
+  const d = crypto.createDecipheriv('aes-256-gcm', k, iv);
   d.setAuthTag(tag);
   return Buffer.concat([d.update(enc), d.final()]);
 }
 
 async function main() {
-  if (!SERVICE_TOKEN) { console.error('❌ 缺 CF_SERVICE_TOKEN'); process.exit(1); }
+  if (!SERVICE_TOKEN && !BACKUP_KEY) { console.error('❌ 缺 BACKUP_KEY 或 CF_SERVICE_TOKEN'); process.exit(1); }
 
   if (process.argv[2] === '--decrypt') {
     const file = process.argv[3];
@@ -47,7 +69,7 @@ async function main() {
     return;
   }
 
-  if (!CF_API_BASE) { console.error('❌ 缺 CF_API_BASE'); process.exit(1); }
+  if (!CF_API_BASE || !SERVICE_TOKEN) { console.error('❌ 缺 CF_API_BASE 或 CF_SERVICE_TOKEN'); process.exit(1); }
   const res = await fetch(`${CF_API_BASE}/api/admin/backup`, {
     headers: { Authorization: `Bearer ${SERVICE_TOKEN}` },
   });
@@ -61,7 +83,7 @@ async function main() {
 
   fs.mkdirSync(path.dirname(OUT), { recursive: true });
   fs.writeFileSync(OUT, encrypt(zlib.gzipSync(JSON.stringify(data))));
-  console.log(`✅ 已寫入 ${path.relative(process.cwd(), OUT)}（${(fs.statSync(OUT).size / 1024).toFixed(0)} KB，AES-256-GCM）`);
+  console.log(`✅ 已寫入 ${path.relative(process.cwd(), OUT)}（${(fs.statSync(OUT).size / 1024).toFixed(0)} KB，AES-256-GCM ${BACKUP_KEY ? 'v2/BACKUP_KEY' : 'v1/CF_SERVICE_TOKEN'}）`);
 }
 
 main().catch((err) => { console.error('❌ 失敗：', err.message); process.exit(1); });
