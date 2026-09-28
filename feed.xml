@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Mon, 28 Sep 2026 05:18:27 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 05:38:11 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Neoclouds搶攻AI時代：新興雲端勢力如何挑戰AWS、Azure寡占？</title>
+    <link>https://operation.tw/post/414/</link>
+    <guid isPermaLink="true">https://operation.tw/post/414/</guid>
+    <description>AI時代雲端運算需求暴增，Neoclouds等新興玩家乘勢而起。本文分析這股新勢力如何在大模型訓練、推理工作負載中找到差異化優勢，以及對台灣企業選擇雲端夥伴的啟示。</description>
+    <category>雲端</category>
+    <pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>APT28新惡意軟體BadPaw Loader現蹤：台灣企業如何防禦國家級駭客？</title>
     <link>https://operation.tw/post/413/</link>
@@ -158,14 +166,6 @@
     <description>美國總統令將AI網路安全提升為國家安全議題，主權AI成全球競爭焦點。台灣作為全球AI晶片與雲端服務樞紐，如何在美國、歐盟、中國三方AI資安競賽中找到自己的位置，成為企業與政策制定者的新課題。</description>
     <category>資安</category>
     <pubDate>Fri, 11 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>小型高效AI模型崛起：為什麼2027年是雲端成本結構的分水嶺？</title>
-    <link>https://operation.tw/post/394/</link>
-    <guid isPermaLink="true">https://operation.tw/post/394/</guid>
-    <description>高德納預估高效小型AI模型將在2027年成為主流，直接衝擊Token成本結構。本文探討小型模型如何重塑雲端運算經濟學，以及台灣企業如何在成本與效能間找到最適平衡點。</description>
-    <category>雲端</category>
-    <pubDate>Thu, 10 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
