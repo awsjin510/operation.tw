@@ -17,3 +17,4 @@ cloudflare/.wrangler/
 
 # D1 備份改存 Actions artifact，不入庫
 backups/*.enc
+.claude/
