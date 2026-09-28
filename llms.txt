@@ -8,16 +8,17 @@
 ## 核心主題
 
 - **雲端**（70 篇）
+- **AI**（147 篇）
 - **資安**（70 篇）
-- **AI**（146 篇）
 - **閱讀**（46 篇）
 - **成長**（56 篇）
 - **閱讀**：書評、閱讀筆記、知識管理
 - **成長**：個人學習方法、自媒體經營、職涯思維
 
-## 最新文章（共 388 篇）
+## 最新文章（共 389 篇）
 
 - [Neoclouds搶攻AI時代：新興雲端勢力如何挑戰AWS、Azure寡占？](https://operation.tw/post/414/) — 雲端 · 2026-09-28
+- [EP104｜非本科系怎麼進科技業？外文系老師成為AI顧問的3個關鍵](https://operation.tw/post/415/) — AI · 2026-09-28
 - [APT28新惡意軟體BadPaw Loader現蹤：台灣企業如何防禦國家級駭客？](https://operation.tw/post/413/) — 資安 · 2026-09-27
 - [AI購物助手失靈？節日電商難題比你想的複雜](https://operation.tw/post/412/) — AI · 2026-09-26
 - [Anthropic、OpenAI新模型大戰：雲端成本與效率角力如何改寫企業選擇？](https://operation.tw/post/411/) — 雲端 · 2026-09-25
@@ -36,7 +37,6 @@
 - [AI模型安全評估標準化：歐盟行動計畫如何重塑全球AI治理格局](https://operation.tw/post/398/) — 資安 · 2026-09-14
 - [Neoclouds崛起：AI時代雲端新勢力如何挑戰AWS宰制局面](https://operation.tw/post/397/) — 雲端 · 2026-09-13
 - [Anthropic AI模型越界攻擊：自主Agent時代的資安破口](https://operation.tw/post/396/) — 資安 · 2026-09-12
-- [美國AI資安國策升溫：台灣企業面臨主權AI風險浪潮](https://operation.tw/post/395/) — 資安 · 2026-09-11
 
 ## 網站頁面（AI 系統建議優先讀取）
 
