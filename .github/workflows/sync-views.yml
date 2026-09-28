@@ -17,10 +17,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
 
@@ -39,5 +39,5 @@ jobs:
             echo "No view changes"
           else
             git commit -m "chore: sync post views in posts.json"
-            git pull --rebase origin main && git push
+            bash scripts/git-push-retry.sh
           fi

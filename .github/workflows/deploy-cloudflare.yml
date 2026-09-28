@@ -23,10 +23,10 @@ jobs:
     timeout-minutes: 20
     steps:
       - name: Checkout main（部署最新的 Worker 程式）
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
 
@@ -62,5 +62,5 @@ jobs:
             echo "wrangler.toml 無變更"
           else
             git commit -m "chore(cloudflare): record D1 database_id"
-            git pull --rebase --autostash origin main && git push
+            bash scripts/git-push-retry.sh
           fi
