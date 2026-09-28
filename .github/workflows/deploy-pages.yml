@@ -47,22 +47,22 @@ jobs:
       - name: Prepare static files
         run: |
           mkdir -p _site
-          # 複製整個網站（含 post/、category/、about/ 等所有已產生的靜態頁面），
-          # 排除開發用檔案。避免漏抄任一目錄而讓部署後的頁面 404，
-          # 也不再因為硬編碼某個檔名（例如已不存在的 Google 驗證檔）而整步失敗。
-          rsync -a \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='scripts' \
-            --exclude='node_modules' \
-            --exclude='_site' \
-            --exclude='package.json' \
-            --exclude='package-lock.json' \
-            --exclude='zbpack.json' \
-            --exclude='supabase-setup.sql' \
-            --exclude='cloudflare' \
-            --exclude='README.md' \
-            ./ _site/
+          # 白名單部署：只複製網站需要的檔案。
+          # （repo 裡的備份、restore 資料、內部筆記、狀態檔都不該被公開存取。）
+          # 新增公開目錄或根目錄檔案類型時，記得同步加到這裡。
+          DIRS="about ai category cloud faq glossary images js podcast post publiccloud security"
+          for d in $DIRS; do [ -d "$d" ] && cp -R "$d" _site/; done
+          shopt -s nullglob
+          for f in *.html *.css *.js *.xml *.png *.jpg *.webp *.ico *.svg \
+                   CNAME robots.txt llms.txt llms-full.txt \
+                   posts.json episodes.json glossary.json; do
+            cp "$f" _site/
+          done
+          # IndexNow / 搜尋引擎驗證金鑰（32 碼 hex 檔名）
+          for f in [0-9a-f]*.txt; do
+            if [[ "$f" =~ ^[0-9a-f]{32}\.txt$ ]]; then cp "$f" _site/; fi
+          done
+          echo "部署檔案數：$(find _site -type f | wc -l)"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
