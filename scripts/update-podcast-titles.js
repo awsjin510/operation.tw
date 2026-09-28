@@ -34,16 +34,7 @@ if (!DRY_RUN && (!CF_API_BASE || !CF_SERVICE_TOKEN)) {
   process.exit(1);
 }
 
-// 從單集標題開頭抓集數碼：英數開頭（EP54 / AI33 / EP01…），後面接分隔符。
-function episodeCode(title) {
-  const t = String(title || '').trim();
-  // 一般情況：碼後接分隔符（AI35_… / EP99｜…）
-  const m = t.match(/^([A-Za-z]{1,6}\d{1,4})\s*[_|｜\-:：．.]/);
-  if (m) return m[1].toUpperCase();
-  // 單集標題偶爾碼後直接接中文（AI56趨勢操作｜…）；只認 AI/EP，避免把 APT28、AWS20 之類誤判成集數
-  const m2 = t.match(/^((?:AI|EP)\d{1,4})(?=[\u3400-\u9fff])/i);
-  return m2 ? m2[1].toUpperCase() : '';
-}
+const { episodeCode } = require('./lib/episode');
 
 function fetchWithTimeout(url, opts = {}, ms = 30000) {
   const ctrl = new AbortController();

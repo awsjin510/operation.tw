@@ -13,6 +13,36 @@ const RSSParser = require('rss-parser');
 
 const RSS_URL = 'https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml';
 const SPOTIFY_SHOW = 'https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl';
+const APPLE_ID = '1620760720';
+const APPLE_SHOW = `https://podcasts.apple.com/tw/podcast/id${APPLE_ID}`;
+
+/**
+ * 從 iTunes Lookup API 取每集的 Apple Podcasts 單集網址（公開 API、免金鑰）。
+ * 以 RSS guid ↔ episodeGuid 對應；失敗時回傳空物件，按鈕退回節目頁。
+ */
+async function fetchAppleEpisodeUrls() {
+  const url = `https://itunes.apple.com/lookup?id=${APPLE_ID}&entity=podcastEpisode&limit=300&country=tw`;
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 20000);
+    const res = await fetch(url, { signal: ctrl.signal }).finally(() => clearTimeout(timer));
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = await res.json();
+    const byGuid = {}, byTitle = {};
+    for (const r of json.results || []) {
+      if (r.kind !== 'podcast-episode' || !r.trackViewUrl) continue;
+      // 精簡成 /id{show}?i={episode}：與完整 slug 網址等效，episodes.json 小很多
+      const m = r.trackViewUrl.match(/[?&]i=(\d+)/);
+      const link = m ? `${APPLE_SHOW}?i=${m[1]}` : r.trackViewUrl.replace(/&uo=\d+$/, '');
+      if (r.episodeGuid) byGuid[r.episodeGuid] = link;
+      if (r.trackName) byTitle[r.trackName.trim()] = link;
+    }
+    return { byGuid, byTitle };
+  } catch (err) {
+    console.warn(`  ⚠ Apple 單集網址取得失敗（改用節目頁）：${err.message}`);
+    return { byGuid: {}, byTitle: {} };
+  }
+}
 
 /** Build a Spotify search URL that opens Spotify searching for the episode title. */
 function spotifySearchUrl(title) {
@@ -59,6 +89,8 @@ async function main() {
   console.log(`  ✓ Feed: ${feed.title}`);
   console.log(`  ✓ Episodes found: ${feed.items.length}`);
 
+  const apple = await fetchAppleEpisodeUrls();
+
   const episodes = feed.items.map((item) => {
     // itunes:image can be a string or an object with $.href
     let art = '';
@@ -87,12 +119,17 @@ async function main() {
       url: (item.enclosure && item.enclosure.url) || '',
       art,
       soundon: item.link || '', // RSS 的 item.link 是 SoundOn 播放頁（非 Apple）
+      apple: apple.byGuid[item.guid] || apple.byTitle[(item.title || '').trim()] || APPLE_SHOW,
       spot: spotifySearchUrl(item.title),
     };
   });
 
   const outPath = path.resolve(__dirname, '..', 'episodes.json');
-  fs.writeFileSync(outPath, JSON.stringify({ generated: new Date().toISOString(), episodes }));
+  // generated 用最新單集日期，而非執行時間：內容沒變就不會產生 diff（避免每 3 小時一個空 commit）
+  const generated = episodes.reduce((m, e) => (e.date > m ? e.date : m), '');
+  fs.writeFileSync(outPath, JSON.stringify({ generated, episodes }));
+  const direct = episodes.filter((e) => e.apple !== APPLE_SHOW).length;
+  console.log(`  ✓ Apple 單集直連：${direct}/${episodes.length}`);
   console.log(`  ✓ episodes.json written (${episodes.length} episodes)`);
   console.log('✅ Done!');
 }

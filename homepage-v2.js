@@ -11,14 +11,18 @@
   function article(p,feature){
     if(!p)return '';
     const href=postUrl(p),img=p.image||('/images/posts/post-'+p.id+'.jpg');
+    // 本站封面有 480 寬 WebP 縮圖（build-static 產生）；卡片只顯示約 150～400px，不必載 1200px 原圖
+    const thumb=/^\/images\/posts\/[^/]+\.jpe?g$/i.test(img)?img.replace(/\.jpe?g$/i,'-480.webp'):'';
     // 整張卡片本身就是 <a>：不依賴絕對定位的空浮層，CSS 沒載到也一樣可點
-    return '<a class="op-article'+(feature?' op-article-feature':'')+'" href="'+escText(href)+'" aria-label="閱讀：'+escText(p.title)+'"><div class="op-article-img"><img src="'+escText(img)+'" alt="'+escText(p.title)+'" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=\'/default.png\'"></div><div class="op-article-body"><div class="op-article-meta"><span class="op-category">'+escText(normalizeCat(p.category))+'</span><span>'+escText(date(p.date))+'</span><span>'+readingTime(p)+' 分鐘</span>'+(p.views>0?'<span>'+p.views+' 次瀏覽</span>':'')+'</div><h3>'+escText(p.title)+'</h3><p>'+escText(strip(p.excerpt))+'</p></div></a>';
+    return '<a class="op-article'+(feature?' op-article-feature':'')+'" href="'+escText(href)+'" aria-label="閱讀：'+escText(p.title)+'"><div class="op-article-img">'+(thumb?'<picture><source type="image/webp" srcset="'+escText(thumb)+'">':'')+'<img src="'+escText(img)+'" alt="'+escText(p.title)+'" loading="'+(feature?'eager':'lazy')+'"'+(feature?' fetchpriority="high"':'')+' decoding="async" onerror="this.onerror=null;this.src=\'/default.png\'">'+(thumb?'</picture>':'')+'</div><div class="op-article-body"><div class="op-article-meta"><span class="op-category">'+escText(normalizeCat(p.category))+'</span><span>'+escText(date(p.date))+'</span><span>'+readingTime(p)+' 分鐘</span>'+(p.views>0?'<span>'+p.views+' 次瀏覽</span>':'')+'</div><h3>'+escText(p.title)+'</h3><p>'+escText(strip(p.excerpt))+'</p></div></a>';
   }
   function sectionHead(eyebrow,title,desc,link,label){return '<div class="op-section-head"><div><div class="op-eyebrow">'+eyebrow+'</div><h2 class="op-title">'+title+'</h2>'+(desc?'<p class="op-desc">'+desc+'</p>':'')+'</div>'+(link?'<a class="op-text-link" href="'+link+'">'+label+' <span>→</span></a>':'')+'</div>'}
   async function load(){
-    const [pr,er]=await Promise.allSettled([fetch('/posts.json',{cache:'no-cache'}).then(r=>r.json()),fetch('/episodes.json',{cache:'no-cache'}).then(r=>r.json())]);
-    const posts=pr.status==='fulfilled'?(pr.value.posts||pr.value||[]):[];
-    const episodes=er.status==='fulfilled'?(er.value.episodes||er.value||[]):[];
+    // 與 index.html 的 SPA 共用同一次下載（opJSON）；單獨載入時才自己抓
+    const get=p=>typeof window.opJSON==='function'?window.opJSON(p):fetch(p).then(r=>r.ok?r.json():null);
+    const [pr,er]=await Promise.allSettled([get('/posts.json'),get('/episodes.json')]);
+    const posts=pr.status==='fulfilled'&&pr.value?(pr.value.posts||pr.value||[]):[];
+    const episodes=er.status==='fulfilled'&&er.value?(er.value.episodes||er.value||[]):[];
     // 即時瀏覽數不擋建版：先用 posts.json 快照建頁，SPA 的背景同步（initDB）稍後會把
     // #grid-main 的數字對齊資料庫；這裡只在「還沒建版前剛好先回來」時順帶合併。
     if(window.api&&api.getPostViews){
@@ -27,10 +31,12 @@
     return {posts:posts.filter(p=>!p.status||p.status==='published'),episodes};
   }
   function platformLinks(ep){
+    // Apple 連到該集的 Apple Podcasts 單集頁（episodes.json 的 apple 欄位）
     const links=[];
-    if(ep.soundon)links.push(['SoundOn',ep.soundon]);
-    if(ep.spot)links.push(['Spotify',ep.spot]);
-    return links.map(x=>'<a href="'+escText(x[1])+'" target="_blank" rel="noopener">'+x[0]+'</a>').join('');
+    links.push(['Apple Podcasts',ep.apple||'https://podcasts.apple.com/tw/podcast/id1620760720','op-pf-apple']);
+    if(ep.spot)links.push(['Spotify',ep.spot,'op-pf-spotify']);
+    if(ep.soundon)links.push(['SoundOn',ep.soundon,'']);
+    return links.map(x=>'<a'+(x[2]?' class="'+x[2]+'"':'')+' href="'+escText(x[1])+'" target="_blank" rel="noopener">'+x[0]+'</a>').join('');
   }
   function podcast(ep,others){
     if(!ep)return '';
@@ -63,8 +69,9 @@
     try{if(typeof D!=='undefined'&&D.posts&&D.posts.length&&typeof renderHome==='function')renderHome();}catch(_){}
   }
   function enhanceNav(){
-    // 主題按鈕沿用 SPA 既有的 applyFilterGlobal（回首頁 → 套分類篩選 → 捲到文章區）
-    const links=document.querySelector('.nav-links');if(links)links.innerHTML='<button onclick="applyFilterGlobal(\'AI\')">AI</button><button onclick="applyFilterGlobal(\'雲端\')">Cloud</button><button onclick="applyFilterGlobal(\'資安\')">Cyber Security</button><button onclick="applyFilterGlobal(\'閱讀\')">閱讀</button><button onclick="applyFilterGlobal(\'成長\')">成長</button><a href="/podcast.html" class="nav-podcast">Podcast</a><button onclick="goHome();gotoSection(\'about\')">關於我</button><button onclick="goHome();gotoSection(\'newsletter\')">訂閱</button>';
+    // 主題改成真正的 <a href="/category/…/">（爬蟲跟得到、可鍵盤操作、可開新分頁），
+    // 一般點擊仍走 SPA 的 applyFilterGlobal（回首頁 → 套分類篩選 → 捲到文章區）
+    const links=document.querySelector('.nav-links');if(links)links.innerHTML='<a href="/category/AI/" onclick="applyFilterGlobal(\'AI\');return false;">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" onclick="applyFilterGlobal(\'雲端\');return false;">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" onclick="applyFilterGlobal(\'資安\');return false;">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/" onclick="applyFilterGlobal(\'閱讀\');return false;">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/" onclick="applyFilterGlobal(\'成長\');return false;">成長</a><a href="/podcast.html" class="nav-podcast">Podcast</a><button onclick="goHome();gotoSection(\'about\')">關於我</button><button onclick="goHome();gotoSection(\'newsletter\')">訂閱</button>';
   }
   function enhanceFooter(){
     const f=document.querySelector('footer');if(!f)return;

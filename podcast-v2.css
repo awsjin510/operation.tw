@@ -16,3 +16,11 @@ footer{max-width:var(--pod-max);margin:0 auto;padding:45px 0 30px;border-top:1px
 .ep-card{align-content:start;min-height:0}.ep-info{align-self:start}.ep-actions{flex-direction:row;align-items:center;align-self:start;justify-content:flex-start;width:100%}.ep-btn{flex:0 0 auto;white-space:nowrap}.ep-btn.play{order:-1}
 @media(max-width:430px){.ep-actions{display:grid;grid-template-columns:1fr 1fr}.ep-btn{width:100%;justify-content:center}.ep-btn.play{grid-column:1/-1}.ep-btn.spotify{display:inline-flex}}
 .ep-info{grid-column:2}.ep-thumb{grid-column:1}
+
+/* ── 平台品牌按鈕：Apple Podcasts 紫色漸層、Spotify 綠底（官方品牌色），RSS/SoundOn 維持 ghost 當次要選項 ── */
+.pf-ico{width:18px;height:18px;flex:none;margin-right:7px}
+.pb-apple,.latest-actions a.pf-apple,.ep-btn.apple{background:linear-gradient(135deg,#F452FF,#832BC1)!important;border-color:transparent!important;color:#fff!important;box-shadow:0 6px 18px -6px rgba(180,60,220,.6)!important}
+.pb-spotify,.latest-actions a.pf-spotify,.ep-btn.spotify{background:#1DB954!important;border-color:transparent!important;color:#000!important;box-shadow:0 6px 18px -6px rgba(29,185,84,.55)!important}
+.pb-apple,.pb-spotify,.latest-actions a.pf-apple,.latest-actions a.pf-spotify{border-radius:999px!important;font-weight:700!important}
+.pb-apple:hover,.pb-spotify:hover,.latest-actions a.pf-apple:hover,.latest-actions a.pf-spotify:hover,.ep-btn.apple:hover,.ep-btn.spotify:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.ep-btn.apple .pf-ico,.ep-btn.spotify .pf-ico{width:14px;height:14px;margin-right:5px}
