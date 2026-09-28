@@ -450,20 +450,24 @@ async function main() {
   console.log('步驟 1：抓取新聞與近期文章...');
   const [newsData, recentPosts] = await Promise.all([
     Promise.all(NEWS_SOURCES.map(fetchNews)),
-    fetchRecentPosts(30),
+    fetchRecentPosts(365),
   ]);
+  // 去重比對用一整年（Neoclouds、AWS 20 週年這類題目每隔幾週就被新聞源翻出來一次）；
+  // 給模型看的「近期文章」清單只放 30 天，避免 prompt 過長
+  const since30 = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
+  const promptPosts = recentPosts.filter((p) => (p.date || '') >= since30);
 
   // 步驟 2：用 Claude 生成文章（傳入近期文章供去重）
   console.log('\n步驟 2：AI 生成文章...');
-  let article = await generatePost(newsData, recentPosts);
+  let article = await generatePost(newsData, promptPosts);
   console.log(`  ✓ 文章標題：[${article.category}] ${article.title}`);
 
-  // 硬性去重：和近 30 天文章標題太像就重生一次；還是太像就今天不發（寧缺勿重複，避免關鍵字互搶排名）
+  // 硬性去重：和近一年文章太像就重生一次；還是太像就今天不發（寧缺勿重複，避免關鍵字互搶排名）
   const fmtDup = (d) => `「${d.post.title}」（${d.post.date}；標題 ${d.title.toFixed(2)}、內容 ${d.text.toFixed(2)}）`;
   let dup = findDuplicate(article, recentPosts);
   if (dup && dup.isDup) {
     console.log(`  ⚠ 與${fmtDup(dup)}太相似，換題重生…`);
-    article = await generatePost(newsData, recentPosts,
+    article = await generatePost(newsData, promptPosts,
       `上一次你寫的「${article.title}」和已發布的「${dup.post.title}」是同一個主題。這次必須換一則完全不同的新聞事件，不要再寫這個主題。`);
     console.log(`  ✓ 重生標題：[${article.category}] ${article.title}`);
     dup = findDuplicate(article, recentPosts);

@@ -54,13 +54,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://operation.tw/post/414/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-414.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/413/</loc>
     <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -103,13 +96,6 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-409.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/407/</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-407.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/406/</loc>
     <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -122,13 +108,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-405.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/404/</loc>
-    <lastmod>2026-09-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-404.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/403/</loc>
@@ -257,13 +236,6 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-386.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/384/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-384.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/385/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -390,13 +362,6 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-366.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/367/</loc>
-    <lastmod>2026-08-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-367.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/365/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -423,13 +388,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-362.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/361/</loc>
-    <lastmod>2026-08-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-361.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/359/</loc>
@@ -495,25 +453,11 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-352.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/351/</loc>
-    <lastmod>2026-08-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-351.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/350/</loc>
     <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-350.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/349/</loc>
-    <lastmod>2026-08-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-349.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/347/</loc>
@@ -565,13 +509,6 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-342.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/341/</loc>
-    <lastmod>2026-07-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-341.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/339/</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
@@ -591,13 +528,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-338.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/337/</loc>
-    <lastmod>2026-07-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-337.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/335/</loc>
@@ -675,13 +605,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-326.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/324/</loc>
-    <lastmod>2026-07-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-324.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/325/</loc>
@@ -817,25 +740,11 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-298.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/294/</loc>
-    <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-294.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/296/</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-296.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/292/</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-292.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/295/</loc>
@@ -871,20 +780,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-290.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/288/</loc>
-    <lastmod>2026-06-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-288.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/286/</loc>
-    <lastmod>2026-06-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-286.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/285/</loc>
@@ -1069,13 +964,6 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-125.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/124/</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-124.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/277/</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -1102,20 +990,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-276.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/121/</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-121.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/120/</loc>
-    <lastmod>2026-05-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-120.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/275/</loc>
@@ -1181,13 +1055,6 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-272.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/114/</loc>
-    <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-114.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/113/</loc>
     <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -1237,13 +1104,6 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-109.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/108/</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-108.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/269/</loc>
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -1270,13 +1130,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-106.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/105/</loc>
-    <lastmod>2026-05-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-105.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/267/</loc>
@@ -1608,13 +1461,6 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-75.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/74/</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-74.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/73/</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -1655,13 +1501,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-72.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/68/</loc>
-    <lastmod>2026-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-68.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/249/</loc>
@@ -1790,13 +1629,6 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-54.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/53/</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-53.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/52/</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -1874,13 +1706,6 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-42.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/41/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-41.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/40/</loc>
     <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
@@ -1916,13 +1741,6 @@
     <image:image><image:loc>https://operation.tw/images/posts/post-38.jpg</image:loc></image:image>
   </url>
   <url>
-    <loc>https://operation.tw/post/35/</loc>
-    <lastmod>2026-03-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-35.jpg</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://operation.tw/post/34/</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -1935,13 +1753,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-33.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/32/</loc>
-    <lastmod>2026-03-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-32.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/31/</loc>
@@ -2034,20 +1845,6 @@
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/16/</loc>
-    <lastmod>2026-02-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-16.jpg</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://operation.tw/post/14/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image><image:loc>https://operation.tw/images/posts/post-14.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/12/</loc>

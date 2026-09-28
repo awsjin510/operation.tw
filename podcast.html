@@ -130,6 +130,7 @@ nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filte
 .pod-nl-f button{background:linear-gradient(135deg,#00e5ff,#7b61ff);color:#07070d;border:none;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer;}
 .pod-nl-msg{flex-basis:100%;font-size:.8rem;color:#9494c2;min-height:1em;}
 </style>
+<link rel="stylesheet" href="/theme.css">
 <link rel="stylesheet" href="/podcast-v2.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
@@ -240,6 +241,7 @@ let EPS=[];
 
 const PER_PAGE=20;
 let filtered=EPS.slice();
+let hideLatest=false;
 let page=0;
 
 function fmtDur(m){if(!m)return'';const h=Math.floor(m/60),mn=m%60;return h?`${h}h ${mn}m`:`${mn}m`;}
@@ -254,7 +256,7 @@ function renderLatest(){
   const ep=EPS[0],el=document.getElementById('latest-episode');if(!ep||!el)return;
   const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   const desc=String(ep.desc||'').replace(/--\s*Hosting provided by SoundOn/i,'').trim();
-  el.innerHTML=`<div class="latest-card"><div class="latest-art-wrap"><img src="${esc(ep.art)}" alt="${esc(ep.title)}" class="latest-art"><span class="latest-pulse"><i></i>最新單集</span></div><div class="latest-copy"><div class="latest-meta">EP.${EPS.length} · ${esc(fmtDate(ep.date))} · ${fmtDur(ep.dur)}</div><h2>${esc(ep.title)}</h2><p>${esc(desc)}</p><div class="latest-actions"><button class="latest-play" onclick="playEp(0)">▶ 立即播放</button><a class="pf-apple" href="${esc(ep.apple||APPLE_SHOW)}" target="_blank" rel="noopener">${ICO_APPLE}Apple Podcasts</a>${ep.spot?`<a class="pf-spotify" href="${esc(ep.spot)}" target="_blank" rel="noopener">${ICO_SPOT}Spotify</a>`:''}${ep.soundon?`<a href="${esc(ep.soundon)}" target="_blank" rel="noopener">SoundOn ↗</a>`:''}</div></div></div>`;
+  el.innerHTML=`<div class="latest-card"><div class="latest-art-wrap"><img src="${esc(ep.art)}" alt="${esc(ep.title)}" class="latest-art"><span class="latest-pulse"><i></i>最新單集</span></div><div class="latest-copy"><div class="latest-meta">EP.${EPS.length} · ${esc(fmtDate(ep.date))} · ${fmtDur(ep.dur)}</div><h2>${esc(ep.title)}</h2><p>${esc(desc)}</p><div class="latest-actions"><button class="latest-play" onclick="playEpisode(EPS[0])">▶ 立即播放</button><a class="pf-apple" href="${esc(ep.apple||APPLE_SHOW)}" target="_blank" rel="noopener">${ICO_APPLE}Apple Podcasts</a>${ep.spot?`<a class="pf-spotify" href="${esc(ep.spot)}" target="_blank" rel="noopener">${ICO_SPOT}Spotify</a>`:''}${ep.soundon?`<a href="${esc(ep.soundon)}" target="_blank" rel="noopener">SoundOn ↗</a>`:''}</div></div></div>`;
 }
 
 function filterEps(){
@@ -266,6 +268,9 @@ function filterEps(){
   else if(sort==='new')arr.sort((a,b)=>b.date.localeCompare(a.date));
   else if(sort==='long')arr.sort((a,b)=>b.dur-a.dur);
   else if(sort==='short')arr.sort((a,b)=>a.dur-b.dur);
+  // 預設檢視（沒搜尋、最新優先）時，最新一集已在上方「最新單集」大卡，列表不再重複
+  hideLatest=!q&&sort==='new'&&EPS.length>1;
+  if(hideLatest)arr=arr.filter(e=>e!==EPS[0]);
   filtered=arr;
   page=0;
   render();
@@ -273,12 +278,12 @@ function filterEps(){
 
 function render(){
   const total=filtered.length;
-  document.getElementById('ep-count').textContent=`共 ${total} 集`;
+  document.getElementById('ep-count').textContent=`共 ${hideLatest?EPS.length:total} 集`;
   const start=page*PER_PAGE,end=start+PER_PAGE;
   const slice=filtered.slice(start,end);
   const list=document.getElementById('ep-list');
   list.innerHTML=slice.map((ep,i)=>{
-    const n=filtered.indexOf(ep)+1;
+    const n=EPS.length-EPS.indexOf(ep); // 真實集序（最舊 = 01），不受排序／去重影響
     const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     const safe_title=esc(ep.title);
     const safe_desc=esc(ep.desc);
@@ -321,8 +326,9 @@ function renderPag(total){
 
 function goPage(n){page=n;render();window.scrollTo({top:document.querySelector('.ep-wrap').offsetTop-80,behavior:'smooth'});}
 
-function playEp(idx){
-  const ep=filtered[idx];
+function playEp(idx){playEpisode(filtered[idx]);}
+function playEpisode(ep){
+  if(!ep)return;
   document.getElementById('p-title').textContent=ep.title;
   const audio=document.getElementById('p-audio');
   audio.src=ep.url;

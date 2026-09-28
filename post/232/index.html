@@ -60,63 +60,20 @@ function nlGo(f){
   return false;
 }
 </script>
-<style>
-body{font-family:system-ui,sans-serif;background:#050510;color:#e0e0ff;margin:0;padding:24px;line-height:1.7;}
-.wrap{max-width:720px;margin:0 auto;}
-nav{margin-bottom:24px;font-size:.85rem;color:#9494c2;}
-nav a{color:#00f5ff;text-decoration:none;}
-.badge{display:inline-block;border:1px solid #ff0080;color:#ff0080;border-radius:3px;padding:2px 8px;font-size:.75rem;margin-bottom:12px;}
-h1{font-size:1.5rem;margin:0 0 12px;}
-time{color:#9494c2;font-size:.85rem;}
-.excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
-.byline{margin-top:6px;color:#8a8ab0;font-size:.88rem;}
-.byline a{color:#00f5ff;text-decoration:none;}
-.byline a:hover{text-decoration:underline;}
-.post-nav{display:flex;gap:12px;margin:32px 0 8px;flex-wrap:wrap;}
-.post-nav .pn{flex:1;min-width:200px;display:block;padding:12px 16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s;}
-.post-nav .pn:hover{border-color:#00f5ff;}
-.post-nav .pn span{display:block;font-size:.78rem;color:#00f5ff;margin-bottom:4px;}
-.post-nav .pn b{display:block;color:#d6d6f0;font-size:.95rem;line-height:1.4;font-weight:500;}
-.post-nav .pn-r{text-align:right;}
-.nl-box{margin:28px 0 8px;padding:20px 22px;border:1px solid rgba(0,245,255,.28);border-radius:12px;background:linear-gradient(180deg,rgba(0,245,255,.06),transparent);}
-.nl-t{font-weight:700;color:#fff;font-size:1.05rem;}
-.nl-d{color:#b8b8e0;font-size:.9rem;margin:6px 0 12px;}
-.nl-f{display:flex;gap:8px;flex-wrap:wrap;position:relative;}
-.nl-f input[type=email]{flex:1;min-width:180px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:10px 12px;color:#fff;font-size:.9rem;}
-.nl-f button{background:linear-gradient(135deg,#00e5ff,#7b61ff);color:#07070d;border:none;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer;}
-.nl-msg{font-size:.82rem;margin-top:8px;min-height:1em;color:#9494c2;}
-.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
-.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
-.toc ul{margin:0;padding:0;list-style:none;}
-.toc li{margin:4px 0;}
-.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
-.toc li a:hover{color:#fff;text-decoration:underline;}
-.toc-l3{padding-left:18px;}
-.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
-.post-body :is(h2,h3){scroll-margin-top:16px;}
-.cover{width:100%;max-width:720px;height:auto;border-radius:10px;margin:20px 0;display:block;}
-.post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
-.post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
-.post-body h3{font-size:1.08rem;margin:1.4em 0 .5em;color:#fff;}
-.post-body p{margin:0 0 1.1em;}
-.post-body ul,.post-body ol{margin:0 0 1.1em 1.4em;}
-.post-body li{margin:.4em 0;}
-.post-body a{color:#00f5ff;}
-.post-body blockquote{margin:1.2em 0;padding:.4em 1em;border-left:3px solid #00f5ff;color:#a8b6cc;}
-.post-body img{max-width:100%;border-radius:8px;}
-.post-body hr{border:none;border-top:1px solid rgba(255,255,255,.12);margin:1.6em 0;}
-</style>
+<link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body>
-<div class="wrap">
-  <nav><a href="/">操作一下</a> › <a href="/category/%E8%B3%87%E5%AE%89/">資安</a> › EP81｜從零開始打造雲端職涯！GCP大神東東親授小白到黑帶攻略</nav>
+<body class="st">
+<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
+<main class="st-narrow st-post">
+  <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E8%B3%87%E5%AE%89/">資安</a></nav>
   <article>
-    <div class="badge">🔐 資安</div>
+    <div class="badge" style="color:#ff6b9a;background:#ff6b9a1a">🔐 資安</div>
     <h1>EP81｜從零開始打造雲端職涯！GCP大神東東親授小白到黑帶攻略</h1>
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2025-09-09">2025-09-09</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-232.webp"><img class="cover" src="https://operation.tw/images/posts/post-232.jpg" alt="EP81｜從零開始打造雲端職涯！GCP大神東東親授小白到黑帶攻略" width="1200" height="630"></picture>
     <div class="excerpt"><p>沒有資訊背景，真的能成為雲端架構師嗎？這集《操作一下》邀請到 Google Cloud 人氣講師東東老師，從他誤打誤撞踏入雲端領域的親身經歷出發，分享 GCP 學習路徑、證照價值、面試心法，以及 AI 時代下 GCP 的獨特優勢。無論你是轉職新鮮人還是資深 IT 人，這篇文章都能幫你找到上雲的第一步。</p></div>
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">雲端架構師的核心，其實是「溝通」與「解法思維」</a></li><li class="toc-l2"><a href="#sec-2">為什麼選 GCP？AI 時代的結構性優勢</a></li><li class="toc-l2"><a href="#sec-3">從零開始的完整學習路徑</a></li><li class="toc-l2"><a href="#sec-4">面試的時候，面試官到底想看什麼？</a></li><li class="toc-l2"><a href="#sec-5">給想「上雲」的你</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>「雲端架構師」這個職稱，聽起來既高端又遙遠。很多人一聽到「架構師」三個字，腦海裡浮現的就是那種整天對著終端機猛敲程式碼的工程師形象，然後默默覺得「這條路大概不適合我」。但如果我告訴你，成為雲端架構師最核心的能力，其實不是寫程式呢？</p><p>這集《操作一下》邀請到在 YouTube 與社群上累積大批粉絲的 Google Cloud 講師——東東老師，聊他從系統整合公司的專案經理，一路誤打誤撞走進雲端領域、最終成為獨當一面的架構師與線上課程講師的完整歷程。這不只是一個技術人的故事，更是一張對所有想跨領域轉職的人來說，非常有參考價值的職涯地圖。</p><h2 id="sec-1">雲端架構師的核心，其實是「溝通」與「解法思維」</h2><p>東東老師在節目裡打破了一個很常見的迷思：雲端架構師不等於要很會寫程式。當然，有基礎的程式概念絕對加分，但這個角色更像是一位「顧問」——你需要聽懂客戶的問題、理解業務痛點，然後設計出一套可行的雲端解決方案。這中間最關鍵的能力，是溝通與邏輯拆解問題的思維，而不是能不能把演算法背得滾瓜爛熟。</p><p>這個觀點對很多非本科系的朋友來說，其實是很大的鼓勵。如果你在工作上已經養成了「聽需求、找方案、協調資源」的習慣，那你其實已經具備了踏入這個領域的重要基礎。</p><h2 id="sec-2">為什麼選 GCP？AI 時代的結構性優勢</h2><p>市面上雲端平台那麼多，AWS、Azure、GCP 各有各的擁護者。東東老師分析了 GCP 在目前這個時間點的獨特優勢——那就是 Google 在 AI 領域深厚的底蘊。從早年的 AlphaGo 到現在的 Gemini，Google 幾乎是把 AI 研發當成核心戰略在走，而這些能力也被深度整合進 GCP 的各項服務裡。</p><p>對於想在 AI 浪潮中找到立足點的工程師或轉職者來說，選擇一個跟 AI 結合最緊密的雲端平台，其實是一種戰略性的押注。這不是說其他平台不好，而是如果你的職涯目標跟生成式 AI 或 MLOps 有關，GCP 確實有它的結構性優勢。</p><h2 id="sec-3">從零開始的完整學習路徑</h2><p>這集最實用的部分，大概就是東東老師分享的「小白到黑帶」學習地圖了。幾個重點整理如下：</p><ul><li><strong>起點不設限：</strong>東東老師說，哪怕你連 Google 帳號都還沒申請，也能從零開始。重點是先動起來，不要等到「準備好了再說」。</li><li><strong>善用 Google 官方的 Skill Boost 平台：</strong>這是 Google 官方提供的線上學習與實作環境，有免費的課程與 Lab，讓你可以在真實的雲端環境裡動手操作，不用擔心搞壞什麼或被收費嚇到。</li><li><strong>證照的真正意義：</strong>考證照不只是為了一張紙，它更像是一個「公信力憑證」。尤其對於沒有相關工作經歷的轉職者來說，一張 Google Cloud 的官方認證，能幫助你在面試時快速建立信任感，讓對方相信你具備基礎能力。</li></ul><h2 id="sec-4">面試的時候，面試官到底想看什麼？</h2><p>東東老師也在節目裡特別聊到面試這個環節。他提到一個很經典的問題：「你曾經遇過最大的挑戰是什麼？」很多人的第一反應是緊張或鬼扯，但其實這種問題考的是你的「問題拆解能力」與「從顧問角度思考的習慣」。</p><p>他建議，回答這類問題時，不要只說「我遇到了什麼困難」，更要清楚呈現「我怎麼分析這個問題、我考慮了哪些方案、我最後為什麼選擇這個做法」。這樣的回答邏輯，才能讓面試官看到你真正的即戰力。</p><h2 id="sec-5">給想「上雲」的你</h2><p>不管你現在是剛畢業的學生、想轉職的上班族，還是已經在 IT 領域打滾多年的老手，這集內容都值得你花時間聽一聽。雲端不是少數人的專利，它正在變成每個產業的基礎建設。愈早開始建立這方面的認知與能力，你的職涯選擇就愈多。</p><p>東東老師也有出版一本新書《Google Cloud 從雲端小白到黑帶高手！》，涵蓋雲端架構設計、實戰操作、證照攻略與轉職指南，如果你聽完這集想繼續深入，這本書可以當作很好的延伸讀物。準備好讓你的職涯「上雲」了嗎？</p>
 <hr>
@@ -147,8 +104,9 @@ time{color:#9494c2;font-size:.85rem;}
       </form>
       <div class="nl-msg" aria-live="polite"></div>
     </div>
-    <a class="cta" href="/">← 在操作一下看完整體驗 →</a>
+    <a class="cta" href="/">← 回操作一下首頁</a>
   </article>
-</div>
+</main>
+<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
 </body>
 </html>

@@ -16,7 +16,8 @@ const SITE_URL = 'https://operation.tw';
 // Cloudflare Web Analytics beacon（注入所有產生的頁面）
 const CF_BEACON = `<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>`;
 
-const CAT_COLOR = { AI: '#bf00ff', 雲端: '#00f5ff', 資安: '#ff0080', 閱讀: '#ffff00', 成長: '#00ff88' };
+// 分類色：與 theme.css 同一套柔和色（舊霓虹色 #bf00ff/#00f5ff… 在深底上過亮、和首頁不一致）
+const CAT_COLOR = { AI: '#a78bfa', 雲端: '#62a8ff', 資安: '#ff6b9a', 閱讀: '#f5c451', 成長: '#4ade9a' };
 const CAT_ICON  = { AI: '🤖', 雲端: '☁️', 資安: '🔐', 閱讀: '📚', 成長: '🌱' };
 const PODCAST_SHOW_URL = 'https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl';
 // 分類主題頁（Hub）的描述文案，供 /category/{類} 的 meta / H1 副標使用
@@ -47,6 +48,22 @@ function pickEpisode(list, postDate) {
   return list.reduce((best, e) =>
     Math.abs(Date.parse(e.date) - t) < Math.abs(Date.parse(best.date) - t) ? e : best);
 }
+
+// 重複主題文章 → 主文章（canonical-map.json，人工維護）：canonical 指向主文、移出 sitemap
+function loadCanonicalMap() {
+  try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'canonical-map.json'), 'utf8')).map || {}; }
+  catch (e) { return {}; }
+}
+const CANONICAL_MAP = loadCanonicalMap();
+
+// 靜態頁共用的導覽列與頁尾（樣式在 /theme.css）
+const catHref = (c) => `/category/${encodeURIComponent(c)}/`;
+function siteHeader(current) {
+  const links = ['AI', '雲端', '資安', '閱讀', '成長']
+    .map((c) => `<a href="${catHref(c)}"${current === c ? ' aria-current="page"' : ''}>${c === '雲端' ? 'Cloud' : c === '資安' ? 'Cyber Security' : c}</a>`).join('');
+  return `<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單">${links}<a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>`;
+}
+const SITE_FOOTER = `<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>`;
 
 // 全站 favicon（Google 搜尋結果與分頁標籤會用到）
 const FAVICON_TAGS = '<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">';
@@ -111,7 +128,7 @@ function buildToc(body) {
 }
 
 // ── 產生個別文章 stub 頁 ────────────────────────────────────────────
-function generatePostPage(post, body, episode, neighbors) {
+function generatePostPage(post, body, episode, neighbors, mainPost) {
   body = body || '';
   // 文末收聽區塊是發文當下寫進 D1 的：Apple 只連到節目頁、Spotify 是用「當時的單集標題」搜尋。
   // 這裡依 episodes.json 的最新資料改寫成該集的 Apple 單集頁與目前標題，不必回頭改 D1。
@@ -212,7 +229,7 @@ ${FAVICON_TAGS}
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <title>${esc(post.title)} | 操作一下</title>
 <meta name="description" content="${esc(desc)}">
-<link rel="canonical" href="${url}">
+<link rel="canonical" href="${mainPost ? `${SITE_URL}/post/${encodeURIComponent(mainPost.slug || mainPost.id)}/` : url}">
 <meta property="og:type"        content="article">
 <meta property="og:title"       content="${esc(post.title)}">
 <meta property="og:description" content="${esc(desc)}">
@@ -265,63 +282,20 @@ function nlGo(f){
   return false;
 }
 </script>
-<style>
-body{font-family:system-ui,sans-serif;background:#050510;color:#e0e0ff;margin:0;padding:24px;line-height:1.7;}
-.wrap{max-width:720px;margin:0 auto;}
-nav{margin-bottom:24px;font-size:.85rem;color:#9494c2;}
-nav a{color:#00f5ff;text-decoration:none;}
-.badge{display:inline-block;border:1px solid ${catColor};color:${catColor};border-radius:3px;padding:2px 8px;font-size:.75rem;margin-bottom:12px;}
-h1{font-size:1.5rem;margin:0 0 12px;}
-time{color:#9494c2;font-size:.85rem;}
-.excerpt{margin-top:20px;color:#c0c0e0;font-size:1.02rem;}
-.byline{margin-top:6px;color:#8a8ab0;font-size:.88rem;}
-.byline a{color:#00f5ff;text-decoration:none;}
-.byline a:hover{text-decoration:underline;}
-.post-nav{display:flex;gap:12px;margin:32px 0 8px;flex-wrap:wrap;}
-.post-nav .pn{flex:1;min-width:200px;display:block;padding:12px 16px;border:1px solid rgba(255,255,255,.14);border-radius:10px;text-decoration:none;background:rgba(255,255,255,.02);transition:border-color .2s;}
-.post-nav .pn:hover{border-color:#00f5ff;}
-.post-nav .pn span{display:block;font-size:.78rem;color:#00f5ff;margin-bottom:4px;}
-.post-nav .pn b{display:block;color:#d6d6f0;font-size:.95rem;line-height:1.4;font-weight:500;}
-.post-nav .pn-r{text-align:right;}
-.nl-box{margin:28px 0 8px;padding:20px 22px;border:1px solid rgba(0,245,255,.28);border-radius:12px;background:linear-gradient(180deg,rgba(0,245,255,.06),transparent);}
-.nl-t{font-weight:700;color:#fff;font-size:1.05rem;}
-.nl-d{color:#b8b8e0;font-size:.9rem;margin:6px 0 12px;}
-.nl-f{display:flex;gap:8px;flex-wrap:wrap;position:relative;}
-.nl-f input[type=email]{flex:1;min-width:180px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:10px 12px;color:#fff;font-size:.9rem;}
-.nl-f button{background:linear-gradient(135deg,#00e5ff,#7b61ff);color:#07070d;border:none;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer;}
-.nl-msg{font-size:.82rem;margin-top:8px;min-height:1em;color:#9494c2;}
-.toc{margin:24px 0;padding:16px 20px;border:1px solid rgba(0,245,255,.25);border-radius:10px;background:rgba(0,245,255,.04);}
-.toc-h{font-weight:700;color:#00f5ff;margin-bottom:8px;font-size:.95rem;}
-.toc ul{margin:0;padding:0;list-style:none;}
-.toc li{margin:4px 0;}
-.toc li a{color:#bfeaff;text-decoration:none;font-size:.92rem;line-height:1.5;}
-.toc li a:hover{color:#fff;text-decoration:underline;}
-.toc-l3{padding-left:18px;}
-.toc-l3 a{color:#9fb8d0;font-size:.88rem;}
-.post-body :is(h2,h3){scroll-margin-top:16px;}
-.cover{width:100%;max-width:720px;height:auto;border-radius:10px;margin:20px 0;display:block;}
-.post-body{margin-top:24px;color:#d6d6f0;font-size:1rem;line-height:1.95;}
-.post-body h2{font-size:1.25rem;margin:1.6em 0 .6em;color:#fff;}
-.post-body h3{font-size:1.08rem;margin:1.4em 0 .5em;color:#fff;}
-.post-body p{margin:0 0 1.1em;}
-.post-body ul,.post-body ol{margin:0 0 1.1em 1.4em;}
-.post-body li{margin:.4em 0;}
-.post-body a{color:#00f5ff;}
-.post-body blockquote{margin:1.2em 0;padding:.4em 1em;border-left:3px solid #00f5ff;color:#a8b6cc;}
-.post-body img{max-width:100%;border-radius:8px;}
-.post-body hr{border:none;border-top:1px solid rgba(255,255,255,.12);margin:1.6em 0;}
-</style>
+<link rel="stylesheet" href="/theme.css">
 ${CF_BEACON}
 </head>
-<body>
-<div class="wrap">
-  <nav><a href="/">操作一下</a> › <a href="/category/${encodeURIComponent(post.category)}/">${esc(post.category)}</a> › ${esc(post.title)}</nav>
+<body class="st">
+${siteHeader(post.category)}
+<main class="st-narrow st-post">
+  <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/${encodeURIComponent(post.category)}/">${esc(post.category)}</a></nav>
   <article>
-    <div class="badge">${catIcon} ${esc(post.category)}</div>
+    <div class="badge" style="color:${catColor};background:${catColor}1a">${catIcon} ${esc(post.category)}</div>
     <h1>${esc(post.title)}</h1>
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="${esc(post.date)}">${esc(post.date)}</time>${(post.updated_at || '').slice(0, 10) > post.date ? ` · 最後更新 ${esc(post.updated_at.slice(0, 10))}` : ''}<span id="pv"></span></div>
     ${post.image ? `<picture><source type="image/webp" srcset="${esc(imgWebp)}"><img class="cover" src="${esc(img)}" alt="${esc(post.title)}" width="1200" height="630"></picture>` : ''}
     <div class="excerpt"><p>${esc(post.excerpt || '')}</p></div>
+    ${mainPost ? `<p class="st-main-note">這個主題有更完整的整理：<a href="/post/${encodeURIComponent(mainPost.slug || mainPost.id)}/">${esc(mainPost.title)} →</a></p>` : ''}
     ${toc}
     <div class="post-body"><!--BODY:START-->${body}<!--BODY:END--></div>
     ${postNav}
@@ -335,9 +309,10 @@ ${CF_BEACON}
       </form>
       <div class="nl-msg" aria-live="polite"></div>
     </div>
-    <a class="cta" href="/">← 在操作一下看完整體驗 →</a>
+    <a class="cta" href="/">← 回操作一下首頁</a>
   </article>
-</div>
+</main>
+${SITE_FOOTER}
 </body>
 </html>`;
 }
@@ -385,15 +360,20 @@ function generateCategoryPage(cat, posts) {
 
   const otherCats = Object.keys(CAT_ICON)
     .filter(c => c !== cat)
-    .map(c => `<a class="catnav-link" href="/category/${encodeURIComponent(c)}/">${CAT_ICON[c]} ${esc(c)}</a>`)
+    .map(c => `<a href="/category/${encodeURIComponent(c)}/">${CAT_ICON[c]} ${esc(c)}</a>`)
     .join('');
 
   const list = sorted.map(p => {
     const slug = p.slug || p.id;
-    return `<li class="ci"><a class="ci-t" href="/post/${encodeURIComponent(slug)}/">${esc(p.title)}</a>`
+    const href = `/post/${encodeURIComponent(slug)}/`;
+    const thumb = thumbWebp(p.image);
+    const img = p.image
+      ? `<a class="ci-img" href="${href}" tabindex="-1" aria-hidden="true">${thumb ? `<picture><source type="image/webp" srcset="${esc(thumb)}">` : ''}<img src="${esc(p.image)}" alt="" loading="lazy" decoding="async" width="480" height="320">${thumb ? '</picture>' : ''}</a>`
+      : `<span class="ci-img"></span>`;
+    return `<li class="ci">${img}<div><a class="ci-t" href="${href}">${esc(p.title)}</a>`
       + `<div class="ci-meta"><time datetime="${esc(p.date)}">${esc(p.date)}</time></div>`
       + (p.excerpt ? `<p class="ci-exc">${esc(p.excerpt)}</p>` : '')
-      + `</li>`;
+      + `</div></li>`;
   }).join('\n');
 
   return `<!DOCTYPE html>
@@ -416,44 +396,24 @@ ${FAVICON_TAGS}
 <meta name="twitter:title"       content="${esc(cat)}文章彙整 | 操作一下">
 <meta name="twitter:description" content="${esc(desc)}">
 <script type="application/ld+json">${schema}</script>
-<style>
-body{font-family:system-ui,sans-serif;background:#050510;color:#e0e0ff;margin:0;padding:24px;line-height:1.7;}
-.wrap{max-width:760px;margin:0 auto;}
-nav{margin-bottom:24px;font-size:.85rem;color:#9494c2;}
-nav a{color:#00f5ff;text-decoration:none;}
-.hero{border:1px solid ${color}44;border-radius:12px;padding:24px;background:linear-gradient(180deg,${color}14,transparent);margin-bottom:28px;}
-.hero h1{font-size:1.7rem;margin:0 0 8px;color:#fff;}
-.hero p{margin:0;color:#b8b8e0;}
-.count{color:${color};font-weight:600;}
-ul.list{list-style:none;padding:0;margin:0;}
-.ci{padding:18px 0;border-bottom:1px solid rgba(255,255,255,.08);}
-.ci-t{font-size:1.12rem;color:#fff;text-decoration:none;font-weight:600;}
-.ci-t:hover{color:${color};}
-.ci-meta{color:#9494c2;font-size:.82rem;margin:4px 0 6px;}
-.ci-exc{margin:0;color:#a8a8cc;font-size:.95rem;}
-.catnav{margin:32px 0 8px;display:flex;flex-wrap:wrap;gap:10px;}
-.catnav-link{display:inline-block;padding:6px 14px;border:1px solid rgba(255,255,255,.15);border-radius:20px;color:#c0c0e0;text-decoration:none;font-size:.9rem;}
-.catnav-link:hover{border-color:${color};color:${color};}
-.home{display:inline-block;margin-top:20px;color:#00f5ff;text-decoration:none;}
-</style>
+<link rel="stylesheet" href="/theme.css">
 ${CF_BEACON}
 </head>
-<body>
-<div class="wrap">
-  <nav><a href="/">操作一下</a> › ${esc(cat)}</nav>
-  <header class="hero">
+<body class="st">
+${siteHeader(cat)}
+<main class="st-shell" style="--cat:${color}">
+  <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › ${esc(cat)}</nav>
+  <header class="st-cat-hero">
     <h1>${icon} ${esc(cat)}</h1>
     <p>${esc(lead)}</p>
     <p style="margin-top:10px;">共 <span class="count">${posts.length}</span> 篇文章</p>
   </header>
-  <main>
-    <ul class="list">
+  <ul class="st-cat-list">
 ${list}
-    </ul>
-  </main>
-  <nav class="catnav">${otherCats}</nav>
-  <a class="home" href="/">← 回操作一下首頁</a>
-</div>
+  </ul>
+  <nav class="st-catnav" aria-label="其他主題">${otherCats}</nav>
+</main>
+${SITE_FOOTER}
 </body>
 </html>`;
 }
@@ -528,6 +488,7 @@ function updateSitemap(posts) {
     catUrls++;
   }
   for (const p of posts) {
+    if (CANONICAL_MAP[p.id]) continue; // canonical 指向別篇的重複文，不列入 sitemap
     const slug = p.slug || p.id;
     const imageTag = (p.image && p.image.startsWith('/'))
       ? `\n    <image:image><image:loc>${SITE_URL}${p.image}</image:loc></image:image>` : '';
@@ -535,7 +496,7 @@ function updateSitemap(posts) {
   }
   xml += '</urlset>\n';
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), xml);
-  console.log(`  ✓ sitemap.xml 更新（${posts.length + 2 + catUrls} URLs，含 ${catUrls} 分類頁）`);
+  console.log(`  ✓ sitemap.xml 更新（${(xml.match(/<url>/g) || []).length} URLs，含 ${catUrls} 分類頁；略過 ${posts.filter((p) => CANONICAL_MAP[p.id]).length} 篇重複文）`);
 }
 
 // ── 更新 feed.xml ────────────────────────────────────────────────────
@@ -804,11 +765,13 @@ nav a{color:#00f5ff;text-decoration:none;}
 .src:hover{text-decoration:underline;}
 .home{display:inline-block;margin-top:24px;color:#00f5ff;text-decoration:none;}
 </style>
+<link rel="stylesheet" href="/theme.css">
 ${CF_BEACON}
 </head>
-<body>
-<div class="wrap">
-  <nav><a href="/">操作一下</a> › 常見問題</nav>
+<body class="st">
+${siteHeader('')}
+<div class="wrap st-narrow">
+  <nav class="st-crumb"><a href="/">操作一下</a> › 常見問題</nav>
   <header class="hero">
     <h1>❓ 常見問題彙整</h1>
     <p>五大主題共 <strong>${total}</strong> 則問答，每題都連回完整文章。</p>
@@ -816,6 +779,7 @@ ${CF_BEACON}
   <main>${sections}</main>
   <a class="home" href="/">← 回操作一下首頁</a>
 </div>
+${SITE_FOOTER}
 </body>
 </html>`;
 
@@ -921,11 +885,13 @@ nav a{color:#00f5ff;text-decoration:none;}
 .gt-r a:hover{text-decoration:underline;}
 .home{display:inline-block;margin-top:24px;color:#00f5ff;text-decoration:none;}
 </style>
+<link rel="stylesheet" href="/theme.css">
 ${CF_BEACON}
 </head>
-<body>
-<div class="wrap">
-  <nav><a href="/">操作一下</a> › 術語庫</nav>
+<body class="st">
+${siteHeader('')}
+<div class="wrap st-narrow">
+  <nav class="st-crumb"><a href="/">操作一下</a> › 術語庫</nav>
   <header class="hero">
     <h1>📖 科技術語庫</h1>
     <p>雲端、資安、AI 核心術語的白話定義，共 <strong>${terms.length}</strong> 條，每條附站內延伸閱讀。</p>
@@ -933,6 +899,7 @@ ${CF_BEACON}
   <main>${sections}</main>
   <a class="home" href="/">← 回操作一下首頁</a>
 </div>
+${SITE_FOOTER}
 </body>
 </html>`;
 
@@ -997,7 +964,9 @@ async function main() {
     if (body) withBody++;
     const episode = pickEpisode(epMap[episodeCode(post.title)], post.date);
     if (episode) withEp++;
-    fs.writeFileSync(path.join(dir, 'index.html'), generatePostPage(post, body, episode, nbr[post.id]));
+    const mainId = CANONICAL_MAP[post.id];
+    const mainPost = mainId ? posts.find((p) => String(p.id) === String(mainId)) : null;
+    fs.writeFileSync(path.join(dir, 'index.html'), generatePostPage(post, body, episode, nbr[post.id], mainPost));
     generated++;
   }
   console.log(`  ✓ 其中含完整內文：${withBody}/${generated} 篇、含 PodcastEpisode：${withEp} 篇`);
