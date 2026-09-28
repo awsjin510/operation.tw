@@ -43,10 +43,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
           cache: 'npm'
@@ -140,12 +140,7 @@ jobs:
               continue
             fi
             git commit -m "chore(podcast): backfill batch $i"
-            pushed=0
-            for r in 1 2 3; do
-              if git pull --rebase origin main && git push; then pushed=1; break; fi
-              echo "push 失敗，$((r * 3))s 後重試…"; sleep $((r * 3))
-            done
-            [ "$pushed" = "1" ] || { echo "push 連續失敗"; exit 1; }
+            bash scripts/git-push-retry.sh
           done
           echo "🎉 全部批次結束"
 
@@ -167,8 +162,5 @@ jobs:
             echo "最終無變更"
           else
             git commit -m "chore(podcast): reconcile posts.json/static after run"
-            for r in 1 2 3; do
-              if git pull --rebase origin main && git push; then break; fi
-              echo "push 失敗，重試…"; sleep $((r * 3))
-            done
+            bash scripts/git-push-retry.sh
           fi
