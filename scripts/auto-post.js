@@ -54,6 +54,48 @@ const NEWS_SOURCES = [
   },
 ];
 
+// ── 標題相似度（去重的硬性檢查）───────────────────────────────
+// 只靠 prompt 叫模型「不要重複」擋不住：同一則新聞連續幾天被寫成不同標題
+// （例：歐盟 AI 資安行動計畫 3 篇、AWS 20 週年 3 篇）。這裡用標題關鍵詞重疊度再擋一次。
+// 兩道門檻以 8 月以來的既有重複文章校準：
+//   標題重疊度（交集 / 較短者）≥ 0.4，或「標題＋摘要」Jaccard ≥ 0.15 → 視為同主題。
+//   真重複落在 0.40～0.70 / 0.15～0.31；不同主題分別多在 0.33 / 0.14 以下。
+const DUP_TITLE = 0.4;
+const DUP_TEXT = 0.15;
+const TITLE_STOP = new Set('台灣 灣企 企業 業如 如何 何應 時代 背後 為什 什麼 麼是 解析 啟示 新的 的新 灣科 科技 技企 業的 的合 你的 我們 全球 趨勢 關鍵 下一 一步 真正 重塑 影響 挑戰 機會 崛起'.split(' '));
+function titleTokens(t) {
+  t = String(t || '').toLowerCase().replace(/^[a-z]{1,6}\d{1,4}\s*[｜|_]/, '');
+  const words = (t.match(/[a-z0-9][a-z0-9.+-]*/g) || []).filter((w) => w.length > 1 && w !== 'ai');
+  const bigrams = [];
+  for (const seg of t.replace(/[^\u3400-\u9fff]/g, ' ').split(/\s+/).filter(Boolean)) {
+    for (let i = 0; i < seg.length - 1; i++) { const b = seg.slice(i, i + 2); if (!TITLE_STOP.has(b)) bigrams.push(b); }
+  }
+  return new Set([...words, ...bigrams]);
+}
+function titleSimilarity(a, b) {
+  const A = titleTokens(a), B = titleTokens(b);
+  if (!A.size || !B.size) return 0;
+  let n = 0; for (const x of A) if (B.has(x)) n++;
+  return n / Math.min(A.size, B.size);
+}
+function textJaccard(a, b) {
+  const A = titleTokens(a), B = titleTokens(b);
+  let n = 0; for (const x of A) if (B.has(x)) n++;
+  return n / ((A.size + B.size - n) || 1);
+}
+// 回傳最像的一篇已發布文章；isDup 表示超過任一門檻
+function findDuplicate(article, posts) {
+  let best = null;
+  for (const p of posts) {
+    const t = titleSimilarity(article.title, p.title);
+    const x = textJaccard(`${article.title} ${article.excerpt || ''}`, `${p.title} ${p.excerpt || ''}`);
+    const isDup = t >= DUP_TITLE || x >= DUP_TEXT;
+    const rank = Math.max(t / DUP_TITLE, x / DUP_TEXT);
+    if (!best || rank > best.rank) best = { post: p, title: t, text: x, rank, isDup };
+  }
+  return best;
+}
+
 // ── 查詢近期已發布文章（用於去重）──────────────────────────────
 async function fetchRecentPosts(days = 14) {
   const since = new Date();
@@ -64,7 +106,7 @@ async function fetchRecentPosts(days = 14) {
     const all = await cfdb.getPublishedPosts();
     const posts = all
       .filter((p) => (p.date || '') >= sinceStr)
-      .map((p) => ({ title: p.title, category: p.category, date: p.date }));
+      .map((p) => ({ title: p.title, category: p.category, date: p.date, excerpt: p.excerpt || '' }));
     console.log(`  ✓ 取得近 ${days} 天的 ${posts.length} 篇已發布文章`);
     return posts;
   } catch (err) {
@@ -108,7 +150,7 @@ async function fetchNews(source) {
 }
 
 // ── 用 Claude 生成繁體中文部落格文章 ────────────────────────────
-async function generatePost(newsData, recentPosts = []) {
+async function generatePost(newsData, recentPosts = [], avoidNote = '') {
   const newsContext = newsData
     .filter((n) => n.articles.length > 0)
     .map((n) => {
@@ -122,7 +164,7 @@ async function generatePost(newsData, recentPosts = []) {
   if (!newsContext) throw new Error('所有類別的新聞均抓取失敗，無法生成文章');
 
   // 建立去重上下文：列出近期已發布的文章標題
-  let dedupContext = '';
+  let dedupContext = avoidNote ? `\n\n🚫 ${avoidNote}` : '';
   if (recentPosts.length > 0) {
     const recentTitles = recentPosts
       .map((p) => `- [${p.category}] ${p.title} (${p.date})`)
@@ -408,13 +450,28 @@ async function main() {
   console.log('步驟 1：抓取新聞與近期文章...');
   const [newsData, recentPosts] = await Promise.all([
     Promise.all(NEWS_SOURCES.map(fetchNews)),
-    fetchRecentPosts(14),
+    fetchRecentPosts(30),
   ]);
 
   // 步驟 2：用 Claude 生成文章（傳入近期文章供去重）
   console.log('\n步驟 2：AI 生成文章...');
-  const article = await generatePost(newsData, recentPosts);
+  let article = await generatePost(newsData, recentPosts);
   console.log(`  ✓ 文章標題：[${article.category}] ${article.title}`);
+
+  // 硬性去重：和近 30 天文章標題太像就重生一次；還是太像就今天不發（寧缺勿重複，避免關鍵字互搶排名）
+  const fmtDup = (d) => `「${d.post.title}」（${d.post.date}；標題 ${d.title.toFixed(2)}、內容 ${d.text.toFixed(2)}）`;
+  let dup = findDuplicate(article, recentPosts);
+  if (dup && dup.isDup) {
+    console.log(`  ⚠ 與${fmtDup(dup)}太相似，換題重生…`);
+    article = await generatePost(newsData, recentPosts,
+      `上一次你寫的「${article.title}」和已發布的「${dup.post.title}」是同一個主題。這次必須換一則完全不同的新聞事件，不要再寫這個主題。`);
+    console.log(`  ✓ 重生標題：[${article.category}] ${article.title}`);
+    dup = findDuplicate(article, recentPosts);
+    if (dup && dup.isDup) {
+      console.log(`  ⏭ 重生後仍與${fmtDup(dup)}相似，今天略過發文`);
+      return;
+    }
+  }
 
   // 步驟 3：發布到 Supabase
   console.log('\n步驟 3：發布到 Supabase...');
