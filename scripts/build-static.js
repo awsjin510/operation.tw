@@ -30,8 +30,13 @@ const CAT_DESC = {
 
 // 從標題開頭抓 Podcast 集數碼（AI35 / EP99…），文章與單集標題都用得到
 function episodeCode(title) {
-  const m = String(title || '').trim().match(/^([A-Za-z]{1,6}\d{1,4})[｜|_\s．.:：-]/);
-  return m ? m[1].toUpperCase() : '';
+  const t = String(title || '').trim();
+  // 一般情況：碼後接分隔符（AI35_… / EP99｜…）
+  const m = t.match(/^([A-Za-z]{1,6}\d{1,4})\s*[_|｜\-:：．.]/);
+  if (m) return m[1].toUpperCase();
+  // 單集標題偶爾碼後直接接中文（AI56趨勢操作｜…）；只認 AI/EP，避免把 APT28、AWS20 之類誤判成集數
+  const m2 = t.match(/^((?:AI|EP)\d{1,4})(?=[\u3400-\u9fff])/i);
+  return m2 ? m2[1].toUpperCase() : '';
 }
 // 讀 episodes.json，建「集數碼 → 單集」對照（供文章頁加 PodcastEpisode 結構化資料）
 function loadEpisodeMap() {
