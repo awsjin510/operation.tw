@@ -24,3 +24,34 @@ footer{max-width:var(--pod-max);margin:0 auto;padding:45px 0 30px;border-top:1px
 .pb-apple,.pb-spotify,.latest-actions a.pf-apple,.latest-actions a.pf-spotify{border-radius:999px!important;font-weight:700!important}
 .pb-apple:hover,.pb-spotify:hover,.latest-actions a.pf-apple:hover,.latest-actions a.pf-spotify:hover,.ep-btn.apple:hover,.ep-btn.spotify:hover{filter:brightness(1.08);transform:translateY(-2px)}
 .ep-btn.apple .pf-ico,.ep-btn.spotify .pf-ico{width:14px;height:14px;margin-right:5px}
+
+/* ═══ Layering v3（token 定義在 /theme.css）═══ */
+:root{--pod-bg:var(--s0);--pod-surface:var(--s2);--pod-surface-2:var(--s3);--pod-text:var(--tx-1);--pod-muted:var(--tx-3);--pod-faint:var(--tx-meta);--pod-line:var(--line-2);--pod-line-hi:var(--line-3);--pod-blue:var(--accent);--pod-cyan:var(--accent-2);--pod-purple:var(--accent-3)}
+body{background:var(--s0)}
+.stats-bar{background:var(--s1);border-color:var(--line-1)}
+.stat{border-color:var(--line-1)}
+.stat-l{color:var(--tx-meta);font-weight:500;letter-spacing:.04em}
+/* 最新單集：漸層邊框＋e3，是整頁唯一焦點 */
+.latest-card{border:1px solid transparent;background:linear-gradient(var(--s2),var(--s2)) padding-box,linear-gradient(135deg,rgba(98,168,255,.55),rgba(167,139,250,.22) 60%,transparent) border-box;box-shadow:var(--e3)}
+.latest-copy h2{font-weight:800}
+/* 單集列表：s2 卡片、e1，hover 升級；集數改成右上角大號淡字當裝飾 */
+.ep-card{position:relative;background:var(--s2)!important;border:1px solid var(--line-2)!important;border-radius:var(--r-md)!important;box-shadow:var(--e1),var(--lift);transition:transform .2s,border-color .2s,box-shadow .2s}
+.ep-card:hover{transform:translateY(-3px);border-color:var(--line-3)!important;box-shadow:var(--e3)}
+.ep-num{position:absolute!important;top:10px;right:16px;padding:0!important;font:800 28px/1 var(--font)!important;color:rgba(255,255,255,.12)!important;pointer-events:none}
+.ep-title{font-weight:650!important}
+.ep-meta{color:var(--tx-meta)!important;font-weight:500;letter-spacing:.04em}
+.ep-btn.soundon{color:var(--tx-3)!important}
+/* 手機：縮圖放大；主鈕「播放」撐滿，平台鈕縮成純圖示一列 */
+@media(max-width:540px){
+  .ep-card{grid-template-columns:88px 1fr!important;column-gap:14px!important}
+  .ep-thumb{width:88px!important;height:88px!important}
+  /* 覆蓋上方舊的手機規則（≤430px 改 grid、width:100%、隱藏 Apple 鈕） */
+  .ep-actions{grid-column:1/-1!important;display:flex!important;flex-wrap:nowrap!important;gap:8px!important}
+  .ep-btn{width:auto!important;flex:0 0 44px!important}
+  .ep-btn.play{flex:1 1 auto!important;justify-content:center;min-height:44px}
+  .ep-btn.apple{display:inline-flex!important}
+  .ep-btn.apple,.ep-btn.spotify,.ep-btn.soundon{min-width:44px;min-height:44px;justify-content:center;font-size:0!important;padding:0!important}
+  .ep-btn.apple .pf-ico,.ep-btn.spotify .pf-ico{width:18px;height:18px;margin:0}
+  .ep-btn.soundon{display:none!important}
+  .latest-card{box-shadow:var(--e2)}
+}
