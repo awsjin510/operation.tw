@@ -43,9 +43,18 @@ function loadEpisodeMap() {
   try {
     const eps = JSON.parse(fs.readFileSync(path.join(ROOT, 'episodes.json'), 'utf8')).episodes || [];
     const map = {};
-    for (const e of eps) { const c = episodeCode(e.title); if (c && !map[c]) map[c] = e; }
+    for (const e of eps) { const c = episodeCode(e.title); if (c) (map[c] = map[c] || []).push(e); }
     return map;
   } catch (e) { return {}; }
+}
+
+// 同一集數碼可能對到多集（RSS 曾把兩集都編成 AI36）→ 挑發布日最接近文章日期的那集
+function pickEpisode(list, postDate) {
+  if (!list || !list.length) return null;
+  if (list.length === 1 || !postDate) return list[0];
+  const t = Date.parse(postDate);
+  return list.reduce((best, e) =>
+    Math.abs(Date.parse(e.date) - t) < Math.abs(Date.parse(best.date) - t) ? e : best);
 }
 
 function esc(s) {
@@ -962,7 +971,7 @@ async function main() {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     const body = bodies[post.id] || '';
     if (body) withBody++;
-    const episode = epMap[episodeCode(post.title)] || null;
+    const episode = pickEpisode(epMap[episodeCode(post.title)], post.date);
     if (episode) withEp++;
     fs.writeFileSync(path.join(dir, 'index.html'), generatePostPage(post, body, episode, nbr[post.id]));
     generated++;
