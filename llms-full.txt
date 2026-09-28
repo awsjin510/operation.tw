@@ -662,7 +662,7 @@ AI自創密語現象並非孤立事件，而是一個警訊：隨著模型規模
 
 ---
 
-# AWS × Salesforce 跨雲整合：企業資料不再搬家的時代來臨
+# AI56｜AWS × Salesforce 跨雲整合：企業資料不再搬家的時代來臨
 https://operation.tw/post/401/
 分類：雲端 · 2026-09-16
 
@@ -1040,7 +1040,7 @@ https://operation.tw/post/392/
 
 ---
 
-# AI 把駭客攻擊加速 168 倍：為什麼傳統資安防線正在失效
+# AI55｜AI 把駭客攻擊加速 168 倍：為什麼傳統資安防線正在失效
 https://operation.tw/post/393/
 分類：資安 · 2026-09-09
 
@@ -1417,7 +1417,7 @@ AWS 的成功在於發現了一個通用的市場需求——大多數企業都�
 
 ---
 
-# AI「無限算力」時代結束：Claude 5.1、Gemini 改價背後的成本轉嫁
+# AI54｜AI「無限算力」時代結束：Claude 5.1、Gemini 改價背後的成本轉嫁
 https://operation.tw/post/385/
 分類：AI · 2026-09-02
 
@@ -4212,7 +4212,7 @@ AWS在IaaS基礎設施領域的領先地位難以動搖，但利潤增速將放�
 
 ---
 
-# AI44｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？
+# AI45｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？
 https://operation.tw/post/329/
 分類：AI · 2026-07-18
 
@@ -4854,7 +4854,7 @@ AI網安從國安問題的重新定義意味著企業不能再把資安當作事
 
 ---
 
-# Claude 全家桶完整指南：超越基礎提問的 95% 功能
+# AI42｜Claude 全家桶完整指南：超越基礎提問的 95% 功能
 https://operation.tw/post/319/
 分類：閱讀 · 2026-07-10
 
@@ -13595,7 +13595,7 @@ NIST AI資安框架的發布不是一項可以延遲的要求，而是企業必�
 
 ---
 
-# EP93_資深獵頭 Glen | ⌈存在即合理⌋：別急著否定，看清職場亂象背後的隱藏機會
+# EP93｜資深獵頭 Glen | ⌈存在即合理⌋：別急著否定，看清職場亂象背後的隱藏機會
 https://operation.tw/post/6/
 分類：成長 · 2026-02-22
 
@@ -13697,7 +13697,7 @@ https://operation.tw/post/8/
 
 ---
 
-# EP92_資深獵頭 Glen | 別對下一份工作有「錯誤期待」！揭秘企業選才的隱形標準
+# EP92｜資深獵頭 Glen | 別對下一份工作有「錯誤期待」！揭秘企業選才的隱形標準
 https://operation.tw/post/9/
 分類：成長 · 2026-02-01
 
