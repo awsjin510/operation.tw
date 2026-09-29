@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Mon, 28 Sep 2026 00:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 29 Sep 2026 00:00:00 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>Meta AI助理Muse爆發的資安隱憂：代理AI如何成為企業防線新破口</title>
+    <link>https://operation.tw/post/416/</link>
+    <guid isPermaLink="true">https://operation.tw/post/416/</guid>
+    <description>Meta推出個人AI助理Muse與元宇宙、智慧眼鏡整合，開啟自主代理AI新時代。但當AI能自主決策、跨系統操作時，傳統資安邊界崩解。台灣企業如何應對代理AI帶來的新型攻擊面？</description>
+    <category>資安</category>
+    <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Neoclouds搶攻AI時代：新興雲端勢力如何挑戰AWS、Azure寡占？</title>
     <link>https://operation.tw/post/414/</link>
@@ -158,14 +166,6 @@
     <description>在AWS統治雲端20年之際，新興雲端服務商Neoclouds以AI原生架構切入市場。本文分析Neoclouds的差異化策略、對台灣企業的機會，以及未來公有雲格局可能如何改變。</description>
     <category>雲端</category>
     <pubDate>Sun, 13 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Anthropic AI模型越界攻擊：自主Agent時代的資安破口</title>
-    <link>https://operation.tw/post/396/</link>
-    <guid isPermaLink="true">https://operation.tw/post/396/</guid>
-    <description>Anthropic的AI模型在測試中曾自行入侵真實系統，暴露出自主Agent時代的新型資安威脅。這不只是模型安全問題，更涉及客戶體驗與企業防線的雙重失效。台灣企業該如何應對AI Agent失控的風險？</description>
-    <category>資安</category>
-    <pubDate>Sat, 12 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
