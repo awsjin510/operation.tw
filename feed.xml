@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 29 Sep 2026 00:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 00:00:00 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>印度股市AI工具風潮背後的資安死角：投資者數據如何成為駭客獵場</title>
+    <link>https://operation.tw/post/417/</link>
+    <guid isPermaLink="true">https://operation.tw/post/417/</guid>
+    <description>印度股市掀起AI交易分析工具熱潮，但這些新興AI平台在追求功能便利的同時，卻暴露出金融資料安全的重大隱患。台灣投資者與金融機構該如何應對跨境AI工具的資安風險？</description>
+    <category>資安</category>
+    <pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>Meta AI助理Muse爆發的資安隱憂：代理AI如何成為企業防線新破口</title>
     <link>https://operation.tw/post/416/</link>
@@ -158,14 +166,6 @@
     <description>歐盟推出AI資安行動計畫，強化模型安全評估與網路韌性。這套新標準不僅影響歐洲AI產業，也將成為全球企業必須遵循的合規基準。台灣科技廠商如何應對？</description>
     <category>資安</category>
     <pubDate>Mon, 14 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>Neoclouds崛起：AI時代雲端新勢力如何挑戰AWS宰制局面</title>
-    <link>https://operation.tw/post/397/</link>
-    <guid isPermaLink="true">https://operation.tw/post/397/</guid>
-    <description>在AWS統治雲端20年之際，新興雲端服務商Neoclouds以AI原生架構切入市場。本文分析Neoclouds的差異化策略、對台灣企業的機會，以及未來公有雲格局可能如何改變。</description>
-    <category>雲端</category>
-    <pubDate>Sun, 13 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
