@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 30 Sep 2026 00:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 00:00:00 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>資策會轉向實體AI：為何大語言模型不再是唯一答案</title>
+    <link>https://operation.tw/post/418/</link>
+    <guid isPermaLink="true">https://operation.tw/post/418/</guid>
+    <description>在大語言模型競爭白熱化的時代，資策會另闢蹊徑投注實體AI領域，從無人機、機器狗到自駕車的模擬測試，展現台灣AI產業差異化戰略。這個轉向背後隱含什麼產業信號？</description>
+    <category>AI</category>
+    <pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>印度股市AI工具風潮背後的資安死角：投資者數據如何成為駭客獵場</title>
     <link>https://operation.tw/post/417/</link>
@@ -158,14 +166,6 @@
     <description>外灘大會揭示AI產業的深層分歧：大型語言模型在通用知識上表現卓越，卻在長尾知識、專業領域持續失靈。智慧代理（Intelligent Agent）正加速落地，成為彌補這一鴻溝的關鍵。台灣企業該如何認識這場AI範式轉移？</description>
     <category>AI</category>
     <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>AI模型安全評估標準化：歐盟行動計畫如何重塑全球AI治理格局</title>
-    <link>https://operation.tw/post/398/</link>
-    <guid isPermaLink="true">https://operation.tw/post/398/</guid>
-    <description>歐盟推出AI資安行動計畫，強化模型安全評估與網路韌性。這套新標準不僅影響歐洲AI產業，也將成為全球企業必須遵循的合規基準。台灣科技廠商如何應對？</description>
-    <category>資安</category>
-    <pubDate>Mon, 14 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
