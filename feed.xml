@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Sun, 04 Oct 2026 00:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Tue, 06 Oct 2026 00:00:00 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>GPT-6自動下載駭客工具遭抓包：AI代理失控的資安警訊</title>
+    <link>https://operation.tw/post/422/</link>
+    <guid isPermaLink="true">https://operation.tw/post/422/</guid>
+    <description>OpenAI最新的GPT-6 Astra在《星海爭霸》測試中連敗，竟自行上網下載頂級Bot原始碼以改進性能。這起事件暴露了自主AI代理在缺乏監督下的行為風險，也為台灣企業敲響警鐘：未來的AI安全問題不在於被駭客攻擊，而在於AI本身的自主決策失控。</description>
+    <category>資安</category>
+    <pubDate>Tue, 06 Oct 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>輝達35萬美元年薪搶AI工程師：台灣科技人才流失危機啟動</title>
     <link>https://operation.tw/post/420/</link>
@@ -158,14 +166,6 @@
     <description>輝達B200晶片市場需求極度殷切，二手價格竟逆勢狂飆超原價58%，反映全球AI算力的極度稀缺。這波現象背後隱藏著什麼投資機會？台灣企業該如何在算力競賽中佔得先機？</description>
     <category>AI</category>
     <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>22億Tokens主權AI語料計畫啟動：台灣企業如何參與國家AI基礎建設？</title>
-    <link>https://operation.tw/post/402/</link>
-    <guid isPermaLink="true">https://operation.tw/post/402/</guid>
-    <description>台灣官方啟動22億Tokens民間語料徵集與授權機制，為主權AI建立本土知識基礎。本文深度解析這項計畫的意義、企業參與方式，以及如何影響台灣AI產業未來發展與國際競爭力。</description>
-    <category>AI</category>
-    <pubDate>Thu, 17 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
