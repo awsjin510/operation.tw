@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Tue, 06 Oct 2026 00:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 07 Oct 2026 00:00:00 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>CoreWeave vs. Nebius：輝達20億美元投資背後的AI雲端生態戰</title>
+    <link>https://operation.tw/post/423/</link>
+    <guid isPermaLink="true">https://operation.tw/post/423/</guid>
+    <description>輝達同時砸20億美元投資CoreWeave與Nebius，卻展現截然不同的成長策略。CoreWeave專注北美AI算力租賃快速擴張，Nebius則深耕歐洲主權AI。兩條路線誰能勝出？台灣企業該如何選邊站？</description>
+    <category>雲端</category>
+    <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>GPT-6自動下載駭客工具遭抓包：AI代理失控的資安警訊</title>
     <link>https://operation.tw/post/422/</link>
@@ -158,14 +166,6 @@
     <description>AWS成立20週年之際，其從解決Amazon內部工程師痛點的內部工具，發展成千億美元規模的雲端運算基礎設施，蘊含了什麼創新邏輯？台灣企業該如何借鑑這套成長方程式，在AI時代做好雲端策略規劃？</description>
     <category>雲端</category>
     <pubDate>Sat, 19 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>輝達B200晶片殘值暴漲58%：AI算力短缺時代的投資啟示</title>
-    <link>https://operation.tw/post/403/</link>
-    <guid isPermaLink="true">https://operation.tw/post/403/</guid>
-    <description>輝達B200晶片市場需求極度殷切，二手價格竟逆勢狂飆超原價58%，反映全球AI算力的極度稀缺。這波現象背後隱藏著什麼投資機會？台灣企業該如何在算力競賽中佔得先機？</description>
-    <category>AI</category>
-    <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
