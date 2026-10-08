@@ -43,7 +43,7 @@
   </url>
   <url>
     <loc>https://operation.tw/category/%E9%96%B1%E8%AE%80/</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -59,6 +59,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://operation.tw/images/posts/post-423.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://operation.tw/post/424/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://operation.tw/images/posts/post-424.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://operation.tw/post/422/</loc>
