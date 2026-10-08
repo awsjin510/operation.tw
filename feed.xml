@@ -5,8 +5,16 @@
   <link>https://operation.tw</link>
   <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>
   <language>zh-TW</language>
-  <lastBuildDate>Wed, 07 Oct 2026 00:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 08 Oct 2026 00:00:00 GMT</lastBuildDate>
   <atom:link href="https://operation.tw/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>中國9月推16個新模型：台灣AI企業如何應對加速競賽？</title>
+    <link>https://operation.tw/post/425/</link>
+    <guid isPermaLink="true">https://operation.tw/post/425/</guid>
+    <description>日媒報導中國AI開發速度未減反增，9月推出16個新模型。在美國制裁與國際呼籲放緩之際，大陸持續加速AI開發。台灣企業應如何在這波算力競賽中找到生存之道？本文分析中國AI策略轉變與台灣的應對機會。</description>
+    <category>AI</category>
+    <pubDate>Thu, 08 Oct 2026 00:00:00 GMT</pubDate>
+  </item>
   <item>
     <title>CoreWeave vs. Nebius：輝達20億美元投資背後的AI雲端生態戰</title>
     <link>https://operation.tw/post/423/</link>
@@ -158,14 +166,6 @@
     <description>最新研究揭露AI模型間的神祕「亂碼語言」能將通訊效率提升3倍，但這項突破背後隱藏資安風險。當AI自創密語難以被人類監督時，企業該如何在效率與安全間取得平衡？</description>
     <category>資安</category>
     <pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>醫療AI的語義危機：LLM為何難以獨當一面？</title>
-    <link>https://operation.tw/post/405/</link>
-    <guid isPermaLink="true">https://operation.tw/post/405/</guid>
-    <description>大型語言模型在醫療應用中面臨關鍵瓶頸——無法獨撐數據語義基礎。本文探討LLM在醫療領域的盲點、為何單純的文本理解不足以支撐臨床決策，以及企業該如何構建混合型AI架構來彌補缺陷。</description>
-    <category>AI</category>
-    <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>
