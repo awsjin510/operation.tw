@@ -394,3 +394,8 @@ mark{background:rgba(98,168,255,.25);color:inherit;border-radius:3px;padding:0 2
 .st-foot{background:var(--s1) url(/images/brand/grid.svg) repeat;background-size:64px 64px}
 @media(max-width:860px){.h-hero-art{opacity:.45;-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%)}}
 @media(max-width:540px){.st-cat-art{width:110px;height:110px;right:12px;top:22px;transform:none;opacity:.55}.st-cat-hero h1,.st-cat-hero p{max-width:none}.nl-box::after{opacity:.2}}
+.st-foot-stats{grid-column:1/-1;margin:8px 0 0;color:var(--tx-3);font-size:13.5px}
+.st-foot-stats strong{color:var(--tx-1);font-variant-numeric:tabular-nums}
+[data-views-id]:empty{display:none}
+.h-stats-grid strong{font-variant-numeric:tabular-nums}
+.ci-meta [data-views-id]:not(:empty)::before{content:" · "}

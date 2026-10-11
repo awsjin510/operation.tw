@@ -1,11 +1,11 @@
 // operation.tw — 全站共用的小腳本（首頁、Podcast、文章、分類、搜尋頁都載入）
 // 1. 電子報表單（.nl-form）：送出、驗證、成功／失敗訊息寫進 role=status 並保留
-// 2. 文章瀏覽數：body[data-post-id] 時記一次瀏覽；數字達門檻才顯示（太小的數字反而像沒人看）
-// 3. 首頁：記一次全站瀏覽（數字不顯示）
+// 2. 瀏覽統計：每頁記一次全站瀏覽；每個瀏覽器每天第一次造訪記一次「訪客」（不辨識身分）
+//    數字填進 [data-stat=total|today|visitors_today|visitors_total]
+// 3. 文章瀏覽數：body[data-post-id] 時記一次並顯示在 #pv；卡片上的 [data-views-id] 由 /api/views/posts 填入
 (function () {
   'use strict';
   var API = 'https://operation-tw-api.gamania-cloudforce.workers.dev';
-  var SHOW_VIEWS_FROM = 100;
   var EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
   function post(path, body) {
@@ -51,15 +51,45 @@
       .finally(function () { btn.disabled = false; btn.textContent = label; });
   }
 
-  // ── 2. 文章瀏覽數 ──
+  // ── 2. 全站瀏覽與訪客 ──
+  var fmt = function (n) { return Number(n || 0).toLocaleString('zh-TW'); };
+  function taipeiDate() { return new Date(Date.now() + 8 * 3600e3).toISOString().slice(0, 10); }
+  function trackSite() {
+    var visitor = false;
+    try {
+      if (localStorage.getItem('op-visit') !== taipeiDate()) { visitor = true; localStorage.setItem('op-visit', taipeiDate()); }
+    } catch (e) { visitor = false; } // 無痕／封鎖儲存時不計訪客，避免每頁都算一位
+    post('/api/views/site', { visitor: visitor })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        if (!j) return;
+        Array.prototype.forEach.call(document.querySelectorAll('[data-stat]'), function (el) {
+          if (j[el.dataset.stat] != null) el.textContent = fmt(j[el.dataset.stat]);
+        });
+      })
+      .catch(function () {});
+  }
+
+  // ── 3. 文章瀏覽數 ──
   function trackPost(id) {
     post('/api/views/post', { id: id })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (j) {
         var el = document.getElementById('pv');
-        if (el && j && j.views >= SHOW_VIEWS_FROM) el.textContent = ' · ' + j.views + ' 次閱讀';
+        if (el && j && j.views != null) el.textContent = ' · ' + fmt(j.views) + ' 次瀏覽';
       })
       .catch(function () {});
+  }
+  function fillCardViews() {
+    var els = document.querySelectorAll('[data-views-id]');
+    if (!els.length) return;
+    fetch(API + '/api/views/posts').then(function (r) { return r.ok ? r.json() : null; }).then(function (map) {
+      if (!map) return;
+      Array.prototype.forEach.call(els, function (el) {
+        var v = map[el.dataset.viewsId];
+        if (v != null) el.textContent = fmt(v) + ' 次瀏覽';
+      });
+    }).catch(function () {});
   }
 
   // ── 3. 長清單：篩選＋顯示更多（分類頁、FAQ、術語庫）──
@@ -106,8 +136,9 @@
     var forms = document.querySelectorAll('.nl-form');
     for (var i = 0; i < forms.length; i++) forms[i].addEventListener('submit', onSubmit);
     var body = document.body;
+    trackSite();
     if (body.dataset.postId) trackPost(body.dataset.postId);
-    if (body.dataset.page === 'home') post('/api/views/site').catch(function () {});
+    fillCardViews();
     // 手機選單：點選單內連結後收起（同頁錨點時 details 不會自己關）
     var menu = document.querySelector('.st-menu');
     if (menu) menu.addEventListener('click', function (e) { if (e.target.closest('a')) menu.open = false; });

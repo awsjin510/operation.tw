@@ -400,7 +400,7 @@ function generateCategoryPage(cat, posts) {
       ? `<a class="ci-img" href="${href}" tabindex="-1" aria-hidden="true">${thumb ? `<picture><source type="image/webp" srcset="${esc(thumb)}">` : ''}<img src="${esc(p.image)}" alt="" loading="lazy" decoding="async" width="480" height="320">${thumb ? '</picture>' : ''}</a>`
       : `<span class="ci-img"></span>`;
     return `<li class="ci">${img}<div><a class="ci-t" href="${href}">${esc(p.title)}</a>`
-      + `<div class="ci-meta"><time datetime="${esc(p.date)}">${esc(p.date)}</time></div>`
+      + `<div class="ci-meta"><time datetime="${esc(p.date)}">${esc(p.date)}</time><span data-views-id="${esc(String(p.id))}"></span></div>`
       + (p.excerpt ? `<p class="ci-exc">${esc(p.excerpt)}</p>` : '')
       + `</div></li>`;
   }).join('\n');

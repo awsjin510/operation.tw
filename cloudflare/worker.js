@@ -81,20 +81,28 @@ async function route(request, env, url, ctx) {
     return json(settingsToObject(results));
   }
 
-  if (p === '/api/views/site' && m === 'POST') {
-    const today = new Date().toISOString().slice(0, 10);
-    await env.DB.batch([
-      env.DB.prepare(`insert into site_stats (id,count) values ('total',1)
-        on conflict(id) do update set count=count+1, updated_at=datetime('now')`),
-      env.DB.prepare(`insert into site_stats (id,count) values (?1,1)
-        on conflict(id) do update set count=count+1, updated_at=datetime('now')`).bind(today),
-    ]);
+  // 全站瀏覽：每個頁面載入記一次（total／當日）。
+  // 訪客：前端每個瀏覽器每天只送一次 visitor:true → 記 v:total／v:當日（不辨識身分、不存 IP）。
+  // 「今天」以台灣時間計（UTC+8）。GET 只讀不加，給頁面顯示用。
+  if (p === '/api/views/site' && (m === 'POST' || m === 'GET')) {
+    const today = new Date(Date.now() + 8 * 3600e3).toISOString().slice(0, 10);
+    const bump = (id) => env.DB.prepare(`insert into site_stats (id,count) values (?1,1)
+        on conflict(id) do update set count=count+1, updated_at=datetime('now')`).bind(id);
+    if (m === 'POST') {
+      const body = await readJson(request).catch(() => ({}));
+      const ops = [bump('total'), bump(today)];
+      if (body && body.visitor) ops.push(bump('v:total'), bump('v:' + today));
+      await env.DB.batch(ops);
+    }
     const { results } = await env.DB.prepare(
-      `select id,count from site_stats where id in ('total',?1)`
-    ).bind(today).all();
-    let total = 0, day = 0;
-    for (const r of results) { if (r.id === 'total') total = r.count; else day = r.count; }
-    return json({ total, today: day });
+      `select id,count from site_stats where id in ('total',?1,'v:total',?2)`
+    ).bind(today, 'v:' + today).all();
+    const c = {};
+    for (const r of results) c[r.id] = r.count;
+    return json({
+      total: c.total || 0, today: c[today] || 0,
+      visitors_total: c['v:total'] || 0, visitors_today: c['v:' + today] || 0,
+    });
   }
 
   // 全站文章即時瀏覽數（輕量：只回 id→views 對照表，供首頁卡片與 posts.json 快照對齊）
@@ -204,7 +212,7 @@ async function route(request, env, url, ctx) {
 
     if (p === '/api/admin/stats' && m === 'GET') {
       // 後台數據分析：每日瀏覽時序、總瀏覽、訂閱者每日新增
-      const [daily, total, subs] = await Promise.all([
+      const [daily, total, subs, visitors] = await Promise.all([
         env.DB.prepare(
           `select id as date, count from site_stats
            where id glob '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' order by id`
@@ -214,11 +222,15 @@ async function route(request, env, url, ctx) {
           `select date(created_at) as date, count(*) as n from subscribers
            group by date(created_at) order by date`
         ).all(),
+        env.DB.prepare(
+          `select substr(id,3) as date, count from site_stats where id glob 'v:[0-9]*' order by id`
+        ).all(),
       ]);
       return json({
         total_views: (total && total.count) || 0,
         daily_views: daily.results || [],
         subscriber_days: subs.results || [],
+        daily_visitors: visitors.results || [],
       });
     }
 

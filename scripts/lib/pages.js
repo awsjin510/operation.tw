@@ -81,7 +81,7 @@ function articleCard(p, thumbWebp, { feature = false } = {}) {
   const thumb = thumbWebp(p.image);
   return `<a class="h-card${feature ? ' h-card-feature' : ''}" href="${postUrl(p)}">
   <span class="h-card-img">${thumb ? `<picture><source type="image/webp" srcset="${esc(thumb)}">` : ''}<img src="${esc(img)}" alt="" width="480" height="320" loading="lazy" decoding="async">${thumb ? '</picture>' : ''}</span>
-  <span class="h-card-body"><span class="h-meta"><span class="h-cat">${esc(p.category)}</span><time datetime="${esc(date(p.date))}">${esc(date(p.date))}</time></span>
+  <span class="h-card-body"><span class="h-meta"><span class="h-cat">${esc(p.category)}</span><time datetime="${esc(date(p.date))}">${esc(date(p.date))}</time><span data-views-id="${esc(String(p.id))}"></span></span>
   <span class="h-card-t">${esc(p.title)}</span>
   <span class="h-card-d">${esc(clip(p.excerpt, 90))}</span></span>
 </a>`;
@@ -149,8 +149,8 @@ function generateHomePage({ posts, episodes, thumbWebp, CAT_ICON, CAT_DESC, CF_B
   const stats = `<section class="h-stats" aria-label="網站概況"><div class="st-shell h-stats-grid">
   <div><strong>${eps.length} 集</strong><span>Podcast，約 ${hours} 小時</span></div>
   <div><strong>${posts.length} 篇</strong><span>文章與單集重點</span></div>
-  <div><strong>2022</strong><span>開播至今</span></div>
-  <div><strong>每週</strong><span>固定更新</span></div>
+  <div><strong data-stat="total">—</strong><span>累積瀏覽</span></div>
+  <div><strong data-stat="visitors_today">—</strong><span>今日訪客（<span data-stat="today">—</span> 次瀏覽）</span></div>
 </div></section>`;
 
   const podcast = `<section class="h-sec h-sec-band" id="podcast" aria-labelledby="h-pod-t"><div class="st-shell">
