@@ -69,10 +69,10 @@ Kuro 經營「Kuro的資安學習手記」的初心，其實很單純——就�
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000710489420)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/d7099965-ed35-4252-bceb-ac7eb1b6c8a2)
 
-- [在 Spotify 收聽](https://open.spotify.com/search/EP71_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E8%B3%87%E6%B7%B1%E8%B3%87%E5%AE%89%E6%9E%B6%E6%A7%8B%E5%B8%ABKuro%20%7C%20%E5%AD%B8%E7%BF%92%E7%9A%84%E9%81%8E%E7%A8%8B%EF%BC%8C%E6%AF%94%E8%80%83%E5%88%B0%E8%AD%89%E7%85%A7%E6%9B%B4%E9%87%8D%E8%A6%81%20)
+- [在 Spotify 收聽](https://open.spotify.com/search/EP71_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E8%B3%87%E6%B7%B1%E8%B3%87%E5%AE%89%E6%9E%B6%E6%A7%8B%E5%B8%ABKuro%20%7C%20%E5%AD%B8%E7%BF%92%E7%9A%84%E9%81%8E%E7%A8%8B%EF%BC%8C%E6%AF%94%E8%80%83%E5%88%B0%E8%AD%89%E7%85%A7%E6%9B%B4%E9%87%8D%E8%A6%81)
 
 - [瀏覽所有單集 →](https://operation.tw/podcast.html)

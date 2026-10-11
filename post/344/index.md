@@ -79,7 +79,7 @@ Kyo與Kuro不約而同給出同一個建議：去當志工。在HITCON、資安�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/c4ab0176-6867-4334-9829-555e3440752d)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000779002069)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/EP102_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E5%B0%8D%E6%9C%AA%E7%9F%A5%E4%BF%9D%E6%8C%81%E5%A5%BD%E5%A5%87%E3%80%81%E5%B0%8D%E8%A6%8F%E5%89%87%E4%BF%9D%E6%8C%81%E6%87%B7%E7%96%91%EF%BC%8C%E5%BE%9E%E4%B8%80%E5%80%8B%E8%AE%80%E6%9B%B8%E6%9C%83%EF%BC%8C%E5%88%B0%E4%B8%8A%E5%8D%83%E4%BA%BA%E7%9A%84HITCON%20%E5%9C%8B%E9%9A%9B%E9%A7%AD%E5%AE%A2%E5%B9%B4%E6%9C%83%20%7C%20feat.%20Kyo%20%20%26%20Kuro)
 

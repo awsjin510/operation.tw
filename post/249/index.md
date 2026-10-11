@@ -59,7 +59,7 @@ Jin 最後給這本書的推薦對象，是「現階段對人生感到卡頓的�
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000761189737)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/a1346977-7b3a-42fc-968d-3f6d83955fa8)
 

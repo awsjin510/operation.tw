@@ -73,7 +73,7 @@ Zeabur是台灣本土雲端部署平台，8月29日公開承認遭到未授權�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/90bf79a3-cbdf-4539-9b96-7f11c0bd405b)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000787087076)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI53_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%EF%BD%9C%E5%BE%9E%E6%A0%B8%E5%AE%89%E6%9C%83%E5%88%B0%20Zeabur%EF%BC%9A%E5%8F%B0%E7%81%A3%E8%A2%AB%E6%92%AC%E9%96%8B%E7%9A%84%E5%85%A9%E6%89%87%E9%96%80)
 

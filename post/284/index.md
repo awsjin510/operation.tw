@@ -69,7 +69,7 @@ BCG顧問之所以值那麼高的薪水，有一個不起眼的秘密，就是�
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000773558181)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/6d86f7e2-11ab-4bca-890e-9ac8053379a2)
 

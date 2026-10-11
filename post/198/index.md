@@ -63,7 +63,7 @@ Jin 在節目中也坦言，自己過去並沒有經營 LinkedIn 的習慣，直
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000615633254)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/9ab5d739-ce75-4d1c-af65-a6e5b86e9921)
 

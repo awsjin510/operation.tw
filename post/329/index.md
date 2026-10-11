@@ -83,8 +83,8 @@ Gemini Notebook 的升級就是 Google 的答案：我不只給你 AI 聊天，�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/ab4aa292-0137-4c63-bcca-c4395e3568d5)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000777372832)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
-- [在 Spotify 收聽](https://open.spotify.com/search/AI45_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20NotebookLM%20%E6%9B%B4%E5%90%8D%E7%82%BA%20Gemini%20Notebook%EF%BC%8C%E4%BD%86%E9%80%99%E6%AC%A1%E6%B2%92%E9%82%A3%E9%BA%BC%E7%B0%A1%E5%96%AE!!)
+- [在 Spotify 收聽](https://open.spotify.com/search/AI44_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20NotebookLM%20%E6%9B%B4%E5%90%8D%E7%82%BA%20Gemini%20Notebook%EF%BC%8C%E4%BD%86%E9%80%99%E6%AC%A1%E6%B2%92%E9%82%A3%E9%BA%BC%E7%B0%A1%E5%96%AE!!)
 
 - [瀏覽所有單集 →](https://operation.tw/podcast.html)

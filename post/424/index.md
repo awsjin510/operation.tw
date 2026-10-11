@@ -69,8 +69,8 @@
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/6ea62a51-9b9d-4892-9d05-8ef2166ec2be)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000793752248)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
-- [在 Spotify 收聽](https://open.spotify.com/episode/7eFIWnsQ7Kb2mZV2Bf6v4Z)
+- [在 Spotify 收聽](https://open.spotify.com/search/AI59_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%20%7C%20%E5%BE%88%E6%9C%83%E5%AD%98%E9%8C%A2%EF%BC%8C%E5%8D%BB%E4%B8%8D%E6%9C%83%E8%8A%B1%E9%8C%A2%EF%BC%9F%E3%80%8A%E8%8A%B1%E9%8C%A2%E7%9A%84%E8%97%9D%E8%A1%93%E3%80%8B%E6%95%99%E4%BD%A0%E6%8A%8A%E9%87%91%E9%8C%A2%E7%BF%BB%E8%AD%AF%E6%88%90%E4%BA%BA%E7%94%9F)
 
 - [瀏覽所有單集 →](https://operation.tw/podcast.html)

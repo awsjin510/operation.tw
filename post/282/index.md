@@ -63,7 +63,7 @@ Sting老師書裡反覆強調的一句話讓我印象很深：「極速實踐，
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000772693917)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/e3410655-a4a8-43e8-bd94-448552e65ba2)
 

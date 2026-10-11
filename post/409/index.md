@@ -89,7 +89,7 @@ Opus 5.5 的整體使用成本比前代 Opus 5 便宜 40%，Input Token 降 20%�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/47b92a4c-d6b0-4d5d-b45a-188fcdd6ec46)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000791232384)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI57_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%EF%BD%9C%E9%A0%82%E8%A6%8F%E8%83%BD%E5%8A%9B%E3%80%81%E4%BE%BF%E5%AE%9C%E5%9B%9B%E6%88%90%EF%BC%9AClaude%20Opus%205.5%20%E9%96%8B%E6%89%93%20AI%E3%80%8C%E6%80%A7%E8%83%BD%20%C3%97%20%E5%83%B9%E6%A0%BC%E3%80%8D%E9%9B%99%E8%BB%B8%E6%88%B0%E7%88%AD)
 

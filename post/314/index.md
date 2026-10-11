@@ -91,7 +91,7 @@ AWS Bedrock 是託管服務，客戶透過 AWS 介面存取多間廠商的模型
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/eeb92771-c74a-4c62-8031-c4832af84913)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000775878840)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI41_%E9%9B%B2%E7%AB%AF%E6%93%8D%E4%BD%9C%20%7C%20Meta%20%E5%AE%A3%E5%B8%83%E8%B3%A3%E7%AE%97%E5%8A%9B%EF%BC%8CMeta%20Compute%20%E4%B8%8A%E7%B7%9A)
 

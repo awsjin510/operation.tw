@@ -63,7 +63,7 @@ Claude Opus 4.7 是一次真正有感的升級，但「有感」這件事是雙�
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000762191093)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/cab4e17c-f9c6-4a0f-9f80-b0e799c80f08)
 

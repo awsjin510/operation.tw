@@ -73,8 +73,8 @@ AWS Bedrock上的AI代理可在Slack內執行後端流程，包括查詢數據�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/48929925-4ac6-44ba-aabe-cdf89d7a3bd6)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000790225787)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
-- [在 Spotify 收聽](https://open.spotify.com/search/AI56%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%EF%BD%9C%E8%B3%87%E6%96%99%E4%B8%8D%E5%86%8D%E6%90%AC%E5%AE%B6%EF%BC%9AAWS%20%C3%97%20Salesforce%20%E4%B8%89%E5%B1%A4%E6%89%93%E9%80%9A%EF%BC%8C%E4%BC%81%E6%A5%AD%E9%9B%B2%E7%AB%AF%E9%80%B2%E5%85%A5%E3%80%8C%E8%B7%A8%E9%9B%B2%E6%95%B4%E5%90%88%E3%80%8D%E6%99%82%E4%BB%A3)
+- [在 Spotify 收聽](https://open.spotify.com/search/AI55%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%EF%BD%9C%E8%B3%87%E6%96%99%E4%B8%8D%E5%86%8D%E6%90%AC%E5%AE%B6%EF%BC%9AAWS%20%C3%97%20Salesforce%20%E4%B8%89%E5%B1%A4%E6%89%93%E9%80%9A%EF%BC%8C%E4%BC%81%E6%A5%AD%E9%9B%B2%E7%AB%AF%E9%80%B2%E5%85%A5%E3%80%8C%E8%B7%A8%E9%9B%B2%E6%95%B4%E5%90%88%E3%80%8D%E6%99%82%E4%BB%A3)
 
 - [瀏覽所有單集 →](https://operation.tw/podcast.html)

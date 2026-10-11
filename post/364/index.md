@@ -65,7 +65,7 @@ Google 擁有超過 2000 億美元的年度搜尋廣告營收，卻面臨一個�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/aa0cb1c0-1e02-44d8-a4d5-8eec260cbac9)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000783532401)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI51_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20%E7%95%B6%20ChatGPT%20%E9%96%8B%E5%A7%8B%E8%B3%A3%E5%BB%A3%E5%91%8A%E4%BA%86%EF%BC%8C%E4%BD%A0%E7%9A%84%E7%AD%94%E6%A1%88%E9%82%84%E7%B4%94%E5%97%8E%EF%BC%9F)
 

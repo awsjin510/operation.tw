@@ -77,7 +77,7 @@ RAG（Retrieval-Augmented Generation，檢索增強生成）是一套架構，�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/5e058ea6-0c88-46c5-bf2b-1b768594f55d)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000781302643)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI49_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20%E6%9C%80%E8%BF%91%E5%85%AC%E5%8F%B8%E9%82%A3%E5%80%8B%20ChatBot%20%E7%AA%81%E7%84%B6%E8%AE%8A%E8%81%B0%E6%98%8E%E4%BA%86%EF%BC%9F%E7%9C%9F%E6%AD%A3%E8%AE%8A%E8%81%B0%E6%98%8E%E7%9A%84%E5%85%B6%E5%AF%A6%E6%98%AF%E8%B3%87%E6%96%99%E5%BA%AB)
 

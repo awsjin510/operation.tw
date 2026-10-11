@@ -65,10 +65,10 @@
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000700016979)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/cec02edb-51c1-484c-8f66-6ebd5984c407)
 
-- [在 Spotify 收聽](https://open.spotify.com/search/EP64_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E5%95%86%E5%8B%99%E9%96%8B%E7%99%BC_%E4%BD%B3%E7%A9%8E%20%7C%20%E5%8B%87%E6%95%A2%E5%87%BA%E8%B5%B0%20%E6%88%90%E5%B0%B1%E6%9B%B4%E5%A5%BD%E7%9A%84%E8%87%AA%E5%B7%B1%EF%BC%8C%E9%9B%A2%E8%81%B7%E8%B5%B4%E9%9F%93%E7%95%99%E5%AD%B8%E7%9A%84%E5%9C%93%E5%A4%A2%E4%B9%8B%E6%97%85%20)
+- [在 Spotify 收聽](https://open.spotify.com/search/EP64_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E5%95%86%E5%8B%99%E9%96%8B%E7%99%BC_%E4%BD%B3%E7%A9%8E%20%7C%20%E5%8B%87%E6%95%A2%E5%87%BA%E8%B5%B0%20%E6%88%90%E5%B0%B1%E6%9B%B4%E5%A5%BD%E7%9A%84%E8%87%AA%E5%B7%B1%EF%BC%8C%E9%9B%A2%E8%81%B7%E8%B5%B4%E9%9F%93%E7%95%99%E5%AD%B8%E7%9A%84%E5%9C%93%E5%A4%A2%E4%B9%8B%E6%97%85)
 
 - [瀏覽所有單集 →](https://operation.tw/podcast.html)

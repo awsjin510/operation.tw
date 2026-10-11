@@ -81,7 +81,7 @@ AI 之所以能加速攻擊，根本原因不是算法有多聰明，而是它�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/dfd95007-3049-437e-b251-42f96f7f98a1)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000788763001)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI55%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C_%E5%BE%9E2%E6%98%9F%E6%9C%9F%E5%A3%93%E5%88%B0%2010%20%E5%B0%8F%E6%99%82%EF%BC%9AAI%20%E6%8A%8A%E6%94%BB%E6%93%8A%E6%94%B9%E6%88%90%E6%A9%9F%E5%99%A8%E9%80%9F%E5%BA%A6)
 

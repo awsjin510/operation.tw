@@ -73,7 +73,7 @@ Argon 的 Input Token 每百萬 2 美元、Output Token 每百萬 10 美元，�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/3574a3ae-6a9c-4e67-856b-38fc7ee05229)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000793152599)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI58_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%EF%BD%9C%E4%B8%8D%E5%8F%AA%E4%BE%BF%E5%AE%9C%EF%BC%8C%E9%82%84%E8%83%BD%E8%B7%91%E9%95%B7%E6%B5%81%E7%A8%8B%EF%BC%9AGemini%204%20Argon%20%E5%A6%82%E4%BD%95%E6%94%B9%E5%AF%AB%E4%BC%81%E6%A5%AD%20AI%20%E9%81%B8%E5%9E%8B)
 

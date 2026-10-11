@@ -81,7 +81,7 @@ Gemini Flash Cyber 是 Google 於 2024 年 7 月推出的專用 AI 模型，專�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/f52f08ad-ddcd-4aa1-b3a0-1b8149a24697)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000778106428)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI46_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20Google%20%E4%B8%80%E6%AC%A1%E7%99%BC%E8%A1%A8%E4%B8%89%E6%AC%BE%20Gemini%EF%BC%8C%E4%BD%86%E7%9C%9F%E6%AD%A3%E7%9A%84%E9%87%8D%E9%BB%9E%E8%97%8F%E5%9C%A8%E7%AC%AC%E4%B8%89%E6%AC%BE%EF%BC%9AFlash%20Cyber)
 

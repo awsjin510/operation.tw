@@ -322,9 +322,9 @@ AWS Bedrock上的AI代理可在Slack內執行後端流程，包括查詢數據�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/48929925-4ac6-44ba-aabe-cdf89d7a3bd6)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000790225787)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
-- [在 Spotify 收聽](https://open.spotify.com/search/AI56%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%EF%BD%9C%E8%B3%87%E6%96%99%E4%B8%8D%E5%86%8D%E6%90%AC%E5%AE%B6%EF%BC%9AAWS%20%C3%97%20Salesforce%20%E4%B8%89%E5%B1%A4%E6%89%93%E9%80%9A%EF%BC%8C%E4%BC%81%E6%A5%AD%E9%9B%B2%E7%AB%AF%E9%80%B2%E5%85%A5%E3%80%8C%E8%B7%A8%E9%9B%B2%E6%95%B4%E5%90%88%E3%80%8D%E6%99%82%E4%BB%A3)
+- [在 Spotify 收聽](https://open.spotify.com/search/AI55%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%EF%BD%9C%E8%B3%87%E6%96%99%E4%B8%8D%E5%86%8D%E6%90%AC%E5%AE%B6%EF%BC%9AAWS%20%C3%97%20Salesforce%20%E4%B8%89%E5%B1%A4%E6%89%93%E9%80%9A%EF%BC%8C%E4%BC%81%E6%A5%AD%E9%9B%B2%E7%AB%AF%E9%80%B2%E5%85%A5%E3%80%8C%E8%B7%A8%E9%9B%B2%E6%95%B4%E5%90%88%E3%80%8D%E6%99%82%E4%BB%A3)
 
 - [瀏覽所有單集 →](https://operation.tw/podcast.html)
 
@@ -1159,7 +1159,7 @@ AWS Bedrock 是託管服務，客戶透過 AWS 介面存取多間廠商的模型
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/eeb92771-c74a-4c62-8031-c4832af84913)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000775878840)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI41_%E9%9B%B2%E7%AB%AF%E6%93%8D%E4%BD%9C%20%7C%20Meta%20%E5%AE%A3%E5%B8%83%E8%B3%A3%E7%AE%97%E5%8A%9B%EF%BC%8CMeta%20Compute%20%E4%B8%8A%E7%B7%9A)
 
@@ -1448,7 +1448,7 @@ OVHcloud的邊緣AI戰略並非要完全取代美國雲端巨頭，而是開闢�
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000768995314)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/4bc66e6d-e955-45fc-a8a3-dc2512b49e74)
 
@@ -1577,7 +1577,7 @@ Vertex AI 的改名，不只是一個品牌決策，它代表的是整個企業 
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000768155513)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/49360199-60f6-4424-b186-de3979284e8c)
 
@@ -1639,7 +1639,7 @@ AWS 的盤算比較不一樣——它沒有自己的明星消費端模型，但�
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000766524093)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/a194f22c-b379-4851-9f99-c07adae85a3e)
 
@@ -1772,7 +1772,7 @@ AI 模型的能力每隔幾個月就會有新的突破，但能力提升本身�
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000763329830)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/db66d201-34d6-4e87-99b2-ce076ffc7080)
 
@@ -1844,7 +1844,7 @@ AWS 與 Google Cloud 的直連合作，表面上看起來是競爭對手在握�
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000763155025)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/425d84db-9205-416f-9953-5afd96c28a09)
 
@@ -2093,7 +2093,7 @@ Teresa目前在Foxconn負責AI Data Center的業務開發，同時經營英語�
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000759935668)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/15c36789-62df-4932-a009-10fd96b87db7)
 
@@ -2467,7 +2467,7 @@ Tony 建議，如果你是初階者，不要一開始就鎖定「架構師」的
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000702938293)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/a6188fff-684e-4b67-9c13-00b4fd34da12)
 
@@ -2544,7 +2544,7 @@ Tony 建議，如果你是初階者，不要一開始就鎖定「架構師」的
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000696891067)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/12e3dfb6-abfc-4ed1-86f8-922f67fd24c8)
 
@@ -2620,7 +2620,7 @@ Tony 建議，如果你是初階者，不要一開始就鎖定「架構師」的
 
 🎙 **這篇文章延伸自 Podcast《操作一下》。**想用聽的，完整一集在這裡：
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000608026398)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/d9cb3d54-6a0d-4ad2-b9ca-bf113f5f4014)
 

@@ -69,7 +69,7 @@ AI 產業正式進入混合計費時代。對個人用戶來說，選擇訂閱�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/e80725ed-108e-402c-8959-306e50513468)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000787529501)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI54%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20Claude%20Fable%205.1%20%E5%8D%87%E7%B4%9A%E3%80%81Gemini%20Notebook%20%E6%94%B9%E8%A8%88%E5%83%B9%EF%BC%8C%E3%80%8C%E7%84%A1%E9%99%90%E7%AE%97%E5%8A%9B%E3%80%8D%E6%99%82%E4%BB%A3%E6%AD%A3%E5%BC%8F%E7%B5%90%E6%9D%9F)
 

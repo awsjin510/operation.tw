@@ -75,7 +75,7 @@ AI導入失敗的根本原因不在AI本身做不到，而是企業既有的流�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/6ea95ac4-11c1-4b00-8ed8-2286f2126617)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000792101319)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/EP104_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%EF%BD%9CAI%E9%A1%A7%E5%95%8F_Angel%EF%BD%9CA%7C%E5%A4%96%E6%96%87%E7%B3%BB%E3%80%81%E5%9C%8B%E5%B0%8F%E8%80%81%E5%B8%AB%E5%87%BA%E7%94%9F%EF%BC%8C%E6%80%8E%E9%BA%BC%E4%B8%80%E8%B7%AF%E8%B5%B0%E9%80%B2%E7%A7%91%E6%8A%80%E6%A5%AD%E3%80%81%E6%88%90%E7%82%BA%20AI%20%E9%A1%A7%E5%95%8F%3F)
 

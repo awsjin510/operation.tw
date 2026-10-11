@@ -90,7 +90,7 @@ Rumelt 歸納出壞策略的四大典型病徵，你可以直接拿去檢查下�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/1f2798e5-9551-41e2-8d56-4764199b28af)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000776510071)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI43_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%20%7C%20%E7%AD%96%E7%95%A5%E4%B8%8D%E6%98%AF%E7%9B%AE%E6%A8%99%E2%80%94%E2%80%94%E3%80%8A%E5%A5%BD%E7%AD%96%E7%95%A5%EF%BC%8E%E5%A3%9E%E7%AD%96%E7%95%A5%E3%80%8B%E7%B5%A6%E6%AF%8F%E5%80%8B%E9%96%8B%E9%81%8E%E7%84%A1%E6%95%88%E6%9C%83%E8%AD%B0%E7%9A%84%E4%BD%A0)
 

@@ -96,7 +96,7 @@ Opus 5 的核心優勢是「長時間 Agent」能力，可連續執行 8 小時�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/bdc2bf6e-abe2-4f75-a753-ce96d3ef100e)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000778460263)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI47_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20Claude%20Opus%205%3A%20%E5%90%8C%E5%83%B9%E9%8C%A2%EF%BC%8C%E8%83%BD%E5%8A%9B%E5%85%A8%E9%9D%A2%E6%8B%89%E9%AB%98%EF%BC%8CAgent%20%E5%8F%AF%E4%BB%A5%E8%87%AA%E5%B7%B1%E8%B7%91%E4%B8%80%E6%95%B4%E6%99%9A)
 

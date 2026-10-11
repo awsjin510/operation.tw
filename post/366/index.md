@@ -87,7 +87,7 @@ Megan在LinkedIn上持續記錄她協助客戶導入AI的實作經驗，這本�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/6e5f3d19-67ce-49c7-bab8-59388d630c5c)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000783721600)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/EP103_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E5%AE%A2%E6%88%B6%E6%88%90%E5%8A%9F%E7%B6%93%E7%90%86_Megan%20%7C%20%E7%95%B6AI%E8%83%BD%E8%A7%A3%E6%B1%BA%E5%A4%A7%E9%83%A8%E5%88%86%E7%9A%84%E5%95%8F%E9%A1%8C%EF%BC%8C%E5%AE%A2%E6%88%B6%E7%82%BA%E4%BB%80%E9%BA%BC%E9%82%84%E6%98%AF%E6%83%B3%E6%89%BE%E4%B8%80%E5%80%8B%E7%9C%9F%E4%BA%BA%EF%BC%9F)
 

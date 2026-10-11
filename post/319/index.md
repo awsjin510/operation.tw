@@ -81,8 +81,8 @@ Skills 是一種保存和重複使用常見 Prompt 的功能，讓使用者無�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/6a61bda6-91c9-4f77-bb4e-8454f7f17cee)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000776218318)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
-- [在 Spotify 收聽](https://open.spotify.com/search/AI42_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%20%7C%20%E6%8A%8A%20Claude%20%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%AE%8C%E6%95%B4%E5%AF%AB%E9%81%8E%E4%B8%80%E9%81%8D%E7%9A%84%E4%B8%AD%E6%96%87%E6%9B%B8%E2%80%94%E2%80%94%E3%80%8AClaude%20%E8%90%AC%E7%94%A8%E6%89%8B%E5%86%8A%E3%80%8B)
+- [在 Spotify 收聽](https://open.spotify.com/search/%E6%8A%8A%20Claude%20%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%AE%8C%E6%95%B4%E5%AF%AB%E9%81%8E%E4%B8%80%E9%81%8D%E7%9A%84%E4%B8%AD%E6%96%87%E6%9B%B8%E2%80%94%E2%80%94%E3%80%8AClaude%20%E8%90%AC%E7%94%A8%E6%89%8B%E5%86%8A%E3%80%8B)
 
 - [瀏覽所有單集 →](https://operation.tw/podcast.html)

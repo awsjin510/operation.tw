@@ -89,7 +89,7 @@
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/43dfd2a8-4cc8-4c9c-9f03-40cf38077a70)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000779466990)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI48_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%20%7C%20%E5%9C%98%E9%9A%8A%E8%A3%A1%E6%9C%80%E9%9D%A0%E8%AD%9C%E7%9A%84%E9%82%A3%E5%80%8B%E4%BA%BA%EF%BC%8C%E7%82%BA%E4%BB%80%E9%BA%BC%E6%9C%80%E5%85%88%E5%B4%A9%E6%BD%B0!%3F%E3%80%8A%E9%AB%98%E5%8A%9F%E8%83%BD%E5%80%96%E5%AD%98%E8%80%85%E3%80%8B)
 

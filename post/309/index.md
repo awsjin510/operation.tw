@@ -75,7 +75,7 @@ Claude Science 因內建審計軌跡與可解釋性，特別適合金融、醫�
 
 - [在 SoundOn 收聽這集](https://player.soundon.fm/p/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/episodes/ed8ae13b-a505-4a58-84fc-5b577f65da4d)
 
-- [在 Apple Podcast 收聽](https://podcasts.apple.com/tw/podcast/id1620760720?i=1000775480004)
+- [在 Apple Podcast 收聽](https://podcasts.apple.com/podcast/1620760720)
 
 - [在 Spotify 收聽](https://open.spotify.com/search/AI39_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20Anthropic%2048%20%E5%B0%8F%E6%99%82%E9%80%A3%E7%99%BC%E9%9C%87%E6%92%BC%20AI%20%E6%A5%AD%EF%BC%81Sonnet%205%E3%80%81Fable%205%20%E8%A7%A3%E7%A6%81%E3%80%81Claude%20Science%EF%BC%8C%E5%88%B0%E5%BA%95%E5%9C%A8%E4%B8%8B%E4%B8%80%E7%9B%A4%E4%BB%80%E9%BA%BC%E6%A3%8B%EF%BC%9F)
 
