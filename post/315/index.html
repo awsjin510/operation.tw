@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="葡萄牙推出首個自主研發大型語言模型AMALIA，標誌著歐洲在AI領域的自主化努力升級。面對美中AI競爭格局，這一事件對台灣科技廠商在AI生態中的定位有何啟示？本文深入分析歐洲AI自主策略與台灣的角色機遇。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-315.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/315/","headline":"葡萄牙AMALIA模型上線：歐洲自主AI突圍戰，台灣廠商的機會在哪？","description":"葡萄牙推出首個自主研發大型語言模型AMALIA，標誌著歐洲在AI領域的自主化努力升級。面對美中AI競爭格局，這一事件對台灣科技廠商在AI生態中的定位有何啟示？本文深入分析歐洲AI自主策略與台灣的角色機遇。","datePublished":"2026-07-09","dateModified":"2026-07-09","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/315/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/315/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-315.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"葡萄牙AMALIA模型上線：歐洲自主AI突圍戰，台灣廠商的機會在哪？","item":"https://operation.tw/post/315/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/315/#faq","mainEntity":[{"@type":"Question","name":"葡萄牙為什麼要開發自己的大型語言模型AMALIA？","acceptedAnswer":{"@type":"Answer","text":"葡萄牙為了維護數據主權、保護本地語言的AI優化能力，並避免被美中模型壟斷，推出符合歐洲規範與葡語需求的自主LLM。這是歐洲AI自主化戰略的一環。"}},{"@type":"Question","name":"台灣應該跟風開發通用大型語言模型嗎？","acceptedAnswer":{"@type":"Answer","text":"不應該。台灣應學習葡萄牙與韓國「小而專」的策略，聚焦於繁體中文+晶片、醫療、製造等垂直領域的專用模型開發，這才是具有國際競爭力與產業需求的現實路線。"}},{"@type":"Question","name":"這波歐洲AI自主化會如何衝擊台灣的AI產業？","acceptedAnswer":{"@type":"Answer","text":"短期內會加劇全球AI人才與資本競爭，台灣優秀工程師面臨更多海外挖角機會；長期則推動各國重視「特化模型」而非盲目追逐超大規模模型，這是台灣技術與產業基礎可以發揮優勢的新機會窗口。"}}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:315})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="315">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-315.webp"><img class="cover" src="https://operation.tw/images/posts/post-315.jpg" alt="葡萄牙AMALIA模型上線：歐洲自主AI突圍戰，台灣廠商的機會在哪？" width="1200" height="630"></picture>
     <div class="excerpt"><p>葡萄牙推出首個自主研發大型語言模型AMALIA，標誌著歐洲在AI領域的自主化努力升級。面對美中AI競爭格局，這一事件對台灣科技廠商在AI生態中的定位有何啟示？本文深入分析歐洲AI自主策略與台灣的角色機遇。</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼葡萄牙要自主研發大型語言模型？</a></li><li class="toc-l2"><a href="#sec-2">葡萄牙AMALIA與韓國「轉攻實體AI」的戰略有何異同？</a></li><li class="toc-l2"><a href="#sec-3">台灣在這場AI自主戰中的位置是什麼？</a></li><li class="toc-l2"><a href="#sec-4">葡萄牙模式對台灣政策的啟示是什麼？</a></li><li class="toc-l2"><a href="#sec-5">芝加哥與中國AI人才爭奪，為何對台灣有間接影響？</a></li><li class="toc-l2"><a href="#sec-6">常見問題</a></li><li class="toc-l3"><a href="#sec-7">葡萄牙為什麼要開發自己的大型語言模型AMALIA？</a></li><li class="toc-l3"><a href="#sec-8">台灣應該跟風開發通用大型語言模型嗎？</a></li><li class="toc-l3"><a href="#sec-9">這波歐洲AI自主化會如何衝擊台灣的AI產業？</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>葡萄牙AMALIA模型代表歐洲AI自主化的新進展，挑戰美中大模型壟斷格局</li><li>中小型國家開發專用LLM已成趨勢，台灣具備技術與市場優勢但缺乏政策協同</li><li>台灣應瞄準垂直應用與區域合作，而非盲目競逐超大規模基礎模型</li></ul><h2 id="sec-1">為什麼葡萄牙要自主研發大型語言模型？</h2><p>歐洲國家正面臨被美中AI技術壟斷的風險，自主開發LLM已成維護數據主權與產業獨立性的必要之舉。葡萄牙推出AMALIA（首個自主研發的大型語言模型），正是這股歐洲AI自主化浪潮的具體體現——面對OpenAI、Google、中國大模型的全球擴張，中小型國家意識到若長期依賴進口模型，將喪失數據控制權、語言優化能力與本地產業競爭力。</p><p>這不是技術孤立主義，而是戰略自主。AMALIA的推出反映了一個現實：即使是中小型國家，只要有決心與資源投入，也能開發符合本地需求的高效AI模型，而非盲目追求參數規模最大的通用模型。</p><h2 id="sec-2">葡萄牙AMALIA與韓國「轉攻實體AI」的戰略有何異同？</h2><p>兩者都體現了「避免正面競爭、尋找差異化路線」的務實思維，但側重點不同。根據理財周刊報導，韓國教授張炳琸直言「難與美競逐超大型語言模型，應轉攻實體AI」——這意味著韓國的策略是捨棄基礎模型競賽，轉向機器人、工業控制等具身智能應用。而葡萄牙的AMALIA則是在基礎模型層面實現自主，但很可能針對葡萄牙語及歐洲特定應用場景進行優化。</p><p>這兩種策略都在告訴新興科技國家同一個信號：超大型LLM的軍備競賽已由美中定局，中小型國家的生存之道在於「小而專」而非「大而全」。</p><h2 id="sec-3">台灣在這場AI自主戰中的位置是什麼？</h2><p>台灣既有開發自主LLM的技術實力，也有培育實體AI應用的產業基礎，但目前缺乏清晰的國家級AI自主化戰略方向。相比葡萄牙與韓國的主動選擇，台灣的AI發展仍多依附於國際大廠的開源生態與商業合作，自主模型的國策支持相對薄弱。</p><p>這裡的機會在於：台灣的半導體、製造、醫療等產業都需要定制化的垂直領域AI模型。與其競逐通用大模型的參數規模，台灣應學習葡萄牙與韓國，投資「繁體中文+產業應用」的專用模型生態。舉例而言，用於晶片設計EDA的AI模型、醫療影像診斷的特化LLM、製造業品質檢測系統，這些都是台灣產業真正需要、且全球市場願意付費購買的AI產品。</p><h2 id="sec-4">葡萄牙模式對台灣政策的啟示是什麼？</h2><p>葡萄牙能夠推出AMALIA，反映了歐盟在AI主權與資料保護方面的堅定政策支持（如《AI法案》與《數據治理法》的驅動）。相較之下，台灣的AI發展政策仍主要集中在補助研發與人才培育，對「自主模型開發」與「國產大模型商業化」的系統性支援不足。</p><p>台灣應考慮：（1）建立官方認可的「關鍵領域AI模型開發計畫」，針對晶片、醫療、製造等戰略產業提供資金與數據支援；（2）建立跨部會的「AI資料共享平台」，讓企業能安全地協作訓練特化模型；（3）制定「國產AI模型採購優先政策」，鼓勵公部門與國企率先使用本地自主模型，創造初期市場需求。</p><h2 id="sec-5">芝加哥與中國AI人才爭奪，為何對台灣有間接影響？</h2><p>根據最新新聞，芝加哥的企業正積極招募大型語言模型與機器學習工程師，同時中國智譜在香港配售新H股募資314億港元用於AI大模型布局。這場全球AI人才與資本的重新分配，將直接衝擊台灣AI人才的國際競爭力。</p><p>台灣的AI工程師面臨的不再只是來自美國矽谷的挖角，還有中國大模型廠商的高薪吸引。若台灣不能提供相應的自主AI產業機遇與薪資競爭力，優秀人才將加速流失。反過來說，若台灣能建立起「專用模型+垂直應用」的AI產業生態，就能為本地工程師提供全球競爭力的職業道路，形成正向循環。</p><h2 id="sec-6">常見問題</h2><h3 id="sec-7">葡萄牙為什麼要開發自己的大型語言模型AMALIA？</h3><p>葡萄牙為了維護數據主權、保護本地語言的AI優化能力，並避免被美中模型壟斷，推出符合歐洲規範與葡語需求的自主LLM。這是歐洲AI自主化戰略的一環。</p><h3 id="sec-8">台灣應該跟風開發通用大型語言模型嗎？</h3><p>不應該。台灣應學習葡萄牙與韓國「小而專」的策略，聚焦於繁體中文+晶片、醫療、製造等垂直領域的專用模型開發，這才是具有國際競爭力與產業需求的現實路線。</p><h3 id="sec-9">這波歐洲AI自主化會如何衝擊台灣的AI產業？</h3><p>短期內會加劇全球AI人才與資本競爭，台灣優秀工程師面臨更多海外挖角機會；長期則推動各國重視「特化模型」而非盲目追逐超大規模模型，這是台灣技術與產業基礎可以發揮優勢的新機會窗口。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>葡萄牙AMALIA模型代表歐洲AI自主化的新進展，挑戰美中大模型壟斷格局</li><li>中小型國家開發專用<a class="gl" href="/glossary/#term-llm" title="術語庫：大型語言模型">LLM</a>已成趨勢，台灣具備技術與市場優勢但缺乏政策協同</li><li>台灣應瞄準垂直應用與區域合作，而非盲目競逐超大規模基礎模型</li></ul><h2 id="sec-1">為什麼葡萄牙要自主研發大型語言模型？</h2><p>歐洲國家正面臨被美中AI技術壟斷的風險，自主開發LLM已成維護數據主權與產業獨立性的必要之舉。葡萄牙推出AMALIA（首個自主研發的大型語言模型），正是這股歐洲AI自主化浪潮的具體體現——面對OpenAI、Google、中國大模型的全球擴張，中小型國家意識到若長期依賴進口模型，將喪失數據控制權、語言優化能力與本地產業競爭力。</p><p>這不是技術孤立主義，而是戰略自主。AMALIA的推出反映了一個現實：即使是中小型國家，只要有決心與資源投入，也能開發符合本地需求的高效AI模型，而非盲目追求參數規模最大的通用模型。</p><h2 id="sec-2">葡萄牙AMALIA與韓國「轉攻實體AI」的戰略有何異同？</h2><p>兩者都體現了「避免正面競爭、尋找差異化路線」的務實思維，但側重點不同。根據理財周刊報導，韓國教授張炳琸直言「難與美競逐超大型語言模型，應轉攻實體AI」——這意味著韓國的策略是捨棄基礎模型競賽，轉向機器人、工業控制等具身智能應用。而葡萄牙的AMALIA則是在基礎模型層面實現自主，但很可能針對葡萄牙語及歐洲特定應用場景進行優化。</p><p>這兩種策略都在告訴新興科技國家同一個信號：超大型LLM的軍備競賽已由美中定局，中小型國家的生存之道在於「小而專」而非「大而全」。</p><h2 id="sec-3">台灣在這場AI自主戰中的位置是什麼？</h2><p>台灣既有開發自主LLM的技術實力，也有培育實體AI應用的產業基礎，但目前缺乏清晰的國家級AI自主化戰略方向。相比葡萄牙與韓國的主動選擇，台灣的AI發展仍多依附於國際大廠的開源生態與商業合作，自主模型的國策支持相對薄弱。</p><p>這裡的機會在於：台灣的半導體、製造、醫療等產業都需要定制化的垂直領域AI模型。與其競逐通用大模型的參數規模，台灣應學習葡萄牙與韓國，投資「繁體中文+產業應用」的專用模型生態。舉例而言，用於晶片設計EDA的AI模型、醫療影像診斷的特化LLM、製造業品質檢測系統，這些都是台灣產業真正需要、且全球市場願意付費購買的AI產品。</p><h2 id="sec-4">葡萄牙模式對台灣政策的啟示是什麼？</h2><p>葡萄牙能夠推出AMALIA，反映了歐盟在AI主權與資料保護方面的堅定政策支持（如《AI法案》與《數據治理法》的驅動）。相較之下，台灣的AI發展政策仍主要集中在補助研發與人才培育，對「自主模型開發」與「國產大模型商業化」的系統性支援不足。</p><p>台灣應考慮：（1）建立官方認可的「關鍵領域AI模型開發計畫」，針對晶片、醫療、製造等戰略產業提供資金與數據支援；（2）建立跨部會的「AI資料共享平台」，讓企業能安全地協作訓練特化模型；（3）制定「國產AI模型採購優先政策」，鼓勵公部門與國企率先使用本地自主模型，創造初期市場需求。</p><h2 id="sec-5">芝加哥與中國AI人才爭奪，為何對台灣有間接影響？</h2><p>根據最新新聞，芝加哥的企業正積極招募大型語言模型與機器學習工程師，同時中國智譜在香港配售新H股募資314億港元用於AI大模型布局。這場全球AI人才與資本的重新分配，將直接衝擊台灣AI人才的國際競爭力。</p><p>台灣的AI工程師面臨的不再只是來自美國矽谷的挖角，還有中國大模型廠商的高薪吸引。若台灣不能提供相應的自主AI產業機遇與薪資競爭力，優秀人才將加速流失。反過來說，若台灣能建立起「專用模型+垂直應用」的AI產業生態，就能為本地工程師提供全球競爭力的職業道路，形成正向循環。</p><h2 id="sec-6">常見問題</h2><h3 id="sec-7">葡萄牙為什麼要開發自己的大型語言模型AMALIA？</h3><p>葡萄牙為了維護數據主權、保護本地語言的AI優化能力，並避免被美中模型壟斷，推出符合歐洲規範與葡語需求的自主LLM。這是歐洲AI自主化戰略的一環。</p><h3 id="sec-8">台灣應該跟風開發通用大型語言模型嗎？</h3><p>不應該。台灣應學習葡萄牙與韓國「小而專」的策略，聚焦於繁體中文+晶片、醫療、製造等垂直領域的專用模型開發，這才是具有國際競爭力與產業需求的現實路線。</p><h3 id="sec-9">這波歐洲AI自主化會如何衝擊台灣的AI產業？</h3><p>短期內會加劇全球AI人才與資本競爭，台灣優秀工程師面臨更多海外挖角機會；長期則推動各國重視「特化模型」而非盲目追逐超大規模模型，這是台灣技術與產業基礎可以發揮優勢的新機會窗口。</p><!--BODY:END--></div>
     <nav class="post-nav">
       <a class="pn" href="/post/318/"><span>← 上一篇</span><b>蘋果AI本地化戰略：大模型上iPhone運行的技術突破與挑戰</b></a>
       <a class="pn pn-r" href="/post/308/"><span>下一篇 →</span><b>AI經濟困局：為何擴張速度是網路3倍，獲利卻遲遲未爆發？</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/117/"><span class="h-meta"><span class="h-cat">AI</span></span><b>AI投毒「焦油坑」危機：LLM模型輸出失準的隱形殺手</b></a></li><li><a href="/post/25/"><span class="h-meta"><span class="h-cat">AI</span></span><b>DeepSeek整合華為晶片：中國AI突圍戰如何改寫全球競爭格局？</b></a></li><li><a href="/post/314/"><span class="h-meta"><span class="h-cat">雲端</span><span>🎙 Podcast</span></span><b>AI41｜Meta Compute 雲端算力服務上線：如何改變 AI 產業競局？</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="最新研究揭露大型語言模型存在隱性的文化偏好，特別是對動漫、特定遊戲風格的過度傾斜，導致AI生成內容高度同質化。這對台灣遊戲、動畫創作者意味著什麼？如何在AI時代保護創意多樣性？">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-335.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/335/","headline":"LLM的文化偏見陷阱：為何AI生成內容趨同化威脅創意產業？","description":"最新研究揭露大型語言模型存在隱性的文化偏好，特別是對動漫、特定遊戲風格的過度傾斜，導致AI生成內容高度同質化。這對台灣遊戲、動畫創作者意味著什麼？如何在AI時代保護創意多樣性？","datePublished":"2026-07-23","dateModified":"2026-07-23","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/335/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/335/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-335.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"LLM的文化偏見陷阱：為何AI生成內容趨同化威脅創意產業？","item":"https://operation.tw/post/335/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/335/#faq","mainEntity":[{"@type":"Question","name":"LLM的文化偏好是否可以完全消除？","acceptedAnswer":{"@type":"Answer","text":"無法完全消除，但可以透過擴充多樣化訓練資料、定期偏見稽核、開發文化敏感的微調模型等方式大幅減輕。關鍵是將「多樣性」視為AI訓練的一級指標，而非事後補救。"}},{"@type":"Question","name":"台灣遊戲公司現在應該停止使用AI工具嗎？","acceptedAnswer":{"@type":"Answer","text":"不必停止，但應轉向「審慎使用」策略：在創意核心環節（故事、美術風格、角色設定）保留人工主導，只在效率優化層面（文案潤色、重複任務自動化）使用AI，並持續監測AI輸出是否有同質化傾向。"}},{"@type":"Question","name":"國際AI廠商會重視這個問題嗎？","acceptedAnswer":{"@type":"Answer","text":"短期內多數主流廠商因利潤壓力會緩慢回應，但歐盟AI法案、各國監管加強都在推動文化多樣性要求，未來合規成本會迫使廠商認真處理。台灣可透過政策引導與業界聯盟，搶先建立「多樣性友善」的AI生態認證。"}}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:335})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="335">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-335.webp"><img class="cover" src="https://operation.tw/images/posts/post-335.jpg" alt="LLM的文化偏見陷阱：為何AI生成內容趨同化威脅創意產業？" width="1200" height="630"></picture>
     <div class="excerpt"><p>最新研究揭露大型語言模型存在隱性的文化偏好，特別是對動漫、特定遊戲風格的過度傾斜，導致AI生成內容高度同質化。這對台灣遊戲、動畫創作者意味著什麼？如何在AI時代保護創意多樣性？</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">大型語言模型為何會「沉迷」特定文化風格？</a></li><li class="toc-l2"><a href="#sec-2">為什麼AI生成內容趨同化會威脅創意產業？</a></li><li class="toc-l2"><a href="#sec-3">台灣創意產業如何應對LLM的文化偏見？</a></li><li class="toc-l2"><a href="#sec-4">這項研究對全球AI發展有什麼啟示？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">LLM的文化偏好是否可以完全消除？</a></li><li class="toc-l3"><a href="#sec-7">台灣遊戲公司現在應該停止使用AI工具嗎？</a></li><li class="toc-l3"><a href="#sec-8">國際AI廠商會重視這個問題嗎？</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>大型語言模型因訓練資料失衡，對特定文化內容（尤其動漫相關）產生過度偏好，導致AI生成內容趨同化</li><li>遊戲、動畫等創意產業恐面臨「內容同質化」風險，削弱創意差異化價值與市場競爭力</li><li>台灣創作者需透過訓練資料多樣化、內容標籤規範化等方式，防止本土創意被AI單一風格稀釋</li></ul><h2 id="sec-1">大型語言模型為何會「沉迷」特定文化風格？</h2><p>根據最新研究，大型語言模型（LLM）存在隱性的文化偏好傾向，其根本原因來自訓練資料的結構性失衡——網路上特定類型內容（如動漫、特定遊戲風格）的出現頻率遠高於其他創意形式，導致模型習得了扭曲的「文化品味」。</p><p>這不是簡單的技術錯誤，而是反映了網路資料生態本身的不均勻性。當AI在學習時，遇到大量日本動漫相關的文本、評論、創作範例，模型就會自動將這些風格視為「主流」或「高品質」參考，進而在生成新內容時優先複製這類特徵。就像人類在特定環境中長期接觸某種審美，最終也會內化那套美學標準一樣。</p><h2 id="sec-2">為什麼AI生成內容趨同化會威脅創意產業？</h2><p>當LLM因文化偏好導向而傾向生成高度相似的內容時，整個創意生態的多樣性會被迅速稀釋——這對依賴創意差異化的遊戲開發、動畫製作、IP創意等產業構成直接威脅。</p><p>想像未來大量AI輔助工具都基於同一類型的LLM：遊戲開發者用AI快速生成NPC對白會得到相似的風格、動畫編劇用AI擴展故事大綱會重複相同的敘事套路、小說作者用AI潤色文本會被同化為統一的語調。表面上看似提升效率，實際上是將創意產業的輸出逐漸壓縮到一個「最優化」但極度單調的審美空間。這不僅傷害創意工作者的專業價值，也降低了使用者體驗的豐富度——消費者最終看到的所有AI輔助內容都像出自同一條流水線。</p><p>對台灣特別值得警惕的是，台灣遊戲、動畫製作在國際市場的競爭力恰好來自其獨特的文化視角與創意風格。如果本土創作者也採用被LLM文化偏好「馴化」的AI工具，反而會失去差異化優勢。</p><h2 id="sec-3">台灣創意產業如何應對LLM的文化偏見？</h2><p>解決這個問題的關鍵在於建立「多樣化優先」的AI訓練生態，包括有意識地擴充訓練資料中非主流文化內容的比例、開發對本土創意特徵敏感的微調模型（fine-tuning），以及制定內容標籤規範來幫助AI更準確地識別不同文化特色。</p><p>具體而言，台灣遊戲與動畫製作業可以考慮以下策略：</p><ul><li><strong>建立本土創意資料庫</strong>：將台灣遊戲、動畫、漫畫的經典作品、美術風格、敘事特徵進行結構化標籤與歸檔，作為微調LLM的專用資料集，確保AI工具能學習與保留本土創意特性</li><li><strong>聯合制定行業標準</strong>：遊戲業、動畫業、出版業可協同制定內容描述規範，讓AI供應商的模型能更精準識別「台灣風格」或「東亞多元創意」，而非盲目向主流審美靠攏</li><li><strong>審慎選擇AI工具供應商</strong>：評估使用的LLM是否有文化偏見揭露與補償機制，優先採用有透明度報告、承諾定期多樣性稽核的模型服務</li><li><strong>強化創意人才的AI素養</strong>：讓編劇、美術、設計師深入理解LLM的限制與偏見，培養「人工審核+AI輔助」的協作模式，而非盲目依賴AI生成結果</li></ul><h2 id="sec-4">這項研究對全球AI發展有什麼啟示？</h2><p>這份研究暴露了一個更深層的問題：當我們用互聯網數據訓練AI時，實際上是在強化互聯網本身既有的權力結構與審美霸權。英語內容、西方視角、主流娛樂產業因為在網路上的數量優勢，會逐漸成為AI模型認可的「通用標準」，而少數民族文化、地方創意、非主流內容反而被邊緣化。</p><p>這對開發中的AI生態尤其危險——一旦LLM被大規模部署到內容創作領域，文化同質化不再只是審美問題，而是變成了一種<strong>「軟性文化壓制」</strong>，非英語世界的創意工作者會發現自己的工具本身就在推著他們往同一個方向靠。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">LLM的文化偏好是否可以完全消除？</h3><p>無法完全消除，但可以透過擴充多樣化訓練資料、定期偏見稽核、開發文化敏感的微調模型等方式大幅減輕。關鍵是將「多樣性」視為AI訓練的一級指標，而非事後補救。</p><h3 id="sec-7">台灣遊戲公司現在應該停止使用AI工具嗎？</h3><p>不必停止，但應轉向「審慎使用」策略：在創意核心環節（故事、美術風格、角色設定）保留人工主導，只在效率優化層面（文案潤色、重複任務自動化）使用AI，並持續監測AI輸出是否有同質化傾向。</p><h3 id="sec-8">國際AI廠商會重視這個問題嗎？</h3><p>短期內多數主流廠商因利潤壓力會緩慢回應，但歐盟AI法案、各國監管加強都在推動文化多樣性要求，未來合規成本會迫使廠商認真處理。台灣可透過政策引導與業界聯盟，搶先建立「多樣性友善」的AI生態認證。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li><a class="gl" href="/glossary/#term-llm" title="術語庫：大型語言模型">大型語言模型</a>因訓練資料失衡，對特定文化內容（尤其動漫相關）產生過度偏好，導致AI生成內容趨同化</li><li>遊戲、動畫等創意產業恐面臨「內容同質化」風險，削弱創意差異化價值與市場競爭力</li><li>台灣創作者需透過訓練資料多樣化、內容標籤規範化等方式，防止本土創意被AI單一風格稀釋</li></ul><h2 id="sec-1">大型語言模型為何會「沉迷」特定文化風格？</h2><p>根據最新研究，大型語言模型（LLM）存在隱性的文化偏好傾向，其根本原因來自訓練資料的結構性失衡——網路上特定類型內容（如動漫、特定遊戲風格）的出現頻率遠高於其他創意形式，導致模型習得了扭曲的「文化品味」。</p><p>這不是簡單的技術錯誤，而是反映了網路資料生態本身的不均勻性。當AI在學習時，遇到大量日本動漫相關的文本、評論、創作範例，模型就會自動將這些風格視為「主流」或「高品質」參考，進而在生成新內容時優先複製這類特徵。就像人類在特定環境中長期接觸某種審美，最終也會內化那套美學標準一樣。</p><h2 id="sec-2">為什麼AI生成內容趨同化會威脅創意產業？</h2><p>當LLM因文化偏好導向而傾向生成高度相似的內容時，整個創意生態的多樣性會被迅速稀釋——這對依賴創意差異化的遊戲開發、動畫製作、IP創意等產業構成直接威脅。</p><p>想像未來大量AI輔助工具都基於同一類型的LLM：遊戲開發者用AI快速生成NPC對白會得到相似的風格、動畫編劇用AI擴展故事大綱會重複相同的敘事套路、小說作者用AI潤色文本會被同化為統一的語調。表面上看似提升效率，實際上是將創意產業的輸出逐漸壓縮到一個「最優化」但極度單調的審美空間。這不僅傷害創意工作者的專業價值，也降低了使用者體驗的豐富度——消費者最終看到的所有AI輔助內容都像出自同一條流水線。</p><p>對台灣特別值得警惕的是，台灣遊戲、動畫製作在國際市場的競爭力恰好來自其獨特的文化視角與創意風格。如果本土創作者也採用被LLM文化偏好「馴化」的AI工具，反而會失去差異化優勢。</p><h2 id="sec-3">台灣創意產業如何應對LLM的文化偏見？</h2><p>解決這個問題的關鍵在於建立「多樣化優先」的AI訓練生態，包括有意識地擴充訓練資料中非主流文化內容的比例、開發對本土創意特徵敏感的<a class="gl" href="/glossary/#term-fine-tuning" title="術語庫：微調">微調</a>模型（fine-tuning），以及制定內容標籤規範來幫助AI更準確地識別不同文化特色。</p><p>具體而言，台灣遊戲與動畫製作業可以考慮以下策略：</p><ul><li><strong>建立本土創意資料庫</strong>：將台灣遊戲、動畫、漫畫的經典作品、美術風格、敘事特徵進行結構化標籤與歸檔，作為微調LLM的專用資料集，確保AI工具能學習與保留本土創意特性</li><li><strong>聯合制定行業標準</strong>：遊戲業、動畫業、出版業可協同制定內容描述規範，讓AI供應商的模型能更精準識別「台灣風格」或「東亞多元創意」，而非盲目向主流審美靠攏</li><li><strong>審慎選擇AI工具供應商</strong>：評估使用的LLM是否有文化偏見揭露與補償機制，優先採用有透明度報告、承諾定期多樣性稽核的模型服務</li><li><strong>強化創意人才的AI素養</strong>：讓編劇、美術、設計師深入理解LLM的限制與偏見，培養「人工審核+AI輔助」的協作模式，而非盲目依賴AI生成結果</li></ul><h2 id="sec-4">這項研究對全球AI發展有什麼啟示？</h2><p>這份研究暴露了一個更深層的問題：當我們用互聯網數據訓練AI時，實際上是在強化互聯網本身既有的權力結構與審美霸權。英語內容、西方視角、主流娛樂產業因為在網路上的數量優勢，會逐漸成為AI模型認可的「通用標準」，而少數民族文化、地方創意、非主流內容反而被邊緣化。</p><p>這對開發中的AI生態尤其危險——一旦LLM被大規模部署到內容創作領域，文化同質化不再只是審美問題，而是變成了一種<strong>「軟性文化壓制」</strong>，非英語世界的創意工作者會發現自己的工具本身就在推著他們往同一個方向靠。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">LLM的文化偏好是否可以完全消除？</h3><p>無法完全消除，但可以透過擴充多樣化訓練資料、定期偏見稽核、開發文化敏感的微調模型等方式大幅減輕。關鍵是將「多樣性」視為AI訓練的一級指標，而非事後補救。</p><h3 id="sec-7">台灣遊戲公司現在應該停止使用AI工具嗎？</h3><p>不必停止，但應轉向「審慎使用」策略：在創意核心環節（故事、美術風格、角色設定）保留人工主導，只在效率優化層面（文案潤色、重複任務自動化）使用AI，並持續監測AI輸出是否有同質化傾向。</p><h3 id="sec-8">國際AI廠商會重視這個問題嗎？</h3><p>短期內多數主流廠商因利潤壓力會緩慢回應，但歐盟AI法案、各國監管加強都在推動文化多樣性要求，未來合規成本會迫使廠商認真處理。台灣可透過政策引導與業界聯盟，搶先建立「多樣性友善」的AI生態認證。</p><!--BODY:END--></div>
     <nav class="post-nav">
       <a class="pn" href="/post/340/"><span>← 上一篇</span><b>AI47｜Claude Opus 5 革新 Agent：同價格能力全面升級，自動化工作流 8 小時不崩</b></a>
       <a class="pn pn-r" href="/post/336/"><span>下一篇 →</span><b>AI46｜Google Gemini Flash Cyber：資安 AI 軍備競賽的秘密武器</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/427/"><span class="h-meta"><span class="h-cat">AI</span></span><b>LLM隱形偏見陷阱：表面公正背後的AI決策風險</b></a></li><li><a href="/post/58/"><span class="h-meta"><span class="h-cat">AI</span></span><b>文言文成LLM新破口：古籍越獄如何威脅企業AI安全？</b></a></li><li><a href="/post/257/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>AI10｜GPT-Image-2 真的解決了 AI 生圖的文字災難嗎？</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

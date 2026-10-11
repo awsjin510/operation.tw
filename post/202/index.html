@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="從中年才開始練跑，到跑遍7大洲、19個國家、挑戰四場極地馬拉松——周林信的故事告訴我們，年紀不是問題，生理障礙可以克服，真正限制我們的，往往是自己看待事情的方式。這篇文章整理了這集 Podcast 的核心觀點，帶你看一位「大叔跑者」如何用雙腳翻轉人生，以及這段旅程對每一個普通人的啟示。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-202.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/202/","headline":"EP51｜勇闖極地超馬：中年開跑，用雙腳改變生命的寬度與深度","description":"從中年才開始練跑，到跑遍7大洲、19個國家、挑戰四場極地馬拉松——周林信的故事告訴我們，年紀不是問題，生理障礙可以克服，真正限制我們的，往往是自己看待事情的方式。這篇文章整理了這集 Podcast 的核心觀點，帶你看一位「大叔跑者」如何用雙腳翻轉人生，以及這段旅程對每一個普通人的啟示。","datePublished":"2023-08-23","dateModified":"2023-08-23","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/202/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/202/"},"articleSection":"成長","image":"https://operation.tw/images/posts/post-202.jpg","keywords":"成長","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"成長","item":"https://operation.tw/category/%E6%88%90%E9%95%B7/"},{"@type":"ListItem","position":3,"name":"EP51｜勇闖極地超馬：中年開跑，用雙腳改變生命的寬度與深度","item":"https://operation.tw/post/202/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/202/#episode","name":"EP51｜勇闖極地超馬：中年開跑，用雙腳改變生命的寬度與深度","url":"https://operation.tw/post/202/","datePublished":"2023-08-23","description":"從中年才開始練跑，到跑遍7大洲、19個國家、挑戰四場極地馬拉松——周林信的故事告訴我們，年紀不是問題，生理障礙可以克服，真正限制我們的，往往是自己看待事情的方式。這篇文章整理了這集 Podcast 的核心觀點，帶你看一位「大叔跑者」如何用雙腳翻轉人生，以及這段旅程對每一個普通人的啟示。","image":"https://operation.tw/images/posts/post-202.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":51,"duration":"PT44M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/9040437d-f56a-4221-9dc0-43513612f659/rssFileVip.mp3?timestamp=1692802357215","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:202})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/" aria-current="page">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="202">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/" aria-current="page">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/" aria-current="page">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
   <article>
     <div class="badge" style="color:#4ade9a;background:#4ade9a1a">🌱 成長</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-08-23">2023-08-23</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-202.webp"><img class="cover" src="https://operation.tw/images/posts/post-202.jpg" alt="EP51｜勇闖極地超馬：中年開跑，用雙腳改變生命的寬度與深度" width="1200" height="630"></picture>
     <div class="excerpt"><p>從中年才開始練跑，到跑遍7大洲、19個國家、挑戰四場極地馬拉松——周林信的故事告訴我們，年紀不是問題，生理障礙可以克服，真正限制我們的，往往是自己看待事情的方式。這篇文章整理了這集 Podcast 的核心觀點，帶你看一位「大叔跑者」如何用雙腳翻轉人生，以及這段旅程對每一個普通人的啟示。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>EP51_達人操作 | 勇闖極地超馬_周林信 | 也許我們無法改變生命的長度，但是我們可以改變生命的寬度跟深度</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000625418564" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP51_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E5%8B%87%E9%97%96%E6%A5%B5%E5%9C%B0%E8%B6%85%E9%A6%AC_%E5%91%A8%E6%9E%97%E4%BF%A1%20%7C%20%E4%B9%9F%E8%A8%B1%E6%88%91%E5%80%91%E7%84%A1%E6%B3%95%E6%94%B9%E8%AE%8A%E7%94%9F%E5%91%BD%E7%9A%84%E9%95%B7%E5%BA%A6%EF%BC%8C%E4%BD%86%E6%98%AF%E6%88%91%E5%80%91%E5%8F%AF%E4%BB%A5%E6%94%B9%E8%AE%8A%E7%94%9F%E5%91%BD%E7%9A%84%E5%AF%AC%E5%BA%A6%E8%B7%9F%E6%B7%B1%E5%BA%A6" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">你有沒有一件事，是你一直告訴自己「我不行」卻從來沒有真正嘗試過的？</a></li><li class="toc-l2"><a href="#sec-2">從 EMBA 到初馬：一切從「決定開始」那一刻改變</a></li><li class="toc-l2"><a href="#sec-3">極地馬拉松：當挑戰超越你的想像邊界</a></li><li class="toc-l2"><a href="#sec-4">比賽現場看見的，讓他改變了對「困難」的定義</a></li><li class="toc-l2"><a href="#sec-5">運動的誠實，是它最珍貴的地方</a></li><li class="toc-l2"><a href="#sec-6">對你的實際啟示</a></li><li class="toc-l2"><a href="#sec-7">結語</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><h2 id="sec-1">你有沒有一件事，是你一直告訴自己「我不行」卻從來沒有真正嘗試過的？</h2><p>這集 Podcast，我邀請了周林信大哥來聊他跑馬拉松的故事。但說是「跑馬拉松的故事」，其實遠遠不只是跑步而已——它更像是一個人在中年重新定義自己的過程。</p><p>林信大哥從 2015 年才第一次參加初馬，但在短短四年多的時間裡，他跑遍了世界 7 大洲、19 個國家、32 個城市，完成世界六大馬，並挑戰了四場極地馬拉松，最終把這些經歷整理成一本書：《勇闖極地超馬：大叔跑者翻轉人生的馬拉松跑旅》。</p><h2 id="sec-2">從 EMBA 到初馬：一切從「決定開始」那一刻改變</h2><p>回台灣念 EMBA，是林信大哥人生的一個轉折點。那段求學的經歷讓他重新審視自己的生活方式，也讓他有了中年開始練跑的契機。當然，剛開始並不順遂——跑步初期遇到的挫折、身體的不適應、對完賽的懷疑，這些都是真實存在的關卡。但他選擇一步一步去克服，最終站上了第一場全馬的終點線。</p><p>這個過程讓我印象深刻的是：他不是天賦型選手，也不是從小就熱愛運動的人。他就是一個在中年決定「試試看」的普通人，然後用行動證明了這件事的可能性。</p><h2 id="sec-3">極地馬拉松：當挑戰超越你的想像邊界</h2><p>完成六大馬之後，一般人可能已經心滿意足，但林信大哥選擇繼續往更難的地方走——極地馬拉松。在節目中他聊到，實際參加極地馬和想像中有很多不同的地方，那些意料之外的收穫，反而成了最珍貴的記憶。</p><p>他也分享了在挑戰過程中曾有過生死交關的經驗。這不是誇飾，極地環境的嚴峻是真實的考驗，但也正是在那樣的極限狀態下，他對自己、對生命有了不一樣的理解。</p><h2 id="sec-4">比賽現場看見的，讓他改變了對「困難」的定義</h2><p>節目裡有一段話讓我很有感觸。林信大哥提到，在參加比賽的過程中，他看到了許多身障者、或年紀很大的跑者，他們同樣勇敢站上起跑線，也同樣完賽。這讓他深深體會到：</p><ul><li>一件事情困不困難，往往不在於事件本身，而在於你怎麼看待它。</li><li>我們的能力，其實比自己想像的強大得多。</li><li>年紀不是問題，生理限制可以克服，真正的障礙是自我設限。</li></ul><p>這幾句話說起來簡單，但放在他幾千公里的親身實踐背後，重量完全不同。</p><h2 id="sec-5">運動的誠實，是它最珍貴的地方</h2><p>在這集的結尾，我也分享了自己的一點感受：運動和投資、感情不一樣的地方，在於它的回饋是誠實的。你怎麼對待自己的身體，身體就怎麼回饋你。每一次跑步是一個點，每一趟跑旅串成一條線，最後這些線構成了一個面——而那個面，就是林信大哥這本書裡那些精彩的故事。</p><h2 id="sec-6">對你的實際啟示</h2><p>不是每個人都要去跑極地馬，但林信大哥的經歷有幾個值得借鑑的思考框架：</p><ul><li><strong>從一個小決定開始：</strong>他的起點只是「去報名一場馬拉松」，不需要等到條件完美。</li><li><strong>把挫折當成資訊：</strong>初期的挫折不是終點，而是讓你調整策略的訊號。</li><li><strong>用行動擴展生命的寬度：</strong>也許我們無法改變生命的長度，但我們可以選擇讓它更寬、更深。</li></ul><h2 id="sec-7">結語</h2><p>如果你最近有一件事一直想做卻遲遲沒有開始，林信大哥的故事或許是一個很好的提醒。歡迎去聽這集完整的 Podcast，跟著他的分享感受那種從起跑到極地終點線的重量。也推薦他的書《勇闖極地超馬》，那是他用雙腳走出來的真實紀錄。</p>
@@ -94,19 +70,27 @@ function nlGo(f){
       <a class="pn" href="/post/203/"><span>← 上一篇</span><b>EP52｜展場達人Mike：人生沒有白走的路，每一步都算數</b></a>
       <a class="pn pn-r" href="/post/201/"><span>下一篇 →</span><b>EP50｜做到第50集，我才真正想清楚為什麼要開始</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/179/"><span class="h-meta"><span class="h-cat">成長</span><span>🎙 Podcast</span></span><b>EP28｜從餐廳品牌到Podcast達人，Irene的跨界創業人生</b></a></li><li><a href="/post/245/"><span class="h-meta"><span class="h-cat">成長</span><span>🎙 Podcast</span></span><b>EP94｜從電視記者到醫院行銷長，張宜真的跨域職涯心法</b></a></li><li><a href="/post/38/"><span class="h-meta"><span class="h-cat">成長</span></span><b>《超有料！職場第一實用的 AI 簡報術》閱讀心得</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

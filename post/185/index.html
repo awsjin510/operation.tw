@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="這集「操作一下」邀請到經營男性向ASMR廣播劇頻道「A's對話日誌」的創作者A，分享她如何從零開始打造屬於自己的聲音內容。不論你是對聲音創作感興趣，還是正在尋找認識自我的方式，A的故事都能給你一點溫柔的推力——就算還沒準備好，也沒關係，一切都不算太晚。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-185.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/185/","headline":"EP34｜口播達人A：用聲音說故事，從認識自己開始","description":"這集「操作一下」邀請到經營男性向ASMR廣播劇頻道「A's對話日誌」的創作者A，分享她如何從零開始打造屬於自己的聲音內容。不論你是對聲音創作感興趣，還是正在尋找認識自我的方式，A的故事都能給你一點溫柔的推力——就算還沒準備好，也沒關係，一切都不算太晚。","datePublished":"2023-02-10","dateModified":"2023-02-10","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/185/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/185/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-185.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"EP34｜口播達人A：用聲音說故事，從認識自己開始","item":"https://operation.tw/post/185/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/185/#episode","name":"EP34｜口播達人A：用聲音說故事，從認識自己開始","url":"https://operation.tw/post/185/","datePublished":"2023-02-10","description":"這集「操作一下」邀請到經營男性向ASMR廣播劇頻道「A's對話日誌」的創作者A，分享她如何從零開始打造屬於自己的聲音內容。不論你是對聲音創作感興趣，還是正在尋找認識自我的方式，A的故事都能給你一點溫柔的推力——就算還沒準備好，也沒關係，一切都不算太晚。","image":"https://operation.tw/images/posts/post-185.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":34,"duration":"PT36M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/6b70b299-77fd-4c4e-9552-5adbe4824a0d/rssFileVip.mp3?timestamp=1687899397867","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:185})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="185">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-02-10">2023-02-10</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-185.webp"><img class="cover" src="https://operation.tw/images/posts/post-185.jpg" alt="EP34｜口播達人A：用聲音說故事，從認識自己開始" width="1200" height="630"></picture>
     <div class="excerpt"><p>這集「操作一下」邀請到經營男性向ASMR廣播劇頻道「A's對話日誌」的創作者A，分享她如何從零開始打造屬於自己的聲音內容。不論你是對聲音創作感興趣，還是正在尋找認識自我的方式，A的故事都能給你一點溫柔的推力——就算還沒準備好，也沒關係，一切都不算太晚。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>EP34_達人操作 | 口播達人_A | 妳準備好要認識、愛自己了嗎？如果還沒，也沒關係，一切都不算太晚~|A，A’s對話日誌</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000599098876" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP34_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E5%8F%A3%E6%92%AD%E9%81%94%E4%BA%BA_A%20%7C%20%E5%A6%B3%E6%BA%96%E5%82%99%E5%A5%BD%E8%A6%81%E8%AA%8D%E8%AD%98%E3%80%81%E6%84%9B%E8%87%AA%E5%B7%B1%E4%BA%86%E5%97%8E%EF%BC%9F%E5%A6%82%E6%9E%9C%E9%82%84%E6%B2%92%EF%BC%8C%E4%B9%9F%E6%B2%92%E9%97%9C%E4%BF%82%EF%BC%8C%E4%B8%80%E5%88%87%E9%83%BD%E4%B8%8D%E7%AE%97%E5%A4%AA%E6%99%9A~%7CA%EF%BC%8CA%E2%80%99s%E5%B0%8D%E8%A9%B1%E6%97%A5%E8%AA%8C" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">你有沒有想過，用「聲音」來表達自己？</a></li><li class="toc-l2"><a href="#sec-2">A's 對話日誌是什麼？</a></li><li class="toc-l2"><a href="#sec-3">從「還沒準備好」到「開始做」</a></li><li class="toc-l2"><a href="#sec-4">聲音內容創作，你也可以試試看</a></li><li class="toc-l2"><a href="#sec-5">不只是聲音，而是一種自我表達</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><h2 id="sec-1">你有沒有想過，用「聲音」來表達自己？</h2><p>在這個影片當道的時代，Podcast、ASMR、廣播劇這類純聲音的內容反而悄悄地找到了自己的受眾。有一群人，喜歡在睡前、通勤時，戴上耳機，讓一個聲音陪著自己。這集「操作一下」的達人操作單元，就帶來了一位很特別的創作者——A，也就是「A's對話日誌」頻道的主理人，跟我們聊聊她的創作歷程，以及那個關於「認識自己、愛自己」的課題。</p><h2 id="sec-2">A's 對話日誌是什麼？</h2><p>A的頻道定位非常清晰：男性向、姐系女聲、沉浸式單口劇情。簡單說，她做的不是那種純粹放鬆用的白噪音ASMR，而是更接近「用耳朵聽的廣播劇」——裡面有精心挑選的配樂、細緻的音效，還有各式各樣的劇情與角色，讓聽眾真的可以沉浸在一個聲音構築出來的世界裡。</p><p>她的內容標籤包含 Music、Tipsy、Love、Sexy 等不同氛圍，每週不定時更新。雖然她自稱「非專業聲優」，但這反而是她的魅力所在——那種不刻意、不做作的真實感，讓內容更有溫度。</p><h2 id="sec-3">從「還沒準備好」到「開始做」</h2><p>這集聊到一個很核心的主題：準備好要認識、愛自己了嗎？A的回答很誠實——不一定要準備好，才能開始。很多創作者在起步時都會有這樣的焦慮：我的聲音夠好嗎？我的內容有人想聽嗎？我值得被看見嗎？但A的經驗告訴我們，創作本身就是一種認識自己的過程，不是要等到「夠好了」才能出發。</p><p>這個觀點放在任何創作形式上都成立。不論是寫作、拍影片、錄Podcast，很多人卡關的原因不是技術，而是那個「我還沒準備好」的心理門檻。A的故事提醒了我們：開始，才是認識自己最快的方式。</p><h2 id="sec-4">聲音內容創作，你也可以試試看</h2><p>如果你也對聲音創作感興趣，這集可以給你幾個實際的起點：</p><ul><li><strong>找到你的定位與氛圍：</strong>A很清楚自己做的是什麼感覺的內容，這讓她的受眾也很清楚「這是不是我想聽的」。在開始之前，想想你想傳遞什麼樣的聲音與情緒。</li><li><strong>善用免費平台發佈：</strong>A的頻道同時上架在 Apple Podcast、Spotify、Google Podcast，這類平台的門檻不高，是很好的起點。</li><li><strong>音效與音樂是沉浸感的關鍵：</strong>A在製作上特別注重配樂與音效的搭配，這讓內容從「一個人說話」升級成「一個場景的體驗」。如果你想做廣播劇類型的內容，這一塊值得多花心思。</li><li><strong>與聽眾保持連結：</strong>A提到自己基本上不會已讀不回，這種對聽眾的態度，讓小眾創作者也能建立真實的社群關係。</li></ul><h2 id="sec-5">不只是聲音，而是一種自我表達</h2><p>聽完這集，我覺得A做的事情不只是「做內容」，更像是透過創作這件事，一步一步地摸索自己是誰、喜歡什麼、想給別人什麼樣的感受。這個過程本身，就是一種認識自己的旅程。</p><p>如果你正在猶豫要不要開始某件事——不管是創作、還是生活上的某個改變——A的故事可能會給你一點溫柔的推力。你不需要準備好，你只需要開始。一切，真的都不算太晚。</p><p>這集完整內容可以到各大Podcast平台搜尋「操作一下」，或直接找到「A's對話日誌」頻道，親自去感受那個用聲音說故事的世界。</p>
@@ -94,19 +70,27 @@ function nlGo(f){
       <a class="pn" href="/post/190/"><span>← 上一篇</span><b>EP39｜騎電動機車挑戰武嶺！兩年騎乘回顧與心得分享</b></a>
       <a class="pn pn-r" href="/post/182/"><span>下一篇 →</span><b>EP31｜舞蹈達人安安：人生短暫，專注做好一件事就夠了</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/382/"><span class="h-meta"><span class="h-cat">AI</span></span><b>在地大語言模型浪潮：台灣企業為何必須打造自己的AI？</b></a></li><li><a href="/post/335/"><span class="h-meta"><span class="h-cat">AI</span></span><b>LLM的文化偏見陷阱：為何AI生成內容趨同化威脅創意產業？</b></a></li><li><a href="/post/192/"><span class="h-meta"><span class="h-cat">成長</span><span>🎙 Podcast</span></span><b>EP41｜NFT是什麼？從零開始認識Web3與NFT的操作指南</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

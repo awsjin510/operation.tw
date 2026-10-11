@@ -55,34 +55,9 @@ const NEWS_SOURCES = [
 ];
 
 // ── 標題相似度（去重的硬性檢查）───────────────────────────────
-// 只靠 prompt 叫模型「不要重複」擋不住：同一則新聞連續幾天被寫成不同標題
-// （例：歐盟 AI 資安行動計畫 3 篇、AWS 20 週年 3 篇）。這裡用標題關鍵詞重疊度再擋一次。
-// 兩道門檻以 8 月以來的既有重複文章校準：
-//   標題重疊度（交集 / 較短者）≥ 0.4，或「標題＋摘要」Jaccard ≥ 0.15 → 視為同主題。
-//   真重複落在 0.40～0.70 / 0.15～0.31；不同主題分別多在 0.33 / 0.14 以下。
-const DUP_TITLE = 0.4;
-const DUP_TEXT = 0.15;
-const TITLE_STOP = new Set('台灣 灣企 企業 業如 如何 何應 時代 背後 為什 什麼 麼是 解析 啟示 新的 的新 灣科 科技 技企 業的 的合 你的 我們 全球 趨勢 關鍵 下一 一步 真正 重塑 影響 挑戰 機會 崛起'.split(' '));
-function titleTokens(t) {
-  t = String(t || '').toLowerCase().replace(/^[a-z]{1,6}\d{1,4}\s*[｜|_]/, '');
-  const words = (t.match(/[a-z0-9][a-z0-9.+-]*/g) || []).filter((w) => w.length > 1 && w !== 'ai');
-  const bigrams = [];
-  for (const seg of t.replace(/[^\u3400-\u9fff]/g, ' ').split(/\s+/).filter(Boolean)) {
-    for (let i = 0; i < seg.length - 1; i++) { const b = seg.slice(i, i + 2); if (!TITLE_STOP.has(b)) bigrams.push(b); }
-  }
-  return new Set([...words, ...bigrams]);
-}
-function titleSimilarity(a, b) {
-  const A = titleTokens(a), B = titleTokens(b);
-  if (!A.size || !B.size) return 0;
-  let n = 0; for (const x of A) if (B.has(x)) n++;
-  return n / Math.min(A.size, B.size);
-}
-function textJaccard(a, b) {
-  const A = titleTokens(a), B = titleTokens(b);
-  let n = 0; for (const x of A) if (B.has(x)) n++;
-  return n / ((A.size + B.size - n) || 1);
-}
+// 只靠 prompt 叫模型「不要重複」擋不住：同一則新聞連續幾天被寫成不同標題。
+// 相似度函式與門檻在 lib/similarity.js（build-static 的重複文分群也用同一套）。
+const { DUP_TITLE, DUP_TEXT, titleSimilarity, textJaccard } = require('./lib/similarity');
 // 回傳最像的一篇已發布文章；isDup 表示超過任一門檻
 function findDuplicate(article, posts) {
   let best = null;

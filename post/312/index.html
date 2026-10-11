@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="OpenSand推出統一AI模型聚合平台，支援企業部署與AI代理開發。這標誌著雲端運算進入「模型聚合」時代——企業不再被單一廠商綁架，而是能彈性整合多個AI模型。台灣企業該如何應對這波變革？">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-312.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/312/","headline":"OpenSand統一AI模型平台：企業該如何抓住AI聚合時代的新機會？","description":"OpenSand推出統一AI模型聚合平台，支援企業部署與AI代理開發。這標誌著雲端運算進入「模型聚合」時代——企業不再被單一廠商綁架，而是能彈性整合多個AI模型。台灣企業該如何應對這波變革？","datePublished":"2026-07-07","dateModified":"2026-07-07","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/312/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/312/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-312.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"OpenSand統一AI模型平台：企業該如何抓住AI聚合時代的新機會？","item":"https://operation.tw/post/312/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/312/#faq","mainEntity":[{"@type":"Question","name":"什麼是AI模型聚合平台？","acceptedAnswer":{"@type":"Answer","text":"AI模型聚合平台是一種雲端服務，能在統一的介面與管理層上，整合並調度多個不同廠商的AI模型（如OpenAI、Anthropic、開源模型等），讓企業無需重複開發就能靈活選擇與切換模型，降低廠商綁定風險。"}},{"@type":"Question","name":"採用聚合平台會增加安全風險嗎？","acceptedAnswer":{"@type":"Answer","text":"理論上，聚合平台引入了一個新的中介層，需謹慎評估其資料處理與隱私保護機制；但若平台支援本地部署、資料加密等合規功能，風險反而可能低於被單一廠商綁定的方案。選擇時應重點審查平台的安全認證（如SOC 2）與隱私政策。"}},{"@type":"Question","name":"台灣企業現在導入聚合平台會太早嗎？","acceptedAnswer":{"@type":"Answer","text":"不會。相反，現在是最好的時機——市場還在探索階段，企業有充分時間在低風險環境下試驗；等到聚合成為標配，早期實踐者已累積了可遷移的經驗資產與供應商談判能力。"}}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:312})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="312">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E9%9B%B2%E7%AB%AF/">雲端</a></nav>
   <article>
     <div class="badge" style="color:#62a8ff;background:#62a8ff1a">☁️ 雲端</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-312.webp"><img class="cover" src="https://operation.tw/images/posts/post-312.jpg" alt="OpenSand統一AI模型平台：企業該如何抓住AI聚合時代的新機會？" width="1200" height="630"></picture>
     <div class="excerpt"><p>OpenSand推出統一AI模型聚合平台，支援企業部署與AI代理開發。這標誌著雲端運算進入「模型聚合」時代——企業不再被單一廠商綁架，而是能彈性整合多個AI模型。台灣企業該如何應對這波變革？</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼企業需要「AI模型聚合」而不是單一平台？</a></li><li class="toc-l2"><a href="#sec-2">統一聚合平台如何改變企業的AI投資策略？</a></li><li class="toc-l2"><a href="#sec-3">AI模型聚合平台對台灣企業有什麼實際影響？</a></li><li class="toc-l2"><a href="#sec-4">聚合平台時代下，企業應優先考慮哪些因素？</a></li><li class="toc-l2"><a href="#sec-5">這股「模型中立」浪潮何時會成為企業標配？</a></li><li class="toc-l2"><a href="#sec-6">常見問題</a></li><li class="toc-l3"><a href="#sec-7">什麼是AI模型聚合平台？</a></li><li class="toc-l3"><a href="#sec-8">採用聚合平台會增加安全風險嗎？</a></li><li class="toc-l3"><a href="#sec-9">台灣企業現在導入聚合平台會太早嗎？</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>OpenSand的AI模型聚合平台讓企業可以靈活整合多個AI模型，而非被單一廠商綁定</li><li>這種「模型中立」的雲端策略正成為2026年企業數位轉型的新標準</li><li>台灣企業若能及早掌握多模型部署能力，將在AI競爭中獲得成本與效能優勢</li></ul><h2 id="sec-1">為什麼企業需要「AI模型聚合」而不是單一平台？</h2><p>OpenSand推出的統一AI模型聚合平台代表了雲端運算從「單廠商封閉」邁向「多模型開放」的關鍵轉折。過去企業若選擇OpenAI、Anthropic或Google的模型，往往被其生態系統深度綁定，遷移成本高昂；OpenSand的解決方案則打破這種垂直整合的模式，讓企業在同一平台上靈活部署與切換不同AI模型。這對追求成本效益的組織而言，意味著可以根據具體任務特性選擇最適合的模型——例如文本生成用Anthropic Claude、多模態任務用GPT-4、本地化需求用開源模型——無需重構整套應用架構。</p><h2 id="sec-2">統一聚合平台如何改變企業的AI投資策略？</h2><p>傳統的企業AI採購模式是「賭定一個廠商」，投入龐大的整合成本與人力培訓，一旦更換模型供應商便需重新開發。OpenSand的平台模型則是「投資於聚合層」，企業只需精通一套部署與管理工具，就能在底層自由變更模型選擇。根據新聞提及的「支援企業部署與AI代理開發」特性，這意味著開發團隊可以專注在業務邏輯與AI代理架構，而不必在各廠商API差異中耗費時間。對台灣的中小企業尤其有利——它們往往缺乏專門的AI團隊，統一平台可降低技術門檻，讓資源有限的組織也能快速部署多模型應用。</p><h2 id="sec-3">AI模型聚合平台對台灣企業有什麼實際影響？</h2><p>台灣製造業、金融科技與服務業正面臨AI導入的關鍵窗口，而模型聚合平台的出現為這波轉型提供了新的成本-效能權衡。首先，企業不再需要一次性投入巨資與單一廠商簽長期合約，降低了試錯成本；其次，面對美國政府採用Anthropic模型強化資安、中企使用受限的地緣政治局勢，台灣企業透過聚合平台可以更靈活地在多個合規模型間切換，降低供應鏈風險。再者，OpenSand這類平台的興起反映出AI市場正朝「模型民主化」發展，這對台灣的雲端服務商（如華碩雲、精誠等）而言，既是機會也是挑戰——它們可以與OpenSand類產品整合，為本地客戶提供更有競爭力的打包方案。</p><h2 id="sec-4">聚合平台時代下，企業應優先考慮哪些因素？</h2><p>企業在選擇或評估AI模型聚合平台時，應重視四個維度：首先是<strong>模型多樣性與更新速度</strong>——平台整合的模型越豐富、更新越及時，企業的選擇空間越大；其次是<strong>成本透明度與彈性計費</strong>——避免被鎖進某個廠商的高成本模式；第三是<strong>安全性與合規支援</strong>——尤其在資料跨境、隱私保護上是否能滿足台灣與國際法規要求；最後是<strong>開發者友善度</strong>——API文檔、SDK支援、社群生態是否能降低學習與維護成本。OpenSand標榜的「支援AI代理開發」特別值得注意——這意味著平台不只是模型聚合器，更試圖成為構建自主AI應用的完整工具鏈。</p><h2 id="sec-5">這股「模型中立」浪潮何時會成為企業標配？</h2><p>從OpenAI與Anthropic投資者重疊42%、AWS迎接20週年大幅投入AI基礎設施的新聞脈絡看，2026年正是雲端運算從「單邊寡頭」邁向「多邊生態」的分水嶺。OpenSand等新興平台的出現不是孤立現象，而是整個業界認知到「全能單一模型神話」正在破裂的證明。隨著開源大模型（Llama、Mistral等）能力逐步逼近閉源模型，企業採用聚合策略的ROI將持續提升。對台灣企業而言，現在正是搶先布局的窗口期——那些先行建立「多模型思維」的組織，將在AI競爭中獲得組織靈活性與成本優勢。</p><h2 id="sec-6">常見問題</h2><h3 id="sec-7">什麼是AI模型聚合平台？</h3><p>AI模型聚合平台是一種雲端服務，能在統一的介面與管理層上，整合並調度多個不同廠商的AI模型（如OpenAI、Anthropic、開源模型等），讓企業無需重複開發就能靈活選擇與切換模型，降低廠商綁定風險。</p><h3 id="sec-8">採用聚合平台會增加安全風險嗎？</h3><p>理論上，聚合平台引入了一個新的中介層，需謹慎評估其資料處理與隱私保護機制；但若平台支援本地部署、資料加密等合規功能，風險反而可能低於被單一廠商綁定的方案。選擇時應重點審查平台的安全認證（如SOC 2）與隱私政策。</p><h3 id="sec-9">台灣企業現在導入聚合平台會太早嗎？</h3><p>不會。相反，現在是最好的時機——市場還在探索階段，企業有充分時間在低風險環境下試驗；等到聚合成為標配，早期實踐者已累積了可遷移的經驗資產與供應商談判能力。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>OpenSand的AI模型聚合平台讓企業可以靈活整合多個AI模型，而非被單一廠商綁定</li><li>這種「模型中立」的雲端策略正成為2026年企業數位轉型的新標準</li><li>台灣企業若能及早掌握多模型部署能力，將在AI競爭中獲得成本與效能優勢</li></ul><h2 id="sec-1">為什麼企業需要「AI模型聚合」而不是單一平台？</h2><p>OpenSand推出的統一AI模型聚合平台代表了雲端運算從「單廠商封閉」邁向「多模型開放」的關鍵轉折。過去企業若選擇OpenAI、Anthropic或Google的模型，往往被其生態系統深度綁定，遷移成本高昂；OpenSand的解決方案則打破這種垂直整合的模式，讓企業在同一平台上靈活部署與切換不同AI模型。這對追求成本效益的組織而言，意味著可以根據具體任務特性選擇最適合的模型——例如文本生成用Anthropic Claude、多模態任務用GPT-4、本地化需求用<a class="gl" href="/glossary/#term-open-source-model" title="術語庫：開源模型">開源模型</a>——無需重構整套應用架構。</p><h2 id="sec-2">統一聚合平台如何改變企業的AI投資策略？</h2><p>傳統的企業AI採購模式是「賭定一個廠商」，投入龐大的整合成本與人力培訓，一旦更換模型供應商便需重新開發。OpenSand的平台模型則是「投資於聚合層」，企業只需精通一套部署與管理工具，就能在底層自由變更模型選擇。根據新聞提及的「支援企業部署與<a class="gl" href="/glossary/#term-ai-agent" title="術語庫：AI代理">AI代理</a>開發」特性，這意味著開發團隊可以專注在業務邏輯與AI代理架構，而不必在各廠商API差異中耗費時間。對台灣的中小企業尤其有利——它們往往缺乏專門的AI團隊，統一平台可降低技術門檻，讓資源有限的組織也能快速部署多模型應用。</p><h2 id="sec-3">AI模型聚合平台對台灣企業有什麼實際影響？</h2><p>台灣製造業、金融科技與服務業正面臨AI導入的關鍵窗口，而模型聚合平台的出現為這波轉型提供了新的成本-效能權衡。首先，企業不再需要一次性投入巨資與單一廠商簽長期合約，降低了試錯成本；其次，面對美國政府採用Anthropic模型強化資安、中企使用受限的地緣政治局勢，台灣企業透過聚合平台可以更靈活地在多個合規模型間切換，降低供應鏈風險。再者，OpenSand這類平台的興起反映出AI市場正朝「模型民主化」發展，這對台灣的雲端服務商（如華碩雲、精誠等）而言，既是機會也是挑戰——它們可以與OpenSand類產品整合，為本地客戶提供更有競爭力的打包方案。</p><h2 id="sec-4">聚合平台時代下，企業應優先考慮哪些因素？</h2><p>企業在選擇或評估AI模型聚合平台時，應重視四個維度：首先是<strong>模型多樣性與更新速度</strong>——平台整合的模型越豐富、更新越及時，企業的選擇空間越大；其次是<strong>成本透明度與彈性計費</strong>——避免被鎖進某個廠商的高成本模式；第三是<strong>安全性與合規支援</strong>——尤其在資料跨境、隱私保護上是否能滿足台灣與國際法規要求；最後是<strong>開發者友善度</strong>——API文檔、SDK支援、社群生態是否能降低學習與維護成本。OpenSand標榜的「支援AI代理開發」特別值得注意——這意味著平台不只是模型聚合器，更試圖成為構建自主AI應用的完整工具鏈。</p><h2 id="sec-5">這股「模型中立」浪潮何時會成為企業標配？</h2><p>從OpenAI與Anthropic投資者重疊42%、AWS迎接20週年大幅投入AI基礎設施的新聞脈絡看，2026年正是雲端運算從「單邊寡頭」邁向「多邊生態」的分水嶺。OpenSand等新興平台的出現不是孤立現象，而是整個業界認知到「全能單一模型神話」正在破裂的證明。隨著開源大模型（Llama、Mistral等）能力逐步逼近閉源模型，企業採用聚合策略的ROI將持續提升。對台灣企業而言，現在正是搶先布局的窗口期——那些先行建立「多模型思維」的組織，將在AI競爭中獲得組織靈活性與成本優勢。</p><h2 id="sec-6">常見問題</h2><h3 id="sec-7">什麼是AI模型聚合平台？</h3><p>AI模型聚合平台是一種雲端服務，能在統一的介面與管理層上，整合並調度多個不同廠商的AI模型（如OpenAI、Anthropic、開源模型等），讓企業無需重複開發就能靈活選擇與切換模型，降低廠商綁定風險。</p><h3 id="sec-8">採用聚合平台會增加安全風險嗎？</h3><p>理論上，聚合平台引入了一個新的中介層，需謹慎評估其資料處理與隱私保護機制；但若平台支援本地部署、資料加密等合規功能，風險反而可能低於被單一廠商綁定的方案。選擇時應重點審查平台的安全認證（如SOC 2）與隱私政策。</p><h3 id="sec-9">台灣企業現在導入聚合平台會太早嗎？</h3><p>不會。相反，現在是最好的時機——市場還在探索階段，企業有充分時間在低風險環境下試驗；等到聚合成為標配，早期實踐者已累積了可遷移的經驗資產與供應商談判能力。</p><!--BODY:END--></div>
     <nav class="post-nav">
-      <a class="pn" href="/post/316/"><span>← 上一篇</span><b>Neoclouds挑戰雲端三巨頭：AI時代新興勢力如何重塑運算生態？</b></a>
+      <a class="pn" href="/post/320/"><span>← 上一篇</span><b>韓國轉攻實體AI：亞洲雲端巨人如何突圍LLM紅海？</b></a>
       <a class="pn pn-r" href="/post/314/"><span>下一篇 →</span><b>AI41｜Meta Compute 雲端算力服務上線：如何改變 AI 產業競局？</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/379/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>小型模型崛起：開源AI如何撼動雲端運算成本格局</b></a></li><li><a href="/post/372/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>微牛證券AI整合案例：金融雲端如何用大模型驅動股價</b></a></li><li><a href="/post/267/"><span class="h-meta"><span class="h-cat">雲端</span><span>🎙 Podcast</span></span><b>AI19｜模型平台時代結束，Google 的 Agent 元年正式開幕</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

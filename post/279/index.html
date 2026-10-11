@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="你公司花了 500 萬導入 AI 工具，半年後還在「導入中」？問題不在工具，在於從簽約到真正上線之間，有一個沒人填得起來的「死亡谷」。這篇文章拆解矽谷最新顯學職業 Forward Deployed Engineer（FDE）——他們在做什麼、為什麼年薪可達 1,200 萬台幣，以及就算你不是工程師，這個趨勢對你職涯的三個啟發。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-279.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/279/","headline":"AI30｜FDE：人類與 AI 之間最值錢的那座橋","description":"你公司花了 500 萬導入 AI 工具，半年後還在「導入中」？問題不在工具，在於從簽約到真正上線之間，有一個沒人填得起來的「死亡谷」。這篇文章拆解矽谷最新顯學職業 Forward Deployed Engineer（FDE）——他們在做什麼、為什麼年薪可達 1,200 萬台幣，以及就算你不是工程師，這個趨勢對你職涯的三個啟發。","datePublished":"2026-06-08","dateModified":"2026-06-08","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/279/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/279/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-279.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI30｜FDE：人類與 AI 之間最值錢的那座橋","item":"https://operation.tw/post/279/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/279/#episode","name":"AI30｜FDE：人類與 AI 之間最值錢的那座橋","url":"https://operation.tw/post/279/","datePublished":"2026-06-08","description":"你公司花了 500 萬導入 AI 工具，半年後還在「導入中」？問題不在工具，在於從簽約到真正上線之間，有一個沒人填得起來的「死亡谷」。這篇文章拆解矽谷最新顯學職業 Forward Deployed Engineer（FDE）——他們在做什麼、為什麼年薪可達 1,200 萬台幣，以及就算你不是工程師，這個趨勢對你職涯的三個啟發。","image":"https://operation.tw/images/posts/post-279.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":30,"duration":"PT13M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/f6bd0ff5-fee1-4677-8458-77c5e8c4e3d9/rssFileVip.mp3?timestamp=1781031685210","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:279})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="279">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -73,9 +48,10 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-06-08">2026-06-08</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-279.webp"><img class="cover" src="https://operation.tw/images/posts/post-279.jpg" alt="AI30｜FDE：人類與 AI 之間最值錢的那座橋" width="1200" height="630"></picture>
     <div class="excerpt"><p>你公司花了 500 萬導入 AI 工具，半年後還在「導入中」？問題不在工具，在於從簽約到真正上線之間，有一個沒人填得起來的「死亡谷」。這篇文章拆解矽谷最新顯學職業 Forward Deployed Engineer（FDE）——他們在做什麼、為什麼年薪可達 1,200 萬台幣，以及就算你不是工程師，這個趨勢對你職涯的三個啟發。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>AI30_趨勢操作 | FDE 不只是工程師，是人類跟 AI 之間的「介面」——拆解 2026 最稀缺的職業</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000771773860" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI30_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20FDE%20%E4%B8%8D%E5%8F%AA%E6%98%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB%EF%BC%8C%E6%98%AF%E4%BA%BA%E9%A1%9E%E8%B7%9F%20AI%20%E4%B9%8B%E9%96%93%E7%9A%84%E3%80%8C%E4%BB%8B%E9%9D%A2%E3%80%8D%E2%80%94%E2%80%94%E6%8B%86%E8%A7%A3%202026%20%E6%9C%80%E7%A8%80%E7%BC%BA%E7%9A%84%E8%81%B7%E6%A5%AD" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">500 萬預算、半年時間，然後什麼都沒發生</a></li><li class="toc-l2"><a href="#sec-2">FDE 是什麼？從 Palantir「住到客戶家裡」說起</a></li><li class="toc-l2"><a href="#sec-3">為什麼這個職位值這麼多錢？</a></li><li class="toc-l2"><a href="#sec-4">就算你不是工程師，這三件事值得你想一想</a></li><li class="toc-l2"><a href="#sec-5">結語：介面，才是最值錢的位置</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><h2 id="sec-1">500 萬預算、半年時間，然後什麼都沒發生</h2><p>這個場景你可能不陌生：去年第四季，董事會撥了一筆預算要導入某個很厲害的 AI 工具，IT 主管信心滿滿說「半年內全公司上線」。結果半年過去，工具還在「導入中」，沒有人說錯，但也沒有人真正交付。</p><p>問題不在工具不夠好，也不在工程師不夠努力。問題出在從「簽合約」到「工具真的在生產環境穩定跑起來」之間，有一個業界悄悄稱為「死亡谷」的鴻溝——傳統 IT 顧問填不了，自家工程師也填不了。這個空缺，催生了一種新職業。</p><h2 id="sec-2">FDE 是什麼？從 Palantir「住到客戶家裡」說起</h2><p>Forward Deployed Engineer，縮寫 FDE，中文暫且譯作「前線部署工程師」。這個概念最早可以追溯到 Palantir 的獨特打法——他們不是把軟體賣給客戶就走人，而是派工程師直接進駐客戶現場，有時甚至是字面意義上的「住到客戶家裡」，一邊理解業務邏輯，一邊把產品調整到真的能用的狀態。</p><p>這集 Podcast 就從這個故事切入，解釋為什麼 FDE 這個職位在 AI 時代突然爆紅。簡單說，AI 工具的複雜度遠超過以往任何企業軟體，光是「會操作」跟「真的嵌進工作流程產生價值」之間的距離，比過去任何時候都還要寬。</p><p>數字會說話：過去半年 FDE 職缺成長了 800%；在 OpenAI 或 Anthropic 這類頂尖 AI 公司，資深 FDE 的年薪可以衝到 1,200 萬台幣；OpenAI 甚至在今年 5 月成立了專門的子公司來承接這塊業務，第一輪募資就拿到 40 億美元。</p><h2 id="sec-3">為什麼這個職位值這麼多錢？</h2><p>FDE 的高薪背後，是一個很直白的市場邏輯：企業願意為「工具真的跑起來」付高溢價，因為工具跑不起來的代價更高。一個能橫跨技術與業務兩側、把 AI 產品落地的人，直接影響的是客戶數百萬甚至數千萬的投資報酬率。</p><p>這也是為什麼 FDE 不只是工程師。他們的核心能力組合大概是這樣：</p><ul><li><strong>技術能力</strong>：能讀懂 API、會寫 prompt、能做基本的系統整合</li><li><strong>業務理解</strong>：能快速吃透客戶的產業邏輯與工作流程</li><li><strong>溝通翻譯</strong>：能把工程師的語言翻譯給業務主管聽，也能把業務需求翻譯回技術規格</li><li><strong>變革管理</strong>：能說服不願意改變的人，帶著整個組織動起來</li></ul><p>最後這一點，才是薪資天花板最高的原因。正如這集節目的結論所說：FDE 的核心能力，AI 永遠學不會——因為這份工作不是寫程式，是「把不會用 AI 的人，變成會用 AI 的人」。</p><h2 id="sec-4">就算你不是工程師，這三件事值得你想一想</h2><p>這集 Podcast 特別提到，FDE 趨勢對非工程師也有很直接的職涯啟發，整理成三個思考方向：</p><ul><li><strong>最後一哩路會越來越值錢</strong>：技術本身會持續商品化，但把技術真正落地的能力不會。不管你在哪個產業，懂得怎麼讓工具「真的被用起來」，就是你的護城河。</li><li><strong>客戶面向的能力是 AI 取代不了的</strong>：理解人、說服人、陪著人改變——這些事情需要信任感與情境判斷，是現階段 AI 最難複製的部分。</li><li><strong>「翻譯能力」會變成 AI 時代的新顯學</strong>：能在技術與非技術之間自由切換的人，將會是企業 AI 轉型裡最搶手的資源，不論頭銜是工程師、顧問、產品經理還是業務。</li></ul><h2 id="sec-5">結語：介面，才是最值錢的位置</h2><p>我在這集節目裡用了一個我很喜歡的比喻：FDE 不只是工程師，他是人類跟 AI 之間的「介面」。介面設計得好，兩端都能順暢運作；介面缺席，再強的工具都只是一個放在伺服器裡沒人用的東西。</p><p>AI 工具的能力曲線還在往上爬，但企業的吸收能力跟不上。這個落差，就是接下來幾年最真實的機會所在。不管你現在的角色是什麼，值得問自己一個問題：在你的工作場域裡，你有沒有可能成為那座橋？</p>
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">500 萬預算、半年時間，然後什麼都沒發生</h2><p>這個場景你可能不陌生：去年第四季，董事會撥了一筆預算要導入某個很厲害的 AI 工具，IT 主管信心滿滿說「半年內全公司上線」。結果半年過去，工具還在「導入中」，沒有人說錯，但也沒有人真正交付。</p><p>問題不在工具不夠好，也不在工程師不夠努力。問題出在從「簽合約」到「工具真的在生產環境穩定跑起來」之間，有一個業界悄悄稱為「死亡谷」的鴻溝——傳統 IT 顧問填不了，自家工程師也填不了。這個空缺，催生了一種新職業。</p><h2 id="sec-2">FDE 是什麼？從 Palantir「住到客戶家裡」說起</h2><p>Forward Deployed Engineer，縮寫 FDE，中文暫且譯作「<a class="gl" href="/glossary/#term-fde" title="術語庫：前線部署工程師">前線部署工程師</a>」。這個概念最早可以追溯到 Palantir 的獨特打法——他們不是把軟體賣給客戶就走人，而是派工程師直接進駐客戶現場，有時甚至是字面意義上的「住到客戶家裡」，一邊理解業務邏輯，一邊把產品調整到真的能用的狀態。</p><p>這集 Podcast 就從這個故事切入，解釋為什麼 FDE 這個職位在 AI 時代突然爆紅。簡單說，AI 工具的複雜度遠超過以往任何企業軟體，光是「會操作」跟「真的嵌進工作流程產生價值」之間的距離，比過去任何時候都還要寬。</p><p>數字會說話：過去半年 FDE 職缺成長了 800%；在 OpenAI 或 Anthropic 這類頂尖 AI 公司，資深 FDE 的年薪可以衝到 1,200 萬台幣；OpenAI 甚至在今年 5 月成立了專門的子公司來承接這塊業務，第一輪募資就拿到 40 億美元。</p><h2 id="sec-3">為什麼這個職位值這麼多錢？</h2><p>FDE 的高薪背後，是一個很直白的市場邏輯：企業願意為「工具真的跑起來」付高溢價，因為工具跑不起來的代價更高。一個能橫跨技術與業務兩側、把 AI 產品落地的人，直接影響的是客戶數百萬甚至數千萬的投資報酬率。</p><p>這也是為什麼 FDE 不只是工程師。他們的核心能力組合大概是這樣：</p><ul><li><strong>技術能力</strong>：能讀懂 API、會寫 prompt、能做基本的系統整合</li><li><strong>業務理解</strong>：能快速吃透客戶的產業邏輯與工作流程</li><li><strong>溝通翻譯</strong>：能把工程師的語言翻譯給業務主管聽，也能把業務需求翻譯回技術規格</li><li><strong>變革管理</strong>：能說服不願意改變的人，帶著整個組織動起來</li></ul><p>最後這一點，才是薪資天花板最高的原因。正如這集節目的結論所說：FDE 的核心能力，AI 永遠學不會——因為這份工作不是寫程式，是「把不會用 AI 的人，變成會用 AI 的人」。</p><h2 id="sec-4">就算你不是工程師，這三件事值得你想一想</h2><p>這集 Podcast 特別提到，FDE 趨勢對非工程師也有很直接的職涯啟發，整理成三個思考方向：</p><ul><li><strong>最後一哩路會越來越值錢</strong>：技術本身會持續商品化，但把技術真正落地的能力不會。不管你在哪個產業，懂得怎麼讓工具「真的被用起來」，就是你的護城河。</li><li><strong>客戶面向的能力是 AI 取代不了的</strong>：理解人、說服人、陪著人改變——這些事情需要信任感與情境判斷，是現階段 AI 最難複製的部分。</li><li><strong>「翻譯能力」會變成 AI 時代的新顯學</strong>：能在技術與非技術之間自由切換的人，將會是企業 AI 轉型裡最搶手的資源，不論頭銜是工程師、顧問、產品經理還是業務。</li></ul><h2 id="sec-5">結語：介面，才是最值錢的位置</h2><p>我在這集節目裡用了一個我很喜歡的比喻：FDE 不只是工程師，他是人類跟 AI 之間的「介面」。介面設計得好，兩端都能順暢運作；介面缺席，再強的工具都只是一個放在伺服器裡沒人用的東西。</p><p>AI 工具的能力曲線還在往上爬，但企業的吸收能力跟不上。這個落差，就是接下來幾年最真實的機會所在。不管你現在的角色是什麼，值得問自己一個問題：在你的工作場域裡，你有沒有可能成為那座橋？</p>
 <hr>
 <p>📚 <strong>同主題的其他單集 / 文章，延伸聽下去：</strong></p>
 <ul>
@@ -94,19 +70,27 @@ function nlGo(f){
       <a class="pn" href="/post/129/"><span>← 上一篇</span><b>AI模型也需要「睡眠」？離線整理記憶如何突破長程推理瓶頸</b></a>
       <a class="pn pn-r" href="/post/125/"><span>下一篇 →</span><b>小型語言模型當道：國泰金案例如何改寫企業AI選型邏輯</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/20/"><span class="h-meta"><span class="h-cat">AI</span></span><b>AI決策比人類更激進？兵推研究揭露核戰風險的黑暗真相</b></a></li><li><a href="/post/133/"><span class="h-meta"><span class="h-cat">AI</span></span><b>AI黑盒子危機：當模型演化速度超越人類理解極限</b></a></li><li><a href="/post/284/"><span class="h-meta"><span class="h-cat">閱讀</span><span>🎙 Podcast</span></span><b>AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

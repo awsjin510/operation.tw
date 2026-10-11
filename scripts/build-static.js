@@ -31,13 +31,33 @@ const CAT_DESC = {
 
 const { episodeCode } = require('./lib/episode');
 // 讀 episodes.json，建「集數碼 → 單集」對照（供文章頁加 PodcastEpisode 結構化資料）
-function loadEpisodeMap() {
-  try {
-    const eps = JSON.parse(fs.readFileSync(path.join(ROOT, 'episodes.json'), 'utf8')).episodes || [];
-    const map = {};
-    for (const e of eps) { const c = episodeCode(e.title); if (c) (map[c] = map[c] || []).push(e); }
-    return map;
-  } catch (e) { return {}; }
+function loadEpisodes() {
+  try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'episodes.json'), 'utf8')); } catch (e) { return { episodes: [] }; }
+}
+function buildEpisodeMap(eps) {
+  const map = {};
+  for (const e of eps) { const c = episodeCode(e.title); if (c) (map[c] = map[c] || []).push(e); }
+  return map;
+}
+
+// 延伸閱讀：同主題但「不是同一則新聞」的文章 2 篇＋相關 Podcast 文章 1 篇（不足用同分類最新補）
+const { titleSimilarity, textJaccard, fullText } = require('./lib/similarity');
+function relatedFor(post, visible, mainId) {
+  const scored = [];
+  for (const c of visible) {
+    if (c.id === post.id || String(c.id) === String(mainId)) continue;
+    if (isDuplicate(post, c)) continue; // 同一則新聞的另一篇不算「延伸」
+    const sc = textJaccard(fullText(post), fullText(c)) + titleSimilarity(post.title, c.title) * 0.3;
+    if (sc > 0.02) scored.push({ c, sc });
+  }
+  scored.sort((a, b) => b.sc - a.sc);
+  const out = [];
+  const add = (c) => { if (c && !out.includes(c) && out.length < 3) out.push(c); };
+  scored.filter((x) => x.c.category === post.category && !episodeCode(x.c.title)).slice(0, 2).forEach((x) => add(x.c));
+  const pod = scored.find((x) => episodeCode(x.c.title));
+  if (pod) add(pod.c);
+  for (const c of visible) { if (out.length >= 3) break; if (c.category === post.category && c.id !== post.id && String(c.id) !== String(mainId)) add(c); }
+  return out;
 }
 
 // 同一集數碼可能對到多集（RSS 曾把兩集都編成 AI36）→ 挑發布日最接近文章日期的那集
@@ -49,24 +69,80 @@ function pickEpisode(list, postDate) {
     Math.abs(Date.parse(e.date) - t) < Math.abs(Date.parse(best.date) - t) ? e : best);
 }
 
-// 重複主題文章 → 主文章（canonical-map.json，人工維護）：canonical 指向主文、移出 sitemap
-function loadCanonicalMap() {
-  try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'canonical-map.json'), 'utf8')).map || {}; }
-  catch (e) { return {}; }
+// ── 術語庫：錨點與文章內自動連結 ─────────────────────────────────
+const glossaryAnchor = (t) => 'term-' + String(t.en || t.term).toLowerCase().replace(/[^a-z0-9\u3400-\u9fff]+/g, '-').replace(/^-+|-+$/g, '');
+function loadGlossary() {
+  try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'glossary.json'), 'utf8')).terms || []; } catch (e) { return []; }
 }
-const CANONICAL_MAP = loadCanonicalMap();
-
-// 靜態頁共用的導覽列與頁尾（樣式在 /theme.css）
-const catHref = (c) => `/category/${encodeURIComponent(c)}/`;
-function siteHeader(current) {
-  const links = ['AI', '雲端', '資安', '閱讀', '成長']
-    .map((c) => `<a href="${catHref(c)}"${current === c ? ' aria-current="page"' : ''}>${c === '雲端' ? 'Cloud' : c === '資安' ? 'Cyber Security' : c}</a>`).join('');
-  return `<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單">${links}<a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>`;
+// 每個術語做成 {re, href}：中文術語直接比對；英文縮寫（≥3 字元）用字邊界比對，避免把 "AI" 這種太泛的詞也連
+const GLOSSARY_LINKS = loadGlossary().flatMap((t) => {
+  const href = `/glossary/#${glossaryAnchor(t)}`;
+  const out = [{ en: 0, key: t.term, re: new RegExp(t.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), href, title: t.term }];
+  if (t.en && t.en.length >= 3) out.push({ en: 1, key: t.term, re: new RegExp(`\\b${t.en.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`), href, title: t.term });
+  return out;
+}).sort((a, b) => (a.en - b.en) || (b.re.source.length - a.re.source.length)); // 中文術語優先、長詞優先
+// 只改內文段落／清單裡「不在連結、標題、程式碼中」的文字；同一術語只連第一次、整篇最多 5 個
+function linkGlossaryTerms(html) {
+  if (!GLOSSARY_LINKS.length || !html) return html;
+  html = html.replace(/<a class="gl"[^>]*>([\s\S]*?)<\/a>/g, '$1'); // 先拿掉上次加的（本機建置會沿用既有靜態頁內文）
+  const done = new Set();
+  let budget = 5, skip = 0;
+  return html.split(/(<[^>]+>)/).map((part) => {
+    if (part.startsWith('<')) {
+      const m = part.match(/^<(\/?)(a|h[1-6]|code|pre|summary|figcaption)\b/i);
+      if (m) skip += m[1] ? -1 : 1;
+      return part;
+    }
+    if (skip > 0 || budget <= 0 || !part.trim()) return part;
+    for (const g of GLOSSARY_LINKS) {
+      if (budget <= 0) break;
+      if (done.has(g.key)) continue;
+      const m = part.match(g.re);
+      if (!m) continue;
+      done.add(g.key);
+      budget--;
+      part = part.slice(0, m.index) + `<a class="gl" href="${g.href}" title="術語庫：${g.title}">${m[0]}</a>` + part.slice(m.index + m[0].length);
+    }
+    return part;
+  }).join('');
 }
-const SITE_FOOTER = `<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>`;
 
-// 全站 favicon（Google 搜尋結果與分頁標籤會用到）
-const FAVICON_TAGS = '<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">';
+// ── 重複主題文章自動分群 ─────────────────────────────────────────
+// 自動新聞常把同一則新聞寫好幾篇（Neoclouds 11 篇、AWS 20 週年 15 篇）。
+// 同分類、彼此高度相似（標題重疊 ≥0.5 或標題＋摘要 Jaccard ≥0.2，比 auto-post 擋新文的門檻更嚴）
+// 的文章歸成一群，群裡「最早發布」的是主文（固定不變，不會因瀏覽數變動而換）；
+// 其餘：canonical 指向主文、不進 sitemap／RSS／分類頁／首頁／延伸閱讀，文首放主文連結。
+// canonical-map.json 可人工覆寫：map 指定 {重複文 id: 主文 id}，keep 列出不要被歸群的 id。
+const { isDuplicate } = require('./lib/similarity');
+let CANONICAL_MAP = {};
+const isDupPost = (p) => !!CANONICAL_MAP[p.id];
+function computeCanonicalMap(posts) {
+  let manual = { map: {}, keep: [] };
+  try { manual = Object.assign(manual, JSON.parse(fs.readFileSync(path.join(ROOT, 'canonical-map.json'), 'utf8'))); } catch (e) {}
+  const keep = new Set((manual.keep || []).map(String));
+  const pool = posts.filter((p) => !episodeCode(p.title) && !keep.has(String(p.id))); // Podcast 衍生文不歸群
+  const parent = new Map(pool.map((p) => [p.id, p.id]));
+  const find = (x) => (parent.get(x) === x ? x : (parent.set(x, find(parent.get(x))), parent.get(x)));
+  for (let i = 0; i < pool.length; i++) {
+    for (let j = i + 1; j < pool.length; j++) {
+      const a = pool[i], b = pool[j];
+      if (a.category === b.category && isDuplicate(a, b, 0.5, 0.2)) parent.set(find(a.id), find(b.id));
+    }
+  }
+  const groups = {};
+  for (const p of pool) (groups[find(p.id)] = groups[find(p.id)] || []).push(p);
+  const map = {};
+  for (const g of Object.values(groups)) {
+    if (g.length < 2) continue;
+    g.sort((a, b) => String(a.date).localeCompare(String(b.date)) || Number(a.id) - Number(b.id));
+    for (const p of g.slice(1)) map[p.id] = g[0].id;
+  }
+  for (const [k, v] of Object.entries(manual.map || {})) map[k] = v;
+  return map;
+}
+
+const { FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, SITE_JS, catHref } = require('./lib/chrome');
+const pages = require('./lib/pages');
 
 // 內容日期：以文章的 updated_at（沒有就用發文日）為準，讓 sitemap lastmod 與 JSON-LD dateModified 一致
 const postModified = (p) => ((p.updated_at || '').slice(0, 10) || p.date || '');
@@ -128,10 +204,11 @@ function buildToc(body) {
 }
 
 // ── 產生個別文章 stub 頁 ────────────────────────────────────────────
-function generatePostPage(post, body, episode, neighbors, mainPost) {
+function generatePostPage(post, body, episode, neighbors, mainPost, related = []) {
   body = body || '';
   // 文末收聽區塊是發文當下寫進 D1 的：Apple 只連到節目頁、Spotify 是用「當時的單集標題」搜尋。
   // 這裡依 episodes.json 的最新資料改寫成該集的 Apple 單集頁與目前標題，不必回頭改 D1。
+  body = linkGlossaryTerms(body);
   if (episode) {
     if (episode.apple) body = body.replace(/https:\/\/podcasts\.apple\.com\/podcast\/1620760720(?=["'])/g, episode.apple);
     if (episode.spot) body = body.replace(/https:\/\/open\.spotify\.com\/search\/[^"'\s]+/g, episode.spot);
@@ -241,53 +318,12 @@ ${FAVICON_TAGS}
 <meta name="twitter:description" content="${esc(desc)}">
 <meta name="twitter:image"       content="${esc(img)}">
 <script type="application/ld+json">${schema}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:${JSON.stringify(post.id)}})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 ${CF_BEACON}
 </head>
-<body class="st">
+<body class="st" data-post-id="${esc(String(post.id))}">
 ${siteHeader(post.category)}
-<main class="st-narrow st-post">
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/${encodeURIComponent(post.category)}/">${esc(post.category)}</a></nav>
   <article>
     <div class="badge" style="color:${catColor};background:${catColor}1a">${catIcon} ${esc(post.category)}</div>
@@ -295,24 +331,17 @@ ${siteHeader(post.category)}
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="${esc(post.date)}">${esc(post.date)}</time>${(post.updated_at || '').slice(0, 10) > post.date ? ` · 最後更新 ${esc(post.updated_at.slice(0, 10))}` : ''}<span id="pv"></span></div>
     ${post.image ? `<picture><source type="image/webp" srcset="${esc(imgWebp)}"><img class="cover" src="${esc(img)}" alt="${esc(post.title)}" width="1200" height="630"></picture>` : ''}
     <div class="excerpt"><p>${esc(post.excerpt || '')}</p></div>
+    ${episode ? `<aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>${esc(episode.title)}</strong></span><span class="st-listen-btns">${episode.apple ? `<a class="pf pf-apple" href="${esc(episode.apple)}" target="_blank" rel="noopener">Apple Podcasts</a>` : ''}${episode.spot ? `<a class="pf pf-spotify" href="${esc(episode.spot)}" target="_blank" rel="noopener">Spotify</a>` : ''}<a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>` : ''}
     ${mainPost ? `<p class="st-main-note">這個主題有更完整的整理：<a href="/post/${encodeURIComponent(mainPost.slug || mainPost.id)}/">${esc(mainPost.title)} →</a></p>` : ''}
     ${toc}
     <div class="post-body"><!--BODY:START-->${body}<!--BODY:END--></div>
     ${postNav}
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    ${related.length ? `<section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul>${related.map((r) => `<li><a href="/post/${encodeURIComponent(r.slug || r.id)}/"><span class="h-meta"><span class="h-cat">${esc(r.category)}</span>${episodeCode(r.title) ? '<span>🎙 Podcast</span>' : ''}</span><b>${esc(r.title)}</b></a></li>`).join('')}</ul></section>` : ''}
+    ${newsletterBox({ id: 'newsletter', source: 'post' })}
   </article>
 </main>
 ${SITE_FOOTER}
+${SITE_JS}
 </body>
 </html>`;
 }
@@ -401,24 +430,27 @@ ${CF_BEACON}
 </head>
 <body class="st">
 ${siteHeader(cat)}
-<main class="st-shell" style="--cat:${color}">
+<main id="main" class="st-shell" style="--cat:${color}">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › ${esc(cat)}</nav>
   <header class="st-cat-hero">
     <h1>${icon} ${esc(cat)}</h1>
     <p>${esc(lead)}</p>
     <p style="margin-top:10px;">共 <span class="count">${posts.length}</span> 篇文章</p>
   </header>
-  <ul class="st-cat-list">
+  <div class="list-tools"><label class="sr-only" for="cat-q">在${esc(cat)}裡搜尋</label><input id="cat-q" type="search" placeholder="在「${esc(cat)}」裡找文章…" data-filter-for="cat" autocomplete="off" enterkeyhint="search"><p class="list-status" data-status-for="cat" role="status" aria-live="polite"></p></div>
+  <ul class="st-cat-list" data-list="cat" data-item=".ci" data-page="30">
 ${list}
   </ul>
+  <div class="list-more"><button type="button" class="btn btn-ghost" data-more-for="cat" hidden>顯示更多文章</button></div>
+  ${newsletterBox({ id: 'newsletter', compact: true, source: `category-${cat}` })}
   <nav class="st-catnav" aria-label="其他主題">${otherCats}</nav>
 </main>
 ${SITE_FOOTER}
+${SITE_JS}
 </body>
 </html>`;
 }
 
-// ── 產生靜態文章卡片 HTML（注入 index.html 用）─────────────────────
 // 本站封面 /images/posts/post-N.jpg → 卡片用的 480 寬 WebP（檔案存在才用）
 function thumbWebp(image) {
   if (!image || !/^\/images\/posts\/[^/]+\.jpe?g$/i.test(image)) return '';
@@ -426,17 +458,6 @@ function thumbWebp(image) {
   return fs.existsSync(path.join(ROOT, t)) ? t : '';
 }
 
-function cardHTML(p, featured = false) {
-  const icon = CAT_ICON[p.category]  || '📄';
-  const thumb = thumbWebp(p.image);
-  const imgTag = p.image
-    ? `${thumb ? `<picture><source type="image/webp" srcset="${esc(thumb)}">` : ''}<img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy" decoding="async" data-cat="${esc(p.category)}" onerror="this.onerror=null;this.src='/default.png';this.classList.add('img-fallback')">${thumb ? '</picture>' : ''}`
-    : `<span class="pc-img-ph">${icon}</span>`;
-  const cls = (featured ? 'pc featured' : 'pc') + ' cat-' + esc(p.category);
-  const eyebrow = featured ? `<div class="pc-eyebrow">FEATURED · ${esc(p.category)}</div>` : '';
-  const slug = p.slug || p.id;
-  return `<article class="${cls}" data-post-id="${p.id}" onclick="openPost('${p.id}')"><a class="pc-seo-link" href="/post/${encodeURIComponent(slug)}/" onclick="event.preventDefault();openPost('${p.id}')" aria-label="${esc(p.title)}"></a><div class="pc-img">${imgTag}<span class="pc-badge">${esc(p.category)}</span></div><div class="pc-body">${eyebrow}<div class="pc-title"><a href="/post/${encodeURIComponent(slug)}/" onclick="event.preventDefault();openPost('${p.id}')" style="color:inherit;text-decoration:none;">${esc(p.title)}</a></div><div class="pc-exc">${esc(p.excerpt || '')}</div><div class="pc-read-more">閱讀全文 →</div><div class="pc-foot"><span>${esc(p.date)}</span></div></div></article>`;
-}
 
 // ── 取得文章完整內文 ────────────────────────────────────────────────
 // CI（有 Supabase 金鑰）時直接從 Supabase 拉；否則沿用「已烤入現有頁面」的內文，
@@ -605,84 +626,6 @@ function generateLlmsFull(posts, bodies) {
 }
 
 // ── 修補 index.html ──────────────────────────────────────────────────
-function patchIndexHtml(posts) {
-  let html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-  const cats = {};
-  posts.forEach(p => { cats[p.category] = (cats[p.category] || 0) + 1; });
-
-  // 1. lang 屬性
-  html = html.replace('<html lang="zh-TW">', '<html lang="zh-Hant-TW">');
-
-  // 1.5 文章總數（hero 統計、關於我統計、JSON-LD FAQ）— 無條件捨去到十位
-  const totalRounded = Math.max(10, Math.floor(posts.length / 10) * 10);
-  html = html.replace(/(累積文章<\/span><span class="v1-stat-v">)[^<]*/, `$1${totalRounded}+`);
-  html = html.replace(/(id="s1n"[^>]*>)[^<]*/, `$1${totalRounded}+`);
-  html = html.replace(/已累積\d+\+?篇文章/, `已累積${totalRounded}+篇文章`);
-  // 訂閱區「最新一期預覽」→ 指向最新文章
-  if (posts[0]) {
-    html = html.replace(/(id="nl-preview" href=")[^"]*/, `$1/post/${encodeURIComponent(posts[0].slug || posts[0].id)}/`);
-  }
-
-  // 2. 主題計數（0 篇 → 實際數字）
-  ['雲端', '資安', 'AI', '閱讀', '成長'].forEach(c => {
-    const count = cats[c] || 0;
-    const re = new RegExp(`(id="tc-${c}">)0 篇(<\/div>)`);
-    html = html.replace(re, `$1${count} 篇$2`);
-  });
-
-  // 3. 移除累積瀏覽 / 今日瀏覽（—）→ 改為 style="display:none" 讓 JS 可以填入後再顯示
-  html = html.replace(
-    /<div><div class="stat-n" id="stat-total">—<\/div><div class="stat-l">累積瀏覽<\/div><\/div>/,
-    '<div id="stat-total-wrap" style="display:none"><div class="stat-n" id="stat-total"></div><div class="stat-l">累積瀏覽</div></div>'
-  );
-  html = html.replace(
-    /<div><div class="stat-n" id="stat-today">—<\/div><div class="stat-l">今日瀏覽<\/div><\/div>/,
-    '<div id="stat-today-wrap" style="display:none"><div class="stat-n" id="stat-today"></div><div class="stat-l">今日瀏覽</div></div>'
-  );
-
-  // 4. 替換 skeleton cards → 前 10 篇靜態文章卡片
-  const top10 = posts.slice(0, 10);
-  const staticCards = top10.map((p) => cardHTML(p, false)).join('');
-  const skeletonRe = /<div class="post-grid" id="grid-main">[\s\S]*?<\/div>(?=\s*<div class="load-more-wrap")/;
-  html = html.replace(skeletonRe, `<div class="post-grid" id="grid-main">${staticCards}</div>`);
-
-  // 5. 加入 .pc-seo-link 樣式（隱藏連結覆蓋層）— 先移除舊的，確保冪等（避免每次 build 累積）
-  html = html.replace(/\/\* SEO link overlay \*\/\n?/g, '');
-  html = html.replace(/\n?\.pc-seo-link\{[^}]*\}/g, '');
-  const seoLinkStyle = `\n.pc-seo-link{position:absolute;inset:0;z-index:0;opacity:0;pointer-events:none;}`;
-  html = html.replace('/* NAV */', `/* SEO link overlay */${seoLinkStyle}\n/* NAV */`);
-
-  // 6. 加入 noscript 文章列表（讓不跑 JS 的爬蟲也能看到全部文章）
-  // 先移除舊的 noscript-articles 區塊，確保冪等（避免每次 build 在 <footer> 前累積）
-  html = html.replace(/<noscript><section id="noscript-articles"[\s\S]*?<\/section><\/noscript>\n?/g, '');
-  const noscriptList = posts.slice(0, 30).map(p => {
-    const slug = p.slug || p.id;
-    return `<li><a href="/post/${encodeURIComponent(slug)}/">[${esc(p.category)}] ${esc(p.title)}</a> — ${esc(p.date)}</li>`;
-  }).join('');
-  const noscriptBlock = `<noscript><section id="noscript-articles" style="max-width:800px;margin:40px auto;padding:24px;font-family:sans-serif;"><h2>所有文章（${posts.length} 篇）</h2><ul style="list-style:none;padding:0;">${noscriptList}</ul><p><a href="${SITE_URL}/sitemap.xml">→ 查看完整 sitemap</a></p></section></noscript>`;
-
-  // 插入在 footer 之前
-  html = html.replace('<footer>', `${noscriptBlock}\n<footer>`);
-
-  // 7. 更新 JS：當 stat-total/stat-today 被設定時顯示外層 div
-  const showStatJS = `
-function setText(id,v){
-  const e=document.getElementById(id);
-  if(e&&v!=null){
-    e.textContent=v;
-    const wrap=document.getElementById(id+'-wrap');
-    if(wrap)wrap.style.display='';
-  }
-}`;
-  // 替換原本的 setText 函式
-  html = html.replace(
-    /function setText\(id,v\)\{const e=document\.getElementById\(id\);if\(e&&v!=null\)e\.textContent=v;\}/,
-    showStatJS.trim()
-  );
-
-  fs.writeFileSync(path.join(ROOT, 'index.html'), html);
-  console.log('  ✓ index.html 修補完成（lang、topic counts、views、靜態文章卡片、noscript）');
-}
 
 // ── 產生 /faq/ 常見問題彙整頁（GEO：高密度問答 + FAQPage 結構化，供 AI 引用）──
 function generateFaqPage(posts, bodies) {
@@ -725,10 +668,10 @@ function generateFaqPage(posts, bodies) {
   const sections = CAT_ORDER.filter(c => byCat[c]).map(cat => {
     const color = CAT_COLOR[cat] || '#00f5ff';
     const items = byCat[cat].map(x =>
-      `<div class="qa"><h3 class="q">${esc(x.q)}</h3><p class="a">${esc(x.a)}</p>`
-      + `<a class="src" href="/post/${x.slug}/">出自：${esc(x.title)} →</a></div>`
+      `<details class="qa"><summary>${esc(x.q)}</summary><p class="a">${esc(x.a)}</p>`
+      + `<a class="src" href="/post/${x.slug}/">出自：${esc(x.title)} →</a></details>`
     ).join('\n');
-    return `<section class="cat"><h2 style="color:${color};border-color:${color}55">${CAT_ICON[cat] || ''} ${esc(cat)}（${byCat[cat].length}）</h2>${items}</section>`;
+    return `<section class="faq-cat" id="faq-${encodeURIComponent(cat)}" data-group><h2 style="--cat:${color}">${CAT_ICON[cat] || ''} ${esc(cat)} <small>${byCat[cat].length} 題</small></h2>${items}</section>`;
   }).join('\n');
 
   const desc = `操作一下五大主題（AI、雲端、資安、閱讀、成長）常見問題彙整，共 ${total} 則問答，每題連回原文。`;
@@ -748,38 +691,22 @@ ${FAVICON_TAGS}
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="${SITE_URL}/default.png">
 <script type="application/ld+json">${schema}</script>
-<style>
-body{font-family:system-ui,sans-serif;background:#050510;color:#e0e0ff;margin:0;padding:24px;line-height:1.75;}
-.wrap{max-width:800px;margin:0 auto;}
-nav{margin-bottom:24px;font-size:.85rem;color:#9494c2;}
-nav a{color:#00f5ff;text-decoration:none;}
-.hero{border:1px solid rgba(0,245,255,.27);border-radius:12px;padding:24px;background:linear-gradient(180deg,rgba(0,245,255,.08),transparent);margin-bottom:28px;}
-.hero h1{font-size:1.7rem;margin:0 0 8px;color:#fff;}
-.hero p{margin:0;color:#b8b8e0;}
-.cat{margin:32px 0;}
-.cat>h2{font-size:1.25rem;padding-bottom:8px;border-bottom:2px solid;margin-bottom:16px;}
-.qa{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);}
-.q{font-size:1.05rem;color:#fff;margin:0 0 6px;}
-.a{margin:0 0 8px;color:#c4c4e4;}
-.src{font-size:.82rem;color:#7fb8ff;text-decoration:none;}
-.src:hover{text-decoration:underline;}
-.home{display:inline-block;margin-top:24px;color:#00f5ff;text-decoration:none;}
-</style>
 <link rel="stylesheet" href="/theme.css">
 ${CF_BEACON}
 </head>
 <body class="st">
-${siteHeader('')}
-<div class="wrap st-narrow">
-  <nav class="st-crumb"><a href="/">操作一下</a> › 常見問題</nav>
-  <header class="hero">
-    <h1>❓ 常見問題彙整</h1>
-    <p>五大主題共 <strong>${total}</strong> 則問答，每題都連回完整文章。</p>
-  </header>
-  <main>${sections}</main>
-  <a class="home" href="/">← 回操作一下首頁</a>
-</div>
+${siteHeader('faq')}
+<main id="main" class="st-narrow s-page">
+  <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › 常見問題</nav>
+  <h1>常見問題彙整</h1>
+  <p class="pg-lead">五大主題共 <strong>${total}</strong> 則問答，點問題展開答案，每題都連回完整文章。</p>
+  <nav class="jump" aria-label="跳到主題">${CAT_ORDER.filter(c => byCat[c]).map(c => `<a href="#faq-${encodeURIComponent(c)}">${CAT_ICON[c] || ''} ${esc(c)}</a>`).join('')}</nav>
+  <div class="list-tools"><label class="sr-only" for="faq-q">搜尋問題</label><input id="faq-q" type="search" placeholder="搜尋問題或答案，例如：零信任" data-filter-for="faq" autocomplete="off" enterkeyhint="search"><p class="list-status" data-status-for="faq" role="status" aria-live="polite"></p></div>
+  <div data-list="faq" data-item=".qa">${sections}</div>
+  ${newsletterBox({ id: 'newsletter', compact: true, source: 'faq' })}
+</main>
 ${SITE_FOOTER}
+${SITE_JS}
 </body>
 </html>`;
 
@@ -800,11 +727,12 @@ function generateGlossaryPage(posts) {
   const byId = {};
   posts.forEach((p) => { byId[p.id] = p; });
   const url = `${SITE_URL}/glossary/`;
-  const anchor = (t, i) => `t${i + 1}`;
+  // 錨點用術語本身（穩定，新增術語不會讓既有錨點位移；文章內文會連到這些錨點）
+  const anchor = (t) => glossaryAnchor(t);
 
   const CAT_ORDER = ['AI', '雲端', '資安', '成長', '通用'];
   const byCat = {};
-  terms.forEach((t, i) => { (byCat[t.category] = byCat[t.category] || []).push({ ...t, _a: anchor(t, i) }); });
+  terms.forEach((t) => { (byCat[t.category] = byCat[t.category] || []).push({ ...t, _a: anchor(t) }); });
 
   const graph = [
     {
@@ -819,7 +747,7 @@ function generateGlossaryPage(posts) {
         name: t.term,
         ...(t.en ? { alternateName: t.en } : {}),
         description: t.def,
-        url: `${url}#${anchor(t, i)}`,
+        url: `${url}#${anchor(t)}`,
         inDefinedTermSet: `${url}#set`
       }))
     },
@@ -840,13 +768,13 @@ function generateGlossaryPage(posts) {
         .filter(Boolean)
         .map((p) => `<a href="/post/${encodeURIComponent(p.slug || p.id)}/">${esc(p.title)}</a>`)
         .join('、');
-      return `<div class="gt" id="${t._a}">
+      return `<div class="gt" id="${t._a}" data-cat="${esc(cat)}">
         <h3 class="gt-t">${esc(t.term)}${t.en ? ` <span class="gt-en">${esc(t.en)}</span>` : ''}</h3>
         <p class="gt-d">${esc(t.def)}</p>
         ${rel ? `<div class="gt-r">延伸閱讀：${rel}</div>` : ''}
       </div>`;
     }).join('\n');
-    return `<section class="gcat"><h2 style="color:${color};border-color:${color}55">${CAT_ICON[cat] || '📎'} ${esc(cat)}（${byCat[cat].length}）</h2>${items}</section>`;
+    return `<section class="faq-cat" id="g-${encodeURIComponent(cat)}" data-group><h2 style="--cat:${color}">${CAT_ICON[cat] || '📎'} ${esc(cat)} <small>${byCat[cat].length} 條</small></h2>${items}</section>`;
   }).join('\n');
 
   const desc = `雲端、資安、AI 核心術語的繁體中文定義，共 ${terms.length} 條，每條附延伸閱讀。`;
@@ -866,40 +794,21 @@ ${FAVICON_TAGS}
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="${SITE_URL}/default.png">
 <script type="application/ld+json">${schema}</script>
-<style>
-body{font-family:system-ui,sans-serif;background:#050510;color:#e0e0ff;margin:0;padding:24px;line-height:1.75;}
-.wrap{max-width:800px;margin:0 auto;}
-nav{margin-bottom:24px;font-size:.85rem;color:#9494c2;}
-nav a{color:#00f5ff;text-decoration:none;}
-.hero{border:1px solid rgba(0,245,255,.27);border-radius:12px;padding:24px;background:linear-gradient(180deg,rgba(0,245,255,.08),transparent);margin-bottom:28px;}
-.hero h1{font-size:1.7rem;margin:0 0 8px;color:#fff;}
-.hero p{margin:0;color:#b8b8e0;}
-.gcat{margin:32px 0;}
-.gcat>h2{font-size:1.25rem;padding-bottom:8px;border-bottom:2px solid;margin-bottom:16px;}
-.gt{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);scroll-margin-top:16px;}
-.gt-t{font-size:1.05rem;color:#fff;margin:0 0 6px;}
-.gt-en{font-size:.82rem;color:#9494c2;font-weight:400;}
-.gt-d{margin:0 0 8px;color:#c4c4e4;}
-.gt-r{font-size:.82rem;color:#9494c2;}
-.gt-r a{color:#7fb8ff;text-decoration:none;}
-.gt-r a:hover{text-decoration:underline;}
-.home{display:inline-block;margin-top:24px;color:#00f5ff;text-decoration:none;}
-</style>
 <link rel="stylesheet" href="/theme.css">
 ${CF_BEACON}
 </head>
 <body class="st">
-${siteHeader('')}
-<div class="wrap st-narrow">
-  <nav class="st-crumb"><a href="/">操作一下</a> › 術語庫</nav>
-  <header class="hero">
-    <h1>📖 科技術語庫</h1>
-    <p>雲端、資安、AI 核心術語的白話定義，共 <strong>${terms.length}</strong> 條，每條附站內延伸閱讀。</p>
-  </header>
-  <main>${sections}</main>
-  <a class="home" href="/">← 回操作一下首頁</a>
-</div>
+${siteHeader('glossary')}
+<main id="main" class="st-narrow s-page">
+  <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › 術語庫</nav>
+  <h1>科技術語庫</h1>
+  <p class="pg-lead">雲端、資安、AI 核心術語的白話定義，共 <strong>${terms.length}</strong> 條，每條附站內延伸閱讀。文章裡第一次出現的術語也會連到這裡。</p>
+  <nav class="jump" aria-label="跳到分類">${CAT_ORDER.filter(c => byCat[c]).map(c => `<a href="#g-${encodeURIComponent(c)}">${CAT_ICON[c] || '📎'} ${esc(c)}</a>`).join('')}</nav>
+  <div class="list-tools"><label class="sr-only" for="g-q">搜尋術語</label><input id="g-q" type="search" placeholder="搜尋術語，例如：RAG、零信任" data-filter-for="glossary" autocomplete="off" enterkeyhint="search"><p class="list-status" data-status-for="glossary" role="status" aria-live="polite"></p></div>
+  <div data-list="glossary" data-item=".gt">${sections}</div>
+</main>
 ${SITE_FOOTER}
+${SITE_JS}
 </body>
 </html>`;
 
@@ -934,7 +843,10 @@ async function main() {
   console.log('\n🔨 operation.tw 靜態建置開始\n');
 
   const posts = loadPosts();
-  console.log(`  📚 已載入 ${posts.length} 篇已發布文章\n`);
+  console.log(`  📚 已載入 ${posts.length} 篇已發布文章`);
+  CANONICAL_MAP = computeCanonicalMap(posts);
+  const visible = posts.filter((p) => !isDupPost(p));
+  console.log(`  ✓ 重複主題文章：${posts.length - visible.length} 篇 canonical 指向主文（不進首頁／分類／RSS／sitemap）\n`);
 
   // 0. 封面 WebP（效能：文章頁封面 <picture> 用）
   console.log('🖼️  確保封面 WebP...');
@@ -944,11 +856,19 @@ async function main() {
   // 1. 產生個別文章頁（含完整內文，供搜尋引擎 / AI 爬蟲索引）
   console.log('📄 產生個別文章頁面...');
   const bodies = await loadBodies(posts);
-  const epMap = loadEpisodeMap();
-  // 同分類的「上一篇（較新）／下一篇（較舊）」，提升 pages/session
+  const epData = loadEpisodes();
+  const episodes = epData.episodes || [];
+  const epMap = buildEpisodeMap(episodes);
+  // 單集 ↔ 文章：每集記下對應的重點整理文章（Podcast 頁、首頁、搜尋用）
+  for (const e of episodes) delete e.post;
+  for (const p of [...posts].reverse()) { // 由舊到新：同一集若有多篇，保留最早那篇
+    const ep = pickEpisode(epMap[episodeCode(p.title)], p.date);
+    if (ep && !ep.post && !isDupPost(p)) ep.post = `/post/${encodeURIComponent(p.slug || p.id)}/`;
+  }
+  // 同分類的「上一篇（較新）／下一篇（較舊）」，提升 pages/session（跳過重複文）
   const nbr = {};
   const byCatN = {};
-  posts.forEach(p => (byCatN[p.category] = byCatN[p.category] || []).push(p));
+  visible.forEach(p => (byCatN[p.category] = byCatN[p.category] || []).push(p));
   for (const cat in byCatN) {
     const arr = byCatN[cat]; // posts 已由新到舊
     arr.forEach((p, i) => { nbr[p.id] = { newer: arr[i - 1] || null, older: arr[i + 1] || null }; });
@@ -966,7 +886,8 @@ async function main() {
     if (episode) withEp++;
     const mainId = CANONICAL_MAP[post.id];
     const mainPost = mainId ? posts.find((p) => String(p.id) === String(mainId)) : null;
-    fs.writeFileSync(path.join(dir, 'index.html'), generatePostPage(post, body, episode, nbr[post.id], mainPost));
+    const related = relatedFor(post, visible, mainId);
+    fs.writeFileSync(path.join(dir, 'index.html'), generatePostPage(post, body, episode, nbr[post.id] || (mainId && nbr[mainId]), mainPost, related));
     generated++;
   }
   console.log(`  ✓ 其中含完整內文：${withBody}/${generated} 篇、含 PodcastEpisode：${withEp} 篇`);
@@ -988,7 +909,7 @@ async function main() {
   // 1c. 產生分類主題頁 /category/{類}/index.html（互連同主題文章，建立主題權重）
   console.log('📂 產生分類主題頁...');
   const byCat = {};
-  for (const p of posts) (byCat[p.category] = byCat[p.category] || []).push(p);
+  for (const p of visible) (byCat[p.category] = byCat[p.category] || []).push(p);
   const catDir = path.join(ROOT, 'category');
   if (!fs.existsSync(catDir)) fs.mkdirSync(catDir);
   let catCount = 0;
@@ -1014,19 +935,28 @@ async function main() {
   // 2. 更新 sitemap.xml & feed.xml
   console.log('🗺️  更新 sitemap.xml & feed.xml...');
   updateSitemap(posts);
-  updateFeed(posts);
+  updateFeed(visible);
   console.log();
 
   // 3. 更新 llms.txt + llms-full.txt（全文版）
   console.log('🤖 更新 llms.txt / llms-full.txt...');
-  updateLlms(posts);
-  generateLlmsFull(posts, bodies);
+  updateLlms(visible);
+  generateLlmsFull(visible, bodies);
   console.log();
 
-  // 4. 修補 index.html
-  console.log('🏠 修補 index.html...');
-  patchIndexHtml(posts);
-  console.log();
+  // 4. 入口頁：首頁、Podcast、搜尋、404（全部靜態輸出，共用 theme.css 與 lib/chrome.js）
+  console.log('🏠 產生首頁／Podcast／搜尋／404...');
+  const ctx = { posts: visible, episodes, thumbWebp, CAT_ICON, CAT_DESC, CF_BEACON };
+  fs.writeFileSync(path.join(ROOT, 'index.html'), pages.generateHomePage(ctx));
+  fs.writeFileSync(path.join(ROOT, 'podcast.html'), pages.generatePodcastPage(ctx));
+  fs.mkdirSync(path.join(ROOT, 'search'), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, 'search', 'index.html'), pages.generateSearchPage(ctx));
+  fs.writeFileSync(path.join(ROOT, '404.html'), pages.generate404(ctx));
+  // 單集資料：episodes.json 補上對應文章；episodes-lite.json 給首頁／Podcast 頁（不含完整簡介）
+  fs.writeFileSync(path.join(ROOT, 'episodes.json'), JSON.stringify({ ...epData, episodes }));
+  fs.writeFileSync(path.join(ROOT, 'episodes-lite.json'), JSON.stringify({ episodes: pages.episodesLite(episodes) }));
+  fs.writeFileSync(path.join(ROOT, 'search-index.json'), JSON.stringify(pages.searchIndex(visible, episodes)));
+  console.log(`  ✓ 首頁、Podcast（${episodes.length} 集，${episodes.filter((e) => e.post).length} 集有對應文章）、搜尋、404\n`);
 
   console.log('✅ 建置完成！\n');
 }

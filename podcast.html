@@ -1,401 +1,412 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Podcast | 操作一下 operation.tw</title>
-<meta name="description" content="操作一下 Podcast — 聊雲端、資安、AI、職涯、閱讀、成長。Apple Podcast & Spotify 同步收聽。">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>操作一下 Podcast｜所有單集</title>
+<meta name="description" content="Jin 主持的科技 Podcast，共 164 集：AI 趨勢、台灣科技人訪談、閱讀操作。Apple Podcasts、Spotify 同步收聽，每集都有重點整理文章。">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="https://operation.tw/podcast.html">
-<!-- Open Graph -->
+<link rel="alternate" type="application/rss+xml" title="操作一下 RSS" href="https://operation.tw/feed.xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="操作一下">
-<meta property="og:title" content="Podcast | 操作一下 operation.tw">
-<meta property="og:description" content="操作一下 Podcast — 聊雲端、資安、AI、職涯、閱讀、成長。Apple Podcast & Spotify 同步收聽。">
+<meta property="og:title" content="操作一下 Podcast｜所有單集">
+<meta property="og:description" content="Jin 主持的科技 Podcast，共 164 集：AI 趨勢、台灣科技人訪談、閱讀操作。Apple Podcasts、Spotify 同步收聽，每集都有重點整理文章。">
 <meta property="og:url" content="https://operation.tw/podcast.html">
-<meta property="og:image" content="https://operation.tw/default.png">
+<meta property="og:image" content="https://operation.tw/logo.jpg">
 <meta property="og:locale" content="zh_TW">
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Podcast | 操作一下 operation.tw">
-<meta name="twitter:description" content="操作一下 Podcast — 聊雲端、資安、AI、職涯、閱讀、成長。Apple Podcast & Spotify 同步收聽。">
-<meta name="twitter:image" content="https://operation.tw/default.png">
-<!-- Structured Data -->
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"PodcastSeries","name":"操作一下","description":"聊雲端、資安、AI、職涯、閱讀、成長","url":"https://operation.tw/podcast.html","webFeed":"https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml"}
-</script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-<style>
-:root{--cyan:#00f5ff;--pink:#ff0080;--purple:#bf00ff;--yellow:#ffff00;--green:#00ff88;--bg:#050510;--bg2:#0a0a1a;--bg3:#0d0d22;--border:rgba(0,245,255,.1);--border2:rgba(0,245,255,.3);--text:#e0e0ff;--dim:#6060a0;--mid:#9090cc;}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'Noto Sans TC',sans-serif;line-height:1.8;min-height:100vh;}
-body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,245,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
-body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.06) 3px,rgba(0,0,0,.06) 4px);pointer-events:none;z-index:0;}
-nav{position:sticky;top:0;z-index:100;background:rgba(5,5,16,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.nav-logo{font-family:'Orbitron',monospace;font-weight:900;font-size:.85rem;letter-spacing:.15em;color:var(--cyan);text-shadow:0 0 10px var(--cyan);text-decoration:none;}
-.nav-links{display:flex;align-items:center;gap:24px;}
-.nav-links a{font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--dim);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .25s;}
-.nav-links a:hover,.nav-links a.active{color:var(--cyan);}
-.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:4px;background:none;border:none;}
-.hamburger span{width:20px;height:1px;background:var(--cyan);display:block;}
-.mob-menu{display:none;position:fixed;top:60px;left:0;right:0;bottom:0;background:rgba(5,5,16,.98);z-index:99;padding:28px 24px;flex-direction:column;gap:0;}
-.mob-menu.open{display:flex;}
-.mob-menu a{font-family:'Share Tech Mono',monospace;font-size:.88rem;color:var(--mid);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:.1em;padding:16px 0;text-transform:uppercase;}
-.pc-hero{position:relative;padding:64px 24px 48px;overflow:hidden;z-index:1;}
-.pc-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 50%,rgba(0,245,255,.06),transparent 70%),radial-gradient(ellipse 50% 50% at 80% 60%,rgba(191,0,255,.05),transparent 70%);}
-.pc-hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;}
-.pc-cover-wrap{position:relative;flex-shrink:0;}
-.pc-cover{width:180px;height:180px;border:2px solid var(--border2);box-shadow:0 0 40px rgba(0,245,255,.2),0 0 80px rgba(0,245,255,.07);display:block;object-fit:cover;}
-.pc-cover-ring{position:absolute;inset:-10px;border:1px solid rgba(0,245,255,.12);animation:spin 12s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg);}}
-.pc-badge{font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--pink);letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px;}
-.pc-title{font-family:'Orbitron',monospace;font-weight:900;font-size:clamp(2rem,5vw,3.2rem);color:#fff;line-height:1.2;margin-bottom:12px;}
-.pc-title span{color:var(--cyan);text-shadow:0 0 15px var(--cyan),0 0 40px rgba(0,245,255,.3);}
-.pc-desc{font-size:.92rem;color:var(--mid);line-height:1.9;margin-bottom:24px;max-width:480px;}
-.platform-btns{display:flex;gap:10px;flex-wrap:wrap;}
-.pb{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;font-family:'Share Tech Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .3s;border:1px solid;}
-.pb-apple{border-color:rgba(255,255,255,.2);color:var(--text);background:rgba(255,255,255,.04);}
-.pb-apple:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.1);}
-.pb-spotify{border-color:rgba(30,215,96,.3);color:#1ed760;background:rgba(30,215,96,.06);}
-.pb-spotify:hover{background:rgba(30,215,96,.12);border-color:#1ed760;}
-.pb-rss{border-color:rgba(255,165,0,.3);color:#ffaa33;background:rgba(255,165,0,.05);}
-.pb-rss:hover{background:rgba(255,165,0,.1);border-color:#ffaa33;}
-.stats-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(0,245,255,.02);position:relative;z-index:1;}
-.stats-inner{max-width:1100px;margin:0 auto;padding:18px 24px;display:flex;gap:32px;flex-wrap:wrap;}
-.stat{display:flex;flex-direction:column;}
-.stat-n{font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:900;color:var(--cyan);}
-.stat-l{font-family:'Share Tech Mono',monospace;font-size:.58rem;color:var(--dim);letter-spacing:.08em;text-transform:uppercase;margin-top:2px;}
-.ep-wrap{max-width:1100px;margin:0 auto;padding:48px 24px 80px;position:relative;z-index:1;}
-.ep-controls{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;align-items:center;}
-.ep-search{flex:1;min-width:200px;background:rgba(255,255,255,.04);border:1px solid var(--border);padding:10px 14px;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:.8rem;outline:none;transition:border-color .2s;}
-.ep-search:focus{border-color:var(--cyan);}
-.ep-search::placeholder{color:var(--dim);}
-.ep-sort{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:10px 12px;color:var(--mid);font-family:'Share Tech Mono',monospace;font-size:.72rem;outline:none;cursor:pointer;}
-.ep-sort option{background:var(--bg3);}
-.ep-count{font-family:'Share Tech Mono',monospace;font-size:.62rem;color:var(--dim);letter-spacing:.08em;}
-.ep-list{display:flex;flex-direction:column;}
-.ep-card{display:grid;grid-template-columns:40px 80px 1fr auto;border-bottom:1px solid var(--border);transition:background .18s;position:relative;}
-.ep-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--cyan);transform:scaleY(0);transition:transform .3s;transform-origin:bottom;}
-.ep-card:hover::before{transform:scaleY(1);}
-.ep-card:hover{background:rgba(0,245,255,.03);}
-.ep-num{padding:18px 8px 18px 14px;font-family:'Share Tech Mono',monospace;font-size:.6rem;color:var(--dim);display:flex;align-items:flex-start;padding-top:22px;}
-.ep-thumb{width:56px;height:56px;margin:13px 12px;flex-shrink:0;border:1px solid var(--border);object-fit:cover;}
-.ep-info{padding:13px 10px 13px 0;min-width:0;}
-.ep-meta{font-family:'Share Tech Mono',monospace;font-size:.57rem;color:var(--dim);letter-spacing:.07em;margin-bottom:4px;display:flex;align-items:center;gap:10px;}
-.ep-dur{color:var(--cyan);}
-.ep-title{font-size:.88rem;font-weight:600;color:var(--text);line-height:1.5;margin-bottom:5px;transition:color .2s;}
-.ep-card:hover .ep-title{color:var(--cyan);}
-.ep-desc{font-size:.76rem;color:var(--dim);line-height:1.65;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-.ep-actions{padding:13px 16px 13px 8px;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:7px;flex-shrink:0;}
-.ep-btn{display:flex;align-items:center;gap:5px;padding:6px 11px;font-family:'Share Tech Mono',monospace;font-size:.6rem;letter-spacing:.07em;border:1px solid;cursor:pointer;background:transparent;white-space:nowrap;transition:all .2s;text-decoration:none;}
-.ep-btn.play{border-color:var(--border);color:var(--dim);}
-.ep-btn.play:hover{border-color:var(--cyan);color:var(--cyan);}
-.ep-btn.apple{border-color:rgba(255,255,255,.15);color:#aaa;}
-.ep-btn.apple:hover{border-color:#fff;color:#fff;}
-.ep-btn.soundon{border-color:rgba(0,245,255,.25);color:#7fd8e8;}
-.ep-btn.soundon:hover{border-color:#00f5ff;color:#00f5ff;}
-.ep-btn.spotify{border-color:rgba(30,215,96,.2);color:#1ed760;}
-.ep-btn.spotify:hover{background:rgba(30,215,96,.07);}
-.player-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,26,.97);border-top:1px solid var(--border2);padding:10px 24px;z-index:200;display:none;backdrop-filter:blur(16px);}
-.player-bar.visible{display:flex;}
-.player-inner{max-width:1100px;margin:0 auto;width:100%;display:flex;align-items:center;gap:12px;}
-.p-info{flex:1;min-width:0;}
-.p-title{font-size:.8rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.p-meta{font-family:'Share Tech Mono',monospace;font-size:.55rem;color:var(--dim);}
-.p-audio{flex:1;min-width:160px;}
-.p-audio audio{width:100%;height:32px;}
-.p-close{font-family:'Share Tech Mono',monospace;font-size:.65rem;color:var(--dim);cursor:pointer;background:none;border:1px solid var(--border);padding:5px 10px;flex-shrink:0;transition:all .2s;}
-.p-close:hover{border-color:var(--pink);color:var(--pink);}
-.pagination{display:flex;gap:5px;justify-content:center;margin-top:28px;flex-wrap:wrap;}
-.pg-btn{font-family:'Share Tech Mono',monospace;font-size:.62rem;padding:6px 11px;border:1px solid var(--border);color:var(--dim);cursor:pointer;background:transparent;transition:all .2s;}
-.pg-btn:hover{border-color:var(--border2);color:var(--mid);}
-.pg-btn.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,245,255,.07);}
-@media(max-width:768px){
-  /* 手機版單集卡片版型交由 podcast-v2.css 全權處理（舊規則會與其打架，把內文壓進縮圖欄） */
-  .nav-links{display:none;}
-  .hamburger{display:flex;}
-  .pc-hero-inner{grid-template-columns:1fr;gap:24px;}
-}
-::selection{background:rgba(0,245,255,.2);}
-::-webkit-scrollbar{width:4px;}
-::-webkit-scrollbar-thumb{background:rgba(0,245,255,.2);}
-/* 訂閱電子報帶 */
-.pod-nl{border-top:1px solid rgba(0,245,255,.15);border-bottom:1px solid rgba(0,245,255,.15);background:linear-gradient(180deg,rgba(0,245,255,.05),transparent);padding:26px 20px;}
-.pod-nl-inner{max-width:960px;margin:0 auto;display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:space-between;}
-.pod-nl-t{font-weight:700;color:#fff;font-size:1.02rem;}
-.pod-nl-d{color:#a8a8cc;font-size:.85rem;margin-top:4px;max-width:460px;}
-.pod-nl-f{display:flex;gap:8px;flex-wrap:wrap;position:relative;}
-.pod-nl-f input[type=email]{min-width:210px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:10px 12px;color:#fff;font-size:.9rem;}
-.pod-nl-f button{background:linear-gradient(135deg,#00e5ff,#7b61ff);color:#07070d;border:none;border-radius:8px;padding:10px 18px;font-weight:700;cursor:pointer;}
-.pod-nl-msg{flex-basis:100%;font-size:.8rem;color:#9494c2;min-height:1em;}
-</style>
+<meta name="twitter:title" content="操作一下 Podcast｜所有單集">
+<meta name="twitter:description" content="Jin 主持的科技 Podcast，共 164 集：AI 趨勢、台灣科技人訪談、閱讀操作。Apple Podcasts、Spotify 同步收聽，每集都有重點整理文章。">
+<meta name="twitter:image" content="https://operation.tw/logo.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"PodcastSeries","@id":"https://operation.tw/podcast.html#series","name":"操作一下","url":"https://operation.tw/podcast.html","webFeed":"https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml","image":"https://operation.tw/logo.jpg","inLanguage":"zh-TW","description":"Jin 主持的科技 Podcast：訪問台灣科技工作者、拆解 AI、雲端與資安趨勢，也聊閱讀與職涯。","author":{"@type":"Person","name":"Jin","url":"https://operation.tw/#about"},"sameAs":["https://podcasts.apple.com/tw/podcast/id1620760720","https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"],"hasPart":[{"@type":"PodcastEpisode","name":"AI59_閱讀操作 | 很會存錢，卻不會花錢？《花錢的藝術》教你把金錢翻譯成人生","url":"https://operation.tw/post/424/","datePublished":"2026-10-07"},{"@type":"PodcastEpisode","name":"AI58_趨勢操作｜不只便宜，還能跑長流程：Gemini 4 Argon 如何改寫企業 AI 選型","url":"https://operation.tw/post/421/","datePublished":"2026-10-04"},{"@type":"PodcastEpisode","name":"EP104_達人操作｜AI顧問_Angel｜A|外文系、國小老師出生，怎麼一路走進科技業、成為 AI 顧問?","url":"https://operation.tw/post/415/","datePublished":"2026-09-28"},{"@type":"PodcastEpisode","name":"AI57_趨勢操作｜頂規能力、便宜四成：Claude Opus 5.5 開打 AI「性能 × 價格」雙軸戰爭","url":"https://operation.tw/post/409/","datePublished":"2026-09-23"},{"@type":"PodcastEpisode","name":"AI56趨勢操作｜資料不再搬家：AWS × Salesforce 三層打通，企業雲端進入「跨雲整合」時代","url":"https://operation.tw/post/401/","datePublished":"2026-09-16"},{"@type":"PodcastEpisode","name":"AI55趨勢操作_從2星期壓到 10 小時：AI 把攻擊改成機器速度","url":"https://operation.tw/post/393/","datePublished":"2026-09-09"},{"@type":"PodcastEpisode","name":"AI54趨勢操作 | Claude Fable 5.1 升級、Gemini Notebook 改計價，「無限算力」時代正式結束","url":"https://operation.tw/post/385/","datePublished":"2026-09-02"},{"@type":"PodcastEpisode","name":"AI53_趨勢操作｜從核安會到 Zeabur：台灣被撬開的兩扇門","url":"https://operation.tw/post/383/","datePublished":"2026-09-01"},{"@type":"PodcastEpisode","name":"AI52_閱讀操作 | 「好工作不是找來的、是自己打造的」-《只工作、不上班的自主人生》","url":"https://operation.tw/post/376/","datePublished":"2026-08-26"},{"@type":"PodcastEpisode","name":"EP103_達人操作 | 客戶成功經理_Megan | 當AI能解決大部分的問題，客戶為什麼還是想找一個真人？","url":"https://operation.tw/post/366/","datePublished":"2026-08-17"},{"@type":"PodcastEpisode","name":"AI51_趨勢操作 | 當 ChatGPT 開始賣廣告了，你的答案還純嗎？","url":"https://operation.tw/post/364/","datePublished":"2026-08-15"},{"@type":"PodcastEpisode","name":"AI50_閱讀操作 | 《未來1000天》你的努力，在充滿AI的未來還算不算數？\t職涯別再爬山了，你需要一座遊樂場","url":"https://operation.tw/post/360/","datePublished":"2026-08-12"},{"@type":"PodcastEpisode","name":"AI49_趨勢操作 | 最近公司那個 ChatBot 突然變聰明了？真正變聰明的其實是資料庫","url":"https://operation.tw/post/357/","datePublished":"2026-08-09"},{"@type":"PodcastEpisode","name":"AI48_閱讀操作 | 團隊裡最靠譜的那個人，為什麼最先崩潰!?《高功能倖存者》","url":"https://operation.tw/post/348/","datePublished":"2026-08-01"},{"@type":"PodcastEpisode","name":"EP102_達人操作 | 對未知保持好奇、對規則保持懷疑，從一個讀書會，到上千人的HITCON 國際駭客年會 | feat. Kyo  & Kuro","url":"https://operation.tw/post/344/","datePublished":"2026-07-29"},{"@type":"PodcastEpisode","name":"AI47_趨勢操作 | Claude Opus 5: 同價錢，能力全面拉高，Agent 可以自己跑一整晚","url":"https://operation.tw/post/340/","datePublished":"2026-07-26"},{"@type":"PodcastEpisode","name":"AI46_趨勢操作 | Google 一次發表三款 Gemini，但真正的重點藏在第三款：Flash Cyber","url":"https://operation.tw/post/336/","datePublished":"2026-07-23"},{"@type":"PodcastEpisode","name":"EP101_達人操作 | 美學達人_嘉嘉 | 日子在走、美麗要有，一個提袋改變人生的美學操作","url":"https://operation.tw/post/331/","datePublished":"2026-07-19"},{"@type":"PodcastEpisode","name":"AI45_趨勢操作 | NotebookLM 更名為 Gemini Notebook，但這次沒那麼簡單!!","url":"https://operation.tw/post/329/","datePublished":"2026-07-18"},{"@type":"PodcastEpisode","name":"AI44_閱讀操作 | 「你聽得很細」這五個字,就是信任的起點，《信任效應》給職場人的信任檢核清單","url":"https://operation.tw/post/325/","datePublished":"2026-07-15"}]}</script>
 <link rel="stylesheet" href="/theme.css">
-<link rel="stylesheet" href="/podcast-v2.css">
-<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
-</head>
-<body>
-<nav>
-<div class="nav-inner">
-  <a class="nav-logo" href="index.html"><img src="logo.jpg" alt="操作一下" style="height:36px;width:36px;object-fit:cover;border-radius:2px;vertical-align:middle;margin-right:8px;">操作一下</a>
-  <div class="nav-links">
-    <a href="index.html#featured">AI</a>
-    <a href="index.html#topics">Cloud</a>
-    <a href="index.html#topics">Cyber Security</a>
-    <a href="podcast.html" class="active">Podcast</a>
-    <a href="index.html#about">關於我</a>
-  </div>
-  <button class="hamburger" onclick="toggleMob()"><span></span><span></span><span></span></button>
-</div>
-</nav>
-<div class="mob-menu" id="mob-menu">
-  <a href="index.html#featured" onclick="toggleMob()">AI</a>
-  <a href="index.html#topics" onclick="toggleMob()">Cloud</a>
-  <a href="index.html#topics" onclick="toggleMob()">Cyber Security</a>
-  <a href="podcast.html" onclick="toggleMob()">Podcast</a>
-  <a href="index.html#about" onclick="toggleMob()">關於我</a>
-</div>
-
-<section class="pc-hero">
-<div class="pc-hero-inner">
-  <div class="pc-cover-wrap">
-    <img class="pc-cover" src="logo.jpg" alt="操作一下 Podcast">
-    <div class="pc-cover-ring"></div>
-  </div>
+<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script></head>
+<body class="st st-podcast" data-page="podcast">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html" aria-current="page">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html" aria-current="page">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main">
+<section class="p-hero"><div class="st-shell p-hero-grid">
+  <img class="p-cover" src="/logo.jpg" width="320" height="320" alt="操作一下 Podcast 封面">
   <div>
-    <div class="pc-badge">OPERATION PODCAST · SINCE 2022</div>
-    <h1 class="pc-title">用聲音，把科技<span>說清楚。</span></h1>
-    <p class="pc-desc">從 AI、Cloud、Cyber Security 到科技趨勢，陪你在通勤與日常中，掌握複雜議題背後真正重要的脈絡。</p>
-    <div class="platform-btns">
-      <a class="pb pb-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg>Apple Podcasts</a>
-      <a class="pb pb-spotify" href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg>Spotify</a>
-      <a class="pb pb-rss" href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">📡 RSS</a>
+    <p class="h-kicker"><i></i>Operation Podcast · since 2022</p>
+    <h1>操作一下 Podcast</h1>
+    <p class="p-lead">每週一集。主持人 Jin 是一位產品經理，聊 AI 趨勢、訪問台灣科技工作者，也分享讀過的好書。每集都有一篇重點整理文章，聽完可以回來複習。</p>
+    <div class="p-platforms">
+      <a class="pf pf-apple pf-lg" href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg><span>Apple Podcasts</span></a>
+      <a class="pf pf-spotify pf-lg" href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg><span>Spotify</span></a>
+      <a class="pf pf-ghost pf-lg" href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener"><span>RSS</span></a>
+    </div>
+    <p class="p-stats"><strong>164</strong> 集 · 約 <strong>76</strong> 小時 · 2022 開播 · 3 種收聽方式</p>
+  </div>
+</div></section>
+
+<section class="st-shell p-latest" aria-labelledby="p-latest-t">
+  <img src="https://files.soundon.fm/1791265538487-25d23b3b-6eff-466a-b83a-3694ccb8ab41.jpeg" alt="" width="320" height="320" fetchpriority="high">
+  <div>
+    <p class="h-chip">最新單集 · 2026-10-07 · 13 分鐘</p>
+    <h2 id="p-latest-t"><a href="/post/424/">AI59_閱讀操作 | 很會存錢，卻不會花錢？《花錢的藝術》教你把金錢翻譯成人生</a></h2>
+    <p class="p-ep-d">扣掉房貸、保費、孝親費，再定期定額買 0050，剩下一點點才拿來生活。你很自律、很理性，知道每檔 ETF 的費用率，但朋友問你最近買了什麼讓自己開心的東西，你卻愣了三秒答不出來。 這集閱讀操作，要拆解摩根豪瑟繼《致富心…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-primary btn-play" type="button" data-i="0">▶ 立即播放</button>
+      <a class="btn btn-ghost" href="/post/424/">讀這集的重點</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000793752248" target="_blank" rel="noopener"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg><span>Apple Podcasts</span></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI59_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%20%7C%20%E5%BE%88%E6%9C%83%E5%AD%98%E9%8C%A2%EF%BC%8C%E5%8D%BB%E4%B8%8D%E6%9C%83%E8%8A%B1%E9%8C%A2%EF%BC%9F%E3%80%8A%E8%8A%B1%E9%8C%A2%E7%9A%84%E8%97%9D%E8%A1%93%E3%80%8B%E6%95%99%E4%BD%A0%E6%8A%8A%E9%87%91%E9%8C%A2%E7%BF%BB%E8%AD%AF%E6%88%90%E4%BA%BA%E7%94%9F" target="_blank" rel="noopener"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg><span>Spotify</span></a>
     </div>
   </div>
-</div>
 </section>
 
-<div class="stats-bar">
-<div class="stats-inner">
-  <div class="stat"><div class="stat-n">—</div><div class="stat-l">集單集</div></div>
-  <div class="stat"><div class="stat-n">—</div><div class="stat-l">小時內容</div></div>
-  <div class="stat"><div class="stat-n">2022</div><div class="stat-l">開播年份</div></div>
-  <div class="stat"><div class="stat-n">2</div><div class="stat-l">收聽平台</div></div>
-</div>
-</div>
+<div class="st-shell"><section class="nl-box nl-compact" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="podcast" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section></div>
 
-<section class="latest-shell" id="latest-episode" aria-live="polite"></section>
-
-<div class="pod-nl" id="podcast-newsletter">
-  <div class="pod-nl-inner">
-    <div>
-      <div class="pod-nl-t">💌 每集延伸文章，直接寄到你的信箱</div>
-      <div class="pod-nl-d">聽完想複習？訂閱電子報，新單集的重點整理文章上線就寄給你。不發廣告，隨時退訂。</div>
+<section class="st-shell p-all" aria-labelledby="p-all-t">
+  <div class="h-head"><div><p class="h-eyebrow">All episodes</p><h2 id="p-all-t">探索所有單集</h2></div></div>
+  <div class="p-controls">
+    <label class="sr-only" for="p-q">搜尋單集</label>
+    <input id="p-q" type="search" placeholder="搜尋單集標題或內容…" autocomplete="off" enterkeyhint="search">
+    <div class="p-chips" role="group" aria-label="依系列篩選">
+      <button type="button" class="chip" data-series="" aria-pressed="true">全部 <small>163</small></button>
+      <button type="button" class="chip" data-series="trend" aria-pressed="false">AI 趨勢 <small>37</small></button>
+      <button type="button" class="chip" data-series="guest" aria-pressed="false">來賓訪談 <small>83</small></button>
+      <button type="button" class="chip" data-series="read" aria-pressed="false">閱讀操作 <small>43</small></button>
     </div>
-    <form class="pod-nl-f" onsubmit="return podNlGo(this)">
-      <input type="email" name="email" required placeholder="your@email.com">
-      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-      <button type="submit">訂閱 →</button>
-      <div class="pod-nl-msg" aria-live="polite"></div>
-    </form>
+    <label class="sr-only" for="p-sort">排序</label>
+    <select id="p-sort"><option value="new">最新優先</option><option value="old">最舊優先</option><option value="long">最長優先</option><option value="short">最短優先</option></select>
   </div>
-</div>
-
-<div class="ep-wrap">
-  <div class="ep-heading">
-    <div><span class="ep-kicker">All episodes</span><h2>探索所有單集</h2><p>搜尋想聽的主題，或從最新內容開始。</p></div>
+  <p class="p-count" id="p-count" role="status" aria-live="polite">共 163 集</p>
+  <ul class="p-list" id="p-list"><li class="p-ep" data-series="trend">
+  <img class="p-ep-art" src="https://files.soundon.fm/1791080173693-1ea9c334-e0b9-4663-acd6-1f3a6e0249b6.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI58</span><span>AI 趨勢</span><time datetime="2026-10-04">2026-10-04</time><span>10 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/421/">AI58_趨勢操作｜不只便宜，還能跑長流程：Gemini 4 Argon 如何改寫企業 AI 選型</a></h3>
+    <p class="p-ep-d">9 月 14 日，OpenAI 推出 GPT-6 Astra 宣告新旗艦；9 月 22 日，Anthropic 用 Claude Opus 5.5 降價四成正面挑戰。業界以為市場可以喘口氣，結果 10 月 1 日，Go…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="1" aria-label="播放：AI58_趨勢操作｜不只便宜，還能跑長流程：Gemini 4 Argon 如何改寫企業 AI 選型">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/421/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000793152599" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI58_趨勢操作｜不只便宜，還能跑長流程：Gemini 4 Argon 如何改寫企業 AI 選型"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI58_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%EF%BD%9C%E4%B8%8D%E5%8F%AA%E4%BE%BF%E5%AE%9C%EF%BC%8C%E9%82%84%E8%83%BD%E8%B7%91%E9%95%B7%E6%B5%81%E7%A8%8B%EF%BC%9AGemini%204%20Argon%20%E5%A6%82%E4%BD%95%E6%94%B9%E5%AF%AB%E4%BC%81%E6%A5%AD%20AI%20%E9%81%B8%E5%9E%8B" target="_blank" rel="noopener" aria-label="Spotify：AI58_趨勢操作｜不只便宜，還能跑長流程：Gemini 4 Argon 如何改寫企業 AI 選型"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
   </div>
-  <div class="ep-controls">
-    <input class="ep-search" type="text" id="ep-q" placeholder="搜尋單集標題或描述..." aria-label="搜尋 Podcast 單集" oninput="filterEps()">
-    <select class="ep-sort" id="ep-sort" onchange="filterEps()">
-      <option value="new">最新優先</option>
-      <option value="old">最舊優先</option>
-      <option value="long">最長優先</option>
-      <option value="short">最短優先</option>
-    </select>
-    <span class="ep-count" id="ep-count">共 93 集</span>
+</li><li class="p-ep" data-series="guest">
+  <img class="p-ep-art" src="https://files.soundon.fm/1790588967947-b5b4d662-78e9-49ae-b76c-246747401d26.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">EP104</span><span>來賓訪談</span><time datetime="2026-09-28">2026-09-28</time><span>37 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/415/">EP104_達人操作｜AI顧問_Angel｜A|外文系、國小老師出生，怎麼一路走進科技業、成為 AI 顧問?</a></h3>
+    <p class="p-ep-d">外文系、國小老師出身的 Angel，如何一路轉成 AI 企業導入顧問？ 這一集我邀請到 Angel。她是外文系出身，第一份工作是國小老師，後來轉進外商半導體當 PM，一路走到雲端架構師，現在是 AI 企業導入顧問。聽她…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="2" aria-label="播放：EP104_達人操作｜AI顧問_Angel｜A|外文系、國小老師出生，怎麼一路走進科技業、成為 AI 顧問?">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/415/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000792101319" target="_blank" rel="noopener" aria-label="Apple Podcasts：EP104_達人操作｜AI顧問_Angel｜A|外文系、國小老師出生，怎麼一路走進科技業、成為 AI 顧問?"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP104_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%EF%BD%9CAI%E9%A1%A7%E5%95%8F_Angel%EF%BD%9CA%7C%E5%A4%96%E6%96%87%E7%B3%BB%E3%80%81%E5%9C%8B%E5%B0%8F%E8%80%81%E5%B8%AB%E5%87%BA%E7%94%9F%EF%BC%8C%E6%80%8E%E9%BA%BC%E4%B8%80%E8%B7%AF%E8%B5%B0%E9%80%B2%E7%A7%91%E6%8A%80%E6%A5%AD%E3%80%81%E6%88%90%E7%82%BA%20AI%20%E9%A1%A7%E5%95%8F%3F" target="_blank" rel="noopener" aria-label="Spotify：EP104_達人操作｜AI顧問_Angel｜A|外文系、國小老師出生，怎麼一路走進科技業、成為 AI 顧問?"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
   </div>
-  <div class="ep-list" id="ep-list"></div>
-  <div class="pagination" id="pagination"></div>
-</div>
-
-<div class="player-bar" id="player">
-<div class="player-inner">
-  <div class="p-info">
-    <div class="p-title" id="p-title">—</div>
-    <div class="p-meta">操作一下 operation.tw</div>
+</li><li class="p-ep" data-series="trend">
+  <img class="p-ep-art" src="https://files.soundon.fm/1790141199403-6721a9d4-1db0-4669-9641-fd3cb9ed029b.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI57</span><span>AI 趨勢</span><time datetime="2026-09-23">2026-09-23</time><span>14 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/409/">AI57_趨勢操作｜頂規能力、便宜四成：Claude Opus 5.5 開打 AI「性能 × 價格」雙軸戰爭</a></h3>
+    <p class="p-ep-d">9 月 14 日，OpenAI 把 GPT-6 Astra 全面上線 ChatGPT Work、Codex 與 API，業界普遍認為企業 AI 的頂規王座已經易主。沒想到一週後，Anthropic 無預警推出 Clau…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="3" aria-label="播放：AI57_趨勢操作｜頂規能力、便宜四成：Claude Opus 5.5 開打 AI「性能 × 價格」雙軸戰爭">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/409/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000791232384" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI57_趨勢操作｜頂規能力、便宜四成：Claude Opus 5.5 開打 AI「性能 × 價格」雙軸戰爭"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI57_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%EF%BD%9C%E9%A0%82%E8%A6%8F%E8%83%BD%E5%8A%9B%E3%80%81%E4%BE%BF%E5%AE%9C%E5%9B%9B%E6%88%90%EF%BC%9AClaude%20Opus%205.5%20%E9%96%8B%E6%89%93%20AI%E3%80%8C%E6%80%A7%E8%83%BD%20%C3%97%20%E5%83%B9%E6%A0%BC%E3%80%8D%E9%9B%99%E8%BB%B8%E6%88%B0%E7%88%AD" target="_blank" rel="noopener" aria-label="Spotify：AI57_趨勢操作｜頂規能力、便宜四成：Claude Opus 5.5 開打 AI「性能 × 價格」雙軸戰爭"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
   </div>
-  <div class="p-audio"><audio id="p-audio" controls preload="none"></audio></div>
-  <button class="p-close" onclick="closePlayer()">✕ 關閉</button>
+</li><li class="p-ep" data-series="trend">
+  <img class="p-ep-art" src="https://files.soundon.fm/1789536759249-5f063f09-c384-4857-9db8-7ed31f637b91.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI56</span><span>AI 趨勢</span><time datetime="2026-09-16">2026-09-16</time><span>14 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/401/">AI56趨勢操作｜資料不再搬家：AWS × Salesforce 三層打通，企業雲端進入「跨雲整合」時代</a></h3>
+    <p class="p-ep-d">你有沒有經歷過這種日子：想從 Salesforce 拉一份業務資料到 AWS 做分析，結果 IT 說要走 API、排程、ETL，等三個禮拜、跑通七個系統，最後數字還被同事質疑？ 9 月 15 日 Dreamforce …</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="4" aria-label="播放：AI56趨勢操作｜資料不再搬家：AWS × Salesforce 三層打通，企業雲端進入「跨雲整合」時代">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/401/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000790225787" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI56趨勢操作｜資料不再搬家：AWS × Salesforce 三層打通，企業雲端進入「跨雲整合」時代"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI56%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%EF%BD%9C%E8%B3%87%E6%96%99%E4%B8%8D%E5%86%8D%E6%90%AC%E5%AE%B6%EF%BC%9AAWS%20%C3%97%20Salesforce%20%E4%B8%89%E5%B1%A4%E6%89%93%E9%80%9A%EF%BC%8C%E4%BC%81%E6%A5%AD%E9%9B%B2%E7%AB%AF%E9%80%B2%E5%85%A5%E3%80%8C%E8%B7%A8%E9%9B%B2%E6%95%B4%E5%90%88%E3%80%8D%E6%99%82%E4%BB%A3" target="_blank" rel="noopener" aria-label="Spotify：AI56趨勢操作｜資料不再搬家：AWS × Salesforce 三層打通，企業雲端進入「跨雲整合」時代"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="trend">
+  <img class="p-ep-art" src="https://files.soundon.fm/1788961718719-c25c5e52-7b3f-4aaf-8380-e9f8b51dfd49.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI55</span><span>AI 趨勢</span><time datetime="2026-09-09">2026-09-09</time><span>16 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/393/">AI55趨勢操作_從2星期壓到 10 小時：AI 把攻擊改成機器速度</a></h3>
+    <p class="p-ep-d">9 月 8 號，Palo Alto Networks 的 Unit 42 團隊公布了一份實驗結果：過去人類駭客團隊要花兩個星期完成的完整攻擊鏈，AI Agent 用 10 小時跑完。從偵察、找漏洞、橫向移動、拿管理員權…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="5" aria-label="播放：AI55趨勢操作_從2星期壓到 10 小時：AI 把攻擊改成機器速度">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/393/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000788763001" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI55趨勢操作_從2星期壓到 10 小時：AI 把攻擊改成機器速度"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI55%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C_%E5%BE%9E2%E6%98%9F%E6%9C%9F%E5%A3%93%E5%88%B0%2010%20%E5%B0%8F%E6%99%82%EF%BC%9AAI%20%E6%8A%8A%E6%94%BB%E6%93%8A%E6%94%B9%E6%88%90%E6%A9%9F%E5%99%A8%E9%80%9F%E5%BA%A6" target="_blank" rel="noopener" aria-label="Spotify：AI55趨勢操作_從2星期壓到 10 小時：AI 把攻擊改成機器速度"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="trend">
+  <img class="p-ep-art" src="https://files.soundon.fm/1788349040239-d01a1a2b-aeef-45df-9063-dccea04ffcfd.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI54</span><span>AI 趨勢</span><time datetime="2026-09-02">2026-09-02</time><span>15 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/385/">AI54趨勢操作 | Claude Fable 5.1 升級、Gemini Notebook 改計價，「無限算力」時代正式結束</a></h3>
+    <p class="p-ep-d">這週 AI 產業發生了兩件看似無關、其實指向同一件事的變化。 9 月 1 日，Anthropic 推出 Claude Fable 5.1 與雙胞胎 Mythos 5.1，同一底層模型、不同安全護欄，像同一款車分市售版與…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="6" aria-label="播放：AI54趨勢操作 | Claude Fable 5.1 升級、Gemini Notebook 改計價，「無限算力」時代正式結束">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/385/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000787529501" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI54趨勢操作 | Claude Fable 5.1 升級、Gemini Notebook 改計價，「無限算力」時代正式結束"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI54%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20Claude%20Fable%205.1%20%E5%8D%87%E7%B4%9A%E3%80%81Gemini%20Notebook%20%E6%94%B9%E8%A8%88%E5%83%B9%EF%BC%8C%E3%80%8C%E7%84%A1%E9%99%90%E7%AE%97%E5%8A%9B%E3%80%8D%E6%99%82%E4%BB%A3%E6%AD%A3%E5%BC%8F%E7%B5%90%E6%9D%9F" target="_blank" rel="noopener" aria-label="Spotify：AI54趨勢操作 | Claude Fable 5.1 升級、Gemini Notebook 改計價，「無限算力」時代正式結束"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="trend">
+  <img class="p-ep-art" src="https://files.soundon.fm/1788226020357-8ec0e0ba-dfe7-4fd9-9a23-e7a6a4eb75eb.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI53</span><span>AI 趨勢</span><time datetime="2026-09-01">2026-09-01</time><span>15 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/383/">AI53_趨勢操作｜從核安會到 Zeabur：台灣被撬開的兩扇門</a></h3>
+    <p class="p-ep-d">近期台灣有兩件事同時發生。一件是中國駭客用一整組 AI Agent，在四天之內偵察 21 個政府系統、攻破 85 個帳號、從核安會與七家能源公司抽走兩千五百筆人員資料——被國際媒體稱為全球首起針對政府的端到端自主 AI…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="7" aria-label="播放：AI53_趨勢操作｜從核安會到 Zeabur：台灣被撬開的兩扇門">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/383/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000787087076" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI53_趨勢操作｜從核安會到 Zeabur：台灣被撬開的兩扇門"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI53_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%EF%BD%9C%E5%BE%9E%E6%A0%B8%E5%AE%89%E6%9C%83%E5%88%B0%20Zeabur%EF%BC%9A%E5%8F%B0%E7%81%A3%E8%A2%AB%E6%92%AC%E9%96%8B%E7%9A%84%E5%85%A9%E6%89%87%E9%96%80" target="_blank" rel="noopener" aria-label="Spotify：AI53_趨勢操作｜從核安會到 Zeabur：台灣被撬開的兩扇門"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="read">
+  <img class="p-ep-art" src="https://files.soundon.fm/1787827357371-362c8cee-9522-4763-a9b3-68c29b6c9563.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI52</span><span>閱讀操作</span><time datetime="2026-08-26">2026-08-26</time><span>15 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/376/">AI52_閱讀操作 | 「好工作不是找來的、是自己打造的」-《只工作、不上班的自主人生》</a></h3>
+    <p class="p-ep-d">這集節目介紹瓦基（莊勝翔）的著作《只工作、不上班的自主人生》。瓦基原是台積電副理，2021 年底離職後全職經營「閱讀前哨站」部落格與 Podcast「下一本讀什麼？」，這本書是他從竹科工程主管轉型為內容創作者的實戰筆記…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="8" aria-label="播放：AI52_閱讀操作 | 「好工作不是找來的、是自己打造的」-《只工作、不上班的自主人生》">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/376/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000786125716" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI52_閱讀操作 | 「好工作不是找來的、是自己打造的」-《只工作、不上班的自主人生》"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI52_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%20%7C%20%E3%80%8C%E5%A5%BD%E5%B7%A5%E4%BD%9C%E4%B8%8D%E6%98%AF%E6%89%BE%E4%BE%86%E7%9A%84%E3%80%81%E6%98%AF%E8%87%AA%E5%B7%B1%E6%89%93%E9%80%A0%E7%9A%84%E3%80%8D-%E3%80%8A%E5%8F%AA%E5%B7%A5%E4%BD%9C%E3%80%81%E4%B8%8D%E4%B8%8A%E7%8F%AD%E7%9A%84%E8%87%AA%E4%B8%BB%E4%BA%BA%E7%94%9F%E3%80%8B" target="_blank" rel="noopener" aria-label="Spotify：AI52_閱讀操作 | 「好工作不是找來的、是自己打造的」-《只工作、不上班的自主人生》"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="guest">
+  <img class="p-ep-art" src="https://files.soundon.fm/1786929847803-879a3e17-8ee7-4579-9114-e7c85dc94fe6.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">EP103</span><span>來賓訪談</span><time datetime="2026-08-17">2026-08-17</time><span>61 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/366/">EP103_達人操作 | 客戶成功經理_Megan | 當AI能解決大部分的問題，客戶為什麼還是想找一個真人？</a></h3>
+    <p class="p-ep-d">AI 最先取代的不是雜事，是你最引以為傲的產品專業。一位客戶成功經理談，為什麼 B2B 客戶還是想找真人？ 她從會計資訊系畢業，實習時看見審計員的疲憊，決定不走那條一眼就能看到退休的路。第一份工作進了外商直播平台當業務…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="9" aria-label="播放：EP103_達人操作 | 客戶成功經理_Megan | 當AI能解決大部分的問題，客戶為什麼還是想找一個真人？">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/366/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000783721600" target="_blank" rel="noopener" aria-label="Apple Podcasts：EP103_達人操作 | 客戶成功經理_Megan | 當AI能解決大部分的問題，客戶為什麼還是想找一個真人？"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP103_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E5%AE%A2%E6%88%B6%E6%88%90%E5%8A%9F%E7%B6%93%E7%90%86_Megan%20%7C%20%E7%95%B6AI%E8%83%BD%E8%A7%A3%E6%B1%BA%E5%A4%A7%E9%83%A8%E5%88%86%E7%9A%84%E5%95%8F%E9%A1%8C%EF%BC%8C%E5%AE%A2%E6%88%B6%E7%82%BA%E4%BB%80%E9%BA%BC%E9%82%84%E6%98%AF%E6%83%B3%E6%89%BE%E4%B8%80%E5%80%8B%E7%9C%9F%E4%BA%BA%EF%BC%9F" target="_blank" rel="noopener" aria-label="Spotify：EP103_達人操作 | 客戶成功經理_Megan | 當AI能解決大部分的問題，客戶為什麼還是想找一個真人？"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="trend">
+  <img class="p-ep-art" src="https://files.soundon.fm/1786805902484-94b87ffc-3f7d-4335-8d2c-a8a2bd11a02a.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI51</span><span>AI 趨勢</span><time datetime="2026-08-15">2026-08-15</time><span>15 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/364/">AI51_趨勢操作 | 當 ChatGPT 開始賣廣告了，你的答案還純嗎？</a></h3>
+    <p class="p-ep-d">你問 ChatGPT「北歐哪一國最適合帶小孩去」，某一天答案的最下面，會多出一行「以下由 Booking.com 贊助」。這一天沒有你想的那麼遠——2026 年 8 月 11 日，OpenAI 正式把 ChatGPT …</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="10" aria-label="播放：AI51_趨勢操作 | 當 ChatGPT 開始賣廣告了，你的答案還純嗎？">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/364/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000783532401" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI51_趨勢操作 | 當 ChatGPT 開始賣廣告了，你的答案還純嗎？"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI51_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20%E7%95%B6%20ChatGPT%20%E9%96%8B%E5%A7%8B%E8%B3%A3%E5%BB%A3%E5%91%8A%E4%BA%86%EF%BC%8C%E4%BD%A0%E7%9A%84%E7%AD%94%E6%A1%88%E9%82%84%E7%B4%94%E5%97%8E%EF%BC%9F" target="_blank" rel="noopener" aria-label="Spotify：AI51_趨勢操作 | 當 ChatGPT 開始賣廣告了，你的答案還純嗎？"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="read">
+  <img class="p-ep-art" src="https://files.soundon.fm/1786546743801-bf175b98-d545-4310-b180-d35525bf0ad7.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI50</span><span>閱讀操作</span><time datetime="2026-08-12">2026-08-12</time><span>15 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/360/">AI50_閱讀操作 | 《未來1000天》你的努力，在充滿AI的未來還算不算數？	職涯別再爬山了，你需要一座遊樂場</a></h3>
+    <p class="p-ep-d">你有沒有想過，五年前拚命累積的專業，三年後還算不算數？這集不聊「AI會不會取代你」，而是聊一個更值得問的問題：接下來的一千天，你打算怎麼過。 這集分享的是《未來1000天》這本書帶來的三個思考框架。第一個是身份的轉換—…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="11" aria-label="播放：AI50_閱讀操作 | 《未來1000天》你的努力，在充滿AI的未來還算不算數？	職涯別再爬山了，你需要一座遊樂場">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/360/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000783036364" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI50_閱讀操作 | 《未來1000天》你的努力，在充滿AI的未來還算不算數？	職涯別再爬山了，你需要一座遊樂場"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI50_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%20%7C%20%E3%80%8A%E6%9C%AA%E4%BE%861000%E5%A4%A9%E3%80%8B%E4%BD%A0%E7%9A%84%E5%8A%AA%E5%8A%9B%EF%BC%8C%E5%9C%A8%E5%85%85%E6%BB%BFAI%E7%9A%84%E6%9C%AA%E4%BE%86%E9%82%84%E7%AE%97%E4%B8%8D%E7%AE%97%E6%95%B8%EF%BC%9F%09%E8%81%B7%E6%B6%AF%E5%88%A5%E5%86%8D%E7%88%AC%E5%B1%B1%E4%BA%86%EF%BC%8C%E4%BD%A0%E9%9C%80%E8%A6%81%E4%B8%80%E5%BA%A7%E9%81%8A%E6%A8%82%E5%A0%B4" target="_blank" rel="noopener" aria-label="Spotify：AI50_閱讀操作 | 《未來1000天》你的努力，在充滿AI的未來還算不算數？	職涯別再爬山了，你需要一座遊樂場"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="trend">
+  <img class="p-ep-art" src="https://files.soundon.fm/1786244521059-e269096f-45aa-47c6-883a-20de47e13d96.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI49</span><span>AI 趨勢</span><time datetime="2026-08-09">2026-08-09</time><span>15 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/357/">AI49_趨勢操作 | 最近公司那個 ChatBot 突然變聰明了？真正變聰明的其實是資料庫</a></h3>
+    <p class="p-ep-d">你有沒有一種感覺，最近半年公司內部那個 ChatBot 好像突然變聰明了。以前你問它「差旅費怎麼報」，它會給你一段官網文案，像廢話生成器。現在你問一樣的問題，它會回你精確的答案，還幫你標出引用來源。 這個變化不是模型變…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="12" aria-label="播放：AI49_趨勢操作 | 最近公司那個 ChatBot 突然變聰明了？真正變聰明的其實是資料庫">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/357/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000781302643" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI49_趨勢操作 | 最近公司那個 ChatBot 突然變聰明了？真正變聰明的其實是資料庫"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI49_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20%E6%9C%80%E8%BF%91%E5%85%AC%E5%8F%B8%E9%82%A3%E5%80%8B%20ChatBot%20%E7%AA%81%E7%84%B6%E8%AE%8A%E8%81%B0%E6%98%8E%E4%BA%86%EF%BC%9F%E7%9C%9F%E6%AD%A3%E8%AE%8A%E8%81%B0%E6%98%8E%E7%9A%84%E5%85%B6%E5%AF%A6%E6%98%AF%E8%B3%87%E6%96%99%E5%BA%AB" target="_blank" rel="noopener" aria-label="Spotify：AI49_趨勢操作 | 最近公司那個 ChatBot 突然變聰明了？真正變聰明的其實是資料庫"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="read">
+  <img class="p-ep-art" src="https://files.soundon.fm/1785599981128-b3dce1ea-d5f7-403d-9764-4d92720f71b8.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI48</span><span>閱讀操作</span><time datetime="2026-08-01">2026-08-01</time><span>14 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/348/">AI48_閱讀操作 | 團隊裡最靠譜的那個人，為什麼最先崩潰!?《高功能倖存者》</a></h3>
+    <p class="p-ep-d">如果你身邊有這樣一個人。他是團隊裡最靠譜的那個，任何專案交到他手上都能收得起來，同事有問題他二話不說接手，主管一句話他當天就把方案交出來。他從不抱怨、從不遲到、從不推工作。 但你有沒有發現，每次大專案結束後三天內，他會…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="13" aria-label="播放：AI48_閱讀操作 | 團隊裡最靠譜的那個人，為什麼最先崩潰!?《高功能倖存者》">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/348/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000779466990" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI48_閱讀操作 | 團隊裡最靠譜的那個人，為什麼最先崩潰!?《高功能倖存者》"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI48_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%20%7C%20%E5%9C%98%E9%9A%8A%E8%A3%A1%E6%9C%80%E9%9D%A0%E8%AD%9C%E7%9A%84%E9%82%A3%E5%80%8B%E4%BA%BA%EF%BC%8C%E7%82%BA%E4%BB%80%E9%BA%BC%E6%9C%80%E5%85%88%E5%B4%A9%E6%BD%B0!%3F%E3%80%8A%E9%AB%98%E5%8A%9F%E8%83%BD%E5%80%96%E5%AD%98%E8%80%85%E3%80%8B" target="_blank" rel="noopener" aria-label="Spotify：AI48_閱讀操作 | 團隊裡最靠譜的那個人，為什麼最先崩潰!?《高功能倖存者》"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="guest">
+  <img class="p-ep-art" src="https://files.soundon.fm/1785380768068-e77ebad1-0f4d-4db8-87d0-033e0e63b5b1.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">EP102</span><span>來賓訪談</span><time datetime="2026-07-29">2026-07-29</time><span>52 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/344/">EP102_達人操作 | 對未知保持好奇、對規則保持懷疑，從一個讀書會，到上千人的HITCON 國際駭客年會 | feat. Kyo  &amp; Kuro</a></h3>
+    <p class="p-ep-d">這集很難得，我們邀請到2026 HITCON 年會的總召 Kyo 跟副召Kuro，一起聊台灣最重要的資安社群，是怎麼從一個讀書會，走到今天上千人參與的國際年會。 我們從 HITCON 的起源聊起——為什麼名字選「Hac…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="14" aria-label="播放：EP102_達人操作 | 對未知保持好奇、對規則保持懷疑，從一個讀書會，到上千人的HITCON 國際駭客年會 | feat. Kyo  &amp; Kuro">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/344/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000779002069" target="_blank" rel="noopener" aria-label="Apple Podcasts：EP102_達人操作 | 對未知保持好奇、對規則保持懷疑，從一個讀書會，到上千人的HITCON 國際駭客年會 | feat. Kyo  &amp; Kuro"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP102_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E5%B0%8D%E6%9C%AA%E7%9F%A5%E4%BF%9D%E6%8C%81%E5%A5%BD%E5%A5%87%E3%80%81%E5%B0%8D%E8%A6%8F%E5%89%87%E4%BF%9D%E6%8C%81%E6%87%B7%E7%96%91%EF%BC%8C%E5%BE%9E%E4%B8%80%E5%80%8B%E8%AE%80%E6%9B%B8%E6%9C%83%EF%BC%8C%E5%88%B0%E4%B8%8A%E5%8D%83%E4%BA%BA%E7%9A%84HITCON%20%E5%9C%8B%E9%9A%9B%E9%A7%AD%E5%AE%A2%E5%B9%B4%E6%9C%83%20%7C%20feat.%20Kyo%20%20%26%20Kuro" target="_blank" rel="noopener" aria-label="Spotify：EP102_達人操作 | 對未知保持好奇、對規則保持懷疑，從一個讀書會，到上千人的HITCON 國際駭客年會 | feat. Kyo  &amp; Kuro"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="trend">
+  <img class="p-ep-art" src="https://files.soundon.fm/1785079464521-e8f903b2-704c-4f46-ba66-d63b736a3d18.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI47</span><span>AI 趨勢</span><time datetime="2026-07-26">2026-07-26</time><span>14 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/340/">AI47_趨勢操作 | Claude Opus 5: 同價錢，能力全面拉高，Agent 可以自己跑一整晚</a></h3>
+    <p class="p-ep-d">週末早上，你正在喝咖啡，手機叮咚一聲，一個做 IT 顧問的朋友傳訊息過來：「你有看到嗎，Anthropic 昨天晚上又發新版了，叫 Claude Opus 5，聽說可以自己跑一整晚做事，同事已經開始討論要不要把公司訂閱…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="15" aria-label="播放：AI47_趨勢操作 | Claude Opus 5: 同價錢，能力全面拉高，Agent 可以自己跑一整晚">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/340/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000778460263" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI47_趨勢操作 | Claude Opus 5: 同價錢，能力全面拉高，Agent 可以自己跑一整晚"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI47_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20Claude%20Opus%205%3A%20%E5%90%8C%E5%83%B9%E9%8C%A2%EF%BC%8C%E8%83%BD%E5%8A%9B%E5%85%A8%E9%9D%A2%E6%8B%89%E9%AB%98%EF%BC%8CAgent%20%E5%8F%AF%E4%BB%A5%E8%87%AA%E5%B7%B1%E8%B7%91%E4%B8%80%E6%95%B4%E6%99%9A" target="_blank" rel="noopener" aria-label="Spotify：AI47_趨勢操作 | Claude Opus 5: 同價錢，能力全面拉高，Agent 可以自己跑一整晚"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="trend">
+  <img class="p-ep-art" src="https://files.soundon.fm/1784816940206-9b5e4d07-e576-4184-b7ef-266774d8a352.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI46</span><span>AI 趨勢</span><time datetime="2026-07-23">2026-07-23</time><span>9 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/336/">AI46_趨勢操作 | Google 一次發表三款 Gemini，但真正的重點藏在第三款：Flash Cyber</a></h3>
+    <p class="p-ep-d">先想一個畫面。星期二下午三點,你在辦公室,同事突然抬頭問你一句:「你有沒有看到 Google 昨天發表的東西?他們居然出了一個 AI,是專門拿來抓資安漏洞的。這是不是代表我們公司資安部門的人以後都不用做了?」 7 月 …</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="16" aria-label="播放：AI46_趨勢操作 | Google 一次發表三款 Gemini，但真正的重點藏在第三款：Flash Cyber">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/336/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000778106428" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI46_趨勢操作 | Google 一次發表三款 Gemini，但真正的重點藏在第三款：Flash Cyber"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI46_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20Google%20%E4%B8%80%E6%AC%A1%E7%99%BC%E8%A1%A8%E4%B8%89%E6%AC%BE%20Gemini%EF%BC%8C%E4%BD%86%E7%9C%9F%E6%AD%A3%E7%9A%84%E9%87%8D%E9%BB%9E%E8%97%8F%E5%9C%A8%E7%AC%AC%E4%B8%89%E6%AC%BE%EF%BC%9AFlash%20Cyber" target="_blank" rel="noopener" aria-label="Spotify：AI46_趨勢操作 | Google 一次發表三款 Gemini，但真正的重點藏在第三款：Flash Cyber"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="guest">
+  <img class="p-ep-art" src="https://files.soundon.fm/1784476508585-ba4ce827-48d6-4681-b117-bb8c2e21194b.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">EP101</span><span>來賓訪談</span><time datetime="2026-07-19">2026-07-19</time><span>50 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/331/">EP101_達人操作 | 美學達人_嘉嘉 | 日子在走、美麗要有，一個提袋改變人生的美學操作</a></h3>
+    <p class="p-ep-d">一個管理學院的學生,在大一通識課上因為一個提袋,改變了整條人生軌跡今天這集,我們要聊的就是這個故事。 來賓是美學達人嘉嘉。她大學念的是管理學院,一路參與行銷公關、TEDx 團隊,卻在大一時默默考取美容證照、在紙上畫了上…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="17" aria-label="播放：EP101_達人操作 | 美學達人_嘉嘉 | 日子在走、美麗要有，一個提袋改變人生的美學操作">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/331/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000777473448" target="_blank" rel="noopener" aria-label="Apple Podcasts：EP101_達人操作 | 美學達人_嘉嘉 | 日子在走、美麗要有，一個提袋改變人生的美學操作"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP101_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E7%BE%8E%E5%AD%B8%E9%81%94%E4%BA%BA_%E5%98%89%E5%98%89%20%7C%20%E6%97%A5%E5%AD%90%E5%9C%A8%E8%B5%B0%E3%80%81%E7%BE%8E%E9%BA%97%E8%A6%81%E6%9C%89%EF%BC%8C%E4%B8%80%E5%80%8B%E6%8F%90%E8%A2%8B%E6%94%B9%E8%AE%8A%E4%BA%BA%E7%94%9F%E7%9A%84%E7%BE%8E%E5%AD%B8%E6%93%8D%E4%BD%9C" target="_blank" rel="noopener" aria-label="Spotify：EP101_達人操作 | 美學達人_嘉嘉 | 日子在走、美麗要有，一個提袋改變人生的美學操作"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="trend">
+  <img class="p-ep-art" src="https://files.soundon.fm/1784382025368-3c6ba587-f466-4bdb-aff7-5af75f2d66df.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI45</span><span>AI 趨勢</span><time datetime="2026-07-18">2026-07-18</time><span>15 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/329/">AI45_趨勢操作 | NotebookLM 更名為 Gemini Notebook，但這次沒那麼簡單!!</a></h3>
+    <p class="p-ep-d">這週我看到 Google 官方部落格丟出一篇公告,標題是「NotebookLM is now Gemini Notebook」。 我第一個反應是,欸,又改名了。第二個反應是,等等,是那個 NotebookLM 嗎? 如…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="18" aria-label="播放：AI45_趨勢操作 | NotebookLM 更名為 Gemini Notebook，但這次沒那麼簡單!!">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/329/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000777372832" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI45_趨勢操作 | NotebookLM 更名為 Gemini Notebook，但這次沒那麼簡單!!"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI45_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20NotebookLM%20%E6%9B%B4%E5%90%8D%E7%82%BA%20Gemini%20Notebook%EF%BC%8C%E4%BD%86%E9%80%99%E6%AC%A1%E6%B2%92%E9%82%A3%E9%BA%BC%E7%B0%A1%E5%96%AE!!" target="_blank" rel="noopener" aria-label="Spotify：AI45_趨勢操作 | NotebookLM 更名為 Gemini Notebook，但這次沒那麼簡單!!"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="read">
+  <img class="p-ep-art" src="https://files.soundon.fm/1784124287020-0e03fbf5-575f-4468-b665-ed8f1406b894.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI44</span><span>閱讀操作</span><time datetime="2026-07-15">2026-07-15</time><span>15 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/325/">AI44_閱讀操作 | 「你聽得很細」這五個字,就是信任的起點，《信任效應》給職場人的信任檢核清單</a></h3>
+    <p class="p-ep-d">如果你在職場上,在做內容,在跑業務,在帶團隊,這個問題其實跟你有關。因為現在這個時代,我們每一個人、每一家公司,都在打同一場仗:AI 讓所有東西都變得便宜、都變得快、都變得可以複製,那你憑什麼被選中? 答案就在這集要聊…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="19" aria-label="播放：AI44_閱讀操作 | 「你聽得很細」這五個字,就是信任的起點，《信任效應》給職場人的信任檢核清單">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/325/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000776979808" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI44_閱讀操作 | 「你聽得很細」這五個字,就是信任的起點，《信任效應》給職場人的信任檢核清單"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI44_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%20%7C%20%E3%80%8C%E4%BD%A0%E8%81%BD%E5%BE%97%E5%BE%88%E7%B4%B0%E3%80%8D%E9%80%99%E4%BA%94%E5%80%8B%E5%AD%97%2C%E5%B0%B1%E6%98%AF%E4%BF%A1%E4%BB%BB%E7%9A%84%E8%B5%B7%E9%BB%9E%EF%BC%8C%E3%80%8A%E4%BF%A1%E4%BB%BB%E6%95%88%E6%87%89%E3%80%8B%E7%B5%A6%E8%81%B7%E5%A0%B4%E4%BA%BA%E7%9A%84%E4%BF%A1%E4%BB%BB%E6%AA%A2%E6%A0%B8%E6%B8%85%E5%96%AE" target="_blank" rel="noopener" aria-label="Spotify：AI44_閱讀操作 | 「你聽得很細」這五個字,就是信任的起點，《信任效應》給職場人的信任檢核清單"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="read">
+  <img class="p-ep-art" src="https://files.soundon.fm/1783851263710-ab6b0ae8-769f-4c15-b95e-07c4280a0820.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI43</span><span>閱讀操作</span><time datetime="2026-07-12">2026-07-12</time><span>16 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/321/">AI43_閱讀操作 | 策略不是目標——《好策略．壞策略》給每個開過無效會議的你</a></h3>
+    <p class="p-ep-d">我想先問你一個問題：你公司今年的「AI 策略」是什麼？ 我猜你聽到的答案，大概是「我們要用 AI 提升效率」「我們今年要做 AI 轉型」這幾句。如果是這樣，我要告訴你一個壞消息：根據 MIT NANDA 計畫 2026…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="20" aria-label="播放：AI43_閱讀操作 | 策略不是目標——《好策略．壞策略》給每個開過無效會議的你">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/321/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000776510071" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI43_閱讀操作 | 策略不是目標——《好策略．壞策略》給每個開過無效會議的你"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI43_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%20%7C%20%E7%AD%96%E7%95%A5%E4%B8%8D%E6%98%AF%E7%9B%AE%E6%A8%99%E2%80%94%E2%80%94%E3%80%8A%E5%A5%BD%E7%AD%96%E7%95%A5%EF%BC%8E%E5%A3%9E%E7%AD%96%E7%95%A5%E3%80%8B%E7%B5%A6%E6%AF%8F%E5%80%8B%E9%96%8B%E9%81%8E%E7%84%A1%E6%95%88%E6%9C%83%E8%AD%B0%E7%9A%84%E4%BD%A0" target="_blank" rel="noopener" aria-label="Spotify：AI43_閱讀操作 | 策略不是目標——《好策略．壞策略》給每個開過無效會議的你"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="read">
+  <img class="p-ep-art" src="https://files.soundon.fm/1783656666451-bed52c05-3dd2-4ca2-8305-180b4592306d.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI42</span><span>閱讀操作</span><time datetime="2026-07-10">2026-07-10</time><span>15 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/319/">AI42_閱讀操作 | 把 Claude 全家桶完整寫過一遍的中文書——《Claude 萬用手冊》</a></h3>
+    <p class="p-ep-d">在進入正題之前，先丟一個問題給你。這是我最近在 Threads 上滑到、被反覆轉發的一句話： 「你訂閱了 AI，但你只用它問簡單的問題。」 或許很多人每個月付 20 塊美金訂閱 Claude 或 ChatGPT，日常用…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="21" aria-label="播放：AI42_閱讀操作 | 把 Claude 全家桶完整寫過一遍的中文書——《Claude 萬用手冊》">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/319/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000776218318" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI42_閱讀操作 | 把 Claude 全家桶完整寫過一遍的中文書——《Claude 萬用手冊》"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI42_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%20%7C%20%E6%8A%8A%20Claude%20%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%AE%8C%E6%95%B4%E5%AF%AB%E9%81%8E%E4%B8%80%E9%81%8D%E7%9A%84%E4%B8%AD%E6%96%87%E6%9B%B8%E2%80%94%E2%80%94%E3%80%8AClaude%20%E8%90%AC%E7%94%A8%E6%89%8B%E5%86%8A%E3%80%8B" target="_blank" rel="noopener" aria-label="Spotify：AI42_閱讀操作 | 把 Claude 全家桶完整寫過一遍的中文書——《Claude 萬用手冊》"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="trend">
+  <img class="p-ep-art" src="https://files.soundon.fm/1783437545261-9cd5cf29-e3a3-4d22-b2fe-1bffe6a0051e.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI41</span><span>AI 趨勢</span><time datetime="2026-07-07">2026-07-07</time><span>16 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/314/">AI41_雲端操作 | Meta 宣布賣算力，Meta Compute 上線</a></h3>
+    <p class="p-ep-d">今天要聊的，是一個上週剛發生、但接下來三年會不斷回頭影響你上班日常的大新聞。 Meta 在 7 月 2 日正式對外宣布一個叫做 Meta Compute 的雲端服務。聽起來像是「又一家科技公司開始賣雲端」，好像沒什麼稀…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="22" aria-label="播放：AI41_雲端操作 | Meta 宣布賣算力，Meta Compute 上線">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/314/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000775878840" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI41_雲端操作 | Meta 宣布賣算力，Meta Compute 上線"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI41_%E9%9B%B2%E7%AB%AF%E6%93%8D%E4%BD%9C%20%7C%20Meta%20%E5%AE%A3%E5%B8%83%E8%B3%A3%E7%AE%97%E5%8A%9B%EF%BC%8CMeta%20Compute%20%E4%B8%8A%E7%B7%9A" target="_blank" rel="noopener" aria-label="Spotify：AI41_雲端操作 | Meta 宣布賣算力，Meta Compute 上線"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="read">
+  <img class="p-ep-art" src="https://files.soundon.fm/1783265820088-450c191e-3c8a-4e84-8d90-ad36094a59ca.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI40</span><span>閱讀操作</span><time datetime="2026-07-05">2026-07-05</time><span>13 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/310/">AI40_閱讀操作 | AI讓人越學越焦慮——《世界最簡單的才能發現法》給越學越慌的你</a></h3>
+    <p class="p-ep-d">在進正題之前，我想先問你一個問題。 你會不會也有這種感覺：最近這一年 AI 議題越來越熱，身邊的人都在學提示詞、學 Agent、學 MCP，但你越學越焦慮，越學越覺得自己好像沒什麼東西可以拿出來。新聞報導科技業裁員一波…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="23" aria-label="播放：AI40_閱讀操作 | AI讓人越學越焦慮——《世界最簡單的才能發現法》給越學越慌的你">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/310/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000775570300" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI40_閱讀操作 | AI讓人越學越焦慮——《世界最簡單的才能發現法》給越學越慌的你"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI40_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%20%7C%20AI%E8%AE%93%E4%BA%BA%E8%B6%8A%E5%AD%B8%E8%B6%8A%E7%84%A6%E6%85%AE%E2%80%94%E2%80%94%E3%80%8A%E4%B8%96%E7%95%8C%E6%9C%80%E7%B0%A1%E5%96%AE%E7%9A%84%E6%89%8D%E8%83%BD%E7%99%BC%E7%8F%BE%E6%B3%95%E3%80%8B%E7%B5%A6%E8%B6%8A%E5%AD%B8%E8%B6%8A%E6%85%8C%E7%9A%84%E4%BD%A0" target="_blank" rel="noopener" aria-label="Spotify：AI40_閱讀操作 | AI讓人越學越焦慮——《世界最簡單的才能發現法》給越學越慌的你"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li><li class="p-ep" data-series="trend">
+  <img class="p-ep-art" src="https://files.soundon.fm/1783168567989-5e72625a-823b-4abc-8ee4-270f1fdf1376.jpeg" alt="" width="96" height="96" loading="lazy" decoding="async">
+  <div class="p-ep-body">
+    <p class="h-meta"><span class="h-cat">AI39</span><span>AI 趨勢</span><time datetime="2026-07-04">2026-07-04</time><span>16 分鐘</span></p>
+    <h3 class="p-ep-t"><a href="/post/309/">AI39_趨勢操作 | Anthropic 48 小時連發震撼 AI 業！Sonnet 5、Fable 5 解禁、Claude Science，到底在下一盤什麼棋？</a></h3>
+    <p class="p-ep-d">Anthropic 在短短 48 小時內接連公布三項重大消息：Sonnet 5 正式上線、Fable 5 全球恢復服務、Claude Science 發表，甚至傳出與三星合作自研 AI 晶片。 這不是單純的新模型更新，…</p>
+    <div class="p-ep-actions">
+      <button class="btn btn-small btn-play" type="button" data-i="24" aria-label="播放：AI39_趨勢操作 | Anthropic 48 小時連發震撼 AI 業！Sonnet 5、Fable 5 解禁、Claude Science，到底在下一盤什麼棋？">▶ 播放</button>
+      <a class="btn btn-small btn-ghost" href="/post/309/">讀重點文章</a>
+      <a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000775480004" target="_blank" rel="noopener" aria-label="Apple Podcasts：AI39_趨勢操作 | Anthropic 48 小時連發震撼 AI 業！Sonnet 5、Fable 5 解禁、Claude Science，到底在下一盤什麼棋？"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg></a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI39_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20Anthropic%2048%20%E5%B0%8F%E6%99%82%E9%80%A3%E7%99%BC%E9%9C%87%E6%92%BC%20AI%20%E6%A5%AD%EF%BC%81Sonnet%205%E3%80%81Fable%205%20%E8%A7%A3%E7%A6%81%E3%80%81Claude%20Science%EF%BC%8C%E5%88%B0%E5%BA%95%E5%9C%A8%E4%B8%8B%E4%B8%80%E7%9B%A4%E4%BB%80%E9%BA%BC%E6%A3%8B%EF%BC%9F" target="_blank" rel="noopener" aria-label="Spotify：AI39_趨勢操作 | Anthropic 48 小時連發震撼 AI 業！Sonnet 5、Fable 5 解禁、Claude Science，到底在下一盤什麼棋？"><svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg></a>
+    </div>
+  </div>
+</li></ul>
+  <div class="p-more-wrap"><button type="button" class="btn btn-ghost" id="p-more">顯示更多單集</button></div>
+  <noscript><p class="p-count">完整 164 集也可以在 <a href="https://podcasts.apple.com/tw/podcast/id1620760720">Apple Podcasts</a> 收聽。</p></noscript>
+</section>
+</main>
+
+<div class="p-player" id="p-player" hidden>
+  <div class="p-player-row">
+    <p class="p-player-t" id="p-player-t"></p>
+    <button type="button" class="p-player-x" id="p-player-x" aria-label="關閉播放器">✕</button>
+  </div>
+  <audio id="p-audio" controls preload="none"></audio>
 </div>
-</div>
-
-<footer>
-  <div><strong>操作一下 Podcast</strong><span>用聲音，把 AI、雲端與資安說清楚。</span></div>
-  <div class="footer-links"><a href="index.html">首頁</a><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a></div>
-  <small>© 2025–2026 操作一下 · operation.tw</small>
-</footer>
-
-<script>
-let EPS=[];
-
-const PER_PAGE=20;
-let filtered=EPS.slice();
-let hideLatest=false;
-let page=0;
-
-function fmtDur(m){if(!m)return'';const h=Math.floor(m/60),mn=m%60;return h?`${h}h ${mn}m`:`${mn}m`;}
-function fmtDate(s){const d=new Date(s);return d.toLocaleDateString('zh-TW',{year:'numeric',month:'long',day:'numeric'});}
-
-// 平台圖示（inline SVG，比 emoji 好辨識）；Apple 按鈕連到該集的 Apple Podcasts 單集頁
-const ICO_APPLE='<svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a9 9 0 0 0-3.6 17.25.75.75 0 0 0 .6-1.38 7.5 7.5 0 1 1 6 0 .75.75 0 1 0 .6 1.38A9 9 0 0 0 12 2Zm0 3.5a5.5 5.5 0 0 0-2.75 10.27.75.75 0 1 0 .75-1.3 4 4 0 1 1 4 0 .75.75 0 1 0 .75 1.3A5.5 5.5 0 0 0 12 5.5Zm0 3.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Zm0 5.25c-1.1 0-1.9.8-1.78 1.9l.5 4.6c.08.8.6 1.5 1.28 1.5s1.2-.7 1.28-1.5l.5-4.6c.12-1.1-.68-1.9-1.78-1.9Z"/></svg>';
-const ICO_SPOT='<svg class="pf-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.43a.62.62 0 0 1-.86.2c-2.35-1.43-5.3-1.76-8.79-.96a.62.62 0 1 1-.28-1.22c3.81-.87 7.09-.5 9.72 1.12.3.18.39.57.2.86Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.57 11.23 1.33.37.22.48.7.26 1.07Zm.1-2.83C14.7 8.97 9.37 8.8 6.29 9.73a.94.94 0 1 1-.54-1.8c3.53-1.07 9.42-.86 13.13 1.34a.94.94 0 0 1-.96 1.61Z"/></svg>';
-const APPLE_SHOW='https://podcasts.apple.com/tw/podcast/id1620760720';
-
-function renderLatest(){
-  const ep=EPS[0],el=document.getElementById('latest-episode');if(!ep||!el)return;
-  const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-  const desc=String(ep.desc||'').replace(/--\s*Hosting provided by SoundOn/i,'').trim();
-  el.innerHTML=`<div class="latest-card"><div class="latest-art-wrap"><img src="${esc(ep.art)}" alt="${esc(ep.title)}" class="latest-art"><span class="latest-pulse"><i></i>最新單集</span></div><div class="latest-copy"><div class="latest-meta">EP.${EPS.length} · ${esc(fmtDate(ep.date))} · ${fmtDur(ep.dur)}</div><h2>${esc(ep.title)}</h2><p>${esc(desc)}</p><div class="latest-actions"><button class="latest-play" onclick="playEpisode(EPS[0])">▶ 立即播放</button><a class="pf-apple" href="${esc(ep.apple||APPLE_SHOW)}" target="_blank" rel="noopener">${ICO_APPLE}Apple Podcasts</a>${ep.spot?`<a class="pf-spotify" href="${esc(ep.spot)}" target="_blank" rel="noopener">${ICO_SPOT}Spotify</a>`:''}${ep.soundon?`<a href="${esc(ep.soundon)}" target="_blank" rel="noopener">SoundOn ↗</a>`:''}</div></div></div>`;
-}
-
-function filterEps(){
-  const q=(document.getElementById('ep-q').value||'').toLowerCase();
-  const sort=document.getElementById('ep-sort').value;
-  let arr=EPS.slice();
-  if(q)arr=arr.filter(e=>(e.title+e.desc).toLowerCase().includes(q));
-  if(sort==='old')arr.sort((a,b)=>a.date.localeCompare(b.date));
-  else if(sort==='new')arr.sort((a,b)=>b.date.localeCompare(a.date));
-  else if(sort==='long')arr.sort((a,b)=>b.dur-a.dur);
-  else if(sort==='short')arr.sort((a,b)=>a.dur-b.dur);
-  // 預設檢視（沒搜尋、最新優先）時，最新一集已在上方「最新單集」大卡，列表不再重複
-  hideLatest=!q&&sort==='new'&&EPS.length>1;
-  if(hideLatest)arr=arr.filter(e=>e!==EPS[0]);
-  filtered=arr;
-  page=0;
-  render();
-}
-
-function render(){
-  const total=filtered.length;
-  document.getElementById('ep-count').textContent=`共 ${hideLatest?EPS.length:total} 集`;
-  const start=page*PER_PAGE,end=start+PER_PAGE;
-  const slice=filtered.slice(start,end);
-  const list=document.getElementById('ep-list');
-  list.innerHTML=slice.map((ep,i)=>{
-    const n=EPS.length-EPS.indexOf(ep); // 真實集序（最舊 = 01），不受排序／去重影響
-    const esc=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-    const safe_title=esc(ep.title);
-    const safe_desc=esc(ep.desc);
-    const safe_art=esc(ep.art);
-    // episodes.json 的 apple 是該集的 Apple Podcasts 單集頁（generate-podcast.js 由 iTunes API 對應）
-    const safe_soundon=esc(ep.soundon||'');
-    const safe_apple=esc(ep.apple||APPLE_SHOW);
-    const safe_spot=esc(ep.spot);
-    const safe_date=esc(fmtDate(ep.date));
-    return `<article class="ep-card">
-      <div class="ep-num">${String(n).padStart(2,'0')}</div>
-      <img class="ep-thumb" src="${safe_art}" alt="${safe_title}" loading="lazy" onerror="this.onerror=null;this.src='/logo.jpg'">
-      <div class="ep-info">
-        <div class="ep-meta"><span>${safe_date}</span><span class="ep-dur">${fmtDur(ep.dur)}</span></div>
-        <h3 class="ep-title">${safe_title}</h3>
-        <div class="ep-desc">${safe_desc}</div>
-      </div>
-      <div class="ep-actions">
-        <button class="ep-btn play" onclick="playEp(${filtered.indexOf(ep)})">▶ 播放</button>
-        ${safe_soundon?`<a class="ep-btn soundon" href="${safe_soundon}" target="_blank" rel="noopener">▶ SoundOn</a>`:''}
-        <a class="ep-btn apple" href="${safe_apple}" target="_blank" rel="noopener">${ICO_APPLE}Apple</a>
-        <a class="ep-btn spotify" href="${safe_spot}" target="_blank" rel="noopener">${ICO_SPOT}Spotify</a>
-      </div>
-    </article>`;
-  }).join('');
-  renderPag(total);
-}
-
-function renderPag(total){
-  const pages=Math.ceil(total/PER_PAGE);
-  const pg=document.getElementById('pagination');
-  if(pages<=1){pg.innerHTML='';return;}
-  let html='';
-  if(page>0)html+=`<button class="pg-btn" onclick="goPage(${page-1})">◀ 上一頁</button>`;
-  const start=Math.max(0,page-2),end=Math.min(pages-1,page+2);
-  for(let i=start;i<=end;i++)html+=`<button class="pg-btn${i===page?' active':''}" onclick="goPage(${i})">${i+1}</button>`;
-  if(page<pages-1)html+=`<button class="pg-btn" onclick="goPage(${page+1})">下一頁 ▶</button>`;
-  pg.innerHTML=html;
-}
-
-function goPage(n){page=n;render();window.scrollTo({top:document.querySelector('.ep-wrap').offsetTop-80,behavior:'smooth'});}
-
-function playEp(idx){playEpisode(filtered[idx]);}
-function playEpisode(ep){
-  if(!ep)return;
-  document.getElementById('p-title').textContent=ep.title;
-  const audio=document.getElementById('p-audio');
-  audio.src=ep.url;
-  audio.play().catch(()=>{});
-  document.getElementById('player').classList.add('visible');
-  document.body.style.paddingBottom='72px';
-}
-
-function closePlayer(){
-  document.getElementById('player').classList.remove('visible');
-  document.getElementById('p-audio').pause();
-  document.body.style.paddingBottom='';
-}
-
-function toggleMob(){
-  const m=document.getElementById('mob-menu');
-  m.classList.toggle('open');
-}
-
-async function initPodcast(){
-  document.getElementById('ep-list').innerHTML=
-    '<div style="text-align:center;padding:48px 24px;font-family:\'Share Tech Mono\',monospace;font-size:.8rem;color:var(--dim);letter-spacing:.1em;">// LOADING EPISODES...</div>';
-
-  try{
-    const res=await fetch('/episodes.json');
-    if(!res.ok)throw new Error('HTTP '+res.status);
-    const data=await res.json();
-    EPS=Array.isArray(data.episodes)?data.episodes:[];
-  }catch(err){
-    console.warn('Failed to load episodes.json:',err.message);
-    document.getElementById('ep-list').innerHTML=
-      '<div style="text-align:center;padding:48px 24px;font-family:\'Share Tech Mono\',monospace;font-size:.8rem;color:var(--pink);letter-spacing:.1em;">// FAILED TO LOAD EPISODES — CHECK BACK LATER</div>';
-    return;
-  }
-
-  const totalEps=EPS.length;
-  if(totalEps>0){
-    const totalHours=Math.round(EPS.reduce((s,e)=>s+(e.dur||0),0)/60);
-    const statNums=document.querySelectorAll('.stat-n');
-    if(statNums[0])statNums[0].textContent=totalEps;
-    if(statNums[1])statNums[1].textContent='~'+totalHours;
-  }
-
-  renderLatest();
-  filterEps();
-}
-
-initPodcast();
-</script>
-<script>
-// 訂閱電子報（同站內 /api/subscribe，含 honeypot 與頻率限制處理）
-function podNlGo(f){
-  var msg=f.querySelector('.pod-nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch('https://operation-tw-api.gamania-cloudforce.workers.dev/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新單集文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
+<script src="/js/podcast.js" defer></script>
 </body>
 </html>

@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="Anthropic宣布向AWS投資超過千億美元，這筆巨額合作不僅反映AI算力需求的爆炸式成長，更象徵雲端運算市場從軟體競爭轉向硬體基礎設施的權力遊戲。台灣企業應重新評估雲端策略。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-391.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/391/","headline":"Anthropic砸千億美元投資AWS：AI晶片戰爭延燒至雲端基礎設施","description":"Anthropic宣布向AWS投資超過千億美元，這筆巨額合作不僅反映AI算力需求的爆炸式成長，更象徵雲端運算市場從軟體競爭轉向硬體基礎設施的權力遊戲。台灣企業應重新評估雲端策略。","datePublished":"2026-09-08","dateModified":"2026-09-08","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/391/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/391/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-391.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"Anthropic砸千億美元投資AWS：AI晶片戰爭延燒至雲端基礎設施","item":"https://operation.tw/post/391/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/391/#faq","mainEntity":[{"@type":"Question","name":"Anthropic投資AWS的千億美元是否等於買股票？","acceptedAnswer":{"@type":"Answer","text":"不是。這是一筆長期的算力與服務採購承諾協議，Anthropic用現金預付未來數年的運算資源，以換取更優惠的價格與優先級。性質類似「團購折扣」而非股權投資。"}},{"@type":"Question","name":"台灣企業現在是否應該停用AWS，轉向其他雲服務商？","acceptedAnswer":{"@type":"Answer","text":"不必倉促轉換。反而應該趁此時機進行多雲評估，確保不過度依賴單一廠商。AWS仍提供最成熟的服務，但在AI算力定價上需要多比較Azure與GCP的方案。"}},{"@type":"Question","name":"開源AI模型是否會因為這則新聞而更受歡迎？","acceptedAnswer":{"@type":"Answer","text":"有可能。當proprietary模型（如Claude）的使用成本因為中心化算力短缺而上升時，企業會重新評估開源模型（如Meta的Llama）的性價比。但開源模型的訓練與部署同樣需要算力，企業還是需要選擇合適的運算平台。"}}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:391})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="391">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E9%9B%B2%E7%AB%AF/">雲端</a></nav>
   <article>
     <div class="badge" style="color:#62a8ff;background:#62a8ff1a">☁️ 雲端</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-391.webp"><img class="cover" src="https://operation.tw/images/posts/post-391.jpg" alt="Anthropic砸千億美元投資AWS：AI晶片戰爭延燒至雲端基礎設施" width="1200" height="630"></picture>
     <div class="excerpt"><p>Anthropic宣布向AWS投資超過千億美元，這筆巨額合作不僅反映AI算力需求的爆炸式成長，更象徵雲端運算市場從軟體競爭轉向硬體基礎設施的權力遊戲。台灣企業應重新評估雲端策略。</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼Anthropic要對AWS投資千億美元？</a></li><li class="toc-l2"><a href="#sec-2">這代表什麼：AI時代的硬體軍備競賽已展開？</a></li><li class="toc-l2"><a href="#sec-3">台灣企業應該如何應對這場轉變？</a></li><li class="toc-l2"><a href="#sec-4">Anthropic投資會改變AWS的市場地位嗎？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">Anthropic投資AWS的千億美元是否等於買股票？</a></li><li class="toc-l3"><a href="#sec-7">台灣企業現在是否應該停用AWS，轉向其他雲服務商？</a></li><li class="toc-l3"><a href="#sec-8">開源AI模型是否會因為這則新聞而更受歡迎？</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>Anthropic向AWS投資超千億美元，顯示AI公司開始掌控雲端基礎設施決策權，打破傳統雲服務商的市場壟斷</li><li>這場投資背後反映的是AI時代的「算力軍備競賽」——控制晶片與基礎設施等於控制AI模型的天花板</li><li>台灣企業面臨新選擇：是依附大雲服務商，還是考慮與特定AI公司綁定以換取優化的算力成本</li></ul><h2 id="sec-1">為什麼Anthropic要對AWS投資千億美元？</h2><p>Anthropic的千億美元投資不是傳統的風險投資或股權購買，而是一筆長期的算力承諾與基礎設施合作協議——實質上是AI公司與雲服務商之間的「策略聯盟」，用巨額現金換取優先級的運算資源與客製化的硬體支援。</p><p>根據業界觀察，Claude與其他大型語言模型的訓練與推理成本已成為最大的營運開支項目。Anthropic透過與AWS的深度整合，可以獲得：專用的GPU/TPU叢集、優化的網路頻寬、定制化的軟體棧，以及更有利的採購價格。這相當於Anthropic「買斷」了AWS某個資料中心的產能，從而降低整體運營成本，同時確保在OpenAI與Google搶奪算力資源的時代，自己永遠不會陷入「無芯可用」的困境。</p><h2 id="sec-2">這代表什麼：AI時代的硬體軍備競賽已展開？</h2><p>這筆投資標誌著AI產業從「軟體模型競爭」進入「硬體基礎設施競爭」的新階段。</p><p>過去十年，雲端運算的遊戲規則很清楚：AWS、Azure、GCP等超大規模雲服務商掌握資料中心與硬體資源，AI公司（包括OpenAI、Anthropic、Meta）租用他們的服務。但現在局面反轉了——當算力成為最稀缺的資源時，AI公司開始反過來影響雲服務商的決策。Anthropic的千億投資等於是說：「我不再是你的客戶，我成為你的『指定合作夥伴』」。</p><p>與此同時，根據最新消息，中國的騰訊混元模型調用量已連續19週領先美國，這背後同樣是因為騰訊控制了自有的算力資源。這證明了一個殘酷的事實：<strong>在AI時代，不擁有算力基礎設施的公司，最終會被擁有者掣肘</strong>。</p><h2 id="sec-3">台灣企業應該如何應對這場轉變？</h2><p>對台灣的AI與科技企業來說，這場投資帶來三大啟示：</p><ul><li><strong>雲端供應商的話語權在下降</strong>：未來雲服務商將被迫在大型AI公司與中小型客戶之間做選擇。當OpenAI、Anthropic、Meta都各自與AWS、Azure、GCP簽訂百億美元級的獨家協議時，一般企業將面臨更高的成本與更低的優先級。台灣企業需要現在就評估，是否該多元化地採用不同雲服務商，避免過度依賴單一廠商。</li><li><strong>「與特定AI公司綁定」可能成為成本優化策略</strong>：如果Anthropic的模式成為產業標準，台灣企業未來可能需要在選擇AI服務時，一併考量其背後的基礎設施夥伴。與其不知道自己的推理運算會跑在哪裡，不如主動選擇有長期算力承諾的AI平台。</li><li><strong>開源與邊緣推理變得更重要</strong>：當中心化的算力成本持續上漲時，部署輕量級開源模型或在本地邊緣裝置上進行推理，反而成為成本優化的另一條路。台灣的半導體與邊緣AI廠商應把握這個機會。</li></ul><h2 id="sec-4">Anthropic投資會改變AWS的市場地位嗎？</h2><p>短期內不會，但長期趨勢值得關注。AWS仍然是全球最大的雲服務商，Anthropic的投資反而鞏固了這一地位——因為Anthropic選擇與AWS而非Azure或GCP深度合作。</p><p>然而，如果OpenAI也宣布向Azure投資類似規模的金額，或Google向自有的GCP投資，那麼雲端市場就會進入「AI廠商獨占」的時代。屆時，無法進入任何一家大廠核心資源圈的中小型AI公司與企業客戶，將面臨被邊緣化的風險。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">Anthropic投資AWS的千億美元是否等於買股票？</h3><p>不是。這是一筆長期的算力與服務採購承諾協議，Anthropic用現金預付未來數年的運算資源，以換取更優惠的價格與優先級。性質類似「團購折扣」而非股權投資。</p><h3 id="sec-7">台灣企業現在是否應該停用AWS，轉向其他雲服務商？</h3><p>不必倉促轉換。反而應該趁此時機進行多雲評估，確保不過度依賴單一廠商。AWS仍提供最成熟的服務，但在AI算力定價上需要多比較Azure與GCP的方案。</p><h3 id="sec-8">開源AI模型是否會因為這則新聞而更受歡迎？</h3><p>有可能。當proprietary模型（如Claude）的使用成本因為中心化算力短缺而上升時，企業會重新評估開源模型（如Meta的Llama）的性價比。但開源模型的訓練與部署同樣需要算力，企業還是需要選擇合適的運算平台。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>Anthropic向AWS投資超千億美元，顯示AI公司開始掌控雲端基礎設施決策權，打破傳統雲服務商的市場壟斷</li><li>這場投資背後反映的是AI時代的「<a class="gl" href="/glossary/#term-compute-power" title="術語庫：算力">算力</a>軍備競賽」——控制晶片與基礎設施等於控制AI模型的天花板</li><li>台灣企業面臨新選擇：是依附大雲服務商，還是考慮與特定AI公司綁定以換取優化的算力成本</li></ul><h2 id="sec-1">為什麼Anthropic要對AWS投資千億美元？</h2><p>Anthropic的千億美元投資不是傳統的風險投資或股權購買，而是一筆長期的算力承諾與基礎設施合作協議——實質上是AI公司與雲服務商之間的「策略聯盟」，用巨額現金換取優先級的運算資源與客製化的硬體支援。</p><p>根據業界觀察，Claude與其他<a class="gl" href="/glossary/#term-llm" title="術語庫：大型語言模型">大型語言模型</a>的訓練與<a class="gl" href="/glossary/#term-inference" title="術語庫：推理">推理</a>成本已成為最大的營運開支項目。Anthropic透過與AWS的深度整合，可以獲得：專用的<a class="gl" href="/glossary/#term-gpu" title="術語庫：圖形處理器">GPU</a>/TPU叢集、優化的網路頻寬、定制化的軟體棧，以及更有利的採購價格。這相當於Anthropic「買斷」了AWS某個資料中心的產能，從而降低整體運營成本，同時確保在OpenAI與Google搶奪算力資源的時代，自己永遠不會陷入「無芯可用」的困境。</p><h2 id="sec-2">這代表什麼：AI時代的硬體軍備競賽已展開？</h2><p>這筆投資標誌著AI產業從「軟體模型競爭」進入「硬體基礎設施競爭」的新階段。</p><p>過去十年，雲端運算的遊戲規則很清楚：AWS、Azure、GCP等超大規模雲服務商掌握資料中心與硬體資源，AI公司（包括OpenAI、Anthropic、Meta）租用他們的服務。但現在局面反轉了——當算力成為最稀缺的資源時，AI公司開始反過來影響雲服務商的決策。Anthropic的千億投資等於是說：「我不再是你的客戶，我成為你的『指定合作夥伴』」。</p><p>與此同時，根據最新消息，中國的騰訊混元模型調用量已連續19週領先美國，這背後同樣是因為騰訊控制了自有的算力資源。這證明了一個殘酷的事實：<strong>在AI時代，不擁有算力基礎設施的公司，最終會被擁有者掣肘</strong>。</p><h2 id="sec-3">台灣企業應該如何應對這場轉變？</h2><p>對台灣的AI與科技企業來說，這場投資帶來三大啟示：</p><ul><li><strong>雲端供應商的話語權在下降</strong>：未來雲服務商將被迫在大型AI公司與中小型客戶之間做選擇。當OpenAI、Anthropic、Meta都各自與AWS、Azure、GCP簽訂百億美元級的獨家協議時，一般企業將面臨更高的成本與更低的優先級。台灣企業需要現在就評估，是否該多元化地採用不同雲服務商，避免過度依賴單一廠商。</li><li><strong>「與特定AI公司綁定」可能成為成本優化策略</strong>：如果Anthropic的模式成為產業標準，台灣企業未來可能需要在選擇AI服務時，一併考量其背後的基礎設施夥伴。與其不知道自己的推理運算會跑在哪裡，不如主動選擇有長期算力承諾的AI平台。</li><li><strong>開源與邊緣推理變得更重要</strong>：當中心化的算力成本持續上漲時，部署輕量級<a class="gl" href="/glossary/#term-open-source-model" title="術語庫：開源模型">開源模型</a>或在本地邊緣裝置上進行推理，反而成為成本優化的另一條路。台灣的半導體與邊緣AI廠商應把握這個機會。</li></ul><h2 id="sec-4">Anthropic投資會改變AWS的市場地位嗎？</h2><p>短期內不會，但長期趨勢值得關注。AWS仍然是全球最大的雲服務商，Anthropic的投資反而鞏固了這一地位——因為Anthropic選擇與AWS而非Azure或GCP深度合作。</p><p>然而，如果OpenAI也宣布向Azure投資類似規模的金額，或Google向自有的GCP投資，那麼雲端市場就會進入「AI廠商獨占」的時代。屆時，無法進入任何一家大廠核心資源圈的中小型AI公司與企業客戶，將面臨被邊緣化的風險。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">Anthropic投資AWS的千億美元是否等於買股票？</h3><p>不是。這是一筆長期的算力與服務採購承諾協議，Anthropic用現金預付未來數年的運算資源，以換取更優惠的價格與優先級。性質類似「團購折扣」而非股權投資。</p><h3 id="sec-7">台灣企業現在是否應該停用AWS，轉向其他雲服務商？</h3><p>不必倉促轉換。反而應該趁此時機進行多雲評估，確保不過度依賴單一廠商。AWS仍提供最成熟的服務，但在AI算力定價上需要多比較Azure與GCP的方案。</p><h3 id="sec-8">開源AI模型是否會因為這則新聞而更受歡迎？</h3><p>有可能。當proprietary模型（如Claude）的使用成本因為中心化算力短缺而上升時，企業會重新評估開源模型（如Meta的Llama）的性價比。但開源模型的訓練與部署同樣需要算力，企業還是需要選擇合適的運算平台。</p><!--BODY:END--></div>
     <nav class="post-nav">
       <a class="pn" href="/post/394/"><span>← 上一篇</span><b>小型高效AI模型崛起：為什麼2027年是雲端成本結構的分水嶺？</b></a>
-      <a class="pn pn-r" href="/post/389/"><span>下一篇 →</span><b>公有雲市場2035年翻倍成長：台灣企業的AI雲端策略該怎麼布局？</b></a>
+      <a class="pn pn-r" href="/post/387/"><span>下一篇 →</span><b>AWS 20周年後的下一步：從IaC到AI原生基礎設施</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/387/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>AWS 20周年後的下一步：從IaC到AI原生基礎設施</b></a></li><li><a href="/post/423/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>CoreWeave vs. Nebius：輝達20億美元投資背後的AI雲端生態戰</b></a></li><li><a href="/post/273/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>AI24｜Google I/O 2026 拆解：Always-on AI 時代，AI 已成為基礎設施</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

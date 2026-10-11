@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="研究員用虛構疾病測試AI與學術界，結果震驚：AI不僅直接引用假消息，還被納入真實論文。這場實驗揭露AI時代最隱蔽的威脅——信息汙染如何侵蝕學術根基，對台灣學界與企業應用帶來深遠影響。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-73.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/73/","headline":"AI引用虛構疾病的警訊：學術誠信與AI可信度危機","description":"研究員用虛構疾病測試AI與學術界，結果震驚：AI不僅直接引用假消息，還被納入真實論文。這場實驗揭露AI時代最隱蔽的威脅——信息汙染如何侵蝕學術根基，對台灣學界與企業應用帶來深遠影響。","datePublished":"2026-04-15","dateModified":"2026-04-15","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/73/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/73/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-73.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI引用虛構疾病的警訊：學術誠信與AI可信度危機","item":"https://operation.tw/post/73/"}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:73})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="73">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-73.webp"><img class="cover" src="https://operation.tw/images/posts/post-73.jpg" alt="AI引用虛構疾病的警訊：學術誠信與AI可信度危機" width="1200" height="630"></picture>
     <div class="excerpt"><p>研究員用虛構疾病測試AI與學術界，結果震驚：AI不僅直接引用假消息，還被納入真實論文。這場實驗揭露AI時代最隱蔽的威脅——信息汙染如何侵蝕學術根基，對台灣學界與企業應用帶來深遠影響。</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">虛構疾病實驗：AI誠信危機的冰山一角</a></li><li class="toc-l2"><a href="#sec-2">為什麼AI會引用不存在的知識？</a></li><li class="toc-l2"><a href="#sec-3">學術界為何也上當？</a></li><li class="toc-l2"><a href="#sec-4">對台灣學界與產業的實際影響</a></li><li class="toc-l2"><a href="#sec-5">企業與學術機構該如何應對？</a></li><li class="toc-l2"><a href="#sec-6">結論：可信度是AI時代最稀缺的資源</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><h2 id="sec-1">虛構疾病實驗：AI誠信危機的冰山一角</h2><p>一項驚人的實驗結果最近引發科學界震動。研究員故意虛構一種疾病，用來測試AI與學術界的防禦機制。結果令人憂心：不僅大型語言模型直接引用了這個虛構疾病，甚至有真實論文將其納入參考文獻，形成一條完整的「假信息傳播鏈」。這不是簡單的AI錯誤，而是反映出AI時代學術生態面臨的根本性危機。</p><h2 id="sec-2">為什麼AI會引用不存在的知識？</h2><p>表面上看，這反映的是AI模型的「幻覺問題」(hallucination)——即模型生成看起來合理但實際不存在的信息。但更深層的原因值得關注：</p><ul><li><strong>訓練數據的延遲性</strong>：AI模型基於歷史數據訓練，但互聯網信息時時變化。虛構內容一旦被發布，就可能被爬蟲收集並進入訓練集。</li><li><strong>缺乏事實檢驗機制</strong>：當前LLM在生成文本時，並未內建強大的現實檢查系統。它只是基於統計模式預測下一個詞，而非驗證內容真偽。</li><li><strong>學術引用的「權威假象」</strong>：一旦虛假信息出現在看似學術的平台上，AI會因為表面的「學術格式」而提升其可信度評分。</li></ul><h2 id="sec-3">學術界為何也上當？</h2><p>更令人擔憂的是，真實研究人員也引用了這個虛構疾病。這表明：</p><ul><li>過度依賴AI搜索與文獻整理工具，導致驗證流程弱化</li><li>同儕評審機制在AI時代面臨效率與準確性的矛盾</li><li>學者普遍信任「已發表」的內容，缺乏根本性的懷疑精神</li></ul><h2 id="sec-4">對台灣學界與產業的實際影響</h2><p>台灣擁有強大的半導體、生技等高科技產業，這些領域都高度依賴學術研究。虛構信息的污染可能造成連鎖反應：</p><ul><li><strong>生技製藥領域</strong>：如果虛假的疾病或治療方法被引用，可能誤導藥物開發方向，浪費研發資源。</li><li><strong>企業AI應用信任危機</strong>：台灣企業在採用生成式AI進行市場研究、競爭分析時，面臨輸出信息真偽難辨的風險。</li><li><strong>人才培育困境</strong>：學生依賴AI完成論文時，將虛假知識內化為「常識」，形成知識汙染的代際傳遞。</li></ul><h2 id="sec-5">企業與學術機構該如何應對？</h2><p><strong>技術層面：</strong>企業應投資可追蹤性更強的AI解決方案，要求AI標註信息來源、發布時間，並整合事實檢驗API。</p><p><strong>流程層面：</strong>強化同儕評審、編輯審查，建立「AI生成內容」標籤機制，提醒讀者需要額外驗證。</p><p><strong>文化層面：</strong>重建對知識來源的嚴謹態度，將「驗證而非相信」作為AI時代的學術倫理基礎。</p><h2 id="sec-6">結論：可信度是AI時代最稀缺的資源</h2><p>這場虛構疾病實驗提醒我們，AI的威脅不在於它做不了什麼，而在於它能說服人們相信錯誤的東西。對台灣而言，在全球AI競賽中領先，同時保護學術與商業信息的完整性，將是下一個十年的核心課題。企業應從今天開始，檢視自己的AI應用流程，在速度與準確性間找到平衡。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">虛構疾病實驗：AI誠信危機的冰山一角</h2><p>一項驚人的實驗結果最近引發科學界震動。研究員故意虛構一種疾病，用來測試AI與學術界的防禦機制。結果令人憂心：不僅<a class="gl" href="/glossary/#term-llm" title="術語庫：大型語言模型">大型語言模型</a>直接引用了這個虛構疾病，甚至有真實論文將其納入參考文獻，形成一條完整的「假信息傳播鏈」。這不是簡單的AI錯誤，而是反映出AI時代學術生態面臨的根本性危機。</p><h2 id="sec-2">為什麼AI會引用不存在的知識？</h2><p>表面上看，這反映的是AI模型的「幻覺問題」(hallucination)——即模型生成看起來合理但實際不存在的信息。但更深層的原因值得關注：</p><ul><li><strong>訓練數據的延遲性</strong>：AI模型基於歷史數據訓練，但互聯網信息時時變化。虛構內容一旦被發布，就可能被爬蟲收集並進入訓練集。</li><li><strong>缺乏事實檢驗機制</strong>：當前LLM在生成文本時，並未內建強大的現實檢查系統。它只是基於統計模式預測下一個詞，而非驗證內容真偽。</li><li><strong>學術引用的「權威假象」</strong>：一旦虛假信息出現在看似學術的平台上，AI會因為表面的「學術格式」而提升其可信度評分。</li></ul><h2 id="sec-3">學術界為何也上當？</h2><p>更令人擔憂的是，真實研究人員也引用了這個虛構疾病。這表明：</p><ul><li>過度依賴AI搜索與文獻整理工具，導致驗證流程弱化</li><li>同儕評審機制在AI時代面臨效率與準確性的矛盾</li><li>學者普遍信任「已發表」的內容，缺乏根本性的懷疑精神</li></ul><h2 id="sec-4">對台灣學界與產業的實際影響</h2><p>台灣擁有強大的半導體、生技等高科技產業，這些領域都高度依賴學術研究。虛構信息的污染可能造成連鎖反應：</p><ul><li><strong>生技製藥領域</strong>：如果虛假的疾病或治療方法被引用，可能誤導藥物開發方向，浪費研發資源。</li><li><strong>企業AI應用信任危機</strong>：台灣企業在採用<a class="gl" href="/glossary/#term-generative-ai" title="術語庫：生成式AI">生成式AI</a>進行市場研究、競爭分析時，面臨輸出信息真偽難辨的風險。</li><li><strong>人才培育困境</strong>：學生依賴AI完成論文時，將虛假知識內化為「常識」，形成知識汙染的代際傳遞。</li></ul><h2 id="sec-5">企業與學術機構該如何應對？</h2><p><strong>技術層面：</strong>企業應投資可追蹤性更強的AI解決方案，要求AI標註信息來源、發布時間，並整合事實檢驗API。</p><p><strong>流程層面：</strong>強化同儕評審、編輯審查，建立「AI生成內容」標籤機制，提醒讀者需要額外驗證。</p><p><strong>文化層面：</strong>重建對知識來源的嚴謹態度，將「驗證而非相信」作為AI時代的學術倫理基礎。</p><h2 id="sec-6">結論：可信度是AI時代最稀缺的資源</h2><p>這場虛構疾病實驗提醒我們，AI的威脅不在於它做不了什麼，而在於它能說服人們相信錯誤的東西。對台灣而言，在全球AI競賽中領先，同時保護學術與商業信息的完整性，將是下一個十年的核心課題。企業應從今天開始，檢視自己的AI應用流程，在速度與準確性間找到平衡。</p><!--BODY:END--></div>
     <nav class="post-nav">
       <a class="pn" href="/post/76/"><span>← 上一篇</span><b>心理諮詢AI的倫理紅線：為何通用AI模型不適合心理健康領域</b></a>
       <a class="pn pn-r" href="/post/69/"><span>下一篇 →</span><b>PC也能跑Claude等級AI！Qwopus開源模型如何改變企業AI部署策略</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/101/"><span class="h-meta"><span class="h-cat">AI</span></span><b>訓練資料對齊危機：虛構邪惡AI形象如何扭曲模型行為？</b></a></li><li><a href="/post/62/"><span class="h-meta"><span class="h-cat">AI</span></span><b>LLM現身「同儕保護」詭異行為：AI欺騙用戶的警訊</b></a></li><li><a href="/post/267/"><span class="h-meta"><span class="h-cat">雲端</span><span>🎙 Podcast</span></span><b>AI19｜模型平台時代結束，Google 的 Agent 元年正式開幕</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

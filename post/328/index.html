@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <title>AWS20週年的隱形贏家：從工程痛點到雲端帝國的另一面 | 操作一下</title>
 <meta name="description" content="AWS成立20週年，從解決內部工程師痛點到千億美元規模，但真正推動雲端革命的，不只是基礎設施。本文剖析AWS生態中被忽視的三大創新，以及台灣雲端新創如何在這個成熟市場中尋找破口。">
-<link rel="canonical" href="https://operation.tw/post/328/">
+<link rel="canonical" href="https://operation.tw/post/35/">
 <meta property="og:type"        content="article">
 <meta property="og:title"       content="AWS20週年的隱形贏家：從工程痛點到雲端帝國的另一面">
 <meta property="og:description" content="AWS成立20週年，從解決內部工程師痛點到千億美元規模，但真正推動雲端革命的，不只是基礎設施。本文剖析AWS生態中被忽視的三大創新，以及台灣雲端新創如何在這個成熟市場中尋找破口。">
@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="AWS成立20週年，從解決內部工程師痛點到千億美元規模，但真正推動雲端革命的，不只是基礎設施。本文剖析AWS生態中被忽視的三大創新，以及台灣雲端新創如何在這個成熟市場中尋找破口。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-328.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/328/","headline":"AWS20週年的隱形贏家：從工程痛點到雲端帝國的另一面","description":"AWS成立20週年，從解決內部工程師痛點到千億美元規模，但真正推動雲端革命的，不只是基礎設施。本文剖析AWS生態中被忽視的三大創新，以及台灣雲端新創如何在這個成熟市場中尋找破口。","datePublished":"2026-07-18","dateModified":"2026-07-18","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/328/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/328/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-328.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"AWS20週年的隱形贏家：從工程痛點到雲端帝國的另一面","item":"https://operation.tw/post/328/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/328/#faq","mainEntity":[{"@type":"Question","name":"AWS的20年成功能持續到30年嗎？","acceptedAnswer":{"@type":"Answer","text":"AWS在IaaS基礎設施領域的領先地位難以動搖，但利潤增速將放緩；真正的成長驅動力已經轉向AI服務、行業解決方案與邊際計算，這些領域的競爭會比基礎設施更激烈。"}},{"@type":"Question","name":"台灣廠商應該進入雲端市場嗎？","acceptedAnswer":{"@type":"Answer","text":"應該進入，但要進入「利基市場」而非通用市場——鎖定特定產業、特定地域或特定技術棧，用深度彌補規模差距，而不是用廣度與AWS正面競爭。"}},{"@type":"Question","name":"多雲時代對企業採購有什麼影響？","acceptedAnswer":{"@type":"Answer","text":"企業將從「選擇一家雲端廠商」轉向「選擇多家廠商並用工具管理」，這會降低單一廠商的議價權，同時提升對雲端管理平台與顧問服務的需求。"}}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:328})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="328">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E9%9B%B2%E7%AB%AF/">雲端</a></nav>
   <article>
     <div class="badge" style="color:#62a8ff;background:#62a8ff1a">☁️ 雲端</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-328.webp"><img class="cover" src="https://operation.tw/images/posts/post-328.jpg" alt="AWS20週年的隱形贏家：從工程痛點到雲端帝國的另一面" width="1200" height="630"></picture>
     <div class="excerpt"><p>AWS成立20週年，從解決內部工程師痛點到千億美元規模，但真正推動雲端革命的，不只是基礎設施。本文剖析AWS生態中被忽視的三大創新，以及台灣雲端新創如何在這個成熟市場中尋找破口。</p></div>
     
+    <p class="st-main-note">這個主題有更完整的整理：<a href="/post/35/">AWS 20周年里程碑：從工程痛點到雲端帝國的啟示 →</a></p>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">AWS成立20年來，為什麼還要重新檢視它的成功模式？</a></li><li class="toc-l2"><a href="#sec-2">為什麼企業雲端遷移的紅利期正在消退？</a></li><li class="toc-l2"><a href="#sec-3">台灣雲端新創在這個時代該如何定位？</a></li><li class="toc-l2"><a href="#sec-4">AWS20週年背後的警示：從「網路效應」到「套鎖效應」的轉折</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">AWS的20年成功能持續到30年嗎？</a></li><li class="toc-l3"><a href="#sec-7">台灣廠商應該進入雲端市場嗎？</a></li><li class="toc-l3"><a href="#sec-8">多雲時代對企業採購有什麼影響？</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>AWS20年成長故事背後，其實是邊際效應遞減的信號——傳統IaaS已成紅海，新增長點轉向AI算力與垂直整合</li><li>台灣雲端廠商應從「跟隨者」轉向「補位者」，鎖定AWS生態中的特定產業場景而非全能競爭</li><li>Neoclouds等新興勢力的出現，預示雲端未來是「多雲+專雲」並行的時代，而非AWS一家獨大</li></ul><h2 id="sec-1">AWS成立20年來，為什麼還要重新檢視它的成功模式？</h2><p>過去的成功故事往往隱藏著未來的風險信號。AWS從2006年解決Amazon內部工程師的伺服器運維痛點開始，在20年間成長為千億美元級別的雲端帝國，但這個成功本身正在轉變——從擴張驅動轉向優化驅動，從「做大」轉向「做深」。根據新聞報導，AWS的20週年里程碑恰好落在一個微妙的時間點：公有雲市場規模在2035年的預測報告中仍有增長空間，但增速明顯放緩，這意味著傳統IaaS（基礎設施即服務）的黃金年代已過，下一波競爭的戰場在於誰能更快整合AI能力與垂直行業解決方案。</p><h2 id="sec-2">為什麼企業雲端遷移的紅利期正在消退？</h2><p>雲端市場的第一階段增長來自「上雲紅利」——每一家企業從自建機房轉向公有雲都能享受到成本下降、靈活性提升的好處，但這個紅利已經用盡。根據AWS成立20週年的發展脈絡可推測，早期採納者與中期跟進者已經完成遷移決策，剩下的企業要麼是小型企業（需求有限），要麼是對資料安全敏感的政府與金融機構（跨域遷移困難）。當新增客戶增長空間有限時，廠商的獲利來源必然從「新客戶開發」轉向「現有客戶深化」——也就是售賣更多的進階服務、AI工具、與行業解決方案。這個轉變正是Neoclouds等新興雲端勢力得以切入的機會窗口：它們不需要在全能性上與AWS競爭，而是在特定垂直領域（如金融科技、製造業IoT、醫療影像分析）提供高度客製化的雲端服務。</p><h2 id="sec-3">台灣雲端新創在這個時代該如何定位？</h2><p>如果AWS的過去20年代表了「大而全」的勝利，那麼未來10年將是「小而精」的時代。台灣的雲端廠商與新創應該避免與AWS、Azure、GCP在全球IaaS市場正面競爭，因為這場戰已經結束。更聰明的策略是深耕三個方向：首先，針對特定產業（例如半導體製造、電子商務、遠距醫療）設計專用的雲端堆疊，用行業know-how彌補規模劣勢；其次，成為AWS生態中的「補位者」，例如提供特定地域的低延遲服務或合規性增強方案；第三，聯合起來形成「多雲管理平台」，幫助企業在AWS、Neoclouds、本土廠商之間動態調配工作負載，而不是彼此競爭。根據新聞提及的AI時代新興雲端勢力Neoclouds的出現，已經印證了這個方向——它用「AI友善」的架構與彈性定價吸引了無法被AWS重視的中尾部客戶。</p><h2 id="sec-4">AWS20週年背後的警示：從「網路效應」到「套鎖效應」的轉折</h2><p>AWS的成功在於創造了強大的網路效應——越多開發者在AWS上構建，就越多企業被迫遷移到AWS；越多企業在AWS上，就越難離開。但20年後，這個正反饋迴圈正在轉變為負反饋。企業被AWS綁定得越深，就越會尋求替代方案來降低風險與成本；開發者工具的標準化進展越快，就越容易跨平台遷移；AI模型的開源化趨勢越明顯，就越難用專有技術鎖定客戶。根據新聞中公有雲市場2035年預測報告的脈絡，市場方向正在朝「混合雲+多雲」演進，而非單一巨頭統治。這給了Neoclouds這類新興勢力機會，也給了台灣廠商重新思考自身位置的空間。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">AWS的20年成功能持續到30年嗎？</h3><p>AWS在IaaS基礎設施領域的領先地位難以動搖，但利潤增速將放緩；真正的成長驅動力已經轉向AI服務、行業解決方案與邊際計算，這些領域的競爭會比基礎設施更激烈。</p><h3 id="sec-7">台灣廠商應該進入雲端市場嗎？</h3><p>應該進入，但要進入「利基市場」而非通用市場——鎖定特定產業、特定地域或特定技術棧，用深度彌補規模差距，而不是用廣度與AWS正面競爭。</p><h3 id="sec-8">多雲時代對企業採購有什麼影響？</h3><p>企業將從「選擇一家雲端廠商」轉向「選擇多家廠商並用工具管理」，這會降低單一廠商的議價權，同時提升對雲端管理平台與顧問服務的需求。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>AWS20年成長故事背後，其實是邊際效應遞減的信號——傳統IaaS已成紅海，新增長點轉向AI<a class="gl" href="/glossary/#term-compute-power" title="術語庫：算力">算力</a>與垂直整合</li><li>台灣雲端廠商應從「跟隨者」轉向「補位者」，鎖定AWS生態中的特定產業場景而非全能競爭</li><li><a class="gl" href="/glossary/#term-neoclouds" title="術語庫：新興雲端服務商">Neoclouds</a>等新興勢力的出現，預示雲端未來是「多雲+專雲」並行的時代，而非AWS一家獨大</li></ul><h2 id="sec-1">AWS成立20年來，為什麼還要重新檢視它的成功模式？</h2><p>過去的成功故事往往隱藏著未來的風險信號。AWS從2006年解決Amazon內部工程師的伺服器運維痛點開始，在20年間成長為千億美元級別的雲端帝國，但這個成功本身正在轉變——從擴張驅動轉向優化驅動，從「做大」轉向「做深」。根據新聞報導，AWS的20週年里程碑恰好落在一個微妙的時間點：公有雲市場規模在2035年的預測報告中仍有增長空間，但增速明顯放緩，這意味著傳統IaaS（基礎設施即服務）的黃金年代已過，下一波競爭的戰場在於誰能更快整合AI能力與垂直行業解決方案。</p><h2 id="sec-2">為什麼企業雲端遷移的紅利期正在消退？</h2><p>雲端市場的第一階段增長來自「上雲紅利」——每一家企業從自建機房轉向公有雲都能享受到成本下降、靈活性提升的好處，但這個紅利已經用盡。根據AWS成立20週年的發展脈絡可推測，早期採納者與中期跟進者已經完成遷移決策，剩下的企業要麼是小型企業（需求有限），要麼是對資料安全敏感的政府與金融機構（跨域遷移困難）。當新增客戶增長空間有限時，廠商的獲利來源必然從「新客戶開發」轉向「現有客戶深化」——也就是售賣更多的進階服務、AI工具、與行業解決方案。這個轉變正是Neoclouds等新興雲端勢力得以切入的機會窗口：它們不需要在全能性上與AWS競爭，而是在特定垂直領域（如金融科技、製造業IoT、醫療影像分析）提供高度客製化的雲端服務。</p><h2 id="sec-3">台灣雲端新創在這個時代該如何定位？</h2><p>如果AWS的過去20年代表了「大而全」的勝利，那麼未來10年將是「小而精」的時代。台灣的雲端廠商與新創應該避免與AWS、Azure、GCP在全球IaaS市場正面競爭，因為這場戰已經結束。更聰明的策略是深耕三個方向：首先，針對特定產業（例如半導體製造、電子商務、遠距醫療）設計專用的雲端堆疊，用行業know-how彌補規模劣勢；其次，成為AWS生態中的「補位者」，例如提供特定地域的低延遲服務或合規性增強方案；第三，聯合起來形成「多雲管理平台」，幫助企業在AWS、Neoclouds、本土廠商之間動態調配工作負載，而不是彼此競爭。根據新聞提及的AI時代新興雲端勢力Neoclouds的出現，已經印證了這個方向——它用「AI友善」的架構與彈性定價吸引了無法被AWS重視的中尾部客戶。</p><h2 id="sec-4">AWS20週年背後的警示：從「網路效應」到「套鎖效應」的轉折</h2><p>AWS的成功在於創造了強大的網路效應——越多開發者在AWS上構建，就越多企業被迫遷移到AWS；越多企業在AWS上，就越難離開。但20年後，這個正反饋迴圈正在轉變為負反饋。企業被AWS綁定得越深，就越會尋求替代方案來降低風險與成本；開發者工具的標準化進展越快，就越容易跨平台遷移；AI模型的開源化趨勢越明顯，就越難用專有技術鎖定客戶。根據新聞中公有雲市場2035年預測報告的脈絡，市場方向正在朝「混合雲+多雲」演進，而非單一巨頭統治。這給了Neoclouds這類新興勢力機會，也給了台灣廠商重新思考自身位置的空間。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">AWS的20年成功能持續到30年嗎？</h3><p>AWS在IaaS基礎設施領域的領先地位難以動搖，但利潤增速將放緩；真正的成長驅動力已經轉向AI服務、行業解決方案與邊際計算，這些領域的競爭會比基礎設施更激烈。</p><h3 id="sec-7">台灣廠商應該進入雲端市場嗎？</h3><p>應該進入，但要進入「利基市場」而非通用市場——鎖定特定產業、特定地域或特定技術棧，用深度彌補規模差距，而不是用廣度與AWS正面競爭。</p><h3 id="sec-8">多雲時代對企業採購有什麼影響？</h3><p>企業將從「選擇一家雲端廠商」轉向「選擇多家廠商並用工具管理」，這會降低單一廠商的議價權，同時提升對雲端管理平台與顧問服務的需求。</p><!--BODY:END--></div>
     <nav class="post-nav">
-      <a class="pn" href="/post/334/"><span>← 上一篇</span><b>公有雲市場2035年預測：台灣企業如何搶佔下一波成長紅利？</b></a>
-      <a class="pn pn-r" href="/post/324/"><span>下一篇 →</span><b>AWS邁入20週年：從內部工具到雲端帝國的科技啟示</b></a>
+      <a class="pn" href="/post/44/"><span>← 上一篇</span><b>無伺服器GPU時代來臨：Databricks×NVIDIA如何重塑AI訓練經濟學</b></a>
+      <a class="pn pn-r" href="/post/29/"><span>下一篇 →</span><b>馬來西亞AI運算中心啟動：NVIDIA技術如何驅動東南亞雲端新格局</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/128/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>OpenAI與Anthropic投資者高度重疊：AI雲端生態的隱形風險</b></a></li><li><a href="/post/387/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>AWS 20周年後的下一步：從IaC到AI原生基礎設施</b></a></li><li><a href="/post/314/"><span class="h-meta"><span class="h-cat">雲端</span><span>🎙 Podcast</span></span><b>AI41｜Meta Compute 雲端算力服務上線：如何改變 AI 產業競局？</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

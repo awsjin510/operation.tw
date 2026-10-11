@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="AI 做簡報已經又快又好看，但上台被問「這數字哪來的」卻答不出來，才是真正的職場危機。這篇文章整理了《職場第一實用的 AI 簡報術》作者廖韋評 NEO 的核心觀點：AI 不只是排版工具，更是放大你對問題理解的思考夥伴。從五階段簡報流程到 60 分基準線的市場洞察，帶你建立不會被工具迭代的簡報思維。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-261.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/261/","headline":"EP97｜你交給 AI 的，是你理解的程度——職場簡報的 AI 思維升級","description":"AI 做簡報已經又快又好看，但上台被問「這數字哪來的」卻答不出來，才是真正的職場危機。這篇文章整理了《職場第一實用的 AI 簡報術》作者廖韋評 NEO 的核心觀點：AI 不只是排版工具，更是放大你對問題理解的思考夥伴。從五階段簡報流程到 60 分基準線的市場洞察，帶你建立不會被工具迭代的簡報思維。","datePublished":"2026-05-04","dateModified":"2026-05-04","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/261/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/261/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-261.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"EP97｜你交給 AI 的，是你理解的程度——職場簡報的 AI 思維升級","item":"https://operation.tw/post/261/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/261/#episode","name":"EP97｜你交給 AI 的，是你理解的程度——職場簡報的 AI 思維升級","url":"https://operation.tw/post/261/","datePublished":"2026-05-04","description":"AI 做簡報已經又快又好看，但上台被問「這數字哪來的」卻答不出來，才是真正的職場危機。這篇文章整理了《職場第一實用的 AI 簡報術》作者廖韋評 NEO 的核心觀點：AI 不只是排版工具，更是放大你對問題理解的思考夥伴。從五階段簡報流程到 60 分基準線的市場洞察，帶你建立不會被工具迭代的簡報思維。","image":"https://operation.tw/images/posts/post-261.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":97,"duration":"PT38M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/ebe77f1f-8367-49f2-bacc-2b1532ef33dd/rssFileVip.mp3?timestamp=1778022952716","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:261})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="261">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-05-04">2026-05-04</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-261.webp"><img class="cover" src="https://operation.tw/images/posts/post-261.jpg" alt="EP97｜你交給 AI 的，是你理解的程度——職場簡報的 AI 思維升級" width="1200" height="630"></picture>
     <div class="excerpt"><p>AI 做簡報已經又快又好看，但上台被問「這數字哪來的」卻答不出來，才是真正的職場危機。這篇文章整理了《職場第一實用的 AI 簡報術》作者廖韋評 NEO 的核心觀點：AI 不只是排版工具，更是放大你對問題理解的思考夥伴。從五階段簡報流程到 60 分基準線的市場洞察，帶你建立不會被工具迭代的簡報思維。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>EP97_達人操作 | AI簡報達人_Neo | 你交給 AI 的，是你理解的程度——職場第一實用的 AI 簡報術，作者廖韋評NEO專訪</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000766129791" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP97_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20AI%E7%B0%A1%E5%A0%B1%E9%81%94%E4%BA%BA_Neo%20%7C%20%E4%BD%A0%E4%BA%A4%E7%B5%A6%20AI%20%E7%9A%84%EF%BC%8C%E6%98%AF%E4%BD%A0%E7%90%86%E8%A7%A3%E7%9A%84%E7%A8%8B%E5%BA%A6%E2%80%94%E2%80%94%E8%81%B7%E5%A0%B4%E7%AC%AC%E4%B8%80%E5%AF%A6%E7%94%A8%E7%9A%84%20AI%20%E7%B0%A1%E5%A0%B1%E8%A1%93%EF%BC%8C%E4%BD%9C%E8%80%85%E5%BB%96%E9%9F%8B%E8%A9%95NEO%E5%B0%88%E8%A8%AA" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">簡報不是從「製作」開始的</a></li><li class="toc-l2"><a href="#sec-2">提示詞的本質，是你對問題的理解</a></li><li class="toc-l2"><a href="#sec-3">AI 把大家拉到 60 分，但 60 分以上更值錢</a></li><li class="toc-l2"><a href="#sec-4">一個讓我印象深刻的學員故事</a></li><li class="toc-l2"><a href="#sec-5">對你實際有用的三件事</a></li><li class="toc-l2"><a href="#sec-6">結語</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>你有沒有遇過這種狀況：用 AI 做出一份超漂亮的投影片，自己也覺得很滿意，結果上台報告，主管只問了一句「這個數字哪裡來的？」——你愣在那裡，答不出來。</p><p>這不是 AI 的問題，這是我們使用 AI 的方式出了問題。</p><p>這集 Podcast 邀請到《職場第一實用的 AI 簡報術》作者廖韋評 NEO，他在企業培訓現場累積了超過 300 場輔導經驗，把「怎麼用 AI 做簡報」這件事講得非常透徹——而且不是在教你用哪個工具、下哪個指令，而是在談一套思維。</p><h2 id="sec-1">簡報不是從「製作」開始的</h2><p>NEO 把簡報這件事拆成五個階段：<strong>發想、收集、整理、製作、演講</strong>。大多數人一想到「AI 做簡報」，直接跳到第四步——打開工具、貼上大綱、生成投影片。但他特別強調，AI 最有價值的介入點，其實是更上游的「目標設定」與「受眾分析」。</p><p>在你還沒開始蒐集資料之前，先想清楚：這份簡報是給誰看的？對方最在意什麼？你希望他們看完之後做什麼決定？把這些問題用 AI 梳理清楚，後面的每一步才不會白做。</p><h2 id="sec-2">提示詞的本質，是你對問題的理解</h2><p>訪談裡有一個觀點我覺得講得特別好：<strong>提示詞工程的本質不是技巧，而是把你對問題的理解放大。</strong></p><p>很多人學 AI 工具，花大量時間背「萬用提示詞範本」，但如果你對這個問題本身的理解是模糊的，再厲害的提示詞也只會生出一份看起來很完整、實際上空洞的內容。反過來說，當你真的想清楚了，就算提示詞寫得很普通，AI 也能幫你產出有價值的東西。</p><p>NEO 在節目裡說了一句我很有感的話：<strong>「你交給 AI 的，是你理解的程度；你拿得回來的，是你認知的結果。」</strong>這句話某種程度上也解釋了，為什麼同樣用 AI，有些人做出的東西就是比較有說服力。</p><h2 id="sec-3">AI 把大家拉到 60 分，但 60 分以上更值錢</h2><p>NEO 分享了一個很有意思的市場觀察：AI 普及之後，確實把大多數人的基準線拉到了 60 分——版面不難看、結構說得過去、內容不會離題太遠。但這反而造成兩個極端：</p><ul><li><strong>60 分以下的市場被壓縮</strong>：以前勉強能交差的水準，現在會直接被 AI 取代。</li><li><strong>60 分以上的人反而更值錢</strong>：當大家都能做出「還可以」的簡報，真正有洞察、有說服力、能打動人的表達能力，稀缺性反而更高。</li></ul><p>這個邏輯放到職場裡很實際：現在不是學會用 AI 就夠了，而是要思考怎麼在 AI 幫你打底之後，疊加上你自己的判斷與視角。</p><h2 id="sec-4">一個讓我印象深刻的學員故事</h2><p>訪談裡 NEO 提到一位學員，是一位因為車禍而失去程式閱讀能力的工程師。過去他靠程式碼工作，意外之後這條路幾乎被封死——但他透過 Vibe Coding（用自然語言描述需求、讓 AI 生成程式碼的方式），重新找回了在職場上貢獻的能力。</p><p>這個故事讓我想很多。AI 工具的普及，某種程度上降低了「技術門檻」對人的限制，讓更多人能夠用自己的想法與判斷力去完成事情，而不是被特定技能卡住。</p><h2 id="sec-5">對你實際有用的三件事</h2><p>如果你也經常需要做簡報或提案，從這集整理出三個可以馬上應用的方向：</p><ul><li><strong>在開始做投影片之前，先用 AI 做「受眾分析」</strong>：把你的目標聽眾、他們的痛點、你希望達成的目的，先和 AI 討論清楚。</li><li><strong>把你的思考過程寫進提示詞</strong>：不要只下指令，要把你的判斷和脈絡一起給 AI，它才能真正幫到你。</li><li><strong>AI 生成後，自己要能解釋每一頁</strong>：這是最基本的自我要求——任何一張投影片，你都要能說清楚它為什麼在這裡、數字從哪來、邏輯是什麼。</li></ul><h2 id="sec-6">結語</h2><p>AI 簡報工具會一直進化，但「能不能把事情想清楚、說清楚」這件事，不會被工具取代。NEO 這集給的不是技巧清單，而是一套面對 AI 時代的思考方式——值得反覆回來聽。</p><p>如果你對這個主題有興趣，也可以找他的書《職場第一實用的 AI 簡報術》來讀，會有更完整的系統。</p>
@@ -94,19 +70,27 @@ function nlGo(f){
       <a class="pn" href="/post/94/"><span>← 上一篇</span><b>稀疏計算革命：大型模型如何突破硬體瓶頸的新出路</b></a>
       <a class="pn pn-r" href="/post/259/"><span>下一篇 →</span><b>AI12｜簡報製作第三世代：用 GPT-Image-2 把每張投影片畫出來</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/133/"><span class="h-meta"><span class="h-cat">AI</span></span><b>AI黑盒子危機：當模型演化速度超越人類理解極限</b></a></li><li><a href="/post/103/"><span class="h-meta"><span class="h-cat">AI</span></span><b>企業級AI治理新時代：Boomi收購Lunar.dev如何改變AI應用格局</b></a></li><li><a href="/post/284/"><span class="h-meta"><span class="h-cat">閱讀</span><span>🎙 Podcast</span></span><b>AI34｜技術會過時，提問力不會：AI時代最值錢的思考肌肉</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

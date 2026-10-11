@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="手握超過40張國際資安證照、橫跨高科技製造、金融業與四大會計師事務所的資深架構師Kuro，在這集操作一下Podcast中不藏私分享：如何建立資安職涯技能樹、甲方乙方各自的優勢、時間管理秘訣，以及面對AI浪潮時資安人才該有的心態。最值得記住的一句話：學習的過程，比考到證照更重要。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-222.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/222/","headline":"EP71｜資深資安架構師Kuro：學習過程比考到證照更重要","description":"手握超過40張國際資安證照、橫跨高科技製造、金融業與四大會計師事務所的資深架構師Kuro，在這集操作一下Podcast中不藏私分享：如何建立資安職涯技能樹、甲方乙方各自的優勢、時間管理秘訣，以及面對AI浪潮時資安人才該有的心態。最值得記住的一句話：學習的過程，比考到證照更重要。","datePublished":"2025-05-29","dateModified":"2025-05-29","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/222/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/222/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-222.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"EP71｜資深資安架構師Kuro：學習過程比考到證照更重要","item":"https://operation.tw/post/222/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/222/#episode","name":"EP71｜資深資安架構師Kuro：學習過程比考到證照更重要","url":"https://operation.tw/post/222/","datePublished":"2025-05-29","description":"手握超過40張國際資安證照、橫跨高科技製造、金融業與四大會計師事務所的資深架構師Kuro，在這集操作一下Podcast中不藏私分享：如何建立資安職涯技能樹、甲方乙方各自的優勢、時間管理秘訣，以及面對AI浪潮時資安人才該有的心態。最值得記住的一句話：學習的過程，比考到證照更重要。","image":"https://operation.tw/images/posts/post-222.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":71,"duration":"PT39M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/d7099965-ed35-4252-bceb-ac7eb1b6c8a2/rssFileVip.mp3?timestamp=1761072948686","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:222})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="222">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E8%B3%87%E5%AE%89/">資安</a></nav>
   <article>
     <div class="badge" style="color:#ff6b9a;background:#ff6b9a1a">🔐 資安</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2025-05-29">2025-05-29</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-222.webp"><img class="cover" src="https://operation.tw/images/posts/post-222.jpg" alt="EP71｜資深資安架構師Kuro：學習過程比考到證照更重要" width="1200" height="630"></picture>
     <div class="excerpt"><p>手握超過40張國際資安證照、橫跨高科技製造、金融業與四大會計師事務所的資深架構師Kuro，在這集操作一下Podcast中不藏私分享：如何建立資安職涯技能樹、甲方乙方各自的優勢、時間管理秘訣，以及面對AI浪潮時資安人才該有的心態。最值得記住的一句話：學習的過程，比考到證照更重要。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>EP71_達人操作 | 資深資安架構師Kuro | 學習的過程，比考到證照更重要 </strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000710489420" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP71_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E8%B3%87%E6%B7%B1%E8%B3%87%E5%AE%89%E6%9E%B6%E6%A7%8B%E5%B8%ABKuro%20%7C%20%E5%AD%B8%E7%BF%92%E7%9A%84%E9%81%8E%E7%A8%8B%EF%BC%8C%E6%AF%94%E8%80%83%E5%88%B0%E8%AD%89%E7%85%A7%E6%9B%B4%E9%87%8D%E8%A6%81%20" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">資安架構師，到底在做什麼？</a></li><li class="toc-l2"><a href="#sec-2">甲方 vs 乙方：哪邊適合你？</a></li><li class="toc-l2"><a href="#sec-3">資安證照怎麼考？新手從哪裡開始？</a></li><li class="toc-l2"><a href="#sec-4">時間管理：一個人如何同時做好這麼多事？</a></li><li class="toc-l2"><a href="#sec-5">AI 時代，資安人才的危與機</a></li><li class="toc-l2"><a href="#sec-6">寫作與社群，是另一種學習的方式</a></li><li class="toc-l2"><a href="#sec-7">給每個想踏入資安領域的人</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>如果你曾經想過「資安這條路該怎麼走」，或是對一堆英文縮寫的證照感到頭暈，這篇文章你一定要讀完。</p>
@@ -103,7 +79,7 @@ function nlGo(f){
 <p>這集也聊到了現在大家都很關心的 AI 議題。Kuro 對此抱持的是務實樂觀的態度——AI 確實會改變資安的攻防格局，攻擊者會用 AI，防禦者也必須用 AI。這對資安人才來說，與其說是威脅，不如說是一個重新定義自身價值的機會。那些能夠結合資安專業與 AI 工具應用的人，將會是未來最搶手的人才。</p>
 
 <h2 id="sec-6">寫作與社群，是另一種學習的方式</h2>
-<p>Kuro 經營「Kuro的資安學習手記」的初心，其實很單純——就是想把自己學到的東西整理下來。但這個習慣慢慢讓他建立起個人品牌，也成為資安社群中重要的知識貢獻者。這讓我想到，無論你在哪個領域，持續輸出其實是對自己最好的投資。</p>
+<p>Kuro 經營「Kuro的資安學習手記」的初心，其實很單純——就是想把自己學到的東西整理下來。但這個習慣慢慢讓他建立起<a class="gl" href="/glossary/#term-personal-branding" title="術語庫：個人品牌">個人品牌</a>，也成為資安社群中重要的知識貢獻者。這讓我想到，無論你在哪個領域，持續輸出其實是對自己最好的投資。</p>
 
 <h2 id="sec-7">給每個想踏入資安領域的人</h2>
 <p>不管你是剛畢業想找方向的新鮮人、還是已經在業界打滾多年想轉換跑道的朋友，Kuro 這集給的建議都非常接地氣。資安不是只有技術宅才能做的事，它需要溝通、需要視角、需要持續學習的心態。</p>
@@ -126,19 +102,27 @@ function nlGo(f){
       <a class="pn" href="/post/232/"><span>← 上一篇</span><b>EP81｜從零開始打造雲端職涯！GCP大神東東親授小白到黑帶攻略</b></a>
       <span></span>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/130/"><span class="h-meta"><span class="h-cat">資安</span></span><b>推理層資安漏洞：八成企業AI代理防禦盲點大公開</b></a></li><li><a href="/post/48/"><span class="h-meta"><span class="h-cat">資安</span></span><b>Google資安認證掀台灣搶才潮：零基礎如何踏入資安職涯？</b></a></li><li><a href="/post/217/"><span class="h-meta"><span class="h-cat">雲端</span><span>🎙 Podcast</span></span><b>EP66｜狂掃 15 張 AWS 證照、拿到黃金夾克，雲端架構師 Tony 的轉職實戰心法</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

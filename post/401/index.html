@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="9月Dreamforce大會上，AWS與Salesforce宣布三層打通合作：資料層零複製、AI代理層、通訊層互通。這不只是技術更新，而是企業雲端進入「跨雲整合」時代的戰略信號，對台灣聯絡中心與業務團隊有實際影響。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-401.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/401/","headline":"AI56｜AWS × Salesforce 跨雲整合：企業資料不再搬家的時代來臨","description":"9月Dreamforce大會上，AWS與Salesforce宣布三層打通合作：資料層零複製、AI代理層、通訊層互通。這不只是技術更新，而是企業雲端進入「跨雲整合」時代的戰略信號，對台灣聯絡中心與業務團隊有實際影響。","datePublished":"2026-09-16","dateModified":"2026-09-28","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/401/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/401/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-401.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"AI56｜AWS × Salesforce 跨雲整合：企業資料不再搬家的時代來臨","item":"https://operation.tw/post/401/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/401/#faq","mainEntity":[{"@type":"Question","name":"Salesforce資料怎樣直接被AWS讀取而不複製？","acceptedAnswer":{"@type":"Answer","text":"透過Apache Iceberg開放標準，Salesforce Data Cloud與Amazon QuickSight能共用同一份資料格式，無需建立複本，QuickSight可直接查詢源資料進行分析。"}},{"@type":"Question","name":"AI代理在Slack裡能執行什麼操作？","acceptedAnswer":{"@type":"Answer","text":"AWS Bedrock上的AI代理可在Slack內執行後端流程，包括查詢數據、修改記錄、觸發自動化工作流等，員工無需切換系統即可完成任務。"}},{"@type":"Question","name":"跨雲整合會增加還是降低企業成本？","acceptedAnswer":{"@type":"Answer","text":"合併計費與零複製技術能降低採購行政成本與重複資料存儲成本，但具體ROI取決於企業現有架構；建議先從試點項目評估實際效益。"}}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/401/#episode","name":"AI56｜AWS × Salesforce 跨雲整合：企業資料不再搬家的時代來臨","url":"https://operation.tw/post/401/","datePublished":"2026-09-16","description":"9月Dreamforce大會上，AWS與Salesforce宣布三層打通合作：資料層零複製、AI代理層、通訊層互通。這不只是技術更新，而是企業雲端進入「跨雲整合」時代的戰略信號，對台灣聯絡中心與業務團隊有實際影響。","image":"https://operation.tw/images/posts/post-401.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":56,"duration":"PT14M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/48929925-4ac6-44ba-aabe-cdf89d7a3bd6/rssFileVip.mp3?timestamp=1790140811922","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:401})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="401">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E9%9B%B2%E7%AB%AF/">雲端</a></nav>
   <article>
     <div class="badge" style="color:#62a8ff;background:#62a8ff1a">☁️ 雲端</div>
@@ -73,9 +48,10 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-09-16">2026-09-16</time> · 最後更新 2026-09-28<span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-401.webp"><img class="cover" src="https://operation.tw/images/posts/post-401.jpg" alt="AI56｜AWS × Salesforce 跨雲整合：企業資料不再搬家的時代來臨" width="1200" height="630"></picture>
     <div class="excerpt"><p>9月Dreamforce大會上，AWS與Salesforce宣布三層打通合作：資料層零複製、AI代理層、通訊層互通。這不只是技術更新，而是企業雲端進入「跨雲整合」時代的戰略信號，對台灣聯絡中心與業務團隊有實際影響。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>AI56趨勢操作｜資料不再搬家：AWS × Salesforce 三層打通，企業雲端進入「跨雲整合」時代</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000790225787" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI56%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%EF%BD%9C%E8%B3%87%E6%96%99%E4%B8%8D%E5%86%8D%E6%90%AC%E5%AE%B6%EF%BC%9AAWS%20%C3%97%20Salesforce%20%E4%B8%89%E5%B1%A4%E6%89%93%E9%80%9A%EF%BC%8C%E4%BC%81%E6%A5%AD%E9%9B%B2%E7%AB%AF%E9%80%B2%E5%85%A5%E3%80%8C%E8%B7%A8%E9%9B%B2%E6%95%B4%E5%90%88%E3%80%8D%E6%99%82%E4%BB%A3" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼企業資料流動一直這麼困難？</a></li><li class="toc-l2"><a href="#sec-2">零複製（Zero Copy）真正改變了什麼？</a></li><li class="toc-l2"><a href="#sec-3">AI代理進Slack代表企業流程怎樣的改變？</a></li><li class="toc-l2"><a href="#sec-4">Agentforce Voice與Amazon Connect整合對台灣企業的實際影響是什麼？</a></li><li class="toc-l2"><a href="#sec-5">跨雲整合時代的採購邏輯怎麼運作？</a></li><li class="toc-l2"><a href="#sec-6">企業雲端進化的三個階段是什麼？</a></li><li class="toc-l2"><a href="#sec-7">這波更新後企業該如何提前佈局？</a></li><li class="toc-l2"><a href="#sec-8">常見問題</a></li><li class="toc-l3"><a href="#sec-9">Salesforce資料怎樣直接被AWS讀取而不複製？</a></li><li class="toc-l3"><a href="#sec-10">AI代理在Slack裡能執行什麼操作？</a></li><li class="toc-l3"><a href="#sec-11">跨雲整合會增加還是降低企業成本？</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>AWS與Salesforce的三項深度合作打通資料層、代理層、通訊層，標誌著企業雲端從「多雲」進入「跨雲整合」時代</li><li>零複製（Zero Copy）技術讓資料直接被讀取而無需同步或複製，解決企業廿年來的資料流動瓶頸</li><li>AI代理進Slack、Agentforce Voice整合Amazon Connect等創新，重組企業流程而非只是省時間，對聯絡中心與銷售團隊有立即應用價值</li></ul><h2 id="sec-1">為什麼企業資料流動一直這麼困難？</h2><p>傳統情況下，企業要從Salesforce業務系統拉資料到AWS做分析，需要走API串接、排程設定、ETL工具三個流程，往往需要等待三週以上、經過七個以上系統，最後產出的數據還會被同事質疑準確性——這就是多雲時代的典型痛點。根據9月15日Dreamforce開場的宣布，AWS與Salesforce決定從根本上改變這個局面。</p><h2 id="sec-2">零複製（Zero Copy）真正改變了什麼？</h2><p>零複製是指Salesforce Data Cloud裡的資料可以直接被Amazon QuickSight讀取，完全不需要複製或同步過程。這項技術背後採用Apache Iceberg這個開放標準，讓多個雲端服務能在共同的資料格式上工作，而不是各自維護一套複本。簡單來說，從前IT部門要做資料工程師的繁重工作，現在資料就地共享，業務部門可以更快取得所需資訊進行分析決策。</p><h2 id="sec-3">AI代理進Slack代表企業流程怎樣的改變？</h2><p>這不只是省時間，而是流程的本質重組。AWS Bedrock上的AI代理現在可以直接掛進Slack頻道，員工一句話就能在AWS後端跑完整套業務流程——像是查詢訂單、修改記錄、發動工作流。這意味著過去需要員工在多個系統間切換操作的事務，現在可以在溝通工具內直接完成，大幅降低操作複雜度。</p><h2 id="sec-4">Agentforce Voice與Amazon Connect整合對台灣企業的實際影響是什麼？</h2><p>Agentforce Voice與Amazon Connect的即時雙向互通，讓AI客服能夠智慧地判斷是否需要轉接真人或開啟工單，這對台灣聯絡中心與客服營運特別重要。台灣的聯絡中心通常同時處理大量電話與文字互動，這項整合讓企業可以用單一AI系統跨越語音與文字介面，減少客服培訓與系統維護成本，同時提升客戶體驗。</p><h2 id="sec-5">跨雲整合時代的採購邏輯怎麼運作？</h2><p>傳統採購中，企業要同時向AWS與Salesforce採購，會面臨各自計費、各自簽約的行政複雜性。這次合作引入合併計費邏輯，讓企業用單一使用者認證和統一計費模式購買跨雲服務，大幅降低採購門檻。這對中小型企業與新創特別有利，因為不再需要IT部門花時間協調多家雲端廠商的合約細節。</p><h2 id="sec-6">企業雲端進化的三個階段是什麼？</h2><p>第一階段是「搬上雲」（2010年代初），企業從本地伺服器遷移到單一雲端；第二階段是「多雲」（2015-2020年代），企業為了避免廠商綁定而同時使用多家雲端服務；第三階段是「跨雲整合」（2024年起），企業不再簡單地共存多雲，而是讓不同廠商的服務深度連結、流暢互通。AWS與Salesforce的這次宣布就是第三階段的標誌性事件。</p><h2 id="sec-7">這波更新後企業該如何提前佈局？</h2><p>通常宣布到實際落地會有半年落差，聰明的企業現在就可以開始評估。IT主管應該審視現有Salesforce與AWS使用情況；雲端架構師可以開始規劃零複製的架構方案；行銷與業務應該評估AI代理進Slack能帶來的流程優化；聯絡中心營運團隊應該啟動對Agentforce Voice的試點計畫。同時，這也是學習新技能的好時機——「AI整合工程師」與「跨雲代理架構師」這類職位會逐漸浮現。</p><h2 id="sec-8">常見問題</h2><h3 id="sec-9">Salesforce資料怎樣直接被AWS讀取而不複製？</h3><p>透過Apache Iceberg開放標準，Salesforce Data Cloud與Amazon QuickSight能共用同一份資料格式，無需建立複本，QuickSight可直接查詢源資料進行分析。</p><h3 id="sec-10">AI代理在Slack裡能執行什麼操作？</h3><p>AWS Bedrock上的AI代理可在Slack內執行後端流程，包括查詢數據、修改記錄、觸發自動化工作流等，員工無需切換系統即可完成任務。</p><h3 id="sec-11">跨雲整合會增加還是降低企業成本？</h3><p>合併計費與零複製技術能降低採購行政成本與重複資料存儲成本，但具體ROI取決於企業現有架構；建議先從試點項目評估實際效益。</p>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>AWS與Salesforce的三項深度合作打通資料層、代理層、通訊層，標誌著企業雲端從「多雲」進入「跨雲整合」時代</li><li>零複製（Zero Copy）技術讓資料直接被讀取而無需同步或複製，解決企業廿年來的資料流動瓶頸</li><li><a class="gl" href="/glossary/#term-ai-agent" title="術語庫：AI代理">AI代理</a>進Slack、Agentforce Voice整合Amazon Connect等創新，重組企業流程而非只是省時間，對聯絡中心與銷售團隊有立即應用價值</li></ul><h2 id="sec-1">為什麼企業資料流動一直這麼困難？</h2><p>傳統情況下，企業要從Salesforce業務系統拉資料到AWS做分析，需要走API串接、排程設定、ETL工具三個流程，往往需要等待三週以上、經過七個以上系統，最後產出的數據還會被同事質疑準確性——這就是多雲時代的典型痛點。根據9月15日Dreamforce開場的宣布，AWS與Salesforce決定從根本上改變這個局面。</p><h2 id="sec-2">零複製（Zero Copy）真正改變了什麼？</h2><p>零複製是指Salesforce Data Cloud裡的資料可以直接被Amazon QuickSight讀取，完全不需要複製或同步過程。這項技術背後採用Apache Iceberg這個開放標準，讓多個雲端服務能在共同的資料格式上工作，而不是各自維護一套複本。簡單來說，從前IT部門要做資料工程師的繁重工作，現在資料就地共享，業務部門可以更快取得所需資訊進行分析決策。</p><h2 id="sec-3">AI代理進Slack代表企業流程怎樣的改變？</h2><p>這不只是省時間，而是流程的本質重組。AWS Bedrock上的AI代理現在可以直接掛進Slack頻道，員工一句話就能在AWS後端跑完整套業務流程——像是查詢訂單、修改記錄、發動工作流。這意味著過去需要員工在多個系統間切換操作的事務，現在可以在溝通工具內直接完成，大幅降低操作複雜度。</p><h2 id="sec-4">Agentforce Voice與Amazon Connect整合對台灣企業的實際影響是什麼？</h2><p>Agentforce Voice與Amazon Connect的即時雙向互通，讓AI客服能夠智慧地判斷是否需要轉接真人或開啟工單，這對台灣聯絡中心與客服營運特別重要。台灣的聯絡中心通常同時處理大量電話與文字互動，這項整合讓企業可以用單一AI系統跨越語音與文字介面，減少客服培訓與系統維護成本，同時提升客戶體驗。</p><h2 id="sec-5">跨雲整合時代的採購邏輯怎麼運作？</h2><p>傳統採購中，企業要同時向AWS與Salesforce採購，會面臨各自計費、各自簽約的行政複雜性。這次合作引入合併計費邏輯，讓企業用單一使用者認證和統一計費模式購買跨雲服務，大幅降低採購門檻。這對中小型企業與新創特別有利，因為不再需要IT部門花時間協調多家雲端廠商的合約細節。</p><h2 id="sec-6">企業雲端進化的三個階段是什麼？</h2><p>第一階段是「搬上雲」（2010年代初），企業從本地伺服器遷移到單一雲端；第二階段是「多雲」（2015-2020年代），企業為了避免廠商綁定而同時使用多家雲端服務；第三階段是「跨雲整合」（2024年起），企業不再簡單地共存多雲，而是讓不同廠商的服務深度連結、流暢互通。AWS與Salesforce的這次宣布就是第三階段的標誌性事件。</p><h2 id="sec-7">這波更新後企業該如何提前佈局？</h2><p>通常宣布到實際落地會有半年落差，聰明的企業現在就可以開始評估。IT主管應該審視現有Salesforce與AWS使用情況；雲端架構師可以開始規劃零複製的架構方案；行銷與業務應該評估AI代理進Slack能帶來的流程優化；聯絡中心營運團隊應該啟動對Agentforce Voice的試點計畫。同時，這也是學習新技能的好時機——「AI整合工程師」與「跨雲代理架構師」這類職位會逐漸浮現。</p><h2 id="sec-8">常見問題</h2><h3 id="sec-9">Salesforce資料怎樣直接被AWS讀取而不複製？</h3><p>透過Apache Iceberg開放標準，Salesforce Data Cloud與Amazon QuickSight能共用同一份資料格式，無需建立複本，QuickSight可直接查詢源資料進行分析。</p><h3 id="sec-10">AI代理在Slack裡能執行什麼操作？</h3><p>AWS Bedrock上的AI代理可在Slack內執行後端流程，包括查詢數據、修改記錄、觸發自動化工作流等，員工無需切換系統即可完成任務。</p><h3 id="sec-11">跨雲整合會增加還是降低企業成本？</h3><p>合併計費與零複製技術能降低採購行政成本與重複資料存儲成本，但具體ROI取決於企業現有架構；建議先從試點項目評估實際效益。</p>
 <hr>
 <p>📚 <strong>同主題的其他單集 / 文章，延伸聽下去：</strong></p>
 <ul>
@@ -91,22 +67,30 @@ function nlGo(f){
 <li><a href="/podcast.html">瀏覽所有單集 →</a></li>
 </ul><!--BODY:END--></div>
     <nav class="post-nav">
-      <a class="pn" href="/post/404/"><span>← 上一篇</span><b>AWS 20週年啟示錄：從工程痛點到雲端帝國的創新法則</b></a>
-      <a class="pn pn-r" href="/post/397/"><span>下一篇 →</span><b>Neoclouds崛起：AI時代雲端新勢力如何挑戰AWS宰制局面</b></a>
+      <a class="pn" href="/post/411/"><span>← 上一篇</span><b>Anthropic、OpenAI新模型大戰：雲端成本與效率角力如何改寫企業選擇？</b></a>
+      <a class="pn pn-r" href="/post/394/"><span>下一篇 →</span><b>小型高效AI模型崛起：為什麼2027年是雲端成本結構的分水嶺？</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/372/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>微牛證券AI整合案例：金融雲端如何用大模型驅動股價</b></a></li><li><a href="/post/44/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>無伺服器GPU時代來臨：Databricks×NVIDIA如何重塑AI訓練經濟學</b></a></li><li><a href="/post/276/"><span class="h-meta"><span class="h-cat">資安</span><span>🎙 Podcast</span></span><b>AI27｜AI 對打 AI 的時代：拆解 Google AI Threat Defense</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="成本壓力推動AI產業轉向輕量化開發，開源小型模型逐漸普及。本文剖析小模型如何改寫雲端運算經濟學，以及台灣企業如何把握這波技術民主化浪潮，打造更靈活的AI部署策略。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-379.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/379/","headline":"小型模型崛起：開源AI如何撼動雲端運算成本格局","description":"成本壓力推動AI產業轉向輕量化開發，開源小型模型逐漸普及。本文剖析小模型如何改寫雲端運算經濟學，以及台灣企業如何把握這波技術民主化浪潮，打造更靈活的AI部署策略。","datePublished":"2026-08-29","dateModified":"2026-08-29","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/379/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/379/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-379.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"小型模型崛起：開源AI如何撼動雲端運算成本格局","item":"https://operation.tw/post/379/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/379/#faq","mainEntity":[{"@type":"Question","name":"小型模型的推理準確度會不會遠低於大型模型？","acceptedAnswer":{"@type":"Answer","text":"並不一定。在許多實務應用中，精心設計的小型模型足以達到商用標準；大型模型的優勢主要體現在需要廣泛知識覆蓋、複雜推理的通用任務上，而大多數企業應用（如分類、摘要、客服）用小模型已夠用。"}},{"@type":"Question","name":"開源模型是否存在安全與法律風險？","acceptedAnswer":{"@type":"Answer","text":"存在，但可控。開源模型可能被用於生成有害內容或侵犯著作權，企業需在部署前評估模型的訓練資料來源與使用條款，並建立內部治理流程；選擇有明確開源協議（如Apache 2.0、MIT）的成熟項目能降低風險。"}},{"@type":"Question","name":"中小企業現在開始學習開源AI部署還來得及嗎？","acceptedAnswer":{"@type":"Answer","text":"完全來得及。開源工具與教育資源已相當豐富，企業可從試點項目開始，逐步累積團隊能力；相比等待技術完全成熟，現在啟動反而能搶占競爭先機。"}}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:379})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="379">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E9%9B%B2%E7%AB%AF/">雲端</a></nav>
   <article>
     <div class="badge" style="color:#62a8ff;background:#62a8ff1a">☁️ 雲端</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-379.webp"><img class="cover" src="https://operation.tw/images/posts/post-379.jpg" alt="小型模型崛起：開源AI如何撼動雲端運算成本格局" width="1200" height="630"></picture>
     <div class="excerpt"><p>成本壓力推動AI產業轉向輕量化開發，開源小型模型逐漸普及。本文剖析小模型如何改寫雲端運算經濟學，以及台灣企業如何把握這波技術民主化浪潮，打造更靈活的AI部署策略。</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼大型模型成本飆升，反而推動小型模型崛起？</a></li><li class="toc-l2"><a href="#sec-2">開源AI普及對企業雲端策略代表什麼？</a></li><li class="toc-l2"><a href="#sec-3">台灣企業如何在開源AI浪潮中抓住機會？</a></li><li class="toc-l2"><a href="#sec-4">開源小型模型會取代雲端大廠服務嗎？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">小型模型的推理準確度會不會遠低於大型模型？</a></li><li class="toc-l3"><a href="#sec-7">開源模型是否存在安全與法律風險？</a></li><li class="toc-l3"><a href="#sec-8">中小企業現在開始學習開源AI部署還來得及嗎？</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>大型模型成本飆升促使業界投向小型模型，開源方案成為企業降本新途徑</li><li>小型模型在邊緣運算與私有部署的優勢，正重塑企業的雲端成本結構</li><li>台灣科技企業應把握開源生態時機，建立自主可控的AI雲端基礎設施</li></ul><h2 id="sec-1">為什麼大型模型成本飆升，反而推動小型模型崛起？</h2><p>訓練與推理大型語言模型的成本持續上升，已成為許多企業難以承受的負擔，這正是開源小型模型逐漸普及的直接原因。根據今日新聞指出，「成本上升推動小型模型發展」已成為產業趨勢，廠商與研究機構正積極探索如何用更少的參數與運算量達到實用的AI效能。</p><p>這個轉變並非技術倒退，而是務實的進化。小型模型通常具有更低的記憶體需求、更快的推理速度，以及更適合在邊緣裝置（例如企業內部伺服器或物聯網設備）上部署的特性。當企業不再被迫租賃昂貴的雲端GPU資源時，整體營運成本結構將產生根本性改變。</p><h2 id="sec-2">開源AI普及對企業雲端策略代表什麼？</h2><p>開源小型模型的普及意味著企業從「被迫依賴雲端大廠」轉變為「擁有自主部署選擇權」的時代正在到來。過去，企業若要使用先進AI能力，通常只能透過OpenAI、Google或微軟等大廠的API服務，這不僅成本高昂，也存在資料隱私與業務依賴的風險。</p><p>開源模型生態的成熟，讓企業可以選擇將模型部署在自有伺服器或混合雲環境中。這代表：企業能更靈活地掌控成本、保護敏感資料不外流、甚至微調模型以適應特定業務場景。混合部署策略（部分業務用雲端，部分用私有部署）正成為大型企業的新標配。</p><h2 id="sec-3">台灣企業如何在開源AI浪潮中抓住機會？</h2><p>台灣在半導體設計與製造領域擁有全球競爭力，但在AI雲端基礎設施與模型開發上仍有追趕空間，開源小型模型的普及為台灣企業帶來了彎道超車的機會。</p><p>首先，台灣科技與製造企業（如晶片廠、電子製造商）可透過自建開源模型，打造符合台灣產業需求的AI解決方案——例如針對電子產業品質檢測、供應鏈優化的專用小模型。其次，本地AI新創與系統整合商可聚焦於「模型微調與邊緣部署」服務，為中小企業降低AI採用門檻。再者，台灣應加強與國際開源社群的合作，在模型開發、資料集建設上貢獻力量，提升台灣在全球AI開源生態中的話語權。</p><p>特別是在製造業與金融業等對資料安全敏感的產業，私有部署模式能有效解決「資料跨境」的法規風險，這是台灣企業相比國外廠商的潛在優勢。</p><h2 id="sec-4">開源小型模型會取代雲端大廠服務嗎？</h2><p>不會完全取代，但將形成「差異化的供給結構」。大型模型與開源小模型未來將長期共存，應用場景截然不同。</p><p>複雜的推理任務、實時性要求不高的分析工作，可能遷移至輕量化開源模型；但高精度、低延遲、跨領域推理的需求，仍會依賴由大廠提供的前沿模型。企業的選擇將變得更加精細化——根據不同業務的成本-效能權衡，混合運用多種模型與服務。</p><p>這種演化對台灣的意義在於：不需要與OpenAI或Google正面競爭百億參數的大模型，而是在「符合本地需求、部署靈活、成本可控」的細分市場中建立優勢。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">小型模型的推理準確度會不會遠低於大型模型？</h3><p>並不一定。在許多實務應用中，精心設計的小型模型足以達到商用標準；大型模型的優勢主要體現在需要廣泛知識覆蓋、複雜推理的通用任務上，而大多數企業應用（如分類、摘要、客服）用小模型已夠用。</p><h3 id="sec-7">開源模型是否存在安全與法律風險？</h3><p>存在，但可控。開源模型可能被用於生成有害內容或侵犯著作權，企業需在部署前評估模型的訓練資料來源與使用條款，並建立內部治理流程；選擇有明確開源協議（如Apache 2.0、MIT）的成熟項目能降低風險。</p><h3 id="sec-8">中小企業現在開始學習開源AI部署還來得及嗎？</h3><p>完全來得及。開源工具與教育資源已相當豐富，企業可從試點項目開始，逐步累積團隊能力；相比等待技術完全成熟，現在啟動反而能搶占競爭先機。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>大型模型成本飆升促使業界投向小型模型，開源方案成為企業降本新途徑</li><li>小型模型在<a class="gl" href="/glossary/#term-edge-computing" title="術語庫：邊緣運算">邊緣運算</a>與私有部署的優勢，正重塑企業的雲端成本結構</li><li>台灣科技企業應把握開源生態時機，建立自主可控的AI雲端基礎設施</li></ul><h2 id="sec-1">為什麼大型模型成本飆升，反而推動小型模型崛起？</h2><p>訓練與<a class="gl" href="/glossary/#term-inference" title="術語庫：推理">推理</a><a class="gl" href="/glossary/#term-llm" title="術語庫：大型語言模型">大型語言模型</a>的成本持續上升，已成為許多企業難以承受的負擔，這正是開源小型模型逐漸普及的直接原因。根據今日新聞指出，「成本上升推動小型模型發展」已成為產業趨勢，廠商與研究機構正積極探索如何用更少的參數與運算量達到實用的AI效能。</p><p>這個轉變並非技術倒退，而是務實的進化。小型模型通常具有更低的記憶體需求、更快的推理速度，以及更適合在邊緣裝置（例如企業內部伺服器或物聯網設備）上部署的特性。當企業不再被迫租賃昂貴的雲端<a class="gl" href="/glossary/#term-gpu" title="術語庫：圖形處理器">GPU</a>資源時，整體營運成本結構將產生根本性改變。</p><h2 id="sec-2">開源AI普及對企業雲端策略代表什麼？</h2><p>開源小型模型的普及意味著企業從「被迫依賴雲端大廠」轉變為「擁有自主部署選擇權」的時代正在到來。過去，企業若要使用先進AI能力，通常只能透過OpenAI、Google或微軟等大廠的API服務，這不僅成本高昂，也存在資料隱私與業務依賴的風險。</p><p><a class="gl" href="/glossary/#term-open-source-model" title="術語庫：開源模型">開源模型</a>生態的成熟，讓企業可以選擇將模型部署在自有伺服器或混合雲環境中。這代表：企業能更靈活地掌控成本、保護敏感資料不外流、甚至微調模型以適應特定業務場景。混合部署策略（部分業務用雲端，部分用私有部署）正成為大型企業的新標配。</p><h2 id="sec-3">台灣企業如何在開源AI浪潮中抓住機會？</h2><p>台灣在半導體設計與製造領域擁有全球競爭力，但在AI雲端基礎設施與模型開發上仍有追趕空間，開源小型模型的普及為台灣企業帶來了彎道超車的機會。</p><p>首先，台灣科技與製造企業（如晶片廠、電子製造商）可透過自建開源模型，打造符合台灣產業需求的AI解決方案——例如針對電子產業品質檢測、供應鏈優化的專用小模型。其次，本地AI新創與系統整合商可聚焦於「模型微調與邊緣部署」服務，為中小企業降低AI採用門檻。再者，台灣應加強與國際開源社群的合作，在模型開發、資料集建設上貢獻力量，提升台灣在全球AI開源生態中的話語權。</p><p>特別是在製造業與金融業等對資料安全敏感的產業，私有部署模式能有效解決「資料跨境」的法規風險，這是台灣企業相比國外廠商的潛在優勢。</p><h2 id="sec-4">開源小型模型會取代雲端大廠服務嗎？</h2><p>不會完全取代，但將形成「差異化的供給結構」。大型模型與開源小模型未來將長期共存，應用場景截然不同。</p><p>複雜的推理任務、實時性要求不高的分析工作，可能遷移至輕量化開源模型；但高精度、低延遲、跨領域推理的需求，仍會依賴由大廠提供的前沿模型。企業的選擇將變得更加精細化——根據不同業務的成本-效能權衡，混合運用多種模型與服務。</p><p>這種演化對台灣的意義在於：不需要與OpenAI或Google正面競爭百億參數的大模型，而是在「符合本地需求、部署靈活、成本可控」的細分市場中建立優勢。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">小型模型的推理準確度會不會遠低於大型模型？</h3><p>並不一定。在許多實務應用中，精心設計的小型模型足以達到商用標準；大型模型的優勢主要體現在需要廣泛知識覆蓋、複雜推理的通用任務上，而大多數企業應用（如分類、摘要、客服）用小模型已夠用。</p><h3 id="sec-7">開源模型是否存在安全與法律風險？</h3><p>存在，但可控。開源模型可能被用於生成有害內容或侵犯著作權，企業需在部署前評估模型的訓練資料來源與使用條款，並建立內部治理流程；選擇有明確開源協議（如Apache 2.0、MIT）的成熟項目能降低風險。</p><h3 id="sec-8">中小企業現在開始學習開源AI部署還來得及嗎？</h3><p>完全來得及。開源工具與教育資源已相當豐富，企業可從試點項目開始，逐步累積團隊能力；相比等待技術完全成熟，現在啟動反而能搶占競爭先機。</p><!--BODY:END--></div>
     <nav class="post-nav">
-      <a class="pn" href="/post/384/"><span>← 上一篇</span><b>AWS 20周年：從內部工具到雲端帝國，台灣企業該學什麼？</b></a>
-      <a class="pn pn-r" href="/post/375/"><span>下一篇 →</span><b>公有雲市場2035年翻倍成長：台灣企業搶搭AI雲端新浪潮</b></a>
+      <a class="pn" href="/post/387/"><span>← 上一篇</span><b>AWS 20周年後的下一步：從IaC到AI原生基礎設施</b></a>
+      <a class="pn pn-r" href="/post/372/"><span>下一篇 →</span><b>微牛證券AI整合案例：金融雲端如何用大模型驅動股價</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/394/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>小型高效AI模型崛起：為什麼2027年是雲端成本結構的分水嶺？</b></a></li><li><a href="/post/139/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>歐洲雲端反擊戰：OVHcloud邊緣AI如何撼動美國雲端巨頭壟斷？</b></a></li><li><a href="/post/421/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>AI58｜Gemini 4 Argon：AI 模型選型新時代，長流程推理如何改寫企業成本</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

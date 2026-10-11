@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="2023 年三星工程師把機密晶片程式碼貼進 ChatGPT，引爆全球企業最頭痛的資安議題——影子 AI。69% 員工、68% 高層都在偷用 AI 工具，81% 的使用行為 IT 完全看不見。本文整理 Podcast 單集核心觀點，說明影子 AI 的三類真實風險，以及 2026 年企業已放棄「禁止」、改採「給它一條官方賽道」的新策略。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-277.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/277/","headline":"AI28｜資安最大的敵人不是駭客，是員工的善意——拆解影子 AI","description":"2023 年三星工程師把機密晶片程式碼貼進 ChatGPT，引爆全球企業最頭痛的資安議題——影子 AI。69% 員工、68% 高層都在偷用 AI 工具，81% 的使用行為 IT 完全看不見。本文整理 Podcast 單集核心觀點，說明影子 AI 的三類真實風險，以及 2026 年企業已放棄「禁止」、改採「給它一條官方賽道」的新策略。","datePublished":"2026-06-04","dateModified":"2026-06-04","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/277/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/277/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-277.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"AI28｜資安最大的敵人不是駭客，是員工的善意——拆解影子 AI","item":"https://operation.tw/post/277/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/277/#episode","name":"AI28｜資安最大的敵人不是駭客，是員工的善意——拆解影子 AI","url":"https://operation.tw/post/277/","datePublished":"2026-06-04","description":"2023 年三星工程師把機密晶片程式碼貼進 ChatGPT，引爆全球企業最頭痛的資安議題——影子 AI。69% 員工、68% 高層都在偷用 AI 工具，81% 的使用行為 IT 完全看不見。本文整理 Podcast 單集核心觀點，說明影子 AI 的三類真實風險，以及 2026 年企業已放棄「禁止」、改採「給它一條官方賽道」的新策略。","image":"https://operation.tw/images/posts/post-277.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":28,"duration":"PT16M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/b7ff6b59-40e1-440f-912a-37dee6a15c83/rssFileVip.mp3?timestamp=1780686585766","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:277})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="277">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E8%B3%87%E5%AE%89/">資安</a></nav>
   <article>
     <div class="badge" style="color:#ff6b9a;background:#ff6b9a1a">🔐 資安</div>
@@ -73,9 +48,10 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-06-04">2026-06-04</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-277.webp"><img class="cover" src="https://operation.tw/images/posts/post-277.jpg" alt="AI28｜資安最大的敵人不是駭客，是員工的善意——拆解影子 AI" width="1200" height="630"></picture>
     <div class="excerpt"><p>2023 年三星工程師把機密晶片程式碼貼進 ChatGPT，引爆全球企業最頭痛的資安議題——影子 AI。69% 員工、68% 高層都在偷用 AI 工具，81% 的使用行為 IT 完全看不見。本文整理 Podcast 單集核心觀點，說明影子 AI 的三類真實風險，以及 2026 年企業已放棄「禁止」、改採「給它一條官方賽道」的新策略。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>AI28_資安操作 | 資安最大的敵人不是駭客，是員工「想做好工作的善意」——拆解影子 AI</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000771233588" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI28_%E8%B3%87%E5%AE%89%E6%93%8D%E4%BD%9C%20%7C%20%E8%B3%87%E5%AE%89%E6%9C%80%E5%A4%A7%E7%9A%84%E6%95%B5%E4%BA%BA%E4%B8%8D%E6%98%AF%E9%A7%AD%E5%AE%A2%EF%BC%8C%E6%98%AF%E5%93%A1%E5%B7%A5%E3%80%8C%E6%83%B3%E5%81%9A%E5%A5%BD%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%96%84%E6%84%8F%E3%80%8D%E2%80%94%E2%80%94%E6%8B%86%E8%A7%A3%E5%BD%B1%E5%AD%90%20AI" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">一個工程師的善意，讓三星付出慘痛代價</a></li><li class="toc-l2"><a href="#sec-2">影子 AI 是什麼？數字比你想的嚇人</a></li><li class="toc-l2"><a href="#sec-3">三類真實風險：不只是資料外洩</a></li><li class="toc-l2"><a href="#sec-4">為什麼「禁止」永遠無效</a></li><li class="toc-l2"><a href="#sec-5">不同角色的具體行動方向</a></li><li class="toc-l2"><a href="#sec-6">資安最弱的一環，也是最強的一環</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><h2 id="sec-1">一個工程師的善意，讓三星付出慘痛代價</h2><p>時間回到 2023 年 4 月。三星一位半導體工程師面對一段他想優化的內部機密晶片設計程式碼，他做了一個很直覺的決定：貼進 ChatGPT 問問看。他得到答案、改完程式、收工下班。從他的角度，這是一個再正常不過的「把工作做好」的舉動。</p><p>問題是——那段對話，已經進入 OpenAI 的訓練資料池。</p><p>三星內部資安團隊發現後，宣布全公司永久禁用 ChatGPT。然後呢？員工繼續用，改用手機網路、家裡 Wi-Fi、私人筆電繞過公司管控。資安政策擋得住公司設備，擋不住「我已經太習慣這個工具了」這件事。</p><p>這就是「影子 AI」（Shadow AI）——而且它正在每一間公司裡悄悄發生。</p><h2 id="sec-2">影子 AI 是什麼？數字比你想的嚇人</h2><p>影子 AI 指的是員工在未經公司 IT 部門核准、沒有任何管控的情況下，自行使用 AI 工具處理工作內容。這集 Podcast 節目整理的數據直接點出問題規模：69% 的員工、68% 的高層主管都在使用未經批准的 AI 工具；33% 的人曾經把公司機密資料貼進這些工具；而高達 81% 的使用行為，是 IT 部門完全看不見的。</p><p>這不是少數員工的個別行為，這是整個組織在「官方工具不夠用」的壓力下，自然長出來的地下生態系。</p><h2 id="sec-3">三類真實風險：不只是資料外洩</h2><p>影子 AI 帶來的風險，在這集裡被分成三個層次討論：</p><ul><li><strong>資料外洩：</strong>最直接的風險。員工貼入的客戶資料、內部程式碼、財務數字，可能成為 AI 服務商的訓練素材，或在服務條款允許的範圍內被留存、被看見。</li><li><strong>合規破口：</strong>對於受 GDPR、HIPAA、金融法規等監管的產業，員工使用未核准工具處理敏感資料，本身就是一個合規違規事件，企業可能在完全不知情的狀況下踩線。</li><li><strong>影子供應鏈：</strong>這是 2025 到 2026 年才逐漸浮現的新型風險。當員工開始用 AI 工具自動化工作流程、串接外部服務，公司等於在不知情的狀況下多了一條沒有人審核的供應鏈，攻擊面也隨之擴大。</li></ul><h2 id="sec-4">為什麼「禁止」永遠無效</h2><p>節目裡用了一個很好懂的比喻：想像你是一個城市市長，發現居民都在抄小路違規穿越。你派警察抓人，但抓不完；你立牌禁止，但沒人看。真正的解法，是蓋一條更快、更方便的官方道路，讓人自然走過去。</p><p>這正是 2026 年企業資安策略的轉向：放棄「禁止」，改為「給它一條官方賽道」。具體來說，就是主動導入經過安全評估的企業級 AI 工具，讓員工有合規的選項可以用，而不是把需求逼進地下。</p><h2 id="sec-5">不同角色的具體行動方向</h2><p>這集節目最後針對三種人給出不同的行動建議，我覺得這個拆法很實用：</p><ul><li><strong>一般員工：</strong>使用 AI 工具前，先問自己「這份資料如果出現在公開網路上，會有問題嗎？」養成先確認工具是否在公司核准清單的習慣。</li><li><strong>部門主管：</strong>與其等 IT 來管，不如主動盤點團隊在用哪些 AI 工具、做什麼用途，提前跟 IT 溝通需求，讓官方工具跟得上實際工作方式。</li><li><strong>企業 IT：</strong>監控思維要從「抓違規」轉向「降低摩擦」——讓合規工具比地下工具更好用，才是根本解法。</li></ul><h2 id="sec-6">資安最弱的一環，也是最強的一環</h2><p>這集讓我印象最深的，是節目結尾的一句話：資安最弱的一環是人，但最強的一環也是人。</p><p>影子 AI 之所以難解，是因為它的根源不是惡意，而是善意——員工只是想把工作做好。你擋不住一個想做好工作的人，能做的是給他對的工具，讓他自然走上對的路。</p><p>如果你對這個議題有興趣，推薦直接去聽這集完整的 Podcast，裡面有更多實際案例的拆解和討論脈絡，聽完對影子 AI 會有很不一樣的感受。</p>
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">一個工程師的善意，讓三星付出慘痛代價</h2><p>時間回到 2023 年 4 月。三星一位半導體工程師面對一段他想優化的內部機密晶片設計程式碼，他做了一個很直覺的決定：貼進 ChatGPT 問問看。他得到答案、改完程式、收工下班。從他的角度，這是一個再正常不過的「把工作做好」的舉動。</p><p>問題是——那段對話，已經進入 OpenAI 的訓練資料池。</p><p>三星內部資安團隊發現後，宣布全公司永久禁用 ChatGPT。然後呢？員工繼續用，改用手機網路、家裡 Wi-Fi、私人筆電繞過公司管控。資安政策擋得住公司設備，擋不住「我已經太習慣這個工具了」這件事。</p><p>這就是「影子 AI」（<a class="gl" href="/glossary/#term-shadow-ai" title="術語庫：影子AI">Shadow AI</a>）——而且它正在每一間公司裡悄悄發生。</p><h2 id="sec-2">影子 AI 是什麼？數字比你想的嚇人</h2><p>影子 AI 指的是員工在未經公司 IT 部門核准、沒有任何管控的情況下，自行使用 AI 工具處理工作內容。這集 Podcast 節目整理的數據直接點出問題規模：69% 的員工、68% 的高層主管都在使用未經批准的 AI 工具；33% 的人曾經把公司機密資料貼進這些工具；而高達 81% 的使用行為，是 IT 部門完全看不見的。</p><p>這不是少數員工的個別行為，這是整個組織在「官方工具不夠用」的壓力下，自然長出來的地下生態系。</p><h2 id="sec-3">三類真實風險：不只是資料外洩</h2><p>影子 AI 帶來的風險，在這集裡被分成三個層次討論：</p><ul><li><strong>資料外洩：</strong>最直接的風險。員工貼入的客戶資料、內部程式碼、財務數字，可能成為 AI 服務商的訓練素材，或在服務條款允許的範圍內被留存、被看見。</li><li><strong>合規破口：</strong>對於受 GDPR、HIPAA、金融法規等監管的產業，員工使用未核准工具處理敏感資料，本身就是一個合規違規事件，企業可能在完全不知情的狀況下踩線。</li><li><strong>影子供應鏈：</strong>這是 2025 到 2026 年才逐漸浮現的新型風險。當員工開始用 AI 工具自動化工作流程、串接外部服務，公司等於在不知情的狀況下多了一條沒有人審核的供應鏈，攻擊面也隨之擴大。</li></ul><h2 id="sec-4">為什麼「禁止」永遠無效</h2><p>節目裡用了一個很好懂的比喻：想像你是一個城市市長，發現居民都在抄小路違規穿越。你派警察抓人，但抓不完；你立牌禁止，但沒人看。真正的解法，是蓋一條更快、更方便的官方道路，讓人自然走過去。</p><p>這正是 2026 年企業資安策略的轉向：放棄「禁止」，改為「給它一條官方賽道」。具體來說，就是主動導入經過安全評估的企業級 AI 工具，讓員工有合規的選項可以用，而不是把需求逼進地下。</p><h2 id="sec-5">不同角色的具體行動方向</h2><p>這集節目最後針對三種人給出不同的行動建議，我覺得這個拆法很實用：</p><ul><li><strong>一般員工：</strong>使用 AI 工具前，先問自己「這份資料如果出現在公開網路上，會有問題嗎？」養成先確認工具是否在公司核准清單的習慣。</li><li><strong>部門主管：</strong>與其等 IT 來管，不如主動盤點團隊在用哪些 AI 工具、做什麼用途，提前跟 IT 溝通需求，讓官方工具跟得上實際工作方式。</li><li><strong>企業 IT：</strong>監控思維要從「抓違規」轉向「降低摩擦」——讓合規工具比地下工具更好用，才是根本解法。</li></ul><h2 id="sec-6">資安最弱的一環，也是最強的一環</h2><p>這集讓我印象最深的，是節目結尾的一句話：資安最弱的一環是人，但最強的一環也是人。</p><p>影子 AI 之所以難解，是因為它的根源不是惡意，而是善意——員工只是想把工作做好。你擋不住一個想做好工作的人，能做的是給他對的工具，讓他自然走上對的路。</p><p>如果你對這個議題有興趣，推薦直接去聽這集完整的 Podcast，裡面有更多實際案例的拆解和討論脈絡，聽完對影子 AI 會有很不一樣的感受。</p>
 <hr>
 <p>📚 <strong>同主題的其他單集 / 文章，延伸聽下去：</strong></p>
 <ul>
@@ -94,19 +70,27 @@ function nlGo(f){
       <a class="pn" href="/post/124/"><span>← 上一篇</span><b>川普AI資安行政命令：前沿模型政府測試的雙面刃</b></a>
       <a class="pn pn-r" href="/post/276/"><span>下一篇 →</span><b>AI27｜AI 對打 AI 的時代：拆解 Google AI Threat Defense</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/368/"><span class="h-meta"><span class="h-cat">資安</span></span><b>AI成本崩跌50%背後的資安隱憂：便宜AI模型如何成為駭客新武器</b></a></li><li><a href="/post/422/"><span class="h-meta"><span class="h-cat">資安</span></span><b>GPT-6自動下載駭客工具遭抓包：AI代理失控的資安警訊</b></a></li><li><a href="/post/276/"><span class="h-meta"><span class="h-cat">資安</span><span>🎙 Podcast</span></span><b>AI27｜AI 對打 AI 的時代：拆解 Google AI Threat Defense</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

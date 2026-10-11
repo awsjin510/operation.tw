@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="資安產品明明重要，客戶卻常常不願意掏錢？這集「操作一下」邀請到產品經理 Edward，從他在資安領域的職涯轉換談起，帶我們拆解 EDR、MDR、SOC、MSSP 這些常見縮寫背後的意義，並分享如何量化資安效益、讓決策者看見資安的真實價值，甚至聊到 AI 在資安產品中的實際應用方向。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-253.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/253/","headline":"EP96｜從資安工程師到產品經理：如何讓客戶願意為資安買單？","description":"資安產品明明重要，客戶卻常常不願意掏錢？這集「操作一下」邀請到產品經理 Edward，從他在資安領域的職涯轉換談起，帶我們拆解 EDR、MDR、SOC、MSSP 這些常見縮寫背後的意義，並分享如何量化資安效益、讓決策者看見資安的真實價值，甚至聊到 AI 在資安產品中的實際應用方向。","datePublished":"2026-04-20","dateModified":"2026-04-20","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/253/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/253/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-253.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"EP96｜從資安工程師到產品經理：如何讓客戶願意為資安買單？","item":"https://operation.tw/post/253/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/253/#episode","name":"EP96｜從資安工程師到產品經理：如何讓客戶願意為資安買單？","url":"https://operation.tw/post/253/","datePublished":"2026-04-20","description":"資安產品明明重要，客戶卻常常不願意掏錢？這集「操作一下」邀請到產品經理 Edward，從他在資安領域的職涯轉換談起，帶我們拆解 EDR、MDR、SOC、MSSP 這些常見縮寫背後的意義，並分享如何量化資安效益、讓決策者看見資安的真實價值，甚至聊到 AI 在資安產品中的實際應用方向。","image":"https://operation.tw/images/posts/post-253.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":96,"duration":"PT51M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/96edd610-5545-4039-bc26-6c7a45ffe356/rssFileVip.mp3?timestamp=1776813983960","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:253})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="253">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E8%B3%87%E5%AE%89/">資安</a></nav>
   <article>
     <div class="badge" style="color:#ff6b9a;background:#ff6b9a1a">🔐 資安</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-20">2026-04-20</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-253.webp"><img class="cover" src="https://operation.tw/images/posts/post-253.jpg" alt="EP96｜從資安工程師到產品經理：如何讓客戶願意為資安買單？" width="1200" height="630"></picture>
     <div class="excerpt"><p>資安產品明明重要，客戶卻常常不願意掏錢？這集「操作一下」邀請到產品經理 Edward，從他在資安領域的職涯轉換談起，帶我們拆解 EDR、MDR、SOC、MSSP 這些常見縮寫背後的意義，並分享如何量化資安效益、讓決策者看見資安的真實價值，甚至聊到 AI 在資安產品中的實際應用方向。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>EP96_達人操作 | 產品經理_Edward｜從資安工程師到產品經理，如何量化資安效益，讓客戶願意為了資安買單!？</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000762484871" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP96_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E7%94%A2%E5%93%81%E7%B6%93%E7%90%86_Edward%EF%BD%9C%E5%BE%9E%E8%B3%87%E5%AE%89%E5%B7%A5%E7%A8%8B%E5%B8%AB%E5%88%B0%E7%94%A2%E5%93%81%E7%B6%93%E7%90%86%EF%BC%8C%E5%A6%82%E4%BD%95%E9%87%8F%E5%8C%96%E8%B3%87%E5%AE%89%E6%95%88%E7%9B%8A%EF%BC%8C%E8%AE%93%E5%AE%A2%E6%88%B6%E9%A1%98%E6%84%8F%E7%82%BA%E4%BA%86%E8%B3%87%E5%AE%89%E8%B2%B7%E5%96%AE!%EF%BC%9F" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">先搞懂這些縮寫在說什麼</a></li><li class="toc-l2"><a href="#sec-2">資安效益怎麼量化？這才是真正的難題</a></li><li class="toc-l2"><a href="#sec-3">AI 進來之後，資安產品在變</a></li><li class="toc-l2"><a href="#sec-4">對你的實際啟發</a></li><li class="toc-l2"><a href="#sec-5">結語</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>「資安很重要」這句話幾乎人人都同意，但一談到要花錢，客戶往往又開始猶豫了。對於身在資安產業的人來說，這大概是最令人頭痛的日常——你知道這東西能保護公司，卻很難讓對方「感受到」那份價值。</p><p>這集 Podcast 邀請到資安背景出身的產品經理 Edward，他從技術端走到產品端，一路累積了和客戶打交道、把資安「說清楚、講明白」的豐富經驗。整集對話下來，最讓我印象深刻的，就是他能把一堆縮寫名詞講得讓人秒懂。</p><h2 id="sec-1">先搞懂這些縮寫在說什麼</h2><p>資安領域充滿讓人眼花撩亂的英文縮寫，Edward 在節目中用生活化的方式幫大家拆解了幾個常見名詞：</p><ul><li><strong>EDR（Endpoint Detection and Response）</strong>：端點偵測與回應，可以把它想成裝在每一台電腦上的「監視器加警衛」，不只記錄發生什麼事，還能主動回應威脅。</li><li><strong>MDR（Managed Detection and Response）</strong>：把 EDR 的能力外包出去，由專業的資安團隊幫你 7x24 盯著看、發現問題立即處理，適合沒有足夠資安人力的企業。</li><li><strong>SOC（Security Operations Center）</strong>：資安維運中心，是負責監控、分析與應對資安事件的核心單位，可以是企業自建，也可以委外。</li><li><strong>MSSP（Managed Security Service Provider）</strong>：受管理的資安服務提供商，整合提供多種資安服務的外部廠商，SOC 往往是其中一環。</li></ul><p>這幾個概念環環相扣，從工具、到服務、到整體維運，代表的是企業在資安投入上不同層次的選擇。</p><h2 id="sec-2">資安效益怎麼量化？這才是真正的難題</h2><p>技術懂了，更難的問題來了：怎麼說服客戶掏錢？</p><p>Edward 分享了一個核心思維——資安的價值不是「你買了之後得到什麼」，而是「你沒買，出事之後要損失多少」。這種從風險角度出發的溝通方式，比起列功能清單，更能觸動決策者的神經。</p><p>具體來說，量化資安效益可以從幾個方向切入：估算一次資安事件的平均損失（包含停機成本、資料外洩的法律責任、品牌聲譽傷害）；對比導入解決方案的年度費用；再加上縮短事件應變時間所節省的人力成本。當這些數字攤開來，ROI 的輪廓就會逐漸清晰。</p><p>當然，不同規模與產業的客戶，對風險的敏感度不同。Edward 也提到，和客戶溝通時需要因人而異——對技術主管說技術語言，對財務或 C-level 則要轉換成商業語言，這正是產品經理這個角色的關鍵價值所在。</p><h2 id="sec-3">AI 進來之後，資安產品在變</h2><p>節目後半段，話題自然延伸到 AI 與資安的交叉點。Edward 點出 AI 在資安領域目前最實際的應用，是在大量告警中快速篩出真正需要人工介入的事件，減少分析師的疲勞轟炸，讓有限的人力聚焦在真正重要的威脅上。</p><p>這對 MDR 和 SOC 服務來說尤其關鍵——每天產生的告警數量龐大，沒有 AI 輔助過濾，幾乎不可能有效率地運作。當然，AI 也帶來新的攻擊面，這是另一個產業正在快速演化的方向。</p><h2 id="sec-4">對你的實際啟發</h2><p>不管你是資安從業者、產品經理，還是正在評估要不要加強公司資安防護的決策者，這集都值得一聽。幾個可以帶走的思考點：</p><ul><li>資安溝通的本質是風險管理的溝通，學會用對方聽得懂的語言說話。</li><li>評估資安工具時，除了功能，更要問「出事了，這個工具能幫我節省多少損失」。</li><li>EDR、MDR、SOC、MSSP 不是非此即彼，而是根據企業規模與成熟度逐步疊加的選項。</li></ul><h2 id="sec-5">結語</h2><p>Edward 的職涯路徑——從資安工程師轉型為產品經理——本身就是一個很有意思的故事。技術底子讓他能和工程師對話，產品思維讓他能和客戶溝通，兩者結合，才能在資安這個「重要但難賣」的領域找到自己的位置。</p><p>如果你對資安產業或產品經理這個職涯方向感興趣，強烈推薦去聽這集完整的對話，Edward 分享的那些一線經驗，比任何教科書都來得直接。</p>
@@ -92,21 +68,29 @@ function nlGo(f){
 </ul><!--BODY:END--></div>
     <nav class="post-nav">
       <a class="pn" href="/post/84/"><span>← 上一篇</span><b>AI攻擊工具化危機：企業該如何從Google 2026資安預測中未雨綢繆？</b></a>
-      <a class="pn pn-r" href="/post/75/"><span>下一篇 →</span><b>AI攻擊全面化時代：2026企業如何從被動防禦升級到主動偵測？</b></a>
+      <a class="pn pn-r" href="/post/250/"><span>下一篇 →</span><b>AI04｜AI 代理元年來了：免費工具、自動化工作流與那個神秘的超強模型</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/406/"><span class="h-meta"><span class="h-cat">資安</span></span><b>AI時代的新密語戰爭：亂碼通訊如何成為資安雙刃劍？</b></a></li><li><a href="/post/396/"><span class="h-meta"><span class="h-cat">資安</span></span><b>Anthropic AI模型越界攻擊：自主Agent時代的資安破口</b></a></li><li><a href="/post/218/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>EP67｜從工程師到外商PM：持續累積，現在的你決定未來的你</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

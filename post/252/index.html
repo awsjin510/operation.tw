@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="Anthropic 最新旗艦模型 Claude Opus 4.7 正式發布，在 13 項主要 benchmark 中拿下 8 項公開模型第一。這篇文章整理了這集 Podcast 拆解的四大核心新功能：三倍解析度視覺、xhigh 思考等級、Task Budgets 預算控制，以及悄悄影響你帳單的新 Tokenizer，幫你快速掌握這次升級的實際意義。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-252.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/252/","headline":"AI05｜Claude Opus 4.7 四大新功能完整解析：視覺、思考、預算一次搞懂","description":"Anthropic 最新旗艦模型 Claude Opus 4.7 正式發布，在 13 項主要 benchmark 中拿下 8 項公開模型第一。這篇文章整理了這集 Podcast 拆解的四大核心新功能：三倍解析度視覺、xhigh 思考等級、Task Budgets 預算控制，以及悄悄影響你帳單的新 Tokenizer，幫你快速掌握這次升級的實際意義。","datePublished":"2026-04-19","dateModified":"2026-04-19","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/252/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/252/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-252.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI05｜Claude Opus 4.7 四大新功能完整解析：視覺、思考、預算一次搞懂","item":"https://operation.tw/post/252/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/252/#episode","name":"AI05｜Claude Opus 4.7 四大新功能完整解析：視覺、思考、預算一次搞懂","url":"https://operation.tw/post/252/","datePublished":"2026-04-19","description":"Anthropic 最新旗艦模型 Claude Opus 4.7 正式發布，在 13 項主要 benchmark 中拿下 8 項公開模型第一。這篇文章整理了這集 Podcast 拆解的四大核心新功能：三倍解析度視覺、xhigh 思考等級、Task Budgets 預算控制，以及悄悄影響你帳單的新 Tokenizer，幫你快速掌握這次升級的實際意義。","image":"https://operation.tw/images/posts/post-252.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":5,"duration":"PT24M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/cab4e17c-f9c6-4a0f-9f80-b0e799c80f08/rssFileVip.mp3?timestamp=1776639359985","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:252})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="252">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -73,9 +48,10 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-19">2026-04-19</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-252.webp"><img class="cover" src="https://operation.tw/images/posts/post-252.jpg" alt="AI05｜Claude Opus 4.7 四大新功能完整解析：視覺、思考、預算一次搞懂" width="1200" height="630"></picture>
     <div class="excerpt"><p>Anthropic 最新旗艦模型 Claude Opus 4.7 正式發布，在 13 項主要 benchmark 中拿下 8 項公開模型第一。這篇文章整理了這集 Podcast 拆解的四大核心新功能：三倍解析度視覺、xhigh 思考等級、Task Budgets 預算控制，以及悄悄影響你帳單的新 Tokenizer，幫你快速掌握這次升級的實際意義。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>AI05_趨勢操作 | Claude Opus 4.7 來了：三倍解析度、省錢新方式</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000762191093" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI05_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20Claude%20Opus%204.7%20%E4%BE%86%E4%BA%86%EF%BC%9A%E4%B8%89%E5%80%8D%E8%A7%A3%E6%9E%90%E5%BA%A6%E3%80%81%E7%9C%81%E9%8C%A2%E6%96%B0%E6%96%B9%E5%BC%8F" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">這次升級有多大？先看成績單</a></li><li class="toc-l2"><a href="#sec-2">功能一：三倍解析度的高畫質視覺</a></li><li class="toc-l2"><a href="#sec-3">功能二：全新的 xhigh 思考等級</a></li><li class="toc-l2"><a href="#sec-4">功能三：Task Budgets——終於可以幫 AI 設預算了</a></li><li class="toc-l2"><a href="#sec-5">功能四：新 Tokenizer——悄悄讓帳單變貴的那個</a></li><li class="toc-l2"><a href="#sec-6">對你的實際操作意義是什麼？</a></li><li class="toc-l2"><a href="#sec-7">總結</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p>如果你最近有在用 Claude，你可能已經注意到介面上出現了一些新選項。沒錯，Anthropic 悄悄（又不那麼悄悄地）推出了旗艦模型 <strong>Claude Opus 4.7</strong>，這次的升級幅度相當大，大到值得專門錄一集來拆解。</p><h2 id="sec-1">這次升級有多大？先看成績單</h2><p>Claude Opus 4.7 在 13 項主要 benchmark 中拿下 8 項公開模型第一。其中最讓人驚訝的是視覺推理能力，一口氣進步了 13 個百分點，程式碼能力也有明顯躍升。這不是那種「比上一版好一點點」的例行更新，而是在幾個關鍵維度上真的拉開了差距。</p><p>這集 Podcast 裡，我請出了我的 AI 分身，用它來幫忙拆解這次四大新功能的重點與影響。以下是延伸整理：</p><h2 id="sec-2">功能一：三倍解析度的高畫質視覺</h2><p>Claude 這次在視覺理解上做了大幅強化，支援更高解析度的圖片輸入，讓模型在分析圖表、截圖、設計稿或文件掃描時，能擷取到更細節的資訊。對於需要讀圖的工作流程來說，這是實質的生產力提升，不再是把一張糊掉的圖丟給 AI 然後得到模糊的答案。</p><h2 id="sec-3">功能二：全新的 xhigh 思考等級</h2><p>Claude 原本就有「延伸思考」模式，這次新增了 <strong>xhigh</strong> 這個更高階的思考等級。簡單說，就是讓模型在回答前花更多運算資源「想清楚」，適合用在高複雜度的推理任務、多步驟規劃，或需要嚴謹邏輯的技術問題。當然，更深的思考也意味著更高的成本，這就帶出了第三個功能的重要性。</p><h2 id="sec-4">功能三：Task Budgets——終於可以幫 AI 設預算了</h2><p>這是這次我覺得最實用的新功能。<strong>Task Budgets</strong> 讓你可以為單次任務設定思考 token 的上限，也就是說，你可以告訴 Claude「這個任務最多只能用這麼多算力」，避免一個簡單問題卻觸發大量思考、帳單暴增的情況。</p><p>對於開發者或是重度使用 API 的用戶來說，這是一個讓成本變得可預期的好工具。你不再需要賭運氣，或是刻意壓低模型能力才能控制費用。</p><h2 id="sec-5">功能四：新 Tokenizer——悄悄讓帳單變貴的那個</h2><p>這個功能沒有被大肆宣傳，但影響不小。Anthropic 更新了 Tokenizer（文字分詞器），改變了模型把文字切分成 token 的方式。在某些語言或特定格式的文字下，同樣的內容可能會產生更多 token，直接影響你的使用成本。</p><p>如果你發現最近帳單有點微妙地變貴，這很可能是原因之一。建議重新測試你常用的 prompt，看看 token 用量有沒有明顯變化。</p><h2 id="sec-6">對你的實際操作意義是什麼？</h2><ul><li><strong>視覺工作流程</strong>：如果你的工作涉及圖表分析、文件讀取或設計審查，現在是重新測試 Claude 視覺能力的好時機。</li><li><strong>API 使用者</strong>：Task Budgets 值得優先研究，搭配 xhigh 思考等級，可以在效果與成本之間找到更精確的平衡點。</li><li><strong>所有付費用戶</strong>：留意新 Tokenizer 對你常用 prompt 的影響，必要時重新優化提示詞的長度與格式。</li></ul><h2 id="sec-7">總結</h2><p>Claude Opus 4.7 是一次真正有感的升級，但「有感」這件事是雙向的——能力變強了，成本結構也跟著變了。這集 Podcast 拆解這四個功能的目的，就是希望讓你在升級紅利到來之前，先把坑踩清楚。</p><p>如果你想聽完整的討論與我的 AI 分身怎麼解讀這些功能，直接去聽這集就對了。</p>
+    <div class="post-body"><!--BODY:START--><p>如果你最近有在用 Claude，你可能已經注意到介面上出現了一些新選項。沒錯，Anthropic 悄悄（又不那麼悄悄地）推出了旗艦模型 <strong>Claude Opus 4.7</strong>，這次的升級幅度相當大，大到值得專門錄一集來拆解。</p><h2 id="sec-1">這次升級有多大？先看成績單</h2><p>Claude Opus 4.7 在 13 項主要 benchmark 中拿下 8 項公開模型第一。其中最讓人驚訝的是視覺<a class="gl" href="/glossary/#term-inference" title="術語庫：推理">推理</a>能力，一口氣進步了 13 個百分點，程式碼能力也有明顯躍升。這不是那種「比上一版好一點點」的例行更新，而是在幾個關鍵維度上真的拉開了差距。</p><p>這集 Podcast 裡，我請出了我的 AI 分身，用它來幫忙拆解這次四大新功能的重點與影響。以下是延伸整理：</p><h2 id="sec-2">功能一：三倍解析度的高畫質視覺</h2><p>Claude 這次在視覺理解上做了大幅強化，支援更高解析度的圖片輸入，讓模型在分析圖表、截圖、設計稿或文件掃描時，能擷取到更細節的資訊。對於需要讀圖的工作流程來說，這是實質的生產力提升，不再是把一張糊掉的圖丟給 AI 然後得到模糊的答案。</p><h2 id="sec-3">功能二：全新的 xhigh 思考等級</h2><p>Claude 原本就有「延伸思考」模式，這次新增了 <strong>xhigh</strong> 這個更高階的思考等級。簡單說，就是讓模型在回答前花更多運算資源「想清楚」，適合用在高複雜度的推理任務、多步驟規劃，或需要嚴謹邏輯的技術問題。當然，更深的思考也意味著更高的成本，這就帶出了第三個功能的重要性。</p><h2 id="sec-4">功能三：Task Budgets——終於可以幫 AI 設預算了</h2><p>這是這次我覺得最實用的新功能。<strong>Task Budgets</strong> 讓你可以為單次任務設定思考 token 的上限，也就是說，你可以告訴 Claude「這個任務最多只能用這麼多<a class="gl" href="/glossary/#term-compute-power" title="術語庫：算力">算力</a>」，避免一個簡單問題卻觸發大量思考、帳單暴增的情況。</p><p>對於開發者或是重度使用 API 的用戶來說，這是一個讓成本變得可預期的好工具。你不再需要賭運氣，或是刻意壓低模型能力才能控制費用。</p><h2 id="sec-5">功能四：新 Tokenizer——悄悄讓帳單變貴的那個</h2><p>這個功能沒有被大肆宣傳，但影響不小。Anthropic 更新了 <a class="gl" href="/glossary/#term-token" title="術語庫：Token">Token</a>izer（文字分詞器），改變了模型把文字切分成 token 的方式。在某些語言或特定格式的文字下，同樣的內容可能會產生更多 token，直接影響你的使用成本。</p><p>如果你發現最近帳單有點微妙地變貴，這很可能是原因之一。建議重新測試你常用的 prompt，看看 token 用量有沒有明顯變化。</p><h2 id="sec-6">對你的實際操作意義是什麼？</h2><ul><li><strong>視覺工作流程</strong>：如果你的工作涉及圖表分析、文件讀取或設計審查，現在是重新測試 Claude 視覺能力的好時機。</li><li><strong>API 使用者</strong>：Task Budgets 值得優先研究，搭配 xhigh 思考等級，可以在效果與成本之間找到更精確的平衡點。</li><li><strong>所有付費用戶</strong>：留意新 Tokenizer 對你常用 prompt 的影響，必要時重新優化提示詞的長度與格式。</li></ul><h2 id="sec-7">總結</h2><p>Claude Opus 4.7 是一次真正有感的升級，但「有感」這件事是雙向的——能力變強了，成本結構也跟著變了。這集 Podcast 拆解這四個功能的目的，就是希望讓你在升級紅利到來之前，先把坑踩清楚。</p><p>如果你想聽完整的討論與我的 AI 分身怎麼解讀這些功能，直接去聽這集就對了。</p>
 <hr>
 <p>📚 <strong>同主題的其他單集 / 文章，延伸聽下去：</strong></p>
 <ul>
@@ -94,19 +70,27 @@ function nlGo(f){
       <a class="pn" href="/post/251/"><span>← 上一篇</span><b>AI06｜Claude Design 來了，AI 設計工具的遊戲規則要變了？</b></a>
       <a class="pn pn-r" href="/post/76/"><span>下一篇 →</span><b>心理諮詢AI的倫理紅線：為何通用AI模型不適合心理健康領域</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/408/"><span class="h-meta"><span class="h-cat">AI</span></span><b>Claude Opus 5.5上線：成本與安全的新均衡點</b></a></li><li><a href="/post/78/"><span class="h-meta"><span class="h-cat">AI</span></span><b>Claude Opus 4.7 vs Mythos：大模型競賽新格局如何改變企業AI選型？</b></a></li><li><a href="/post/251/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>AI06｜Claude Design 來了，AI 設計工具的遊戲規則要變了？</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

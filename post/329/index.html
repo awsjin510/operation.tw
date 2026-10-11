@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="Google 官方宣布 NotebookLM 更名為 Gemini Notebook，背後不只是改名，而是整合 Gemini、新增程式碼執行、雲端安全運算等重大升級。3000 萬活躍使用者的工具升級，究竟改變了什麼？">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-329.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/329/","headline":"AI45｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？","description":"Google 官方宣布 NotebookLM 更名為 Gemini Notebook，背後不只是改名，而是整合 Gemini、新增程式碼執行、雲端安全運算等重大升級。3000 萬活躍使用者的工具升級，究竟改變了什麼？","datePublished":"2026-07-18","dateModified":"2026-09-28","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/329/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/329/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-329.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI45｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？","item":"https://operation.tw/post/329/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/329/#faq","mainEntity":[{"@type":"Question","name":"NotebookLM 改名 Gemini Notebook 有什麼差別？","acceptedAnswer":{"@type":"Answer","text":"改名代表 Google 將其從實驗產品升級為正式工具，並整合 Gemini AI、新增程式碼執行、雲端運算環境等功能，不只是名字改變，而是產品能力的重大升級。"}},{"@type":"Question","name":"Gemini Notebook 現在有多少人在用？","acceptedAnswer":{"@type":"Answer","text":"根據 Google 官方公告，Gemini Notebook（原 NotebookLM）已有 3000 萬活躍使用者與 60 萬個組織訂閱，規模遠超預期。"}},{"@type":"Question","name":"我是沒有技術背景的內容工作者，Gemini Notebook 對我有用嗎？","acceptedAnswer":{"@type":"Answer","text":"很有用，特別是 Audio Overview 功能可以自動把你的文件轉成 Podcast 討論，省去整理腳本的時間，Gemini 甚至會比你更會行銷自己的內容定位。"}}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/329/#episode","name":"AI45｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？","url":"https://operation.tw/post/329/","datePublished":"2026-07-18","description":"Google 官方宣布 NotebookLM 更名為 Gemini Notebook，背後不只是改名，而是整合 Gemini、新增程式碼執行、雲端安全運算等重大升級。3000 萬活躍使用者的工具升級，究竟改變了什麼？","image":"https://operation.tw/images/posts/post-329.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":45,"duration":"PT15M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/ab4aa292-0137-4c63-bcca-c4395e3568d5/rssFileVip.mp3?timestamp=1784687288421","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:329})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="329">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-18">2026-07-18</time> · 最後更新 2026-09-28<span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-329.webp"><img class="cover" src="https://operation.tw/images/posts/post-329.jpg" alt="AI45｜NotebookLM 改名 Gemini Notebook：Google AI 工具升級了什麼？" width="1200" height="630"></picture>
     <div class="excerpt"><p>Google 官方宣布 NotebookLM 更名為 Gemini Notebook，背後不只是改名，而是整合 Gemini、新增程式碼執行、雲端安全運算等重大升級。3000 萬活躍使用者的工具升級，究竟改變了什麼？</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>AI45_趨勢操作 | NotebookLM 更名為 Gemini Notebook，但這次沒那麼簡單!!</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000777372832" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI45_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20NotebookLM%20%E6%9B%B4%E5%90%8D%E7%82%BA%20Gemini%20Notebook%EF%BC%8C%E4%BD%86%E9%80%99%E6%AC%A1%E6%B2%92%E9%82%A3%E9%BA%BC%E7%B0%A1%E5%96%AE!!" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">NotebookLM 為什麼突然改名？背後的策略是什麼？</a></li><li class="toc-l2"><a href="#sec-2">Gemini Notebook 具體升級了哪些功能？</a></li><li class="toc-l2"><a href="#sec-3">為什麼 Google 現在必須做這件事？</a></li><li class="toc-l2"><a href="#sec-4">Gemini Notebook 對內容生產者有什麼實際幫助？</a></li><li class="toc-l2"><a href="#sec-5">對職場工作者來說呢？</a></li><li class="toc-l2"><a href="#sec-6">現在就能試試什麼？</a></li><li class="toc-l2"><a href="#sec-7">常見問題</a></li><li class="toc-l3"><a href="#sec-8">NotebookLM 改名 Gemini Notebook 有什麼差別？</a></li><li class="toc-l3"><a href="#sec-9">Gemini Notebook 現在有多少人在用？</a></li><li class="toc-l3"><a href="#sec-10">我是沒有技術背景的內容工作者，Gemini Notebook 對我有用嗎？</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>NotebookLM 改名 Gemini Notebook，代表 Google 將其從實驗產品正式升級為核心生產力工具，已有 3000 萬活躍使用者與 60 萬個組織訂閱</li><li>此次升級整合 Gemini AI 能力、新增程式碼執行環境、雲端安全電腦等功能，不再只是文件理解工具，而是完整的工作流平台</li><li>這是 Google 在 AI 助手競爭中的重要布局，對抗 ChatGPT、Claude 等競品，並與 Google Search、Gemini App 深度整合</li></ul><h2 id="sec-1">NotebookLM 為什麼突然改名？背後的策略是什麼？</h2><p>這次改名不是簡單的品牌更新，而是 Google 將 NotebookLM 從實驗性產品（Labs）升級為正式、核心的生產力工具的宣告。根據 Google 官方公告，NotebookLM 已累積 3000 萬活躍使用者與 60 萬個組織訂閱——這個規模已經超越台灣全國人口，從這個數字乘以去年 Audio Overview 全網瘋傳的熱度來看，改名是對產品成熟度的確認。</p><p>改名為「Gemini Notebook」意味著什麼？這標示著 Google 要將 Gemini AI 作為統一的品牌傘，把散落各地的 AI 工具（Gemini App、Google Search、Workspace 等）串接起來。NotebookLM 曾經是個相對獨立的實驗品，現在要成為 Gemini 生態系的正式一員。</p><h2 id="sec-2">Gemini Notebook 具體升級了哪些功能？</h2><p>這次升級最重要的三個改動是：每個 notebook 現在配備一台安全雲端電腦、可以直接執行程式碼，以及與 Gemini 與 Google Search 的深度整合。這不只是加功能，而是改變了工具的本質。</p><p>以前的 NotebookLM 核心功能是「上傳文件→AI 理解→生成 Audio Overview」，但使用者最多只能靠 AI 對話來探索資料。現在你可以在 notebook 裡直接寫程式碼、執行資料分析，Gemini 會幫助你理解結果。這意味著 Gemini Notebook 從單純的「文件理解助手」升級成「端對端的資料工作平台」。</p><p>雲端電腦環境的加入尤其關鍵——使用者無需在本地安裝環境，就能執行 Python、進行數據分析、生成視覺化圖表，整個流程都被 Gemini 監督與協助。對於內容工作者、研究員、數據分析師來說，這大幅降低了工具切換的成本。</p><h2 id="sec-3">為什麼 Google 現在必須做這件事？</h2><p>競爭態勢逼得 Google 非這樣做不可。當 ChatGPT 加入 Code Interpreter、Claude 提供 Artifacts 實時編程協助、Microsoft Copilot 在 Office 全線整合後，Google 不能只靠 Gemini App 的對話能力來競爭，必須提供完整的工作流解決方案。</p><p>Gemini Notebook 的升級就是 Google 的答案：我不只給你 AI 聊天，我給你一個「懂你資料」的安全工作環境。這是 Google 的優勢所在——它能用自己的雲基礎設施、結合 Google Search 與 Workspace 生態，打造對手短期內難以複製的整合體驗。</p><h2 id="sec-4">Gemini Notebook 對內容生產者有什麼實際幫助？</h2><p>對內容工作者來說，Gemini Notebook 最實用的功能就是 Audio Overview——自動把文件轉成兩個 AI 主持人的 Podcast 討論，節省腳本撰寫時間。根據這集 Podcast 主持人的親身實驗，把過去十幾集節目摘要丟進 Gemini Notebook，AI 生成的討論不僅能復述內容，甚至比創作者自己更會「賣」節目的定位。</p><p>具體的使用流程是：上傳你的研究資料、文章初稿、或採訪逐字稿 → Gemini Notebook 理解內容 → 一鍵生成 Audio Overview Podcast 討論 → 或直接執行程式碼做進階分析。對於需要快速從大量資料中提煉重點的工作者，這能省掉 30-50% 的前期整理時間。</p><h2 id="sec-5">對職場工作者來說呢？</h2><p>對上班族和專案管理者，Gemini Notebook 的價值在於「快速將非結構化資料變成可用的洞察」。你可以上傳會議記錄、客戶反饋、市場研究報告，讓 Gemini 自動總結、對比、提取關鍵決策點，甚至直接在 notebook 裡寫 SQL 或 Python 查詢公司的資料庫。</p><p>尤其是程式碼執行環境的加入，讓非技術背景的工作者也能做簡單的數據分析——你用自然語言告訴 Gemini 要做什麼，它幫你寫程式碼並執行，你只需要理解結果。這種「讓 AI 當你的技術助手」的模式，正逐漸成為未來職場的基本技能。</p><h2 id="sec-6">現在就能試試什麼？</h2><p>單集裡提到了兩個今天就能動手的行動。第一個是去 Gemini Notebook（或在 Google Labs 找 NotebookLM）上傳你自己的文件，試試新的 Audio Overview 功能——如果你有小組會議紀錄、專案企畫案、甚至個人筆記，都可以丟進去聽聽 AI 怎麼理解你的內容。第二個是如果你懂一點程式碼，試試在 notebook 裡執行簡單的 Python，感受一下 Gemini 作為程式碼協助的能力。</p><p>這次升級的意義在於，Google 在宣告：「我們不只是個 AI 聊天工具，我們是你完整工作流的協力者。」對用戶來說，就是多了一個值得每天打開的工作平台；對整個 AI 產業來說，又是一輪「功能整合」的軍備競賽。</p><h2 id="sec-7">常見問題</h2><h3 id="sec-8">NotebookLM 改名 Gemini Notebook 有什麼差別？</h3><p>改名代表 Google 將其從實驗產品升級為正式工具，並整合 Gemini AI、新增程式碼執行、雲端運算環境等功能，不只是名字改變，而是產品能力的重大升級。</p><h3 id="sec-9">Gemini Notebook 現在有多少人在用？</h3><p>根據 Google 官方公告，Gemini Notebook（原 NotebookLM）已有 3000 萬活躍使用者與 60 萬個組織訂閱，規模遠超預期。</p><h3 id="sec-10">我是沒有技術背景的內容工作者，Gemini Notebook 對我有用嗎？</h3><p>很有用，特別是 Audio Overview 功能可以自動把你的文件轉成 Podcast 討論，省去整理腳本的時間，Gemini 甚至會比你更會行銷自己的內容定位。</p>
@@ -94,19 +70,27 @@ function nlGo(f){
       <a class="pn" href="/post/331/"><span>← 上一篇</span><b>EP101｜一個提袋改變人生：美學達人如何用管理思維跨界彩妝</b></a>
       <a class="pn pn-r" href="/post/327/"><span>下一篇 →</span><b>台灣TAIDE對標月之暗面：本土AI如何在政治內容管控戰爭中突圍</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/5/"><span class="h-meta"><span class="h-cat">AI</span></span><b>懶人必看！NotebookLM如何讓AWS證照準備效率暴增</b></a></li><li><a href="/post/98/"><span class="h-meta"><span class="h-cat">AI</span></span><b>後量子密碼時代降臨：企業AI系統如何做好加密防禦升級？</b></a></li><li><a href="/post/336/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>AI46｜Google Gemini Flash Cyber：資安 AI 軍備競賽的秘密武器</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

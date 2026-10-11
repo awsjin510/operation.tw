@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="Research Nester最新報告預測公有雲市場規模與份額至2035年將迎來重大變化。本文分析AI時代雲端競爭格局如何演變、台灣企業的定位機會，以及應如何調整雲端策略應對新形勢。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-341.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/341/","headline":"全球雲端市場2035預測：台灣企業如何搶佔AI驅動的下一波成長機會？","description":"Research Nester最新報告預測公有雲市場規模與份額至2035年將迎來重大變化。本文分析AI時代雲端競爭格局如何演變、台灣企業的定位機會，以及應如何調整雲端策略應對新形勢。","datePublished":"2026-07-27","dateModified":"2026-07-27","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/341/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/341/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-341.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"全球雲端市場2035預測：台灣企業如何搶佔AI驅動的下一波成長機會？","item":"https://operation.tw/post/341/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/341/#faq","mainEntity":[{"@type":"Question","name":"台灣與超大規模雲端廠商（AWS、Azure）相比，真的能有成本優勢嗎？","acceptedAnswer":{"@type":"Answer","text":"在GPU密集型AI工作負載上，本地雲由於無需國際頻寬成本、稅率優化、本地硬體採購效率，理論上可降低20-40%成本；但優勢前提是工作負載必須適合垂直產業需求，通用運算仍是超大型雲商更便宜。"}},{"@type":"Question","name":"邊緣運算會取代公有雲嗎？","acceptedAnswer":{"@type":"Answer","text":"不會完全取代，而是分工。2035年的趨勢是「中心-邊緣協同」：延遲敏感、隱私敏感的任務在邊緣，大規模模型訓練、海量資料分析留在雲心，兩者透過可靠網路整合。台灣企業應同時投資兩者。"}},{"@type":"Question","name":"台灣應該自建雲端，還是與國際廠商合作？","acceptedAnswer":{"@type":"Answer","text":"建議採「棧式合作」：台灣企業聯合出資支持本地新興雲廠商（如Neoclouds），專注垂直產業層應用；底層IaaS仍與AWS或Microsoft合作獲得基礎設施穩定性，形成「台灣應用層 + 國際基礎層」的複合模式，既獲得本地優勢，又規避完全自建的技術與資本風險。"}}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:341})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="341">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E9%9B%B2%E7%AB%AF/">雲端</a></nav>
   <article>
     <div class="badge" style="color:#62a8ff;background:#62a8ff1a">☁️ 雲端</div>
@@ -73,26 +48,35 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-07-27">2026-07-27</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-341.webp"><img class="cover" src="https://operation.tw/images/posts/post-341.jpg" alt="全球雲端市場2035預測：台灣企業如何搶佔AI驅動的下一波成長機會？" width="1200" height="630"></picture>
     <div class="excerpt"><p>Research Nester最新報告預測公有雲市場規模與份額至2035年將迎來重大變化。本文分析AI時代雲端競爭格局如何演變、台灣企業的定位機會，以及應如何調整雲端策略應對新形勢。</p></div>
+    
     <p class="st-main-note">這個主題有更完整的整理：<a href="/post/334/">公有雲市場2035年預測：台灣企業如何搶佔下一波成長紅利？ →</a></p>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼2035年的雲端市場會與現在截然不同？</a></li><li class="toc-l2"><a href="#sec-2">台灣企業現在還在「租賃」，2035年會變成什麼狀態？</a></li><li class="toc-l2"><a href="#sec-3">台灣如何在2035年前搶佔雲端市場紅利？</a></li><li class="toc-l2"><a href="#sec-4">具體來說，台灣企業現在應採取什麼行動？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">台灣與超大規模雲端廠商（AWS、Azure）相比，真的能有成本優勢嗎？</a></li><li class="toc-l3"><a href="#sec-7">邊緣運算會取代公有雲嗎？</a></li><li class="toc-l3"><a href="#sec-8">台灣應該自建雲端，還是與國際廠商合作？</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>全球公有雲市場預測到2035年將經歷結構性變化，AI工作負載將成為主要驅動力，改變現有的市場競爭格局</li><li>台灣企業需從單純採購雲端服務轉向「AI-native雲端架構」，才能在2035年前搶佔成長紅利</li><li>邊緣運算、垂直整合雲端方案將成為新興勢力突破口，台灣應利用製造業優勢進行產業雲端轉型</li></ul><h2 id="sec-1">為什麼2035年的雲端市場會與現在截然不同？</h2><p>根據Research Nester發布的報告，未來十年全球公有雲市場規模與份額預測顯示，AI驅動的工作負載將從邊緣化應用逐步轉為核心業務，這種轉變不只是使用量增加，更涉及雲端架構、供應商生態、定價模式的全面重組。</p><p>當前雲端市場仍以傳統IaaS（基礎設施即服務）為主導，企業購買計算、存儲、網路資源，按使用量付費。但到2035年，AI模型訓練、推理、微調將佔據雲端支出的40-50%，這意味著：</p><ul><li>GPU/NPU資源分配的優先級將重新排序，傳統運算負載將被邊緣化</li><li>多雲策略從「風險分散」演變為「能力疊加」，企業必須整合異質硬體與軟體棧</li><li>區域性雲端供應商（如新加坡、日本、台灣的本地雲）將獲得差異化優勢</li></ul><h2 id="sec-2">台灣企業現在還在「租賃」，2035年會變成什麼狀態？</h2><p>目前台灣企業多採用「遷移上雲」策略——將既有系統搬到AWS、Azure或Google Cloud，獲得成本節省與彈性擴展，但這只是被動跟隨全球巨頭。到2035年，若仍停留在此階段，台灣企業將面臨三重風險：</p><p><strong>風險一：定價權喪失</strong>——當AI成為剛需後，超大規模雲端廠商（Hyperscaler）將提高GPU密集型工作負載的定價，台灣中小企業的雲端成本將暴漲30-50%。</p><p><strong>風險二：資料主權與延遲</strong>——台灣產業對資料隱私與低延遲的要求日益嚴苛（尤其是金融、醫療、晶片設計領域），但超大規模雲端多在海外部署，未來將無法滿足本地合規需求。</p><p><strong>風險三：技術依賴深化</strong>——若台灣企業只是雲端消費者，永遠無法掌握AI基礎設施的定制能力，在與國際企業競爭時將喪失議價權。</p><h2 id="sec-3">台灣如何在2035年前搶佔雲端市場紅利？</h2><p>台灣應在2026-2028年間啟動三層轉型策略，從被動用戶升級為主動參與者。</p><p><strong>第一層：建立「垂直產業雲」</strong>——台灣不應與AWS、Azure競爭通用雲服務，而應針對強勢產業（晶片製造、電子製造、半導體設計）打造專用雲平台。例如，台積電、聯發科等可與本地雲服務商（如Neoclouds等新興勢力）合作，開發AI-optimized的晶片設計驗證雲，提供全球競爭對手無法複製的低延遲、高精度環境。</p><p><strong>第二層：佈局邊緣運算與混合雲</strong>——Research Nester的報告隱含一個關鍵趨勢：到2035年，「中心-邊緣」混合架構將取代「集中雲」成為主流。台灣企業應在2026年開始試點邊緣AI推理，在廠房、門市、醫療機構部署輕量化AI模型，透過邊緣處理降低延遲與雲端成本。台灣的製造業、零售業、醫療體系天然具備邊緣部署的條件。</p><p><strong>第三層：參與全球雲端供應鏈轉移</strong>——隨著地緣政治緊張與AI出口管制升級（如中國近期收緊AI出口管制），歐美企業正加速分散雲端基礎設施到友邦地區。台灣可爭取成為「AI-safe雲端目的地」，吸引日本、南韓、東南亞的雲端投資。</p><h2 id="sec-4">具體來說，台灣企業現在應採取什麼行動？</h2><p><strong>CTO/技術決策者</strong>應在今年開始進行「雲端架構審計」，盤點現有工作負載中哪些適合遷移到垂直產業雲、哪些應留在邊緣、哪些仍需公有雲，制定2027年前的多雲整合藍圖。</p><p><strong>IT採購部門</strong應停止「跟隨式續約」AWS或Azure，改為與本地新興雲服務商談試點，評估特定AI工作負載的成本差異與效能提升。根據產業調查，本地雲在GPU密集型任務上的成本通常可降低20-40%。</p><p><strong>業務與策略團隊</strong應識別2-3個「AI優先級產業應用」（如品質檢測、需求預測、客服自動化），優先在垂直產業雲或邊緣環境試驗，藉此驗證ROI、累積數據資產、建立內部AI能力。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">台灣與超大規模雲端廠商（AWS、Azure）相比，真的能有成本優勢嗎？</h3><p>在GPU密集型AI工作負載上，本地雲由於無需國際頻寬成本、稅率優化、本地硬體採購效率，理論上可降低20-40%成本；但優勢前提是工作負載必須適合垂直產業需求，通用運算仍是超大型雲商更便宜。</p><h3 id="sec-7">邊緣運算會取代公有雲嗎？</h3><p>不會完全取代，而是分工。2035年的趨勢是「中心-邊緣協同」：延遲敏感、隱私敏感的任務在邊緣，大規模模型訓練、海量資料分析留在雲心，兩者透過可靠網路整合。台灣企業應同時投資兩者。</p><h3 id="sec-8">台灣應該自建雲端，還是與國際廠商合作？</h3><p>建議採「棧式合作」：台灣企業聯合出資支持本地新興雲廠商（如Neoclouds），專注垂直產業層應用；底層IaaS仍與AWS或Microsoft合作獲得基礎設施穩定性，形成「台灣應用層 + 國際基礎層」的複合模式，既獲得本地優勢，又規避完全自建的技術與資本風險。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>全球公有雲市場預測到2035年將經歷結構性變化，AI工作負載將成為主要驅動力，改變現有的市場競爭格局</li><li>台灣企業需從單純採購雲端服務轉向「AI-native雲端架構」，才能在2035年前搶佔成長紅利</li><li><a class="gl" href="/glossary/#term-edge-computing" title="術語庫：邊緣運算">邊緣運算</a>、垂直整合雲端方案將成為新興勢力突破口，台灣應利用製造業優勢進行產業雲端轉型</li></ul><h2 id="sec-1">為什麼2035年的雲端市場會與現在截然不同？</h2><p>根據Research Nester發布的報告，未來十年全球公有雲市場規模與份額預測顯示，AI驅動的工作負載將從邊緣化應用逐步轉為核心業務，這種轉變不只是使用量增加，更涉及雲端架構、供應商生態、定價模式的全面重組。</p><p>當前雲端市場仍以傳統IaaS（基礎設施即服務）為主導，企業購買計算、存儲、網路資源，按使用量付費。但到2035年，AI模型訓練、<a class="gl" href="/glossary/#term-inference" title="術語庫：推理">推理</a>、<a class="gl" href="/glossary/#term-fine-tuning" title="術語庫：微調">微調</a>將佔據雲端支出的40-50%，這意味著：</p><ul><li><a class="gl" href="/glossary/#term-gpu" title="術語庫：圖形處理器">GPU</a>/NPU資源分配的優先級將重新排序，傳統運算負載將被邊緣化</li><li><a class="gl" href="/glossary/#term-multi-cloud" title="術語庫：多雲策略">多雲策略</a>從「風險分散」演變為「能力疊加」，企業必須整合異質硬體與軟體棧</li><li>區域性雲端供應商（如新加坡、日本、台灣的本地雲）將獲得差異化優勢</li></ul><h2 id="sec-2">台灣企業現在還在「租賃」，2035年會變成什麼狀態？</h2><p>目前台灣企業多採用「遷移上雲」策略——將既有系統搬到AWS、Azure或Google Cloud，獲得成本節省與彈性擴展，但這只是被動跟隨全球巨頭。到2035年，若仍停留在此階段，台灣企業將面臨三重風險：</p><p><strong>風險一：定價權喪失</strong>——當AI成為剛需後，超大規模雲端廠商（Hyperscaler）將提高GPU密集型工作負載的定價，台灣中小企業的雲端成本將暴漲30-50%。</p><p><strong>風險二：資料主權與延遲</strong>——台灣產業對資料隱私與低延遲的要求日益嚴苛（尤其是金融、醫療、晶片設計領域），但超大規模雲端多在海外部署，未來將無法滿足本地合規需求。</p><p><strong>風險三：技術依賴深化</strong>——若台灣企業只是雲端消費者，永遠無法掌握AI基礎設施的定制能力，在與國際企業競爭時將喪失議價權。</p><h2 id="sec-3">台灣如何在2035年前搶佔雲端市場紅利？</h2><p>台灣應在2026-2028年間啟動三層轉型策略，從被動用戶升級為主動參與者。</p><p><strong>第一層：建立「垂直產業雲」</strong>——台灣不應與AWS、Azure競爭通用雲服務，而應針對強勢產業（晶片製造、電子製造、半導體設計）打造專用雲平台。例如，台積電、聯發科等可與本地雲服務商（如Neoclouds等新興勢力）合作，開發AI-optimized的晶片設計驗證雲，提供全球競爭對手無法複製的低延遲、高精度環境。</p><p><strong>第二層：佈局邊緣運算與混合雲</strong>——Research Nester的報告隱含一個關鍵趨勢：到2035年，「中心-邊緣」混合架構將取代「集中雲」成為主流。台灣企業應在2026年開始試點邊緣AI推理，在廠房、門市、醫療機構部署輕量化AI模型，透過邊緣處理降低延遲與雲端成本。台灣的製造業、零售業、醫療體系天然具備邊緣部署的條件。</p><p><strong>第三層：參與全球雲端供應鏈轉移</strong>——隨著地緣政治緊張與AI出口管制升級（如中國近期收緊AI出口管制），歐美企業正加速分散雲端基礎設施到友邦地區。台灣可爭取成為「AI-safe雲端目的地」，吸引日本、南韓、東南亞的雲端投資。</p><h2 id="sec-4">具體來說，台灣企業現在應採取什麼行動？</h2><p><strong>CTO/技術決策者</strong>應在今年開始進行「雲端架構審計」，盤點現有工作負載中哪些適合遷移到垂直產業雲、哪些應留在邊緣、哪些仍需公有雲，制定2027年前的多雲整合藍圖。</p><p><strong>IT採購部門</strong應停止「跟隨式續約」AWS或Azure，改為與本地新興雲服務商談試點，評估特定AI工作負載的成本差異與效能提升。根據產業調查，本地雲在GPU密集型任務上的成本通常可降低20-40%。</p><p><strong>業務與策略團隊</strong應識別2-3個「AI優先級產業應用」（如品質檢測、需求預測、客服自動化），優先在垂直產業雲或邊緣環境試驗，藉此驗證ROI、累積數據資產、建立內部AI能力。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">台灣與超大規模雲端廠商（AWS、Azure）相比，真的能有成本優勢嗎？</h3><p>在GPU密集型AI工作負載上，本地雲由於無需國際頻寬成本、稅率優化、本地硬體採購效率，理論上可降低20-40%成本；但優勢前提是工作負載必須適合垂直產業需求，通用運算仍是超大型雲商更便宜。</p><h3 id="sec-7">邊緣運算會取代公有雲嗎？</h3><p>不會完全取代，而是分工。2035年的趨勢是「中心-邊緣協同」：延遲敏感、隱私敏感的任務在邊緣，大規模模型訓練、海量資料分析留在雲心，兩者透過可靠網路整合。台灣企業應同時投資兩者。</p><h3 id="sec-8">台灣應該自建雲端，還是與國際廠商合作？</h3><p>建議採「棧式合作」：台灣企業聯合出資支持本地新興雲廠商（如Neoclouds），專注垂直產業層應用；底層IaaS仍與AWS或Microsoft合作獲得基礎設施穩定性，形成「台灣應用層 + 國際基礎層」的複合模式，既獲得本地優勢，又規避完全自建的技術與資本風險。</p><!--BODY:END--></div>
     <nav class="post-nav">
-      <a class="pn" href="/post/349/"><span>← 上一篇</span><b>AWS 20 週年啟示：雲端運算如何從工程痛點演變成產業基礎設施？</b></a>
-      <a class="pn pn-r" href="/post/339/"><span>下一篇 →</span><b>Neoclouds如何挑戰AWS：AI時代新興雲端勢力的突圍之路</b></a>
+      <a class="pn" href="/post/354/"><span>← 上一篇</span><b>企業官網與雲端基礎設施的新關係：AI時代如何重新定義數位門面？</b></a>
+      <a class="pn pn-r" href="/post/320/"><span>下一篇 →</span><b>韓國轉攻實體AI：亞洲雲端巨人如何突圍LLM紅海？</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/387/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>AWS 20周年後的下一步：從IaC到AI原生基礎設施</b></a></li><li><a href="/post/61/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>雲端運算版圖大洗牌：2026年龍頭排位變化如何影響台灣企業選型？</b></a></li><li><a href="/post/314/"><span class="h-meta"><span class="h-cat">雲端</span><span>🎙 Podcast</span></span><b>AI41｜Meta Compute 雲端算力服務上線：如何改變 AI 產業競局？</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>
