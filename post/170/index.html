@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="如果你是業餘跑者，想第一次完跑馬拉松，或者挑戰破4甚至破3的成績，該怎麼有系統地訓練？這篇文章整理自 Podcast《操作一下》EP19下集，結合《適合市民跑者的100日馬拉松訓練計畫》一書的核心方法，帶你了解不同目標的訓練邏輯、30天密集備賽操作，以及常見馬拉松迷思的破解方式。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-170.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/170/","headline":"EP19｜市民跑者的馬拉松訓練攻略：完跑、破4、破3怎麼練？","description":"如果你是業餘跑者，想第一次完跑馬拉松，或者挑戰破4甚至破3的成績，該怎麼有系統地訓練？這篇文章整理自 Podcast《操作一下》EP19下集，結合《適合市民跑者的100日馬拉松訓練計畫》一書的核心方法，帶你了解不同目標的訓練邏輯、30天密集備賽操作，以及常見馬拉松迷思的破解方式。","datePublished":"2022-10-22","dateModified":"2022-10-22","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/170/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/170/"},"articleSection":"成長","image":"https://operation.tw/images/posts/post-170.jpg","keywords":"成長","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"成長","item":"https://operation.tw/category/%E6%88%90%E9%95%B7/"},{"@type":"ListItem","position":3,"name":"EP19｜市民跑者的馬拉松訓練攻略：完跑、破4、破3怎麼練？","item":"https://operation.tw/post/170/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/170/#episode","name":"EP19｜市民跑者的馬拉松訓練攻略：完跑、破4、破3怎麼練？","url":"https://operation.tw/post/170/","datePublished":"2022-10-22","description":"如果你是業餘跑者，想第一次完跑馬拉松，或者挑戰破4甚至破3的成績，該怎麼有系統地訓練？這篇文章整理自 Podcast《操作一下》EP19下集，結合《適合市民跑者的100日馬拉松訓練計畫》一書的核心方法，帶你了解不同目標的訓練邏輯、30天密集備賽操作，以及常見馬拉松迷思的破解方式。","image":"https://operation.tw/images/posts/post-170.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":19,"duration":"PT19M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/d0586445-75ba-48b5-a28f-598420cdc16f/rssFileVip.mp3?timestamp=1687899397101","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:170})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/" aria-current="page">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="170">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/" aria-current="page">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/" aria-current="page">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
   <article>
     <div class="badge" style="color:#4ade9a;background:#4ade9a1a">🌱 成長</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-10-22">2022-10-22</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-170.webp"><img class="cover" src="https://operation.tw/images/posts/post-170.jpg" alt="EP19｜市民跑者的馬拉松訓練攻略：完跑、破4、破3怎麼練？" width="1200" height="630"></picture>
     <div class="excerpt"><p>如果你是業餘跑者，想第一次完跑馬拉松，或者挑戰破4甚至破3的成績，該怎麼有系統地訓練？這篇文章整理自 Podcast《操作一下》EP19下集，結合《適合市民跑者的100日馬拉松訓練計畫》一書的核心方法，帶你了解不同目標的訓練邏輯、30天密集備賽操作，以及常見馬拉松迷思的破解方式。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>EP19_訓練操作｜適合市民跑者的100日馬拉松訓練計畫｜設定不同目標！完跑，破4，破3｜逐步提升成績 (下集)</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000583549091" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP19_%E8%A8%93%E7%B7%B4%E6%93%8D%E4%BD%9C%EF%BD%9C%E9%81%A9%E5%90%88%E5%B8%82%E6%B0%91%E8%B7%91%E8%80%85%E7%9A%84100%E6%97%A5%E9%A6%AC%E6%8B%89%E6%9D%BE%E8%A8%93%E7%B7%B4%E8%A8%88%E7%95%AB%EF%BD%9C%E8%A8%AD%E5%AE%9A%E4%B8%8D%E5%90%8C%E7%9B%AE%E6%A8%99%EF%BC%81%E5%AE%8C%E8%B7%91%EF%BC%8C%E7%A0%B44%EF%BC%8C%E7%A0%B43%EF%BD%9C%E9%80%90%E6%AD%A5%E6%8F%90%E5%8D%87%E6%88%90%E7%B8%BE%20(%E4%B8%8B%E9%9B%86)" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">你有多久時間準備下一場馬拉松？</a></li><li class="toc-l2"><a href="#sec-2">三種目標，三種訓練策略</a></li><li class="toc-l2"><a href="#sec-3">10種訓練方法，你真的都知道差異嗎？</a></li><li class="toc-l2"><a href="#sec-4">只剩30天，密集備賽怎麼操作？</a></li><li class="toc-l2"><a href="#sec-5">破除常見的馬拉松迷思</a></li><li class="toc-l2"><a href="#sec-6">馬拉松的魅力，在於它是可以被「計畫」的挑戰</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><h2 id="sec-1">你有多久時間準備下一場馬拉松？</h2><p>很多跑者都有過這種經驗：報名了馬拉松，但工作一忙，訓練一拖再拖，突然發現距離賽事只剩一個月。這時候你有兩個選擇——放棄，或是用僅剩的時間做最有效率的準備。這集 Podcast 想解決的，正是這個痛點。</p><p>《操作一下》EP19 下集延續上集的跑步訓練主題，以《適合市民跑者的100日馬拉松訓練計畫》這本書為核心，結合 Jin 自身的練跑經驗，拆解不同目標層級的訓練邏輯，並特別補充了「只剩30天」的密集備賽方式，以及書中整理的常見馬拉松 Q&A。</p><h2 id="sec-2">三種目標，三種訓練策略</h2><p>這本被稱為馬拉松練習法「聖經」的書，最大的特點是針對業餘市民跑者量身設計，並把全馬目標清楚切成三個層級：</p><ul><li><strong>完跑</strong>：第一次挑戰全馬，目標是安全、健康地抵達終點線。</li><li><strong>Sub 4（破4小時）</strong>：有一定跑步基礎，想要在成績上有所突破的跑者。</li><li><strong>Sub 3（破3小時）</strong>：追求競技表現，需要更系統化、高強度的訓練規劃。</li></ul><p>不同目標對應的訓練方法、每週里程、配速要求都截然不同。書中以表格形式呈現每週課表，讓跑者能「照表操課」，不需要自己從零摸索課表設計，這對時間有限的市民跑者來說非常實用。</p><h2 id="sec-3">10種訓練方法，你真的都知道差異嗎？</h2><p>書中介紹了進行馬拉松訓練時的10種訓練方式，從步行、慢跑、長距離慢跑（LSD），到比賽配速跑等，每一種都有各自的訓練目的。很多初學者容易犯的錯誤，就是「每次跑步都用同一個速度跑」，既沒有輕鬆恢復，也沒有針對性的強度刺激，結果訓練效率低落，還容易受傷。</p><p>理解每種訓練方式的用途，才能讓100天的備賽期每一週都花在刀口上。這集 Podcast 裡也針對這些方法做了概念性的整理，幫助還不熟悉跑步訓練術語的朋友建立基本框架。</p><h2 id="sec-4">只剩30天，密集備賽怎麼操作？</h2><p>這是這集最有實戰價值的部分之一。生活忙碌的現代人，往往無法保證完整的100天系統訓練。如果距離比賽只剩一個月，訓練重點和策略需要做出相應調整——不是瘋狂衝量，而是在有限時間內做最關鍵的刺激與維持，同時避免因為過度訓練在賽前受傷。</p><p>Jin 在節目中結合自身經驗，分享了這個情境下比較務實的操作方向，讓即使準備時間不足的跑者，也能有個可以依循的思路，而不是一片茫然地硬撐。</p><h2 id="sec-5">破除常見的馬拉松迷思</h2><p>這集也整理了書中提到的馬拉松常見 Q&A，幫助跑者破除一些似是而非的觀念。許多業餘跑者在備賽過程中，常常會因為網路上各種說法而感到困惑，例如賽前該不該繼續跑、補給策略怎麼設定、練習量到底夠不夠等問題。有一本系統化的參考依據，能省下大量試錯的時間與精力。</p><h2 id="sec-6">馬拉松的魅力，在於它是可以被「計畫」的挑戰</h2><p>馬拉松聽起來很遙遠，但它其實是一項非常適合用科學方法拆解的運動目標。你不需要天賦異稟，只需要一個適合自己程度的計畫，加上足夠的執行力。不管你的目標是站上起跑線安全完賽，還是有一天衝進3小時大關，都值得認真對待這個準備的過程。</p><p>如果你對跑步訓練有興趣，或正在為下一場馬拉松煩惱課表怎麼排，這集 Podcast 是個不錯的起點。完整的文字版心得也可以到 Medium 上找到，連結在節目 Show notes 裡。</p>
@@ -94,19 +70,27 @@ function nlGo(f){
       <a class="pn" href="/post/171/"><span>← 上一篇</span><b>EP20｜瑜伽達人Maggie：嘗試，才是找到答案的開始</b></a>
       <a class="pn pn-r" href="/post/169/"><span>下一篇 →</span><b>EP18｜市民跑者必看！100天馬拉松訓練計畫，從完跑到破3全攻略</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/156/"><span class="h-meta"><span class="h-cat">成長</span><span>🎙 Podcast</span></span><b>EP05｜從零復跑到13K！桐花祭路跑備賽心得與訓練心法</b></a></li><li><a href="/post/245/"><span class="h-meta"><span class="h-cat">成長</span><span>🎙 Podcast</span></span><b>EP94｜從電視記者到醫院行銷長，張宜真的跨域職涯心法</b></a></li><li><a href="/post/38/"><span class="h-meta"><span class="h-cat">成長</span></span><b>《超有料！職場第一實用的 AI 簡報術》閱讀心得</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

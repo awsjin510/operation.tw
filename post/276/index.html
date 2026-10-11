@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="2026 年，駭客從發現漏洞到發動攻擊的時間被 AI 壓縮到 22 秒。你的 IT 團隊還在等下個維護週期，攻擊者早就進來了。這篇文章拆解 Google AI Threat Defense 的四個核心武器，以及「AI 自動防禦流水線」對資安主管、DevOps 工程師與中小企業主的實際影響。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-276.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/276/","headline":"AI27｜AI 對打 AI 的時代：拆解 Google AI Threat Defense","description":"2026 年，駭客從發現漏洞到發動攻擊的時間被 AI 壓縮到 22 秒。你的 IT 團隊還在等下個維護週期，攻擊者早就進來了。這篇文章拆解 Google AI Threat Defense 的四個核心武器，以及「AI 自動防禦流水線」對資安主管、DevOps 工程師與中小企業主的實際影響。","datePublished":"2026-06-02","dateModified":"2026-06-02","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/276/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/276/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-276.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"AI27｜AI 對打 AI 的時代：拆解 Google AI Threat Defense","item":"https://operation.tw/post/276/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/276/#episode","name":"AI27｜AI 對打 AI 的時代：拆解 Google AI Threat Defense","url":"https://operation.tw/post/276/","datePublished":"2026-06-02","description":"2026 年，駭客從發現漏洞到發動攻擊的時間被 AI 壓縮到 22 秒。你的 IT 團隊還在等下個維護週期，攻擊者早就進來了。這篇文章拆解 Google AI Threat Defense 的四個核心武器，以及「AI 自動防禦流水線」對資安主管、DevOps 工程師與中小企業主的實際影響。","image":"https://operation.tw/images/posts/post-276.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":27,"duration":"PT14M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/53af0c52-6862-4f66-969c-d5eaaad4790e/rssFileVip.mp3?timestamp=1780513189172","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:276})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="276">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E8%B3%87%E5%AE%89/">資安</a></nav>
   <article>
     <div class="badge" style="color:#ff6b9a;background:#ff6b9a1a">🔐 資安</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-06-02">2026-06-02</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-276.webp"><img class="cover" src="https://operation.tw/images/posts/post-276.jpg" alt="AI27｜AI 對打 AI 的時代：拆解 Google AI Threat Defense" width="1200" height="630"></picture>
     <div class="excerpt"><p>2026 年，駭客從發現漏洞到發動攻擊的時間被 AI 壓縮到 22 秒。你的 IT 團隊還在等下個維護週期，攻擊者早就進來了。這篇文章拆解 Google AI Threat Defense 的四個核心武器，以及「AI 自動防禦流水線」對資安主管、DevOps 工程師與中小企業主的實際影響。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>AI27_資安操作 | AI 對打 AI 的時代開始了：拆解 Google AI Threat Defense</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000770851573" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI27_%E8%B3%87%E5%AE%89%E6%93%8D%E4%BD%9C%20%7C%20AI%20%E5%B0%8D%E6%89%93%20AI%20%E7%9A%84%E6%99%82%E4%BB%A3%E9%96%8B%E5%A7%8B%E4%BA%86%EF%BC%9A%E6%8B%86%E8%A7%A3%20Google%20AI%20Threat%20Defense" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">2026 年雲端資安到底變了什麼？</a></li><li class="toc-l2"><a href="#sec-2">四個武器，為什麼這樣組合？</a></li><li class="toc-l2"><a href="#sec-3">實際情境：一家 200 人軟體公司的四個階段</a></li><li class="toc-l2"><a href="#sec-4">對三種人的影響</a></li><li class="toc-l2"><a href="#sec-5">如果你今年要評估雲端資安平台</a></li><li class="toc-l2"><a href="#sec-6">結語：從工具到流水線</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>先給你一個數字——<strong>22 秒</strong>。</p><p>這是 2026 年駭客從掃描到一個漏洞、到真正開始攻擊的平均時間。幾年前，這個窗口大概是幾週，資安團隊還有時間排優先順序、開票、等維護週期。現在？AI 把這個時間壓縮到不到半分鐘。你企業的人還沒收到警示通知，攻擊可能已經在跑了。</p><p>這個落差，正是 Google 在今年五月發布 <strong>Google AI Threat Defense</strong> 想解決的問題。這集 Podcast 就是圍繞著這個產品展開，但聊的不只是「Google 又出新東西了」，而是背後一個更大的結構性轉變：雲端資安從「工具」進化到「會自己跑的流水線」。</p><h2 id="sec-1">2026 年雲端資安到底變了什麼？</h2><p>過去十年，雲端資安的討論大多圍繞在「買哪個工具」、「裝哪個 agent」。但 22 秒這個數字說明了一件事：<strong>人的反應速度已經根本跟不上 AI 攻擊者的節奏。</strong></p><p>攻擊者早就在用 AI 自動化掃描、生成漏洞利用程式碼、繞過傳統防禦規則。防守方如果還靠人工判讀 log、手動 patch，這場仗打法就不對稱了。Google AI Threat Defense 的出發點，是讓防守端也進入同樣的自動化層級——用 AI 對打 AI。</p><h2 id="sec-2">四個武器，為什麼這樣組合？</h2><p>Google 整合了四個核心元件，這集 Podcast 逐一拆解它們的角色：</p><ul><li><strong>Wiz（雲端曝險地圖）</strong>：負責盤點你的雲端環境裡有哪些暴露面，哪些設定錯誤、哪些資產對外開放。先看清楚自己的地形，才能防守。</li><li><strong>Mandiant（事件回應）</strong>：Google 旗下的頂級威脅情報與事件回應團隊，提供真實攻擊情境的知識庫與回應能力。</li><li><strong>CodeMender（AI 自動修程式碼）</strong>：掃到漏洞之後，不只是發警示，而是直接生成修補程式碼的建議甚至自動 PR。這是這個組合裡最激進的一塊。</li><li><strong>Gemini（判斷大腦）</strong>：串連前三者，負責做上下文判斷——這個警示是真的威脅還是誤報？這個漏洞現在有多緊急？優先順序怎麼排？</li></ul><p>這四個組合不是隨機的。Wiz 給地圖、Mandiant 給情報、CodeMender 給行動、Gemini 給判斷。整條鏈跑起來，才是那條「自動流水線」。</p><h2 id="sec-3">實際情境：一家 200 人軟體公司的四個階段</h2><p>這集用一家 200 人規模的軟體公司當情境，帶聽眾走過自動化防禦的四個階段：<strong>盤點 → 掃描 → 修補 → 監控</strong>。這個框架很實用，因為它把抽象的「AI 防禦」拆成可以對照自己公司現狀的步驟。你現在卡在哪一階段？哪個環節還是純人工？這是評估雲端資安平台時最好的起點。</p><h2 id="sec-4">對三種人的影響</h2><p>這集也具體談到三種角色會受到什麼衝擊：</p><ul><li><strong>資安主管</strong>：KPI 要重寫。過去看「發現多少威脅」，現在要看「平均回應時間縮短了多少」、「自動修補覆蓋率是多少」。指標邏輯變了。</li><li><strong>DevOps 工程師</strong>：CodeMender 這類工具讓程式碼的安全品質變得透明，誰的 PR 帶進漏洞、誰的程式碼反覆出現同類問題，都會被可視化。這不只是工具問題，也是團隊文化問題。</li><li><strong>中小企業主</strong>：「我太小，駭客不會來」這個想法在 2026 年徹底失效。AI 攻擊是自動化的，它不挑目標大小，它挑漏洞。規模小不是保護，反而可能是因為防禦資源少而更脆弱。</li></ul><h2 id="sec-5">如果你今年要評估雲端資安平台</h2><p>這集最後給了幾個評估問題的方向：你的平台能不能做到全自動的漏洞修補？它的誤報率是多少？它跟你現有的 CI/CD 流程整合難度高不高？這些問題比「功能清單有多長」更有實際價值。</p><h2 id="sec-6">結語：從工具到流水線</h2><p>我在這集最後想強調的一個觀察是：過去十年雲端資安都在「選工具」，但從 Google AI Threat Defense 這個方向看，接下來資安在談的是「流水線」——一條不需要人盯著、會自己偵測、自己判斷、自己修補的自動化鏈。</p><p>這不是說人不重要，而是人的角色在位移：從操作工具的執行者，變成設計流水線、驗證結果的決策者。如果你的團隊還沒開始想這件事，22 秒是個很好的提醒。</p>
@@ -92,21 +68,29 @@ function nlGo(f){
 </ul><!--BODY:END--></div>
     <nav class="post-nav">
       <a class="pn" href="/post/277/"><span>← 上一篇</span><b>AI28｜資安最大的敵人不是駭客，是員工的善意——拆解影子 AI</b></a>
-      <a class="pn pn-r" href="/post/121/"><span>下一篇 →</span><b>歐盟網安法2.0：供應鏈風險管理如何改變台灣科技產業格局</b></a>
+      <a class="pn pn-r" href="/post/108/"><span>下一篇 →</span><b>歐盟網安法升級：台灣企業如何應對供應鏈合規新挑戰</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/84/"><span class="h-meta"><span class="h-cat">資安</span></span><b>AI攻擊工具化危機：企業該如何從Google 2026資安預測中未雨綢繆？</b></a></li><li><a href="/post/140/"><span class="h-meta"><span class="h-cat">資安</span></span><b>Google資安認證熱潮：台灣企業如何搶佔AI時代的防禦先機？</b></a></li><li><a href="/post/273/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>AI24｜Google I/O 2026 拆解：Always-on AI 時代，AI 已成為基礎設施</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

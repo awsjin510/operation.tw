@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="2025 年可能真的是 AI 代理的元年。這篇文章整理自「操作一下」Podcast 最新一集，從免費跑起 Claude Code 的實用步驟、Google 與 Anthropic 的最新動態，到真正搞懂 AI 代理的本質差異——LLM、AI Workflow、AI Agent 到底差在哪？讀完你會對「讓 AI 幫你工作」這件事有更清楚的輪廓。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-250.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/250/","headline":"AI04｜AI 代理元年來了：免費工具、自動化工作流與那個神秘的超強模型","description":"2025 年可能真的是 AI 代理的元年。這篇文章整理自「操作一下」Podcast 最新一集，從免費跑起 Claude Code 的實用步驟、Google 與 Anthropic 的最新動態，到真正搞懂 AI 代理的本質差異——LLM、AI Workflow、AI Agent 到底差在哪？讀完你會對「讓 AI 幫你工作」這件事有更清楚的輪廓。","datePublished":"2026-04-15","dateModified":"2026-04-15","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/250/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/250/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-250.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"AI04｜AI 代理元年來了：免費工具、自動化工作流與那個神秘的超強模型","item":"https://operation.tw/post/250/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/250/#episode","name":"AI04｜AI 代理元年來了：免費工具、自動化工作流與那個神秘的超強模型","url":"https://operation.tw/post/250/","datePublished":"2026-04-15","description":"2025 年可能真的是 AI 代理的元年。這篇文章整理自「操作一下」Podcast 最新一集，從免費跑起 Claude Code 的實用步驟、Google 與 Anthropic 的最新動態，到真正搞懂 AI 代理的本質差異——LLM、AI Workflow、AI Agent 到底差在哪？讀完你會對「讓 AI 幫你工作」這件事有更清楚的輪廓。","image":"https://operation.tw/images/posts/post-250.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":4,"duration":"PT15M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/7f002158-f1e7-4542-b1a8-acfd8a1433ef/rssFileVip.mp3?timestamp=1776562212092","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:250})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="250">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E8%B3%87%E5%AE%89/">資安</a></nav>
   <article>
     <div class="badge" style="color:#ff6b9a;background:#ff6b9a1a">🔐 資安</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-15">2026-04-15</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-250.webp"><img class="cover" src="https://operation.tw/images/posts/post-250.jpg" alt="AI04｜AI 代理元年來了：免費工具、自動化工作流與那個神秘的超強模型" width="1200" height="630"></picture>
     <div class="excerpt"><p>2025 年可能真的是 AI 代理的元年。這篇文章整理自「操作一下」Podcast 最新一集，從免費跑起 Claude Code 的實用步驟、Google 與 Anthropic 的最新動態，到真正搞懂 AI 代理的本質差異——LLM、AI Workflow、AI Agent 到底差在哪？讀完你會對「讓 AI 幫你工作」這件事有更清楚的輪廓。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>AI04_趨勢操作 | AI 代理元年：免費開發工具、自動化工作流、還有那個不敢公開的超強模型</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000761676857" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI04_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%20%7C%20AI%20%E4%BB%A3%E7%90%86%E5%85%83%E5%B9%B4%EF%BC%9A%E5%85%8D%E8%B2%BB%E9%96%8B%E7%99%BC%E5%B7%A5%E5%85%B7%E3%80%81%E8%87%AA%E5%8B%95%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81%E3%80%81%E9%82%84%E6%9C%89%E9%82%A3%E5%80%8B%E4%B8%8D%E6%95%A2%E5%85%AC%E9%96%8B%E7%9A%84%E8%B6%85%E5%BC%B7%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">免費跑 Claude Code：設定方法與工作流程習慣</a></li><li class="toc-l2"><a href="#sec-2">這週的 AI 大新聞：從知識管理到神秘政府模型</a></li><li class="toc-l2"><a href="#sec-3">真正搞懂 AI 代理：LLM、Workflow、Agent 差在哪</a></li><li class="toc-l2"><a href="#sec-4">對你來說，這代表什麼</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>如果你最近感覺 AI 新聞多到跟不上，你不孤單。每週都有新工具、新模型、新功能冒出來，但真正值得你花時間搞懂的，其實沒那麼多。這集 Podcast 我試著幫你篩掉雜訊，聚焦在三個真正有料的方向：免費開發工具的實用設定、這週幾個關鍵的 AI 大新聞，以及一個很多人混淆的核心概念——AI 代理到底是什麼。</p>
@@ -98,9 +74,9 @@ function nlGo(f){
 <h2 id="sec-3">真正搞懂 AI 代理：LLM、Workflow、Agent 差在哪</h2>
 <p>這是這集我覺得最值得花時間說清楚的部分。很多人把這三個詞混著用，但它們本質上差很多：</p>
 <ul>
-  <li><strong>LLM（大型語言模型）</strong>：「有腦無手」。它能理解、能回答，但它自己不會去做任何事。</li>
+  <li><strong>LLM（<a class="gl" href="/glossary/#term-llm" title="術語庫：大型語言模型">大型語言模型</a>）</strong>：「有腦無手」。它能理解、能回答，但它自己不會去做任何事。</li>
   <li><strong>AI Workflow</strong>：給了 LLM 工具和流程，但每一步還是你在指路，它照著走。</li>
-  <li><strong>AI Agent（AI 代理）</strong>：你只給它目標，剩下的它自己想辦法——觀察環境、規劃步驟、執行、從結果中學習，整個閉環都自己跑完。</li>
+  <li><strong><a class="gl" href="/glossary/#term-ai-agent" title="術語庫：AI代理">AI Agent</a>（AI 代理）</strong>：你只給它目標，剩下的它自己想辦法——觀察環境、規劃步驟、執行、從結果中學習，整個閉環都自己跑完。</li>
 </ul>
 <p>這集用了一個旅行社的比喻，我覺得很好懂：你跟旅行社說「我想去日本賞櫻花」，真正的 AI Agent 就像一個頂級的旅行顧問，會幫你查機票、訂飯店、規劃行程、甚至提醒你帶什麼——你不需要一步步發號施令，只要說清楚你的目標就好。</p>
 
@@ -123,22 +99,30 @@ function nlGo(f){
 <li><a href="/podcast.html">瀏覽所有單集 →</a></li>
 </ul><!--BODY:END--></div>
     <nav class="post-nav">
-      <a class="pn" href="/post/75/"><span>← 上一篇</span><b>AI攻擊全面化時代：2026企業如何從被動防禦升級到主動偵測？</b></a>
-      <a class="pn pn-r" href="/post/71/"><span>下一篇 →</span><b>記憶體安全危機來襲：Google 2026資安預測如何改變企業防禦策略</b></a>
+      <a class="pn" href="/post/253/"><span>← 上一篇</span><b>EP96｜從資安工程師到產品經理：如何讓客戶願意為資安買單？</b></a>
+      <a class="pn pn-r" href="/post/248/"><span>下一篇 →</span><b>AI02｜AI 不睡覺的一週：五大事件，典範轉移正式開始</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/422/"><span class="h-meta"><span class="h-cat">資安</span></span><b>GPT-6自動下載駭客工具遭抓包：AI代理失控的資安警訊</b></a></li><li><a href="/post/396/"><span class="h-meta"><span class="h-cat">資安</span></span><b>Anthropic AI模型越界攻擊：自主Agent時代的資安破口</b></a></li><li><a href="/post/340/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>AI47｜Claude Opus 5 革新 Agent：同價格能力全面升級，自動化工作流 8 小時不崩</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

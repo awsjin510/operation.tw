@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="PwC日本提出「SLM小型模型」策略對抗AI燒錢大戰，而台灣金融機構卻聚焦大語言模型。本文分析為何小型模型對資源有限的亞洲國家更務實，以及台灣金融AI現階段應如何調整策略。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-83.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/83/","headline":"SLM小型模型才是亞洲AI突圍之路：台灣金融AI為何跟風大模型有風險","description":"PwC日本提出「SLM小型模型」策略對抗AI燒錢大戰，而台灣金融機構卻聚焦大語言模型。本文分析為何小型模型對資源有限的亞洲國家更務實，以及台灣金融AI現階段應如何調整策略。","datePublished":"2026-04-24","dateModified":"2026-04-24","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/83/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/83/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-83.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"SLM小型模型才是亞洲AI突圍之路：台灣金融AI為何跟風大模型有風險","item":"https://operation.tw/post/83/"}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:83})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="83">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-83.webp"><img class="cover" src="https://operation.tw/images/posts/post-83.jpg" alt="SLM小型模型才是亞洲AI突圍之路：台灣金融AI為何跟風大模型有風險" width="1200" height="630"></picture>
     <div class="excerpt"><p>PwC日本提出「SLM小型模型」策略對抗AI燒錢大戰，而台灣金融機構卻聚焦大語言模型。本文分析為何小型模型對資源有限的亞洲國家更務實，以及台灣金融AI現階段應如何調整策略。</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">AI大戰中的亞洲困境：誰該為天價訓練費買單</a></li><li class="toc-l2"><a href="#sec-2">大模型vs.小模型：成本與效能的天平</a></li><li class="toc-l2"><a href="#sec-3">日本的警示、台灣的機會</a></li><li class="toc-l2"><a href="#sec-4">「混合架構」才是現實的選擇</a></li><li class="toc-l2"><a href="#sec-5">給台灣金融AI的三個建議</a></li><li class="toc-l2"><a href="#sec-6">結語：亞洲AI不是追趕者，是差異化者</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><h2 id="sec-1">AI大戰中的亞洲困境：誰該為天價訓練費買單</h2><p>當OpenAI、Google等巨頭動輒砸數十億美元訓練超級大模型時，亞洲國家正面臨殘酷的現實：我們有足夠的資本和人才跟進嗎？PwC日本最近發表的分析報告給出了令人驚醒的答案——與其燒錢追趕，不如聚焦「SLM小型語言模型」(Small Language Models)，在垂直領域建立競爭優勢。這個建議對正在啟動金融大語言模型的台灣，是一份值得深思的提醒。</p><h2 id="sec-2">大模型vs.小模型：成本與效能的天平</h2><p>台灣16家金融機構聯手推出的金融大語言模型確實令人鼓舞，彭金隆看好的三大效益——風險管理、客戶服務優化、決策支持——都是實實在在的商業價值。但關鍵問題是：維持一個通用大模型需要多少持續投入？</p><ul><li><strong>訓練成本：</strong>大模型動輒耗資數億美元，台灣若自主訓練難度極高</li><li><strong>推理成本：</strong>每次API調用都要消耗龐大運算資源，長期營運成本驚人</li><li><strong>資料隱私風險：</strong>將敏感金融數據上傳大模型進行推理，潛藏資安隱患</li></ul><p>相比之下，SLM小型模型採用「專精而非通用」的策略——針對金融特定場景（如信用評分、詐欺偵測、合規檢查）訓練輕量化模型，可以：</p><ul><li>在本地私有雲部署，完全控制數據流向</li><li>推理延遲低至毫秒級，適合即時交易場景</li><li>訓練成本降低至大模型的1/100以下</li><li>更容易微調適應個別銀行的特殊需求</li></ul><h2 id="sec-3">日本的警示、台灣的機會</h2><p>PwC日本為何會提出這個建議？背景是日本科技產業面臨的尷尬局面：無論是晶片製造還是AI訓練，都無法與美國資本對抗。與其陷入軍備競賽，不如走「差異化」路線。NEC、軟銀、索尼組成的「AI國家隊」正是這個思路的實踐——聚焦資安應用這個垂直領域。</p><p>台灣的處境類似。金融大語言模型的意義不在於建立「第二個Claude或GPT」，而在於：</p><ul><li><strong>建立主權AI基礎：</strong>不依賴國外API，掌握自主權</li><li><strong>垂直領域深耕：</strong>把資源集中在台灣金融業最迫切的痛點</li><li><strong>與國際大模型互補：</strong>用SLM處理敏感/即時任務，大模型只用於非敏感分析</li></ul><h2 id="sec-4">「混合架構」才是現實的選擇</h2><p>凱基金控推出的FinLLM展現了更務實的思路。不是非此即彼，而是混合架構：</p><ul><li>敏感金融數據→小型私有模型處理</li><li>通用知識查詢→調用國際大模型API</li><li>實時交易決策→邊緣計算上的超輕量模型</li></ul><p>這樣既保留了大模型的通用性，又避免了一次性的巨額投入。對於預算有限的台灣銀行而言，這是更可持續的路線。</p><h2 id="sec-5">給台灣金融AI的三個建議</h2><p><strong>一、明確分層策略：</strong>停止追求「一個模型解決所有問題」的幻想，而是根據場景複雜度選擇模型大小。詐欺偵測可能只需要數十億參數的SLM；客戶諮詢則可用大模型。</p><p><strong>二、優先本地部署：</strong>已啟動的金融大語言模型應優先在私有雲或邊緣設備上部署，減少對外部API的依賴。這對資安合規尤其關鍵。</p><p><strong>三、開放合作但保護核心：</strong>參考日本國家隊模式，16家機構可在非敏感組件上協作開源，但將各家獨特的業務邏輯保留為私有SLM。</p><h2 id="sec-6">結語：亞洲AI不是追趕者，是差異化者</h2><p>2026年，AI的敘事正在改變。大模型並非終局，SLM + 專業應用才是下半場的主角。台灣金融機構有幸在此時啟動主權AI框架，關鍵是不要一開始就為了追趕而全押大模型。看看日本、看看PwC的分析，答案其實很清楚：我們應該做的，是建立一個「輕而快、小而精」的金融AI生態。</p><p>大模型會繼續進化，但真正改變金融業的，或許是那些在本地機房默默工作的小模型。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">AI大戰中的亞洲困境：誰該為天價訓練費買單</h2><p>當OpenAI、Google等巨頭動輒砸數十億美元訓練超級大模型時，亞洲國家正面臨殘酷的現實：我們有足夠的資本和人才跟進嗎？PwC日本最近發表的分析報告給出了令人驚醒的答案——與其燒錢追趕，不如聚焦「SLM<a class="gl" href="/glossary/#term-slm" title="術語庫：小型語言模型">小型語言模型</a>」(Small Language Models)，在垂直領域建立競爭優勢。這個建議對正在啟動金融大語言模型的台灣，是一份值得深思的提醒。</p><h2 id="sec-2">大模型vs.小模型：成本與效能的天平</h2><p>台灣16家金融機構聯手推出的金融大語言模型確實令人鼓舞，彭金隆看好的三大效益——風險管理、客戶服務優化、決策支持——都是實實在在的商業價值。但關鍵問題是：維持一個通用大模型需要多少持續投入？</p><ul><li><strong>訓練成本：</strong>大模型動輒耗資數億美元，台灣若自主訓練難度極高</li><li><strong><a class="gl" href="/glossary/#term-inference" title="術語庫：推理">推理</a>成本：</strong>每次API調用都要消耗龐大運算資源，長期營運成本驚人</li><li><strong>資料隱私風險：</strong>將敏感金融數據上傳大模型進行推理，潛藏資安隱患</li></ul><p>相比之下，SLM小型模型採用「專精而非通用」的策略——針對金融特定場景（如信用評分、詐欺偵測、合規檢查）訓練輕量化模型，可以：</p><ul><li>在本地私有雲部署，完全控制數據流向</li><li>推理延遲低至毫秒級，適合即時交易場景</li><li>訓練成本降低至大模型的1/100以下</li><li>更容易<a class="gl" href="/glossary/#term-fine-tuning" title="術語庫：微調">微調</a>適應個別銀行的特殊需求</li></ul><h2 id="sec-3">日本的警示、台灣的機會</h2><p>PwC日本為何會提出這個建議？背景是日本科技產業面臨的尷尬局面：無論是晶片製造還是AI訓練，都無法與美國資本對抗。與其陷入軍備競賽，不如走「差異化」路線。NEC、軟銀、索尼組成的「AI國家隊」正是這個思路的實踐——聚焦資安應用這個垂直領域。</p><p>台灣的處境類似。金融大語言模型的意義不在於建立「第二個Claude或GPT」，而在於：</p><ul><li><strong>建立主權AI基礎：</strong>不依賴國外API，掌握自主權</li><li><strong>垂直領域深耕：</strong>把資源集中在台灣金融業最迫切的痛點</li><li><strong>與國際大模型互補：</strong>用SLM處理敏感/即時任務，大模型只用於非敏感分析</li></ul><h2 id="sec-4">「混合架構」才是現實的選擇</h2><p>凱基金控推出的FinLLM展現了更務實的思路。不是非此即彼，而是混合架構：</p><ul><li>敏感金融數據→小型私有模型處理</li><li>通用知識查詢→調用國際大模型API</li><li>實時交易決策→邊緣計算上的超輕量模型</li></ul><p>這樣既保留了大模型的通用性，又避免了一次性的巨額投入。對於預算有限的台灣銀行而言，這是更可持續的路線。</p><h2 id="sec-5">給台灣金融AI的三個建議</h2><p><strong>一、明確分層策略：</strong>停止追求「一個模型解決所有問題」的幻想，而是根據場景複雜度選擇模型大小。詐欺偵測可能只需要數十億參數的SLM；客戶諮詢則可用大模型。</p><p><strong>二、優先本地部署：</strong>已啟動的金融大語言模型應優先在私有雲或邊緣設備上部署，減少對外部API的依賴。這對資安合規尤其關鍵。</p><p><strong>三、開放合作但保護核心：</strong>參考日本國家隊模式，16家機構可在非敏感組件上協作開源，但將各家獨特的業務邏輯保留為私有SLM。</p><h2 id="sec-6">結語：亞洲AI不是追趕者，是差異化者</h2><p>2026年，AI的敘事正在改變。大模型並非終局，SLM + 專業應用才是下半場的主角。台灣金融機構有幸在此時啟動主權AI框架，關鍵是不要一開始就為了追趕而全押大模型。看看日本、看看PwC的分析，答案其實很清楚：我們應該做的，是建立一個「輕而快、小而精」的金融AI生態。</p><p>大模型會繼續進化，但真正改變金融業的，或許是那些在本地機房默默工作的小模型。</p><!--BODY:END--></div>
     <nav class="post-nav">
       <a class="pn" href="/post/257/"><span>← 上一篇</span><b>AI10｜GPT-Image-2 真的解決了 AI 生圖的文字災難嗎？</b></a>
       <a class="pn pn-r" href="/post/82/"><span>下一篇 →</span><b>Claude當機風波背後：AI服務可靠性成企業選型新關鍵</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/132/"><span class="h-meta"><span class="h-cat">AI</span></span><b>AI落地危機：大型語言模型的「理想與現實」鴻溝</b></a></li><li><a href="/post/382/"><span class="h-meta"><span class="h-cat">AI</span></span><b>在地大語言模型浪潮：台灣企業為何必須打造自己的AI？</b></a></li><li><a href="/post/421/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>AI58｜Gemini 4 Argon：AI 模型選型新時代，長流程推理如何改寫企業成本</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

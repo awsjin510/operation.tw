@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="數發部投入購買100片GPU、將大語言模型納入學測考試，標誌著台灣教育AI化的野心。但這場豪賭背後，隱藏著課程設計、教師培訓、評測公平性等多重挑戰。我們該如何看待這次轉變？">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-27.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/27/","headline":"學測考AI，教育數位轉型的新里程碑還是資源浪費？","description":"數發部投入購買100片GPU、將大語言模型納入學測考試，標誌著台灣教育AI化的野心。但這場豪賭背後，隱藏著課程設計、教師培訓、評測公平性等多重挑戰。我們該如何看待這次轉變？","datePublished":"2026-03-05","dateModified":"2026-03-05","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/27/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/27/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-27.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"學測考AI，教育數位轉型的新里程碑還是資源浪費？","item":"https://operation.tw/post/27/"}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:27})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="27">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-27.webp"><img class="cover" src="https://operation.tw/images/posts/post-27.jpg" alt="學測考AI，教育數位轉型的新里程碑還是資源浪費？" width="1200" height="630"></picture>
     <div class="excerpt"><p>數發部投入購買100片GPU、將大語言模型納入學測考試，標誌著台灣教育AI化的野心。但這場豪賭背後，隱藏著課程設計、教師培訓、評測公平性等多重挑戰。我們該如何看待這次轉變？</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">政策加碼：AI正式進入教育體系</a></li><li class="toc-l2"><a href="#sec-2">技術層面的現實挑戰</a></li><li class="toc-l2"><a href="#sec-3">教育體系的結構性困境</a></li><li class="toc-l2"><a href="#sec-4">對台灣AI產業的啟示</a></li><li class="toc-l2"><a href="#sec-5">建議與展望</a></li><li class="toc-l2"><a href="#sec-6">結語</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><h2 id="sec-1">政策加碼：AI正式進入教育體系</h2><p>根據數發部最新宣布，台灣將投入資源購買100片GPU，更重要的是——大語言模型（LLM）將首次納入大學學測考試範圍。這不只是硬體升級，更是教育評測體系的結構性轉變。在全球AI競賽激烈的當下，台灣政府的這步棋似乎在傳達一個清晰的信號：AI素養已成為新世代必備能力。</p><p>然而，這項改革的推進速度和深度引發了不少思考。從購買GPU到修改課綱再到出題標準化，每一環都涉及複雜的技術、人事與制度問題。</p><h2 id="sec-2">技術層面的現實挑戰</h2><p>首先是計算資源的分配問題。100片GPU看似龐大的投資，但攤平到全台灣數萬名考生、數千所學校，資源真的夠用嗎？GPU不僅用於訓練模型，還要支撐推理、測試、備份等環節。更關鍵的是，這些資源該如何公平分配給各地學校？偏鄉地區是否會因為基礎設施落後而無法有效準備？</p><p>其次是「考什麼」的問題。大語言模型的能力邊界本身就在不斷擴展——OpenAI、Google、Meta每季都推出新模型，考試內容如何保持時效性？是考模型的原理、應用、還是批判性思維？評測標準如何制定才能避免偏差？這些都需要教育與AI專家的深度協作。</p><h2 id="sec-3">教育體系的結構性困境</h2><p>更深層的問題在於師資準備。台灣高中教師多數是在AI浪潮之前培訓的，要在短時間內讓他們掌握大語言模型的原理與應用，談何容易？沒有充分的教師培訓，課堂教學難以深化學生理解，最終可能淪為「教考試技巧」而非「培養AI思維」。</p><p>此外，這項改革能否公平對待不同背景的學生也值得關注。擁有私人AI補習資源的都市學生 vs. 仰賴學校資源的偏鄉學生，數位落差可能進一步擴大。教育的初衷是縮小不平等，但不當的推進可能反其道而行。</p><h2 id="sec-4">對台灣AI產業的啟示</h2><p>換個角度看，這項政策也反映了台灣在全球AI競爭中的焦慮。中國有DeepSeek、美國有OpenAI和Google，台灣正尋求在「AI人才培養」這個長期戰場上建立優勢。將AI教育從高等教育向下延伸到高中，確實是明智之舉。</p><p>但「政策先行、制度後跟」的模式有風險。若學測導向不當，可能引發教育現場的混亂——學校急著開設AI課程卻缺乏課程標準，教師倉促上陣卻沒有培訓資源，學生為了應考而學習AI卻無法內化核心觀念。</p><h2 id="sec-5">建議與展望</h2><p>台灣應該在推進中保持冷靜的節奏：</p><ul><li><strong>優先投入師資培訓：</strong>與大學、業界合作，建立系統性的教師培訓計畫，而非倉促從業界挖角。</li><li><strong>制定清晰的課程標準：</strong>與教育、技術專家協同設計，確保考試內容與真實應用接軌。</li><li><strong>關注教育公平：</strong>確保偏鄉學校有平等的資源與支持，別讓AI教育成為新的數位鴻溝來源。</li><li><strong>長期迭代機制：</strong>學測改革要留下反饋循環，隨著AI技術演進而調整，而非一成不變。</li></ul><h2 id="sec-6">結語</h2><p>政府的決心值得肯定，但教育改革的成敗不在政策宣布的那一刻，而在實踐的每一個細節。100片GPU是起點，真正的考驗才剛開始。台灣該如何確保這筆投資轉化為紮實的AI人才儲備，而非曇花一現的政策秀，關鍵在於我們是否願意投入足夠的耐心與資源去構建完整的教育生態。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">政策加碼：AI正式進入教育體系</h2><p>根據數發部最新宣布，台灣將投入資源購買100片<a class="gl" href="/glossary/#term-gpu" title="術語庫：圖形處理器">GPU</a>，更重要的是——大語言模型（<a class="gl" href="/glossary/#term-llm" title="術語庫：大型語言模型">LLM</a>）將首次納入大學學測考試範圍。這不只是硬體升級，更是教育評測體系的結構性轉變。在全球AI競賽激烈的當下，台灣政府的這步棋似乎在傳達一個清晰的信號：AI素養已成為新世代必備能力。</p><p>然而，這項改革的推進速度和深度引發了不少思考。從購買GPU到修改課綱再到出題標準化，每一環都涉及複雜的技術、人事與制度問題。</p><h2 id="sec-2">技術層面的現實挑戰</h2><p>首先是計算資源的分配問題。100片GPU看似龐大的投資，但攤平到全台灣數萬名考生、數千所學校，資源真的夠用嗎？GPU不僅用於訓練模型，還要支撐<a class="gl" href="/glossary/#term-inference" title="術語庫：推理">推理</a>、測試、備份等環節。更關鍵的是，這些資源該如何公平分配給各地學校？偏鄉地區是否會因為基礎設施落後而無法有效準備？</p><p>其次是「考什麼」的問題。大語言模型的能力邊界本身就在不斷擴展——OpenAI、Google、Meta每季都推出新模型，考試內容如何保持時效性？是考模型的原理、應用、還是批判性思維？評測標準如何制定才能避免偏差？這些都需要教育與AI專家的深度協作。</p><h2 id="sec-3">教育體系的結構性困境</h2><p>更深層的問題在於師資準備。台灣高中教師多數是在AI浪潮之前培訓的，要在短時間內讓他們掌握大語言模型的原理與應用，談何容易？沒有充分的教師培訓，課堂教學難以深化學生理解，最終可能淪為「教考試技巧」而非「培養AI思維」。</p><p>此外，這項改革能否公平對待不同背景的學生也值得關注。擁有私人AI補習資源的都市學生 vs. 仰賴學校資源的偏鄉學生，數位落差可能進一步擴大。教育的初衷是縮小不平等，但不當的推進可能反其道而行。</p><h2 id="sec-4">對台灣AI產業的啟示</h2><p>換個角度看，這項政策也反映了台灣在全球AI競爭中的焦慮。中國有DeepSeek、美國有OpenAI和Google，台灣正尋求在「AI人才培養」這個長期戰場上建立優勢。將AI教育從高等教育向下延伸到高中，確實是明智之舉。</p><p>但「政策先行、制度後跟」的模式有風險。若學測導向不當，可能引發教育現場的混亂——學校急著開設AI課程卻缺乏課程標準，教師倉促上陣卻沒有培訓資源，學生為了應考而學習AI卻無法內化核心觀念。</p><h2 id="sec-5">建議與展望</h2><p>台灣應該在推進中保持冷靜的節奏：</p><ul><li><strong>優先投入師資培訓：</strong>與大學、業界合作，建立系統性的教師培訓計畫，而非倉促從業界挖角。</li><li><strong>制定清晰的課程標準：</strong>與教育、技術專家協同設計，確保考試內容與真實應用接軌。</li><li><strong>關注教育公平：</strong>確保偏鄉學校有平等的資源與支持，別讓AI教育成為新的數位鴻溝來源。</li><li><strong>長期迭代機制：</strong>學測改革要留下反饋循環，隨著AI技術演進而調整，而非一成不變。</li></ul><h2 id="sec-6">結語</h2><p>政府的決心值得肯定，但教育改革的成敗不在政策宣布的那一刻，而在實踐的每一個細節。100片GPU是起點，真正的考驗才剛開始。台灣該如何確保這筆投資轉化為紮實的AI人才儲備，而非曇花一現的政策秀，關鍵在於我們是否願意投入足夠的耐心與資源去構建完整的教育生態。</p><!--BODY:END--></div>
     <nav class="post-nav">
       <a class="pn" href="/post/28/"><span>← 上一篇</span><b>維基百科設AI紅線：翻譯品質把關如何改寫內容民主化？</b></a>
       <a class="pn pn-r" href="/post/25/"><span>下一篇 →</span><b>DeepSeek整合華為晶片：中國AI突圍戰如何改寫全球競爭格局？</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/113/"><span class="h-meta"><span class="h-cat">AI</span></span><b>博弈產業AI轉型：LLM如何驅動營收成長三成？</b></a></li><li><a href="/post/307/"><span class="h-meta"><span class="h-cat">AI</span></span><b>深偽危機衝擊LLM：大語言模型為何面臨「數據崩潰」困局？</b></a></li><li><a href="/post/235/"><span class="h-meta"><span class="h-cat">閱讀</span><span>🎙 Podcast</span></span><b>EP84｜親子理財教育，教「什麼」不如教「怎麼教」</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

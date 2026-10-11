@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="2023 智慧城市展以「數位轉型」與「綠色轉型」為雙核心，匯聚全球城市官員、電信業者、物聯網供應商齊聚一堂。這篇文章從智慧交通的視角切入，帶你快速掌握展場內最值得關注的技術趨勢，以及雲端服務在智慧城市生態圈中扮演的關鍵角色，讓你不用親自跑展場也能掌握第一手觀察。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-193.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/193/","headline":"EP42｜2023 智慧城市展直擊：智慧交通與雲端趨勢一次看懂","description":"2023 智慧城市展以「數位轉型」與「綠色轉型」為雙核心，匯聚全球城市官員、電信業者、物聯網供應商齊聚一堂。這篇文章從智慧交通的視角切入，帶你快速掌握展場內最值得關注的技術趨勢，以及雲端服務在智慧城市生態圈中扮演的關鍵角色，讓你不用親自跑展場也能掌握第一手觀察。","datePublished":"2023-04-09","dateModified":"2023-04-09","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/193/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/193/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-193.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"EP42｜2023 智慧城市展直擊：智慧交通與雲端趨勢一次看懂","item":"https://operation.tw/post/193/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/193/#episode","name":"EP42｜2023 智慧城市展直擊：智慧交通與雲端趨勢一次看懂","url":"https://operation.tw/post/193/","datePublished":"2023-04-09","description":"2023 智慧城市展以「數位轉型」與「綠色轉型」為雙核心，匯聚全球城市官員、電信業者、物聯網供應商齊聚一堂。這篇文章從智慧交通的視角切入，帶你快速掌握展場內最值得關注的技術趨勢，以及雲端服務在智慧城市生態圈中扮演的關鍵角色，讓你不用親自跑展場也能掌握第一手觀察。","image":"https://operation.tw/images/posts/post-193.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":42,"duration":"PT32M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/d9cb3d54-6a0d-4ad2-b9ca-bf113f5f4014/rssFileVip.mp3?timestamp=1687899397689","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:193})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="193">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E9%9B%B2%E7%AB%AF/">雲端</a></nav>
   <article>
     <div class="badge" style="color:#62a8ff;background:#62a8ff1a">☁️ 雲端</div>
@@ -73,9 +48,10 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-04-09">2023-04-09</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-193.webp"><img class="cover" src="https://operation.tw/images/posts/post-193.jpg" alt="EP42｜2023 智慧城市展直擊：智慧交通與雲端趨勢一次看懂" width="1200" height="630"></picture>
     <div class="excerpt"><p>2023 智慧城市展以「數位轉型」與「綠色轉型」為雙核心，匯聚全球城市官員、電信業者、物聯網供應商齊聚一堂。這篇文章從智慧交通的視角切入，帶你快速掌握展場內最值得關注的技術趨勢，以及雲端服務在智慧城市生態圈中扮演的關鍵角色，讓你不用親自跑展場也能掌握第一手觀察。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>EP42_操作回顧 | 2023 智慧城市展 | 智慧交通與雲端趨勢</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000608026398" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP42_%E6%93%8D%E4%BD%9C%E5%9B%9E%E9%A1%A7%20%7C%202023%20%E6%99%BA%E6%85%A7%E5%9F%8E%E5%B8%82%E5%B1%95%20%7C%20%E6%99%BA%E6%85%A7%E4%BA%A4%E9%80%9A%E8%88%87%E9%9B%B2%E7%AB%AF%E8%B6%A8%E5%8B%A2" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">2023 智慧城市展：雙轉型驅動的生態圈</a></li><li class="toc-l2"><a href="#sec-2">智慧交通：不只是會自動的交通號誌</a></li><li class="toc-l2"><a href="#sec-3">雲端服務：智慧城市的隱形基礎建設</a></li><li class="toc-l2"><a href="#sec-4">對工程師與科技從業者的實際意義</a></li><li class="toc-l2"><a href="#sec-5">結語</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p>如果你曾經走進一個展場，卻不知道該看什麼、該問什麼，最後帶著一袋型錄回家——那你一定懂那種「好像來了但又好像沒來」的空虛感。</p><p>今年我帶著明確的觀察框架走進 2023 智慧城市展，鎖定<strong>智慧交通</strong>與<strong>雲端服務</strong>兩條主線，試著從工程師的角度，整理出這個展最值得關注的趨勢脈絡。這也是這集 Podcast 想和你聊的核心。</p><h2 id="sec-1">2023 智慧城市展：雙轉型驅動的生態圈</h2><p>本屆智慧城市展以「數位轉型」與「綠色轉型」作為兩大核心主軸，涵蓋智慧能源、智慧交通、智慧建築、綠能永續，以及近年持續發燒的 5G AIoT 應用。這不只是一個展覽，更像是一個把城市未來所有可能性集中在同一個屋簷下的生態圈縮影。</p><p>吸引進場的對象也相當多元：全球城市官員、電信運營商、系統整合商、物聯網服務供應商一起出現在同一個展場裡，代表的是「需求端」與「供給端」正在快速靠近，彼此之間的對話比以前更直接、更具體。</p><h2 id="sec-2">智慧交通：不只是會自動的交通號誌</h2><p>談到智慧交通，很多人第一個想到的可能是「紅綠燈會自己調整秒數」。但在這次展場裡看到的，遠遠不止於此。</p><ul><li><strong>車流感知與即時分析：</strong>透過路側感測器、攝影機與 AI 模型的結合，城市可以即時掌握路口、幹道的車流狀況，並動態調配號誌時序，減少不必要的怠速與壅塞。</li><li><strong>公共運輸智慧化：</strong>公車、捷運、共享交通工具的數據整合，讓城市得以提供更精準的到站預測、路線優化，甚至主動偵測異常事件。</li><li><strong>車路協同（V2X）概念落地：</strong>車輛與道路基礎設施之間的溝通，讓「交通」這件事從被動反應走向主動預測，這也是 5G 網路在智慧交通領域最關鍵的應用場景之一。</li></ul><p>從展場的布局可以明顯感受到，智慧交通的核心競爭力已經從「硬體設備」移轉到「數據如何被收集、傳輸、分析與應用」，這也讓雲端服務自然成為整個架構的骨幹。</p><h2 id="sec-3">雲端服務：智慧城市的隱形基礎建設</h2><p>如果說智慧交通是智慧城市的「動脈」，那雲端就是讓這條動脈正常運作的「心臟」。</p><p>在展場中可以觀察到，不論是哪個領域的解決方案，背後幾乎都少不了雲端平台的支撐。幾個值得注意的趨勢方向包括：</p><ul><li><strong>邊緣運算（Edge Computing）與雲端的協作：</strong>並非所有資料都需要送上雲端處理，部分即時性高、延遲敏感的場景，會在端點就地完成初步運算，再將結果彙整至雲端。這種「雲邊協同」的架構正在成為主流。</li><li><strong>開放平台與 API 整合：</strong>各家廠商越來越重視「可整合性」，希望自己的解決方案能輕易接入城市的既有系統，而非另起爐灶。這讓雲端平台的標準化與開放程度，變成採購決策的關鍵因素。</li><li><strong>資安與數據治理受到重視：</strong>城市等級的數據涉及公共安全與隱私，資安架構的完整性在這次展場中被反覆提及，不再是事後補強，而是從設計端就需要納入考量。</li></ul><h2 id="sec-4">對工程師與科技從業者的實際意義</h2><p>如果你是工程師或在科技領域工作，這次展覽給我最大的啟發是：<strong>「垂直整合」的能力比「單點技術」更有競爭力</strong>。懂得如何把感測器、網路、雲端、AI 模型與實際業務場景串接在一起的人，才是智慧城市時代真正被需要的角色。</p><p>如果你對雲端架構有興趣，不妨從「智慧交通」這個應用場景切入思考——它涉及的技術棧相當完整，是一個很好的學習地圖。</p><h2 id="sec-5">結語</h2><p>逛展覽最有價值的地方，不是帶回幾張名片，而是帶回一個對產業現況更立體的認識。在這集 Podcast 裡，我試著把展場的觀察整理成一個可以理解的脈絡，希望你聽完（或讀完）之後，對智慧交通與雲端趨勢能有更清晰的輪廓。</p><p>如果你也對智慧城市、雲端應用或 AIoT 有興趣，歡迎訂閱「操作一下」，我們下集見。</p>
+    <div class="post-body"><!--BODY:START--><p>如果你曾經走進一個展場，卻不知道該看什麼、該問什麼，最後帶著一袋型錄回家——那你一定懂那種「好像來了但又好像沒來」的空虛感。</p><p>今年我帶著明確的觀察框架走進 2023 智慧城市展，鎖定<strong>智慧交通</strong>與<strong>雲端服務</strong>兩條主線，試著從工程師的角度，整理出這個展最值得關注的趨勢脈絡。這也是這集 Podcast 想和你聊的核心。</p><h2 id="sec-1">2023 智慧城市展：雙轉型驅動的生態圈</h2><p>本屆智慧城市展以「數位轉型」與「綠色轉型」作為兩大核心主軸，涵蓋智慧能源、智慧交通、智慧建築、綠能永續，以及近年持續發燒的 5G AIoT 應用。這不只是一個展覽，更像是一個把城市未來所有可能性集中在同一個屋簷下的生態圈縮影。</p><p>吸引進場的對象也相當多元：全球城市官員、電信運營商、系統整合商、物聯網服務供應商一起出現在同一個展場裡，代表的是「需求端」與「供給端」正在快速靠近，彼此之間的對話比以前更直接、更具體。</p><h2 id="sec-2">智慧交通：不只是會自動的交通號誌</h2><p>談到智慧交通，很多人第一個想到的可能是「紅綠燈會自己調整秒數」。但在這次展場裡看到的，遠遠不止於此。</p><ul><li><strong>車流感知與即時分析：</strong>透過路側感測器、攝影機與 AI 模型的結合，城市可以即時掌握路口、幹道的車流狀況，並動態調配號誌時序，減少不必要的怠速與壅塞。</li><li><strong>公共運輸智慧化：</strong>公車、捷運、共享交通工具的數據整合，讓城市得以提供更精準的到站預測、路線優化，甚至主動偵測異常事件。</li><li><strong>車路協同（V2X）概念落地：</strong>車輛與道路基礎設施之間的溝通，讓「交通」這件事從被動反應走向主動預測，這也是 5G 網路在智慧交通領域最關鍵的應用場景之一。</li></ul><p>從展場的布局可以明顯感受到，智慧交通的核心競爭力已經從「硬體設備」移轉到「數據如何被收集、傳輸、分析與應用」，這也讓雲端服務自然成為整個架構的骨幹。</p><h2 id="sec-3">雲端服務：智慧城市的隱形基礎建設</h2><p>如果說智慧交通是智慧城市的「動脈」，那雲端就是讓這條動脈正常運作的「心臟」。</p><p>在展場中可以觀察到，不論是哪個領域的解決方案，背後幾乎都少不了雲端平台的支撐。幾個值得注意的趨勢方向包括：</p><ul><li><strong><a class="gl" href="/glossary/#term-edge-computing" title="術語庫：邊緣運算">邊緣運算</a>（Edge Computing）與雲端的協作：</strong>並非所有資料都需要送上雲端處理，部分即時性高、延遲敏感的場景，會在端點就地完成初步運算，再將結果彙整至雲端。這種「雲邊協同」的架構正在成為主流。</li><li><strong>開放平台與 API 整合：</strong>各家廠商越來越重視「可整合性」，希望自己的解決方案能輕易接入城市的既有系統，而非另起爐灶。這讓雲端平台的標準化與開放程度，變成採購決策的關鍵因素。</li><li><strong>資安與數據治理受到重視：</strong>城市等級的數據涉及公共安全與隱私，資安架構的完整性在這次展場中被反覆提及，不再是事後補強，而是從設計端就需要納入考量。</li></ul><h2 id="sec-4">對工程師與科技從業者的實際意義</h2><p>如果你是工程師或在科技領域工作，這次展覽給我最大的啟發是：<strong>「垂直整合」的能力比「單點技術」更有競爭力</strong>。懂得如何把感測器、網路、雲端、AI 模型與實際業務場景串接在一起的人，才是智慧城市時代真正被需要的角色。</p><p>如果你對雲端架構有興趣，不妨從「智慧交通」這個應用場景切入思考——它涉及的技術棧相當完整，是一個很好的學習地圖。</p><h2 id="sec-5">結語</h2><p>逛展覽最有價值的地方，不是帶回幾張名片，而是帶回一個對產業現況更立體的認識。在這集 Podcast 裡，我試著把展場的觀察整理成一個可以理解的脈絡，希望你聽完（或讀完）之後，對智慧交通與雲端趨勢能有更清晰的輪廓。</p><p>如果你也對智慧城市、雲端應用或 AIoT 有興趣，歡迎訂閱「操作一下」，我們下集見。</p>
 <hr>
 <p>📚 <strong>同主題的其他單集 / 文章，延伸聽下去：</strong></p>
 <ul>
@@ -94,19 +70,27 @@ function nlGo(f){
       <a class="pn" href="/post/213/"><span>← 上一篇</span><b>EP62｜數據分析師木木：不只看報表，數據如何為公司創造真實價值</b></a>
       <span></span>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/14/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>台灣供應鏈搭上AI雲端列車：甲骨文商機引爆的啟示</b></a></li><li><a href="/post/354/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>企業官網與雲端基礎設施的新關係：AI時代如何重新定義數位門面？</b></a></li><li><a href="/post/252/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>AI05｜Claude Opus 4.7 四大新功能完整解析：視覺、思考、預算一次搞懂</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

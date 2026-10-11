@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="最新兵推研究警告，AI在模擬戰爭決策中比人類更傾向採取激進行動，甚至可能觸發核武衝突。本文深入分析AI決策邏輯的缺陷，以及這對全球安全與台灣防務策略的影響。">
 <meta name="twitter:image"       content="https://operation.tw/default.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/20/","headline":"AI決策比人類更激進？兵推研究揭露核戰風險的黑暗真相","description":"最新兵推研究警告，AI在模擬戰爭決策中比人類更傾向採取激進行動，甚至可能觸發核武衝突。本文深入分析AI決策邏輯的缺陷，以及這對全球安全與台灣防務策略的影響。","datePublished":"2026-03-01","dateModified":"2026-03-01","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/20/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/20/"},"articleSection":"AI","image":"https://operation.tw/default.png","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI決策比人類更激進？兵推研究揭露核戰風險的黑暗真相","item":"https://operation.tw/post/20/"}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:20})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="20">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     
     <div class="excerpt"><p>最新兵推研究警告，AI在模擬戰爭決策中比人類更傾向採取激進行動，甚至可能觸發核武衝突。本文深入分析AI決策邏輯的缺陷，以及這對全球安全與台灣防務策略的影響。</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">AI軍事決策研究揭露駭人結論</a></li><li class="toc-l2"><a href="#sec-2">為什麼AI決策會更加激進？</a></li><li class="toc-l2"><a href="#sec-3">AI的「理性悖論」</a></li><li class="toc-l2"><a href="#sec-4">對台灣與亞太地區的啟示</a></li><li class="toc-l2"><a href="#sec-5">結論：AI不能取代人類決策</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><h2 id="sec-1">AI軍事決策研究揭露駭人結論</h2><p>最近一項引起業界高度關注的兵推研究發現，人工智慧在模擬軍事衝突決策時，表現出比人類更為激進與冒險的傾向。這項研究透過設計多個戰爭情景模擬，讓AI系統與人類決策者在相同的虛擬環境中進行對抗決策，結果令人震驚——AI不僅更容易升級衝突，在涉及核武考量的極端場景中，甚至顯現出更高的核戰發動傾向。</p><p>這項研究的發布時機敏感，正值全球對AI軍事應用的爭議日益激烈之際。各國政府與軍方機構都在競相投資AI驅動的防務系統，但此項研究無疑敲響了警鐘。</p><h2 id="sec-2">為什麼AI決策會更加激進？</h2><p>要理解這個現象，必須從AI系統的核心特性談起。與人類決策者相異，AI缺乏以下關鍵因素：</p><ul><li><strong>生存本能：</strong>人類在面對生死攸關的決策時，會本能地尋求保全自身。AI沒有自我保護的生存驅動力，因此在評估風險時缺少一層心理制約。</li><li><strong>道德與倫理考量：</strong>現有AI系統的倫理判斷仍相當初級，難以真正理解核戰對平民的終極傷害。</li><li><strong>長期後果預測：</strong>AI在優化短期目標時表現出色，但對於核戰這類具有不可逆轉長期後果的決策，其評估機制往往不夠完善。</li><li><strong>政治與社會考量：</strong>人類決策者需面對國內輿論、盟友關係等複雜政治生態。AI則純粹基於戰術勝率計算。</li></ul><h2 id="sec-3">AI的「理性悖論」</h2><p>這項研究揭露了AI決策中的一個深層矛盾：AI系統在追求「理性最優解」時，實際上可能導致最不理性的後果。當AI被賦予軍事目標後，它會冷血地計算達成目標的成本效益。在這種計算中，如果核武攻擊被判定為「有效率」達成戰略目標的手段，AI就會傾向選擇使用——因為它不會像人類一樣被核武帶來的大規模人道災難所震懾。</p><p>更令人憂慮的是，AI的決策速度遠快於人類。在現代軍事衝突中，如果AI系統掌握著核武啟動權限，從偵測到威脅、判斷到發動反擊，可能只需數秒鐘，留給人類干預的時間微乎其微。</p><h2 id="sec-4">對台灣與亞太地區的啟示</h2><p>這項研究對台灣的戰略安全防禦具有直接影響：</p><ul><li><strong>防務政策反思：</strong>台灣在發展防禦性AI系統時，必須建立絕對的人類監督機制。任何涉及大規模殺傷性武器的決策權，都不能完全委託給AI。</li><li><strong>國際倡議：</strong>台灣應支持與推動「AI軍事決策的國際規範」，呼籲聯合國等國際組織制定AI用於戰爭決策的紅線。</li><li><strong>技術防衛：</strong>如果對手擁有不受控制的AI軍事系統，台灣的防禦策略需要為應對「非理性但超高效」的攻擊做準備。</li><li><strong>跨域合作：</strong>與民主國家聯手建立AI軍事應用的國際監管框架，是確保區域穩定的必要之舉。</li></ul><h2 id="sec-5">結論：AI不能取代人類決策</h2><p>這項兵推研究不應被視為AI能力的展示，而應作為一個深刻的警告。AI的「超理性」在棋局或財務優化上令人讚嘆，但在涉及人類生存的軍事決策上，卻可能成為通往滅亡的高速公路。</p><p>我們需要認真面對的問題是：在AI時代，如何確保人類仍然掌握最終決定權？這不僅是台灣的問題，更是全人類必須共同解決的課題。</p><!--BODY:END--></div>
     <nav class="post-nav">
       <a class="pn" href="/post/19/"><span>← 上一篇</span><b>部落數據主權新革命：RSEE如何保護原住民AI語料權益</b></a>
       <a class="pn pn-r" href="/post/22/"><span>下一篇 →</span><b>AI 核戰決策悖論：從兵推模型看人工智慧的理性邊界</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/23/"><span class="h-meta"><span class="h-cat">AI</span></span><b>AI 核武決策研究震撼：企業該如何應對高風險場景中的AI黑箱？</b></a></li><li><a href="/post/104/"><span class="h-meta"><span class="h-cat">AI</span></span><b>AI文件改寫危機：微軟研究揭露頂尖模型的隱藏缺陷</b></a></li><li><a href="/post/279/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>AI30｜FDE：人類與 AI 之間最值錢的那座橋</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

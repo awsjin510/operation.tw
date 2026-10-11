@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="從OpenAI壟斷到開源模型興起，在地化大語言模型正成為企業新必需品。本文分析為何台灣企業需要自主AI能力、技術門檻與商業機會，以及如何在國際競爭中找到差異化優勢。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-382.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/382/","headline":"在地大語言模型浪潮：台灣企業為何必須打造自己的AI？","description":"從OpenAI壟斷到開源模型興起，在地化大語言模型正成為企業新必需品。本文分析為何台灣企業需要自主AI能力、技術門檻與商業機會，以及如何在國際競爭中找到差異化優勢。","datePublished":"2026-09-01","dateModified":"2026-09-01","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/382/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/382/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-382.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"在地大語言模型浪潮：台灣企業為何必須打造自己的AI？","item":"https://operation.tw/post/382/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/382/#faq","mainEntity":[{"@type":"Question","name":"在地大語言模型與通用模型（如ChatGPT）有什麼本質差異？","acceptedAnswer":{"@type":"Answer","text":"通用模型追求廣泛適用性但無法深化特定領域，在地模型則通過訓練資料與微調技術精準對應某個語言、文化或產業的需求，準確度與成本效益更高，但建構難度也更大。"}},{"@type":"Question","name":"小型企業沒有GPU算力，是否能建造自主AI？","acceptedAnswer":{"@type":"Answer","text":"可以透過開源模型與雲端租賃達成。企業可購買開源基礎模型（如Llama），將自有資料用於微調與檢索增強，租用雲端GPU訓練，成本遠低於從零開始訓練，是現實可行的路徑。"}},{"@type":"Question","name":"台灣繁體中文模型的市場規模有多大？","acceptedAnswer":{"@type":"Answer","text":"台灣、香港、新加坡等繁體中文用戶約2000萬人，加上全球華文社群與商業應用，市場潛力被低估；若能開發優質繁體模型，將形成對英文與簡體中文模型的差異競爭，創造新的商業價值鏈。"}}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:382})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="382">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-382.webp"><img class="cover" src="https://operation.tw/images/posts/post-382.jpg" alt="在地大語言模型浪潮：台灣企業為何必須打造自己的AI？" width="1200" height="630"></picture>
     <div class="excerpt"><p>從OpenAI壟斷到開源模型興起，在地化大語言模型正成為企業新必需品。本文分析為何台灣企業需要自主AI能力、技術門檻與商業機會，以及如何在國際競爭中找到差異化優勢。</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼全球企業突然重視在地大語言模型？</a></li><li class="toc-l2"><a href="#sec-2">台灣企業打造自主AI面臨哪些技術門檻？</a></li><li class="toc-l2"><a href="#sec-3">繁體中文模型與垂直應用如何創造差異化？</a></li><li class="toc-l2"><a href="#sec-4">對台灣AI產業與企業數位轉型的影響？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">在地大語言模型與通用模型（如ChatGPT）有什麼本質差異？</a></li><li class="toc-l3"><a href="#sec-7">小型企業沒有GPU算力，是否能建造自主AI？</a></li><li class="toc-l3"><a href="#sec-8">台灣繁體中文模型的市場規模有多大？</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>在地大語言模型不再是選項而是必需：隱私合規、成本控制、技術自主缺一不可</li><li>台灣企業打造自主AI面臨三大門檻：算力基礎設施、高品質訓練資料、領域知識整合</li><li>繁體中文模型與產業垂直應用是突圍關鍵，有助於建立不易被複製的競爭壁壘</li></ul><h2 id="sec-1">為什麼全球企業突然重視在地大語言模型？</h2><p>依賴海外通用模型的時代已經結束，企業必須擁有自主可控的AI能力。根據最新新聞報導，打造自己的AI、建立在地大語言模型已經從技術前沿議題轉變成商業現實。這股浪潮的驅動力包括三個層面：其一是資料隱私——企業敏感數據上傳到美國伺服器引發合規風險；其二是成本優化——依賴第三方API每次推理都要付費，長期成本難以控制；其三是技術自主——核心AI能力掌握在別人手中，競爭力始終受制於人。</p><p>歐盟GDPR、美國出口管制、中國資料洗牆法等監管框架日趨嚴苛，推使企業必須探索自建路線。特別是金融、醫療、製造等涉及商業機密的產業，更無法將關鍵資訊交給通用模型供應商。</p><h2 id="sec-2">台灣企業打造自主AI面臨哪些技術門檻？</h2><p>在地大語言模型的建構難度遠高於使用現成模型，台灣企業需要克服三大技術挑戰。首先是算力基礎設施——訓練一個具競爭力的語言模型需要數千至數萬片GPU，投入成本動輒數十億元，小型企業難以獨立承擔；其次是高品質訓練資料——模型品質取決於資料，而繁體中文、產業垂直領域的優質語料相對稀缺，需要長期積累與清洗；第三是領域知識整合——通用模型無法適應特定行業需求，必須透過微調、檢索增強（RAG）等技術融入產業know-how。</p><p>這也解釋了為什麼開源模型如Meta的Llama、Mistral等成為中小企業的首選——它們提供可訓練的基礎架構，降低了門檻。但要建立真正的競爭優勢，還需要在資料與領域適配層投入。</p><h2 id="sec-3">繁體中文模型與垂直應用如何創造差異化？</h2><p>台灣企業的獨特機會在於深耕繁體中文與產業垂直化。全球主流大模型多基於英文訓練，對繁體中文的理解與生成品質遠不如中文優先的模型；同時，台灣在半導體、電子製造、智慧醫療等領域的深厚積累，能夠訓練出其他國家難以複製的垂直應用模型。例如，一個針對台灣電子供應鏈優化的AI模型，既能處理繁體中文的技術文檔與溝通，又能理解本地產業邏輯，比通用模型更有價值。</p><p>換句話說，在地化模型的核心競爭力不在於規模，而在於專注度。台灣企業若能聯合產業、學界、政府資源，建立兩三個特定領域的頂尖模型（如製造、金融、醫療），將形成難以被國際廠商取代的差異優勢。</p><h2 id="sec-4">對台灣AI產業與企業數位轉型的影響？</h2><p>在地大語言模型的崛起為台灣產業帶來三個層級的機會。首先是平台層——發展台灣自主基礎模型，減少對國際廠商的依賴；其次是應用層——企業可基於開源或自建模型開發行業解決方案，進而形成新的軟體與服務產業；第三是資料價值層——企業的內部數據、流程know-how將成為訓練資料，通過AI轉化為商業價值。</p><p>對大型科技企業而言，這是進入新市場的機會；對中型製造業而言，這是實現智慧化升級的捷徑；對新創企業而言，這是從「通用服務」轉向「垂直賦能」的分水嶺。政府層面，台灣應該像韓國發展LLaMA相關技術一樣，投入資源建立公共AI基礎設施，降低全社會的建模成本。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">在地大語言模型與通用模型（如ChatGPT）有什麼本質差異？</h3><p>通用模型追求廣泛適用性但無法深化特定領域，在地模型則通過訓練資料與微調技術精準對應某個語言、文化或產業的需求，準確度與成本效益更高，但建構難度也更大。</p><h3 id="sec-7">小型企業沒有GPU算力，是否能建造自主AI？</h3><p>可以透過開源模型與雲端租賃達成。企業可購買開源基礎模型（如Llama），將自有資料用於微調與檢索增強，租用雲端GPU訓練，成本遠低於從零開始訓練，是現實可行的路徑。</p><h3 id="sec-8">台灣繁體中文模型的市場規模有多大？</h3><p>台灣、香港、新加坡等繁體中文用戶約2000萬人，加上全球華文社群與商業應用，市場潛力被低估；若能開發優質繁體模型，將形成對英文與簡體中文模型的差異競爭，創造新的商業價值鏈。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>在地大語言模型不再是選項而是必需：隱私合規、成本控制、技術自主缺一不可</li><li>台灣企業打造自主AI面臨三大門檻：<a class="gl" href="/glossary/#term-compute-power" title="術語庫：算力">算力</a>基礎設施、高品質訓練資料、領域知識整合</li><li>繁體中文模型與產業垂直應用是突圍關鍵，有助於建立不易被複製的競爭壁壘</li></ul><h2 id="sec-1">為什麼全球企業突然重視在地大語言模型？</h2><p>依賴海外通用模型的時代已經結束，企業必須擁有自主可控的AI能力。根據最新新聞報導，打造自己的AI、建立在地大語言模型已經從技術前沿議題轉變成商業現實。這股浪潮的驅動力包括三個層面：其一是資料隱私——企業敏感數據上傳到美國伺服器引發合規風險；其二是成本優化——依賴第三方API每次<a class="gl" href="/glossary/#term-inference" title="術語庫：推理">推理</a>都要付費，長期成本難以控制；其三是技術自主——核心AI能力掌握在別人手中，競爭力始終受制於人。</p><p>歐盟GDPR、美國出口管制、中國資料洗牆法等監管框架日趨嚴苛，推使企業必須探索自建路線。特別是金融、醫療、製造等涉及商業機密的產業，更無法將關鍵資訊交給通用模型供應商。</p><h2 id="sec-2">台灣企業打造自主AI面臨哪些技術門檻？</h2><p>在地大語言模型的建構難度遠高於使用現成模型，台灣企業需要克服三大技術挑戰。首先是算力基礎設施——訓練一個具競爭力的語言模型需要數千至數萬片<a class="gl" href="/glossary/#term-gpu" title="術語庫：圖形處理器">GPU</a>，投入成本動輒數十億元，小型企業難以獨立承擔；其次是高品質訓練資料——模型品質取決於資料，而繁體中文、產業垂直領域的優質語料相對稀缺，需要長期積累與清洗；第三是領域知識整合——通用模型無法適應特定行業需求，必須透過<a class="gl" href="/glossary/#term-fine-tuning" title="術語庫：微調">微調</a>、檢索增強（<a class="gl" href="/glossary/#term-rag" title="術語庫：檢索增強生成">RAG</a>）等技術融入產業know-how。</p><p>這也解釋了為什麼開源模型如Meta的Llama、Mistral等成為中小企業的首選——它們提供可訓練的基礎架構，降低了門檻。但要建立真正的競爭優勢，還需要在資料與領域適配層投入。</p><h2 id="sec-3">繁體中文模型與垂直應用如何創造差異化？</h2><p>台灣企業的獨特機會在於深耕繁體中文與產業垂直化。全球主流大模型多基於英文訓練，對繁體中文的理解與生成品質遠不如中文優先的模型；同時，台灣在半導體、電子製造、智慧醫療等領域的深厚積累，能夠訓練出其他國家難以複製的垂直應用模型。例如，一個針對台灣電子供應鏈優化的AI模型，既能處理繁體中文的技術文檔與溝通，又能理解本地產業邏輯，比通用模型更有價值。</p><p>換句話說，在地化模型的核心競爭力不在於規模，而在於專注度。台灣企業若能聯合產業、學界、政府資源，建立兩三個特定領域的頂尖模型（如製造、金融、醫療），將形成難以被國際廠商取代的差異優勢。</p><h2 id="sec-4">對台灣AI產業與企業數位轉型的影響？</h2><p>在地大語言模型的崛起為台灣產業帶來三個層級的機會。首先是平台層——發展台灣自主基礎模型，減少對國際廠商的依賴；其次是應用層——企業可基於開源或自建模型開發行業解決方案，進而形成新的軟體與服務產業；第三是資料價值層——企業的內部數據、流程know-how將成為訓練資料，通過AI轉化為商業價值。</p><p>對大型科技企業而言，這是進入新市場的機會；對中型製造業而言，這是實現智慧化升級的捷徑；對新創企業而言，這是從「通用服務」轉向「垂直賦能」的分水嶺。政府層面，台灣應該像韓國發展LLaMA相關技術一樣，投入資源建立公共AI基礎設施，降低全社會的建模成本。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">在地大語言模型與通用模型（如ChatGPT）有什麼本質差異？</h3><p>通用模型追求廣泛適用性但無法深化特定領域，在地模型則通過訓練資料與微調技術精準對應某個語言、文化或產業的需求，準確度與成本效益更高，但建構難度也更大。</p><h3 id="sec-7">小型企業沒有GPU算力，是否能建造自主AI？</h3><p>可以透過開源模型與雲端租賃達成。企業可購買開源基礎模型（如Llama），將自有資料用於微調與檢索增強，租用雲端GPU訓練，成本遠低於從零開始訓練，是現實可行的路徑。</p><h3 id="sec-8">台灣繁體中文模型的市場規模有多大？</h3><p>台灣、香港、新加坡等繁體中文用戶約2000萬人，加上全球華文社群與商業應用，市場潛力被低估；若能開發優質繁體模型，將形成對英文與簡體中文模型的差異競爭，創造新的商業價值鏈。</p><!--BODY:END--></div>
     <nav class="post-nav">
       <a class="pn" href="/post/385/"><span>← 上一篇</span><b>AI54｜AI「無限算力」時代結束：Claude 5.1、Gemini 改價背後的成本轉嫁</b></a>
       <a class="pn pn-r" href="/post/383/"><span>下一篇 →</span><b>AI53｜台灣被撬開的兩扇門：AI駭客與雲服務漏洞如何改變攻擊面</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/307/"><span class="h-meta"><span class="h-cat">AI</span></span><b>深偽危機衝擊LLM：大語言模型為何面臨「數據崩潰」困局？</b></a></li><li><a href="/post/418/"><span class="h-meta"><span class="h-cat">AI</span></span><b>資策會轉向實體AI：為何大語言模型不再是唯一答案</b></a></li><li><a href="/post/234/"><span class="h-meta"><span class="h-cat">資安</span><span>🎙 Podcast</span></span><b>EP83｜AI 時代的生存法則：努力、轉型與找到自己的位置</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="你對日本職場的想像是爆肝加班、階級森嚴嗎？這篇文章整理自《操作一下》Podcast EP77，由現居東京的後端工程師David分享親身觀察：從「サービス残業」的現況、報連相文化的衝擊，到AI工具導入的台日差異，以及他最核心的職場哲學——「遇到任何事情，先看看自己」。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-228.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/228/","headline":"EP77｜日本工程師不爆肝？後端工程師David的日系職場生存術","description":"你對日本職場的想像是爆肝加班、階級森嚴嗎？這篇文章整理自《操作一下》Podcast EP77，由現居東京的後端工程師David分享親身觀察：從「サービス残業」的現況、報連相文化的衝擊，到AI工具導入的台日差異，以及他最核心的職場哲學——「遇到任何事情，先看看自己」。","datePublished":"2025-07-29","dateModified":"2025-07-29","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/228/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/228/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-228.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"EP77｜日本工程師不爆肝？後端工程師David的日系職場生存術","item":"https://operation.tw/post/228/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/228/#episode","name":"EP77｜日本工程師不爆肝？後端工程師David的日系職場生存術","url":"https://operation.tw/post/228/","datePublished":"2025-07-29","description":"你對日本職場的想像是爆肝加班、階級森嚴嗎？這篇文章整理自《操作一下》Podcast EP77，由現居東京的後端工程師David分享親身觀察：從「サービス残業」的現況、報連相文化的衝擊，到AI工具導入的台日差異，以及他最核心的職場哲學——「遇到任何事情，先看看自己」。","image":"https://operation.tw/images/posts/post-228.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":77,"duration":"PT43M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/e68d6e25-9800-42e6-bacb-9ce8d57e2853/rssFileVip.mp3?timestamp=1753952502403","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:228})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="228">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2025-07-29">2025-07-29</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-228.webp"><img class="cover" src="https://operation.tw/images/posts/post-228.jpg" alt="EP77｜日本工程師不爆肝？後端工程師David的日系職場生存術" width="1200" height="630"></picture>
     <div class="excerpt"><p>你對日本職場的想像是爆肝加班、階級森嚴嗎？這篇文章整理自《操作一下》Podcast EP77，由現居東京的後端工程師David分享親身觀察：從「サービス残業」的現況、報連相文化的衝擊，到AI工具導入的台日差異，以及他最核心的職場哲學——「遇到任何事情，先看看自己」。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>EP77_達人操作 | 後端工程師David | 日本工程師不爆肝？「遇到任何事情，請先看看自己」的日系職場生存術</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000719710379" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP77_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%ABDavid%20%7C%20%E6%97%A5%E6%9C%AC%E5%B7%A5%E7%A8%8B%E5%B8%AB%E4%B8%8D%E7%88%86%E8%82%9D%EF%BC%9F%E3%80%8C%E9%81%87%E5%88%B0%E4%BB%BB%E4%BD%95%E4%BA%8B%E6%83%85%EF%BC%8C%E8%AB%8B%E5%85%88%E7%9C%8B%E7%9C%8B%E8%87%AA%E5%B7%B1%E3%80%8D%E7%9A%84%E6%97%A5%E7%B3%BB%E8%81%B7%E5%A0%B4%E7%94%9F%E5%AD%98%E8%A1%93" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">「免費加班」還存在嗎？</a></li><li class="toc-l2"><a href="#sec-2">報連相：溝通文化的最大衝擊</a></li><li class="toc-l2"><a href="#sec-3">慢工出細活：日本企業怎麼培養新人</a></li><li class="toc-l2"><a href="#sec-4">轉職天花板與「石上三年」</a></li><li class="toc-l2"><a href="#sec-5">AI 工具導入：台日科技圈的節奏差異</a></li><li class="toc-l2"><a href="#sec-6">「先看自己」：最實用的職場哲學</a></li><li class="toc-l2"><a href="#sec-7">給有跨國職涯想法的你</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>提到日本職場，很多人腦海裡浮現的畫面大概是：深夜還亮著燈的辦公室、西裝筆挺卻面無表情的上班族，以及無止盡的免費加班。但真實的日本科技業，真的是這樣嗎？</p>
@@ -141,19 +117,27 @@ function nlGo(f){
       <a class="pn" href="/post/238/"><span>← 上一篇</span><b>EP87｜從上班族到三語主持人：薪水翻倍的接案生存法則</b></a>
       <a class="pn pn-r" href="/post/219/"><span>下一篇 →</span><b>EP68｜視覺設計師Joseph：AI時代，好設計師還需要懂行銷</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/59/"><span class="h-meta"><span class="h-cat">AI</span></span><b>提示工程新架構如何改變LLM應用效率</b></a></li><li><a href="/post/352/"><span class="h-meta"><span class="h-cat">AI</span></span><b>中國AI價格戰如何撼動全球市場？台灣企業該如何應對？</b></a></li><li><a href="/post/225/"><span class="h-meta"><span class="h-cat">成長</span><span>🎙 Podcast</span></span><b>EP74｜後端工程師東東：用 n8n 打造你的 24 小時數位助理</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

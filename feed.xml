@@ -104,14 +104,6 @@
     <pubDate>Tue, 29 Sep 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>Neoclouds搶攻AI時代：新興雲端勢力如何挑戰AWS、Azure寡占？</title>
-    <link>https://operation.tw/post/414/</link>
-    <guid isPermaLink="true">https://operation.tw/post/414/</guid>
-    <description>AI時代雲端運算需求暴增，Neoclouds等新興玩家乘勢而起。本文分析這股新勢力如何在大模型訓練、推理工作負載中找到差異化優勢，以及對台灣企業選擇雲端夥伴的啟示。</description>
-    <category>雲端</category>
-    <pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
     <title>EP104｜非本科系怎麼進科技業？外文系老師成為AI顧問的3個關鍵</title>
     <link>https://operation.tw/post/415/</link>
     <guid isPermaLink="true">https://operation.tw/post/415/</guid>
@@ -144,14 +136,6 @@
     <pubDate>Fri, 25 Sep 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
-    <title>歐盟AI資安行動計畫解析：台灣企業如何應對全球模型安全新標準？</title>
-    <link>https://operation.tw/post/410/</link>
-    <guid isPermaLink="true">https://operation.tw/post/410/</guid>
-    <description>歐盟推動AI資安行動計畫，強化模型安全評估與網路韌性標準。這不僅是歐洲監管趨勢，更將成為全球AI產業的合規門檻。台灣企業與AI服務提供商必須提前了解這些新規範對產品開發、出口認證的影響。</description>
-    <category>資安</category>
-    <pubDate>Thu, 24 Sep 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
     <title>Claude Opus 5.5上線：成本與安全的新均衡點</title>
     <link>https://operation.tw/post/408/</link>
     <guid isPermaLink="true">https://operation.tw/post/408/</guid>
@@ -166,6 +150,22 @@
     <description>Anthropic 推出 Claude Opus 5.5，Input Token 降 20%、Cache Read 砍 60%，整體成本便宜四成。在五大效能維度追平旗艦 Fable 5.1、多數項目勝過 GPT-6 Astra，宣告 AI 產業從性能競賽進入性價比之戰。</description>
     <category>AI</category>
     <pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>AI時代的新密語戰爭：亂碼通訊如何成為資安雙刃劍？</title>
+    <link>https://operation.tw/post/406/</link>
+    <guid isPermaLink="true">https://operation.tw/post/406/</guid>
+    <description>最新研究揭露AI模型間的神祕「亂碼語言」能將通訊效率提升3倍，但這項突破背後隱藏資安風險。當AI自創密語難以被人類監督時，企業該如何在效率與安全間取得平衡？</description>
+    <category>資安</category>
+    <pubDate>Mon, 21 Sep 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>醫療AI的語義危機：LLM為何難以獨當一面？</title>
+    <link>https://operation.tw/post/405/</link>
+    <guid isPermaLink="true">https://operation.tw/post/405/</guid>
+    <description>大型語言模型在醫療應用中面臨關鍵瓶頸——無法獨撐數據語義基礎。本文探討LLM在醫療領域的盲點、為何單純的文本理解不足以支撐臨床決策，以及企業該如何構建混合型AI架構來彌補缺陷。</description>
+    <category>AI</category>
+    <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
   </item>
 </channel>
 </rss>

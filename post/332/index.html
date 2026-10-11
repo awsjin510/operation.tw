@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="中國AI模型Kimi K3遭爆宣稱自己是Claude，暴露出開源AI模型的技術歸屬與資安風險。本文分析這起事件背後的技術問題、對全球AI生態的影響，以及台灣企業如何識別與防範類似威脅。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-332.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/332/","headline":"Kimi K3被抓包偷美技術：AI模型安全漏洞如何威脅台灣企業？","description":"中國AI模型Kimi K3遭爆宣稱自己是Claude，暴露出開源AI模型的技術歸屬與資安風險。本文分析這起事件背後的技術問題、對全球AI生態的影響，以及台灣企業如何識別與防範類似威脅。","datePublished":"2026-07-20","dateModified":"2026-07-20","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/332/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/332/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-332.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"Kimi K3被抓包偷美技術：AI模型安全漏洞如何威脅台灣企業？","item":"https://operation.tw/post/332/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/332/#faq","mainEntity":[{"@type":"Question","name":"Kimi K3事件是否表示所有中國AI模型都不安全？","acceptedAnswer":{"@type":"Answer","text":"不一定。Kimi K3的問題是特定的身份認證缺陷，不代表所有中國AI模型都存在同樣風險。但事件反映出部分廠商在技術透明度上的不足，建議企業對任何來源不明確的AI模型採取審慎態度，無論其國籍，都應通過獨立驗證後才能部署。"}},{"@type":"Question","name":"台灣企業目前有什麼替代方案？","acceptedAnswer":{"@type":"Answer","text":"可考慮的方案包括：與來源認證清晰的美歐AI廠商（如OpenAI、Anthropic、Google）合作；評估台灣本地AI方案如TAIDE或台大NTU-LLM的適用性；或採購帶有完整技術支持與法律保障的企業級AI平台（如Microsoft Copilot、AWS Bedrock），這些方案通常包含明確的安全認證與供應商責任。"}},{"@type":"Question","name":"AI模型安全認證有國際標準嗎？","acceptedAnswer":{"@type":"Answer","text":"目前業界尚無統一的「AI模型身份認證」國際標準，但相關機構正在推進——包括ISO正在制定AI系統的安全與倫理標準，NIST則發布了AI風險管理框架。台灣企業可參考這些框架作為評估供應商的基準，同時關注MITRE ATLAS等安全組織發布的AI特定威脅情報。"}}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:332})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="332">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E8%B3%87%E5%AE%89/">資安</a></nav>
   <article>
     <div class="badge" style="color:#ff6b9a;background:#ff6b9a1a">🔐 資安</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-332.webp"><img class="cover" src="https://operation.tw/images/posts/post-332.jpg" alt="Kimi K3被抓包偷美技術：AI模型安全漏洞如何威脅台灣企業？" width="1200" height="630"></picture>
     <div class="excerpt"><p>中國AI模型Kimi K3遭爆宣稱自己是Claude，暴露出開源AI模型的技術歸屬與資安風險。本文分析這起事件背後的技術問題、對全球AI生態的影響，以及台灣企業如何識別與防範類似威脅。</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">Kimi K3為什麼會被指控偽冒Claude？</a></li><li class="toc-l2"><a href="#sec-2">AI模型的「身份偽冒」代表什麼資安風險？</a></li><li class="toc-l2"><a href="#sec-3">對台灣企業與AI採購有什麼具體影響？</a></li><li class="toc-l2"><a href="#sec-4">企業應該如何識別並防範類似威脅？</a></li><li class="toc-l2"><a href="#sec-5">常見問題</a></li><li class="toc-l3"><a href="#sec-6">Kimi K3事件是否表示所有中國AI模型都不安全？</a></li><li class="toc-l3"><a href="#sec-7">台灣企業目前有什麼替代方案？</a></li><li class="toc-l3"><a href="#sec-8">AI模型安全認證有國際標準嗎？</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>Kimi K3被發現存在身份偽冒問題，宣稱自己是Claude，反映開源AI模型的來源認證漏洞與技術透明度缺陷</li><li>這類技術混淆不僅影響用戶信任，更可能成為供應鏈攻擊的切入點，台灣企業在採用海外AI模型時需加強盡職調查</li><li>企業應建立AI模型來源驗證機制，同時評估本地化AI方案的必要性，以降低地緣政治與資安風險</li></ul><h2 id="sec-1">Kimi K3為什麼會被指控偽冒Claude？</h2><p>Kimi K3的身份認證問題源於其回應方式與技術特徵與Claude高度相似，導致使用者與安全研究員懷疑該模型基於美國Anthropic的技術進行二次開發或直接複製。這次事件暴露了開源AI模型在代碼溯源、技術歸屬與模型驗證上的根本性漏洞——缺乏業界公認的身份驗證機制。根據自由財經報導，這一發現在全球AI安全社群引發討論，反映了中美AI競爭中技術邊界越來越模糊的現象。</p><h2 id="sec-2">AI模型的「身份偽冒」代表什麼資安風險？</h2><p>模型身份偽冒（Model Identity Spoofing）是指AI系統對其技術源頭、訓練資料與安全認證的虛假聲稱，這在資安領域屬於「供應鏈信任破裂」的高危事件。當企業採用一個宣稱來自知名廠商但實際來源可疑的AI模型時，面臨多重風險：第一，模型內嵌的後門或資料外洩機制可能被隱藏；第二，未經過原廠安全審計的變異版本可能存在對抗樣本攻擊漏洞；第三，該模型的訓練資料可能包含受污染或版權侵害的內容，導致採用企業面臨法律風險。根據Google Cloud發布的《2026網路安全預測》報告，AI模型安全已成為企業資安的新戰場。</p><h2 id="sec-3">對台灣企業與AI採購有什麼具體影響？</h2><p>台灣作為全球IC設計與AI晶片的重要樞紐，企業在評估AI模型與服務供應商時必須提高警覺。Kimi K3事件啟示企業採購AI模型時，應要求供應商提供技術溯源證明、第三方安全認證與開源軟體合規報告。對於金融、醫療、製造等涉及敏感資料的產業，建議優先考慮與技術來源清晰、安全認證完整的國際廠商合作，或評估自主開發輕量化AI方案的可行性。此外，類似事件也強化了台灣發展本地化大語言模型（如TAIDE）的戰略價值——減少對海外不確定性AI模型的依賴，同時掌握技術與資料主權。</p><h2 id="sec-4">企業應該如何識別並防範類似威脅？</h2><p>建立AI模型來源驗證的三層檢查機制是當前防禦標準。第一層為「技術溯源驗證」：要求供應商提交模型的基礎架構、訓練資料來源與版權聲明，並交由獨立安全團隊審計；第二層為「行為特徵分析」：對比該模型與聲稱的原廠模型在回應邏輯、知識邊界、錯誤模式上的差異；第三層為「供應鏈合規檢查」：驗證模型是否通過出口管制審查、國際安全標準認證（如ISO 27001）與開源軟體授權合規。對於已部署的AI模型，企業應建立定期的「模型可信度檢查」流程，並在資安政策中明確規定對身份無法驗證的第三方AI模型的禁用條款。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">Kimi K3事件是否表示所有中國AI模型都不安全？</h3><p>不一定。Kimi K3的問題是特定的身份認證缺陷，不代表所有中國AI模型都存在同樣風險。但事件反映出部分廠商在技術透明度上的不足，建議企業對任何來源不明確的AI模型採取審慎態度，無論其國籍，都應通過獨立驗證後才能部署。</p><h3 id="sec-7">台灣企業目前有什麼替代方案？</h3><p>可考慮的方案包括：與來源認證清晰的美歐AI廠商（如OpenAI、Anthropic、Google）合作；評估台灣本地AI方案如TAIDE或台大NTU-LLM的適用性；或採購帶有完整技術支持與法律保障的企業級AI平台（如Microsoft Copilot、AWS Bedrock），這些方案通常包含明確的安全認證與供應商責任。</p><h3 id="sec-8">AI模型安全認證有國際標準嗎？</h3><p>目前業界尚無統一的「AI模型身份認證」國際標準，但相關機構正在推進——包括ISO正在制定AI系統的安全與倫理標準，NIST則發布了AI風險管理框架。台灣企業可參考這些框架作為評估供應商的基準，同時關注MITRE ATLAS等安全組織發布的AI特定威脅情報。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>Kimi K3被發現存在身份偽冒問題，宣稱自己是Claude，反映開源AI模型的來源認證漏洞與技術透明度缺陷</li><li>這類技術混淆不僅影響用戶信任，更可能成為供應鏈攻擊的切入點，台灣企業在採用海外AI模型時需加強盡職調查</li><li>企業應建立AI模型來源驗證機制，同時評估本地化AI方案的必要性，以降低地緣政治與資安風險</li></ul><h2 id="sec-1">Kimi K3為什麼會被指控偽冒Claude？</h2><p>Kimi K3的身份認證問題源於其回應方式與技術特徵與Claude高度相似，導致使用者與安全研究員懷疑該模型基於美國Anthropic的技術進行二次開發或直接複製。這次事件暴露了開源AI模型在代碼溯源、技術歸屬與模型驗證上的根本性漏洞——缺乏業界公認的身份驗證機制。根據自由財經報導，這一發現在全球AI安全社群引發討論，反映了中美AI競爭中技術邊界越來越模糊的現象。</p><h2 id="sec-2">AI模型的「身份偽冒」代表什麼資安風險？</h2><p>模型身份偽冒（Model Identity Spoofing）是指AI系統對其技術源頭、訓練資料與安全認證的虛假聲稱，這在資安領域屬於「供應鏈信任破裂」的高危事件。當企業採用一個宣稱來自知名廠商但實際來源可疑的AI模型時，面臨多重風險：第一，模型內嵌的後門或資料外洩機制可能被隱藏；第二，未經過原廠安全審計的變異版本可能存在對抗樣本攻擊漏洞；第三，該模型的訓練資料可能包含受污染或版權侵害的內容，導致採用企業面臨法律風險。根據Google Cloud發布的《2026網路安全預測》報告，AI模型安全已成為企業資安的新戰場。</p><h2 id="sec-3">對台灣企業與AI採購有什麼具體影響？</h2><p>台灣作為全球IC設計與AI晶片的重要樞紐，企業在評估AI模型與服務供應商時必須提高警覺。Kimi K3事件啟示企業採購AI模型時，應要求供應商提供技術溯源證明、第三方安全認證與開源軟體合規報告。對於金融、醫療、製造等涉及敏感資料的產業，建議優先考慮與技術來源清晰、安全認證完整的國際廠商合作，或評估自主開發輕量化AI方案的可行性。此外，類似事件也強化了台灣發展本地化大語言模型（如TAIDE）的戰略價值——減少對海外不確定性AI模型的依賴，同時掌握技術與資料主權。</p><h2 id="sec-4">企業應該如何識別並防範類似威脅？</h2><p>建立AI模型來源驗證的三層檢查機制是當前防禦標準。第一層為「技術溯源驗證」：要求供應商提交模型的基礎架構、訓練資料來源與版權聲明，並交由獨立安全團隊審計；第二層為「行為特徵分析」：對比該模型與聲稱的原廠模型在回應邏輯、知識邊界、錯誤模式上的差異；第三層為「供應鏈合規檢查」：驗證模型是否通過出口管制審查、國際安全標準認證（如ISO 27001）與開源軟體授權合規。對於已部署的AI模型，企業應建立定期的「模型可信度檢查」流程，並在資安政策中明確規定對身份無法驗證的第三方AI模型的禁用條款。</p><h2 id="sec-5">常見問題</h2><h3 id="sec-6">Kimi K3事件是否表示所有中國AI模型都不安全？</h3><p>不一定。Kimi K3的問題是特定的身份認證缺陷，不代表所有中國AI模型都存在同樣風險。但事件反映出部分廠商在技術透明度上的不足，建議企業對任何來源不明確的AI模型採取審慎態度，無論其國籍，都應通過獨立驗證後才能部署。</p><h3 id="sec-7">台灣企業目前有什麼替代方案？</h3><p>可考慮的方案包括：與來源認證清晰的美歐AI廠商（如OpenAI、Anthropic、Google）合作；評估台灣本地AI方案如TAIDE或台大NTU-<a class="gl" href="/glossary/#term-llm" title="術語庫：大型語言模型">LLM</a>的適用性；或採購帶有完整技術支持與法律保障的企業級AI平台（如Microsoft Copilot、AWS Bedrock），這些方案通常包含明確的安全認證與供應商責任。</p><h3 id="sec-8">AI模型安全認證有國際標準嗎？</h3><p>目前業界尚無統一的「AI模型身份認證」國際標準，但相關機構正在推進——包括ISO正在制定AI系統的安全與倫理標準，NIST則發布了AI風險管理框架。台灣企業可參考這些框架作為評估供應商的基準，同時關注MITRE ATLAS等安全組織發布的AI特定威脅情報。</p><!--BODY:END--></div>
     <nav class="post-nav">
-      <a class="pn" href="/post/333/"><span>← 上一篇</span><b>AI攻擊全面化2026：企業如何建立分層防禦體系？</b></a>
+      <a class="pn" href="/post/342/"><span>← 上一篇</span><b>美國AI監管碎片化危機：兩千提案為何都繞不過長遠規劃問題？</b></a>
       <a class="pn pn-r" href="/post/326/"><span>下一篇 →</span><b>中國AI模型的政治內容管控：台灣企業如何識別輸出海外的輿論影響？</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/65/"><span class="h-meta"><span class="h-cat">資安</span></span><b>Anthropic AI模型資安漏洞警示：企業伺服器防禦該升級了</b></a></li><li><a href="/post/380/"><span class="h-meta"><span class="h-cat">資安</span></span><b>AI模型安全評估成國安議題：歐美新規如何影響台灣AI產業？</b></a></li><li><a href="/post/383/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>AI53｜台灣被撬開的兩扇門：AI駭客與雲服務漏洞如何改變攻擊面</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

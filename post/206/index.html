@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="中文系畢業、熱愛閱讀的彩妝達人 Anmor 默默，用一句話定義美麗：「成為最好版本的自己。」這集 Podcast 她與我們分享從跨領域入行、精進技術、挑選適合妝容，到日常保養的完整心路歷程，最後也聊到 AI 崛起對彩妝師職涯的衝擊與因應。無論你是美妝愛好者，還是正在思考如何在跨領域中找到自己定位的人，這篇文章都值得一讀。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-206.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/206/","headline":"EP55｜從中文系到彩妝師：氣質是你走過每一段路的總和","description":"中文系畢業、熱愛閱讀的彩妝達人 Anmor 默默，用一句話定義美麗：「成為最好版本的自己。」這集 Podcast 她與我們分享從跨領域入行、精進技術、挑選適合妝容，到日常保養的完整心路歷程，最後也聊到 AI 崛起對彩妝師職涯的衝擊與因應。無論你是美妝愛好者，還是正在思考如何在跨領域中找到自己定位的人，這篇文章都值得一讀。","datePublished":"2023-12-25","dateModified":"2023-12-25","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/206/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/206/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-206.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"EP55｜從中文系到彩妝師：氣質是你走過每一段路的總和","item":"https://operation.tw/post/206/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/206/#episode","name":"EP55｜從中文系到彩妝師：氣質是你走過每一段路的總和","url":"https://operation.tw/post/206/","datePublished":"2023-12-25","description":"中文系畢業、熱愛閱讀的彩妝達人 Anmor 默默，用一句話定義美麗：「成為最好版本的自己。」這集 Podcast 她與我們分享從跨領域入行、精進技術、挑選適合妝容，到日常保養的完整心路歷程，最後也聊到 AI 崛起對彩妝師職涯的衝擊與因應。無論你是美妝愛好者，還是正在思考如何在跨領域中找到自己定位的人，這篇文章都值得一讀。","image":"https://operation.tw/images/posts/post-206.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":55,"duration":"PT26M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/5952c92e-32ad-4f07-ac6f-abf295fcb97c/rssFileVip.mp3?timestamp=1739071301763","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:206})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="206">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2023-12-25">2023-12-25</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-206.webp"><img class="cover" src="https://operation.tw/images/posts/post-206.jpg" alt="EP55｜從中文系到彩妝師：氣質是你走過每一段路的總和" width="1200" height="630"></picture>
     <div class="excerpt"><p>中文系畢業、熱愛閱讀的彩妝達人 Anmor 默默，用一句話定義美麗：「成為最好版本的自己。」這集 Podcast 她與我們分享從跨領域入行、精進技術、挑選適合妝容，到日常保養的完整心路歷程，最後也聊到 AI 崛起對彩妝師職涯的衝擊與因應。無論你是美妝愛好者，還是正在思考如何在跨領域中找到自己定位的人，這篇文章都值得一讀。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>EP55 | 達人操作｜彩妝達人_Anmor | 你現在的氣質裡，藏著走過的路、讀過的書、愛過的人和做過的事</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000639617479" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP55%20%7C%20%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%EF%BD%9C%E5%BD%A9%E5%A6%9D%E9%81%94%E4%BA%BA_Anmor%20%7C%20%E4%BD%A0%E7%8F%BE%E5%9C%A8%E7%9A%84%E6%B0%A3%E8%B3%AA%E8%A3%A1%EF%BC%8C%E8%97%8F%E8%91%97%E8%B5%B0%E9%81%8E%E7%9A%84%E8%B7%AF%E3%80%81%E8%AE%80%E9%81%8E%E7%9A%84%E6%9B%B8%E3%80%81%E6%84%9B%E9%81%8E%E7%9A%84%E4%BA%BA%E5%92%8C%E5%81%9A%E9%81%8E%E7%9A%84%E4%BA%8B" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">跨領域入行：中文系出身，為什麼走進彩妝圈？</a></li><li class="toc-l2"><a href="#sec-2">精進技術：彩妝師的成長不是一蹴而就的</a></li><li class="toc-l2"><a href="#sec-3">找到適合自己的妝容風格</a></li><li class="toc-l2"><a href="#sec-4">日常保養：上妝前，先把底子顧好</a></li><li class="toc-l2"><a href="#sec-5">幫別人上妝的成就感：那些讓人動容的瞬間</a></li><li class="toc-l2"><a href="#sec-6">AI 來了，彩妝師的工作會消失嗎？</a></li><li class="toc-l2"><a href="#sec-7">結語：氣質，是你所有選擇的疊加</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>「你現在的氣質裡，藏著走過的路、讀過的書、愛過的人和做過的事。」這句話放在彩妝達人 Anmor 默默身上，再貼切不過。一個中文系畢業、嗜書如命的女生，如何一步步走進彩妝的世界，並且把文學的細膩感帶進每一筆刷色之中？這集《操作一下》的達人操作單元，Jin 邀請到 Anmor 默默，帶我們從她的故事出發，重新思考「美麗」這件事的本質。</p>
@@ -120,19 +96,27 @@ function nlGo(f){
       <a class="pn" href="/post/207/"><span>← 上一篇</span><b>EP56｜塔羅占卜師Sandy：牌卡不是命運，而是一面鏡子</b></a>
       <a class="pn pn-r" href="/post/196/"><span>下一篇 →</span><b>EP45｜從上班族到韓文譯者：翻譯不只是會語言那麼簡單</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/382/"><span class="h-meta"><span class="h-cat">AI</span></span><b>在地大語言模型浪潮：台灣企業為何必須打造自己的AI？</b></a></li><li><a href="/post/95/"><span class="h-meta"><span class="h-cat">AI</span></span><b>AI蒸餾技術競賽升溫：台灣企業如何在美中之爭中找到生存之道</b></a></li><li><a href="/post/199/"><span class="h-meta"><span class="h-cat">成長</span><span>🎙 Podcast</span></span><b>EP48｜萬事起頭難，只怕有心人：雙Buff記趣小安的Podcast經營心法</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="成本壓力驅動美國企業選擇中國AI模型，引發國會安全調查。本文分析這股趨勢背後的經濟邏輯、地緣政治風險，以及台灣AI產業如何在成本與安全的天秤上找到位置。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-323.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/323/","headline":"美企轉向中國AI模型背後：成本競賽如何重塑全球AI版圖","description":"成本壓力驅動美國企業選擇中國AI模型，引發國會安全調查。本文分析這股趨勢背後的經濟邏輯、地緣政治風險，以及台灣AI產業如何在成本與安全的天秤上找到位置。","datePublished":"2026-07-14","dateModified":"2026-07-14","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/323/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/323/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-323.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"美企轉向中國AI模型背後：成本競賽如何重塑全球AI版圖","item":"https://operation.tw/post/323/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/323/#faq","mainEntity":[{"@type":"Question","name":"中國AI模型真的比美國模型便宜很多嗎？","acceptedAnswer":{"@type":"Answer","text":"根據市場資訊，中國AI模型在API調用價格上確實通常低於美國主流模型30-70%，這主要源於較低的基礎設施成本、政府補助與本地化優化，但需注意這些成本優勢可能無法永續，且廉價模型往往在特定高端應用場景上有能力限制。"}},{"@type":"Question","name":"採用中國AI模型會帶來哪些實際風險？","acceptedAnswer":{"@type":"Answer","text":"主要風險包括敏感數據可能的跨境流動與洩露、模型輸出的地緣政治偏見、未來的政策變化可能影響可用性，以及美國政府可能對使用中國模型的企業實施出口管制或資訊安全審查。"}},{"@type":"Question","name":"台灣企業應該立即停止評估中國AI模型嗎？","acceptedAnswer":{"@type":"Answer","text":"不必立即停止，但應進行風險分類：對於處理敏感資訊或受美國出口管制影響的應用，應優先考慮本地或民主國家廠商；對於非敏感應用，可在完整評估法規風險與數據安全承諾後，理性決策，同時預留多供應商備案。"}}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:323})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="323">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-323.webp"><img class="cover" src="https://operation.tw/images/posts/post-323.jpg" alt="美企轉向中國AI模型背後：成本競賽如何重塑全球AI版圖" width="1200" height="630"></picture>
     <div class="excerpt"><p>成本壓力驅動美國企業選擇中國AI模型，引發國會安全調查。本文分析這股趨勢背後的經濟邏輯、地緣政治風險，以及台灣AI產業如何在成本與安全的天秤上找到位置。</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">為什麼美企開始轉向中國AI模型？</a></li><li class="toc-l2"><a href="#sec-2">國會安全調查反映了什麼隱憂？</a></li><li class="toc-l2"><a href="#sec-3">這反映出全球AI競爭格局的什麼變化？</a></li><li class="toc-l2"><a href="#sec-4">台灣AI產業面臨的機會與挑戰是什麼？</a></li><li class="toc-l2"><a href="#sec-5">企業採購決策應該如何應對？</a></li><li class="toc-l2"><a href="#sec-6">常見問題</a></li><li class="toc-l3"><a href="#sec-7">中國AI模型真的比美國模型便宜很多嗎？</a></li><li class="toc-l3"><a href="#sec-8">採用中國AI模型會帶來哪些實際風險？</a></li><li class="toc-l3"><a href="#sec-9">台灣企業應該立即停止評估中國AI模型嗎？</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>美企轉向中國AI模型主要驅動力是成本優勢，但美國政府已啟動安全審查</li><li>這反映全球AI市場從技術領先競賽轉向成本與供應鏈競爭的結構性轉變</li><li>台灣應從「被選擇者」轉向「成本與安全均衡方案提供者」的戰略定位</li></ul><h2 id="sec-1">為什麼美企開始轉向中國AI模型？</h2><p>美國企業採用中國AI模型的核心原因是成本差異——中國模型在訓練成本、推理成本與服務價格上具有明顯優勢，這對於成本壓力日增的企業構成難以抗拒的吸引力。根據商傳媒報導，越來越多美企因為營運預算限制，開始評估並使用中國廠商的AI服務，尤其是在對延遲容忍度較高的應用場景。</p><p>這股轉向背後是一個殘酷的經濟現實：美國AI大廠（如OpenAI、Google、Anthropic）的模型服務費用不斷上升，而中國廠商（如通義千問、文心一言等）透過更低的邊際成本、政府補助與本地化優化，提供了更便宜的替代方案。對於預算有限的中小企業、初創公司與對成本敏感的大型企業採購部門而言，這差異足以改變採購決策。</p><h2 id="sec-2">國會安全調查反映了什麼隱憂？</h2><p>美國國會啟動調查反映的是一個更深層的戰略焦慮：經濟利益與國家安全之間的衝突。採用中國AI模型可能帶來的風險包括數據流向問題、模型嵌入的偏見或後門風險，以及美國技術優勢的流失。</p><p>從地緣政治角度，美國政府視AI為戰略性技術，與芯片、量子計算並列為國家競爭力的核心。當美企為了省成本而轉用中國模型時，不只是採購決策轉變，更可能涉及敏感數據（如企業營運資訊、使用者行為模式）的跨境流動。這正是為什麼國會會在短時間內啟動安全審查——這不只是經濟議題，而是涉及資訊主權的國安議題。</p><h2 id="sec-3">這反映出全球AI競爭格局的什麼變化？</h2><p>從技術領先競賽轉向成本與供應鏈競爭，是當前全球AI市場的根本性轉變。過去三年，AI競爭的焦點在於模型能力、參數規模、創新速度。如今，隨著大型語言模型（LLM）能力的同質化——主流模型在許多任務上性能已經充分接近——企業與消費者開始從追求「最強能力」轉向追求「最佳性價比」。</p><p>這種轉變有幾個關鍵指標：首先，低成本運算時代正在加速到來——新聞中提及的「AI Token商品化」正是此趨勢的具體表現，企業現在購買AI能力就像購買電力一樣，按使用量計費，成本透明度與競爭加劇。其次，供應鏈多元化成為企業的新偏好，以往對單一美國廠商的依賴正在減弱。最後，地緣政治分化正在創造區域性的AI生態——歐洲有自主模型計畫、中國有政府支持的本地廠商、亞洲有新興雲端勢力。</p><h2 id="sec-4">台灣AI產業面臨的機會與挑戰是什麼？</h2><p>台灣面臨的局勢是「被夾在中間的機會」。一方面，美國出於安全考量，正在尋找「可信任的非中國替代方案」來替代中國模型；另一方面，台灣的AI能力（特別是在運算最佳化、芯片整合、企業應用場景等領域）具有獨特優勢。</p><p>具體而言，台灣廠商應考慮以下戰略：</p><ul><li><strong>成本與安全的雙重承諾：</strong>不只提供低於美國大廠的模型服務，更強調數據安全、供應鏈透明與地緣政治中立的優勢，成為「民主國家信任的成本優化方案」</li><li><strong>垂直應用深化：</strong>與其追求通用大模型的競爭，不如在製造、醫療、金融等台灣優勢領域提供專業化AI解決方案</li><li><strong>邊緣運算與本地化部署：</strong>強化在on-premise與邊緣運算的優勢，降低企業跨境數據流動的風險</li></ul><h2 id="sec-5">企業採購決策應該如何應對？</h2><p>對於正在評估AI服務供應商的台灣企業而言，當下是重新審視採購戰略的關鍵時期。不要盲目追隨「最便宜」或「最知名」，而應建立一個「成本-安全-性能」的三維評估框架：</p><ul><li><strong>成本透明度：</strong>了解真實的使用成本，包括隱藏的API費率、數據轉出費用、合規成本等</li><li><strong>數據主權：</strong>確認模型是否會將企業數據用於訓練、數據存儲位置、數據刪除政策</li><li><strong>供應鏈韌性：</strong>評估供應商是否面臨地緣政治風險，是否有備用方案</li></ul><h2 id="sec-6">常見問題</h2><h3 id="sec-7">中國AI模型真的比美國模型便宜很多嗎？</h3><p>根據市場資訊，中國AI模型在API調用價格上確實通常低於美國主流模型30-70%，這主要源於較低的基礎設施成本、政府補助與本地化優化，但需注意這些成本優勢可能無法永續，且廉價模型往往在特定高端應用場景上有能力限制。</p><h3 id="sec-8">採用中國AI模型會帶來哪些實際風險？</h3><p>主要風險包括敏感數據可能的跨境流動與洩露、模型輸出的地緣政治偏見、未來的政策變化可能影響可用性，以及美國政府可能對使用中國模型的企業實施出口管制或資訊安全審查。</p><h3 id="sec-9">台灣企業應該立即停止評估中國AI模型嗎？</h3><p>不必立即停止，但應進行風險分類：對於處理敏感資訊或受美國出口管制影響的應用，應優先考慮本地或民主國家廠商；對於非敏感應用，可在完整評估法規風險與數據安全承諾後，理性決策，同時預留多供應商備案。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>美企轉向中國AI模型主要驅動力是成本優勢，但美國政府已啟動安全審查</li><li>這反映全球AI市場從技術領先競賽轉向成本與供應鏈競爭的結構性轉變</li><li>台灣應從「被選擇者」轉向「成本與安全均衡方案提供者」的戰略定位</li></ul><h2 id="sec-1">為什麼美企開始轉向中國AI模型？</h2><p>美國企業採用中國AI模型的核心原因是成本差異——中國模型在訓練成本、<a class="gl" href="/glossary/#term-inference" title="術語庫：推理">推理</a>成本與服務價格上具有明顯優勢，這對於成本壓力日增的企業構成難以抗拒的吸引力。根據商傳媒報導，越來越多美企因為營運預算限制，開始評估並使用中國廠商的AI服務，尤其是在對延遲容忍度較高的應用場景。</p><p>這股轉向背後是一個殘酷的經濟現實：美國AI大廠（如OpenAI、Google、Anthropic）的模型服務費用不斷上升，而中國廠商（如通義千問、文心一言等）透過更低的邊際成本、政府補助與本地化優化，提供了更便宜的替代方案。對於預算有限的中小企業、初創公司與對成本敏感的大型企業採購部門而言，這差異足以改變採購決策。</p><h2 id="sec-2">國會安全調查反映了什麼隱憂？</h2><p>美國國會啟動調查反映的是一個更深層的戰略焦慮：經濟利益與國家安全之間的衝突。採用中國AI模型可能帶來的風險包括數據流向問題、模型嵌入的偏見或後門風險，以及美國技術優勢的流失。</p><p>從地緣政治角度，美國政府視AI為戰略性技術，與芯片、量子計算並列為國家競爭力的核心。當美企為了省成本而轉用中國模型時，不只是採購決策轉變，更可能涉及敏感數據（如企業營運資訊、使用者行為模式）的跨境流動。這正是為什麼國會會在短時間內啟動安全審查——這不只是經濟議題，而是涉及資訊主權的國安議題。</p><h2 id="sec-3">這反映出全球AI競爭格局的什麼變化？</h2><p>從技術領先競賽轉向成本與供應鏈競爭，是當前全球AI市場的根本性轉變。過去三年，AI競爭的焦點在於模型能力、參數規模、創新速度。如今，隨著<a class="gl" href="/glossary/#term-llm" title="術語庫：大型語言模型">大型語言模型</a>（LLM）能力的同質化——主流模型在許多任務上性能已經充分接近——企業與消費者開始從追求「最強能力」轉向追求「最佳性價比」。</p><p>這種轉變有幾個關鍵指標：首先，低成本運算時代正在加速到來——新聞中提及的「AI <a class="gl" href="/glossary/#term-token" title="術語庫：Token">Token</a>商品化」正是此趨勢的具體表現，企業現在購買AI能力就像購買電力一樣，按使用量計費，成本透明度與競爭加劇。其次，供應鏈多元化成為企業的新偏好，以往對單一美國廠商的依賴正在減弱。最後，地緣政治分化正在創造區域性的AI生態——歐洲有自主模型計畫、中國有政府支持的本地廠商、亞洲有新興雲端勢力。</p><h2 id="sec-4">台灣AI產業面臨的機會與挑戰是什麼？</h2><p>台灣面臨的局勢是「被夾在中間的機會」。一方面，美國出於安全考量，正在尋找「可信任的非中國替代方案」來替代中國模型；另一方面，台灣的AI能力（特別是在運算最佳化、芯片整合、企業應用場景等領域）具有獨特優勢。</p><p>具體而言，台灣廠商應考慮以下戰略：</p><ul><li><strong>成本與安全的雙重承諾：</strong>不只提供低於美國大廠的模型服務，更強調數據安全、供應鏈透明與地緣政治中立的優勢，成為「民主國家信任的成本優化方案」</li><li><strong>垂直應用深化：</strong>與其追求通用大模型的競爭，不如在製造、醫療、金融等台灣優勢領域提供專業化AI解決方案</li><li><strong><a class="gl" href="/glossary/#term-edge-computing" title="術語庫：邊緣運算">邊緣運算</a>與本地化部署：</strong>強化在on-premise與邊緣運算的優勢，降低企業跨境數據流動的風險</li></ul><h2 id="sec-5">企業採購決策應該如何應對？</h2><p>對於正在評估AI服務供應商的台灣企業而言，當下是重新審視採購戰略的關鍵時期。不要盲目追隨「最便宜」或「最知名」，而應建立一個「成本-安全-性能」的三維評估框架：</p><ul><li><strong>成本透明度：</strong>了解真實的使用成本，包括隱藏的API費率、數據轉出費用、合規成本等</li><li><strong>數據主權：</strong>確認模型是否會將企業數據用於訓練、數據存儲位置、數據刪除政策</li><li><strong>供應鏈韌性：</strong>評估供應商是否面臨地緣政治風險，是否有備用方案</li></ul><h2 id="sec-6">常見問題</h2><h3 id="sec-7">中國AI模型真的比美國模型便宜很多嗎？</h3><p>根據市場資訊，中國AI模型在API調用價格上確實通常低於美國主流模型30-70%，這主要源於較低的基礎設施成本、政府補助與本地化優化，但需注意這些成本優勢可能無法永續，且廉價模型往往在特定高端應用場景上有能力限制。</p><h3 id="sec-8">採用中國AI模型會帶來哪些實際風險？</h3><p>主要風險包括敏感數據可能的跨境流動與洩露、模型輸出的地緣政治偏見、未來的政策變化可能影響可用性，以及美國政府可能對使用中國模型的企業實施出口管制或資訊安全審查。</p><h3 id="sec-9">台灣企業應該立即停止評估中國AI模型嗎？</h3><p>不必立即停止，但應進行風險分類：對於處理敏感資訊或受美國出口管制影響的應用，應優先考慮本地或民主國家廠商；對於非敏感應用，可在完整評估法規風險與數據安全承諾後，理性決策，同時預留多供應商備案。</p><!--BODY:END--></div>
     <nav class="post-nav">
       <a class="pn" href="/post/327/"><span>← 上一篇</span><b>台灣TAIDE對標月之暗面：本土AI如何在政治內容管控戰爭中突圍</b></a>
       <a class="pn pn-r" href="/post/318/"><span>下一篇 →</span><b>蘋果AI本地化戰略：大模型上iPhone運行的技術突破與挑戰</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/425/"><span class="h-meta"><span class="h-cat">AI</span></span><b>中國9月推16個新模型：台灣AI企業如何應對加速競賽？</b></a></li><li><a href="/post/392/"><span class="h-meta"><span class="h-cat">AI</span></span><b>中國AI模型調用量連19週領先美國：台灣企業該如何應對算力競賽新局面？</b></a></li><li><a href="/post/421/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>AI58｜Gemini 4 Argon：AI 模型選型新時代，長流程推理如何改寫企業成本</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

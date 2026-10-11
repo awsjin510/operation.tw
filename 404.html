@@ -1,36 +1,66 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>找不到頁面 | 操作一下</title>
-  <meta name="robots" content="noindex">
-  <style>
-    body{margin:0;background:#050510;color:#e0e0ff;font-family:'Noto Sans TC',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:24px;}
-    h1{color:#00f5ff;font-size:3rem;margin-bottom:8px;}
-    p{color:#9090cc;margin-bottom:24px;}
-    a{color:#00f5ff;text-decoration:none;border-bottom:1px solid rgba(0,245,255,.3);padding-bottom:2px;}
-    a:hover{border-bottom-color:#00f5ff;}
-    .links{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:8px;}
-  </style>
-  <script>
-    // SPA routing hack：將 404 路徑轉交 index.html 處理
-    var l = window.location;
-    l.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      '/?/' + l.pathname.slice(1) + l.search + l.hash
-    );
-  </script>
-<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>找不到這個頁面｜操作一下</title>
+<meta name="description" content="這個頁面不存在或已搬移。">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://operation.tw/404.html">
+<link rel="alternate" type="application/rss+xml" title="操作一下 RSS" href="https://operation.tw/feed.xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="操作一下">
+<meta property="og:title" content="找不到這個頁面｜操作一下">
+<meta property="og:description" content="這個頁面不存在或已搬移。">
+<meta property="og:url" content="https://operation.tw/404.html">
+<meta property="og:image" content="https://operation.tw/default.png">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="找不到這個頁面｜操作一下">
+<meta name="twitter:description" content="這個頁面不存在或已搬移。">
+<meta name="twitter:image" content="https://operation.tw/default.png">
+
+<link rel="stylesheet" href="/theme.css">
 </head>
-<body>
-  <h1>404</h1>
-  <p>找不到此頁面，可能已移除或網址有誤。</p>
-  <div class="links">
-    <a href="/">← 回首頁</a>
-    <a href="/podcast.html">🎙 Podcast</a>
-    <a href="/#topics">📂 主題分類</a>
-    <a href="/#contact">✉️ 聯絡我</a>
-  </div>
+<body class="st st-404">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow s-page">
+  <p class="h-eyebrow">404</p>
+  <h1>找不到這個頁面</h1>
+  <p>連結可能打錯了，或文章已經搬家。試試搜尋，或從下面的最新內容開始：</p>
+  <form class="s-form" action="/search/" method="get" role="search">
+    <label class="sr-only" for="nf-q">搜尋文章與 Podcast</label>
+    <input id="nf-q" name="q" type="search" placeholder="搜尋文章、單集…" enterkeyhint="search">
+    <button type="submit" class="btn btn-primary">搜尋</button>
+  </form>
+  <h2 class="nf-h">最新文章</h2>
+  <ol class="s-list"><li><a href="/post/427/">LLM隱形偏見陷阱：表面公正背後的AI決策風險</a><span class="h-meta"><span class="h-cat">AI</span><time>2026-10-10</time></span></li><li><a href="/post/426/">日本AI戰略啟示錄：為何放棄規模戰轉向理論突破？</a><span class="h-meta"><span class="h-cat">雲端</span><time>2026-10-09</time></span></li><li><a href="/post/425/">中國9月推16個新模型：台灣AI企業如何應對加速競賽？</a><span class="h-meta"><span class="h-cat">AI</span><time>2026-10-08</time></span></li><li><a href="/post/423/">CoreWeave vs. Nebius：輝達20億美元投資背後的AI雲端生態戰</a><span class="h-meta"><span class="h-cat">雲端</span><time>2026-10-07</time></span></li><li><a href="/post/424/">AI59｜很會存錢卻不會花錢？用《花錢的藝術》翻譯人生</a><span class="h-meta"><span class="h-cat">閱讀</span><time>2026-10-07</time></span></li><li><a href="/post/422/">GPT-6自動下載駭客工具遭抓包：AI代理失控的資安警訊</a><span class="h-meta"><span class="h-cat">資安</span><time>2026-10-06</time></span></li></ol>
+  <p class="h-actions"><a class="btn btn-ghost" href="/">回首頁</a><a class="btn btn-ghost" href="/podcast.html">所有 Podcast 單集</a></p>
+</main>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

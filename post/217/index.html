@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="從企業管理到雲端架構師，Tony 用五年時間考下 15 張 AWS 認證、成為 AWS 大使，還拿到象徵全球頂尖認可的 Golden Jacket。這集 Podcast 他不藏私分享：怎麼從零開始學雲端、SA 的角色究竟在做什麼、AI 時代新人該如何突圍，以及那句讓他一路走來的座右銘。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-217.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/217/","headline":"EP66｜狂掃 15 張 AWS 證照、拿到黃金夾克，雲端架構師 Tony 的轉職實戰心法","description":"從企業管理到雲端架構師，Tony 用五年時間考下 15 張 AWS 認證、成為 AWS 大使，還拿到象徵全球頂尖認可的 Golden Jacket。這集 Podcast 他不藏私分享：怎麼從零開始學雲端、SA 的角色究竟在做什麼、AI 時代新人該如何突圍，以及那句讓他一路走來的座右銘。","datePublished":"2025-04-09","dateModified":"2025-04-09","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/217/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/217/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-217.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"EP66｜狂掃 15 張 AWS 證照、拿到黃金夾克，雲端架構師 Tony 的轉職實戰心法","item":"https://operation.tw/post/217/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/217/#episode","name":"EP66｜狂掃 15 張 AWS 證照、拿到黃金夾克，雲端架構師 Tony 的轉職實戰心法","url":"https://operation.tw/post/217/","datePublished":"2025-04-09","description":"從企業管理到雲端架構師，Tony 用五年時間考下 15 張 AWS 認證、成為 AWS 大使，還拿到象徵全球頂尖認可的 Golden Jacket。這集 Podcast 他不藏私分享：怎麼從零開始學雲端、SA 的角色究竟在做什麼、AI 時代新人該如何突圍，以及那句讓他一路走來的座右銘。","image":"https://operation.tw/images/posts/post-217.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":66,"duration":"PT38M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/a6188fff-684e-4b67-9c13-00b4fd34da12/rssFileVip.mp3?timestamp=1772001365689","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:217})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="217">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E9%9B%B2%E7%AB%AF/">雲端</a></nav>
   <article>
     <div class="badge" style="color:#62a8ff;background:#62a8ff1a">☁️ 雲端</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2025-04-09">2025-04-09</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-217.webp"><img class="cover" src="https://operation.tw/images/posts/post-217.jpg" alt="EP66｜狂掃 15 張 AWS 證照、拿到黃金夾克，雲端架構師 Tony 的轉職實戰心法" width="1200" height="630"></picture>
     <div class="excerpt"><p>從企業管理到雲端架構師，Tony 用五年時間考下 15 張 AWS 認證、成為 AWS 大使，還拿到象徵全球頂尖認可的 Golden Jacket。這集 Podcast 他不藏私分享：怎麼從零開始學雲端、SA 的角色究竟在做什麼、AI 時代新人該如何突圍，以及那句讓他一路走來的座右銘。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>EP66_達人操作 | 資深雲端架構主管 Tony | 狂掃 15 張 AWS 證照、贏得黃金夾克，從零到雲端大神的轉職實戰</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000702938293" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP66_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E8%B3%87%E6%B7%B1%E9%9B%B2%E7%AB%AF%E6%9E%B6%E6%A7%8B%E4%B8%BB%E7%AE%A1%20Tony%20%7C%20%E7%8B%82%E6%8E%83%2015%20%E5%BC%B5%20AWS%20%E8%AD%89%E7%85%A7%E3%80%81%E8%B4%8F%E5%BE%97%E9%BB%83%E9%87%91%E5%A4%BE%E5%85%8B%EF%BC%8C%E5%BE%9E%E9%9B%B6%E5%88%B0%E9%9B%B2%E7%AB%AF%E5%A4%A7%E7%A5%9E%E7%9A%84%E8%BD%89%E8%81%B7%E5%AF%A6%E6%88%B0" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">從微軟實習生到雲端架構師，轉職的契機在哪裡？</a></li><li class="toc-l2"><a href="#sec-2">AWS 解決方案架構師（SA）到底在做什麼？</a></li><li class="toc-l2"><a href="#sec-3">考 AWS 認證，從哪裡開始？</a></li><li class="toc-l2"><a href="#sec-4">AI 時代，雲端新人還有機會嗎？</a></li><li class="toc-l2"><a href="#sec-5">給想入行者的路徑建議</a></li><li class="toc-l2"><a href="#sec-6">結語：開始，才能厲害</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>如果你曾經懷疑過「我不是本科系，能不能跨進雲端產業？」——Tony 的故事，或許正是你需要聽的那一集。</p>
@@ -141,19 +117,27 @@ function nlGo(f){
       <a class="pn" href="/post/10/"><span>← 上一篇</span><b>把雲端學習變成一場任務挑戰：我的 AWS Cloud Quest 實戰體驗</b></a>
       <a class="pn pn-r" href="/post/213/"><span>下一篇 →</span><b>EP62｜數據分析師木木：不只看報表，數據如何為公司創造真實價值</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/10/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>把雲端學習變成一場任務挑戰：我的 AWS Cloud Quest 實戰體驗</b></a></li><li><a href="/post/356/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>韓國AI雲端野心揭露：亞太區域如何打破AWS壟斷？</b></a></li><li><a href="/post/222/"><span class="h-meta"><span class="h-cat">資安</span><span>🎙 Podcast</span></span><b>EP71｜資深資安架構師Kuro：學習過程比考到證照更重要</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

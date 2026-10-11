@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="當你氣到發抖、焦慮到失眠，「深呼吸」根本沒用。密西根大學情緒實驗室主持人伊森・克洛斯在《強大自我的情緒管理》裡提出六個有科學依據的工具，幫你從感官、注意力、觀點、空間、關係、文化六個維度靈活切換情緒狀態。這篇文章整理這集 Podcast 的核心觀點，並對應科技人最常踩到的五個情緒地雷。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-275.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/275/","headline":"AI26｜情緒管理不是消滅情緒，是學會靈活轉換它","description":"當你氣到發抖、焦慮到失眠，「深呼吸」根本沒用。密西根大學情緒實驗室主持人伊森・克洛斯在《強大自我的情緒管理》裡提出六個有科學依據的工具，幫你從感官、注意力、觀點、空間、關係、文化六個維度靈活切換情緒狀態。這篇文章整理這集 Podcast 的核心觀點，並對應科技人最常踩到的五個情緒地雷。","datePublished":"2026-05-31","dateModified":"2026-05-31","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/275/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/275/"},"articleSection":"閱讀","image":"https://operation.tw/images/posts/post-275.jpg","keywords":"閱讀","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"閱讀","item":"https://operation.tw/category/%E9%96%B1%E8%AE%80/"},{"@type":"ListItem","position":3,"name":"AI26｜情緒管理不是消滅情緒，是學會靈活轉換它","item":"https://operation.tw/post/275/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/275/#episode","name":"AI26｜情緒管理不是消滅情緒，是學會靈活轉換它","url":"https://operation.tw/post/275/","datePublished":"2026-05-31","description":"當你氣到發抖、焦慮到失眠，「深呼吸」根本沒用。密西根大學情緒實驗室主持人伊森・克洛斯在《強大自我的情緒管理》裡提出六個有科學依據的工具，幫你從感官、注意力、觀點、空間、關係、文化六個維度靈活切換情緒狀態。這篇文章整理這集 Podcast 的核心觀點，並對應科技人最常踩到的五個情緒地雷。","image":"https://operation.tw/images/posts/post-275.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":26,"duration":"PT15M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/7b6cbd08-af05-432d-a398-bef190da8748/rssFileVip.mp3?timestamp=1780340587315","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:275})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/" aria-current="page">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="275">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/" aria-current="page">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/" aria-current="page">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a></nav>
   <article>
     <div class="badge" style="color:#f5c451;background:#f5c4511a">📚 閱讀</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-05-31">2026-05-31</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-275.webp"><img class="cover" src="https://operation.tw/images/posts/post-275.jpg" alt="AI26｜情緒管理不是消滅情緒，是學會靈活轉換它" width="1200" height="630"></picture>
     <div class="excerpt"><p>當你氣到發抖、焦慮到失眠，「深呼吸」根本沒用。密西根大學情緒實驗室主持人伊森・克洛斯在《強大自我的情緒管理》裡提出六個有科學依據的工具，幫你從感官、注意力、觀點、空間、關係、文化六個維度靈活切換情緒狀態。這篇文章整理這集 Podcast 的核心觀點，並對應科技人最常踩到的五個情緒地雷。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>AI26_閱讀操作 | 《強大自我的情緒管理》：管理情緒不是消滅它，是學會轉換它</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000770481915" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI26_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%20%7C%20%E3%80%8A%E5%BC%B7%E5%A4%A7%E8%87%AA%E6%88%91%E7%9A%84%E6%83%85%E7%B7%92%E7%AE%A1%E7%90%86%E3%80%8B%EF%BC%9A%E7%AE%A1%E7%90%86%E6%83%85%E7%B7%92%E4%B8%8D%E6%98%AF%E6%B6%88%E6%BB%85%E5%AE%83%EF%BC%8C%E6%98%AF%E5%AD%B8%E6%9C%83%E8%BD%89%E6%8F%9B%E5%AE%83" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">你有沒有因為一句話，想了整整三個小時？</a></li><li class="toc-l2"><a href="#sec-2">市面上的情緒管理書，為什麼在關鍵時刻都失效？</a></li><li class="toc-l2"><a href="#sec-3">六個工具，對應六種切換情緒的維度</a></li><li class="toc-l2"><a href="#sec-4">科技人特別需要的五個對應情境</a></li><li class="toc-l2"><a href="#sec-5">你用的方法，配得上你現在面對的情緒複雜度嗎？</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><h2 id="sec-1">你有沒有因為一句話，想了整整三個小時？</h2><p>同事在會議上說了一句讓你不舒服的話，你回到家、吃完飯、洗完澡，躺上床——還在想。不是在分析，是在繞。同一個畫面一直回放，同一句話一直咀嚼，就是停不下來。</p><p>這不是你意志力不夠，這是大腦的「反芻」機制在作怪。而且科技業的工作環境，特別容易觸發這個機制：訊息隨時進來、主管回覆時間充滿解讀空間、方案隨時可能被推翻。我們這個時代情緒的觸發點，比二十年前多了不知道幾倍。</p><h2 id="sec-2">市面上的情緒管理書，為什麼在關鍵時刻都失效？</h2><p>過去十年書市出了非常多情緒管理相關的書，但你有沒有發現一個共同問題？這些方法在情緒輕微的時候還有點用，一旦情緒強度升高，全部失靈。當你真的氣到手抖、難過到崩潰，這時候叫你「深呼吸」，幾乎是一句廢話。</p><p>這集 Podcast 介紹的書《強大自我的情緒管理》，作者是密西根大學情緒實驗室主持人伊森・克洛斯。他的核心觀點直接顛覆了過去大多數情緒管理的邏輯——<strong>情緒管理的目標不是消滅情緒，而是學會靈活地轉換它。</strong></p><p>情緒本身不是敵人。焦慮、憤怒、難過，這些情緒存在都有它的功能。問題在於我們太容易卡在某一種情緒裡出不來，而且愈想用力「控制」，往往愈控制不了。克洛斯提出的解法，是給你六個具體的轉換工具，有大量科學實驗背書，不是心靈雞湯。</p><h2 id="sec-3">六個工具，對應六種切換情緒的維度</h2><ul><li><strong>感官轉換</strong>：透過改變身體接收到的感官輸入，打斷情緒的自動迴路。</li><li><strong>注意力轉換</strong>：刻意把注意力從情緒本身，移到其他值得關注的地方。</li><li><strong>觀點轉換</strong>：用不同的視角重新詮釋同一件事，包括拉遠時間軸或切換人稱。</li><li><strong>空間轉換</strong>：物理環境的改變能直接影響心理狀態，換個地方往往就換了情緒。</li><li><strong>關係轉換</strong>：找對人說話，不是為了求建議，而是為了讓情緒有地方落地。</li><li><strong>文化轉換</strong>：不同的文化框架對情緒有不同的詮釋方式，借用這些框架能幫助重新定義感受。</li></ul><p>這六個工具不是排列組合題，而是讓你根據當下的情境，選擇最適合的切入點。重點在「靈活」這兩個字——沒有一個工具適用所有情境，但你手邊有六個，就不會只剩深呼吸一條路。</p><h2 id="sec-4">科技人特別需要的五個對應情境</h2><p>這集節目裡特別針對科技業工作者拆解了五個最常見的情緒地雷情境，比如：晚上躺下來還在想白天那句話、主管訊息回得很慢讓你開始腦補、辛苦做出來的方案被一句話推翻萌生離職念頭……這些場景應該不陌生。</p><p>每個情境對應的工具不一樣。例如「反芻型」的焦慮——腦袋停不下來那種——用注意力轉換或空間轉換往往比硬逼自己「想開一點」有效得多；而涉及人際解讀的情緒，觀點轉換通常更直接切中問題。</p><h2 id="sec-5">你用的方法，配得上你現在面對的情緒複雜度嗎？</h2><p>我在節目裡說了一句話，我自己覺得很關鍵：<strong>如果你還在用二十年前的方法，管理 2026 年的情緒，難怪每天都很累。</strong></p><p>這不是在責怪任何人。我們從小學到的情緒處理方式，很多是在資訊量少、觸發點少的環境裡形成的。現在的工作節奏、通訊密度、決策壓力完全不同了，工具也該跟著升級。</p><p>《強大自我的情緒管理》這本書給我最大的收穫，不是哪一個具體技巧，而是一個思維上的鬆動：情緒不需要被打敗，它只需要被轉換。這個前提一旦接受，你和自己情緒的關係就會開始不一樣。</p><p>這集完整的書籍拆解和情境對應，都在 Podcast 裡，歡迎去聽。</p>
@@ -94,19 +70,27 @@ function nlGo(f){
       <a class="pn" href="/post/278/"><span>← 上一篇</span><b>AI29｜《不反應的練習》：煩惱不是來自事情，而是來自你的反應</b></a>
       <a class="pn pn-r" href="/post/272/"><span>下一篇 →</span><b>AI23｜你的大腦也會幻覺？《我可能錯了》給停不下來的我們</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/266/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>AI18｜AI 真正的瓶頸不是 GPU，是電——Anthropic 買下太空算力的背後邏輯</b></a></li><li><a href="/post/424/"><span class="h-meta"><span class="h-cat">閱讀</span><span>🎙 Podcast</span></span><b>AI59｜很會存錢卻不會花錢？用《花錢的藝術》翻譯人生</b></a></li><li><a href="/post/376/"><span class="h-meta"><span class="h-cat">閱讀</span><span>🎙 Podcast</span></span><b>AI52｜好工作不是找來的，是自己打造的｜瓦基《只工作、不上班的自主人生》閱讀筆記</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="「移動，才能生存」——這句電影台詞，成了後端工程師東東在職涯轉捩點的核心信念。這集《操作一下》邀請東東從工程師視角拆解 n8n 這個自動化工具，從工作應用到日常生活管理，帶你看見即使不會寫程式，也能打造專屬自動化流程的可能性，並分享他從跳舞經歷中意外習得的溝通與換位思考能力。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-225.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/225/","headline":"EP74｜後端工程師東東：用 n8n 打造你的 24 小時數位助理","description":"「移動，才能生存」——這句電影台詞，成了後端工程師東東在職涯轉捩點的核心信念。這集《操作一下》邀請東東從工程師視角拆解 n8n 這個自動化工具，從工作應用到日常生活管理，帶你看見即使不會寫程式，也能打造專屬自動化流程的可能性，並分享他從跳舞經歷中意外習得的溝通與換位思考能力。","datePublished":"2025-06-29","dateModified":"2025-06-29","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/225/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/225/"},"articleSection":"成長","image":"https://operation.tw/images/posts/post-225.jpg","keywords":"成長","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"成長","item":"https://operation.tw/category/%E6%88%90%E9%95%B7/"},{"@type":"ListItem","position":3,"name":"EP74｜後端工程師東東：用 n8n 打造你的 24 小時數位助理","item":"https://operation.tw/post/225/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/225/#episode","name":"EP74｜後端工程師東東：用 n8n 打造你的 24 小時數位助理","url":"https://operation.tw/post/225/","datePublished":"2025-06-29","description":"「移動，才能生存」——這句電影台詞，成了後端工程師東東在職涯轉捩點的核心信念。這集《操作一下》邀請東東從工程師視角拆解 n8n 這個自動化工具，從工作應用到日常生活管理，帶你看見即使不會寫程式，也能打造專屬自動化流程的可能性，並分享他從跳舞經歷中意外習得的溝通與換位思考能力。","image":"https://operation.tw/images/posts/post-225.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":74,"duration":"PT42M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/9d2224ab-473a-4506-b0e6-d7e3dd622e5a/rssFileVip.mp3?timestamp=1752596559897","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:225})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/" aria-current="page">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="225">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/" aria-current="page">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/" aria-current="page">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
   <article>
     <div class="badge" style="color:#4ade9a;background:#4ade9a1a">🌱 成長</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2025-06-29">2025-06-29</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-225.webp"><img class="cover" src="https://operation.tw/images/posts/post-225.jpg" alt="EP74｜後端工程師東東：用 n8n 打造你的 24 小時數位助理" width="1200" height="630"></picture>
     <div class="excerpt"><p>「移動，才能生存」——這句電影台詞，成了後端工程師東東在職涯轉捩點的核心信念。這集《操作一下》邀請東東從工程師視角拆解 n8n 這個自動化工具，從工作應用到日常生活管理，帶你看見即使不會寫程式，也能打造專屬自動化流程的可能性，並分享他從跳舞經歷中意外習得的溝通與換位思考能力。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>EP74_達人操作 | 後端工程師_東東 |「移動，才能生存！」— 讓 n8n 自動化工具成為你的超強數位助理！</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000715046903" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP74_%E9%81%94%E4%BA%BA%E6%93%8D%E4%BD%9C%20%7C%20%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB_%E6%9D%B1%E6%9D%B1%20%7C%E3%80%8C%E7%A7%BB%E5%8B%95%EF%BC%8C%E6%89%8D%E8%83%BD%E7%94%9F%E5%AD%98%EF%BC%81%E3%80%8D%E2%80%94%20%E8%AE%93%20n8n%20%E8%87%AA%E5%8B%95%E5%8C%96%E5%B7%A5%E5%85%B7%E6%88%90%E7%82%BA%E4%BD%A0%E7%9A%84%E8%B6%85%E5%BC%B7%E6%95%B8%E4%BD%8D%E5%8A%A9%E7%90%86%EF%BC%81" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">原地踏步，就是在退步</a></li><li class="toc-l2"><a href="#sec-2">先搞懂：前端與後端到底差在哪？</a></li><li class="toc-l2"><a href="#sec-3">n8n 是什麼？為什麼值得你關注？</a></li><li class="toc-l2"><a href="#sec-4">實際能做什麼？工作與生活都能用上</a></li><li class="toc-l2"><a href="#sec-5">意想不到的軟實力：從跳舞學來的換位思考</a></li><li class="toc-l2"><a href="#sec-6">想上手 n8n？東東給新手的建議</a></li><li class="toc-l2"><a href="#sec-7">開始移動，才能跟上</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><h2 id="sec-1">原地踏步，就是在退步</h2><p>《末日之戰》裡有一句台詞：「Movement is Life，移動才能生存。」這句話放在科技快速迭代的今天，幾乎是一句警語。本集《操作一下》的來賓東東，是一位資深後端工程師，也是主持人 Jin 大學熱舞社的老夥伴。他把這句話視為自己在職涯十字路口時的關鍵信念——不移動，就等著被浪潮淹沒。</p><p>這集我們聊的不只是工具，更是一種面對變化的心態。如果你也常常被重複性的瑣事佔據，或者對「自動化」這個詞感到好奇卻不知道從哪裡下手，東東的分享會讓你大開眼界。</p><h2 id="sec-2">先搞懂：前端與後端到底差在哪？</h2><p>在進入主題之前，東東先幫聽眾做了一個基礎建設。前端工程師負責的是你「看得見」的部分，像是網頁的畫面、按鈕、排版；後端工程師則是在幕後處理資料、邏輯運算與伺服器溝通。兩者就像餐廳的外場與廚房，缺一不可，但分工截然不同。搞清楚這個差別，才能更好地理解為什麼像 n8n 這樣的工具會讓後端工程師興奮不已。</p><h2 id="sec-3">n8n 是什麼？為什麼值得你關注？</h2><p>n8n 是一套開源的自動化工作流工具，核心概念是「視覺化節點串接」。你不需要寫程式，只要透過拖拉節點的方式，就能把各種應用程式串在一起——比如收到一封 Email 後，自動把內容整理寫入 Google Sheets，再發一則通知到 Slack。</p><p>這樣的工具有點像是你的私人助理，而且是 24 小時不下班的那種。對一般使用者來說，它能處理日常瑣事；對工程師來說，它更是解放重複勞動的利器。</p><h2 id="sec-4">實際能做什麼？工作與生活都能用上</h2><p>東東在這集分享了幾個他自己實際操作過的應用場景，分成工作與生活兩個面向：</p><ul><li><strong>工作端：</strong>自動健康檢查（Health Check）——定期偵測服務是否正常運作，一旦異常立即通報，不需要人工盯著；以及 E2E 測試自動化，讓 QA 工程師從繁瑣的手動測試中解脫出來。</li><li><strong>生活端：</strong>個人記帳自動化、每日新聞爬蟲整理、甚至是 Instagram 自動發文助理。這些聽起來好像要寫很多程式才能做到的事，透過 n8n 都能在不寫程式的情況下實現。</li></ul><p>這些應用的共同點是：把「重複發生、有規律可循」的事情交給機器，讓你把時間留給真正需要人腦判斷的事。</p><h2 id="sec-5">意想不到的軟實力：從跳舞學來的換位思考</h2><p>這集讓我印象最深的，其實不是工具本身，而是東東聊到跳舞經歷對他工程師生涯的影響。在熱舞社培養出的「共感力」與「換位思考」，讓他在充滿邏輯的程式世界裡，成為一個更懂得溝通的人。</p><p>這件事提醒我們，硬技能之外，那些看似「不相關」的經歷，往往會在某個時刻悄悄發揮作用。學習從來不是線性的，很多能力都是跨域滲透進來的。</p><h2 id="sec-6">想上手 n8n？東東給新手的建議</h2><p>如果你對 n8n 感興趣，東東也無私分享了學習入口。他本身就有經營 YouTube 頻道，提供手把手的 n8n 教學，搭配官方社群與文件，對於完全沒有技術背景的人來說，也是可以踏出第一步的。重點是：先從一個你真正覺得麻煩的日常流程開始，用 n8n 試著解決它，比看再多教學都有效。</p><h2 id="sec-7">開始移動，才能跟上</h2><p>這集最打動我的，是東東把「持續學習」這件事活成了一種生活方式，而不是口號。n8n 只是一個切入點，背後更重要的是那個「願意移動、主動探索」的心態。</p><p>無論你是工程師、上班族，還是正在摸索新工具的創作者，都很推薦去聽完整集的 Podcast。東東說的那些，不只是技術，更是一種面對變化的姿態。準備好開始移動了嗎？</p>
@@ -94,19 +70,27 @@ function nlGo(f){
       <a class="pn" href="/post/226/"><span>← 上一篇</span><b>EP75｜告別職涯迷惘：用天賦與價值觀找到屬於你的光芒</b></a>
       <a class="pn pn-r" href="/post/224/"><span>下一篇 →</span><b>EP73｜視野越廣，煩惱越少：出走的勇氣如何改變人生？</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/228/"><span class="h-meta"><span class="h-cat">AI</span><span>🎙 Podcast</span></span><b>EP77｜日本工程師不爆肝？後端工程師David的日系職場生存術</b></a></li><li><a href="/post/245/"><span class="h-meta"><span class="h-cat">成長</span><span>🎙 Podcast</span></span><b>EP94｜從電視記者到醫院行銷長，張宜真的跨域職涯心法</b></a></li><li><a href="/post/38/"><span class="h-meta"><span class="h-cat">成長</span></span><b>《超有料！職場第一實用的 AI 簡報術》閱讀心得</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

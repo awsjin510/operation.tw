@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="你有多久沒有好好讀完一本書了？這集「操作一下」Podcast 以 Kobo Forma 電子書閱讀器為主角，從實際使用經驗出發，整理出電子書與實體書各自最適合的閱讀情境，還有幾個你可能不知道的隱藏功能，幫助你找到最順手的閱讀方式。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-167.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/167/","headline":"EP16｜單手掌控的移動書櫃：Kobo Forma 電子書閱讀器使用心得","description":"你有多久沒有好好讀完一本書了？這集「操作一下」Podcast 以 Kobo Forma 電子書閱讀器為主角，從實際使用經驗出發，整理出電子書與實體書各自最適合的閱讀情境，還有幾個你可能不知道的隱藏功能，幫助你找到最順手的閱讀方式。","datePublished":"2022-09-18","dateModified":"2022-09-18","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/167/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/167/"},"articleSection":"閱讀","image":"https://operation.tw/images/posts/post-167.jpg","keywords":"閱讀","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"閱讀","item":"https://operation.tw/category/%E9%96%B1%E8%AE%80/"},{"@type":"ListItem","position":3,"name":"EP16｜單手掌控的移動書櫃：Kobo Forma 電子書閱讀器使用心得","item":"https://operation.tw/post/167/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/167/#episode","name":"EP16｜單手掌控的移動書櫃：Kobo Forma 電子書閱讀器使用心得","url":"https://operation.tw/post/167/","datePublished":"2022-09-18","description":"你有多久沒有好好讀完一本書了？這集「操作一下」Podcast 以 Kobo Forma 電子書閱讀器為主角，從實際使用經驗出發，整理出電子書與實體書各自最適合的閱讀情境，還有幾個你可能不知道的隱藏功能，幫助你找到最順手的閱讀方式。","image":"https://operation.tw/images/posts/post-167.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":16,"duration":"PT13M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/f957449f-3a7e-4c70-949f-f0419ba2cf34/rssFileVip.mp3?timestamp=1687899396585","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:167})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/" aria-current="page">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="167">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/" aria-current="page">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/" aria-current="page">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a></nav>
   <article>
     <div class="badge" style="color:#f5c451;background:#f5c4511a">📚 閱讀</div>
@@ -73,6 +48,7 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2022-09-18">2022-09-18</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-167.webp"><img class="cover" src="https://operation.tw/images/posts/post-167.jpg" alt="EP16｜單手掌控的移動書櫃：Kobo Forma 電子書閱讀器使用心得" width="1200" height="630"></picture>
     <div class="excerpt"><p>你有多久沒有好好讀完一本書了？這集「操作一下」Podcast 以 Kobo Forma 電子書閱讀器為主角，從實際使用經驗出發，整理出電子書與實體書各自最適合的閱讀情境，還有幾個你可能不知道的隱藏功能，幫助你找到最順手的閱讀方式。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>EP16_閱讀操作｜單手掌控的移動書櫃｜Kobo Forma電子書閱讀器｜使用心得</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000579809864" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/EP16_%E9%96%B1%E8%AE%80%E6%93%8D%E4%BD%9C%EF%BD%9C%E5%96%AE%E6%89%8B%E6%8E%8C%E6%8E%A7%E7%9A%84%E7%A7%BB%E5%8B%95%E6%9B%B8%E6%AB%83%EF%BD%9CKobo%20Forma%E9%9B%BB%E5%AD%90%E6%9B%B8%E9%96%B1%E8%AE%80%E5%99%A8%EF%BD%9C%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">電子書閱讀器最適合讀什麼？</a></li><li class="toc-l2"><a href="#sec-2">哪些書還是建議買實體版？</a></li><li class="toc-l2"><a href="#sec-3">幾個值得知道的隱藏功能</a></li><li class="toc-l2"><a href="#sec-4">找到適合自己的閱讀工具</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><p>想像一下：通勤途中，一隻手抓著吊環，另一隻手輕鬆握著一台輕薄的裝置，裡面裝著上百本書。這不是科幻場景，而是使用電子書閱讀器之後，很多人真實的日常。</p>
@@ -129,19 +105,27 @@ function nlGo(f){
       <a class="pn" href="/post/174/"><span>← 上一篇</span><b>EP23｜午夜圖書館：如果能重來，你會選哪條路？</b></a>
       <a class="pn pn-r" href="/post/164/"><span>下一篇 →</span><b>EP13｜每次決策都比別人勝算高？用撲克思維升級你的人生判斷力</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/280/"><span class="h-meta"><span class="h-cat">閱讀</span><span>🎙 Podcast</span></span><b>AI31｜讀書不是任務，是一場相遇——《命定之書》與你的閱讀覺醒</b></a></li><li><a href="/post/424/"><span class="h-meta"><span class="h-cat">閱讀</span><span>🎙 Podcast</span></span><b>AI59｜很會存錢卻不會花錢？用《花錢的藝術》翻譯人生</b></a></li><li><a href="/post/376/"><span class="h-meta"><span class="h-cat">閱讀</span><span>🎙 Podcast</span></span><b>AI52｜好工作不是找來的，是自己打造的｜瓦基《只工作、不上班的自主人生》閱讀筆記</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

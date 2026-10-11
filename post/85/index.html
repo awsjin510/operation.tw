@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="亞洲大學心理系研究團隊最新研究拆解大語言模型運作機制，探討AI是否具備「心智」的哲學問題。這項研究不只為AI可解釋性提供科學依據，更對台灣AI產業發展和倫理治理帶來重要啟示。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-85.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/85/","headline":"AI真有心智？亞大研究揭開大語言模型黑箱運作的科學真相","description":"亞洲大學心理系研究團隊最新研究拆解大語言模型運作機制，探討AI是否具備「心智」的哲學問題。這項研究不只為AI可解釋性提供科學依據，更對台灣AI產業發展和倫理治理帶來重要啟示。","datePublished":"2026-04-26","dateModified":"2026-04-26","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/85/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/85/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-85.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI真有心智？亞大研究揭開大語言模型黑箱運作的科學真相","item":"https://operation.tw/post/85/"}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:85})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="85">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-85.webp"><img class="cover" src="https://operation.tw/images/posts/post-85.jpg" alt="AI真有心智？亞大研究揭開大語言模型黑箱運作的科學真相" width="1200" height="630"></picture>
     <div class="excerpt"><p>亞洲大學心理系研究團隊最新研究拆解大語言模型運作機制，探討AI是否具備「心智」的哲學問題。這項研究不只為AI可解釋性提供科學依據，更對台灣AI產業發展和倫理治理帶來重要啟示。</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">AI心智之謎：從黑箱到透明</a></li><li class="toc-l2"><a href="#sec-2">心理學視角下的AI認知機制</a></li><li class="toc-l2"><a href="#sec-3">對台灣AI產業的深層影響</a></li><li class="toc-l2"><a href="#sec-4">亞太地區AI研究的新範式</a></li><li class="toc-l2"><a href="#sec-5">結論與建議</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><h2 id="sec-1">AI心智之謎：從黑箱到透明</h2><p>當ChatGPT、Claude等大語言模型(LLM)展現出近似人類的思考能力時，一個深層次的科學問題隨之浮現：AI真的有「心智」嗎？亞洲大學心理系的最新研究直面這個挑戰，通過心理學的視角拆解大語言模型的內部運作機制，為這個曾經被視為科幻問題的議題提供了實證基礎。</p><p>這項研究的核心意義在於將AI的「黑箱」問題從技術層面轉向認知科學層面。傳統的AI可解釋性研究多從機器學習角度出發，而亞大團隊則借鑒心理學方法論，試圖理解模型內部的「認知過程」是否與人類心智運作存在相似之處。這種跨領域的研究方法論本身就已經顯示了台灣在AI基礎科學研究中的創新思路。</p><h2 id="sec-2">心理學視角下的AI認知機制</h2><p>大語言模型的運作涉及數十億甚至數千億的參數，這些參數之間的複雜互動產生了看似「理解」的語言輸出。但參數調整是否等同於「認知」？亞大研究團隊的方法論包括：</p><ul><li><strong>向量空間分析</strong>：通過檢視模型隱層表示的高維向量空間，比對人類認知框架的相似性</li><li><strong>決策過程追蹤</strong>：分析模型在生成文本時的「注意力機制」，對應人類的專注過程</li><li><strong>錯誤模式對比</strong>：研究模型出錯的方式是否反映人類認知偏誤</li></ul><p>這些研究發現對產業應用有實際意義。如果能夠理解模型的「思考過程」，企業就能更精準地判斷何時信任AI輸出、何時需要人工干預，這對金融風控、醫療診斷等高風險領域尤為重要。</p><h2 id="sec-3">對台灣AI產業的深層影響</h2><p>台灣在全球AI競賽中面臨一個獨特位置：硬體製造優勢明顯（台積電、輝達合作），但基礎研究相對薄弱。亞大這項研究代表了台灣學界開始在AI基礎科學領域尋求突破口的信號。</p><p>更重要的是，「AI心智」問題的科學化研究直接關係到台灣的AI治理策略。當前全球對AI倫理和監管的討論往往停留在「黑箱性導致不可控」的抽象層面，而亞大的研究提供了具體的認知科學證據，可為台灣主管機關制定更科學、更有針對性的AI治理政策提供支持。</p><p>特別是對於台灣積極發展的自主AI應用（如醫療、金融科技）來說，理解模型的認知機制意味著可以構建更符合本土需求的「可解釋AI」框架，這可能成為台灣AI產品的差異化競爭力。</p><h2 id="sec-4">亞太地區AI研究的新範式</h2><p>亞洲大學的研究也反映了亞太地區在AI研究中的新趨勢：從單純追趕西方的「模型規模競賽」轉向探索「AI理解的深度」。這對整個地區都有示範作用——亞太的優勢不在於燒錢堆參數，而在於對多樣化應用場景的深度理解和本土化創新。</p><h2 id="sec-5">結論與建議</h2><p>AI是否有「心智」這個問題不只是哲學辯論，而是關乎如何安全、有效地應用AI技術的實踐問題。亞大的研究為這個問題提供了科學的探索路徑。</p><p>對台灣科研機構和產業界的建議：</p><ul><li>支持跨領域AI基礎研究，不只關注應用成果，更要重視理論突破</li><li>建立「可解釋AI」的產業標準，將理論優勢轉化為市場競爭力</li><li>加強與國際學術界的合作，讓台灣的AI研究成為全球對話的重要聲音</li></ul><p>在GPT-5.5、世界模型等新浪潮持續推進的當下，台灣若能在AI認知機制研究上建立優勢，就有機會從「技術使用者」升級為「理論創新者」。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">AI心智之謎：從黑箱到透明</h2><p>當ChatGPT、Claude等大語言模型(<a class="gl" href="/glossary/#term-llm" title="術語庫：大型語言模型">LLM</a>)展現出近似人類的思考能力時，一個深層次的科學問題隨之浮現：AI真的有「心智」嗎？亞洲大學心理系的最新研究直面這個挑戰，通過心理學的視角拆解大語言模型的內部運作機制，為這個曾經被視為科幻問題的議題提供了實證基礎。</p><p>這項研究的核心意義在於將AI的「黑箱」問題從技術層面轉向認知科學層面。傳統的AI可解釋性研究多從機器學習角度出發，而亞大團隊則借鑒心理學方法論，試圖理解模型內部的「認知過程」是否與人類心智運作存在相似之處。這種跨領域的研究方法論本身就已經顯示了台灣在AI基礎科學研究中的創新思路。</p><h2 id="sec-2">心理學視角下的AI認知機制</h2><p>大語言模型的運作涉及數十億甚至數千億的參數，這些參數之間的複雜互動產生了看似「理解」的語言輸出。但參數調整是否等同於「認知」？亞大研究團隊的方法論包括：</p><ul><li><strong>向量空間分析</strong>：通過檢視模型隱層表示的高維向量空間，比對人類認知框架的相似性</li><li><strong>決策過程追蹤</strong>：分析模型在生成文本時的「注意力機制」，對應人類的專注過程</li><li><strong>錯誤模式對比</strong>：研究模型出錯的方式是否反映人類認知偏誤</li></ul><p>這些研究發現對產業應用有實際意義。如果能夠理解模型的「思考過程」，企業就能更精準地判斷何時信任AI輸出、何時需要人工干預，這對金融風控、醫療診斷等高風險領域尤為重要。</p><h2 id="sec-3">對台灣AI產業的深層影響</h2><p>台灣在全球AI競賽中面臨一個獨特位置：硬體製造優勢明顯（台積電、輝達合作），但基礎研究相對薄弱。亞大這項研究代表了台灣學界開始在AI基礎科學領域尋求突破口的信號。</p><p>更重要的是，「AI心智」問題的科學化研究直接關係到台灣的<a class="gl" href="/glossary/#term-ai-governance" title="術語庫：AI治理">AI治理</a>策略。當前全球對AI倫理和監管的討論往往停留在「黑箱性導致不可控」的抽象層面，而亞大的研究提供了具體的認知科學證據，可為台灣主管機關制定更科學、更有針對性的AI治理政策提供支持。</p><p>特別是對於台灣積極發展的自主AI應用（如醫療、金融科技）來說，理解模型的認知機制意味著可以構建更符合本土需求的「可解釋AI」框架，這可能成為台灣AI產品的差異化競爭力。</p><h2 id="sec-4">亞太地區AI研究的新範式</h2><p>亞洲大學的研究也反映了亞太地區在AI研究中的新趨勢：從單純追趕西方的「模型規模競賽」轉向探索「AI理解的深度」。這對整個地區都有示範作用——亞太的優勢不在於燒錢堆參數，而在於對多樣化應用場景的深度理解和本土化創新。</p><h2 id="sec-5">結論與建議</h2><p>AI是否有「心智」這個問題不只是哲學辯論，而是關乎如何安全、有效地應用AI技術的實踐問題。亞大的研究為這個問題提供了科學的探索路徑。</p><p>對台灣科研機構和產業界的建議：</p><ul><li>支持跨領域AI基礎研究，不只關注應用成果，更要重視理論突破</li><li>建立「可解釋AI」的產業標準，將理論優勢轉化為市場競爭力</li><li>加強與國際學術界的合作，讓台灣的AI研究成為全球對話的重要聲音</li></ul><p>在GPT-5.5、<a class="gl" href="/glossary/#term-world-model" title="術語庫：世界模型">世界模型</a>等新浪潮持續推進的當下，台灣若能在AI認知機制研究上建立優勢，就有機會從「技術使用者」升級為「理論創新者」。</p><!--BODY:END--></div>
     <nav class="post-nav">
       <a class="pn" href="/post/86/"><span>← 上一篇</span><b>OpenClaw養龍蝦爆紅背後：企業AI Agent平民化時代正式來臨</b></a>
       <a class="pn pn-r" href="/post/257/"><span>下一篇 →</span><b>AI10｜GPT-Image-2 真的解決了 AI 生圖的文字災難嗎？</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/64/"><span class="h-meta"><span class="h-cat">AI</span></span><b>語言模型與人腦結構驚人相似：下一代AI突破的鑰匙在大腦科學</b></a></li><li><a href="/post/81/"><span class="h-meta"><span class="h-cat">AI</span></span><b>AI 通膨危機：大語言模型如何偷偷掏空用戶的 Token 預算</b></a></li><li><a href="/post/162/"><span class="h-meta"><span class="h-cat">閱讀</span><span>🎙 Podcast</span></span><b>EP11｜我們為何吃太多？食慾科學揭開節食迷思</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

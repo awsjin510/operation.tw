@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="美國國家標準暨技術研究院（NIST）公布網路安全框架（CSF）的AI專屬延伸版本，為全球組織提供應對AI相關資安風險的指引。這對正積極導入AI的台灣企業而言，是一份重要的參考指南，有助於建立更完善的AI安全治理體系。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-16.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/16/","headline":"NIST發布AI網安框架：台灣企業如何因應AI資安風險","description":"美國國家標準暨技術研究院（NIST）公布網路安全框架（CSF）的AI專屬延伸版本，為全球組織提供應對AI相關資安風險的指引。這對正積極導入AI的台灣企業而言，是一份重要的參考指南，有助於建立更完善的AI安全治理體系。","datePublished":"2026-02-27","dateModified":"2026-02-27","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/16/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/16/"},"articleSection":"資安","image":"https://operation.tw/images/posts/post-16.jpg","keywords":"資安","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"資安","item":"https://operation.tw/category/%E8%B3%87%E5%AE%89/"},{"@type":"ListItem","position":3,"name":"NIST發布AI網安框架：台灣企業如何因應AI資安風險","item":"https://operation.tw/post/16/"}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:16})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="16">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/" aria-current="page">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E8%B3%87%E5%AE%89/">資安</a></nav>
   <article>
     <div class="badge" style="color:#ff6b9a;background:#ff6b9a1a">🔐 資安</div>
@@ -73,26 +48,35 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-02-27">2026-02-27</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-16.webp"><img class="cover" src="https://operation.tw/images/posts/post-16.jpg" alt="NIST發布AI網安框架：台灣企業如何因應AI資安風險" width="1200" height="630"></picture>
     <div class="excerpt"><p>美國國家標準暨技術研究院（NIST）公布網路安全框架（CSF）的AI專屬延伸版本，為全球組織提供應對AI相關資安風險的指引。這對正積極導入AI的台灣企業而言，是一份重要的參考指南，有助於建立更完善的AI安全治理體系。</p></div>
+    
     <p class="st-main-note">這個主題有更完整的整理：<a href="/post/11/">NIST推出AI資安框架：台灣企業必須立即行動 →</a></p>
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">NIST新框架：AI時代的資安必修課</a></li><li class="toc-l2"><a href="#sec-2">AI資安風險的新維度</a></li><li class="toc-l2"><a href="#sec-3">NIST AI CSF框架的核心要素</a></li><li class="toc-l2"><a href="#sec-4">對台灣企業的實際影響</a></li><li class="toc-l2"><a href="#sec-5">台灣企業的建議行動</a></li><li class="toc-l2"><a href="#sec-6">結論</a></li></ul></nav>
     <div class="post-body"><!--BODY:START--><h2 id="sec-1">NIST新框架：AI時代的資安必修課</h2><p>隨著人工智慧在企業營運中的角色日益重要，資安風險也隨之增加。美國國家標準暨技術研究院（NIST）日前公布網路安全框架（Cybersecurity Framework, CSF）的延伸版本，專門針對AI系統的資安需求而設計。這一舉措填補了傳統資安框架在AI領域的空白，為全球企業提供了系統化的風險管理指引。</p><h2 id="sec-2">AI資安風險的新維度</h2><p>相比傳統軟體安全問題，AI系統引入了全新的資安挑戰：</p><ul><li><strong>模型投毒與對抗攻擊</strong>：攻擊者可能通過污染訓練數據或設計特殊輸入來誘導AI做出錯誤決策</li><li><strong>隱私洩露風險</strong>：大語言模型可能無意中洩露訓練數據中的敏感資訊</li><li><strong>偏見與可解釋性問題</strong>：AI決策缺乏透明度可能導致歧視性結果和法律風險</li><li><strong>供應鏈複雜性</strong>：第三方模型、框架和數據源的安全性難以控制</li></ul><p>NIST的新框架正是為了應對這些新興威脅而開發的。</p><h2 id="sec-3">NIST AI CSF框架的核心要素</h2><p>該延伸框架保留了原有CSF的五大核心功能（識別、保護、偵測、回應、復原），並加入AI專屬的考量因素：</p><ul><li><strong>AI模型治理</strong>：建立完整的模型版本控制、驗證和監管機制</li><li><strong>數據品質保證</strong>：確保訓練與運行數據的完整性與代表性</li><li><strong>持續監測與異常偵測</strong>：實時監控AI系統的性能漂移和異常行為</li><li><strong>人工智慧倫理與責任</strong>：確保AI決策符合法規要求和倫理標準</li></ul><h2 id="sec-4">對台灣企業的實際影響</h2><p>台灣作為全球IC設計與製造的重鎮，正面臨AI革命的洗禮。從製造業到金融科技、醫療健康等領域，企業都在積極部署AI應用。然而，資安防護往往被視為「事後」考慮。NIST的新框架提醒我們應該採取「AI By Design」的安全方法：</p><ul><li><strong>製造業</strong>：AI用於品質檢測、預測維護等應用，需防範模型被操縱導致產品瑕疵</li><li><strong>金融機構</strong>：AI風控、詐欺偵測系統需確保其決策可追溯性與公平性</li><li><strong>公部門</strong>：政府採購與公務應用的AI系統應符合國際標準，提升民眾信任</li></ul><p>根據國際相關研究，許多亞太地區企業在AI應用上仍缺乏完整的安全治理架構。NIST框架的出現，為台灣企業提供了「國際認可的標準」，有助於建立更規範的AI開發流程。</p><h2 id="sec-5">台灣企業的建議行動</h2><p>企業應如何因應這一新趨勢？我認為關鍵步驟包括：</p><ul><li><strong>評估現狀</strong>：審視現有AI應用是否存在資安盲點</li><li><strong>組織賦能</strong>：培訓資安與AI開發團隊的跨領域協作能力</li><li><strong>漸進導入</strong>：根據業務優先級，逐步將NIST框架整合入開發流程</li><li><strong>供應商管理</strong>：在採購AI平台或模型時，納入資安要求</li></ul><h2 id="sec-6">結論</h2><p>NIST AI CSF框架的發布，標誌著資安行業正式進入「AI-Native」時代。對台灣企業而言，這既是挑戰也是機遇——先行者有機會建立競爭優勢，而遲延者則面臨更大風險。隨著台灣政府與產業界加速推動AI發展，安全與信任應成為同等重要的考量。及早採納國際標準，才能確保台灣的AI創新既具競爭力又足夠可靠。</p><!--BODY:END--></div>
     <nav class="post-nav">
       <a class="pn" href="/post/26/"><span>← 上一篇</span><b>Fortinet 2026資安威脅預測：台灣企業面臨的三大生存挑戰</b></a>
-      <a class="pn pn-r" href="/post/11/"><span>下一篇 →</span><b>NIST推出AI資安框架：台灣企業必須立即行動</b></a>
+      <a class="pn pn-r" href="/post/243/"><span>下一篇 →</span><b>EP92｜資深獵頭拆解選才潛規則：別讓錯誤期待毀了你的職涯</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/395/"><span class="h-meta"><span class="h-cat">資安</span></span><b>美國AI資安國策升溫：台灣企業面臨主權AI風險浪潮</b></a></li><li><a href="/post/106/"><span class="h-meta"><span class="h-cat">資安</span></span><b>香港網安事故激增27%：台灣企業如何應對2026年供應鏈風險？</b></a></li><li><a href="/post/222/"><span class="h-meta"><span class="h-cat">資安</span><span>🎙 Podcast</span></span><b>EP71｜資深資安架構師Kuro：學習過程比考到證照更重要</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

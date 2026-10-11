@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="中國駭客用AI Agent四天內攻破政府系統，台灣本土雲平台Zeabur遭未授權存取。這兩起事件指向同一危機：攻擊面正在無聲擴大。本文拆解技術細節與防守對策，提供五項明天就能執行的實務防禦措施。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-383.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/383/","headline":"AI53｜台灣被撬開的兩扇門：AI駭客與雲服務漏洞如何改變攻擊面","description":"中國駭客用AI Agent四天內攻破政府系統，台灣本土雲平台Zeabur遭未授權存取。這兩起事件指向同一危機：攻擊面正在無聲擴大。本文拆解技術細節與防守對策，提供五項明天就能執行的實務防禦措施。","datePublished":"2026-09-01","dateModified":"2026-09-01","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/383/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/383/"},"articleSection":"AI","image":"https://operation.tw/images/posts/post-383.jpg","keywords":"AI","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"AI","item":"https://operation.tw/category/AI/"},{"@type":"ListItem","position":3,"name":"AI53｜台灣被撬開的兩扇門：AI駭客與雲服務漏洞如何改變攻擊面","item":"https://operation.tw/post/383/"}]},{"@type":"FAQPage","@id":"https://operation.tw/post/383/#faq","mainEntity":[{"@type":"Question","name":"什麼是端到端自主AI攻擊？","acceptedAnswer":{"@type":"Answer","text":"端到端自主AI攻擊是指AI Agent從目標偵察開始，經過滲透、權限提升、資料竊取，整個攻擊鏈條不需要人類駭客干預，全由AI自主執行完成的攻擊類型。核安會事件是全球首例針對政府機構的此類攻擊。"}},{"@type":"Question","name":"為什麼Zeabur外洩的環境變數這麼危險？","acceptedAnswer":{"@type":"Answer","text":"環境變數通常存放API金鑰、密碼等明文機密，攻擊者無需進一步破解就能直接使用這些金鑰存取用戶的OpenAI、AWS、GitHub等服務，造成鏈式風險。"}},{"@type":"Question","name":"如何在沒有大預算的情況下提升防禦？","acceptedAnswer":{"@type":"Answer","text":"從金鑰輪替、權限最小化、系統盤點、出站流量限制、多層防禦設計這五項基礎措施開始，這些都是低成本高效益的防禦，關鍵是確實執行而非購置昂貴工具。"}}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/383/#episode","name":"AI53｜台灣被撬開的兩扇門：AI駭客與雲服務漏洞如何改變攻擊面","url":"https://operation.tw/post/383/","datePublished":"2026-09-01","description":"中國駭客用AI Agent四天內攻破政府系統，台灣本土雲平台Zeabur遭未授權存取。這兩起事件指向同一危機：攻擊面正在無聲擴大。本文拆解技術細節與防守對策，提供五項明天就能執行的實務防禦措施。","image":"https://operation.tw/images/posts/post-383.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":53,"duration":"PT15M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/90bf79a3-cbdf-4539-9b96-7f11c0bd405b/rssFileVip.mp3?timestamp=1788289419525","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:383})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="383">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/" aria-current="page">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/AI/">AI</a></nav>
   <article>
     <div class="badge" style="color:#a78bfa;background:#a78bfa1a">🤖 AI</div>
@@ -73,9 +48,10 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-09-01">2026-09-01</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-383.webp"><img class="cover" src="https://operation.tw/images/posts/post-383.jpg" alt="AI53｜台灣被撬開的兩扇門：AI駭客與雲服務漏洞如何改變攻擊面" width="1200" height="630"></picture>
     <div class="excerpt"><p>中國駭客用AI Agent四天內攻破政府系統，台灣本土雲平台Zeabur遭未授權存取。這兩起事件指向同一危機：攻擊面正在無聲擴大。本文拆解技術細節與防守對策，提供五項明天就能執行的實務防禦措施。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>AI53_趨勢操作｜從核安會到 Zeabur：台灣被撬開的兩扇門</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000787087076" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI53_%E8%B6%A8%E5%8B%A2%E6%93%8D%E4%BD%9C%EF%BD%9C%E5%BE%9E%E6%A0%B8%E5%AE%89%E6%9C%83%E5%88%B0%20Zeabur%EF%BC%9A%E5%8F%B0%E7%81%A3%E8%A2%AB%E6%92%AC%E9%96%8B%E7%9A%84%E5%85%A9%E6%89%87%E9%96%80" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">核安會遭襲事件代表什麼？全球首起端到端自主AI政府攻擊</a></li><li class="toc-l2"><a href="#sec-2">為什麼「四天」這個數字比「成功」更值得警醒？</a></li><li class="toc-l2"><a href="#sec-3">Zeabur外洩事件如何改變風險計算？</a></li><li class="toc-l2"><a href="#sec-4">這兩起事件放在一起代表什麼？</a></li><li class="toc-l2"><a href="#sec-5">如何立即採取行動？五項明天上班就能做的防禦措施</a></li><li class="toc-l2"><a href="#sec-6">常見問題</a></li><li class="toc-l3"><a href="#sec-7">什麼是端到端自主AI攻擊？</a></li><li class="toc-l3"><a href="#sec-8">為什麼Zeabur外洩的環境變數這麼危險？</a></li><li class="toc-l3"><a href="#sec-9">如何在沒有大預算的情況下提升防禦？</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>中國駭客用自主AI Agent在四天內偵察21個政府系統、攻破85個帳號，被國際媒體稱為全球首起針對政府的端到端自主AI攻擊</li><li>台灣本土雲端部署平台Zeabur遭未授權存取，大量用戶環境變數外洩，包含OpenAI、AWS、GitHub等金鑰</li><li>兩起事件指向同一危機：攻擊面擴大，防守方可能完全不知道自己已中招，需立即採取金鑰輪替、權限最小化、Agent盤點等五項防禦措施</li></ul><h2 id="sec-1">核安會遭襲事件代表什麼？全球首起端到端自主AI政府攻擊</h2><p>2024年8月，中國駭客使用整組AI Agent，在短短四天內偵察了台灣21個政府系統、攻破了85個政府帳號、從核安會與七家能源公司抽走2500筆人員資料——這起事件被國際媒體認定為全球首起針對政府機構的端到端自主AI攻擊。這裡的「端到端自主」意思是：從偵察、滲透、權限提升到資料竊取，整個攻擊鏈條由AI Agent自主執行，人類駭客只是啟動它們。這不是單點漏洞被利用，而是整套國家級對手的武器系統正式投入政府目標。</p><h2 id="sec-2">為什麼「四天」這個數字比「成功」更值得警醒？</h2><p>從攻擊時間角度看，四天內完成規模化滲透意味著傳統防守時間差已不復存在——企業通常要花三個月才能發現入侵，但這裡AI Agent已經完成整個獲利循環。單集裡強調的是，這個速度背後的含義是：檢測機制失效了。如果人類要完成同樣工作，需要一個團隊花數週時間做偵察、測試、開發exploit；但AI Agent可以平行處理多個系統、快速迭代測試、自動化嘗試常見漏洞，使得傳統「發現→回應→修補」的時間軸完全崩潰。防守方可能在事件發生後數週甚至數月才知道自己被入侵。</p><h2 id="sec-3">Zeabur外洩事件如何改變風險計算？</h2><p>Zeabur是台灣本土雲端部署平台，8月29日公開承認遭到未授權存取，大量用戶的環境變數（environment variables）被外洩——這些變數裡存放著Anthropic、OpenAI、AWS、GitHub、Stripe等服務的API金鑰。環境變數外洩的殺傷力在於：攻擊者不需要再花力氣從程式碼或資料庫中提取機密，金鑰已經明文躺在那裡。掌握這些金鑰，就等於擁有了對用戶雲服務、支付系統、代碼庫的直接存取權限。這是典型的「供應鏈風險」——受害者不是因為自己的防禦失敗，而是依賴的第三方服務被攻破了。</p><h2 id="sec-4">這兩起事件放在一起代表什麼？</h2><p>核安會被攻擊是國家級對手從外部打進來，Zeabur外洩是自己人的服務漏水——但它們指向同一個現實：攻擊面正在無聲擴大。你可能不知道自己的供應商被入侵了，也可能沒注意到某個系統已經被AI Agent持續掃描數週。防守方的視野開始嚴重滯後於攻擊方的速度和複雜度。Bruce Schneier在《精靈行為》中提到的「安全的本質是可預測性」概念正在被武器化——當攻擊者用AI Agent自動化測試數千個已知漏洞時，你再也無法預測威脅來自何方。</p><h2 id="sec-5">如何立即採取行動？五項明天上班就能做的防禦措施</h2><p>這集Podcast最實用的部分是給出五項不需要大預算、明天上班就能動手做的防禦措施：</p><ul><li><strong>金鑰輪替</strong>——定期更換所有API金鑰、密碼、認證令牌，特別是Zeabur事件後，任何曾在雲端平台存放的金鑰都應立即輪替</li><li><strong>權限最小化</strong>——每個應用、每個服務帳號只給它實際需要的權限，不要用root或admin帳號運行應用，限制每個金鑰能存取的資源範圍</li><li><strong>Agent盤點</strong>——清點你的組織裡有多少AI Agent、自動化腳本、webhook連接在運行，每一個都是潛在的攻擊切點</li><li><strong>Egress白名單</strong>——限制你的系統只能向特定IP位址或域名發起出站連接，防止被入侵後的數據外洩</li><li><strong>假設中招架構</strong>——在設計系統時，從一開始就假設某個環節會被入侵，設計多層防禦而不是單點保護</li></ul><p>這些措施的共同點是：不複雜、不花大錢，關鍵是動手去做。組織安全的漏洞往往不在於某項技術有多先進，而在於基礎措施執行得有多徹底。</p><h2 id="sec-6">常見問題</h2><h3 id="sec-7">什麼是端到端自主AI攻擊？</h3><p>端到端自主AI攻擊是指AI Agent從目標偵察開始，經過滲透、權限提升、資料竊取，整個攻擊鏈條不需要人類駭客干預，全由AI自主執行完成的攻擊類型。核安會事件是全球首例針對政府機構的此類攻擊。</p><h3 id="sec-8">為什麼Zeabur外洩的環境變數這麼危險？</h3><p>環境變數通常存放API金鑰、密碼等明文機密，攻擊者無需進一步破解就能直接使用這些金鑰存取用戶的OpenAI、AWS、GitHub等服務，造成鏈式風險。</p><h3 id="sec-9">如何在沒有大預算的情況下提升防禦？</h3><p>從金鑰輪替、權限最小化、系統盤點、出站流量限制、多層防禦設計這五項基礎措施開始，這些都是低成本高效益的防禦，關鍵是確實執行而非購置昂貴工具。</p>
+    <div class="post-body"><!--BODY:START--><p><strong>重點整理</strong></p><ul><li>中國駭客用自主<a class="gl" href="/glossary/#term-ai-agent" title="術語庫：AI代理">AI Agent</a>在四天內偵察21個政府系統、攻破85個帳號，被國際媒體稱為全球首起針對政府的端到端自主AI攻擊</li><li>台灣本土雲端部署平台Zeabur遭未授權存取，大量用戶環境變數外洩，包含OpenAI、AWS、GitHub等金鑰</li><li>兩起事件指向同一危機：攻擊面擴大，防守方可能完全不知道自己已中招，需立即採取金鑰輪替、權限最小化、Agent盤點等五項防禦措施</li></ul><h2 id="sec-1">核安會遭襲事件代表什麼？全球首起端到端自主AI政府攻擊</h2><p>2024年8月，中國駭客使用整組AI Agent，在短短四天內偵察了台灣21個政府系統、攻破了85個政府帳號、從核安會與七家能源公司抽走2500筆人員資料——這起事件被國際媒體認定為全球首起針對政府機構的端到端自主AI攻擊。這裡的「端到端自主」意思是：從偵察、滲透、權限提升到資料竊取，整個攻擊鏈條由AI Agent自主執行，人類駭客只是啟動它們。這不是單點漏洞被利用，而是整套國家級對手的武器系統正式投入政府目標。</p><h2 id="sec-2">為什麼「四天」這個數字比「成功」更值得警醒？</h2><p>從攻擊時間角度看，四天內完成規模化滲透意味著傳統防守時間差已不復存在——企業通常要花三個月才能發現入侵，但這裡AI Agent已經完成整個獲利循環。單集裡強調的是，這個速度背後的含義是：檢測機制失效了。如果人類要完成同樣工作，需要一個團隊花數週時間做偵察、測試、開發exploit；但AI Agent可以平行處理多個系統、快速迭代測試、自動化嘗試常見漏洞，使得傳統「發現→回應→修補」的時間軸完全崩潰。防守方可能在事件發生後數週甚至數月才知道自己被入侵。</p><h2 id="sec-3">Zeabur外洩事件如何改變風險計算？</h2><p>Zeabur是台灣本土雲端部署平台，8月29日公開承認遭到未授權存取，大量用戶的環境變數（environment variables）被外洩——這些變數裡存放著Anthropic、OpenAI、AWS、GitHub、Stripe等服務的API金鑰。環境變數外洩的殺傷力在於：攻擊者不需要再花力氣從程式碼或資料庫中提取機密，金鑰已經明文躺在那裡。掌握這些金鑰，就等於擁有了對用戶雲服務、支付系統、代碼庫的直接存取權限。這是典型的「供應鏈風險」——受害者不是因為自己的防禦失敗，而是依賴的第三方服務被攻破了。</p><h2 id="sec-4">這兩起事件放在一起代表什麼？</h2><p>核安會被攻擊是國家級對手從外部打進來，Zeabur外洩是自己人的服務漏水——但它們指向同一個現實：攻擊面正在無聲擴大。你可能不知道自己的供應商被入侵了，也可能沒注意到某個系統已經被AI Agent持續掃描數週。防守方的視野開始嚴重滯後於攻擊方的速度和複雜度。Bruce Schneier在《精靈行為》中提到的「安全的本質是可預測性」概念正在被武器化——當攻擊者用AI Agent自動化測試數千個已知漏洞時，你再也無法預測威脅來自何方。</p><h2 id="sec-5">如何立即採取行動？五項明天上班就能做的防禦措施</h2><p>這集Podcast最實用的部分是給出五項不需要大預算、明天上班就能動手做的防禦措施：</p><ul><li><strong>金鑰輪替</strong>——定期更換所有API金鑰、密碼、認證令牌，特別是Zeabur事件後，任何曾在雲端平台存放的金鑰都應立即輪替</li><li><strong>權限最小化</strong>——每個應用、每個服務帳號只給它實際需要的權限，不要用root或admin帳號運行應用，限制每個金鑰能存取的資源範圍</li><li><strong>Agent盤點</strong>——清點你的組織裡有多少AI Agent、自動化腳本、webhook連接在運行，每一個都是潛在的攻擊切點</li><li><strong>Egress白名單</strong>——限制你的系統只能向特定IP位址或域名發起出站連接，防止被入侵後的數據外洩</li><li><strong>假設中招架構</strong>——在設計系統時，從一開始就假設某個環節會被入侵，設計多層防禦而不是單點保護</li></ul><p>這些措施的共同點是：不複雜、不花大錢，關鍵是動手去做。組織安全的漏洞往往不在於某項技術有多先進，而在於基礎措施執行得有多徹底。</p><h2 id="sec-6">常見問題</h2><h3 id="sec-7">什麼是端到端自主AI攻擊？</h3><p>端到端自主AI攻擊是指AI Agent從目標偵察開始，經過滲透、權限提升、資料竊取，整個攻擊鏈條不需要人類駭客干預，全由AI自主執行完成的攻擊類型。核安會事件是全球首例針對政府機構的此類攻擊。</p><h3 id="sec-8">為什麼Zeabur外洩的環境變數這麼危險？</h3><p>環境變數通常存放API金鑰、密碼等明文機密，攻擊者無需進一步破解就能直接使用這些金鑰存取用戶的OpenAI、AWS、GitHub等服務，造成鏈式風險。</p><h3 id="sec-9">如何在沒有大預算的情況下提升防禦？</h3><p>從金鑰輪替、權限最小化、系統盤點、出站流量限制、多層防禦設計這五項基礎措施開始，這些都是低成本高效益的防禦，關鍵是確實執行而非購置昂貴工具。</p>
 <hr>
 <p>📚 <strong>同主題的其他單集 / 文章，延伸聽下去：</strong></p>
 <ul>
@@ -94,19 +70,27 @@ function nlGo(f){
       <a class="pn" href="/post/382/"><span>← 上一篇</span><b>在地大語言模型浪潮：台灣企業為何必須打造自己的AI？</b></a>
       <a class="pn pn-r" href="/post/381/"><span>下一篇 →</span><b>Claude、Codex遭植入惡意程式：AI模型供應鏈中毒成新戰場</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/59/"><span class="h-meta"><span class="h-cat">AI</span></span><b>提示工程新架構如何改變LLM應用效率</b></a></li><li><a href="/post/87/"><span class="h-meta"><span class="h-cat">AI</span></span><b>GPT-5.5超級應用時代：OpenAI如何改變企業AI部署終局</b></a></li><li><a href="/post/314/"><span class="h-meta"><span class="h-cat">雲端</span><span>🎙 Podcast</span></span><b>AI41｜Meta Compute 雲端算力服務上線：如何改變 AI 產業競局？</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

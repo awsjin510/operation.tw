@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="甲骨文（Oracle）透過星際之門計畫進軍台灣區塊鏈生態，結合雲端基礎設施與區塊鏈技術，正在重塑亞太雲端市場格局。這場新的競爭如何影響台灣企業的雲端選型策略？">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-70.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/70/","headline":"甲骨文星際之門台鏈佈局：雲端運算版圖的下一個贏家","description":"甲骨文（Oracle）透過星際之門計畫進軍台灣區塊鏈生態，結合雲端基礎設施與區塊鏈技術，正在重塑亞太雲端市場格局。這場新的競爭如何影響台灣企業的雲端選型策略？","datePublished":"2026-04-14","dateModified":"2026-04-14","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/70/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/70/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-70.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"甲骨文星際之門台鏈佈局：雲端運算版圖的下一個贏家","item":"https://operation.tw/post/70/"}]}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:70})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="70">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E9%9B%B2%E7%AB%AF/">雲端</a></nav>
   <article>
     <div class="badge" style="color:#62a8ff;background:#62a8ff1a">☁️ 雲端</div>
@@ -74,25 +49,34 @@ function nlGo(f){
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-70.webp"><img class="cover" src="https://operation.tw/images/posts/post-70.jpg" alt="甲骨文星際之門台鏈佈局：雲端運算版圖的下一個贏家" width="1200" height="630"></picture>
     <div class="excerpt"><p>甲骨文（Oracle）透過星際之門計畫進軍台灣區塊鏈生態，結合雲端基礎設施與區塊鏈技術，正在重塑亞太雲端市場格局。這場新的競爭如何影響台灣企業的雲端選型策略？</p></div>
     
+    
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">甲骨文星際之門計畫：雲端與區塊鏈的新融合</a></li><li class="toc-l2"><a href="#sec-2">技術架構的三層突破</a></li><li class="toc-l2"><a href="#sec-3">為什麼這對台灣企業很關鍵</a></li><li class="toc-l2"><a href="#sec-4">市場格局會如何改變</a></li><li class="toc-l2"><a href="#sec-5">台灣企業的策略建議</a></li><li class="toc-l2"><a href="#sec-6">結論：誰會是下一個兆美元企業</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><h2 id="sec-1">甲骨文星際之門計畫：雲端與區塊鏈的新融合</h2><p>在AWS與Google Cloud已成熟佔領市場的時代，甲骨文（Oracle）用一個新的組合拳破局：「星際之門」計畫。這項戰略並非單純的雲端基礎設施升級，而是將AI推理、區塊鏈驗證與企業級雲端運算深度整合，直指下一代應用架構。甲骨文的野心很清楚——在AI時代重新搶奪失去的市場份額，並透過台灣作為亞太樞紐，建立區域技術優勢。</p><h2 id="sec-2">技術架構的三層突破</h2><p>星際之門計畫的核心競爭力在於三個維度：</p><ul><li><strong>AI推理優化</strong>：針對企業級大語言模型的推理成本進行深度最佳化，直接對標AWS的SageMaker和Google Cloud AI。甲骨文利用自有的資料庫優勢，將向量資料庫與推理引擎整合，降低企業的AI部署複雜度。</li><li><strong>區塊鏈驗證層</strong>：透過整合區塊鏈技術，為雲端運算結果提供不可篡改的驗證機制。這對金融、供應鏈、醫療等需要高可信度的產業至關重要。</li><li><strong>台灣本地部署</strong>：在台灣設立區域資料中心，解決企業對資料主權和低延遲的需求，這是AWS和Google Cloud的長期痛點。</li></ul><h2 id="sec-3">為什麼這對台灣企業很關鍵</h2><p>台灣產業面臨一個關鍵轉折點：全球製造業正從「成本最優化」轉向「信任與驗證最優化」。半導體供應鏈、金融科技、電子商務平台都需要能夠即時驗證交易真實性的雲端基礎設施。甲骨文的星際之門計畫直擊這個需求。</p><p>對台灣的高科技製造業而言，本地化部署意味著：</p><ul><li>資料不必繞過東南亞或日本，降低跨境合規成本</li><li>供應鏈透明度可透過區塊鏈驗證直接內嵌，而非事後追溯</li><li>與AI推理結合，能實現即時的品質檢測與預測性維護</li></ul><h2 id="sec-4">市場格局會如何改變</h2><p>AWS二十週年慶祝的是「雲端基礎設施標準化」的成功，但這也代表市場進入成熟期。甲骨文的差異化策略不是更便宜，而是更可信、更在地。這對全球三大雲端巨頭的競爭圖景有三個影響：</p><ul><li><strong>區域競爭激化</strong>：AWS和Google必須強化自身的區塊鏈與AI結合能力，否則在特定垂直市場將被蠶食。</li><li><strong>企業選型複雜化</strong>：不再是單純比較計算成本，而是評估可信度、在地部署與AI優化的綜合體。</li><li><strong>台灣成為戰略樞紐</strong>：甲骨文把台灣視為亞太區塊鏈與雲端融合的示範點，這會吸引其他廠商跟進本地化投資。</li></ul><h2 id="sec-5">台灣企業的策略建議</h2><p>現在不是簡單選擇哪家雲端服務商的時代了。企業應該：</p><ul><li><strong>審視應用需求</strong>：高度需要資料驗證的應用（金融交易、供應鏈），可考慮甲骨文的新方案。通用計算仍可維持AWS或Google Cloud。</li><li><strong>評估在地部署的實際收益</strong>：低延遲和資料主權是實實在在的成本，但不是所有應用都需要。</li><li><strong>關注混合雲策略</strong>：未來的企業很難只靠一家廠商，多雲策略將成為標準配置。</li></ul><h2 id="sec-6">結論：誰會是下一個兆美元企業</h2><p>甲骨文押寶的是「信任即服務」（Trust as a Service）的時代。在地緣政治風險上升、企業對供應鏈透明度要求提高的大背景下，這個賭注不是空泛的。</p><p>台灣作為全球最重要的半導體與製造基地，正好是這場信任革命的核心戰場。甲骨文若能在台灣證明星際之門的商業可行性，將有機會在亞太地區建立新的競爭優勢。而對台灣的企業決策者來說，現在是時候重新評估雲端供應商的多元化選擇了。</p><!--BODY:END--></div>
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">甲骨文星際之門計畫：雲端與區塊鏈的新融合</h2><p>在AWS與Google Cloud已成熟佔領市場的時代，甲骨文（Oracle）用一個新的組合拳破局：「星際之門」計畫。這項戰略並非單純的雲端基礎設施升級，而是將AI<a class="gl" href="/glossary/#term-inference" title="術語庫：推理">推理</a>、區塊鏈驗證與企業級雲端運算深度整合，直指下一代應用架構。甲骨文的野心很清楚——在AI時代重新搶奪失去的市場份額，並透過台灣作為亞太樞紐，建立區域技術優勢。</p><h2 id="sec-2">技術架構的三層突破</h2><p>星際之門計畫的核心競爭力在於三個維度：</p><ul><li><strong>AI推理優化</strong>：針對企業級大語言模型的推理成本進行深度最佳化，直接對標AWS的SageMaker和Google Cloud AI。甲骨文利用自有的資料庫優勢，將向量資料庫與推理引擎整合，降低企業的AI部署複雜度。</li><li><strong>區塊鏈驗證層</strong>：透過整合區塊鏈技術，為雲端運算結果提供不可篡改的驗證機制。這對金融、供應鏈、醫療等需要高可信度的產業至關重要。</li><li><strong>台灣本地部署</strong>：在台灣設立區域資料中心，解決企業對資料主權和低延遲的需求，這是AWS和Google Cloud的長期痛點。</li></ul><h2 id="sec-3">為什麼這對台灣企業很關鍵</h2><p>台灣產業面臨一個關鍵轉折點：全球製造業正從「成本最優化」轉向「信任與驗證最優化」。半導體供應鏈、金融科技、電子商務平台都需要能夠即時驗證交易真實性的雲端基礎設施。甲骨文的星際之門計畫直擊這個需求。</p><p>對台灣的高科技製造業而言，本地化部署意味著：</p><ul><li>資料不必繞過東南亞或日本，降低跨境合規成本</li><li>供應鏈透明度可透過區塊鏈驗證直接內嵌，而非事後追溯</li><li>與AI推理結合，能實現即時的品質檢測與預測性維護</li></ul><h2 id="sec-4">市場格局會如何改變</h2><p>AWS二十週年慶祝的是「雲端基礎設施標準化」的成功，但這也代表市場進入成熟期。甲骨文的差異化策略不是更便宜，而是更可信、更在地。這對全球三大雲端巨頭的競爭圖景有三個影響：</p><ul><li><strong>區域競爭激化</strong>：AWS和Google必須強化自身的區塊鏈與AI結合能力，否則在特定垂直市場將被蠶食。</li><li><strong>企業選型複雜化</strong>：不再是單純比較計算成本，而是評估可信度、在地部署與AI優化的綜合體。</li><li><strong>台灣成為戰略樞紐</strong>：甲骨文把台灣視為亞太區塊鏈與雲端融合的示範點，這會吸引其他廠商跟進本地化投資。</li></ul><h2 id="sec-5">台灣企業的策略建議</h2><p>現在不是簡單選擇哪家雲端服務商的時代了。企業應該：</p><ul><li><strong>審視應用需求</strong>：高度需要資料驗證的應用（金融交易、供應鏈），可考慮甲骨文的新方案。通用計算仍可維持AWS或Google Cloud。</li><li><strong>評估在地部署的實際收益</strong>：低延遲和資料主權是實實在在的成本，但不是所有應用都需要。</li><li><strong>關注混合雲策略</strong>：未來的企業很難只靠一家廠商，<a class="gl" href="/glossary/#term-multi-cloud" title="術語庫：多雲策略">多雲策略</a>將成為標準配置。</li></ul><h2 id="sec-6">結論：誰會是下一個兆美元企業</h2><p>甲骨文押寶的是「信任即服務」（Trust as a Service）的時代。在地緣政治風險上升、企業對供應鏈透明度要求提高的大背景下，這個賭注不是空泛的。</p><p>台灣作為全球最重要的半導體與製造基地，正好是這場信任革命的核心戰場。甲骨文若能在台灣證明星際之門的商業可行性，將有機會在亞太地區建立新的競爭優勢。而對台灣的企業決策者來說，現在是時候重新評估雲端供應商的多元化選擇了。</p><!--BODY:END--></div>
     <nav class="post-nav">
-      <a class="pn" href="/post/74/"><span>← 上一篇</span><b>Neoclouds崛起：AI時代雲端新勢力如何挑戰AWS、Azure霸權？</b></a>
-      <a class="pn pn-r" href="/post/68/"><span>下一篇 →</span><b>AWS二十週年回顧：雲端基礎設施如何塑造現代企業競爭力</b></a>
+      <a class="pn" href="/post/77/"><span>← 上一篇</span><b>輝達芯片荒現轉機：AI雲端新時代如何重塑運算生態</b></a>
+      <a class="pn pn-r" href="/post/61/"><span>下一篇 →</span><b>雲端運算版圖大洗牌：2026年龍頭排位變化如何影響台灣企業選型？</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/61/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>雲端運算版圖大洗牌：2026年龍頭排位變化如何影響台灣企業選型？</b></a></li><li><a href="/post/358/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>加拿大AI獨角獸爆發：亞太雲端市場的新變數</b></a></li><li><a href="/post/314/"><span class="h-meta"><span class="h-cat">雲端</span><span>🎙 Podcast</span></span><b>AI41｜Meta Compute 雲端算力服務上線：如何改變 AI 產業競局？</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>

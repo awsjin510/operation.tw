@@ -19,53 +19,28 @@
 <meta name="twitter:description" content="Claude Cowork 正式登上 Amazon Bedrock，從 research preview 到企業完整部署只花了 99 天。這不只是一則整合新聞，而是三個值得企業 IT 認真看待的訊號：AI 代理進入企業的速度曲線、十年雲端合規功力如何套用到 AI 治理，以及訂閱制正在被用量計費取代的商業模式轉變。">
 <meta name="twitter:image"       content="https://operation.tw/images/posts/post-255.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","@id":"https://operation.tw/post/255/","headline":"AI08｜Claude 進駐企業雲端：AI 代理拿到員工證的那一刻","description":"Claude Cowork 正式登上 Amazon Bedrock，從 research preview 到企業完整部署只花了 99 天。這不只是一則整合新聞，而是三個值得企業 IT 認真看待的訊號：AI 代理進入企業的速度曲線、十年雲端合規功力如何套用到 AI 治理，以及訂閱制正在被用量計費取代的商業模式轉變。","datePublished":"2026-04-23","dateModified":"2026-04-23","author":{"@type":"Person","name":"Jin","url":"https://operation.tw","sameAs":["https://www.instagram.com/operation.tw/","https://www.threads.net/@operation.tw","https://www.youtube.com/@操作一下"]},"publisher":{"@type":"Organization","name":"操作一下","url":"https://operation.tw"},"url":"https://operation.tw/post/255/","mainEntityOfPage":{"@type":"WebPage","@id":"https://operation.tw/post/255/"},"articleSection":"雲端","image":"https://operation.tw/images/posts/post-255.jpg","keywords":"雲端","inLanguage":"zh-TW"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首頁","item":"https://operation.tw/"},{"@type":"ListItem","position":2,"name":"雲端","item":"https://operation.tw/category/%E9%9B%B2%E7%AB%AF/"},{"@type":"ListItem","position":3,"name":"AI08｜Claude 進駐企業雲端：AI 代理拿到員工證的那一刻","item":"https://operation.tw/post/255/"}]},{"@type":"PodcastEpisode","@id":"https://operation.tw/post/255/#episode","name":"AI08｜Claude 進駐企業雲端：AI 代理拿到員工證的那一刻","url":"https://operation.tw/post/255/","datePublished":"2026-04-23","description":"Claude Cowork 正式登上 Amazon Bedrock，從 research preview 到企業完整部署只花了 99 天。這不只是一則整合新聞，而是三個值得企業 IT 認真看待的訊號：AI 代理進入企業的速度曲線、十年雲端合規功力如何套用到 AI 治理，以及訂閱制正在被用量計費取代的商業模式轉變。","image":"https://operation.tw/images/posts/post-255.jpg","partOfSeries":{"@type":"PodcastSeries","name":"操作一下","url":"https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl"},"episodeNumber":8,"duration":"PT11M","associatedMedia":{"@type":"MediaObject","contentUrl":"https://track.fstry.me/p/OZJIbwAypzp810EmpeOVg/rss.soundon.fm/rssf/aa7727c5-7aa2-4403-8a87-b91a8d842f7b/feedurl/db66d201-34d6-4e87-99b2-ce076ffc7080/rssFileVip.mp3?timestamp=1777071328538","encodingFormat":"audio/mpeg"}}]}</script>
-<script>
-// 靜態頁即文章頁（不轉址 SPA — 轉址會被 Google 判定「重新導向錯誤」而無法索引）。
-// 瀏覽數照計：向 Worker 發 beacon；回應已含更新後的數字，直接顯示在 byline
-// （原本把回應丟掉，導致讀者在文章頁看不到任何瀏覽數，誤以為沒計數）。
-var API_BASE='https://operation-tw-api.gamania-cloudforce.workers.dev';
-(function(){
-  function show(n){
-    var el=document.getElementById('pv');
-    if(el){el.textContent=' · '+n+' 次瀏覽';return;}
-    document.addEventListener('DOMContentLoaded',function(){
-      var e2=document.getElementById('pv');
-      if(e2)e2.textContent=' · '+n+' 次瀏覽';
-    });
-  }
-  try{
-    fetch(API_BASE+'/api/views/post',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({id:255})
-    }).then(function(r){return r.ok?r.json():null;})
-      .then(function(j){if(j&&j.views>0)show(j.views);})
-      .catch(function(){});
-  }catch(e){}
-})();
-// 文末訂閱框
-function nlGo(f){
-  var msg=f.parentNode.querySelector('.nl-msg'),btn=f.querySelector('button');
-  btn.disabled=true;btn.textContent='送出中…';
-  fetch(API_BASE+'/api/subscribe',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:f.email.value.trim(),website:f.website.value})
-  }).then(function(r){return r.json().then(function(j){return{s:r.status,j:j};});})
-  .then(function(x){
-    if(x.s===429){msg.textContent='嘗試太頻繁，請稍後再試';}
-    else if(x.j.result==='invalid'){msg.textContent='Email 格式不正確';}
-    else if(x.j.result==='exists'){msg.textContent='你已經訂閱過了 ✓';}
-    else{msg.textContent='訂閱成功！新文章上線會寄給你 ✓';f.email.value='';}
-  }).catch(function(){msg.textContent='失敗了，請稍後再試';})
-  .finally(function(){btn.disabled=false;btn.textContent='訂閱 →';});
-  return false;
-}
-</script>
 <link rel="stylesheet" href="/theme.css">
 <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "81a9db35d0634ee983873f7de67c6c4f"}'></script>
 </head>
-<body class="st">
-<header class="st-nav"><div class="st-shell"><a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a><nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a class="st-keep" href="/podcast.html">Podcast</a><a class="st-cta" href="/#newsletter">訂閱</a></nav></div></header>
-<main class="st-narrow st-post">
+<body class="st" data-post-id="255">
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="st-nav"><div class="st-shell">
+  <a class="st-logo" href="/"><img src="/logo-72.webp" width="32" height="32" alt="">操作一下</a>
+  <nav class="st-links" aria-label="主選單"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a><a href="/podcast.html">Podcast</a></nav>
+  <div class="st-right"><form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q">搜尋文章與 Podcast</label><input id="st-q" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form><a class="st-cta" href="/#newsletter">訂閱電子報</a></div>
+  <details class="st-menu">
+    <summary aria-label="開啟選單"><span></span><span></span><span></span></summary>
+    <div class="st-menu-panel">
+      <form class="st-search" action="/search/" method="get" role="search"><label class="sr-only" for="st-q-m">搜尋文章與 Podcast</label><input id="st-q-m" name="q" type="search" placeholder="搜尋文章、單集…" autocomplete="off" enterkeyhint="search"></form>
+      <p class="st-menu-h">主題</p>
+      <nav aria-label="主題"><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/" aria-current="page">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+      <p class="st-menu-h">更多</p>
+      <nav aria-label="更多"><a href="/podcast.html">Podcast 所有單集</a><a href="/faq/">常見問題</a><a href="/glossary/">科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
+    </div>
+  </details>
+</div></header>
+<main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/%E9%9B%B2%E7%AB%AF/">雲端</a></nav>
   <article>
     <div class="badge" style="color:#62a8ff;background:#62a8ff1a">☁️ 雲端</div>
@@ -73,9 +48,10 @@ function nlGo(f){
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="2026-04-23">2026-04-23</time><span id="pv"></span></div>
     <picture><source type="image/webp" srcset="https://operation.tw/images/posts/post-255.webp"><img class="cover" src="https://operation.tw/images/posts/post-255.jpg" alt="AI08｜Claude 進駐企業雲端：AI 代理拿到員工證的那一刻" width="1200" height="630"></picture>
     <div class="excerpt"><p>Claude Cowork 正式登上 Amazon Bedrock，從 research preview 到企業完整部署只花了 99 天。這不只是一則整合新聞，而是三個值得企業 IT 認真看待的訊號：AI 代理進入企業的速度曲線、十年雲端合規功力如何套用到 AI 治理，以及訂閱制正在被用量計費取代的商業模式轉變。</p></div>
+    <aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>AI08_雲端操作 | AI 代理拿到了進大樓的員工證 | Claude Cowork 登上 Amazon Bedrock，改變遊戲規則的幾個訊號</strong></span><span class="st-listen-btns"><a class="pf pf-apple" href="https://podcasts.apple.com/tw/podcast/id1620760720?i=1000763329830" target="_blank" rel="noopener">Apple Podcasts</a><a class="pf pf-spotify" href="https://open.spotify.com/search/AI08_%E9%9B%B2%E7%AB%AF%E6%93%8D%E4%BD%9C%20%7C%20AI%20%E4%BB%A3%E7%90%86%E6%8B%BF%E5%88%B0%E4%BA%86%E9%80%B2%E5%A4%A7%E6%A8%93%E7%9A%84%E5%93%A1%E5%B7%A5%E8%AD%89%20%7C%20Claude%20Cowork%20%E7%99%BB%E4%B8%8A%20Amazon%20Bedrock%EF%BC%8C%E6%94%B9%E8%AE%8A%E9%81%8A%E6%88%B2%E8%A6%8F%E5%89%87%E7%9A%84%E5%B9%BE%E5%80%8B%E8%A8%8A%E8%99%9F" target="_blank" rel="noopener">Spotify</a><a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>
     
     <nav class="toc" aria-label="文章目錄"><div class="toc-h">📑 目錄</div><ul><li class="toc-l2"><a href="#sec-1">一張員工證，改變了什麼？</a></li><li class="toc-l2"><a href="#sec-2">訊號一：99 天，速度曲線正在陡峭化</a></li><li class="toc-l2"><a href="#sec-3">訊號二：十年合規功力，直接套進 AI 治理</a></li><li class="toc-l2"><a href="#sec-4">訊號三：算人數的時代，正在讓位給算用量</a></li><li class="toc-l2"><a href="#sec-5">對企業 IT 的實際意義：終於有框架了</a></li><li class="toc-l2"><a href="#sec-6">結語：模型能力之外，框架才是關鍵</a></li></ul></nav>
-    <div class="post-body"><!--BODY:START--><h2 id="sec-1">一張員工證，改變了什麼？</h2><p>想像一下：過去 AI 工具是站在公司門口的訪客，每次使用都要重新登記、接受檢查，進不了核心系統。而現在，Claude Cowork 登上 Amazon Bedrock，意味著 AI 代理終於拿到了一張可以在企業大樓裡自由移動的員工證——有權限管控、有稽核紀錄、有合規框架。</p><p>這集 Podcast 拆解的，正是這張「員工證」背後的三個訊號。如果你是企業 IT、產品負責人，或是對 AI 如何真正落地感興趣的人，這集值得從頭聽到尾。</p><h2 id="sec-2">訊號一：99 天，速度曲線正在陡峭化</h2><p>從 research preview 到企業完整部署，Anthropic 只花了 99 天。這個數字本身不是重點，重點是它代表的趨勢：AI 代理進入企業環境的週期正在急速壓縮。</p><p>過去，一項新技術從研究預覽到企業可用，往往需要經歷漫長的安全審查、合規評估與整合測試。但現在這條路正在變短。這對企業決策者來說是雙面刃——你有更少的時間評估，但也有更少的時間可以拖延。</p><h2 id="sec-3">訊號二：十年合規功力，直接套進 AI 治理</h2><p>Amazon Bedrock 不是一個新平台，它背後承載的是 AWS 超過十年在企業雲端市場累積的合規與治理能力——從 HIPAA、SOC 2 到各種產業監管要求，這些框架現在可以直接套用在 AI 代理的部署上。</p><p>這是這集裡我認為最被低估的一個觀點。企業導入 AI 最大的阻力從來不是模型夠不夠強，而是「我怎麼向法務、向董事會解釋這個東西是安全的」。當 AI 代理能夠在既有的雲端治理框架內運作，這個問題的答案突然變得清晰許多。</p><p>換句話說，Bedrock 提供的不只是算力，而是一套已經被企業信任的「信任基礎設施」。</p><h2 id="sec-4">訊號三：算人數的時代，正在讓位給算用量</h2><p>第三個訊號關係到商業模式的根本轉變。傳統 SaaS 的邏輯是「你有幾個使用者，付幾個座位的錢」。但 AI 代理的使用方式很難用人頭計算——一個代理可能在一天內執行數百個任務，也可能整個月都閒置。</p><p>用量計費（consumption-based pricing）正在取代訂閱制，成為 AI 工具的主流收費邏輯。這對企業的預算規劃、對供應商的營收預測，都是一次重新洗牌。這集有針對這個轉變做了清楚的梳理，如果你的公司正在評估 AI 工具採購，這個面向絕對不能忽略。</p><h2 id="sec-5">對企業 IT 的實際意義：終於有框架了</h2><p>這集最後點出的一個結論，我認為是整集最實用的部分：企業 IT 現在終於有一個可操作的框架來評估桌面 AI 代理了。</p><p>這個框架包含幾個維度：</p><ul><li><strong>部署速度</strong>：這個工具能多快從 pilot 進到正式環境？</li><li><strong>治理相容性</strong>：它能不能接入你現有的合規與稽核流程？</li><li><strong>成本可預測性</strong>：用量計費模式下，你有沒有辦法控制與預估費用？</li><li><strong>代理能力邊界</strong>：這個 AI 代理被授權做什麼、不被授權做什麼，是否清楚定義？</li></ul><p>這些問題在過去很難有標準答案，但 Claude Cowork 登上 Bedrock 這件事，讓市場有了一個可以對照的參考基準。</p><h2 id="sec-6">結語：模型能力之外，框架才是關鍵</h2><p>AI 模型的能力每隔幾個月就會有新的突破，但能力提升本身並不等於企業可以放心使用。真正改變遊戲規則的，是當一套可信任的治理框架終於就位的那一刻。</p><p>這集 Podcast 用 Claude Cowork 與 Amazon Bedrock 的整合，清楚示範了這個時刻正在發生。如果你還沒聽，建議找個通勤時間補上——特別是如果你的工作跟企業 AI 採購或部署有關。
+    <div class="post-body"><!--BODY:START--><h2 id="sec-1">一張員工證，改變了什麼？</h2><p>想像一下：過去 AI 工具是站在公司門口的訪客，每次使用都要重新登記、接受檢查，進不了核心系統。而現在，Claude Cowork 登上 Amazon Bedrock，意味著 AI 代理終於拿到了一張可以在企業大樓裡自由移動的員工證——有權限管控、有稽核紀錄、有合規框架。</p><p>這集 Podcast 拆解的，正是這張「員工證」背後的三個訊號。如果你是企業 IT、產品負責人，或是對 AI 如何真正落地感興趣的人，這集值得從頭聽到尾。</p><h2 id="sec-2">訊號一：99 天，速度曲線正在陡峭化</h2><p>從 research preview 到企業完整部署，Anthropic 只花了 99 天。這個數字本身不是重點，重點是它代表的趨勢：AI 代理進入企業環境的週期正在急速壓縮。</p><p>過去，一項新技術從研究預覽到企業可用，往往需要經歷漫長的安全審查、合規評估與整合測試。但現在這條路正在變短。這對企業決策者來說是雙面刃——你有更少的時間評估，但也有更少的時間可以拖延。</p><h2 id="sec-3">訊號二：十年合規功力，直接套進 AI 治理</h2><p>Amazon Bedrock 不是一個新平台，它背後承載的是 AWS 超過十年在企業雲端市場累積的合規與治理能力——從 HIPAA、SOC 2 到各種產業監管要求，這些框架現在可以直接套用在 AI 代理的部署上。</p><p>這是這集裡我認為最被低估的一個觀點。企業導入 AI 最大的阻力從來不是模型夠不夠強，而是「我怎麼向法務、向董事會解釋這個東西是安全的」。當 AI 代理能夠在既有的雲端治理框架內運作，這個問題的答案突然變得清晰許多。</p><p>換句話說，Bedrock 提供的不只是<a class="gl" href="/glossary/#term-compute-power" title="術語庫：算力">算力</a>，而是一套已經被企業信任的「信任基礎設施」。</p><h2 id="sec-4">訊號三：算人數的時代，正在讓位給算用量</h2><p>第三個訊號關係到商業模式的根本轉變。傳統 SaaS 的邏輯是「你有幾個使用者，付幾個座位的錢」。但 AI 代理的使用方式很難用人頭計算——一個代理可能在一天內執行數百個任務，也可能整個月都閒置。</p><p>用量計費（consumption-based pricing）正在取代訂閱制，成為 AI 工具的主流收費邏輯。這對企業的預算規劃、對供應商的營收預測，都是一次重新洗牌。這集有針對這個轉變做了清楚的梳理，如果你的公司正在評估 AI 工具採購，這個面向絕對不能忽略。</p><h2 id="sec-5">對企業 IT 的實際意義：終於有框架了</h2><p>這集最後點出的一個結論，我認為是整集最實用的部分：企業 IT 現在終於有一個可操作的框架來評估桌面 AI 代理了。</p><p>這個框架包含幾個維度：</p><ul><li><strong>部署速度</strong>：這個工具能多快從 pilot 進到正式環境？</li><li><strong>治理相容性</strong>：它能不能接入你現有的合規與稽核流程？</li><li><strong>成本可預測性</strong>：用量計費模式下，你有沒有辦法控制與預估費用？</li><li><strong>代理能力邊界</strong>：這個 AI 代理被授權做什麼、不被授權做什麼，是否清楚定義？</li></ul><p>這些問題在過去很難有標準答案，但 Claude Cowork 登上 Bedrock 這件事，讓市場有了一個可以對照的參考基準。</p><h2 id="sec-6">結語：模型能力之外，框架才是關鍵</h2><p>AI 模型的能力每隔幾個月就會有新的突破，但能力提升本身並不等於企業可以放心使用。真正改變遊戲規則的，是當一套可信任的治理框架終於就位的那一刻。</p><p>這集 Podcast 用 Claude Cowork 與 Amazon Bedrock 的整合，清楚示範了這個時刻正在發生。如果你還沒聽，建議找個通勤時間補上——特別是如果你的工作跟企業 AI 採購或部署有關。
 <hr>
 <p>📚 <strong>同主題的其他單集 / 文章，延伸聽下去：</strong></p>
 <ul>
@@ -91,22 +67,30 @@ function nlGo(f){
 <li><a href="/podcast.html">瀏覽所有單集 →</a></li>
 </ul><!--BODY:END--></div>
     <nav class="post-nav">
-      <a class="pn" href="/post/88/"><span>← 上一篇</span><b>AWS二十年啟示錄：雲端運算如何從工程痛點演變成千億帝國</b></a>
+      <a class="pn" href="/post/92/"><span>← 上一篇</span><b>AMD挑戰英偉達：2026年AI基礎設施競局如何重塑雲端生態</b></a>
       <a class="pn pn-r" href="/post/254/"><span>下一篇 →</span><b>AI07｜多雲不再是口號：三大雲巨頭正在重新定義雲端遊戲規則</b></a>
     </nav>
-    <div class="nl-box">
-      <div class="nl-t">🎙 喜歡這篇？訂閱電子報</div>
-      <div class="nl-d">新單集延伸文章上線就寄給你。不發廣告、不賣課，隨時退訂。</div>
-      <form class="nl-f" onsubmit="return nlGo(this)">
-        <input type="email" name="email" required placeholder="your@email.com">
-        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <button type="submit">訂閱 →</button>
-      </form>
-      <div class="nl-msg" aria-live="polite"></div>
-    </div>
-    <a class="cta" href="/">← 回操作一下首頁</a>
+    <section class="st-related" aria-labelledby="rel-t"><h2 id="rel-t">延伸閱讀</h2><ul><li><a href="/post/372/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>微牛證券AI整合案例：金融雲端如何用大模型驅動股價</b></a></li><li><a href="/post/312/"><span class="h-meta"><span class="h-cat">雲端</span></span><b>OpenSand統一AI模型平台：企業該如何抓住AI聚合時代的新機會？</b></a></li><li><a href="/post/262/"><span class="h-meta"><span class="h-cat">雲端</span><span>🎙 Podcast</span></span><b>AI14｜OpenAI 登上 AWS、S3 三分裂——雲端 AI 代理平台的版圖正在重畫</b></a></li></ul></section>
+    <section class="nl-box" id="newsletter" aria-labelledby="nl-newsletter-t">
+  <h2 class="nl-t" id="nl-newsletter-t">每集一封，把這週的重點寄給你</h2>
+  <p class="nl-d">新一集 Podcast 上線時寄出：本集重點整理與延伸閱讀，大約每週一封。不發廣告，信末一鍵退訂。</p>
+  <form class="nl-form" data-source="post" novalidate>
+    <label class="sr-only" for="nl-newsletter">Email</label>
+    <input id="nl-newsletter" type="email" name="email" required placeholder="your@email.com" autocomplete="email" inputmode="email" enterkeyhint="send" aria-describedby="nl-newsletter-msg">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="nl-hp">
+    <button type="submit">訂閱</button>
+  </form>
+  <p class="nl-msg" id="nl-newsletter-msg" role="status" aria-live="polite"></p>
+</section>
   </article>
 </main>
-<footer class="st-foot"><div class="st-shell"><div>© 操作一下 · operation.tw — 把複雜的 AI、雲端與資安，用文章與 Podcast 說清楚。</div><nav aria-label="頁尾"><a href="/podcast.html">Podcast</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/feed.xml">RSS</a><a href="/#about">關於我</a></nav></div></footer>
+<footer class="st-foot"><div class="st-shell">
+  <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
+  <nav aria-label="主題"><h2>主題</h2><a href="/category/AI/">AI</a><a href="/category/%E9%9B%B2%E7%AB%AF/">Cloud</a><a href="/category/%E8%B3%87%E5%AE%89/">Cyber Security</a><a href="/category/%E9%96%B1%E8%AE%80/">閱讀</a><a href="/category/%E6%88%90%E9%95%B7/">成長</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2><a href="https://podcasts.apple.com/tw/podcast/id1620760720" target="_blank" rel="noopener">Apple Podcasts</a><a href="https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl" target="_blank" rel="noopener">Spotify</a><a href="https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml" target="_blank" rel="noopener">RSS</a><a href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener">Threads</a><a href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener">YouTube</a></nav>
+  <p class="st-foot-bottom">© 2022–2026 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
+</div></footer>
+<script src="/js/site.js" defer></script>
 </body>
 </html>
