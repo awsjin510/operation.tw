@@ -374,3 +374,23 @@ mark{background:rgba(98,168,255,.25);color:inherit;border-radius:3px;padding:0 2
 .gt-r{color:var(--tx-meta);font-size:13.5px}
 .gt-r a{color:var(--accent);text-decoration:none}
 .st-post .post-body a.gl{color:inherit;text-decoration:underline dotted var(--accent);text-underline-offset:4px}
+
+/* ═══ 科技感裝飾圖（images/brand/*.svg，scripts/tools/gen-brand-art.js 產生）═══ */
+.h-hero{overflow:hidden}
+.h-hero-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 35%,#000 70%);mask-image:linear-gradient(90deg,transparent 0%,transparent 35%,#000 70%)}
+.h-hero-grid{z-index:1}
+.h-sec-band{background:var(--s1) url(/images/brand/grid.svg) repeat;background-size:64px 64px}
+.h-topic-ic{width:56px;height:56px;margin:-6px 0 2px -6px}
+.h-topic:hover .h-topic-ic{filter:drop-shadow(0 0 12px rgba(98,168,255,.45))}
+.p-hero{position:relative;overflow:hidden}
+.p-hero-art{position:absolute;left:0;right:0;top:50%;width:100%;height:70%;transform:translateY(-50%);object-fit:cover;opacity:.38;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse at 60% 50%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse at 60% 50%,#000 30%,transparent 75%)}
+.p-hero-grid{position:relative;z-index:1}
+.st-cat-art{position:absolute;right:28px;top:50%;width:200px;height:200px;transform:translateY(-50%);opacity:.9;pointer-events:none}
+.st-cat-hero h1,.st-cat-hero p{max-width:calc(100% - 220px)}
+.st-post .badge img{width:20px;height:20px;margin:-2px 2px -2px -4px}
+.nl-box{position:relative;overflow:hidden}
+.nl-box::after{content:"";position:absolute;right:-60px;bottom:-40px;width:340px;height:150px;background:url(/images/brand/sound-wave.svg) center/cover no-repeat;opacity:.35;pointer-events:none}
+.nl-box > *{position:relative;z-index:1}
+.st-foot{background:var(--s1) url(/images/brand/grid.svg) repeat;background-size:64px 64px}
+@media(max-width:860px){.h-hero-art{opacity:.45;-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%)}}
+@media(max-width:540px){.st-cat-art{width:110px;height:110px;right:12px;top:22px;transform:none;opacity:.55}.st-cat-hero h1,.st-cat-hero p{max-width:none}.nl-box::after{opacity:.2}}

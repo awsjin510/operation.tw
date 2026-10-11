@@ -141,7 +141,7 @@ function computeCanonicalMap(posts) {
   return map;
 }
 
-const { FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, SITE_JS, catHref } = require('./lib/chrome');
+const { FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, SITE_JS, catHref, topicArt } = require('./lib/chrome');
 const pages = require('./lib/pages');
 
 // 內容日期：以文章的 updated_at（沒有就用發文日）為準，讓 sitemap lastmod 與 JSON-LD dateModified 一致
@@ -326,7 +326,7 @@ ${siteHeader(post.category)}
 <main id="main" class="st-narrow st-post">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › <a href="/category/${encodeURIComponent(post.category)}/">${esc(post.category)}</a></nav>
   <article>
-    <div class="badge" style="color:${catColor};background:${catColor}1a">${catIcon} ${esc(post.category)}</div>
+    <div class="badge" style="color:${catColor};background:${catColor}1a"><img src="${topicArt(post.category)}" alt="" width="20" height="20">${esc(post.category)}</div>
     <h1>${esc(post.title)}</h1>
     <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="${esc(post.date)}">${esc(post.date)}</time>${(post.updated_at || '').slice(0, 10) > post.date ? ` · 最後更新 ${esc(post.updated_at.slice(0, 10))}` : ''}<span id="pv"></span></div>
     ${post.image ? `<picture><source type="image/webp" srcset="${esc(imgWebp)}"><img class="cover" src="${esc(img)}" alt="${esc(post.title)}" width="1200" height="630"></picture>` : ''}
@@ -433,7 +433,8 @@ ${siteHeader(cat)}
 <main id="main" class="st-shell" style="--cat:${color}">
   <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › ${esc(cat)}</nav>
   <header class="st-cat-hero">
-    <h1>${icon} ${esc(cat)}</h1>
+    <img class="st-cat-art" src="${topicArt(cat)}" alt="" aria-hidden="true" width="220" height="220">
+    <h1>${esc(cat)}</h1>
     <p>${esc(lead)}</p>
     <p style="margin-top:10px;">共 <span class="count">${posts.length}</span> 篇文章</p>
   </header>

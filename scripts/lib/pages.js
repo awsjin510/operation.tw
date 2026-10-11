@@ -4,7 +4,7 @@
 // 以前首頁是 index.html 裡的 SPA＋homepage-v2.js 重繪：要等 226KB JSON 才顯示、卡片點進去是另一套文章檢視、
 // 手機選單連到不存在的區塊；Podcast 頁單集列表完全靠 JS、單集也不連文章。
 
-const { esc, CATS, catHref, FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, SITE_JS } = require('./chrome');
+const { esc, CATS, catHref, topicArt, FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, SITE_JS } = require('./chrome');
 const { episodeCode } = require('./episode');
 
 const SITE = 'https://operation.tw';
@@ -122,7 +122,7 @@ function generateHomePage({ posts, episodes, thumbWebp, CAT_ICON, CAT_DESC, CF_B
   };
 
   const heroCta = ep ? (ep.post || ep.apple) : '/podcast.html';
-  const hero = `<section class="h-hero"><div class="st-shell h-hero-grid">
+  const hero = `<section class="h-hero"><img class="h-hero-art" src="/images/brand/hero-network.svg" alt="" aria-hidden="true"><div class="st-shell h-hero-grid">
   <div class="h-hero-copy">
     <p class="h-kicker"><i></i>AI · Cloud · Cyber Security · Podcast</p>
     <h1>把複雜的科技，<span class="grad">說得清楚，也說得有用。</span></h1>
@@ -167,7 +167,7 @@ function generateHomePage({ posts, episodes, thumbWebp, CAT_ICON, CAT_DESC, CF_B
   <div class="h-head"><div><p class="h-eyebrow">Topics</p><h2 id="h-topics-t">依主題探索</h2></div></div>
   <div class="h-topics">${CATS.map(([c, label]) => {
     const recent = posts.filter((p) => p.category === c).slice(0, 2);
-    return `<a class="h-topic" href="${catHref(c)}"><span class="h-topic-ic" aria-hidden="true">${CAT_ICON[c] || ''}</span><span class="h-topic-n">${esc(label)}<small>${counts[c] || 0} 篇</small></span><span class="h-topic-d">${esc(CAT_DESC[c] || '')}</span>${recent.map((p) => `<span class="h-topic-p">${esc(p.title)}</span>`).join('')}</a>`;
+    return `<a class="h-topic" href="${catHref(c)}"><img class="h-topic-ic" src="${topicArt(c)}" alt="" width="56" height="56" loading="lazy"><span class="h-topic-n">${esc(label)}<small>${counts[c] || 0} 篇</small></span><span class="h-topic-d">${esc(CAT_DESC[c] || '')}</span>${recent.map((p) => `<span class="h-topic-p">${esc(p.title)}</span>`).join('')}</a>`;
   }).join('')}</div>
 </div></section>`;
 
@@ -257,7 +257,7 @@ function generatePodcastPage({ episodes, CF_BEACON }) {
 <body class="st st-podcast" data-page="podcast">
 ${siteHeader('podcast')}
 <main id="main">
-<section class="p-hero"><div class="st-shell p-hero-grid">
+<section class="p-hero"><img class="p-hero-art" src="/images/brand/sound-wave.svg" alt="" aria-hidden="true"><div class="st-shell p-hero-grid">
   <img class="p-cover" src="/logo.jpg" width="320" height="320" alt="操作一下 Podcast 封面">
   <div>
     <p class="h-kicker"><i></i>Operation Podcast · since 2022</p>
