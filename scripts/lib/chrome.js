@@ -53,7 +53,7 @@ function siteHeader(current = '') {
       <p class="st-menu-h">主題</p>
       <nav aria-label="主題">${catLinks}</nav>
       <p class="st-menu-h">更多</p>
-      <nav aria-label="更多"><a href="/podcast.html"${cur('podcast')}>Podcast 所有單集</a><a href="/faq/"${cur('faq')}>常見問題</a><a href="/glossary/"${cur('glossary')}>科技術語庫</a><a href="/#about">關於 Jin</a></nav>
+      <nav aria-label="更多"><a href="/podcast.html"${cur('podcast')}>Podcast 所有單集</a><a href="/faq/"${cur('faq')}>常見問題</a><a href="/glossary/"${cur('glossary')}>科技術語庫</a><a href="/about/"${cur('about')}>關於 Jin</a></nav>
       <a class="st-cta st-cta-block" href="/#newsletter">訂閱電子報</a>
     </div>
   </details>
@@ -75,7 +75,7 @@ const ext = (pairs) => pairs.map(([t, u]) => `<a href="${u}" target="_blank" rel
 const SITE_FOOTER = `<footer class="st-foot"><div class="st-shell">
   <div class="st-foot-brand"><strong>操作一下</strong><p>Jin 的科技 Podcast 與部落格：把 AI、雲端與資安的變化，說得清楚也說得有用。</p></div>
   <nav aria-label="主題"><h2>主題</h2>${CATS.map(([c, l]) => `<a href="${catHref(c)}">${l}</a>`).join('')}</nav>
-  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
+  <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/about/">關於 Jin</a></nav>
   <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2>${ext(LISTEN)}${ext(SOCIAL)}</nav>
   <p class="st-foot-stats" aria-label="網站瀏覽統計">累積瀏覽 <strong data-stat="total">—</strong> 次 · 今日 <strong data-stat="visitors_today">—</strong> 位訪客、<strong data-stat="today">—</strong> 次瀏覽</p>
   <p class="st-foot-bottom">© ${'2022'}–${new Date().getFullYear()} 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>

@@ -7,6 +7,7 @@
 const chrome = require('./chrome');
 const { esc, CATS, catHref, topicArt, FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, asset } = chrome;
 const { episodeCode } = require('./episode');
+const geo = require('./geo');
 
 const SITE = 'https://operation.tw';
 const APPLE_SHOW = 'https://podcasts.apple.com/tw/podcast/id1620760720';
@@ -112,13 +113,11 @@ function generateHomePage({ posts, episodes, thumbWebp, CAT_ICON, CAT_DESC, CF_B
     '@context': 'https://schema.org',
     '@graph': [
       { '@type': 'WebSite', '@id': `${SITE}/#website`, name: '操作一下', alternateName: 'operation.tw', url: SITE, inLanguage: 'zh-TW',
-        publisher: { '@id': `${SITE}/#person` },
+        publisher: { '@id': `${SITE}/#organization` },
         potentialAction: { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: `${SITE}/search/?q={search_term_string}` }, 'query-input': 'required name=search_term_string' } },
-      { '@type': 'Person', '@id': `${SITE}/#person`, name: 'Jin', url: `${SITE}/#about`, image: `${SITE}/profile.jpg`, jobTitle: '產品經理 · Podcast 主持人',
-        description: '喜歡探索新趨勢、學習新事物的 PM，主持 Podcast《操作一下》，分享雲端、資安、AI、閱讀與成長。',
-        knowsAbout: ['雲端運算', '資訊安全', '人工智慧', 'AWS', '大型語言模型', '產品管理'],
-        sameAs: ['https://www.instagram.com/operation.tw/', 'https://www.threads.net/@operation.tw', 'https://www.youtube.com/@操作一下', APPLE_SHOW] },
-      { '@type': 'PodcastSeries', '@id': `${SITE}/podcast.html#series`, name: '操作一下', url: `${SITE}/podcast.html`, webFeed: RSS, author: { '@id': `${SITE}/#person` }, image: `${SITE}/logo.jpg` },
+      geo.PERSON,
+      geo.PUBLISHER,
+      { '@type': 'PodcastSeries', '@id': `${SITE}/podcast.html#series`, name: '操作一下', url: `${SITE}/podcast.html`, webFeed: RSS, author: { '@id': geo.PERSON_ID }, image: `${SITE}/logo.jpg` },
     ],
   };
 
@@ -179,7 +178,7 @@ function generateHomePage({ posts, episodes, thumbWebp, CAT_ICON, CAT_DESC, CF_B
     <h2 id="h-about-t">我是 Jin，操作一下</h2>
     <p>一位喜歡探索新趨勢、學習新事物的 PM。常有朋友問我：「這要怎麼操作？怎麼開始？」網路上的資訊總是碎片化，於是我把它們整理成自己的版本，加入實際操作的經驗與觀點——這就是「操作一下」的起點。</p>
     <p>在這裡，我分享雲端、資安、AI、閱讀與成長的操作，也邀請各產業的朋友，聊他們領域的學習歷程。</p>
-    <div class="h-actions"><a class="btn btn-ghost" href="/podcast.html">收聽 Podcast</a><a class="btn btn-ghost" href="/faq/">常見問題</a><a class="btn btn-ghost" href="mailto:keepfighting510@gmail.com">合作邀約</a></div>
+    <div class="h-actions"><a class="btn btn-ghost" href="/podcast.html">收聽 Podcast</a><a class="btn btn-ghost" href="/about/">更多關於 Jin</a><a class="btn btn-ghost" href="mailto:keepfighting510@gmail.com">合作邀約</a></div>
   </div>
 </div></section>`;
 
@@ -242,7 +241,7 @@ function generatePodcastPage({ episodes, CF_BEACON }) {
     '@context': 'https://schema.org', '@type': 'PodcastSeries', '@id': `${SITE}/podcast.html#series`,
     name: '操作一下', url: `${SITE}/podcast.html`, webFeed: RSS, image: `${SITE}/logo.jpg`, inLanguage: 'zh-TW',
     description: 'Jin 主持的科技 Podcast：訪問台灣科技工作者、拆解 AI、雲端與資安趨勢，也聊閱讀與職涯。',
-    author: { '@type': 'Person', name: 'Jin', url: `${SITE}/#about` },
+    author: geo.AUTHOR_REF,
     sameAs: [APPLE_SHOW, SPOTIFY_SHOW],
     hasPart: eps.filter((e) => e.post).slice(0, 20).map((e) => ({ '@type': 'PodcastEpisode', name: e.title, url: `${SITE}${e.post}`, datePublished: e.date })),
   };
@@ -325,6 +324,80 @@ ${chrome.SITE_JS}
 `;
 }
 
+
+// ── 關於頁（作者實體：AI 引用時判斷「誰寫的、可不可信」的依據）────────────
+function generateAboutPage({ posts, episodes, CF_BEACON }) {
+  const eps = episodesLite(episodes);
+  const guestN = eps.filter((e) => e.series === 'guest').length;
+  const hours = Math.round(eps.reduce((s, e) => s + (e.dur || 0), 0) / 60);
+  const cats = {};
+  posts.forEach((p) => { cats[p.category] = (cats[p.category] || 0) + 1; });
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'ProfilePage', '@id': `${SITE}/about/`, url: `${SITE}/about/`, name: '關於 Jin｜操作一下', inLanguage: 'zh-TW', mainEntity: { '@id': geo.PERSON_ID }, dateModified: eps[0] ? eps[0].date : undefined },
+      geo.PERSON,
+      { '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '首頁', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 2, name: '關於 Jin', item: `${SITE}/about/` },
+      ] },
+    ],
+  };
+  const recentGuests = eps.filter((e) => e.series === 'guest').slice(0, 6);
+  return head({
+    title: '關於 Jin｜操作一下 Podcast 主持人',
+    desc: `Jin 是台灣的產品經理，2022 年起主持科技 Podcast《操作一下》，已製作 ${eps.length} 集、訪問 ${guestN} 位以上台灣科技工作者，分享 AI、雲端、資安、閱讀與職涯成長。`,
+    url: `${SITE}/about/`,
+    image: `${SITE}/profile.jpg`,
+    type: 'profile',
+    schema,
+    extra: CF_BEACON,
+  }) + `</head>
+<body class="st" data-page="about">
+${siteHeader('about')}
+<main id="main" class="st-narrow s-page about-page">
+  <nav class="st-crumb" aria-label="麵包屑"><a href="/">操作一下</a> › 關於 Jin</nav>
+  <div class="about-hero">
+    <img src="/profile-480.webp" width="200" height="198" alt="Jin 的照片">
+    <div>
+      <h1>嗨，我是 Jin</h1>
+      <p class="pg-lead">台灣的產品經理（PM），也是科技 Podcast《操作一下》的主持人。</p>
+    </div>
+  </div>
+  <h2>我在做什麼</h2>
+  <p>我是一位喜歡探索新趨勢、學習新事物的 PM。實踐的過程中，常有朋友問我：「這要怎麼操作？怎麼開始？」網路上的資訊總是碎片化、少了整合性，於是我把它們整理成自己的版本，加入實際操作的經驗與觀點——這就是「操作一下」的起點。</p>
+  <p>2022 年開始，我每週製作一集 Podcast，到現在已經有 <strong>${eps.length} 集</strong>、約 <strong>${hours} 小時</strong>的內容，網站上有 <strong>${posts.length} 篇</strong>文章。</p>
+  <h2>節目與內容</h2>
+  <ul>
+    <li><strong>AI 趨勢</strong>：拆解 AI 模型、雲端與資安的新變化，以及對台灣企業和上班族的實際影響。</li>
+    <li><strong>來賓訪談</strong>：邀請各產業的台灣科技工作者，聊他們的工作、轉職與學習歷程（${guestN} 集）。</li>
+    <li><strong>閱讀操作</strong>：把一本書整理成可以直接用的觀念與做法。</li>
+    <li><strong>每集一篇重點文章</strong>：聽完可以回來複習，也方便搜尋與引用。</li>
+  </ul>
+  <p>文章主題：${Object.keys(geo.CAT_SLUG).filter((c) => cats[c]).map((c) => `<a href="/category/${encodeURIComponent(c)}/">${c}</a>（${cats[c]} 篇）`).join('、')}。</p>
+  <h2>最近的來賓訪談</h2>
+  <ul>${recentGuests.map((e) => `<li><a href="${esc(e.post || e.apple)}">${esc(e.title)}</a>（${esc(e.date)}）</li>`).join('')}</ul>
+  <h2>收聽與追蹤</h2>
+  <p class="p-platforms">
+    <a class="pf pf-apple" href="${APPLE_SHOW}" target="_blank" rel="noopener">${ICO_APPLE}<span>Apple Podcasts</span></a>
+    <a class="pf pf-spotify" href="${SPOTIFY_SHOW}" target="_blank" rel="noopener">${ICO_SPOT}<span>Spotify</span></a>
+    <a class="pf pf-ghost" href="https://www.instagram.com/operation.tw/" target="_blank" rel="noopener me"><span>Instagram</span></a>
+    <a class="pf pf-ghost" href="https://www.threads.net/@operation.tw" target="_blank" rel="noopener me"><span>Threads</span></a>
+    <a class="pf pf-ghost" href="https://www.youtube.com/@%E6%93%8D%E4%BD%9C%E4%B8%80%E4%B8%8B" target="_blank" rel="noopener me"><span>YouTube</span></a>
+  </p>
+  <h2>合作與聯絡</h2>
+  <p>邀請上節目、合作或想推薦來賓，歡迎來信：<a href="mailto:keepfighting510@gmail.com">keepfighting510@gmail.com</a>。</p>
+  <h2>引用本站內容</h2>
+  <p>歡迎引用與分享，請標明「操作一下 operation.tw」並附上原文連結。每篇文章都有 Markdown 版本（文章網址加上 <code>index.md</code>），站台導覽見 <a href="/llms.txt">llms.txt</a>。</p>
+  ${newsletterBox({ id: 'newsletter', compact: true, source: 'about' })}
+</main>
+${SITE_FOOTER}
+${chrome.SITE_JS}
+</body>
+</html>
+`;
+}
+
 // ── 搜尋頁 ───────────────────────────────────────────────────────
 function generateSearchPage({ CF_BEACON }) {
   return head({
@@ -401,4 +474,4 @@ ${chrome.SITE_JS}
 `;
 }
 
-module.exports = { generateHomePage, generatePodcastPage, generateSearchPage, generate404, searchIndex, episodesLite, SERIES, postUrl };
+module.exports = { generateAboutPage, generateHomePage, generatePodcastPage, generateSearchPage, generate404, searchIndex, episodesLite, SERIES, postUrl };

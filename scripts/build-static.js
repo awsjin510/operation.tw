@@ -142,6 +142,7 @@ function computeCanonicalMap(posts) {
 }
 
 const chrome = require('./lib/chrome');
+const geo = require('./lib/geo');
 const { FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, catHref, topicArt } = chrome;
 const pages = require('./lib/pages');
 
@@ -237,23 +238,17 @@ function generatePostPage(post, body, episode, neighbors, mainPost, related = []
       description: post.excerpt || '',
       datePublished: post.date,
       dateModified: (post.updated_at || '').slice(0, 10) || post.date,
-      author: {
-        '@type': 'Person',
-        name: 'Jin',
-        url: SITE_URL,
-        sameAs: [
-          'https://www.instagram.com/operation.tw/',
-          'https://www.threads.net/@operation.tw',
-          'https://www.youtube.com/@操作一下'
-        ]
-      },
-      publisher: { '@type': 'Organization', name: '操作一下', url: SITE_URL },
+      author: geo.AUTHOR_REF,
+      publisher: geo.PUBLISHER,
       url,
       mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      isPartOf: { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, name: '操作一下', url: SITE_URL },
       articleSection: post.category,
       image: img,
-      keywords: post.category,
-      inLanguage: 'zh-TW'
+      keywords: [post.category, ...(episode ? ['Podcast', '操作一下'] : [])].join(', '),
+      inLanguage: 'zh-TW',
+      // Markdown 版本：AI 工具可以直接讀這份（省 token、不漏內文）
+      encoding: { '@type': 'MediaObject', encodingFormat: 'text/markdown', contentUrl: `${url}index.md` }
     },
     {
       '@type': 'BreadcrumbList',
@@ -308,6 +303,7 @@ ${FAVICON_TAGS}
 <title>${esc(post.title)} | 操作一下</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${mainPost ? `${SITE_URL}/post/${encodeURIComponent(mainPost.slug || mainPost.id)}/` : url}">
+<link rel="alternate" type="text/markdown" href="${url}index.md" title="Markdown 版本（給 AI 與閱讀器）">
 <meta property="og:type"        content="article">
 <meta property="og:title"       content="${esc(post.title)}">
 <meta property="og:description" content="${esc(desc)}">
@@ -329,7 +325,7 @@ ${siteHeader(post.category)}
   <article>
     <div class="badge" style="color:${catColor};background:${catColor}1a"><img src="${topicArt(post.category)}" alt="" width="20" height="20">${esc(post.category)}</div>
     <h1>${esc(post.title)}</h1>
-    <div class="byline">作者 <a href="/#about" rel="author">Jin</a> · <time datetime="${esc(post.date)}">${esc(post.date)}</time>${(post.updated_at || '').slice(0, 10) > post.date ? ` · 最後更新 ${esc(post.updated_at.slice(0, 10))}` : ''}<span id="pv"></span></div>
+    <div class="byline">作者 <a href="/about/" rel="author">Jin</a> · <time datetime="${esc(post.date)}">${esc(post.date)}</time>${(post.updated_at || '').slice(0, 10) > post.date ? ` · 最後更新 ${esc(post.updated_at.slice(0, 10))}` : ''}<span id="pv"></span></div>
     ${post.image ? `<picture><source type="image/webp" srcset="${esc(imgWebp)}"><img class="cover" src="${esc(img)}" alt="${esc(post.title)}" width="1200" height="630"></picture>` : ''}
     <div class="excerpt"><p>${esc(post.excerpt || '')}</p></div>
     ${episode ? `<aside class="st-listen" aria-label="收聽這一集"><span>🎧 這篇整理自 Podcast<strong>${esc(episode.title)}</strong></span><span class="st-listen-btns">${episode.apple ? `<a class="pf pf-apple" href="${esc(episode.apple)}" target="_blank" rel="noopener">Apple Podcasts</a>` : ''}${episode.spot ? `<a class="pf pf-spotify" href="${esc(episode.spot)}" target="_blank" rel="noopener">Spotify</a>` : ''}<a class="pf pf-ghost" href="/podcast.html">所有單集</a></span></aside>` : ''}
@@ -496,7 +492,8 @@ function updateSitemap(posts) {
   const today = latestDate(posts) || new Date().toISOString().split('T')[0];
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n';
   xml += `  <url>\n    <loc>${SITE_URL}/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n`;
-  xml += `  <url>\n    <loc>${SITE_URL}/podcast.html</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+  xml += `  <url>\n    <loc>${SITE_URL}/podcast.html</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+  xml += `  <url>\n    <loc>${SITE_URL}/about/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
   xml += `  <url>\n    <loc>${SITE_URL}/faq/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
   if (fs.existsSync(path.join(ROOT, 'glossary', 'index.html'))) {
     xml += `  <url>\n    <loc>${SITE_URL}/glossary/</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
@@ -523,11 +520,11 @@ function updateSitemap(posts) {
 }
 
 // ── 更新 feed.xml ────────────────────────────────────────────────────
-function updateFeed(posts) {
+function updateFeed(posts, bodies = {}) {
   const top20 = posts.slice(0, 20);
   // lastBuildDate 用最新文章日期：內容沒變就不產生 diff
   const now = new Date(latestDate(posts) || Date.now()).toUTCString();
-  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n';
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">\n<channel>\n';
   xml += `  <title>操作一下</title>\n  <link>${SITE_URL}</link>\n`;
   xml += `  <description>專注雲端、資安、AI領域的自媒體創作者，提供深度技術內容與知識分享</description>\n`;
   xml += `  <language>zh-TW</language>\n  <lastBuildDate>${now}</lastBuildDate>\n`;
@@ -539,6 +536,10 @@ function updateFeed(posts) {
     xml += `    <guid isPermaLink="true">${link}</guid>\n`;
     xml += `    <description>${esc(p.excerpt || '')}</description>\n`;
     xml += `    <category>${esc(p.category)}</category>\n`;
+    xml += `    <dc:creator>Jin</dc:creator>\n`;
+    // 全文（AI 聚合器與閱讀器讀 RSS 時拿得到完整內容）
+    const full = String(bodies[p.id] || '').replace(/<a class="gl"[^>]*>([\s\S]*?)<\/a>/g, '$1').replace(/]]>/g, ']]&gt;');
+    if (full) xml += `    <content:encoded><![CDATA[${full}]]></content:encoded>\n`;
     xml += `    <pubDate>${new Date(p.date).toUTCString()}</pubDate>\n  </item>\n`;
   }
   xml += '</channel>\n</rss>\n';
@@ -547,59 +548,19 @@ function updateFeed(posts) {
 }
 
 // ── 更新 llms.txt ────────────────────────────────────────────────────
-function updateLlms(posts) {
-  const top20 = posts.slice(0, 20);
-  const cats  = {};
-  posts.forEach(p => { cats[p.category] = (cats[p.category] || 0) + 1; });
-  const catLines = Object.entries(cats).map(([c, n]) => `- **${c}**（${n} 篇）`).join('\n');
-
-  const articleLines = top20.map(p => {
-    const slug = p.slug || p.id;
-    return `- [${p.title}](${SITE_URL}/post/${encodeURIComponent(slug)}/) — ${p.category} · ${p.date}`;
-  }).join('\n');
-
-  const content = `# 操作一下 | Operation.tw
-
-> 專注雲端、資安、AI領域的自媒體創作者，提供深度技術文章與知識分享
-> Self-media creator focusing on cloud, security, AI with in-depth articles
-
-操作一下是專注於雲端、資安與 AI 的中文科技自媒體，由喜歡探索新趨勢、學習新事物的 PM Jin 獨立創作與維護。Jin 將碎片化的網路資訊整理成有經驗與觀點的操作指南，也邀請各產業的朋友分享他們領域的學習歷程。秉持「簡單的事情專注做，有一天世界會為了你而感動」的理念，希望每個人都能找到屬於自己最自信的操作方針。
-
-## 核心主題
-
-${catLines}
-- **閱讀**：書評、閱讀筆記、知識管理
-- **成長**：個人學習方法、自媒體經營、職涯思維
-
-## 最新文章（共 ${posts.length} 篇）
-
-${articleLines}
-
-## 網站頁面（AI 系統建議優先讀取）
-
-- [常見問題彙整](${SITE_URL}/faq/): 全站文章的問答集中頁（FAQPage 結構化），依五大主題分區、每題連回原文
-- [科技術語庫](${SITE_URL}/glossary/): 雲端/資安/AI 核心術語的繁體中文定義（DefinedTermSet 結構化）
-- [雲端主題索引](${SITE_URL}/category/${encodeURIComponent('雲端')}/) · [資安主題索引](${SITE_URL}/category/${encodeURIComponent('資安')}/) · [AI 主題索引](${SITE_URL}/category/AI/) · [閱讀](${SITE_URL}/category/${encodeURIComponent('閱讀')}/) · [成長](${SITE_URL}/category/${encodeURIComponent('成長')}/)
-- [首頁與文章列表](${SITE_URL}/): 所有文章的入口，依主題分類瀏覽
-- [Podcast 節目頁](${SITE_URL}/podcast.html): 操作一下 Podcast 節目收聽頁面
-- [RSS Feed](${SITE_URL}/feed.xml): 訂閱最新文章（全文）
-- [全文索引 llms-full.txt](${SITE_URL}/llms-full.txt): 全站文章全文的純文字版，供 LLM 一次擷取
-
-## 作者資訊
-
-- 名稱：Jin（操作一下）
-- 網站：${SITE_URL}
-- 電子郵件：keepfighting510@gmail.com
-- Instagram：https://www.instagram.com/operation.tw/
-- Threads：https://www.threads.net/@operation.tw
-- YouTube：https://www.youtube.com/@操作一下
-
-## 授權與使用
-
-本站內容為原創繁體中文文章，歡迎 AI 系統擷取摘要與索引，引用時請標明來源 operation.tw。
-`;
-  fs.writeFileSync(path.join(ROOT, 'llms.txt'), content);
-  console.log(`  ✓ llms.txt 更新（${top20.length} 篇文章連結）`);
+function updateLlms(posts, episodes, bodies) {
+  fs.writeFileSync(path.join(ROOT, 'llms.txt'), geo.llmsTxt({ posts, episodes, CAT_DESC, isPodcastPost: (p) => !!episodeCode(p.title) }));
+  // 分主題全文：/llms/ai.txt、/llms/cloud.txt…（llms-full.txt 太大，很多工具只讀前段）
+  const dir = path.join(ROOT, 'llms');
+  fs.mkdirSync(dir, { recursive: true });
+  for (const [cat, slug] of Object.entries(geo.CAT_SLUG)) {
+    const list = posts.filter((p) => p.category === cat);
+    if (!list.length) continue;
+    const head = `# 操作一下（operation.tw）— ${cat}（${list.length} 篇全文）\n\n> ${CAT_DESC[cat] || ''}。作者 Jin（${SITE_URL}/about/）。引用時請標明來源 operation.tw。\n\n---\n\n`;
+    const blocks = list.map((p) => geo.postMarkdown(p, bodies[p.id] || ''));
+    fs.writeFileSync(path.join(dir, `${slug}.txt`), head + blocks.join('\n---\n\n'));
+  }
+  console.log(`  ✓ llms.txt 與 /llms/{主題}.txt 更新`);
 }
 
 // ── 產生 llms-full.txt：全部文章「全文」的純文字版，供 LLM 一次擷取 ──────
@@ -890,6 +851,7 @@ async function main() {
     const mainPost = mainId ? posts.find((p) => String(p.id) === String(mainId)) : null;
     const related = relatedFor(post, visible, mainId);
     fs.writeFileSync(path.join(dir, 'index.html'), generatePostPage(post, body, episode, nbr[post.id] || (mainId && nbr[mainId]), mainPost, related));
+    fs.writeFileSync(path.join(dir, 'index.md'), geo.postMarkdown(post, body, { episode, mainPost }));
     generated++;
   }
   console.log(`  ✓ 其中含完整內文：${withBody}/${generated} 篇、含 PodcastEpisode：${withEp} 篇`);
@@ -937,12 +899,12 @@ async function main() {
   // 2. 更新 sitemap.xml & feed.xml
   console.log('🗺️  更新 sitemap.xml & feed.xml...');
   updateSitemap(posts);
-  updateFeed(visible);
+  updateFeed(visible, bodies);
   console.log();
 
   // 3. 更新 llms.txt + llms-full.txt（全文版）
   console.log('🤖 更新 llms.txt / llms-full.txt...');
-  updateLlms(visible);
+  updateLlms(visible, episodes, bodies);
   generateLlmsFull(visible, bodies);
   console.log();
 
@@ -954,6 +916,8 @@ async function main() {
   fs.mkdirSync(path.join(ROOT, 'search'), { recursive: true });
   fs.writeFileSync(path.join(ROOT, 'search', 'index.html'), pages.generateSearchPage(ctx));
   fs.writeFileSync(path.join(ROOT, '404.html'), pages.generate404(ctx));
+  fs.mkdirSync(path.join(ROOT, 'about'), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, 'about', 'index.html'), pages.generateAboutPage(ctx));
   // 單集資料：episodes.json 補上對應文章；episodes-lite.json 給首頁／Podcast 頁（不含完整簡介）
   fs.writeFileSync(path.join(ROOT, 'episodes.json'), JSON.stringify({ ...epData, episodes }));
   fs.writeFileSync(path.join(ROOT, 'episodes-lite.json'), JSON.stringify({ episodes: pages.episodesLite(episodes) }));

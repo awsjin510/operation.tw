@@ -399,3 +399,15 @@ mark{background:rgba(98,168,255,.25);color:inherit;border-radius:3px;padding:0 2
 [data-views-id]:empty{display:none}
 .h-stats-grid strong{font-variant-numeric:tabular-nums}
 .ci-meta [data-views-id]:not(:empty)::before{content:" · "}
+
+/* 關於頁 */
+.about-page h2{margin:36px 0 12px;color:var(--tx-1);font-size:22px}
+.about-page p,.about-page li{color:var(--tx-2);line-height:1.9}
+.about-page a{color:var(--accent)}
+.about-page .pf{color:inherit}
+.about-page .pf-apple{color:#fff}
+.about-page .pf-spotify{color:#04140a}
+.about-hero{display:flex;gap:24px;align-items:center;margin-top:8px}
+.about-hero img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid var(--line-3);box-shadow:var(--e2)}
+.about-hero h1{margin:0 0 6px}
+@media(max-width:540px){.about-hero{flex-direction:column;align-items:flex-start}}
