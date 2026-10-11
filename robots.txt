@@ -1,46 +1,47 @@
+# operation.tw — 歡迎搜尋引擎與 AI 系統索引、摘要與引用（請標明來源 operation.tw）
+# 站台導覽（給 AI）：https://operation.tw/llms.txt ；每篇文章另有 Markdown 版：文章網址＋index.md
+
 User-agent: *
 Allow: /
 Disallow: /admin.html
+Disallow: /search/
 
-# ── 明確歡迎 AI 搜尋 / 檢索爬蟲（提升被 ChatGPT / Perplexity / Gemini 引用機會）──
+# ── AI 搜尋／檢索與訓練爬蟲：明確允許（被 ChatGPT、Claude、Perplexity、Gemini、Copilot 等引用）──
+# OpenAI
 User-agent: GPTBot
-Allow: /
-Disallow: /admin.html
-
 User-agent: OAI-SearchBot
-Allow: /
-
 User-agent: ChatGPT-User
-Allow: /
-
+# Anthropic
 User-agent: ClaudeBot
-Allow: /
-Disallow: /admin.html
-
+User-agent: Claude-SearchBot
+User-agent: Claude-User
 User-agent: Claude-Web
-Allow: /
-
 User-agent: anthropic-ai
-Allow: /
-
+# Perplexity
 User-agent: PerplexityBot
-Allow: /
-
 User-agent: Perplexity-User
-Allow: /
-
+# Google（Gemini／AI Overviews）、Apple、Microsoft
 User-agent: Google-Extended
-Allow: /
-
+User-agent: GoogleOther
+User-agent: Applebot
 User-agent: Applebot-Extended
-Allow: /
-
+User-agent: Bingbot
+# 其他 AI 助理與答案引擎
+User-agent: Amazonbot
+User-agent: DuckAssistBot
+User-agent: Meta-ExternalAgent
+User-agent: Meta-ExternalFetcher
+User-agent: MistralAI-User
+User-agent: cohere-ai
+User-agent: YouBot
+User-agent: PhindBot
 User-agent: CCBot
 Allow: /
+Disallow: /admin.html
+Disallow: /search/
 
 Sitemap: https://operation.tw/sitemap.xml
 
-# LLM-friendly content index
-# See https://llmstxt.org/
-LLMs: https://operation.tw/llms.txt
-LLMs-full: https://operation.tw/llms-full.txt
+# LLM-friendly content index — https://llmstxt.org/
+# LLMs: https://operation.tw/llms.txt
+# LLMs-full: https://operation.tw/llms-full.txt

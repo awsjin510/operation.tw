@@ -4,7 +4,7 @@
 set -u
 cd "$(dirname "$0")/.."
 FILES=(
-  index.html podcast.html 404.html search/ search-index.json
+  index.html podcast.html 404.html search/ search-index.json about/ llms/
   posts.json episodes.json episodes-lite.json podcast-posts.json glossary.json spotify-episodes.json
   post/ category/ faq/ glossary/ images/
   sitemap.xml feed.xml llms.txt llms-full.txt

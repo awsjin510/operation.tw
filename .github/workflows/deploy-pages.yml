@@ -50,7 +50,7 @@ jobs:
           # 白名單部署：只複製網站需要的檔案。
           # （repo 裡的備份、restore 資料、內部筆記、狀態檔都不該被公開存取。）
           # 新增公開目錄或根目錄檔案類型時，記得同步加到這裡。
-          DIRS="about ai category cloud faq glossary images js podcast post publiccloud search security"
+          DIRS="about ai category cloud faq glossary images js llms podcast post publiccloud search security"
           for d in $DIRS; do [ -d "$d" ] && cp -R "$d" _site/; done
           shopt -s nullglob
           for f in *.html *.css *.js *.xml *.png *.jpg *.webp *.ico *.svg \
