@@ -14,6 +14,9 @@ const CATS = [
   ['成長', '成長'],
 ];
 const catHref = (c) => `/category/${encodeURIComponent(c)}/`;
+// 主題插圖（scripts/tools/gen-brand-art.js 產生）
+const TOPIC_ART = { AI: 'topic-ai', 雲端: 'topic-cloud', 資安: 'topic-security', 閱讀: 'topic-reading', 成長: 'topic-growth' };
+const topicArt = (c) => (TOPIC_ART[c] ? `/images/brand/${TOPIC_ART[c]}.svg` : '');
 
 const FAVICON_TAGS = '<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">';
 
@@ -82,4 +85,4 @@ function newsletterBox({ id = 'newsletter', compact = false, source = '' } = {})
 // 全站共用的小腳本（電子報送出、文章瀏覽數）
 const SITE_JS = '<script src="/js/site.js" defer></script>';
 
-module.exports = { esc, CATS, catHref, FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, SITE_JS, LISTEN };
+module.exports = { esc, CATS, catHref, topicArt, FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, SITE_JS, LISTEN };
