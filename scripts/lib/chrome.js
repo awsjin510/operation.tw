@@ -61,6 +61,7 @@ const SITE_FOOTER = `<footer class="st-foot"><div class="st-shell">
   <nav aria-label="主題"><h2>主題</h2>${CATS.map(([c, l]) => `<a href="${catHref(c)}">${l}</a>`).join('')}</nav>
   <nav aria-label="探索"><h2>探索</h2><a href="/podcast.html">Podcast</a><a href="/search/">搜尋</a><a href="/faq/">常見問題</a><a href="/glossary/">術語庫</a><a href="/#about">關於 Jin</a></nav>
   <nav aria-label="收聽與追蹤"><h2>收聽與追蹤</h2>${ext(LISTEN)}${ext(SOCIAL)}</nav>
+  <p class="st-foot-stats" aria-label="網站瀏覽統計">累積瀏覽 <strong data-stat="total">—</strong> 次 · 今日 <strong data-stat="visitors_today">—</strong> 位訪客、<strong data-stat="today">—</strong> 次瀏覽</p>
   <p class="st-foot-bottom">© ${'2022'}–${new Date().getFullYear()} 操作一下 · operation.tw · <a href="/feed.xml">文章 RSS</a></p>
 </div></footer>`;
 
