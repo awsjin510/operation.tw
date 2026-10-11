@@ -4,7 +4,8 @@
 // 以前首頁是 index.html 裡的 SPA＋homepage-v2.js 重繪：要等 226KB JSON 才顯示、卡片點進去是另一套文章檢視、
 // 手機選單連到不存在的區塊；Podcast 頁單集列表完全靠 JS、單集也不連文章。
 
-const { esc, CATS, catHref, topicArt, FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, SITE_JS } = require('./chrome');
+const chrome = require('./chrome');
+const { esc, CATS, catHref, topicArt, FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, asset } = chrome;
 const { episodeCode } = require('./episode');
 
 const SITE = 'https://operation.tw';
@@ -65,7 +66,7 @@ ${FAVICON_TAGS}
 <meta name="twitter:description" content="${esc(desc)}">
 <meta name="twitter:image" content="${image}">
 ${schema ? `<script type="application/ld+json">${JSON.stringify(schema)}</script>` : ''}
-<link rel="stylesheet" href="/theme.css">
+${chrome.THEME_CSS}
 ${extra}`;
 }
 
@@ -206,7 +207,7 @@ ${about}
 ${nl}
 </main>
 ${SITE_FOOTER}
-${SITE_JS}
+${chrome.SITE_JS}
 </body>
 </html>
 `;
@@ -317,8 +318,8 @@ ${ep ? `<section class="st-shell p-latest" aria-labelledby="p-latest-t">
   <audio id="p-audio" controls preload="none"></audio>
 </div>
 ${SITE_FOOTER}
-${SITE_JS}
-<script src="/js/podcast.js" defer></script>
+${chrome.SITE_JS}
+<script src="${asset('/js/podcast.js')}" defer></script>
 </body>
 </html>
 `;
@@ -351,8 +352,8 @@ ${siteHeader('search')}
   <noscript><p>搜尋需要 JavaScript。也可以從 <a href="/category/AI/">主題頁</a> 或 <a href="/podcast.html">Podcast</a> 瀏覽。</p></noscript>
 </main>
 ${SITE_FOOTER}
-${SITE_JS}
-<script src="/js/search.js" defer></script>
+${chrome.SITE_JS}
+<script src="${asset('/js/search.js')}" defer></script>
 </body>
 </html>
 `;
@@ -394,7 +395,7 @@ ${siteHeader('')}
   <p class="h-actions"><a class="btn btn-ghost" href="/">回首頁</a><a class="btn btn-ghost" href="/podcast.html">所有 Podcast 單集</a></p>
 </main>
 ${SITE_FOOTER}
-${SITE_JS}
+${chrome.SITE_JS}
 </body>
 </html>
 `;
