@@ -141,9 +141,11 @@ async function route(request, env, url, ctx) {
         `delete from site_stats where id like 'rl:%' and updated_at < datetime('now','-1 day')`
       ).run();
     }
+    // 訂閱來源（前端送 home／post／podcast／category-AI…），用來判斷哪個入口有效；只留安全字元
+    const source = String(body.source || 'web').replace(/[^\w\-\/\u3400-\u9fff]/g, '').slice(0, 60) || 'web';
     const r = await env.DB.prepare(
-      `insert into subscribers (email) values (?) on conflict(email) do nothing`
-    ).bind(e).run();
+      `insert into subscribers (email, source) values (?, ?) on conflict(email) do nothing`
+    ).bind(e, source).run();
     const inserted = (r.meta && r.meta.changes) ? r.meta.changes > 0 : false;
     // 新訂閱 → 背景寄歡迎信（精選必讀）；寄信失敗不影響訂閱結果
     if (inserted && env.RESEND_API_KEY && ctx) {
@@ -152,15 +154,22 @@ async function route(request, env, url, ctx) {
     return json({ result: inserted ? 'subscribed' : 'exists' });
   }
 
-  // 退訂：以 HMAC token 驗證後刪除（連結放在電子報底部）
-  if (p === '/api/unsubscribe' && m === 'GET') {
+  // 退訂（連結放在電子報底部與 List-Unsubscribe 標頭），以 HMAC token 驗證。
+  // GET：只顯示確認頁，不刪除——郵件安全掃描（如 Outlook Safe Links）會預先打開連結，GET 直接刪會誤退訂。
+  // POST：確認頁的按鈕，或 Gmail／Yahoo 的一鍵退訂（RFC 8058：POST 同一網址、body 為 List-Unsubscribe=One-Click）→ 刪除。
+  if (p === '/api/unsubscribe' && (m === 'GET' || m === 'POST')) {
     const e = String(url.searchParams.get('e') || '').trim().toLowerCase();
     const t = url.searchParams.get('t') || '';
     if (!e || !t || !env.SERVICE_TOKEN) return htmlPage('連結無效。', 400);
     const expect = (await hmacHex(env.SERVICE_TOKEN, e)).slice(0, 32);
-    if (t !== expect) return htmlPage('連結無效或已失效。', 400);
+    if (!timingSafeEqual(t, expect)) return htmlPage('連結無效或已失效。', 400);
+    if (m === 'GET') {
+      const action = `/api/unsubscribe?e=${encodeURIComponent(e)}&t=${encodeURIComponent(t)}`;
+      return htmlPage(`確定要讓 <strong>${escHtml(e)}</strong> 退訂「操作一下」電子報嗎？</p>
+<form method="post" action="${escHtml(action)}"><button type="submit">確認退訂</button></form><p style="font-size:14px;opacity:.75">不想退訂的話，關掉這個頁面就好。`);
+    }
     await env.DB.prepare(`delete from subscribers where email=?`).bind(e).run();
-    return htmlPage('你已成功退訂,之後不會再收到「操作一下」電子報。');
+    return htmlPage('你已成功退訂，之後不會再收到「操作一下」電子報。');
   }
 
   // ── 管理（需授權）────────────────────────────────────
@@ -479,6 +488,17 @@ async function sendWelcomeEmail(env, email, apiOrigin) {
   });
 }
 
+function timingSafeEqual(a, b) {
+  a = String(a); b = String(b);
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
+function escHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
 async function hmacHex(key, msg) {
   const k = await crypto.subtle.importKey(
     'raw', new TextEncoder().encode(key), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
@@ -490,8 +510,8 @@ async function hmacHex(key, msg) {
 function htmlPage(msg, status = 200) {
   const body = `<!doctype html><html lang="zh-Hant-TW"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>操作一下</title>
-<style>body{margin:0;background:#050510;color:#e0e0ff;font-family:system-ui,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:24px}a{color:#00f5ff}</style>
-</head><body><div><h1 style="color:#00f5ff">操作一下</h1><p>${msg}</p><p><a href="https://operation.tw/">← 回首頁</a></p></div></body></html>`;
+<style>body{margin:0;background:#07090f;color:#c5cde0;font-family:system-ui,-apple-system,"PingFang TC",sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:24px;line-height:1.7}h1{color:#f4f7ff}a{color:#62a8ff}strong{color:#f4f7ff}button{margin:8px 0;min-height:48px;padding:0 24px;border:0;border-radius:12px;background:linear-gradient(135deg,#2a6fd6,#5a46d6);color:#fff;font-size:16px;font-weight:700;cursor:pointer}</style>
+</head><body><div><h1>操作一下</h1><p>${msg}</p><p><a href="https://operation.tw/">← 回首頁</a></p></div></body></html>`;
   return new Response(body, {
     status, headers: {
       'Content-Type': 'text/html; charset=utf-8',

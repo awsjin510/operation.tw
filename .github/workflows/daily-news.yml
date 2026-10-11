@@ -56,6 +56,10 @@ jobs:
         working-directory: scripts
 
       - name: Generate podcast episodes JSON
+        env:
+          # 選填：Spotify 開發者 App 的 client credentials，有設就用官方 API 對應全部單集的 Spotify 直連
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
         run: node generate-podcast.js
         working-directory: scripts
         continue-on-error: true
