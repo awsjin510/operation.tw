@@ -3,6 +3,22 @@
 // 首頁、Podcast 頁、文章／分類／FAQ／術語庫／搜尋頁都用這一份，改一處全站一致
 // （以前首頁、Podcast 頁、靜態頁各有一套導覽，手機選單還連到不存在的 #topics、#contact）。
 
+const fs = require('fs');
+const path = require('path');
+const crypto = require('crypto');
+// 靜態資源加上內容雜湊（/theme.css?v=1a2b3c4d）：檔案一改網址就變，瀏覽器不會繼續用 10 分鐘快取裡的舊版；
+// 內容沒變網址也不變，建置仍然冪等。
+const ROOT = path.resolve(__dirname, '..', '..');
+const _ver = {};
+function asset(p) {
+  if (!_ver[p]) {
+    try { _ver[p] = crypto.createHash('md5').update(fs.readFileSync(path.join(ROOT, p))).digest('hex').slice(0, 8); }
+    catch (e) { _ver[p] = ''; }
+  }
+  return _ver[p] ? `${p}?v=${_ver[p]}` : p;
+}
+const THEME_CSS = () => `<link rel="stylesheet" href="${asset('/theme.css')}">`;
+
 const esc = (s) => String(s == null ? '' : s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
@@ -84,6 +100,10 @@ function newsletterBox({ id = 'newsletter', compact = false, source = '' } = {})
 }
 
 // 全站共用的小腳本（電子報送出、文章瀏覽數）
-const SITE_JS = '<script src="/js/site.js" defer></script>';
+const SITE_JS_TAG = () => `<script src="${asset('/js/site.js')}" defer></script>`;
 
-module.exports = { esc, CATS, catHref, topicArt, FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, SITE_JS, LISTEN };
+module.exports = {
+  esc, CATS, catHref, topicArt, FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, LISTEN, asset,
+  get SITE_JS() { return SITE_JS_TAG(); },
+  get THEME_CSS() { return THEME_CSS(); },
+};

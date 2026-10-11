@@ -141,7 +141,8 @@ function computeCanonicalMap(posts) {
   return map;
 }
 
-const { FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, SITE_JS, catHref, topicArt } = require('./lib/chrome');
+const chrome = require('./lib/chrome');
+const { FAVICON_TAGS, siteHeader, SITE_FOOTER, newsletterBox, catHref, topicArt } = chrome;
 const pages = require('./lib/pages');
 
 // 內容日期：以文章的 updated_at（沒有就用發文日）為準，讓 sitemap lastmod 與 JSON-LD dateModified 一致
@@ -318,7 +319,7 @@ ${FAVICON_TAGS}
 <meta name="twitter:description" content="${esc(desc)}">
 <meta name="twitter:image"       content="${esc(img)}">
 <script type="application/ld+json">${schema}</script>
-<link rel="stylesheet" href="/theme.css">
+${chrome.THEME_CSS}
 ${CF_BEACON}
 </head>
 <body class="st" data-post-id="${esc(String(post.id))}">
@@ -341,7 +342,7 @@ ${siteHeader(post.category)}
   </article>
 </main>
 ${SITE_FOOTER}
-${SITE_JS}
+${chrome.SITE_JS}
 </body>
 </html>`;
 }
@@ -425,7 +426,7 @@ ${FAVICON_TAGS}
 <meta name="twitter:title"       content="${esc(cat)}文章彙整 | 操作一下">
 <meta name="twitter:description" content="${esc(desc)}">
 <script type="application/ld+json">${schema}</script>
-<link rel="stylesheet" href="/theme.css">
+${chrome.THEME_CSS}
 ${CF_BEACON}
 </head>
 <body class="st">
@@ -447,7 +448,7 @@ ${list}
   <nav class="st-catnav" aria-label="其他主題">${otherCats}</nav>
 </main>
 ${SITE_FOOTER}
-${SITE_JS}
+${chrome.SITE_JS}
 </body>
 </html>`;
 }
@@ -692,7 +693,7 @@ ${FAVICON_TAGS}
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="${SITE_URL}/default.png">
 <script type="application/ld+json">${schema}</script>
-<link rel="stylesheet" href="/theme.css">
+${chrome.THEME_CSS}
 ${CF_BEACON}
 </head>
 <body class="st">
@@ -707,7 +708,7 @@ ${siteHeader('faq')}
   ${newsletterBox({ id: 'newsletter', compact: true, source: 'faq' })}
 </main>
 ${SITE_FOOTER}
-${SITE_JS}
+${chrome.SITE_JS}
 </body>
 </html>`;
 
@@ -795,7 +796,7 @@ ${FAVICON_TAGS}
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="${SITE_URL}/default.png">
 <script type="application/ld+json">${schema}</script>
-<link rel="stylesheet" href="/theme.css">
+${chrome.THEME_CSS}
 ${CF_BEACON}
 </head>
 <body class="st">
@@ -809,7 +810,7 @@ ${siteHeader('glossary')}
   <div data-list="glossary" data-item=".gt">${sections}</div>
 </main>
 ${SITE_FOOTER}
-${SITE_JS}
+${chrome.SITE_JS}
 </body>
 </html>`;
 
