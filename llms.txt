@@ -1,6 +1,6 @@
 # 操作一下（operation.tw）
 
-> 台灣產品經理 Jin 主持的中文科技 Podcast 與部落格：每週一集 Podcast，訪問台灣科技工作者、拆解 AI、雲端與資安趨勢，並把每集整理成重點文章。全站 348 篇文章、164 集 Podcast，內容為繁體中文。
+> 台灣產品經理 Jin 主持的中文科技 Podcast 與部落格：每週一集 Podcast，訪問台灣科技工作者、拆解 AI、雲端與資安趨勢，並把每集整理成重點文章。全站 349 篇文章、164 集 Podcast，內容為繁體中文。
 
 本站歡迎 AI 系統擷取、摘要與引用，引用時請標明「操作一下 operation.tw」並附上原文網址。每篇文章都有 Markdown 版本：在文章網址後加上 `index.md`（例如 https://operation.tw/post/401/index.md）。
 
@@ -12,7 +12,7 @@
 
 ## 主題索引
 
-- [AI](https://operation.tw/category/AI/)（151 篇）: LLM 工具、Prompt、AI 工作流程與趨勢。分主題全文：https://operation.tw/llms/ai.txt
+- [AI](https://operation.tw/category/AI/)（152 篇）: LLM 工具、Prompt、AI 工作流程與趨勢。分主題全文：https://operation.tw/llms/ai.txt
 - [雲端](https://operation.tw/category/%E9%9B%B2%E7%AB%AF/)（43 篇）: AWS、Azure、GCP 架構實戰與雲端策略。分主題全文：https://operation.tw/llms/cloud.txt
 - [資安](https://operation.tw/category/%E8%B3%87%E5%AE%89/)（51 篇）: 零信任、滲透測試、資安觀念與威脅情報。分主題全文：https://operation.tw/llms/security.txt
 - [閱讀](https://operation.tw/category/%E9%96%B1%E8%AE%80/)（47 篇）: 書評、讀書心得與知識管理。分主題全文：https://operation.tw/llms/reading.txt
@@ -58,6 +58,7 @@
 
 ## 最新文章
 
+- [機器人AI賽道升溫：DeepSeek領投Winverse AI背後的產業版圖轉移](https://operation.tw/post/429/index.md): DeepSeek領投Winverse AI種子輪融資後估值達4億美元，標誌著中國AI勢力向具身智能領域擴張。相比純語言模型競賽，機器人AI成為新的戰場。台灣機器人與AI產業如何掌握
 - [媒體聯盟防AI盜用新聞：台灣企業如何應對內容授權新時代？](https://operation.tw/post/428/index.md): 紐約時報、經濟學人等媒體聯盟正式發起防止AI未經授權使用新聞內容的行動。這場全球媒體與AI產業的對抗升溫，不僅影響內容產業生態，更牽動台灣新聞機構與科技企業的資安與法律戰略。
 - [LLM隱形偏見陷阱：表面公正背後的AI決策風險](https://operation.tw/post/427/index.md): 最新研究揭露大型語言模型的「偏見悖論」——GPT-6等先進模型看似公正，實則暗藏系統性偏見。這些偏見如何在招聘、貸款、司法判決中造成歧視？台灣企業如何在導入AI評估系統時迴避風險？
 - [日本AI戰略啟示錄：為何放棄規模戰轉向理論突破？](https://operation.tw/post/426/index.md): 當中國加速AI開發、美國壟斷晶片資源之際，日本選擇另闢蹊徑。甘利俊一倡議以「理論」為核心的AI發展路線，揭示亞太雲端新勢力如何在大國競爭中找到生存空間，對台灣科技產業帶來啟發。
@@ -72,7 +73,6 @@
 - [印度股市AI工具風潮背後的資安死角：投資者數據如何成為駭客獵場](https://operation.tw/post/417/index.md): 印度股市掀起AI交易分析工具熱潮，但這些新興AI平台在追求功能便利的同時，卻暴露出金融資料安全的重大隱患。台灣投資者與金融機構該如何應對跨境AI工具的資安風險？
 - [Meta AI助理Muse爆發的資安隱憂：代理AI如何成為企業防線新破口](https://operation.tw/post/416/index.md): Meta推出個人AI助理Muse與元宇宙、智慧眼鏡整合，開啟自主代理AI新時代。但當AI能自主決策、跨系統操作時，傳統資安邊界崩解。台灣企業如何應對代理AI帶來的新型攻擊面？
 - [EP104｜非本科系怎麼進科技業？外文系老師成為AI顧問的3個關鍵](https://operation.tw/post/415/index.md): 從國小老師到AI企業導入顧問，Angel用「把複雜講簡單」的教學能力跨界科技業。本文揭露非本科系如何證明實力、AI導入為何常失敗，以及哪些決策千萬別交給AI——這些經驗對正導入AI
-- [APT28新惡意軟體BadPaw Loader現蹤：台灣企業如何防禦國家級駭客？](https://operation.tw/post/413/index.md): 俄羅斯駭客組織APT28近期對烏克蘭散布新型惡意程式BadPaw Loader與MeowMeow，標誌著地緣政治衝突已升級至網路前線。台灣作為地緣政治敏感區域，企業需立即提升針對性
 
 ## Optional
 
