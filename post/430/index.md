@@ -6,7 +6,7 @@
 - 作者：Jin（https://operation.tw/about/）
 - 分類：閱讀
 - 發布：2026-10-14
-- Podcast 單集：AI60_閱讀操作｜你很忙，但真正產出了什麼？《深度工作力》在 AI 時代更值錢（Apple Podcasts：https://podcasts.apple.com/tw/podcast/id1620760720?i=1000796395822）
+- Podcast 單集：AI60_閱讀操作｜你很忙，但真正產出了什麼？《深度工作力》在 AI 時代更值錢（Apple Podcasts：https://podcasts.apple.com/tw/podcast/id1620760720）
 - 引用時請標明來源：操作一下 operation.tw
 
 ---
