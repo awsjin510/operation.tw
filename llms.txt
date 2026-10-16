@@ -25,8 +25,8 @@
 
 ## 代表文章（讀者最常讀）
 
-- [記憶體革命：AI晶片的下一個競爭焦點為何決定企業部署成敗](https://operation.tw/post/72/index.md): AI運算能力已不再是唯一競爭力。隨著大型語言模型規模持續擴大，記憶體架構、頻寬與延遲問題正成為新瓶頸。本文分析記憶體在AI時代的五大關鍵趨勢，以及如何影響台灣科技產業的晶片設計與企
 - [懶人必看！NotebookLM如何讓AWS證照準備效率暴增](https://operation.tw/post/5/index.md): 運用 AI 工具 NotebookLM 加速準備 AWS Certified Machine Learning Engineer – Associate (MLA-C01) 證照
+- [記憶體革命：AI晶片的下一個競爭焦點為何決定企業部署成敗](https://operation.tw/post/72/index.md): AI運算能力已不再是唯一競爭力。隨著大型語言模型規模持續擴大，記憶體架構、頻寬與延遲問題正成為新瓶頸。本文分析記憶體在AI時代的五大關鍵趨勢，以及如何影響台灣科技產業的晶片設計與企
 - [告別單一 AI 助理！TG 群組打造專業分工 AI 團隊](https://operation.tw/post/4/index.md): OpenClaw 透過 Telegram 群組功能，為不同專業領域建立專屬 Agent，不僅能針對任務性質選擇適合的 AI 模型，更能避免跨領域問題造成的上下文混淆。
 - [把雲端學習變成一場任務挑戰：我的 AWS Cloud Quest 實戰體驗](https://operation.tw/post/10/index.md): Lab的過程中可以照著圖片步驟執行，而最後的DIY環節則必須自己思考去完成。 不只是複習基礎，更是用遊戲重新校正自己對雲端架構與最佳實務的理解，也很適合想準備 Cloud Prac
 - [AI 通膨危機：大語言模型如何偷偷掏空用戶的 Token 預算](https://operation.tw/post/81/index.md): 大語言模型開始出現「通膨」現象——模型為節省成本，逐漸用冗長廢話填充回應，暗中增加用戶 token 消耗。這個隱形成本陷阱對台灣企業的 AI 採購成本有何影響？我們深入分析背後機制
