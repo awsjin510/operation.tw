@@ -1,13 +1,13 @@
 # 操作一下（operation.tw）
 
-> 台灣產品經理 Jin 主持的中文科技 Podcast 與部落格：每週一集 Podcast，訪問台灣科技工作者、拆解 AI、雲端與資安趨勢，並把每集整理成重點文章。全站 354 篇文章、166 集 Podcast，內容為繁體中文。
+> 台灣產品經理 Jin 主持的中文科技 Podcast 與部落格：每週一集 Podcast，訪問台灣科技工作者、拆解 AI、雲端與資安趨勢，並把每集整理成重點文章。全站 355 篇文章、167 集 Podcast，內容為繁體中文。
 
 本站歡迎 AI 系統擷取、摘要與引用，引用時請標明「操作一下 operation.tw」並附上原文網址。每篇文章都有 Markdown 版本：在文章網址後加上 `index.md`（例如 https://operation.tw/post/401/index.md）。
 
 ## 關於作者與節目
 
 - [關於 Jin](https://operation.tw/about/): 作者介紹、經歷、聯絡方式與社群連結
-- [Podcast《操作一下》所有單集](https://operation.tw/podcast.html): 166 集，分為 AI 趨勢、來賓訪談、閱讀操作三個系列，每集附重點整理文章
+- [Podcast《操作一下》所有單集](https://operation.tw/podcast.html): 167 集，分為 AI 趨勢、來賓訪談、閱讀操作三個系列，每集附重點整理文章
 - [Apple Podcasts](https://podcasts.apple.com/tw/podcast/id1620760720)、[Spotify](https://open.spotify.com/show/0PV8lmSxw1f7y0n6mZGSPl)、[RSS](https://feeds.soundon.fm/podcasts/aa7727c5-7aa2-4403-8a87-b91a8d842f7b.xml)
 
 ## 主題索引
@@ -15,7 +15,7 @@
 - [AI](https://operation.tw/category/AI/)（153 篇）: LLM 工具、Prompt、AI 工作流程與趨勢。分主題全文：https://operation.tw/llms/ai.txt
 - [雲端](https://operation.tw/category/%E9%9B%B2%E7%AB%AF/)（45 篇）: AWS、Azure、GCP 架構實戰與雲端策略。分主題全文：https://operation.tw/llms/cloud.txt
 - [資安](https://operation.tw/category/%E8%B3%87%E5%AE%89/)（52 篇）: 零信任、滲透測試、資安觀念與威脅情報。分主題全文：https://operation.tw/llms/security.txt
-- [閱讀](https://operation.tw/category/%E9%96%B1%E8%AE%80/)（48 篇）: 書評、讀書心得與知識管理。分主題全文：https://operation.tw/llms/reading.txt
+- [閱讀](https://operation.tw/category/%E9%96%B1%E8%AE%80/)（49 篇）: 書評、讀書心得與知識管理。分主題全文：https://operation.tw/llms/reading.txt
 - [成長](https://operation.tw/category/%E6%88%90%E9%95%B7/)（56 篇）: 個人成長、習慣養成與自媒體經營。分主題全文：https://operation.tw/llms/growth.txt
 
 ## 問答與定義
@@ -40,6 +40,7 @@
 
 ## Podcast 重點整理（最新）
 
+- [AI62｜從「我得這樣」到「我可以選擇」：樊登《主角模式》的領導力革命](https://operation.tw/post/435/index.md): 樊登說千萬別讓 AI 替你讀書，因為成長無法複製。《主角模式》核心不在心靈雞湯，而是真正的領導力——讓別人因為你變得更好。本文拆解書中四大絆腳石、三種被低估的領導特質，以及如何用 
 - [AI61｜AI 提高效率，為什麼你卻更累？三個原因與解決方案](https://operation.tw/post/432/index.md): AI 工具明明省時間，卻讓職場人越來越疲憊。柏克萊與 BCG 的研究揭露真相：工作沒減少反而堆疊、決策疲勞加劇、摩擦力消失讓休息機會也消失。本文拆解「AI 腦力過載」的成因，與找回
 - [AI60｜忙碌陷阱：為什麼你一整天都在工作，卻沒有真正產出？](https://operation.tw/post/430/index.md): 早上九點到晚上六點，你回了四十封信、開了三個會，卻說不出今天哪個時段真正推進了專案。在 AI 時代，深度工作的稀缺性與價值正在飆升。《深度工作力》的四大哲學與五個實戰技巧，幫你從「
 - [AI59｜很會存錢卻不會花錢？用《花錢的藝術》翻譯人生](https://operation.tw/post/424/index.md): 精算 ROI、定期定額投資，但卻答不出最近買了什麼讓自己開心的東西？摩根豪瑟在《花錢的藝術》中指出，會賺會存的人常忽略了錢的最高用途：買回時間與選擇權。四個核心觀念教你分清楚身份消
@@ -54,11 +55,11 @@
 - [EP103｜AI時代客戶成功經理還有價值嗎？從經驗密度談真人的不可替代性](https://operation.tw/post/366/index.md): 當AI能自動解決產品問題，客戶為什麼還要找真人客戶成功經理？一位B2B軟體從業者分享：AI先替代的是產品操作，不是關係與經驗密度。她如何在AI浪潮中重新定義這個角色的核心價值？
 - [AI51｜ChatGPT 開始賣廣告，你的答案還純嗎？](https://operation.tw/post/364/index.md): OpenAI 在 2026 年 8 月正式擴大 ChatGPT 廣告測試到五個新市場。當 AI 回答裡出現「本條由某品牌贊助」，廣告產業拿到的是前所未有的精準購買意圖信號。為什麼 
 - [AI50｜AI時代職涯規劃：從爬山到遊樂場，你的努力還算數嗎？](https://operation.tw/post/360/index.md): 五年前的專業三年後還值錢嗎？《未來1000天》提出三個職涯轉型框架：身份從執行者變指揮官、職涯從單線爬升變遊樂場組合、新職種反而是定義價值的最佳時機。這不是AI會不會取代你的問題，
-- [AI49｜ChatBot變聰明了？真正升級的是向量搜尋資料庫](https://operation.tw/post/357/index.md): 你的企業ChatBot最近回答更精確了——但不是AI模型變聰明，而是背後的向量搜尋資料庫在進化。AWS、Google Cloud、Azure全力搶佔RAG時代的資料庫戰爭，這場看不
 
 ## 最新文章
 
 - [日本證券公司遭駭後的雲端防禦啟示：金融機構如何重建信任？](https://operation.tw/post/434/index.md): 日本證券公司遭駭客入侵，客戶帳戶出現異常成交紀錄，暴露金融雲端基礎設施的防禦漏洞。本文解析這起事件對台灣金融機構的警示，以及企業應如何透過雲端安全架構重建信任。
+- [AI62｜從「我得這樣」到「我可以選擇」：樊登《主角模式》的領導力革命](https://operation.tw/post/435/index.md): 樊登說千萬別讓 AI 替你讀書，因為成長無法複製。《主角模式》核心不在心靈雞湯，而是真正的領導力——讓別人因為你變得更好。本文拆解書中四大絆腳石、三種被低估的領導特質，以及如何用 
 - [AI61｜AI 提高效率，為什麼你卻更累？三個原因與解決方案](https://operation.tw/post/432/index.md): AI 工具明明省時間，卻讓職場人越來越疲憊。柏克萊與 BCG 的研究揭露真相：工作沒減少反而堆疊、決策疲勞加劇、摩擦力消失讓休息機會也消失。本文拆解「AI 腦力過載」的成因，與找回
 - [AI安全認證新時代：BSI方案如何重塑企業防禦體系？](https://operation.tw/post/433/index.md): BSI推出涵蓋生物辨識、大型語言模型及風險管理的AI驗證方案，標誌著全球AI資安標準化進入新階段。台灣企業面臨國際認證要求升溫，如何應對這波AI安全合規浪潮成為關鍵課題。
 - [AI搜尋優化大轉向：AIO與AEO策略如何重塑雲端競爭格局](https://operation.tw/post/431/index.md): 隨著AI搜尋引擎崛起，企業面臨全新的優化課題。AIO（AI優化）與AEO（AI引擎優化）成為新競技場，雲端服務商如何應對這波轉變？台灣企業又應如何在新時代佈局內容與基礎設施？
@@ -72,7 +73,6 @@
 - [AI59｜很會存錢卻不會花錢？用《花錢的藝術》翻譯人生](https://operation.tw/post/424/index.md): 精算 ROI、定期定額投資，但卻答不出最近買了什麼讓自己開心的東西？摩根豪瑟在《花錢的藝術》中指出，會賺會存的人常忽略了錢的最高用途：買回時間與選擇權。四個核心觀念教你分清楚身份消
 - [GPT-6自動下載駭客工具遭抓包：AI代理失控的資安警訊](https://operation.tw/post/422/index.md): OpenAI最新的GPT-6 Astra在《星海爭霸》測試中連敗，竟自行上網下載頂級Bot原始碼以改進性能。這起事件暴露了自主AI代理在缺乏監督下的行為風險，也為台灣企業敲響警鐘：
 - [輝達35萬美元年薪搶AI工程師：台灣科技人才流失危機啟動](https://operation.tw/post/420/index.md): 輝達AI基礎工程師職位年薪上看35萬美元，遠高於台灣薪資水準，科技巨頭遙距招募全球高手。這波搶才潮背後反映出全球AI人才爭奪戰升溫，對台灣科技產業的人才保留與競爭力帶來新挑戰。
-- [AI58｜Gemini 4 Argon：AI 模型選型新時代，長流程推理如何改寫企業成本](https://operation.tw/post/421/index.md): Google 10月推出 Gemini 4 Argon，以半價定價、百萬 Token 輸出、深度推理與九成五折快取打破市場格局。本文拆解 Argon 核心能力、與 GPT-6 As
 
 ## Optional
 
