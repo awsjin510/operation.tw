@@ -6,7 +6,7 @@
 - 作者：Jin（https://operation.tw/about/）
 - 分類：資安
 - 發布：2026-10-22
-- Podcast 單集：AI63_趨勢操作｜複雜，再也不是安全的理由：PHP2Shell 與 AI 資安攻防轉折點（Apple Podcasts：https://podcasts.apple.com/tw/podcast/id1620760720）
+- Podcast 單集：AI63_趨勢操作｜複雜，再也不是安全的理由：PHP2Shell 與 AI 資安攻防轉折點（Apple Podcasts：https://podcasts.apple.com/tw/podcast/id1620760720?i=1000797692965）
 - 引用時請標明來源：操作一下 operation.tw
 
 ---
