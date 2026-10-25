@@ -6,7 +6,7 @@
 - 作者：Jin（https://operation.tw/about/）
 - 分類：閱讀
 - 發布：2026-10-25
-- Podcast 單集：AI64_閱讀操作｜名片是公司的，籌碼才是你的：大人學《沒了名片，你還剩下什麼？》（Apple Podcasts：https://podcasts.apple.com/tw/podcast/id1620760720?i=1000797979948）
+- Podcast 單集：AI64_閱讀操作｜名片是公司的，籌碼才是你的：大人學《沒了名片，你還剩下什麼？》（Apple Podcasts：https://podcasts.apple.com/tw/podcast/id1620760720）
 - 引用時請標明來源：操作一下 operation.tw
 
 ---
