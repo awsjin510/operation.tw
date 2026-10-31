@@ -1,6 +1,6 @@
 # 操作一下（operation.tw）
 
-> 台灣產品經理 Jin 主持的中文科技 Podcast 與部落格：每週一集 Podcast，訪問台灣科技工作者、拆解 AI、雲端與資安趨勢，並把每集整理成重點文章。全站 358 篇文章、169 集 Podcast，內容為繁體中文。
+> 台灣產品經理 Jin 主持的中文科技 Podcast 與部落格：每週一集 Podcast，訪問台灣科技工作者、拆解 AI、雲端與資安趨勢，並把每集整理成重點文章。全站 359 篇文章、169 集 Podcast，內容為繁體中文。
 
 本站歡迎 AI 系統擷取、摘要與引用，引用時請標明「操作一下 operation.tw」並附上原文網址。每篇文章都有 Markdown 版本：在文章網址後加上 `index.md`（例如 https://operation.tw/post/401/index.md）。
 
@@ -14,7 +14,7 @@
 
 - [AI](https://operation.tw/category/AI/)（154 篇）: LLM 工具、Prompt、AI 工作流程與趨勢。分主題全文：https://operation.tw/llms/ai.txt
 - [雲端](https://operation.tw/category/%E9%9B%B2%E7%AB%AF/)（45 篇）: AWS、Azure、GCP 架構實戰與雲端策略。分主題全文：https://operation.tw/llms/cloud.txt
-- [資安](https://operation.tw/category/%E8%B3%87%E5%AE%89/)（53 篇）: 零信任、滲透測試、資安觀念與威脅情報。分主題全文：https://operation.tw/llms/security.txt
+- [資安](https://operation.tw/category/%E8%B3%87%E5%AE%89/)（54 篇）: 零信任、滲透測試、資安觀念與威脅情報。分主題全文：https://operation.tw/llms/security.txt
 - [閱讀](https://operation.tw/category/%E9%96%B1%E8%AE%80/)（50 篇）: 書評、讀書心得與知識管理。分主題全文：https://operation.tw/llms/reading.txt
 - [成長](https://operation.tw/category/%E6%88%90%E9%95%B7/)（56 篇）: 個人成長、習慣養成與自媒體經營。分主題全文：https://operation.tw/llms/growth.txt
 
@@ -31,9 +31,9 @@
 - [把雲端學習變成一場任務挑戰：我的 AWS Cloud Quest 實戰體驗](https://operation.tw/post/10/index.md): Lab的過程中可以照著圖片步驟執行，而最後的DIY環節則必須自己思考去完成。 不只是複習基礎，更是用遊戲重新校正自己對雲端架構與最佳實務的理解，也很適合想準備 Cloud Prac
 - [AI妄想症威脅企業決策：如何識別與防範LLM的「一本正經胡說八道」？](https://operation.tw/post/99/index.md): AI妄想症（Hallucination）已成為企業部署大型語言模型的隱形殺手。當AI以高度自信的語氣輸出錯誤資訊時，如何識別並建立防護機制？本文揭開AI妄想症的真相，並提供台灣企業
 - [AI 通膨危機：大語言模型如何偷偷掏空用戶的 Token 預算](https://operation.tw/post/81/index.md): 大語言模型開始出現「通膨」現象——模型為節省成本，逐漸用冗長廢話填充回應，暗中增加用戶 token 消耗。這個隱形成本陷阱對台灣企業的 AI 採購成本有何影響？我們深入分析背後機制
+- [AI引用虛構疾病的警訊：學術誠信與AI可信度危機](https://operation.tw/post/73/index.md): 研究員用虛構疾病測試AI與學術界，結果震驚：AI不僅直接引用假消息，還被納入真實論文。這場實驗揭露AI時代最隱蔽的威脅——信息汙染如何侵蝕學術根基，對台灣學界與企業應用帶來深遠影響
 - [AI創造力危機：商業化審查如何困住大型模型的想像力？](https://operation.tw/post/47/index.md): 最新研究揭示AI大型模型面臨的隱形困境：為了滿足商業化需求和安全限制，模型的創意輸出被大幅削弱。這不只影響內容創作，更對台灣AI產業的差異化競爭造成威脅。企業該如何在合規與創新間找
 - [輝達芯片荒現轉機：AI雲端新時代如何重塑運算生態](https://operation.tw/post/77/index.md): 輝達地位被重新評估，AI芯片供應鏈的變化正深刻影響雲端運算格局。從GPU稀缺到供應穩定，企業如何在這波轉變中找到最適合的雲端策略？本文分析輝達現象背後的產業趨勢。
-- [AI引用虛構疾病的警訊：學術誠信與AI可信度危機](https://operation.tw/post/73/index.md): 研究員用虛構疾病測試AI與學術界，結果震驚：AI不僅直接引用假消息，還被納入真實論文。這場實驗揭露AI時代最隱蔽的威脅——信息汙染如何侵蝕學術根基，對台灣學界與企業應用帶來深遠影響
 - [Fortinet 2026資安威脅預測：台灣企業面臨的三大生存挑戰](https://operation.tw/post/26/index.md): Fortinet最新發布2026全球資安威脅預測報告，指出AI驅動的攻擊、供應鏈風險與零信任架構缺口成為新常態。台灣作為全球半導體與科技樞紐，正面臨前所未有的資安威脅。本文深度解析
 - [中國AI模型成本狂跌99%：台灣科技業如何應對價格戰新時代？](https://operation.tw/post/118/index.md): 中國AI模型成本驟降99%，打破美國巨頭的訂價壟斷。這場全球AI成本戰將如何重塑市場格局？台灣AI應用企業面臨的機遇與挑戰為何？本文深度分析這場價格革命的影響。
 - [Claude Opus 4.7 vs Mythos：大模型競賽新格局如何改變企業AI選型？](https://operation.tw/post/78/index.md): Anthropic 推出 Claude Opus 4.7，但性能仍不及 Mythos。這場大模型能力差距的擴大，反映出 AI 競賽進入新階段。台灣企業該如何在眾多模型中做出最適選擇
@@ -58,6 +58,7 @@
 
 ## 最新文章
 
+- [台灣資安出海新機會：北歐年會透露的國際市場策略](https://operation.tw/post/439/index.md): 政府官員林宜敬於北歐資安年會分享台灣經驗，為本土資安業者開拓國際市場鋪路。本文分析台灣資安產業國際化的戰略意義、北歐市場機會，以及企業如何把握這波政策支持浪潮。
 - [AI64｜名片是公司的，籌碼才是你的：AI時代的職場自救指南](https://operation.tw/post/438/index.md): 當AI開始重組工作流程，你的職稱可能在明天消失。本文拆解《沒了名片，你還剩下什麼？》核心觀點，探討如何在AI時代打造難以被標準化的個人價值，以及為什麼深度專業比職位名稱更能保護你的
 - [法律AI人才大逃亡：Meta超級實驗室為何留不住研究員？](https://operation.tw/post/437/index.md): Meta超級智慧實驗室的頂尖研究人員投身法律AI熱潮，反映出AI產業人才流向的深層變化。這不只是個人職涯抉擇，更暴露了大型科技公司如何平衡前沿研究與商業應用的困境，對台灣AI人才策
 - [AI63｜PHP2Shell 漏洞風暴：AI 如何改變資安攻防的速度競賽](https://operation.tw/post/436/index.md): 日本首相為 PHP 漏洞緊急喊話，背後原因是什麼？PHP2Shell 事件揭示了 AI 時代資安防守的新困境：過去因為「太難利用」而被忽視的漏洞，現在用 AI 一週就能破解。防守方
@@ -72,7 +73,6 @@
 - [LLM隱形偏見陷阱：表面公正背後的AI決策風險](https://operation.tw/post/427/index.md): 最新研究揭露大型語言模型的「偏見悖論」——GPT-6等先進模型看似公正，實則暗藏系統性偏見。這些偏見如何在招聘、貸款、司法判決中造成歧視？台灣企業如何在導入AI評估系統時迴避風險？
 - [日本AI戰略啟示錄：為何放棄規模戰轉向理論突破？](https://operation.tw/post/426/index.md): 當中國加速AI開發、美國壟斷晶片資源之際，日本選擇另闢蹊徑。甘利俊一倡議以「理論」為核心的AI發展路線，揭示亞太雲端新勢力如何在大國競爭中找到生存空間，對台灣科技產業帶來啟發。
 - [中國9月推16個新模型：台灣AI企業如何應對加速競賽？](https://operation.tw/post/425/index.md): 日媒報導中國AI開發速度未減反增，9月推出16個新模型。在美國制裁與國際呼籲放緩之際，大陸持續加速AI開發。台灣企業應如何在這波算力競賽中找到生存之道？本文分析中國AI策略轉變與台
-- [CoreWeave vs. Nebius：輝達20億美元投資背後的AI雲端生態戰](https://operation.tw/post/423/index.md): 輝達同時砸20億美元投資CoreWeave與Nebius，卻展現截然不同的成長策略。CoreWeave專注北美AI算力租賃快速擴張，Nebius則深耕歐洲主權AI。兩條路線誰能勝出
 
 ## Optional
 
