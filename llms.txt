@@ -1,6 +1,6 @@
 # 操作一下（operation.tw）
 
-> 台灣產品經理 Jin 主持的中文科技 Podcast 與部落格：每週一集 Podcast，訪問台灣科技工作者、拆解 AI、雲端與資安趨勢，並把每集整理成重點文章。全站 360 篇文章、170 集 Podcast，內容為繁體中文。
+> 台灣產品經理 Jin 主持的中文科技 Podcast 與部落格：每週一集 Podcast，訪問台灣科技工作者、拆解 AI、雲端與資安趨勢，並把每集整理成重點文章。全站 361 篇文章、170 集 Podcast，內容為繁體中文。
 
 本站歡迎 AI 系統擷取、摘要與引用，引用時請標明「操作一下 operation.tw」並附上原文網址。每篇文章都有 Markdown 版本：在文章網址後加上 `index.md`（例如 https://operation.tw/post/401/index.md）。
 
@@ -12,7 +12,7 @@
 
 ## 主題索引
 
-- [AI](https://operation.tw/category/AI/)（155 篇）: LLM 工具、Prompt、AI 工作流程與趨勢。分主題全文：https://operation.tw/llms/ai.txt
+- [AI](https://operation.tw/category/AI/)（156 篇）: LLM 工具、Prompt、AI 工作流程與趨勢。分主題全文：https://operation.tw/llms/ai.txt
 - [雲端](https://operation.tw/category/%E9%9B%B2%E7%AB%AF/)（45 篇）: AWS、Azure、GCP 架構實戰與雲端策略。分主題全文：https://operation.tw/llms/cloud.txt
 - [資安](https://operation.tw/category/%E8%B3%87%E5%AE%89/)（54 篇）: 零信任、滲透測試、資安觀念與威脅情報。分主題全文：https://operation.tw/llms/security.txt
 - [閱讀](https://operation.tw/category/%E9%96%B1%E8%AE%80/)（50 篇）: 書評、讀書心得與知識管理。分主題全文：https://operation.tw/llms/reading.txt
@@ -30,13 +30,13 @@
 - [告別單一 AI 助理！TG 群組打造專業分工 AI 團隊](https://operation.tw/post/4/index.md): OpenClaw 透過 Telegram 群組功能，為不同專業領域建立專屬 Agent，不僅能針對任務性質選擇適合的 AI 模型，更能避免跨領域問題造成的上下文混淆。
 - [把雲端學習變成一場任務挑戰：我的 AWS Cloud Quest 實戰體驗](https://operation.tw/post/10/index.md): Lab的過程中可以照著圖片步驟執行，而最後的DIY環節則必須自己思考去完成。 不只是複習基礎，更是用遊戲重新校正自己對雲端架構與最佳實務的理解，也很適合想準備 Cloud Prac
 - [AI妄想症威脅企業決策：如何識別與防範LLM的「一本正經胡說八道」？](https://operation.tw/post/99/index.md): AI妄想症（Hallucination）已成為企業部署大型語言模型的隱形殺手。當AI以高度自信的語氣輸出錯誤資訊時，如何識別並建立防護機制？本文揭開AI妄想症的真相，並提供台灣企業
+- [輝達芯片荒現轉機：AI雲端新時代如何重塑運算生態](https://operation.tw/post/77/index.md): 輝達地位被重新評估，AI芯片供應鏈的變化正深刻影響雲端運算格局。從GPU稀缺到供應穩定，企業如何在這波轉變中找到最適合的雲端策略？本文分析輝達現象背後的產業趨勢。
 - [AI引用虛構疾病的警訊：學術誠信與AI可信度危機](https://operation.tw/post/73/index.md): 研究員用虛構疾病測試AI與學術界，結果震驚：AI不僅直接引用假消息，還被納入真實論文。這場實驗揭露AI時代最隱蔽的威脅——信息汙染如何侵蝕學術根基，對台灣學界與企業應用帶來深遠影響
 - [AI 通膨危機：大語言模型如何偷偷掏空用戶的 Token 預算](https://operation.tw/post/81/index.md): 大語言模型開始出現「通膨」現象——模型為節省成本，逐漸用冗長廢話填充回應，暗中增加用戶 token 消耗。這個隱形成本陷阱對台灣企業的 AI 採購成本有何影響？我們深入分析背後機制
-- [輝達芯片荒現轉機：AI雲端新時代如何重塑運算生態](https://operation.tw/post/77/index.md): 輝達地位被重新評估，AI芯片供應鏈的變化正深刻影響雲端運算格局。從GPU稀缺到供應穩定，企業如何在這波轉變中找到最適合的雲端策略？本文分析輝達現象背後的產業趨勢。
 - [AI創造力危機：商業化審查如何困住大型模型的想像力？](https://operation.tw/post/47/index.md): 最新研究揭示AI大型模型面臨的隱形困境：為了滿足商業化需求和安全限制，模型的創意輸出被大幅削弱。這不只影響內容創作，更對台灣AI產業的差異化競爭造成威脅。企業該如何在合規與創新間找
 - [Claude Opus 4.7 vs Mythos：大模型競賽新格局如何改變企業AI選型？](https://operation.tw/post/78/index.md): Anthropic 推出 Claude Opus 4.7，但性能仍不及 Mythos。這場大模型能力差距的擴大，反映出 AI 競賽進入新階段。台灣企業該如何在眾多模型中做出最適選擇
+- [AWS 20周年里程碑：從工程痛點到雲端帝國的啟示](https://operation.tw/post/35/index.md): AWS邁入20周年，從Amazon內部工程問題的解決方案，演變成千億美元產業基石。本文探討AWS如何定義現代雲端運算，及其對台灣企業轉型的啟示，特別是在AI時代的新機遇。
 - [Fortinet 2026資安威脅預測：台灣企業面臨的三大生存挑戰](https://operation.tw/post/26/index.md): Fortinet最新發布2026全球資安威脅預測報告，指出AI驅動的攻擊、供應鏈風險與零信任架構缺口成為新常態。台灣作為全球半導體與科技樞紐，正面臨前所未有的資安威脅。本文深度解析
-- [蘋果AI本地化戰略：大模型上iPhone運行的技術突破與挑戰](https://operation.tw/post/318/index.md): 蘋果力推AI模型在iPhone本地運行，收購AI新創加速邊緣計算部署。本文分析蘋果如何打破雲端依賴、重塑AI應用生態，以及這股「邊緣AI」浪潮對台灣晶片與軟體廠商的機會與威脅。
 
 ## Podcast 重點整理（最新）
 
@@ -58,6 +58,7 @@
 
 ## 最新文章
 
+- [AI數錯字母的真相：為什麼大模型本質是預測機而非理解機](https://operation.tw/post/441/index.md): 大語言模型為何頻繁數錯字母、亂引用來源？TechNews 最新深度分析指出，問題不在 AI 不夠聰明，而在於 AI 的運作邏輯根本不是「理解」而是「預測」。本文揭開大模型黑盒，幫助
 - [AI65｜AI 熱潮三年，為什麼只有七家公司真正賺到錢？](https://operation.tw/post/440/index.md): 每家企業都在導入 AI，獲利卻停滯不前。華爾街經濟學家的數據揭露真相：七巨頭獲利率三年翻倍，其他 493 家公司原地踏步。這不是工具問題，而是流程設計與執行的差距。
 - [台灣資安出海新機會：北歐年會透露的國際市場策略](https://operation.tw/post/439/index.md): 政府官員林宜敬於北歐資安年會分享台灣經驗，為本土資安業者開拓國際市場鋪路。本文分析台灣資安產業國際化的戰略意義、北歐市場機會，以及企業如何把握這波政策支持浪潮。
 - [AI64｜名片是公司的，籌碼才是你的：AI時代的職場自救指南](https://operation.tw/post/438/index.md): 當AI開始重組工作流程，你的職稱可能在明天消失。本文拆解《沒了名片，你還剩下什麼？》核心觀點，探討如何在AI時代打造難以被標準化的個人價值，以及為什麼深度專業比職位名稱更能保護你的
@@ -72,7 +73,6 @@
 - [AI60｜忙碌陷阱：為什麼你一整天都在工作，卻沒有真正產出？](https://operation.tw/post/430/index.md): 早上九點到晚上六點，你回了四十封信、開了三個會，卻說不出今天哪個時段真正推進了專案。在 AI 時代，深度工作的稀缺性與價值正在飆升。《深度工作力》的四大哲學與五個實戰技巧，幫你從「
 - [媒體聯盟防AI盜用新聞：台灣企業如何應對內容授權新時代？](https://operation.tw/post/428/index.md): 紐約時報、經濟學人等媒體聯盟正式發起防止AI未經授權使用新聞內容的行動。這場全球媒體與AI產業的對抗升溫，不僅影響內容產業生態，更牽動台灣新聞機構與科技企業的資安與法律戰略。
 - [LLM隱形偏見陷阱：表面公正背後的AI決策風險](https://operation.tw/post/427/index.md): 最新研究揭露大型語言模型的「偏見悖論」——GPT-6等先進模型看似公正，實則暗藏系統性偏見。這些偏見如何在招聘、貸款、司法判決中造成歧視？台灣企業如何在導入AI評估系統時迴避風險？
-- [日本AI戰略啟示錄：為何放棄規模戰轉向理論突破？](https://operation.tw/post/426/index.md): 當中國加速AI開發、美國壟斷晶片資源之際，日本選擇另闢蹊徑。甘利俊一倡議以「理論」為核心的AI發展路線，揭示亞太雲端新勢力如何在大國競爭中找到生存空間，對台灣科技產業帶來啟發。
 
 ## Optional
 

@@ -6,7 +6,7 @@
 - 作者：Jin（https://operation.tw/about/）
 - 分類：AI
 - 發布：2026-11-01
-- Podcast 單集：AI65_趨勢操作｜大家都在導入 AI，為什麼只有七家公司賺到錢？（Apple Podcasts：https://podcasts.apple.com/tw/podcast/id1620760720）
+- Podcast 單集：AI65_趨勢操作｜大家都在導入 AI，為什麼只有七家公司賺到錢？（Apple Podcasts：https://podcasts.apple.com/tw/podcast/id1620760720?i=1000799289615）
 - 引用時請標明來源：操作一下 operation.tw
 
 ---
