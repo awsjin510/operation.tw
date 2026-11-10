@@ -1,6 +1,6 @@
 # 操作一下（operation.tw）
 
-> 台灣產品經理 Jin 主持的中文科技 Podcast 與部落格：每週一集 Podcast，訪問台灣科技工作者、拆解 AI、雲端與資安趨勢，並把每集整理成重點文章。全站 363 篇文章、170 集 Podcast，內容為繁體中文。
+> 台灣產品經理 Jin 主持的中文科技 Podcast 與部落格：每週一集 Podcast，訪問台灣科技工作者、拆解 AI、雲端與資安趨勢，並把每集整理成重點文章。全站 364 篇文章、170 集 Podcast，內容為繁體中文。
 
 本站歡迎 AI 系統擷取、摘要與引用，引用時請標明「操作一下 operation.tw」並附上原文網址。每篇文章都有 Markdown 版本：在文章網址後加上 `index.md`（例如 https://operation.tw/post/401/index.md）。
 
@@ -13,7 +13,7 @@
 ## 主題索引
 
 - [AI](https://operation.tw/category/AI/)（157 篇）: LLM 工具、Prompt、AI 工作流程與趨勢。分主題全文：https://operation.tw/llms/ai.txt
-- [雲端](https://operation.tw/category/%E9%9B%B2%E7%AB%AF/)（45 篇）: AWS、Azure、GCP 架構實戰與雲端策略。分主題全文：https://operation.tw/llms/cloud.txt
+- [雲端](https://operation.tw/category/%E9%9B%B2%E7%AB%AF/)（46 篇）: AWS、Azure、GCP 架構實戰與雲端策略。分主題全文：https://operation.tw/llms/cloud.txt
 - [資安](https://operation.tw/category/%E8%B3%87%E5%AE%89/)（55 篇）: 零信任、滲透測試、資安觀念與威脅情報。分主題全文：https://operation.tw/llms/security.txt
 - [閱讀](https://operation.tw/category/%E9%96%B1%E8%AE%80/)（50 篇）: 書評、讀書心得與知識管理。分主題全文：https://operation.tw/llms/reading.txt
 - [成長](https://operation.tw/category/%E6%88%90%E9%95%B7/)（56 篇）: 個人成長、習慣養成與自媒體經營。分主題全文：https://operation.tw/llms/growth.txt
@@ -58,6 +58,7 @@
 
 ## 最新文章
 
+- [AWS滿20年背後的雲端戰爭：台灣企業如何在三大平台中選邊站](https://operation.tw/post/444/index.md): AWS成立20週年之際，AWS、GCP、Azure三大雲端平台的市場競爭進入新階段。本文分析三大平台的營收規模、技術優勢與產業應用，幫助台灣企業理解如何根據業務需求選擇最適合的雲端
 - [AI滲透測試工具ARTEX現蹤日本：企業資安防線面臨新威脅](https://operation.tw/post/443/index.md): 日本多家企業遭駭，攻擊者使用AI滲透測試工具ARTEX成功入侵系統。這標誌著AI工具從防禦方轉向攻擊方的危險轉折。台灣企業應如何應對這一新興資安威脅？本文深入分析。
 - [MIT微創修改AI權重技術：無需重訓就能改造模型的時代來臨](https://operation.tw/post/442/index.md): MIT最新研究突破傳統AI訓練模式，AI可直接修改其他AI的底層權重，無需耗時重新訓練。這項技術將如何改變AI開發流程？對台灣AI企業有何啟示？
 - [AI數錯字母的真相：為什麼大模型本質是預測機而非理解機](https://operation.tw/post/441/index.md): 大語言模型為何頻繁數錯字母、亂引用來源？TechNews 最新深度分析指出，問題不在 AI 不夠聰明，而在於 AI 的運作邏輯根本不是「理解」而是「預測」。本文揭開大模型黑盒，幫助
@@ -72,7 +73,6 @@
 - [AI安全認證新時代：BSI方案如何重塑企業防禦體系？](https://operation.tw/post/433/index.md): BSI推出涵蓋生物辨識、大型語言模型及風險管理的AI驗證方案，標誌著全球AI資安標準化進入新階段。台灣企業面臨國際認證要求升溫，如何應對這波AI安全合規浪潮成為關鍵課題。
 - [AI搜尋優化大轉向：AIO與AEO策略如何重塑雲端競爭格局](https://operation.tw/post/431/index.md): 隨著AI搜尋引擎崛起，企業面臨全新的優化課題。AIO（AI優化）與AEO（AI引擎優化）成為新競技場，雲端服務商如何應對這波轉變？台灣企業又應如何在新時代佈局內容與基礎設施？
 - [機器人AI賽道升溫：DeepSeek領投Winverse AI背後的產業版圖轉移](https://operation.tw/post/429/index.md): DeepSeek領投Winverse AI種子輪融資後估值達4億美元，標誌著中國AI勢力向具身智能領域擴張。相比純語言模型競賽，機器人AI成為新的戰場。台灣機器人與AI產業如何掌握
-- [AI60｜忙碌陷阱：為什麼你一整天都在工作，卻沒有真正產出？](https://operation.tw/post/430/index.md): 早上九點到晚上六點，你回了四十封信、開了三個會，卻說不出今天哪個時段真正推進了專案。在 AI 時代，深度工作的稀缺性與價值正在飆升。《深度工作力》的四大哲學與五個實戰技巧，幫你從「
 
 ## Optional
 
