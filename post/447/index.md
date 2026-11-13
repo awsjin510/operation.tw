@@ -6,7 +6,7 @@
 - 作者：Jin（https://operation.tw/about/）
 - 分類：閱讀
 - 發布：2026-11-12
-- Podcast 單集：AI66_閱讀操作｜當智慧像水電一樣便宜，你還剩下什麼？《智慧通膨下的新商機》（Apple Podcasts：https://podcasts.apple.com/tw/podcast/id1620760720）
+- Podcast 單集：AI66_閱讀操作｜當智慧像水電一樣便宜，你還剩下什麼？《智慧通膨下的新商機》（Apple Podcasts：https://podcasts.apple.com/tw/podcast/id1620760720?i=1000801613143）
 - 引用時請標明來源：操作一下 operation.tw
 
 ---
