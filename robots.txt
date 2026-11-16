@@ -1,10 +1,13 @@
 # operation.tw — 歡迎搜尋引擎與 AI 系統索引、摘要與引用（請標明來源 operation.tw）
 # 站台導覽（給 AI）：https://operation.tw/llms.txt ；每篇文章另有 Markdown 版：文章網址＋index.md
 
+# ⚠ 不要對 /search/、/admin.html 加 Disallow：
+#   這兩頁已用 <meta name="robots" content="noindex"> 排除收錄，而 robots.txt 的
+#   Disallow 會讓爬蟲抓不到頁面、因而看不到 noindex，反而造成 GSC
+#   「已建立索引，但遭到 robots.txt 封鎖」。兩者只能擇一，noindex 才是正解。
+
 User-agent: *
 Allow: /
-Disallow: /admin.html
-Disallow: /search/
 
 # ── AI 搜尋／檢索與訓練爬蟲：明確允許（被 ChatGPT、Claude、Perplexity、Gemini、Copilot 等引用）──
 # OpenAI
@@ -37,8 +40,6 @@ User-agent: YouBot
 User-agent: PhindBot
 User-agent: CCBot
 Allow: /
-Disallow: /admin.html
-Disallow: /search/
 
 Sitemap: https://operation.tw/sitemap.xml
 
