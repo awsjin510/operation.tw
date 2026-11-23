@@ -27,8 +27,8 @@
 
 - [懶人必看！NotebookLM如何讓AWS證照準備效率暴增](https://operation.tw/post/5/index.md): 運用 AI 工具 NotebookLM 加速準備 AWS Certified Machine Learning Engineer – Associate (MLA-C01) 證照
 - [記憶體革命：AI晶片的下一個競爭焦點為何決定企業部署成敗](https://operation.tw/post/72/index.md): AI運算能力已不再是唯一競爭力。隨著大型語言模型規模持續擴大，記憶體架構、頻寬與延遲問題正成為新瓶頸。本文分析記憶體在AI時代的五大關鍵趨勢，以及如何影響台灣科技產業的晶片設計與企
-- [告別單一 AI 助理！TG 群組打造專業分工 AI 團隊](https://operation.tw/post/4/index.md): OpenClaw 透過 Telegram 群組功能，為不同專業領域建立專屬 Agent，不僅能針對任務性質選擇適合的 AI 模型，更能避免跨領域問題造成的上下文混淆。
 - [把雲端學習變成一場任務挑戰：我的 AWS Cloud Quest 實戰體驗](https://operation.tw/post/10/index.md): Lab的過程中可以照著圖片步驟執行，而最後的DIY環節則必須自己思考去完成。 不只是複習基礎，更是用遊戲重新校正自己對雲端架構與最佳實務的理解，也很適合想準備 Cloud Prac
+- [告別單一 AI 助理！TG 群組打造專業分工 AI 團隊](https://operation.tw/post/4/index.md): OpenClaw 透過 Telegram 群組功能，為不同專業領域建立專屬 Agent，不僅能針對任務性質選擇適合的 AI 模型，更能避免跨領域問題造成的上下文混淆。
 - [AI妄想症威脅企業決策：如何識別與防範LLM的「一本正經胡說八道」？](https://operation.tw/post/99/index.md): AI妄想症（Hallucination）已成為企業部署大型語言模型的隱形殺手。當AI以高度自信的語氣輸出錯誤資訊時，如何識別並建立防護機制？本文揭開AI妄想症的真相，並提供台灣企業
 - [AWS 20周年里程碑：從工程痛點到雲端帝國的啟示](https://operation.tw/post/35/index.md): AWS邁入20周年，從Amazon內部工程問題的解決方案，演變成千億美元產業基石。本文探討AWS如何定義現代雲端運算，及其對台灣企業轉型的啟示，特別是在AI時代的新機遇。
 - [輝達芯片荒現轉機：AI雲端新時代如何重塑運算生態](https://operation.tw/post/77/index.md): 輝達地位被重新評估，AI芯片供應鏈的變化正深刻影響雲端運算格局。從GPU稀缺到供應穩定，企業如何在這波轉變中找到最適合的雲端策略？本文分析輝達現象背後的產業趨勢。
