@@ -6,7 +6,7 @@
 - 作者：Jin（https://operation.tw/about/）
 - 分類：AI
 - 發布：2026-11-24
-- Podcast 單集：AI67_趨勢操作 | 成本砍八成、業績超標兩成：AI 主播站上銷售第一線（Apple Podcasts：https://podcasts.apple.com/tw/podcast/id1620760720?i=1000803693486）
+- Podcast 單集：AI67_趨勢操作 | 成本砍八成、業績超標兩成：AI 主播站上銷售第一線（Apple Podcasts：https://podcasts.apple.com/tw/podcast/id1620760720）
 - 引用時請標明來源：操作一下 operation.tw
 
 ---
